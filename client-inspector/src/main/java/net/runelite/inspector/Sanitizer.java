@@ -193,6 +193,16 @@ public final class Sanitizer
 							if (hasNarrowedComparable)
 							{
 								cn.interfaces.remove("java/lang/Comparable");
+								// Add a compareTo(Nameable) bridge that delegates to
+								// compareTo(Object) so javac sees the class as satisfying
+								// Comparable<Nameable>'s contract — without it, the existing
+								// compareTo(Object) is treated as an unrelated method.
+								if (cn.interfaces.contains("net/runelite/api/Nameable")
+									&& hasMethod(cn, "compareTo", "(Ljava/lang/Object;)I")
+									&& !hasMethod(cn, "compareTo", "(Lnet/runelite/api/Nameable;)I"))
+								{
+									cn.methods.add(makeNameableCompareToBridge(cn.name));
+								}
 							}
 						}
 						// Drop raw `net/runelite/api/NameableContainer` — subclasses pick up
@@ -950,6 +960,40 @@ public final class Sanitizer
 			}
 		}
 		return result;
+	}
+
+	private static boolean hasMethod(ClassNode cn, String name, String desc)
+	{
+		if (cn.methods == null)
+		{
+			return false;
+		}
+		for (MethodNode mn : cn.methods)
+		{
+			if (mn.name.equals(name) && mn.desc.equals(desc))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static MethodNode makeNameableCompareToBridge(String ownerInternal)
+	{
+		MethodNode mn = new MethodNode(
+			org.objectweb.asm.Opcodes.ACC_PUBLIC | org.objectweb.asm.Opcodes.ACC_SYNTHETIC | org.objectweb.asm.Opcodes.ACC_BRIDGE,
+			"compareTo",
+			"(Lnet/runelite/api/Nameable;)I",
+			null, null);
+		mn.instructions.add(new org.objectweb.asm.tree.VarInsnNode(org.objectweb.asm.Opcodes.ALOAD, 0));
+		mn.instructions.add(new org.objectweb.asm.tree.VarInsnNode(org.objectweb.asm.Opcodes.ALOAD, 1));
+		mn.instructions.add(new org.objectweb.asm.tree.MethodInsnNode(
+			org.objectweb.asm.Opcodes.INVOKEVIRTUAL, ownerInternal,
+			"compareTo", "(Ljava/lang/Object;)I", false));
+		mn.instructions.add(new org.objectweb.asm.tree.InsnNode(org.objectweb.asm.Opcodes.IRETURN));
+		mn.maxStack = 2;
+		mn.maxLocals = 2;
+		return mn;
 	}
 
 	private static boolean isValidAnnotationMember(MethodNode mn)
