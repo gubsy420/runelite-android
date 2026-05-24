@@ -1309,8 +1309,10 @@ public final class Sanitizer
 			{
 				int end = desc.indexOf(';', i);
 				String internal = end > i ? desc.substring(i + 1, end) : desc.substring(i + 1);
-				int lastSlash = internal.lastIndexOf('/');
-				sb.append(lastSlash >= 0 ? internal.substring(lastSlash + 1) : internal);
+				// Use the full internal name, replacing slashes with underscores. The simple
+				// name alone collides for classes that share an unqualified name across
+				// packages (e.g. net/runelite/api/WorldMapData and net/runelite/api/worldmap/WorldMapData).
+				sb.append(internal.replace('/', '_').replace('$', '_'));
 				break;
 			}
 			default: sb.append(c);
