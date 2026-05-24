@@ -181,6 +181,29 @@ public final class Sanitizer
 							cn.access &= ~org.objectweb.asm.Opcodes.ACC_FINAL;
 							stats.unFinaledClasses++;
 						}
+						// Drop raw `java/lang/Comparable` when a class also implements one of
+						// the runelite-api interfaces that already extends Comparable<T>. javac
+						// rejects the resulting "Comparable inherited with different arguments"
+						// since e.g. Nameable extends Comparable<Nameable>.
+						if (cn.interfaces != null
+							&& cn.interfaces.contains("java/lang/Comparable"))
+						{
+							boolean hasNarrowedComparable = cn.interfaces.contains("net/runelite/api/Nameable")
+								|| cn.interfaces.contains("net/runelite/api/NameableContainer");
+							if (hasNarrowedComparable)
+							{
+								cn.interfaces.remove("java/lang/Comparable");
+							}
+						}
+						// Drop raw `net/runelite/api/NameableContainer` — subclasses pick up
+						// the parameterized form via FriendsChatManager / FriendContainer, and
+						// the raw declaration here causes "different arguments" inheritance
+						// errors in those subclasses. Doesn't affect runtime; the methods
+						// still work through the inherited contract.
+						if (cn.interfaces != null)
+						{
+							cn.interfaces.remove("net/runelite/api/NameableContainer");
+						}
 						if (cn.fields != null && !isInterface)
 						{
 							for (FieldNode fn : cn.fields)
