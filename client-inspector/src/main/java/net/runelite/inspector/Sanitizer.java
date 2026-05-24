@@ -25,10 +25,12 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
+import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.AnnotationNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.LocalVariableAnnotationNode;
+import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.TypeAnnotationNode;
 
@@ -109,12 +111,12 @@ public final class Sanitizer
 		// Pass 1: scan every class for name collisions that are legal in bytecode but illegal
 		// in Java source (same field name with different descriptors; same method name+params
 		// with different return types). Build a per-(owner, name, descriptor) rename map.
-		DuplicateRenamer dups = buildDuplicateRenamer(in, stats);
+		SanitizationPlan plan = buildDuplicateRenamer(in, stats);
 		// Apply DUPLICATE first (it keys on original names from the pre-scan), then RESERVED
 		// on top — otherwise the reserved-word rename of `do`→`do_` would happen first, the
 		// duplicate map would look up the post-rename name, and the field-shadows-class
 		// detection would silently miss (leaving `da.do_` field still colliding with class `do_`).
-		Remapper remapper = combine(dups, RESERVED_REMAPPER);
+		Remapper remapper = combine(plan.dups, RESERVED_REMAPPER);
 
 		// Pass 1b: find fields that the obfuscator declared ACC_FINAL but writes to from outside
 		// <clinit>/<init>. Bytecode allows this; javac rejects it.
@@ -155,6 +157,22 @@ public final class Sanitizer
 						ClassNode cn = new ClassNode();
 						cr.accept(cn, 0);
 						sanitizeClass(cn, stats);
+						// Drop covariant-bridge methods whose targets were renamed to take the
+						// bridge's own name. Source emits one correctly-typed concrete method;
+						// javac regenerates the bytecode bridge during recompilation.
+						if (cn.methods != null && !plan.bridgesToDrop.isEmpty())
+						{
+							final String cnName = cn.name;
+							cn.methods.removeIf(mn ->
+							{
+								if (plan.bridgesToDrop.contains(cnName + "#" + mn.name + mn.desc))
+								{
+									stats.droppedBridgeMethods++;
+									return true;
+								}
+								return false;
+							});
+						}
 						// Replace bodies of methods that reference nonexistent fields/methods.
 						// Keeps the signature so callers resolve, eliminates the bad refs.
 						if (cn.methods != null)
@@ -269,6 +287,10 @@ public final class Sanitizer
 		if (stats.stubbedDeadMethods > 0)
 		{
 			System.out.println("stubbed " + stats.stubbedDeadMethods + " method(s) whose bodies referenced nonexistent fields/methods");
+		}
+		if (stats.droppedBridgeMethods > 0)
+		{
+			System.out.println("dropped " + stats.droppedBridgeMethods + " covariant-bridge method(s) (target renamed to bridge's name)");
 		}
 		if (!stats.droppedByType.isEmpty())
 		{
@@ -605,6 +627,7 @@ public final class Sanitizer
 		long unFinaledFields;
 		long unFinaledClasses;
 		long stubbedDeadMethods;
+		long droppedBridgeMethods;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -1101,7 +1124,7 @@ public final class Sanitizer
 	// representation would collide — fields with the same name but different descriptors, or
 	// methods with the same name+params but different return type — and assigns each one a
 	// deterministic suffix derived from the descriptor.
-	private static DuplicateRenamer buildDuplicateRenamer(Path jarPath, Stats stats) throws IOException
+	private static SanitizationPlan buildDuplicateRenamer(Path jarPath, Stats stats) throws IOException
 	{
 		Map<String, Map<String, List<String>>> fieldsByOwner = new HashMap<>();
 		Map<String, Map<String, List<String>>> methodsByOwner = new HashMap<>();
@@ -1408,7 +1431,123 @@ public final class Sanitizer
 			}
 		}));
 
-		return new DuplicateRenamer(fieldRenames, methodRenames, superNames);
+		// Covariant-bridge unmasking. Obfuscated bytecode for classes that implement a
+		// generic interface like Mesh<T extends Mesh<T>> renames the concrete
+		// implementation (e.g. scale -> wu) and leaves the synthetic ACC_BRIDGE method
+		// (scale, returning the raw interface type) as the only method named `scale`.
+		// At source level the bridge looks like `public Mesh scale(...) { return wu(...); }`
+		// which javac rejects because Mesh<T>.scale requires a T-typed return.
+		//
+		// Fix: rename the obfuscated target back to the bridge's name (so the
+		// covariant-typed implementation IS named `scale`), then drop the bridge so
+		// javac regenerates it during recompilation with the correct erased type.
+		Set<String> bridgesToDrop = new java.util.HashSet<>();
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class"))
+				{
+					continue;
+				}
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+					if ((cn.access & org.objectweb.asm.Opcodes.ACC_INTERFACE) != 0)
+					{
+						continue;
+					}
+					if (cn.methods == null)
+					{
+						continue;
+					}
+					int bridgeMask = org.objectweb.asm.Opcodes.ACC_BRIDGE | org.objectweb.asm.Opcodes.ACC_SYNTHETIC;
+					for (MethodNode mn : cn.methods)
+					{
+						if ((mn.access & bridgeMask) != bridgeMask)
+						{
+							continue;
+						}
+						if (mn.instructions == null)
+						{
+							continue;
+						}
+						MethodInsnNode invoke = null;
+						int invokeCount = 0;
+						for (AbstractInsnNode insn = mn.instructions.getFirst(); insn != null; insn = insn.getNext())
+						{
+							if (insn instanceof MethodInsnNode)
+							{
+								invoke = (MethodInsnNode) insn;
+								invokeCount++;
+							}
+						}
+						if (invokeCount != 1 || invoke == null)
+						{
+							continue;
+						}
+						if (!cn.name.equals(invoke.owner))
+						{
+							continue;
+						}
+						if (mn.name.equals(invoke.name))
+						{
+							continue;
+						}
+						Map<String, List<String>> myMethods = methodsByOwner.get(cn.name);
+						if (myMethods == null)
+						{
+							continue;
+						}
+						String invokeParams = invoke.desc.substring(0, invoke.desc.lastIndexOf(')') + 1);
+						List<String> targetDescs = myMethods.get(invoke.name + invokeParams);
+						if (targetDescs == null || !targetDescs.contains(invoke.desc))
+						{
+							continue;
+						}
+						List<String> conflicting = myMethods.get(mn.name + invokeParams);
+						boolean conflicts = false;
+						if (conflicting != null)
+						{
+							for (String d : conflicting)
+							{
+								if (!d.equals(mn.desc))
+								{
+									conflicts = true;
+									break;
+								}
+							}
+						}
+						if (conflicts)
+						{
+							continue;
+						}
+						methodRenames
+							.computeIfAbsent(cn.name, k -> new HashMap<>())
+							.put(invoke.name + "\0" + invoke.desc, mn.name);
+						bridgesToDrop.add(cn.name + "#" + mn.name + mn.desc);
+						stats.renamedMethods++;
+					}
+				}
+			}
+		}
+
+		return new SanitizationPlan(new DuplicateRenamer(fieldRenames, methodRenames, superNames), bridgesToDrop);
+	}
+
+	static final class SanitizationPlan
+	{
+		final DuplicateRenamer dups;
+		final Set<String> bridgesToDrop;
+
+		SanitizationPlan(DuplicateRenamer dups, Set<String> bridgesToDrop)
+		{
+			this.dups = dups;
+			this.bridgesToDrop = bridgesToDrop;
+		}
 	}
 
 	private static String descriptorSuffix(String desc)
