@@ -1259,8 +1259,20 @@ public final class Sanitizer
 			}
 			int paren = nameParams.lastIndexOf('(');
 			String name = nameParams.substring(0, paren);
-			for (String desc : descs)
+			// Keep the first declared overload's original name; suffix the rest. Preserves
+			// the interface-contract match for at least one of the overloads (better than
+			// suffixing all and losing every contract). Pick deterministically by sorting
+			// descs (first by lexicographic order — produces consistent results across runs).
+			List<String> sortedDescs = new ArrayList<>(descs);
+			java.util.Collections.sort(sortedDescs);
+			boolean keptOriginal = false;
+			for (String desc : sortedDescs)
 			{
+				if (!keptOriginal)
+				{
+					keptOriginal = true;
+					continue;
+				}
 				String returnDesc = desc.substring(desc.lastIndexOf(')') + 1);
 				methodRenames
 					.computeIfAbsent(owner, k -> new HashMap<>())
@@ -1273,51 +1285,57 @@ public final class Sanitizer
 		// and a parent class declares foo(...)Ret2 (same name + same params, different return),
 		// JVM treats them as distinct methods but javac sees them as an invalid override
 		// (return type incompatibility). Suffix the child's method so it stops looking like an
-		// override attempt.
+		// override attempt. Applies to each desc that survived the within-class dup-rename
+		// keeping its original name (post-rename it's the only one named `foo` in this class).
 		methodsByOwner.forEach((owner, byNameParams) -> byNameParams.forEach((nameParams, descs) ->
 		{
-			if (descs.size() != 1)
-			{
-				return;
-			}
 			int paren = nameParams.lastIndexOf('(');
 			String name = nameParams.substring(0, paren);
-			String myDesc = descs.get(0);
-			String returnDesc = myDesc.substring(myDesc.lastIndexOf(')') + 1);
-			String parent = superNames.get(owner);
-			while (parent != null)
+			Map<String, String> ownerRenames = methodRenames.get(owner);
+			for (String myDesc : descs)
 			{
-				Map<String, List<String>> parentMethods = methodsByOwner.get(parent);
-				if (parentMethods == null)
+				// Was this descriptor renamed by within-class dedup? If yes, skip — only
+				// the kept-original-name version needs cross-hierarchy checking.
+				if (ownerRenames != null && ownerRenames.containsKey(name + "\0" + myDesc))
 				{
-					break;
+					continue;
 				}
-				List<String> parentDescs = parentMethods.get(nameParams);
-				if (parentDescs != null)
+				String returnDesc = myDesc.substring(myDesc.lastIndexOf(')') + 1);
+				String parent = superNames.get(owner);
+				while (parent != null)
 				{
-					boolean conflict = false;
-					for (String pd : parentDescs)
+					Map<String, List<String>> parentMethods = methodsByOwner.get(parent);
+					if (parentMethods == null)
 					{
-						if (!pd.equals(myDesc))
+						break;
+					}
+					List<String> parentDescs = parentMethods.get(nameParams);
+					if (parentDescs != null)
+					{
+						boolean conflict = false;
+						for (String pd : parentDescs)
 						{
-							String parentRet = pd.substring(pd.lastIndexOf(')') + 1);
-							if (!parentRet.equals(returnDesc))
+							if (!pd.equals(myDesc))
 							{
-								conflict = true;
-								break;
+								String parentRet = pd.substring(pd.lastIndexOf(')') + 1);
+								if (!parentRet.equals(returnDesc))
+								{
+									conflict = true;
+									break;
+								}
 							}
 						}
+						if (conflict)
+						{
+							methodRenames
+								.computeIfAbsent(owner, k -> new HashMap<>())
+								.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
+							stats.renamedMethods++;
+							break;
+						}
 					}
-					if (conflict)
-					{
-						methodRenames
-							.computeIfAbsent(owner, k -> new HashMap<>())
-							.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
-						stats.renamedMethods++;
-						return;
-					}
+					parent = superNames.get(parent);
 				}
-				parent = superNames.get(parent);
 			}
 		}));
 
