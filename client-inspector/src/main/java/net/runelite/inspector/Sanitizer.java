@@ -1107,6 +1107,8 @@ public final class Sanitizer
 		Map<String, Map<String, List<String>>> methodsByOwner = new HashMap<>();
 		Set<String> classSimpleNames = new java.util.HashSet<>();
 		Map<String, String> superNames = new HashMap<>();
+		Map<String, List<String>> ifacesByClass = new HashMap<>();
+		Set<String> staticMethods = new java.util.HashSet<>();
 
 		try (JarFile jar = new JarFile(jarPath.toFile()))
 		{
@@ -1129,6 +1131,10 @@ public final class Sanitizer
 					{
 						superNames.put(cn.name, cn.superName);
 					}
+					if (cn.interfaces != null)
+					{
+						ifacesByClass.put(cn.name, new ArrayList<>(cn.interfaces));
+					}
 
 					Map<String, List<String>> fields = fieldsByOwner.computeIfAbsent(cn.name, k -> new HashMap<>());
 					for (FieldNode fn : cn.fields)
@@ -1146,6 +1152,10 @@ public final class Sanitizer
 						// Key by name + erased param list; collide on differing return type only.
 						String paramsOnly = mn.desc.substring(0, mn.desc.lastIndexOf(')') + 1);
 						methods.computeIfAbsent(mn.name + paramsOnly, k -> new ArrayList<>()).add(mn.desc);
+						if ((mn.access & org.objectweb.asm.Opcodes.ACC_STATIC) != 0)
+						{
+							staticMethods.add(cn.name + "#" + mn.name + mn.desc);
+						}
 					}
 				}
 			}
@@ -1301,8 +1311,11 @@ public final class Sanitizer
 					continue;
 				}
 				String returnDesc = myDesc.substring(myDesc.lastIndexOf(')') + 1);
+				boolean renamed = false;
+
+				// Walk parent classes.
 				String parent = superNames.get(owner);
-				while (parent != null)
+				while (parent != null && !renamed)
 				{
 					Map<String, List<String>> parentMethods = methodsByOwner.get(parent);
 					if (parentMethods == null)
@@ -1312,7 +1325,6 @@ public final class Sanitizer
 					List<String> parentDescs = parentMethods.get(nameParams);
 					if (parentDescs != null)
 					{
-						boolean conflict = false;
 						for (String pd : parentDescs)
 						{
 							if (!pd.equals(myDesc))
@@ -1320,21 +1332,69 @@ public final class Sanitizer
 								String parentRet = pd.substring(pd.lastIndexOf(')') + 1);
 								if (!parentRet.equals(returnDesc))
 								{
-									conflict = true;
+									methodRenames
+										.computeIfAbsent(owner, k -> new HashMap<>())
+										.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
+									stats.renamedMethods++;
+									renamed = true;
 									break;
 								}
 							}
 						}
-						if (conflict)
-						{
-							methodRenames
-								.computeIfAbsent(owner, k -> new HashMap<>())
-								.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
-							stats.renamedMethods++;
-							break;
-						}
 					}
 					parent = superNames.get(parent);
+				}
+				if (renamed)
+				{
+					continue;
+				}
+
+				// Walk implemented interfaces (and their parents). A static method colliding
+				// with an interface default/abstract method is invalid in Java even though
+				// the JVM accepts both.
+				boolean isStatic = staticMethods.contains(owner + "#" + name + myDesc);
+				java.util.Deque<String> worklist = new java.util.ArrayDeque<>();
+				List<String> directIfaces = ifacesByClass.get(owner);
+				if (directIfaces != null) worklist.addAll(directIfaces);
+				String walker = superNames.get(owner);
+				while (walker != null)
+				{
+					List<String> walkerIfaces = ifacesByClass.get(walker);
+					if (walkerIfaces != null) worklist.addAll(walkerIfaces);
+					walker = superNames.get(walker);
+				}
+				java.util.Set<String> visited = new java.util.HashSet<>();
+				while (!worklist.isEmpty() && !renamed)
+				{
+					String iface = worklist.pop();
+					if (!visited.add(iface)) continue;
+					Map<String, List<String>> ifaceMethods = methodsByOwner.get(iface);
+					if (ifaceMethods != null)
+					{
+						List<String> ifaceDescs = ifaceMethods.get(nameParams);
+						if (ifaceDescs != null)
+						{
+							for (String pd : ifaceDescs)
+							{
+								String ifaceKey = iface + "#" + name + pd;
+								boolean ifaceIsStatic = staticMethods.contains(ifaceKey);
+								boolean staticMismatch = isStatic != ifaceIsStatic;
+								String ifaceRet = pd.substring(pd.lastIndexOf(')') + 1);
+								boolean returnMismatch = !ifaceRet.equals(returnDesc);
+								if (staticMismatch || returnMismatch)
+								{
+									methodRenames
+										.computeIfAbsent(owner, k -> new HashMap<>())
+										.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
+									stats.renamedMethods++;
+									renamed = true;
+									break;
+								}
+							}
+						}
+					}
+					List<String> parentIfaces = ifacesByClass.get(iface);
+					if (parentIfaces != null) worklist.addAll(parentIfaces);
 				}
 			}
 		}));
