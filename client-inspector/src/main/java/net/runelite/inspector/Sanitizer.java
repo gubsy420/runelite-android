@@ -292,6 +292,10 @@ public final class Sanitizer
 		{
 			System.out.println("dropped " + stats.droppedBridgeMethods + " covariant-bridge method(s) (target renamed to bridge's name)");
 		}
+		if (stats.scrubbedNullParamNames > 0)
+		{
+			System.out.println("scrubbed " + stats.scrubbedNullParamNames + " parameter name(s) literally set to \"null\"");
+		}
 		if (!stats.droppedByType.isEmpty())
 		{
 			stats.droppedByType.forEach((k, v) -> System.out.println("  " + v + " x " + k));
@@ -385,6 +389,23 @@ public final class Sanitizer
 				mn.invisibleAnnotations = filter(mn.invisibleAnnotations, stats);
 				mn.visibleTypeAnnotations = filterType(mn.visibleTypeAnnotations, stats);
 				mn.invisibleTypeAnnotations = filterType(mn.invisibleTypeAnnotations, stats);
+				// Obfuscator plants the literal Java reserved word "null" as the parameter
+				// name in MethodParameters attributes. Vineflower then emits parameter
+				// declarations as "nullx", "nullxx", ... (deduping the colliding names),
+				// while body references for the same slots fall through to "var<N>",
+				// breaking name resolution at use sites. Strip the names so Vineflower
+				// falls back to "var<N>" consistently for both the declaration and body.
+				if (mn.parameters != null)
+				{
+					for (org.objectweb.asm.tree.ParameterNode pn : mn.parameters)
+					{
+						if (pn != null && "null".equals(pn.name))
+						{
+							pn.name = null;
+							stats.scrubbedNullParamNames++;
+						}
+					}
+				}
 				mn.visibleLocalVariableAnnotations = filterLocalVariable(mn.visibleLocalVariableAnnotations, stats);
 				mn.invisibleLocalVariableAnnotations = filterLocalVariable(mn.invisibleLocalVariableAnnotations, stats);
 				if (mn.visibleParameterAnnotations != null)
@@ -628,6 +649,7 @@ public final class Sanitizer
 		long unFinaledClasses;
 		long stubbedDeadMethods;
 		long droppedBridgeMethods;
+		long scrubbedNullParamNames;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -1494,6 +1516,18 @@ public final class Sanitizer
 							continue;
 						}
 						if (mn.name.equals(invoke.name))
+						{
+							continue;
+						}
+						// Only handle covariant-RETURN bridges (Mesh.scale style) where
+						// the param erasures match and only the return type differs. Don't
+						// touch generic-type-erasure bridges (Comparator.compare style)
+						// whose param erasures differ from the target — those require the
+						// raw bridge to satisfy a raw interface contract, since javac won't
+						// regenerate them when the class implements the interface raw.
+						String bridgeParams = mn.desc.substring(0, mn.desc.lastIndexOf(')') + 1);
+						String invokeParamsCheck = invoke.desc.substring(0, invoke.desc.lastIndexOf(')') + 1);
+						if (!bridgeParams.equals(invokeParamsCheck))
 						{
 							continue;
 						}
