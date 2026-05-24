@@ -1109,6 +1109,7 @@ public final class Sanitizer
 		Map<String, String> superNames = new HashMap<>();
 		Map<String, List<String>> ifacesByClass = new HashMap<>();
 		Set<String> staticMethods = new java.util.HashSet<>();
+		Set<String> interfaceClassNames = new java.util.HashSet<>();
 
 		try (JarFile jar = new JarFile(jarPath.toFile()))
 		{
@@ -1134,6 +1135,10 @@ public final class Sanitizer
 					if (cn.interfaces != null)
 					{
 						ifacesByClass.put(cn.name, new ArrayList<>(cn.interfaces));
+					}
+					if ((cn.access & org.objectweb.asm.Opcodes.ACC_INTERFACE) != 0)
+					{
+						interfaceClassNames.add(cn.name);
 					}
 
 					Map<String, List<String>> fields = fieldsByOwner.computeIfAbsent(cn.name, k -> new HashMap<>());
@@ -1313,7 +1318,10 @@ public final class Sanitizer
 				String returnDesc = myDesc.substring(myDesc.lastIndexOf(')') + 1);
 				boolean renamed = false;
 
-				// Walk parent classes.
+				// Walk parent classes. When the parent method conflicts, rename the PARENT's
+				// method (the child keeps its original name to satisfy any interface contract
+				// it may transitively implement). Parents are in our jar; runtime callers of
+				// the parent method are remapped consistently through the Remapper.
 				String parent = superNames.get(owner);
 				while (parent != null && !renamed)
 				{
@@ -1332,9 +1340,10 @@ public final class Sanitizer
 								String parentRet = pd.substring(pd.lastIndexOf(')') + 1);
 								if (!parentRet.equals(returnDesc))
 								{
+									String parentRetSuffix = descriptorSuffix(parentRet);
 									methodRenames
-										.computeIfAbsent(owner, k -> new HashMap<>())
-										.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
+										.computeIfAbsent(parent, k -> new HashMap<>())
+										.put(name + "\0" + pd, name + parentRetSuffix);
 									stats.renamedMethods++;
 									renamed = true;
 									break;
