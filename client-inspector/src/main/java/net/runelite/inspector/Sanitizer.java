@@ -1225,6 +1225,58 @@ public final class Sanitizer
 			}
 		}));
 
+		// Cross-hierarchy method override mismatch: when class C declares method foo(...)Ret1
+		// and a parent class declares foo(...)Ret2 (same name + same params, different return),
+		// JVM treats them as distinct methods but javac sees them as an invalid override
+		// (return type incompatibility). Suffix the child's method so it stops looking like an
+		// override attempt.
+		methodsByOwner.forEach((owner, byNameParams) -> byNameParams.forEach((nameParams, descs) ->
+		{
+			if (descs.size() != 1)
+			{
+				return;
+			}
+			int paren = nameParams.lastIndexOf('(');
+			String name = nameParams.substring(0, paren);
+			String myDesc = descs.get(0);
+			String returnDesc = myDesc.substring(myDesc.lastIndexOf(')') + 1);
+			String parent = superNames.get(owner);
+			while (parent != null)
+			{
+				Map<String, List<String>> parentMethods = methodsByOwner.get(parent);
+				if (parentMethods == null)
+				{
+					break;
+				}
+				List<String> parentDescs = parentMethods.get(nameParams);
+				if (parentDescs != null)
+				{
+					boolean conflict = false;
+					for (String pd : parentDescs)
+					{
+						if (!pd.equals(myDesc))
+						{
+							String parentRet = pd.substring(pd.lastIndexOf(')') + 1);
+							if (!parentRet.equals(returnDesc))
+							{
+								conflict = true;
+								break;
+							}
+						}
+					}
+					if (conflict)
+					{
+						methodRenames
+							.computeIfAbsent(owner, k -> new HashMap<>())
+							.put(name + "\0" + myDesc, name + descriptorSuffix(returnDesc));
+						stats.renamedMethods++;
+						return;
+					}
+				}
+				parent = superNames.get(parent);
+			}
+		}));
+
 		return new DuplicateRenamer(fieldRenames, methodRenames, superNames);
 	}
 
