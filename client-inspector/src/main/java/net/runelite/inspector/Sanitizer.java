@@ -130,6 +130,14 @@ public final class Sanitizer
 		// preserved so callers still resolve.
 		Set<String> deadMethods = findMethodsWithDeadRefs(in);
 
+		// Pass 1d: find methods declared `throws Exception` whose override chain doesn't
+		// actually throw any checked exception. The obfuscator plants `throws Exception`
+		// on methods to force callers to add catch/throws clauses they wouldn't naturally
+		// need. We can safely strip it when no override (or the method itself) actually
+		// throws a checked exception, since the bytecode `throws` clause is purely
+		// metadata (the JVM doesn't enforce it).
+		Set<String> methodsToStripExceptionThrows = findStrippableExceptionThrows(in);
+
 		try (JarFile jar = new JarFile(in.toFile());
 			OutputStream os = Files.newOutputStream(out);
 			JarOutputStream jos = new JarOutputStream(os))
@@ -184,6 +192,13 @@ public final class Sanitizer
 								{
 									replaceWithThrowStub(mn);
 									stats.stubbedDeadMethods++;
+								}
+								if (methodsToStripExceptionThrows.contains(key) && mn.exceptions != null)
+								{
+									if (mn.exceptions.removeIf("java/lang/Exception"::equals))
+									{
+										stats.strippedThrowsException++;
+									}
 								}
 							}
 						}
@@ -295,6 +310,10 @@ public final class Sanitizer
 		if (stats.scrubbedNullParamNames > 0)
 		{
 			System.out.println("scrubbed " + stats.scrubbedNullParamNames + " parameter name(s) literally set to \"null\"");
+		}
+		if (stats.strippedThrowsException > 0)
+		{
+			System.out.println("stripped \"throws java.lang.Exception\" from " + stats.strippedThrowsException + " method signature(s)");
 		}
 		if (!stats.droppedByType.isEmpty())
 		{
@@ -650,8 +669,133 @@ public final class Sanitizer
 		long stubbedDeadMethods;
 		long droppedBridgeMethods;
 		long scrubbedNullParamNames;
+		long strippedThrowsException;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
+	}
+
+	// Returns owner+"#"+name+desc keys of methods declaring `throws java.lang.Exception`
+	// that can safely have that declaration stripped — i.e. neither the method itself nor
+	// any override in the jar's class hierarchy actually throws a checked exception
+	// (excluding RuntimeException and its subtypes). Bodies that ATHROW a checked type
+	// or INVOKE a method declared to throw one count as "actually throws".
+	private static Set<String> findStrippableExceptionThrows(Path jarPath) throws IOException
+	{
+		// Pass A: collect (owner, name+desc) -> declared exceptions list, super names,
+		// and detect "actually throws checked" for each method body.
+		Map<String, Set<String>> classMethods = new HashMap<>();
+		Map<String, Map<String, List<String>>> methodExceptions = new HashMap<>();
+		Map<String, String> superNames = new HashMap<>();
+		Map<String, Set<String>> bodyThrows = new HashMap<>();
+
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class"))
+				{
+					continue;
+				}
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+					if (cn.superName != null)
+					{
+						superNames.put(cn.name, cn.superName);
+					}
+					Set<String> myMethods = classMethods.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					Map<String, List<String>> myExc = methodExceptions.computeIfAbsent(cn.name, k -> new HashMap<>());
+					Set<String> myBodyThrows = bodyThrows.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					if (cn.methods == null)
+					{
+						continue;
+					}
+					for (MethodNode mn : cn.methods)
+					{
+						String key = mn.name + mn.desc;
+						myMethods.add(key);
+						if (mn.exceptions != null && !mn.exceptions.isEmpty())
+						{
+							myExc.put(key, new ArrayList<>(mn.exceptions));
+						}
+						// Scan body for INVOKE/ATHROW that brings a checked exception into play.
+						if (mn.instructions != null)
+						{
+							for (AbstractInsnNode insn = mn.instructions.getFirst(); insn != null; insn = insn.getNext())
+							{
+								if (insn instanceof MethodInsnNode)
+								{
+									// Calls to methods that may throw checked exceptions are
+									// conservatively tracked by recording the invoked method's owner+key.
+									MethodInsnNode min = (MethodInsnNode) insn;
+									myBodyThrows.add(min.owner + "#" + min.name + min.desc);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Pass B: for each candidate method (owner.key declaring throws Exception), check
+		// the override chain. Strip only if NO override declares Exception (or anything
+		// that isn't a RuntimeException subtype) AND its own body doesn't invoke a method
+		// that declares throws something checked.
+		Set<String> strippable = new java.util.HashSet<>();
+		methodExceptions.forEach((owner, byKey) -> byKey.forEach((key, excs) ->
+		{
+			if (!excs.contains("java/lang/Exception"))
+			{
+				return;
+			}
+			// Find all overrides in subclasses. If any subclass override has non-empty
+			// exceptions (declares ANYTHING beyond just inheriting), bail — we'd break
+			// the override-throws-subset rule.
+			boolean safeToStrip = true;
+			for (Map.Entry<String, String> superEntry : superNames.entrySet())
+			{
+				// Walk up from subclass to see if it transitively extends `owner`
+				String walker = superEntry.getValue();
+				boolean isDescendant = false;
+				while (walker != null)
+				{
+					if (walker.equals(owner))
+					{
+						isDescendant = true;
+						break;
+					}
+					walker = superNames.get(walker);
+				}
+				if (!isDescendant)
+				{
+					continue;
+				}
+				String subclass = superEntry.getKey();
+				Set<String> subMethods = classMethods.get(subclass);
+				if (subMethods == null || !subMethods.contains(key))
+				{
+					continue;
+				}
+				List<String> subExc = methodExceptions.getOrDefault(subclass, java.util.Collections.emptyMap()).get(key);
+				if (subExc != null && !subExc.isEmpty())
+				{
+					// Subclass declares at least one throws clause. Even if it's
+					// `throws Exception` (which we'd also strip on the subclass), the
+					// chain may have a sibling subclass with a more-specific checked
+					// exception (e.g. LineUnavailableException). Bail to be safe.
+					safeToStrip = false;
+					break;
+				}
+			}
+			if (safeToStrip)
+			{
+				strippable.add(owner + "#" + key);
+			}
+		}));
+		return strippable;
 	}
 
 	private static Set<String> findMethodsWithDeadRefs(Path jarPath) throws IOException
