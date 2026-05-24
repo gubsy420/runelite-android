@@ -91,7 +91,8 @@ public final class Decompiler
 			log.write("classes processed: " + logger.classesSeen + "\n");
 			log.write("classes that produced WARN: " + logger.warnedClasses.size() + "\n");
 			log.write("classes that produced ERROR: " + logger.erroredClasses.size() + "\n");
-			logger.errorsPerClass.forEach((k, v) -> {
+			logger.errorsPerClass.forEach((k, v) ->
+			{
 				try
 				{
 					log.write("  " + k + " — " + v + " error(s)\n");

@@ -689,7 +689,7 @@ public final class Sanitizer
 	}
 
 	private static boolean resolvesIn(String owner, String name, String desc,
-	                                  Map<String, Set<String>> declared, Map<String, String> superNames)
+		Map<String, Set<String>> declared, Map<String, String> superNames)
 	{
 		String key = name + "\0" + desc;
 		String current = owner;
@@ -1112,6 +1112,78 @@ public final class Sanitizer
 			}
 		}));
 
+		// Cross-hierarchy field-shadowing rename: when class C declares field F and a parent
+		// class also declares field F with a DIFFERENT descriptor, JVM resolves `getfield C.F:<desc>`
+		// to whichever class up the chain matches the desc. Vineflower's source emission picks the
+		// nearest-scope (the local) regardless of desc, so a child's `rj:[Z` shadows the parent's
+		// `rj:I` even when the bytecode meant the parent's. Rename the child's field so both are
+		// visible at the source level.
+		fieldsByOwner.forEach((owner, byName) -> byName.forEach((name, descs) ->
+		{
+			if (descs.size() != 1)
+			{
+				return; // already handled by the dup-rename above
+			}
+			String myDesc = descs.get(0);
+			String parent = superNames.get(owner);
+			while (parent != null)
+			{
+				Map<String, List<String>> parentFields = fieldsByOwner.get(parent);
+				if (parentFields == null)
+				{
+					break;
+				}
+				List<String> parentDescs = parentFields.get(name);
+				if (parentDescs != null)
+				{
+					boolean conflict = false;
+					for (String pd : parentDescs)
+					{
+						if (!pd.equals(myDesc))
+						{
+							conflict = true;
+							break;
+						}
+					}
+					if (conflict)
+					{
+						// Always force the descriptor suffix here so the local field is
+						// distinguished from the inherited one — a previously-assigned
+						// `_fld` suffix from the shadows-class rename would collide on the
+						// same name with the parent's field.
+						String newName = name + descriptorSuffix(myDesc);
+						fieldRenames
+							.computeIfAbsent(owner, k -> new HashMap<>())
+							.put(name + "\0" + myDesc, newName);
+						// Also rename the parent's matching fields (with their own desc suffix)
+						// so the chain stays disambiguated.
+						String walker = parent;
+						while (walker != null)
+						{
+							Map<String, List<String>> walkFields = fieldsByOwner.get(walker);
+							if (walkFields != null)
+							{
+								List<String> walkDescs = walkFields.get(name);
+								if (walkDescs != null)
+								{
+									for (String wd : walkDescs)
+									{
+										fieldRenames
+											.computeIfAbsent(walker, k -> new HashMap<>())
+											.put(name + "\0" + wd, name + descriptorSuffix(wd));
+									}
+								}
+							}
+							walker = superNames.get(walker);
+						}
+						stats.renamedFields++;
+						return;
+					}
+				}
+				parent = superNames.get(parent);
+			}
+		}));
+
 		methodsByOwner.forEach((owner, byNameParams) -> byNameParams.forEach((nameParams, descs) ->
 		{
 			if (descs.size() < 2)
@@ -1178,7 +1250,7 @@ public final class Sanitizer
 		final Map<String, String> superNames;
 
 		DuplicateRenamer(Map<String, Map<String, String>> fields, Map<String, Map<String, String>> methods,
-		                 Map<String, String> superNames)
+			Map<String, String> superNames)
 		{
 			this.fields = fields;
 			this.methods = methods;
