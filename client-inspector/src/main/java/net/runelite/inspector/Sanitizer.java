@@ -110,11 +110,23 @@ public final class Sanitizer
 		// in Java source (same field name with different descriptors; same method name+params
 		// with different return types). Build a per-(owner, name, descriptor) rename map.
 		DuplicateRenamer dups = buildDuplicateRenamer(in, stats);
-		Remapper remapper = combine(RESERVED_REMAPPER, dups);
+		// Apply DUPLICATE first (it keys on original names from the pre-scan), then RESERVED
+		// on top — otherwise the reserved-word rename of `do`→`do_` would happen first, the
+		// duplicate map would look up the post-rename name, and the field-shadows-class
+		// detection would silently miss (leaving `da.do_` field still colliding with class `do_`).
+		Remapper remapper = combine(dups, RESERVED_REMAPPER);
 
 		// Pass 1b: find fields that the obfuscator declared ACC_FINAL but writes to from outside
 		// <clinit>/<init>. Bytecode allows this; javac rejects it.
 		Set<String> mutableFinalFields = findMutableFinalFields(in);
+
+		// Pass 1c: find methods whose bodies contain FieldInsn/MethodInsn references to
+		// targets that don't exist anywhere in the type hierarchy. The obfuscator plants
+		// these to confuse decompilers — at runtime they'd throw NoSuchFieldError/
+		// NoSuchMethodError. Rather than adding phantom members to the referenced class, we
+		// replace the offending method's body with a `throw` stub; the method signature is
+		// preserved so callers still resolve.
+		Set<String> deadMethods = findMethodsWithDeadRefs(in);
 
 		try (JarFile jar = new JarFile(in.toFile());
 			OutputStream os = Files.newOutputStream(out);
@@ -143,7 +155,32 @@ public final class Sanitizer
 						ClassNode cn = new ClassNode();
 						cr.accept(cn, 0);
 						sanitizeClass(cn, stats);
+						// Replace bodies of methods that reference nonexistent fields/methods.
+						// Keeps the signature so callers resolve, eliminates the bad refs.
+						if (cn.methods != null)
+						{
+							for (MethodNode mn : cn.methods)
+							{
+								String key = cn.name + "#" + mn.name + mn.desc;
+								if (deadMethods.contains(key))
+								{
+									replaceWithThrowStub(mn);
+									stats.stubbedDeadMethods++;
+								}
+							}
+						}
+
 						boolean isInterface = (cn.access & org.objectweb.asm.Opcodes.ACC_INTERFACE) != 0;
+						// Drop ACC_FINAL from classes: the obfuscator marks unrelated classes
+						// final, then emits `instanceof X; (X)this` patterns where X is a
+						// different unrelated final class. javac statically rejects such
+						// casts; without ACC_FINAL the cast is just an unchecked warning at
+						// worst. Doesn't affect runtime (no class actually extends these).
+						if (!isInterface && (cn.access & org.objectweb.asm.Opcodes.ACC_FINAL) != 0)
+						{
+							cn.access &= ~org.objectweb.asm.Opcodes.ACC_FINAL;
+							stats.unFinaledClasses++;
+						}
 						if (cn.fields != null && !isInterface)
 						{
 							for (FieldNode fn : cn.fields)
@@ -192,6 +229,14 @@ public final class Sanitizer
 		System.out.println("disambiguated " + stats.renamedFields + " duplicate field name(s) and "
 			+ stats.renamedMethods + " duplicate method signature(s)");
 		System.out.println("un-finaled " + stats.unFinaledFields + " field(s) with writes outside <clinit>/<init>");
+		if (stats.droppedDecoyAnnotationMethods > 0)
+		{
+			System.out.println("dropped " + stats.droppedDecoyAnnotationMethods + " decoy method(s) from @interface declarations");
+		}
+		if (stats.stubbedDeadMethods > 0)
+		{
+			System.out.println("stubbed " + stats.stubbedDeadMethods + " method(s) whose bodies referenced nonexistent fields/methods");
+		}
 		if (!stats.droppedByType.isEmpty())
 		{
 			stats.droppedByType.forEach((k, v) -> System.out.println("  " + v + " x " + k));
@@ -247,6 +292,25 @@ public final class Sanitizer
 		cn.invisibleAnnotations = filter(cn.invisibleAnnotations, stats);
 		cn.visibleTypeAnnotations = filterType(cn.visibleTypeAnnotations, stats);
 		cn.invisibleTypeAnnotations = filterType(cn.invisibleTypeAnnotations, stats);
+
+		// Obfuscation noise: classes flagged ACC_ANNOTATION whose method members violate the
+		// annotation-interface rules (taking parameters, returning non-annotation-compatible
+		// types, carrying ACC_STATIC, having bodies). These methods can't be expressed as
+		// annotation members in Java source. They're never actually invoked as annotation
+		// members at runtime; drop them so the @interface declaration parses.
+		if ((cn.access & org.objectweb.asm.Opcodes.ACC_ANNOTATION) != 0 && cn.methods != null)
+		{
+			Iterator<MethodNode> it = cn.methods.iterator();
+			while (it.hasNext())
+			{
+				MethodNode mn = it.next();
+				if (!isValidAnnotationMember(mn))
+				{
+					it.remove();
+					stats.droppedDecoyAnnotationMethods++;
+				}
+			}
+		}
 
 		if (cn.fields != null)
 		{
@@ -502,11 +566,416 @@ public final class Sanitizer
 	private static final class Stats
 	{
 		long droppedAnnotations;
+		long droppedDecoyAnnotationMethods;
 		long renamedFields;
 		long renamedMethods;
 		long unFinaledFields;
+		long unFinaledClasses;
+		long stubbedDeadMethods;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
+	}
+
+	private static Set<String> findMethodsWithDeadRefs(Path jarPath) throws IOException
+	{
+		Map<String, Set<String>> declaredFields = new HashMap<>();
+		Map<String, Set<String>> declaredMethods = new HashMap<>();
+		Map<String, String> superNames = new HashMap<>();
+
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class"))
+				{
+					continue;
+				}
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn, ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG);
+					if (cn.superName != null)
+					{
+						superNames.put(cn.name, cn.superName);
+					}
+					Set<String> fs = declaredFields.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					for (FieldNode fn : cn.fields)
+					{
+						fs.add(fn.name + "\0" + fn.desc);
+					}
+					Set<String> ms = declaredMethods.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					for (MethodNode mn : cn.methods)
+					{
+						ms.add(mn.name + "\0" + mn.desc);
+					}
+				}
+			}
+		}
+
+		Set<String> deadMethods = new java.util.HashSet<>();
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class"))
+				{
+					continue;
+				}
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn, ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG);
+					if (cn.methods == null)
+					{
+						continue;
+					}
+					for (MethodNode mn : cn.methods)
+					{
+						if (mn.instructions == null)
+						{
+							continue;
+						}
+						boolean dead = false;
+						for (org.objectweb.asm.tree.AbstractInsnNode insn : mn.instructions)
+						{
+							if (insn instanceof org.objectweb.asm.tree.FieldInsnNode)
+							{
+								org.objectweb.asm.tree.FieldInsnNode f = (org.objectweb.asm.tree.FieldInsnNode) insn;
+								if (declaredFields.containsKey(f.owner)
+									&& !resolvesIn(f.owner, f.name, f.desc, declaredFields, superNames))
+								{
+									dead = true;
+									break;
+								}
+							}
+							else if (insn instanceof org.objectweb.asm.tree.MethodInsnNode)
+							{
+								org.objectweb.asm.tree.MethodInsnNode m = (org.objectweb.asm.tree.MethodInsnNode) insn;
+								if ("<init>".equals(m.name) || "<clinit>".equals(m.name))
+								{
+									continue;
+								}
+								if (declaredMethods.containsKey(m.owner))
+								{
+									if (!resolvesIn(m.owner, m.name, m.desc, declaredMethods, superNames))
+									{
+										dead = true;
+										break;
+									}
+								}
+								else if (descriptorReferencesObfuscatedType(m.desc, declaredFields))
+								{
+									// External owner (e.g. JSObject.getWindow) with an obfuscated
+									// argument type — bogus by construction. Standard library
+									// methods never take Ltf;-style parameters.
+									dead = true;
+									break;
+								}
+							}
+						}
+						if (dead)
+						{
+							deadMethods.add(cn.name + "#" + mn.name + mn.desc);
+						}
+					}
+				}
+			}
+		}
+		return deadMethods;
+	}
+
+	private static boolean resolvesIn(String owner, String name, String desc,
+	                                  Map<String, Set<String>> declared, Map<String, String> superNames)
+	{
+		String key = name + "\0" + desc;
+		String current = owner;
+		while (current != null && declared.containsKey(current))
+		{
+			Set<String> dec = declared.get(current);
+			if (dec.contains(key))
+			{
+				return true;
+			}
+			current = superNames.get(current);
+		}
+		// Walked off the jar's classes — the chain ends at an external class. Without the
+		// full classpath we can't verify the member exists there, so use a name heuristic:
+		// obfuscated short lowercase names (`au`, `rj`, …) never exist on standard Java/AWT
+		// classes; longer camelCase / standard names (`getHost`, `iterator`, …) plausibly do.
+		if (current == null)
+		{
+			return false;
+		}
+		return !looksObfuscated(name);
+	}
+
+	private static boolean looksObfuscated(String name)
+	{
+		if (name == null || name.isEmpty() || name.length() > 4)
+		{
+			return false;
+		}
+		for (int i = 0; i < name.length(); i++)
+		{
+			char c = name.charAt(i);
+			if (!(c >= 'a' && c <= 'z'))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean descriptorReferencesObfuscatedType(String desc, Map<String, Set<String>> jarClasses)
+	{
+		Type method = Type.getMethodType(desc);
+		for (Type arg : method.getArgumentTypes())
+		{
+			if (referencesObfuscatedType(arg, jarClasses))
+			{
+				return true;
+			}
+		}
+		return referencesObfuscatedType(method.getReturnType(), jarClasses);
+	}
+
+	private static boolean referencesObfuscatedType(Type t, Map<String, Set<String>> jarClasses)
+	{
+		while (t.getSort() == Type.ARRAY)
+		{
+			t = t.getElementType();
+		}
+		if (t.getSort() != Type.OBJECT)
+		{
+			return false;
+		}
+		String internal = t.getInternalName();
+		// Only consider it obfuscated if the type lives in our jar AND the simple name is short/lowercase.
+		if (!jarClasses.containsKey(internal))
+		{
+			return false;
+		}
+		int slash = internal.lastIndexOf('/');
+		String simple = slash < 0 ? internal : internal.substring(slash + 1);
+		return looksObfuscated(simple);
+	}
+
+	private static void replaceWithThrowStub(MethodNode mn)
+	{
+		mn.instructions.clear();
+		if (mn.tryCatchBlocks != null)
+		{
+			mn.tryCatchBlocks.clear();
+		}
+		if (mn.localVariables != null)
+		{
+			mn.localVariables.clear();
+		}
+		mn.instructions.add(new org.objectweb.asm.tree.TypeInsnNode(
+			org.objectweb.asm.Opcodes.NEW, "java/lang/NoSuchMethodError"));
+		mn.instructions.add(new org.objectweb.asm.tree.InsnNode(org.objectweb.asm.Opcodes.DUP));
+		mn.instructions.add(new org.objectweb.asm.tree.LdcInsnNode("sanitized: dead bytecode referenced nonexistent symbol"));
+		mn.instructions.add(new org.objectweb.asm.tree.MethodInsnNode(
+			org.objectweb.asm.Opcodes.INVOKESPECIAL,
+			"java/lang/NoSuchMethodError", "<init>", "(Ljava/lang/String;)V", false));
+		mn.instructions.add(new org.objectweb.asm.tree.InsnNode(org.objectweb.asm.Opcodes.ATHROW));
+		mn.maxStack = 3;
+		mn.maxLocals = Type.getMethodType(mn.desc).getArgumentTypes().length
+			+ ((mn.access & org.objectweb.asm.Opcodes.ACC_STATIC) != 0 ? 0 : 1);
+	}
+
+	private static final class MissingRef
+	{
+		final String name;
+		final String desc;
+		final boolean isField;
+		final boolean isStatic;
+
+		MissingRef(String name, String desc, boolean isField, boolean isStatic)
+		{
+			this.name = name;
+			this.desc = desc;
+			this.isField = isField;
+			this.isStatic = isStatic;
+		}
+
+		@Override
+		public boolean equals(Object o)
+		{
+			if (!(o instanceof MissingRef))
+			{
+				return false;
+			}
+			MissingRef m = (MissingRef) o;
+			return isField == m.isField && isStatic == m.isStatic && name.equals(m.name) && desc.equals(m.desc);
+		}
+
+		@Override
+		public int hashCode()
+		{
+			return java.util.Objects.hash(name, desc, isField, isStatic);
+		}
+	}
+
+	private static Map<String, List<MissingRef>> findMissingRefs(Path jarPath) throws IOException
+	{
+		// owner → set of (name, desc) tuples actually declared
+		Map<String, Set<String>> declaredFields = new HashMap<>();
+		Map<String, Set<String>> declaredMethods = new HashMap<>();
+		Map<String, String> superNames = new HashMap<>();
+		// owner → list of refs and whether they are field/static
+		Map<String, Set<MissingRef>> ownerRefs = new HashMap<>();
+
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class"))
+				{
+					continue;
+				}
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn, ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG);
+					if (cn.superName != null)
+					{
+						superNames.put(cn.name, cn.superName);
+					}
+					Set<String> fs = declaredFields.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					for (FieldNode fn : cn.fields)
+					{
+						fs.add(fn.name + "\0" + fn.desc);
+					}
+					Set<String> ms = declaredMethods.computeIfAbsent(cn.name, k -> new java.util.HashSet<>());
+					for (MethodNode mn : cn.methods)
+					{
+						ms.add(mn.name + "\0" + mn.desc);
+					}
+					if (cn.methods == null)
+					{
+						continue;
+					}
+					for (MethodNode mn : cn.methods)
+					{
+						if (mn.instructions == null)
+						{
+							continue;
+						}
+						for (org.objectweb.asm.tree.AbstractInsnNode insn : mn.instructions)
+						{
+							if (insn instanceof org.objectweb.asm.tree.FieldInsnNode)
+							{
+								org.objectweb.asm.tree.FieldInsnNode f = (org.objectweb.asm.tree.FieldInsnNode) insn;
+								boolean isStatic = insn.getOpcode() == org.objectweb.asm.Opcodes.GETSTATIC
+									|| insn.getOpcode() == org.objectweb.asm.Opcodes.PUTSTATIC;
+								ownerRefs.computeIfAbsent(f.owner, k -> new java.util.HashSet<>())
+									.add(new MissingRef(f.name, f.desc, true, isStatic));
+							}
+							else if (insn instanceof org.objectweb.asm.tree.MethodInsnNode)
+							{
+								org.objectweb.asm.tree.MethodInsnNode m = (org.objectweb.asm.tree.MethodInsnNode) insn;
+								if ("<init>".equals(m.name) || "<clinit>".equals(m.name))
+								{
+									continue;
+								}
+								boolean isStatic = insn.getOpcode() == org.objectweb.asm.Opcodes.INVOKESTATIC;
+								ownerRefs.computeIfAbsent(m.owner, k -> new java.util.HashSet<>())
+									.add(new MissingRef(m.name, m.desc, false, isStatic));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		Map<String, List<MissingRef>> result = new HashMap<>();
+		for (Map.Entry<String, Set<MissingRef>> e : ownerRefs.entrySet())
+		{
+			String owner = e.getKey();
+			// Only stub on classes that exist in this jar — external refs (e.g. java.* or
+			// other libraries) don't need stubbing here.
+			if (!declaredFields.containsKey(owner) && !declaredMethods.containsKey(owner))
+			{
+				continue;
+			}
+			for (MissingRef ref : e.getValue())
+			{
+				String key = ref.name + "\0" + ref.desc;
+				boolean found = false;
+				String current = owner;
+				while (current != null)
+				{
+					Set<String> dec = ref.isField ? declaredFields.get(current) : declaredMethods.get(current);
+					if (dec != null && dec.contains(key))
+					{
+						found = true;
+						break;
+					}
+					current = superNames.get(current);
+				}
+				if (!found)
+				{
+					result.computeIfAbsent(owner, k -> new ArrayList<>()).add(ref);
+				}
+			}
+		}
+		return result;
+	}
+
+	private static boolean isValidAnnotationMember(MethodNode mn)
+	{
+		// Annotation members must be abstract, take no parameters, return a primitive,
+		// String, Class, enum, annotation, or array of any of those — and must not be
+		// static, synchronized, final, native, or have a body.
+		if ((mn.access & (org.objectweb.asm.Opcodes.ACC_STATIC
+			| org.objectweb.asm.Opcodes.ACC_SYNCHRONIZED
+			| org.objectweb.asm.Opcodes.ACC_FINAL
+			| org.objectweb.asm.Opcodes.ACC_NATIVE)) != 0)
+		{
+			return false;
+		}
+		if ("<init>".equals(mn.name) || "<clinit>".equals(mn.name))
+		{
+			return false;
+		}
+		Type type = Type.getMethodType(mn.desc);
+		if (type.getArgumentTypes().length > 0)
+		{
+			return false;
+		}
+		return isValidAnnotationReturnType(type.getReturnType());
+	}
+
+	private static boolean isValidAnnotationReturnType(Type t)
+	{
+		if (t.getSort() == Type.ARRAY)
+		{
+			return isValidAnnotationReturnType(t.getElementType());
+		}
+		switch (t.getSort())
+		{
+			case Type.BOOLEAN:
+			case Type.BYTE:
+			case Type.CHAR:
+			case Type.SHORT:
+			case Type.INT:
+			case Type.LONG:
+			case Type.FLOAT:
+			case Type.DOUBLE:
+				return true;
+			case Type.OBJECT:
+				String n = t.getInternalName();
+				return "java/lang/String".equals(n) || "java/lang/Class".equals(n);
+			default:
+				return false;
+		}
 	}
 
 	private static Set<String> findMutableFinalFields(Path jarPath) throws IOException
@@ -784,13 +1253,15 @@ public final class Sanitizer
 			@Override
 			public String mapInvokeDynamicMethodName(String name, String descriptor)
 			{
-				return first.mapInvokeDynamicMethodName(name, descriptor);
+				String afterFirst = first.mapInvokeDynamicMethodName(name, descriptor);
+				return second.mapInvokeDynamicMethodName(afterFirst, descriptor);
 			}
 
 			@Override
 			public String map(String internalName)
 			{
-				return first.map(internalName);
+				String afterFirst = first.map(internalName);
+				return second.map(afterFirst);
 			}
 		};
 	}

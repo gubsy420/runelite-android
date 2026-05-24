@@ -63,6 +63,10 @@ public final class Decompiler
 		options.put(IFernflowerPreferences.REMOVE_SYNTHETIC, "0");
 		options.put(IFernflowerPreferences.HIDE_DEFAULT_CONSTRUCTOR, "0");
 		options.put(IFernflowerPreferences.INDENT_STRING, "\t");
+		// LVT (LocalVariableTable) entries in obfuscated bytecode are unreliable — types and
+		// names are often poisoned to confuse decompilers. Disable LVT-based naming/typing
+		// so Vineflower's own inference (which sees the actual use sites) decides.
+		options.put(IFernflowerPreferences.USE_DEBUG_VAR_NAMES, "0");
 		// Vineflower's RENAME_ENTITIES is buggy on this jar — its LambdaProcessor NPEs on rename-mismatched
 		// lambda metadata for `client`/`rl20`, and it fails to rewrite instance-field references
 		// (`this.do[0]`) in subclasses after renaming the parent's field declaration. Reserved-word
