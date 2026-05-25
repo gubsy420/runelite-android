@@ -1808,6 +1808,15 @@ public final class Sanitizer
 						{
 							continue;
 						}
+						// Skip bridges that return a raw NameableContainer (we strip the raw
+						// NameableContainer interface from impl classes above, so the renamed
+						// target wouldn't satisfy any contract requiring NameableContainer<T>
+						// without a separate covariant bridge).
+						String bridgeReturn = mn.desc.substring(mn.desc.lastIndexOf(')') + 1);
+						if ("Lnet/runelite/api/NameableContainer;".equals(bridgeReturn))
+						{
+							continue;
+						}
 						Map<String, List<String>> myMethods = methodsByOwner.get(cn.name);
 						if (myMethods == null)
 						{
