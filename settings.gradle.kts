@@ -23,6 +23,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = "runelite"
 
 // these two have artifact ids that don't match their project directory names
@@ -33,6 +47,10 @@ include("client")
 project(":client").projectDir = file("./runelite-client")
 include("client-inspector")
 project(":client-inspector").projectDir = file("./client-inspector")
+include("runelite-mp")
+project(":runelite-mp").projectDir = file("./runelite-mp")
+include("android-awt")
+project(":android-awt").projectDir = file("./android-awt")
 apply(from = "./common.settings.gradle.kts")
 
 includeBuild("cache")

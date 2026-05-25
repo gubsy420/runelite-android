@@ -1,0 +1,162 @@
+package java.awt.geom;
+
+import java.io.Serializable;
+
+/**
+ * Minimal AffineTransform. Stores the six matrix coefficients; provides the operations
+ * RuneLite actually uses (mostly identity + translate/scale on Graphics2D).
+ */
+public class AffineTransform implements Cloneable, Serializable {
+    private static final long serialVersionUID = 1330973210523860834L;
+
+    public static final int TYPE_IDENTITY = 0;
+    public static final int TYPE_TRANSLATION = 1;
+    public static final int TYPE_UNIFORM_SCALE = 2;
+    public static final int TYPE_GENERAL_SCALE = 4;
+    public static final int TYPE_FLIP = 64;
+
+    private double m00 = 1, m10, m01, m11 = 1, m02, m12;
+
+    public AffineTransform() {
+    }
+
+    public AffineTransform(AffineTransform other) {
+        this.m00 = other.m00; this.m10 = other.m10;
+        this.m01 = other.m01; this.m11 = other.m11;
+        this.m02 = other.m02; this.m12 = other.m12;
+    }
+
+    public AffineTransform(double m00, double m10, double m01, double m11, double m02, double m12) {
+        this.m00 = m00; this.m10 = m10;
+        this.m01 = m01; this.m11 = m11;
+        this.m02 = m02; this.m12 = m12;
+    }
+
+    public AffineTransform(float[] flatmatrix) {
+        m00 = flatmatrix[0]; m10 = flatmatrix[1];
+        m01 = flatmatrix[2]; m11 = flatmatrix[3];
+        if (flatmatrix.length > 5) { m02 = flatmatrix[4]; m12 = flatmatrix[5]; }
+    }
+
+    public static AffineTransform getTranslateInstance(double tx, double ty) {
+        AffineTransform at = new AffineTransform();
+        at.m02 = tx; at.m12 = ty;
+        return at;
+    }
+
+    public static AffineTransform getScaleInstance(double sx, double sy) {
+        AffineTransform at = new AffineTransform();
+        at.m00 = sx; at.m11 = sy;
+        return at;
+    }
+
+    public void setToIdentity() {
+        m00 = 1; m11 = 1; m10 = 0; m01 = 0; m02 = 0; m12 = 0;
+    }
+
+    public void setToTranslation(double tx, double ty) {
+        m00 = 1; m11 = 1; m10 = 0; m01 = 0; m02 = tx; m12 = ty;
+    }
+
+    public void setToScale(double sx, double sy) {
+        m00 = sx; m11 = sy; m10 = 0; m01 = 0; m02 = 0; m12 = 0;
+    }
+
+    public void translate(double tx, double ty) {
+        m02 += tx * m00 + ty * m01;
+        m12 += tx * m10 + ty * m11;
+    }
+
+    public void scale(double sx, double sy) {
+        m00 *= sx; m10 *= sx;
+        m01 *= sy; m11 *= sy;
+    }
+
+    public void rotate(double theta) {
+        double sin = Math.sin(theta), cos = Math.cos(theta);
+        double n00 = m00 * cos + m01 * sin;
+        double n01 = m01 * cos - m00 * sin;
+        double n10 = m10 * cos + m11 * sin;
+        double n11 = m11 * cos - m10 * sin;
+        m00 = n00; m01 = n01; m10 = n10; m11 = n11;
+    }
+
+    public void rotate(double theta, double anchorX, double anchorY) {
+        translate(anchorX, anchorY);
+        rotate(theta);
+        translate(-anchorX, -anchorY);
+    }
+
+    public void rotate(double vecX, double vecY, double anchorX, double anchorY) {
+        rotate(Math.atan2(vecY, vecX), anchorX, anchorY);
+    }
+
+    public static AffineTransform getRotateInstance(double theta) {
+        AffineTransform at = new AffineTransform();
+        at.rotate(theta);
+        return at;
+    }
+
+    public static AffineTransform getRotateInstance(double theta, double anchorX, double anchorY) {
+        AffineTransform at = new AffineTransform();
+        at.rotate(theta, anchorX, anchorY);
+        return at;
+    }
+
+    public double getTranslateX() { return m02; }
+    public double getTranslateY() { return m12; }
+    public double getScaleX()     { return m00; }
+    public double getScaleY()     { return m11; }
+    public double getShearX()     { return m01; }
+    public double getShearY()     { return m10; }
+
+    public int getType() {
+        boolean trans = m02 != 0 || m12 != 0;
+        boolean scaled = m00 != 1 || m11 != 1 || m01 != 0 || m10 != 0;
+        if (!trans && !scaled) return TYPE_IDENTITY;
+        if (trans && !scaled) return TYPE_TRANSLATION;
+        return TYPE_GENERAL_SCALE | (trans ? TYPE_TRANSLATION : 0);
+    }
+
+    public boolean isIdentity() {
+        return getType() == TYPE_IDENTITY;
+    }
+
+    public void getMatrix(double[] flatmatrix) {
+        flatmatrix[0] = m00; flatmatrix[1] = m10;
+        flatmatrix[2] = m01; flatmatrix[3] = m11;
+        if (flatmatrix.length > 5) { flatmatrix[4] = m02; flatmatrix[5] = m12; }
+    }
+
+    public void setTransform(AffineTransform other) {
+        this.m00 = other.m00; this.m10 = other.m10;
+        this.m01 = other.m01; this.m11 = other.m11;
+        this.m02 = other.m02; this.m12 = other.m12;
+    }
+
+    @Override
+    public Object clone() {
+        return new AffineTransform(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AffineTransform) {
+            AffineTransform a = (AffineTransform) obj;
+            return m00 == a.m00 && m01 == a.m01 && m02 == a.m02
+                && m10 == a.m10 && m11 == a.m11 && m12 == a.m12;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        long bits = Double.doubleToLongBits(m00);
+        bits = bits * 31 + Double.doubleToLongBits(m01);
+        bits = bits * 31 + Double.doubleToLongBits(m02);
+        bits = bits * 31 + Double.doubleToLongBits(m10);
+        bits = bits * 31 + Double.doubleToLongBits(m11);
+        bits = bits * 31 + Double.doubleToLongBits(m12);
+        return (int) bits ^ (int) (bits >> 32);
+    }
+}

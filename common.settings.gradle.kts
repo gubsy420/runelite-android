@@ -32,6 +32,13 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("net.runelite")
             }
         }
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google\\.android.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral {
             content { excludeGroupAndSubgroups("net.runelite") }
         }

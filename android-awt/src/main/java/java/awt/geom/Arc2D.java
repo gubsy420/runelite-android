@@ -1,0 +1,100 @@
+package java.awt.geom;
+
+import java.io.Serializable;
+
+public abstract class Arc2D extends RectangularShape {
+    public static final int OPEN = 0;
+    public static final int CHORD = 1;
+    public static final int PIE = 2;
+
+    private int type;
+
+    protected Arc2D(int type) { this.type = type; }
+
+    public abstract double getAngleStart();
+    public abstract double getAngleExtent();
+    public abstract void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure);
+
+    public int getArcType() { return type; }
+    public void setArcType(int type) { this.type = type; }
+
+    @Override
+    public Rectangle2D getBounds2D() {
+        return new Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
+    }
+
+    @Override
+    public boolean contains(double x, double y) {
+        return getBounds2D().contains(x, y);
+    }
+
+    @Override
+    public boolean contains(double x, double y, double w, double h) {
+        return getBounds2D().contains(x, y, w, h);
+    }
+
+    @Override
+    public boolean intersects(double x, double y, double w, double h) {
+        return getBounds2D().intersects(x, y, w, h);
+    }
+
+    @Override
+    public PathIterator getPathIterator(AffineTransform at) {
+        return new Ellipse2D.EmptyPathIterator();
+    }
+
+    @Override
+    public PathIterator getPathIterator(AffineTransform at, double flatness) {
+        return new Ellipse2D.EmptyPathIterator();
+    }
+
+    public static class Double extends Arc2D implements Serializable {
+        private static final long serialVersionUID = 728264085381197163L;
+        public double x, y, width, height, start, extent;
+        public Double() { super(OPEN); }
+        public Double(int type) { super(type); }
+        public Double(double x, double y, double w, double h, double start, double extent, int type) {
+            super(type);
+            setArc(x, y, w, h, start, extent, type);
+        }
+        @Override public double getX() { return x; }
+        @Override public double getY() { return y; }
+        @Override public double getWidth() { return width; }
+        @Override public double getHeight() { return height; }
+        @Override public double getAngleStart() { return start; }
+        @Override public double getAngleExtent() { return extent; }
+        @Override public boolean isEmpty() { return width <= 0 || height <= 0; }
+        @Override public void setFrame(double x, double y, double w, double h) {
+            this.x = x; this.y = y; this.width = w; this.height = h;
+        }
+        @Override public void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure) {
+            this.x = x; this.y = y; this.width = w; this.height = h;
+            this.start = angSt; this.extent = angExt; setArcType(closure);
+        }
+    }
+
+    public static class Float extends Arc2D implements Serializable {
+        private static final long serialVersionUID = 9130349409449579394L;
+        public float x, y, width, height, start, extent;
+        public Float() { super(OPEN); }
+        public Float(int type) { super(type); }
+        public Float(float x, float y, float w, float h, float start, float extent, int type) {
+            super(type);
+            setArc(x, y, w, h, start, extent, type);
+        }
+        @Override public double getX() { return x; }
+        @Override public double getY() { return y; }
+        @Override public double getWidth() { return width; }
+        @Override public double getHeight() { return height; }
+        @Override public double getAngleStart() { return start; }
+        @Override public double getAngleExtent() { return extent; }
+        @Override public boolean isEmpty() { return width <= 0 || height <= 0; }
+        @Override public void setFrame(double x, double y, double w, double h) {
+            this.x = (float) x; this.y = (float) y; this.width = (float) w; this.height = (float) h;
+        }
+        @Override public void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure) {
+            this.x = (float) x; this.y = (float) y; this.width = (float) w; this.height = (float) h;
+            this.start = (float) angSt; this.extent = (float) angExt; setArcType(closure);
+        }
+    }
+}

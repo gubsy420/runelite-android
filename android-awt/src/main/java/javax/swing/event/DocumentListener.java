@@ -1,0 +1,9 @@
+package javax.swing.event;
+
+import java.util.EventListener;
+
+public interface DocumentListener extends EventListener {
+    void insertUpdate(DocumentEvent e);
+    void removeUpdate(DocumentEvent e);
+    void changedUpdate(DocumentEvent e);
+}

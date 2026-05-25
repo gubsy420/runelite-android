@@ -4,6 +4,14 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+# Android SDK location (machine-specific; auto-written by AGP)
+local.properties
+
+# Jagex launcher credentials — JX_* env-var values copied out of the desktop launcher
+# and baked into runelite-mp's APK as an asset. Never commit.
+credentials.properties
+runelite-mp/src/androidMain/assets/credentials.properties
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws
@@ -34,6 +42,9 @@ bin/
 
 ### VS Code ###
 .vscode/
+
+### Kotlin/Compose build state ###
+.kotlin/
 
 ### Mac OS ###
 .DS_Store

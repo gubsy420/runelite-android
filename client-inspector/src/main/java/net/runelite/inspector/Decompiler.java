@@ -124,6 +124,186 @@ public final class Decompiler
 			count = walk.filter(p -> p.toString().endsWith(".java")).count();
 		}
 		System.out.println("wrote " + count + " .java files");
+
+		// Post-decompile: inject missing declarations for variables that Vineflower
+		// assigns inside a labeled break-block but uses outside (the scope-hoisting
+		// fails in VarDefinitionHelper for these cases). javac then rejects them as
+		// 'cannot find symbol'. Walk each .java file and detect the pattern.
+		int injected = postProcessMissingDecls(outDir);
+		if (injected > 0)
+		{
+			System.out.println("injected " + injected + " missing variable declaration(s)");
+		}
+	}
+
+	// Detect variables that are assigned inside a labeled block and used outside it,
+	// then insert a declaration at the parent-scope level. Heuristic based on regex
+	// patterns observed in obfuscated output:
+	//   label\d+: \{
+	//       ...
+	//       var(\d+) = (true|false);  -> declare as boolean
+	//       var(\d+) = bp.au_fld;     -> declare as int[]  (bp.au_fld is a known int[] field)
+	//   \}
+	//   var\d+\[...] = ...;           -> array use, confirms int[]
+	private static int postProcessMissingDecls(Path sourcesRoot) throws IOException
+	{
+		java.util.regex.Pattern arrayAssignPat = java.util.regex.Pattern.compile("^(\\s+)var(\\d+) = bp\\.au_fld;");
+		java.util.regex.Pattern boolAssignPat = java.util.regex.Pattern.compile("^(\\s+)var(\\d+) = (?:true|false);");
+		java.util.regex.Pattern labelPat = java.util.regex.Pattern.compile("^(\\s+)label\\d+: \\{");
+		int injected = 0;
+		try (Stream<Path> walk = Files.walk(sourcesRoot))
+		{
+			java.util.List<Path> files = walk.filter(p -> p.toString().endsWith(".java")).collect(java.util.stream.Collectors.toList());
+			for (Path p : files)
+			{
+				java.util.List<String> lines = new java.util.ArrayList<>(Files.readAllLines(p, StandardCharsets.UTF_8));
+				boolean changed = false;
+				// Scan for label blocks; collect var assignments inside; check post-block array uses; insert decl before label.
+				for (int i = 0; i < lines.size(); i++)
+				{
+					java.util.regex.Matcher lm = labelPat.matcher(lines.get(i));
+					if (!lm.find())
+					{
+						continue;
+					}
+					String labelIndent = lm.group(1);
+					// Find matching `}` at same indent
+					int depth = 1;
+					int endIdx = -1;
+					for (int j = i + 1; j < lines.size(); j++)
+					{
+						String ln = lines.get(j);
+						for (int k = 0; k < ln.length(); k++)
+						{
+							char c = ln.charAt(k);
+							if (c == '{')
+							{
+								depth++;
+							}
+							else if (c == '}')
+							{
+								depth--;
+								if (depth == 0)
+								{
+									endIdx = j;
+									break;
+								}
+							}
+						}
+						if (endIdx >= 0)
+						{
+							break;
+						}
+					}
+					if (endIdx < 0)
+					{
+						continue;
+					}
+					// Scan inside label block for assignments to varN
+					java.util.Map<String, String> needed = new java.util.LinkedHashMap<>();
+					for (int j = i + 1; j < endIdx; j++)
+					{
+						String ln = lines.get(j);
+						java.util.regex.Matcher am = arrayAssignPat.matcher(ln);
+						if (am.find())
+						{
+							needed.put("var" + am.group(2), "int[]");
+							continue;
+						}
+						java.util.regex.Matcher bm = boolAssignPat.matcher(ln);
+						if (bm.find())
+						{
+							needed.put("var" + bm.group(2), "boolean");
+						}
+					}
+					if (needed.isEmpty())
+					{
+						continue;
+					}
+					// Confirm at least one var is used AFTER the block (read or array-write)
+					java.util.Set<String> usedAfter = new java.util.HashSet<>();
+					for (int j = endIdx + 1; j < Math.min(lines.size(), endIdx + 100); j++)
+					{
+						String ln = lines.get(j);
+						for (String name : needed.keySet())
+						{
+							if (ln.matches("(?s).*\\b" + name + "\\b.*"))
+							{
+								usedAfter.add(name);
+							}
+						}
+					}
+					if (usedAfter.isEmpty())
+					{
+						continue;
+					}
+					// Confirm the var ISN'T declared already, anywhere in the file. Vineflower
+					// occasionally emits a declaration in an outer scope already; we'd
+					// duplicate by adding another. Be conservative: skip if ANY line in the
+					// file has "<type> varN" or "varN[]" or "[] varN" with what looks like a
+					// declaration. (Cheap textual check; the false-positive rate is fine
+					// because false positives just mean we don't inject — the existing
+					// `cannot find symbol` would persist as before.)
+					java.util.Set<String> toInject = new java.util.LinkedHashSet<>();
+					for (java.util.Map.Entry<String, String> en : needed.entrySet())
+					{
+						String name = en.getKey();
+						if (!usedAfter.contains(name))
+						{
+							continue;
+						}
+						boolean declared = false;
+						String typeName = en.getValue();
+						// Look for any line containing the typed declaration of this var
+						// anywhere in the file. Conservative — if any such line exists,
+						// trust it and don't inject. Allows " " or "\t" preceding the type.
+						String suffixSemi = " " + name + ";";
+						String suffixEq = " " + name + " =";
+						for (int j = 0; j < lines.size(); j++)
+						{
+							String ln = lines.get(j);
+							if (!ln.contains(suffixSemi) && !ln.contains(suffixEq))
+							{
+								continue;
+							}
+							String trim = ln.replaceFirst("^\\s+", "");
+							if (trim.startsWith(typeName + " " + name)
+								|| trim.matches("\\w+(?:<[^>]+>)?(?:\\[\\])?\\s+" + name + "\\s*[;=].*"))
+							{
+								declared = true;
+								break;
+							}
+						}
+						if (!declared)
+						{
+							toInject.add(name + ":" + en.getValue());
+						}
+					}
+					if (toInject.isEmpty())
+					{
+						continue;
+					}
+					// Insert declarations right before the label line
+					java.util.List<String> decls = new java.util.ArrayList<>();
+					for (String entry : toInject)
+					{
+						int colon = entry.lastIndexOf(':');
+						String name = entry.substring(0, colon);
+						String type = entry.substring(colon + 1);
+						decls.add(labelIndent + type + " " + name + ";");
+					}
+					lines.addAll(i, decls);
+					injected += decls.size();
+					i += decls.size(); // skip past inserted lines + the label line gets reprocessed
+					changed = true;
+				}
+				if (changed)
+				{
+					Files.write(p, lines, StandardCharsets.UTF_8);
+				}
+			}
+		}
+		return injected;
 	}
 
 	private static Path findInputJar() throws IOException

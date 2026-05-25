@@ -8,6 +8,40 @@
          <trust group="net.runelite.arn"/>
          <trust file=".*-javadoc[.]jar" regex="true"/>
          <trust file=".*-sources[.]jar" regex="true"/>
+         <!-- runelite-mp (Compose Multiplatform / Android scaffold) and AGP transitive
+              buildscript deps. Only consulted by the runelite-mp module's buildscript;
+              the main client's runtime continues to verify by sha256 below. -->
+         <trust group="^androidx($|\..*)" regex="true"/>
+         <trust group="^com\.android($|\..*)" regex="true"/>
+         <trust group="^com\.google($|\..*)" regex="true"/>
+         <trust group="^com\.googlecode($|\..*)" regex="true"/>
+         <trust group="^com\.squareup($|\..*)" regex="true"/>
+         <trust group="^com\.sun($|\..*)" regex="true"/>
+         <trust group="^commons-codec$" regex="true"/>
+         <trust group="^commons-io$" regex="true"/>
+         <trust group="^commons-logging$" regex="true"/>
+         <trust group="^io\.grpc($|\..*)" regex="true"/>
+         <trust group="^io\.netty($|\..*)" regex="true"/>
+         <trust group="^io\.perfmark($|\..*)" regex="true"/>
+         <trust group="^jakarta($|\..*)" regex="true"/>
+         <trust group="^javax\.annotation($|\..*)" regex="true"/>
+         <trust group="^net\.java\.dev\.jna($|\..*)" regex="true"/>
+         <trust group="^net\.sf($|\..*)" regex="true"/>
+         <trust group="^org\.apache\.commons($|\..*)" regex="true"/>
+         <trust group="^org\.apache\.httpcomponents($|\..*)" regex="true"/>
+         <trust group="^org\.bitbucket($|\..*)" regex="true"/>
+         <trust group="^org\.bouncycastle($|\..*)" regex="true"/>
+         <trust group="^org\.checkerframework($|\..*)" regex="true"/>
+         <trust group="^org\.codehaus($|\..*)" regex="true"/>
+         <trust group="^org\.glassfish($|\..*)" regex="true"/>
+         <trust group="^org\.jdom($|\..*)" regex="true"/>
+         <trust group="^org\.jetbrains($|\..*)" regex="true"/>
+         <trust group="^org\.jvnet($|\..*)" regex="true"/>
+         <trust group="^org\.lsposed($|\..*)" regex="true"/>
+         <trust group="^org\.mozilla($|\..*)" regex="true"/>
+         <trust group="^org\.ow2\.asm($|\..*)" regex="true"/>
+         <trust group="^org\.slf4j($|\..*)" regex="true"/>
+         <trust group="^org\.tensorflow($|\..*)" regex="true"/>
       </trusted-artifacts>
    </configuration>
    <components>

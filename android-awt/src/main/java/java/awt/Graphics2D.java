@@ -1,0 +1,48 @@
+package java.awt;
+
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+
+public abstract class Graphics2D extends Graphics {
+    protected Graphics2D() {
+    }
+
+    public abstract void draw(Shape s);
+    public abstract void fill(Shape s);
+    public abstract boolean drawImage(java.awt.Image img, AffineTransform xform, ImageObserver obs);
+    public abstract void drawImage(BufferedImage img, int x, int y);
+
+    public abstract Composite getComposite();
+    public abstract void setComposite(Composite comp);
+
+    public abstract Paint getPaint();
+    public abstract void setPaint(Paint paint);
+
+    public abstract Stroke getStroke();
+    public abstract void setStroke(Stroke s);
+
+    public abstract AffineTransform getTransform();
+    public abstract void setTransform(AffineTransform tx);
+    public abstract void transform(AffineTransform tx);
+    public abstract void translate(double tx, double ty);
+    public abstract void rotate(double theta);
+    public abstract void rotate(double theta, double x, double y);
+    public abstract void scale(double sx, double sy);
+    public abstract void shear(double shx, double shy);
+
+    public abstract void setRenderingHint(RenderingHints.Key hintKey, Object hintValue);
+    public abstract Object getRenderingHint(RenderingHints.Key hintKey);
+    public abstract void setRenderingHints(java.util.Map<?, ?> hints);
+    public abstract void addRenderingHints(java.util.Map<?, ?> hints);
+    public abstract RenderingHints getRenderingHints();
+
+    public abstract Color getBackground();
+    public abstract void setBackground(Color color);
+
+    public abstract void drawString(java.text.AttributedCharacterIterator iterator, int x, int y);
+    public abstract void drawString(java.text.AttributedCharacterIterator iterator, float x, float y);
+    public abstract void drawString(String str, float x, float y);
+
+    public abstract FontRenderContext getFontRenderContext();
+}

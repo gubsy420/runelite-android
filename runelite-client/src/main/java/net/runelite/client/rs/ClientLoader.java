@@ -209,7 +209,13 @@ public class ClientLoader implements Supplier<Client>
 
 	private static void backupPatchedClient(Class<?> clientClass, String buildId)
 	{
-		CodeSource codeSource = clientClass.getProtectionDomain().getCodeSource();
+		java.security.ProtectionDomain pd = clientClass.getProtectionDomain();
+		if (pd == null)
+		{
+			log.warn("Unable to backup patched client: no protection domain for {}", clientClass.getName());
+			return;
+		}
+		CodeSource codeSource = pd.getCodeSource();
 		if (codeSource == null)
 		{
 			log.warn("Unable to backup patched client: no code source for {}", clientClass.getName());
