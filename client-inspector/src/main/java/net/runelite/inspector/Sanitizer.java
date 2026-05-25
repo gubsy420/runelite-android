@@ -181,6 +181,39 @@ public final class Sanitizer
 								return false;
 							});
 						}
+						// Bridges we elected to KEEP (raw NameableContainer return) need an
+						// explicit CHECKCAST before their ARETURN so Vineflower emits the
+						// cast in source. Otherwise the bridge body returns rc directly, and
+						// rc no longer implements NameableContainer at source level (we strip
+						// the raw interface from impl classes).
+						if (cn.methods != null && !plan.bridgesNeedingCheckcast.isEmpty())
+						{
+							for (MethodNode mn : cn.methods)
+							{
+								String key = cn.name + "#" + mn.name + mn.desc;
+								if (!plan.bridgesNeedingCheckcast.contains(key))
+								{
+									continue;
+								}
+								String retL = mn.desc.substring(mn.desc.lastIndexOf(')') + 1);
+								if (retL.length() < 3 || retL.charAt(0) != 'L')
+								{
+									continue;
+								}
+								String returnInternal = retL.substring(1, retL.length() - 1);
+								for (AbstractInsnNode insn = mn.instructions.getFirst(); insn != null; insn = insn.getNext())
+								{
+									if (insn.getOpcode() == org.objectweb.asm.Opcodes.ARETURN)
+									{
+										mn.instructions.insertBefore(insn,
+											new org.objectweb.asm.tree.TypeInsnNode(
+												org.objectweb.asm.Opcodes.CHECKCAST, returnInternal));
+										stats.injectedBridgeCheckcasts++;
+										break;
+									}
+								}
+							}
+						}
 						// Replace bodies of methods that reference nonexistent fields/methods.
 						// Keeps the signature so callers resolve, eliminates the bad refs.
 						if (cn.methods != null)
@@ -195,7 +228,7 @@ public final class Sanitizer
 								}
 								if (methodsToStripExceptionThrows.contains(key) && mn.exceptions != null)
 								{
-									if (mn.exceptions.removeIf("java/lang/Exception"::equals))
+									if (mn.exceptions.removeIf(e -> "java/lang/Exception".equals(e) || "java/io/IOException".equals(e)))
 									{
 										stats.strippedThrowsException++;
 									}
@@ -727,6 +760,7 @@ public final class Sanitizer
 		long strippedThrowsException;
 		long addedFindByNameBridges;
 		long mutatedCompareToToNameable;
+		long injectedBridgeCheckcasts;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -804,7 +838,7 @@ public final class Sanitizer
 		Set<String> strippable = new java.util.HashSet<>();
 		methodExceptions.forEach((owner, byKey) -> byKey.forEach((key, excs) ->
 		{
-			if (!excs.contains("java/lang/Exception"))
+			if (!excs.contains("java/lang/Exception") && !excs.contains("java/io/IOException"))
 			{
 				return;
 			}
@@ -1741,6 +1775,7 @@ public final class Sanitizer
 		// covariant-typed implementation IS named `scale`), then drop the bridge so
 		// javac regenerates it during recompilation with the correct erased type.
 		Set<String> bridgesToDrop = new java.util.HashSet<>();
+		Set<String> bridgesNeedingCheckcast = new java.util.HashSet<>();
 		try (JarFile jar = new JarFile(jarPath.toFile()))
 		{
 			Iterator<JarEntry> it = jar.stream().iterator();
@@ -1815,6 +1850,7 @@ public final class Sanitizer
 						String bridgeReturn = mn.desc.substring(mn.desc.lastIndexOf(')') + 1);
 						if ("Lnet/runelite/api/NameableContainer;".equals(bridgeReturn))
 						{
+							bridgesNeedingCheckcast.add(cn.name + "#" + mn.name + mn.desc);
 							continue;
 						}
 						Map<String, List<String>> myMethods = methodsByOwner.get(cn.name);
@@ -1855,18 +1891,20 @@ public final class Sanitizer
 			}
 		}
 
-		return new SanitizationPlan(new DuplicateRenamer(fieldRenames, methodRenames, superNames), bridgesToDrop);
+		return new SanitizationPlan(new DuplicateRenamer(fieldRenames, methodRenames, superNames), bridgesToDrop, bridgesNeedingCheckcast);
 	}
 
 	static final class SanitizationPlan
 	{
 		final DuplicateRenamer dups;
 		final Set<String> bridgesToDrop;
+		final Set<String> bridgesNeedingCheckcast;
 
-		SanitizationPlan(DuplicateRenamer dups, Set<String> bridgesToDrop)
+		SanitizationPlan(DuplicateRenamer dups, Set<String> bridgesToDrop, Set<String> bridgesNeedingCheckcast)
 		{
 			this.dups = dups;
 			this.bridgesToDrop = bridgesToDrop;
+			this.bridgesNeedingCheckcast = bridgesNeedingCheckcast;
 		}
 	}
 
