@@ -246,6 +246,38 @@ public final class Sanitizer
 						if (cn.interfaces != null)
 						{
 							cn.interfaces.remove("net/runelite/api/NameableContainer");
+							// Classes implementing FriendsChatManager / FriendContainer need a
+							// covariantly-typed findByName(String) to satisfy NameableContainer<T>.
+							// The obfuscator only emits an inherited `Nameable findByName(String)`;
+							// add a synthetic-ish override that casts to the specific type.
+							if (cn.interfaces.contains("net/runelite/api/FriendsChatManager"))
+							{
+								String invokeOwner = cn.superName != null ? cn.superName : cn.name;
+								if (!hasMethod(cn, "findByName", "(Ljava/lang/String;)Lnet/runelite/api/FriendsChatMember;"))
+								{
+									cn.methods.add(makeFindByNameBridge(invokeOwner, "net/runelite/api/FriendsChatMember"));
+									stats.addedFindByNameBridges++;
+								}
+								if (!hasMethod(cn, "getMembers", "()[Lnet/runelite/api/FriendsChatMember;"))
+								{
+									cn.methods.add(makeGetMembersBridge(invokeOwner, "net/runelite/api/FriendsChatMember"));
+									stats.addedFindByNameBridges++;
+								}
+							}
+							if (cn.interfaces.contains("net/runelite/api/FriendContainer"))
+							{
+								String invokeOwner = cn.superName != null ? cn.superName : cn.name;
+								if (!hasMethod(cn, "findByName", "(Ljava/lang/String;)Lnet/runelite/api/Friend;"))
+								{
+									cn.methods.add(makeFindByNameBridge(invokeOwner, "net/runelite/api/Friend"));
+									stats.addedFindByNameBridges++;
+								}
+								if (!hasMethod(cn, "getMembers", "()[Lnet/runelite/api/Friend;"))
+								{
+									cn.methods.add(makeGetMembersBridge(invokeOwner, "net/runelite/api/Friend"));
+									stats.addedFindByNameBridges++;
+								}
+							}
 						}
 						if (cn.fields != null && !isInterface)
 						{
@@ -314,6 +346,10 @@ public final class Sanitizer
 		if (stats.strippedThrowsException > 0)
 		{
 			System.out.println("stripped \"throws java.lang.Exception\" from " + stats.strippedThrowsException + " method signature(s)");
+		}
+		if (stats.addedFindByNameBridges > 0)
+		{
+			System.out.println("added " + stats.addedFindByNameBridges + " covariant findByName(String) bridge(s) for FriendsChatManager / FriendContainer impls");
 		}
 		if (!stats.droppedByType.isEmpty())
 		{
@@ -670,6 +706,7 @@ public final class Sanitizer
 		long droppedBridgeMethods;
 		long scrubbedNullParamNames;
 		long strippedThrowsException;
+		long addedFindByNameBridges;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -1165,6 +1202,55 @@ public final class Sanitizer
 			}
 		}
 		return false;
+	}
+
+	// Build `public T findByName(String s) { return (T) super.findByName(s); }` where T is
+	// the parameterized element type (e.g. FriendsChatMember). Calls the inherited
+	// `Nameable findByName(String)` on the same instance, then CHECKCASTs to T. This is
+	// the implicit covariant bridge javac would generate from a parameterized
+	// `implements NameableContainer<T>` declaration — the obfuscated bytecode omits it
+	// because the raw NameableContainer interface was dropped above.
+	// Build `public T[] getMembers() { return (T[]) super.getMembers(); }` — same shape as
+	// makeFindByNameBridge but for the array-returning getMembers contract.
+	private static MethodNode makeGetMembersBridge(String ownerInternal, String elementTypeInternal)
+	{
+		MethodNode mn = new MethodNode(
+			org.objectweb.asm.Opcodes.ACC_PUBLIC,
+			"getMembers",
+			"()[L" + elementTypeInternal + ";",
+			null, null);
+		mn.instructions.add(new org.objectweb.asm.tree.VarInsnNode(org.objectweb.asm.Opcodes.ALOAD, 0));
+		mn.instructions.add(new org.objectweb.asm.tree.MethodInsnNode(
+			org.objectweb.asm.Opcodes.INVOKEVIRTUAL, ownerInternal,
+			"getMembers", "()[Lnet/runelite/api/Nameable;", false));
+		mn.instructions.add(new org.objectweb.asm.tree.TypeInsnNode(
+			org.objectweb.asm.Opcodes.CHECKCAST, "[L" + elementTypeInternal + ";"));
+		mn.instructions.add(new org.objectweb.asm.tree.InsnNode(org.objectweb.asm.Opcodes.ARETURN));
+		mn.maxStack = 1;
+		mn.maxLocals = 1;
+		return mn;
+	}
+
+	private static MethodNode makeFindByNameBridge(String ownerInternal, String elementTypeInternal)
+	{
+		MethodNode mn = new MethodNode(
+			org.objectweb.asm.Opcodes.ACC_PUBLIC,
+			"findByName",
+			"(Ljava/lang/String;)L" + elementTypeInternal + ";",
+			null, null);
+		mn.instructions.add(new org.objectweb.asm.tree.VarInsnNode(org.objectweb.asm.Opcodes.ALOAD, 0));
+		mn.instructions.add(new org.objectweb.asm.tree.VarInsnNode(org.objectweb.asm.Opcodes.ALOAD, 1));
+		// Invoke `findByName(String)` on this — virtual dispatch resolves to the inherited
+		// Nameable-typed impl. Return type Nameable on the stack.
+		mn.instructions.add(new org.objectweb.asm.tree.MethodInsnNode(
+			org.objectweb.asm.Opcodes.INVOKEVIRTUAL, ownerInternal,
+			"findByName", "(Ljava/lang/String;)Lnet/runelite/api/Nameable;", false));
+		mn.instructions.add(new org.objectweb.asm.tree.TypeInsnNode(
+			org.objectweb.asm.Opcodes.CHECKCAST, elementTypeInternal));
+		mn.instructions.add(new org.objectweb.asm.tree.InsnNode(org.objectweb.asm.Opcodes.ARETURN));
+		mn.maxStack = 2;
+		mn.maxLocals = 2;
+		return mn;
 	}
 
 	private static MethodNode makeNameableCompareToBridge(String ownerInternal)
