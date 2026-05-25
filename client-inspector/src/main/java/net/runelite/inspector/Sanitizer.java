@@ -226,15 +226,30 @@ public final class Sanitizer
 							if (hasNarrowedComparable)
 							{
 								cn.interfaces.remove("java/lang/Comparable");
-								// Add a compareTo(Nameable) bridge that delegates to
-								// compareTo(Object) so javac sees the class as satisfying
-								// Comparable<Nameable>'s contract — without it, the existing
-								// compareTo(Object) is treated as an unrelated method.
-								if (cn.interfaces.contains("net/runelite/api/Nameable")
-									&& hasMethod(cn, "compareTo", "(Ljava/lang/Object;)I")
-									&& !hasMethod(cn, "compareTo", "(Lnet/runelite/api/Nameable;)I"))
+							}
+						}
+						{
+							// MUTATE the existing compareTo(Object) method's descriptor to
+							// compareTo(Nameable) so it satisfies Comparable<Nameable> from the
+							// Nameable interface chain. The body's first CHECKCAST already narrows
+							// the param to a concrete subtype, so changing from Object to Nameable
+							// doesn't break the bytecode. javac auto-generates the (Object) bridge
+							// at recompile time. Applies to classes implementing any
+							// Nameable-derived interface (Nameable, Ignore, ChatPlayer,
+							// ClanChannelMember, etc.) — also walk the inheritance chain since
+							// subclasses may have their own redeclared compareTo(Object) without
+							// directly listing Nameable in their interfaces.
+							if (implementsNameableTransitive(cn)
+								&& !hasMethod(cn, "compareTo", "(Lnet/runelite/api/Nameable;)I"))
+							{
+								for (MethodNode mn : cn.methods)
 								{
-									cn.methods.add(makeNameableCompareToBridge(cn.name));
+									if ("compareTo".equals(mn.name) && "(Ljava/lang/Object;)I".equals(mn.desc))
+									{
+										mn.desc = "(Lnet/runelite/api/Nameable;)I";
+										stats.mutatedCompareToToNameable++;
+										break;
+									}
 								}
 							}
 						}
@@ -350,6 +365,10 @@ public final class Sanitizer
 		if (stats.addedFindByNameBridges > 0)
 		{
 			System.out.println("added " + stats.addedFindByNameBridges + " covariant findByName(String) bridge(s) for FriendsChatManager / FriendContainer impls");
+		}
+		if (stats.mutatedCompareToToNameable > 0)
+		{
+			System.out.println("mutated " + stats.mutatedCompareToToNameable + " compareTo(Object) -> compareTo(Nameable) for Nameable impls");
 		}
 		if (!stats.droppedByType.isEmpty())
 		{
@@ -707,6 +726,7 @@ public final class Sanitizer
 		long scrubbedNullParamNames;
 		long strippedThrowsException;
 		long addedFindByNameBridges;
+		long mutatedCompareToToNameable;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -1251,6 +1271,33 @@ public final class Sanitizer
 		mn.maxStack = 2;
 		mn.maxLocals = 2;
 		return mn;
+	}
+
+	// Returns true if cn directly lists Nameable or any of the runelite-api interfaces
+	// that transitively extend Nameable (Ignore, ChatPlayer, ClanChannelMember,
+	// FriendsChatMember, Friend). The list is hard-coded — the api source isn't part of
+	// the obfuscated jar so we can't walk it dynamically, and these are the only
+	// Nameable-extending interfaces actually used.
+	private static final Set<String> NAMEABLE_DERIVED_IFACES = Set.of(
+		"net/runelite/api/Nameable",
+		"net/runelite/api/Ignore",
+		"net/runelite/api/ChatPlayer",
+		"net/runelite/api/FriendsChatMember",
+		"net/runelite/api/Friend",
+		"net/runelite/api/clan/ClanChannelMember"
+	);
+
+	private static boolean implementsNameableTransitive(ClassNode cn)
+	{
+		if (cn.interfaces == null) return false;
+		for (String iface : cn.interfaces)
+		{
+			if (NAMEABLE_DERIVED_IFACES.contains(iface))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static MethodNode makeNameableCompareToBridge(String ownerInternal)
