@@ -15,6 +15,7 @@ public class JViewport extends JComponent {
 
     private Component view;
     private int scrollMode = BLIT_SCROLL_MODE;
+    private final Point viewPosition = new Point();
 
     public JViewport() {}
 
@@ -27,21 +28,53 @@ public class JViewport extends JComponent {
     }
     public Dimension getViewSize() { return view == null ? new Dimension() : view.getSize(); }
     public void setViewSize(Dimension newSize) {}
-    public Point getViewPosition() { return new Point(); }
-    public void setViewPosition(Point p) {}
-    public Rectangle getViewRect() { return new Rectangle(); }
+    public Point getViewPosition() { return new Point(viewPosition); }
+    public void setViewPosition(Point p) {
+        if (p == null) return;
+        viewPosition.setLocation(clampX(p.x), clampY(p.y));
+        applyScroll();
+    }
+    public Rectangle getViewRect() {
+        return new Rectangle(viewPosition.x, viewPosition.y, getWidth(), getHeight());
+    }
     public Dimension getExtentSize() { return getSize(); }
+
+    /** Scroll by (dx, dy) in view-coords, clamped to the view's bounds. */
+    public void scrollBy(int dx, int dy) {
+        viewPosition.setLocation(clampX(viewPosition.x + dx), clampY(viewPosition.y + dy));
+        applyScroll();
+    }
+
+    private int clampX(int x) {
+        if (view == null) return 0;
+        int max = Math.max(0, view.getWidth() - getWidth());
+        return Math.max(0, Math.min(x, max));
+    }
+    private int clampY(int y) {
+        if (view == null) return 0;
+        int max = Math.max(0, view.getHeight() - getHeight());
+        return Math.max(0, Math.min(y, max));
+    }
+
+    private void applyScroll() {
+        if (view == null) return;
+        // The viewport clips its children to its own bounds (see Window.hostPaint),
+        // so positioning the view at negative coords slides the content under the
+        // viewport without painting outside.
+        view.setLocation(-viewPosition.x, -viewPosition.y);
+    }
 
     @Override
     public void doLayout() {
-        // Viewport sizes its view to its own bounds (we don't implement actual scrolling
-        // yet — the view occupies the visible viewport area).
         if (view != null && getWidth() > 0 && getHeight() > 0) {
-            // Use view's preferred height (or larger) so scroll-content can grow; cap width
-            // to viewport to avoid horizontal clipping.
+            // Size the view to its preferred height (or at least viewport height) so
+            // scrollable content can grow; horizontal stays clamped to viewport.
             Dimension pref = view.getPreferredSize();
             int h = Math.max(getHeight(), pref.height);
-            view.setBounds(0, 0, getWidth(), h);
+            view.setSize(getWidth(), h);
+            // Re-clamp + re-apply scroll in case the view shrunk.
+            viewPosition.setLocation(clampX(viewPosition.x), clampY(viewPosition.y));
+            applyScroll();
         }
     }
     public void setExtentSize(Dimension newExtent) {}

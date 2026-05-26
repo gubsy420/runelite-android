@@ -9,6 +9,7 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <profileable android:shell="true" android:enabled="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

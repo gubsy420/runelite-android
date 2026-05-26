@@ -9,8 +9,6 @@ public class Container extends Component {
     private final List<Component> children = new ArrayList<>();
     // Real java.awt.Container has NO default layout — null means "I'll position children
     // myself via setBounds". Only Panel/JPanel default to FlowLayout (set in their ctors).
-    // Defaulting Container to FlowLayout was repositioning the patched RS client's Canvas
-    // child to the centre of FlowLayout's row, breaking the chrome layout around it.
     private LayoutManager layout = null;
 
     protected Container() {
@@ -31,7 +29,6 @@ public class Container extends Component {
         if (index < 0 || index >= children.size()) children.add(comp);
         else children.add(index, comp);
         comp.setParent(this);
-        if (getWidth() > 0 && getHeight() > 0) doLayout();
         return comp;
     }
 
@@ -54,7 +51,6 @@ public class Container extends Component {
         } else if (layout != null && constraints instanceof String) {
             layout.addLayoutComponent((String) constraints, comp);
         }
-        if (getWidth() > 0 && getHeight() > 0) doLayout();
     }
 
     public void remove(int index) {
@@ -62,7 +58,6 @@ public class Container extends Component {
         if (c != null) {
             if (layout != null) layout.removeLayoutComponent(c);
             c.setParent(null);
-            if (getWidth() > 0 && getHeight() > 0) doLayout();
         }
     }
 
@@ -70,7 +65,6 @@ public class Container extends Component {
         if (children.remove(comp)) {
             if (layout != null) layout.removeLayoutComponent(comp);
             comp.setParent(null);
-            if (getWidth() > 0 && getHeight() > 0) doLayout();
         }
     }
 
@@ -92,10 +86,7 @@ public class Container extends Component {
     }
 
     public LayoutManager getLayout() { return layout; }
-    public void setLayout(LayoutManager mgr) {
-        this.layout = mgr;
-        if (mgr != null && getWidth() > 0 && getHeight() > 0) doLayout();
-    }
+    public void setLayout(LayoutManager mgr) { this.layout = mgr; }
 
     @Override
     public Dimension getPreferredSize() {
@@ -132,14 +123,13 @@ public class Container extends Component {
         if (layout != null) layout.layoutContainer(this);
     }
 
-    // Note: real Swing's setBounds/setSize do NOT call doLayout — that would recurse
-    // because parent layouts call child.setSize. Layout cascades happen via validate()
-    // instead, which Window.renderToBackbuffer invokes once per frame.
+    // Note: setBounds/setSize do NOT call doLayout — that would recurse since ClientUI.Layout
+    // itself calls content.setSize. Layout cascades happen via Container.validate() once per
+    // Compose frame in Window.renderToBackbuffer.
 
     @Override
     public void validate() {
-        // Catch per-container so one bad container (e.g. a plugin layout NPE) doesn't
-        // abort the cascade for the rest of the tree.
+        // Catch per-container so one bad container's layout NPE doesn't abort the cascade.
         try { doLayout(); } catch (Throwable ignored) {}
         // Snapshot — plugins start on AWT-InvokeAndWait threads that may add nav buttons
         // to a Container while the Compose render thread is mid-validate. Direct iteration

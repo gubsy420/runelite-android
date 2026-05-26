@@ -153,6 +153,16 @@ public class Window extends Container {
             g.clipRect(0, 0, c.getWidth(), c.getHeight());
 
             if (c instanceof Canvas) {
+                if (Canvas.isRenderedByGles()) {
+                    // GpuGlesPlugin owns this canvas — clear its rect to fully transparent
+                    // so the EGL-backed SurfaceView underneath shows through the chrome
+                    // bitmap. AlphaComposite.Clear writes (0,0,0,0) regardless of source.
+                    java.awt.Composite saved = g.getComposite();
+                    g.setComposite(java.awt.AlphaComposite.Clear);
+                    g.fillRect(0, 0, c.getWidth(), c.getHeight());
+                    g.setComposite(saved);
+                    return;
+                }
                 BufferedImage bb = ((Canvas) c).getBackbuffer();
                 if (bb != null) {
                     // The OSRS client writes raw RGB into its Canvas backbuffer with the

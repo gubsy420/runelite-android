@@ -183,25 +183,144 @@ public class BufferedImageGraphics2D extends Graphics2D {
     @Override
     public void drawString(String str, int x, int y) {
         if (str == null || str.isEmpty()) return;
-        android.graphics.Paint p = androidPaint();
-        // (x, y) is the BASELINE in AWT — same as Android Canvas.drawText.
-        android.graphics.Rect bounds = new android.graphics.Rect();
-        p.getTextBounds(str, 0, str.length(), bounds);
-        int padding = 2;
-        int textW = bounds.width() + 2 * padding;
-        int textH = bounds.height() + 2 * padding;
-        if (textW <= 0 || textH <= 0) return;
-        android.graphics.Bitmap bmp = android.graphics.Bitmap.createBitmap(
-            textW, textH, android.graphics.Bitmap.Config.ARGB_8888);
-        android.graphics.Canvas canvas = new android.graphics.Canvas(bmp);
-        canvas.drawText(str, padding - bounds.left, padding - bounds.top, p);
-        int[] textPixels = new int[textW * textH];
-        bmp.getPixels(textPixels, 0, textW, 0, 0, textW, textH);
-        bmp.recycle();
-        int dx = x + tx() + bounds.left - padding;
-        int dy = y + ty() + bounds.top - padding;
-        AwtNative.blit(textPixels, textW, textH, 0, 0, textW, textH,
-            pixels, width, height, dx, dy, textW, textH, compositeRule(), compositeAlpha());
+        TextRender r = TextCache.get(str, font, foreground.getRGB(), textAaMode());
+        int dx = x + tx() + r.boundsLeft - TextCache.PADDING;
+        int dy = y + ty() + r.boundsTop - TextCache.PADDING;
+        AwtNative.blit(r.pixels, r.w, r.h, 0, 0, r.w, r.h,
+            pixels, width, height, dx, dy, r.w, r.h, compositeRule(), compositeAlpha());
+    }
+
+    /**
+     * Resolves the active text-AA mode from our RenderingHints map. Maps the JDK constants
+     * onto a small enum so the TextCache key can include it (cached bitmaps depend on AA
+     * mode + subpixel; without this in the key, switching hints leaks stale bitmaps).
+     * Falls back to KEY_ANTIALIASING when the text-specific hint is left at DEFAULT.
+     */
+    private TextAa textAaMode() {
+        Object v = renderingHints.get(RenderingHints.KEY_TEXT_ANTIALIASING);
+        if (v == null || v == RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT) {
+            // Fall back to the general antialiasing hint.
+            Object g = renderingHints.get(RenderingHints.KEY_ANTIALIASING);
+            if (g == RenderingHints.VALUE_ANTIALIAS_OFF) return TextAa.OFF;
+            // Default to ON — RuneLite + FlatLaf both expect AA text by default.
+            return TextAa.ON;
+        }
+        if (v == RenderingHints.VALUE_TEXT_ANTIALIAS_OFF) return TextAa.OFF;
+        if (v == RenderingHints.VALUE_TEXT_ANTIALIAS_GASP) return TextAa.ON;
+        if (v == RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB
+            || v == RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR
+            || v == RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VRGB
+            || v == RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VBGR) return TextAa.LCD;
+        return TextAa.ON;
+    }
+
+    enum TextAa { OFF, ON, LCD }
+
+    /**
+     * Cached prerendered glyph runs. drawString used to allocate a bitmap + int[] per call
+     * and JNI-copy pixels through Bitmap.getPixels every label paint; profile showed >30%
+     * of GameViewport time there. With a per-(text,font,argb) cache + LRU eviction we
+     * pay the cost once per string and blit cached pixels forever after.
+     */
+    private static final class TextRender {
+        final int[] pixels;
+        final int w, h;
+        final int boundsLeft, boundsTop;
+        TextRender(int[] pixels, int w, int h, int boundsLeft, int boundsTop) {
+            this.pixels = pixels; this.w = w; this.h = h;
+            this.boundsLeft = boundsLeft; this.boundsTop = boundsTop;
+        }
+    }
+    private static final class TextCache {
+        static final int PADDING = 2;
+        private static final int MAX = 1024;
+        /**
+         * Composite key for (string, font, color). Earlier we packed the three hashCodes
+         * into a single long with XOR, but the bit ranges overlapped — different (str,
+         * font, argb) tuples collided to the same key and the cache returned a stale
+         * bitmap, painting "Account" pixels for "Agility" etc. (visible as "shadowed"
+         * or corrupted text in the plugin list panel).
+         */
+        private static final class Key {
+            final String str;
+            final Font font;
+            final int argb;
+            final TextAa aa;
+            final int hash;
+            Key(String s, Font f, int a, TextAa aa) {
+                this.str = s; this.font = f; this.argb = a; this.aa = aa;
+                int h = s.hashCode();
+                h = 31 * h + f.hashCode();
+                h = 31 * h + a;
+                h = 31 * h + aa.ordinal();
+                this.hash = h;
+            }
+            @Override public int hashCode() { return hash; }
+            @Override public boolean equals(Object o) {
+                if (!(o instanceof Key)) return false;
+                Key k = (Key) o;
+                return argb == k.argb && aa == k.aa && font.equals(k.font) && str.equals(k.str);
+            }
+        }
+        private static final java.util.LinkedHashMap<Key, TextRender> cache =
+            new java.util.LinkedHashMap<Key, TextRender>(256, 0.75f, true) {
+                @Override
+                protected boolean removeEldestEntry(java.util.Map.Entry<Key, TextRender> e) {
+                    return size() > MAX;
+                }
+            };
+        static synchronized TextRender get(String str, Font font, int argb, TextAa aa) {
+            Key key = new Key(str, font, argb, aa);
+            TextRender r = cache.get(key);
+            if (r != null) return r;
+            r = render(str, font, argb, aa);
+            cache.put(key, r);
+            return r;
+        }
+        private static TextRender render(String str, Font font, int argb, TextAa aa) {
+            android.graphics.Paint p = new android.graphics.Paint();
+            p.setColor(argb);
+            applyAa(p, aa);
+            // Snap glyphs to the pixel grid. Without this Android's grayscale AA leaves
+            // even glyph-interior pixels with alpha < 255 at small sizes — body pixels
+            // then look "see-through" because src_over blends bg through them.
+            p.setHinting(android.graphics.Paint.HINTING_ON);
+            p.setTextSize(BufferedImageFontMetrics.pxSize(font));
+            int style = font.getStyle();
+            android.graphics.Typeface tf;
+            if (style == Font.BOLD) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
+            else if (style == Font.ITALIC) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.ITALIC);
+            else if (style == (Font.BOLD | Font.ITALIC)) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD_ITALIC);
+            else tf = android.graphics.Typeface.DEFAULT;
+            p.setTypeface(tf);
+            android.graphics.Rect bounds = new android.graphics.Rect();
+            p.getTextBounds(str, 0, str.length(), bounds);
+            int textW = Math.max(1, bounds.width() + 2 * PADDING);
+            int textH = Math.max(1, bounds.height() + 2 * PADDING);
+            android.graphics.Bitmap bmp = android.graphics.Bitmap.createBitmap(
+                textW, textH, android.graphics.Bitmap.Config.ARGB_8888);
+            android.graphics.Canvas canvas = new android.graphics.Canvas(bmp);
+            canvas.drawText(str, PADDING - bounds.left, PADDING - bounds.top, p);
+            int[] pixels = new int[textW * textH];
+            bmp.getPixels(pixels, 0, textW, 0, 0, textW, textH);
+            bmp.recycle();
+            // Alpha contrast boost. Android's Paint at small sizes (12px) doesn't give
+            // glyph interiors alpha=255 even with HINTING_ON — it produces ~180–230
+            // per the glyph's coverage rounding. Our src_over then renders the body as
+            // `text·α + dst·(1-α)`, leaking the bg through "opaque" text (the red-bar
+            // /white-text "see-through" symptom). Saturate any near-opaque pixel to
+            // 255 while preserving the AA gradient on edges so the silhouette stays
+            // smooth and blends cleanly with the destination.
+            for (int i = 0; i < pixels.length; i++) {
+                int px = pixels[i];
+                int a = (px >>> 24) & 0xFF;
+                if (a == 0 || a == 255) continue;
+                int boosted = a + (a >> 1); // ×1.5
+                if (boosted > 255) boosted = 255;
+                pixels[i] = (boosted << 24) | (px & 0x00FFFFFF);
+            }
+            return new TextRender(pixels, textW, textH, bounds.left, bounds.top);
+        }
     }
 
     /** Builds an Android Paint matching our current foreground + font. Not cached — fonts
@@ -209,8 +328,8 @@ public class BufferedImageGraphics2D extends Graphics2D {
     private android.graphics.Paint androidPaint() {
         android.graphics.Paint p = new android.graphics.Paint();
         p.setColor(foreground.getRGB());
-        p.setAntiAlias(true);
-        p.setTextSize(Math.max(1, font.getSize()));
+        applyAa(p, textAaMode());
+        p.setTextSize(BufferedImageFontMetrics.pxSize(font));
         int style = font.getStyle();
         android.graphics.Typeface tf;
         if (style == Font.BOLD) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
@@ -219,6 +338,23 @@ public class BufferedImageGraphics2D extends Graphics2D {
         else tf = android.graphics.Typeface.DEFAULT;
         p.setTypeface(tf);
         return p;
+    }
+
+    private static void applyAa(android.graphics.Paint p, TextAa aa) {
+        switch (aa) {
+            case OFF:
+                p.setAntiAlias(false);
+                p.setSubpixelText(false);
+                break;
+            case LCD:
+                p.setAntiAlias(true);
+                p.setSubpixelText(true);
+                break;
+            default:
+                p.setAntiAlias(true);
+                p.setSubpixelText(false);
+                break;
+        }
     }
 
     @Override public void drawString(String str, float x, float y) { drawString(str, (int) x, (int) y); }
@@ -325,6 +461,18 @@ public class BufferedImageGraphics2D extends Graphics2D {
     }
 
     @Override public void draw(Shape s) {
+        if (s instanceof Polygon) {
+            Polygon p = (Polygon) s;
+            drawPolygon(p.xpoints, p.ypoints, p.npoints);
+            return;
+        }
+        if (s instanceof Rectangle) {
+            Rectangle r = (Rectangle) s;
+            drawRect(r.x, r.y, r.width, r.height);
+            return;
+        }
+        if (walkShape(s, false)) return;
+        // Couldn't flatten — last-resort bbox stroke so something at least appears.
         Rectangle b = s.getBounds();
         drawRect(b.x, b.y, b.width, b.height);
     }
@@ -335,8 +483,78 @@ public class BufferedImageGraphics2D extends Graphics2D {
             fillPolygon(p.xpoints, p.ypoints, p.npoints);
             return;
         }
+        if (s instanceof Rectangle) {
+            Rectangle r = (Rectangle) s;
+            fillRect(r.x, r.y, r.width, r.height);
+            return;
+        }
+        if (walkShape(s, true)) return;
         Rectangle b = s.getBounds();
         fillRect(b.x, b.y, b.width, b.height);
+    }
+
+    /**
+     * Walk a shape's PathIterator and rasterize each closed sub-path as a polygon. Earlier
+     * draw(Shape)/fill(Shape) just strokes/filled the bbox — which made overlay clickboxes
+     * (agility, NPC indicators) appear as solid-coloured rectangles instead of polygon
+     * outlines blending into the scene. Quad/cubic segments are flattened via the iterator's
+     * flatness path. Returns false if the shape has no usable iterator so the caller can
+     * fall back to its bbox approximation.
+     */
+    private boolean walkShape(Shape s, boolean fill) {
+        java.awt.geom.PathIterator it = s.getPathIterator(null, 1.0);
+        if (it == null) return false;
+        int[] xs = new int[16];
+        int[] ys = new int[16];
+        int n = 0;
+        float[] coords = new float[6];
+        boolean any = false;
+        while (!it.isDone()) {
+            int seg = it.currentSegment(coords);
+            switch (seg) {
+                case java.awt.geom.PathIterator.SEG_MOVETO:
+                    if (n >= 3) {
+                        if (fill) fillPolygon(xs, ys, n); else drawClosedPolyline(xs, ys, n);
+                        any = true;
+                    }
+                    n = 0;
+                    if (n >= xs.length) { xs = grow(xs); ys = grow(ys); }
+                    xs[n] = (int) coords[0]; ys[n] = (int) coords[1]; n++;
+                    break;
+                case java.awt.geom.PathIterator.SEG_LINETO:
+                    if (n >= xs.length) { xs = grow(xs); ys = grow(ys); }
+                    xs[n] = (int) coords[0]; ys[n] = (int) coords[1]; n++;
+                    break;
+                case java.awt.geom.PathIterator.SEG_CLOSE:
+                    if (n >= 3) {
+                        if (fill) fillPolygon(xs, ys, n); else drawClosedPolyline(xs, ys, n);
+                        any = true;
+                    }
+                    n = 0;
+                    break;
+                default:
+                    // SEG_QUADTO / SEG_CUBICTO shouldn't reach us when we requested flatness=1.0,
+                    // but if they do skip them rather than misinterpret control points as verts.
+                    break;
+            }
+            it.next();
+        }
+        if (n >= 3) {
+            if (fill) fillPolygon(xs, ys, n); else drawClosedPolyline(xs, ys, n);
+            any = true;
+        }
+        return any;
+    }
+
+    private void drawClosedPolyline(int[] xs, int[] ys, int n) {
+        for (int i = 0; i < n - 1; i++) drawLine(xs[i], ys[i], xs[i + 1], ys[i + 1]);
+        drawLine(xs[n - 1], ys[n - 1], xs[0], ys[0]);
+    }
+
+    private static int[] grow(int[] a) {
+        int[] n = new int[a.length * 2];
+        System.arraycopy(a, 0, n, 0, a.length);
+        return n;
     }
 
     @Override public Composite getComposite() { return composite; }

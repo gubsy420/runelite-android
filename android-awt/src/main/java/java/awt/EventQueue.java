@@ -43,12 +43,32 @@ public class EventQueue {
     }
 
     public static void invokeLater(Runnable r) {
-        new Thread(r, "AWT-InvokeLater").start();
+        Thread t = new Thread(r, "AWT-InvokeLater");
+        t.setUncaughtExceptionHandler(EDT_UEH);
+        t.start();
     }
 
     public static void invokeAndWait(Runnable r) throws InterruptedException {
         Thread t = new Thread(r, "AWT-InvokeAndWait");
+        t.setUncaughtExceptionHandler(EDT_UEH);
         t.start();
         t.join();
     }
+
+    /**
+     * Real Swing wraps EDT callbacks in a try/catch and logs uncaught exceptions —
+     * a misbehaving listener doesn't kill the process. Our invokeLater used to spawn
+     * a bare Thread with no UncaughtExceptionHandler, so Android's default handler
+     * (which terminates the process) ran instead. Plugin startup is full of code
+     * that throws here (NoSuchMethod on missing Swing API, NPE on half-constructed
+     * components, etc.) — without this every such throw crashed the whole app the
+     * moment a side panel was touched.
+     */
+    private static final Thread.UncaughtExceptionHandler EDT_UEH =
+        new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                android.util.Log.w("AWT-EDT", "Uncaught exception on " + t.getName(), e);
+            }
+        };
 }

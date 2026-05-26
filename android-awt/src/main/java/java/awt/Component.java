@@ -24,8 +24,14 @@ public abstract class Component implements ImageObserver, Serializable {
     private static final long serialVersionUID = -7644114512714619750L;
 
     protected int x, y, width, height;
-    protected Color foreground = Color.BLACK;
-    protected Color background = Color.WHITE;
+    // Defaults tuned for RuneLite's theme. On desktop FlatLaf populates
+    // UIManager.getDefaults() so JPanel/JLabel inherit the dark theme; we don't run
+    // FlatLaf's UI delegates, so a generic JPanel with no setBackground call would
+    // render as WHITE (the Swing default) sitting next to OSRS's dark UI. Pick
+    // ColorScheme.DARK_GRAY_COLOR (40,40,40) for bg and a near-white foreground so
+    // unstyled labels stay readable on the inherited dark bg.
+    protected Color foreground = new Color(0xC8, 0xC8, 0xC8);
+    protected Color background = new Color(0x28, 0x28, 0x28);
     protected Font font = new Font(Font.DIALOG, Font.PLAIN, 12);
     protected boolean visible = true;
     protected boolean enabled = true;
@@ -104,8 +110,18 @@ public abstract class Component implements ImageObserver, Serializable {
         return net.runelite.awt.impl.HeadlessGraphicsConfiguration.INSTANCE;
     }
 
+    /** Process-wide FontMetrics cache keyed by Font. Creating a FontMetrics constructs an
+     * android.graphics.Paint+Typeface; measureText then crosses JNI into Minikin. With one
+     * cache miss per JLabel.getPreferredSize per frame this was a ~40% hotspot. */
+    private static final java.util.Map<Font, FontMetrics> FONT_METRICS_CACHE =
+        new java.util.concurrent.ConcurrentHashMap<>();
     public FontMetrics getFontMetrics(Font f) {
-        return new net.runelite.awt.impl.BufferedImageFontMetrics(f);
+        if (f == null) f = font;
+        FontMetrics cached = FONT_METRICS_CACHE.get(f);
+        if (cached != null) return cached;
+        FontMetrics fm = new net.runelite.awt.impl.BufferedImageFontMetrics(f);
+        FONT_METRICS_CACHE.putIfAbsent(f, fm);
+        return fm;
     }
 
     public void repaint() { repaint(0, 0, 0, width, height); }
@@ -195,6 +211,17 @@ public abstract class Component implements ImageObserver, Serializable {
     public MouseListener[] getMouseListeners() { return mouseListeners.toArray(new MouseListener[0]); }
     public MouseMotionListener[] getMouseMotionListeners() { return mouseMotionListeners.toArray(new MouseMotionListener[0]); }
     public MouseWheelListener[] getMouseWheelListeners() { return mouseWheelListeners.toArray(new MouseWheelListener[0]); }
+
+    /** True iff this component has at least one MouseListener/MotionListener/WheelListener
+     *  registered. The Compose host uses this to walk up the parent chain from a tap target
+     *  to find whichever component actually subscribes — the patched RS Applet registers
+     *  its MouseListener on itself, but the deepest visible component at a click point is
+     *  usually the inner Canvas which has no listeners of its own. */
+    public boolean hasMouseListeners() {
+        return !mouseListeners.isEmpty()
+            || !mouseMotionListeners.isEmpty()
+            || !mouseWheelListeners.isEmpty();
+    }
 
     /**
      * Dispatches a {@link MouseEvent} to whichever listener list matches the event id.

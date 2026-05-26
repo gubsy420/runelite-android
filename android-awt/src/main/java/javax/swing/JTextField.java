@@ -36,13 +36,25 @@ public class JTextField extends JTextComponent {
         }
     }
 
+    private java.awt.Dimension cachedPref;
     @Override
     public java.awt.Dimension getPreferredSize() {
         if (isPreferredSizeSet()) return super.getPreferredSize();
+        java.awt.Dimension c = cachedPref;
+        if (c != null) return new java.awt.Dimension(c);
         java.awt.FontMetrics fm = getFontMetrics(getFont());
-        int colW = columns > 0 ? columns * fm.charWidth('m') : Math.max(60, fm.stringWidth(getText() == null ? "" : getText()) + 8);
-        return new java.awt.Dimension(colW + 4, fm.getHeight() + 4);
+        int colW = columns > 0
+            ? columns * fm.charWidth('m')
+            : Math.max(60, fm.stringWidth(getText() == null ? "" : getText()) + 8);
+        c = new java.awt.Dimension(colW + 4, fm.getHeight() + 4);
+        cachedPref = c;
+        return new java.awt.Dimension(c);
     }
+
+    @Override
+    public void setText(String t) { super.setText(t); cachedPref = null; }
+    @Override
+    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; }
 
     @Override
     protected void paintComponent(java.awt.Graphics g) {

@@ -134,6 +134,26 @@ public class AffineTransform implements Cloneable, Serializable {
         this.m02 = other.m02; this.m12 = other.m12;
     }
 
+    /** Standard AWT API: transform {@code numPts} 2D points from {@code srcPts[srcOff..]}
+     *  into {@code dstPts[dstOff..]}. Aliasing src and dst is allowed. */
+    public void transform(float[] srcPts, int srcOff, float[] dstPts, int dstOff, int numPts) {
+        for (int i = 0; i < numPts; i++) {
+            double x = srcPts[srcOff++];
+            double y = srcPts[srcOff++];
+            dstPts[dstOff++] = (float) (m00 * x + m01 * y + m02);
+            dstPts[dstOff++] = (float) (m10 * x + m11 * y + m12);
+        }
+    }
+
+    public void transform(double[] srcPts, int srcOff, double[] dstPts, int dstOff, int numPts) {
+        for (int i = 0; i < numPts; i++) {
+            double x = srcPts[srcOff++];
+            double y = srcPts[srcOff++];
+            dstPts[dstOff++] = m00 * x + m01 * y + m02;
+            dstPts[dstOff++] = m10 * x + m11 * y + m12;
+        }
+    }
+
     @Override
     public Object clone() {
         return new AffineTransform(this);

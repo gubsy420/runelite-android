@@ -16,23 +16,35 @@ import android.media.AudioTrack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Adapts {@link SourceDataLine} (the javax.sound.sampled PCM-write API) onto
- * {@link AudioTrack}. A single shared AudioTrack is kept alive across line
- * close/open cycles: the obfuscated client closes and re-opens its line every
- * few seconds to grow its software buffer, and a release/allocate round-trip
- * per cycle was causing a ~50–100ms audio gap that read as music skipping.
- * When the requested format matches the shared track's format, open() is now
- * effectively free.
+ * Adapts {@link SourceDataLine} (the javax.sound.sampled PCM-write API) onto a single
+ * process-wide {@link AudioTrack} fed by a dedicated drain thread. Goals:
+ *  - Game-thread {@code write()} never blocks on AudioTrack — it just copies into a
+ *    shared bounded ring queue and returns.
+ *  - The drain thread blocks on {@code AudioTrack.write(WRITE_BLOCKING)} so the
+ *    track buffer naturally paces consumption at the audio hardware rate, keeping
+ *    music and the game's own audio-tick scheduling in sync.
+ *  - The shared track is never released and never paused; line close/reopen cycles
+ *    (which the obfuscated client does every few seconds to grow its software buffer)
+ *    are bookkeeping-only. Releasing it raced with the drain thread and segfaulted in
+ *    {@code AudioTrack::releaseBuffer}; pausing it would deadlock the drain.
  */
 public final class AndroidAudioBridge {
-    private static final Object LOCK = new Object();
+    /** Soft ceiling on queued-but-not-yet-played PCM bytes. ~200ms of stereo 16-bit at
+     *  44.1kHz is 35280 bytes; pick a value that buffers a few ticks of audio without
+     *  inducing noticeable lag between game state changes and the corresponding sound. */
+    private static final int QUEUE_CAP_BYTES = 192 * 1024;
+
+    private static final Object TRACK_LOCK = new Object();
     private static AudioTrack sharedTrack;
-    private static int sharedSampleRate;
-    private static int sharedChannelMask;
-    private static int sharedEncoding;
-    private static int sharedBufferSize;
+    private static int sharedSampleRate, sharedChannelMask, sharedEncoding;
+
+    private static final LinkedBlockingDeque<byte[]> sharedQueue = new LinkedBlockingDeque<>();
+    private static final AtomicInteger queuedBytes = new AtomicInteger();
+    private static volatile boolean drainerStarted = false;
 
     private AndroidAudioBridge() {
     }
@@ -53,12 +65,7 @@ public final class AndroidAudioBridge {
         int minBufferSize = AudioTrack.getMinBufferSize(sampleRate, channelMask, encoding);
         int minBuf = minBufferSize > 0 ? minBufferSize : requestedBuf;
 
-        synchronized (LOCK) {
-            // Reuse the shared track whenever the FORMAT matches — ignore the client's
-            // requested buffer size. The obfuscated client grows its buffer every cycle and
-            // closes/reopens the line to apply the new size; honoring that here would force
-            // a release+allocate per cycle, which is what was causing the audible skips.
-            // We allocate generously up front (~1.5s of ring) so backpressure still works.
+        synchronized (TRACK_LOCK) {
             if (sharedTrack != null
                 && sharedSampleRate == sampleRate
                 && sharedChannelMask == channelMask
@@ -66,15 +73,21 @@ public final class AndroidAudioBridge {
                 return sharedTrack;
             }
 
+            // Format actually changed (rare — usually first call only). Release any
+            // existing track only after the drainer has been told to stop touching it.
             if (sharedTrack != null) {
-                try { sharedTrack.stop(); } catch (IllegalStateException ignored) {}
-                sharedTrack.release();
+                // Empty the queue so the drainer doesn't push stale data to the new track.
+                sharedQueue.clear();
+                queuedBytes.set(0);
+                AudioTrack old = sharedTrack;
                 sharedTrack = null;
+                try { old.stop(); } catch (IllegalStateException ignored) {}
+                old.release();
             }
 
             int internalBuf = Math.max(Math.max(requestedBuf * 4, minBuf * 4), 64 * 1024);
             try {
-                sharedTrack = new AudioTrack.Builder()
+                AudioTrack t = new AudioTrack.Builder()
                     .setAudioAttributes(new AudioAttributes.Builder()
                         .setUsage(AudioAttributes.USAGE_MEDIA)
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -87,22 +100,87 @@ public final class AndroidAudioBridge {
                     .setBufferSizeInBytes(internalBuf)
                     .setTransferMode(AudioTrack.MODE_STREAM)
                     .build();
+                try { t.play(); } catch (IllegalStateException ignored) {}
+                sharedTrack = t;
                 sharedSampleRate = sampleRate;
                 sharedChannelMask = channelMask;
                 sharedEncoding = encoding;
-                sharedBufferSize = internalBuf;
-                return sharedTrack;
+                startDrainerOnce();
+                return t;
             } catch (Exception e) {
                 throw new LineUnavailableException("AudioTrack init failed: " + e.getMessage());
             }
         }
     }
 
+    /** Dedicated audio drain thread, started once per process. It blocks on
+     *  {@code AudioTrack.write(WRITE_BLOCKING)} so the hardware buffer paces it
+     *  naturally; the game thread that produced these bytes already returned. */
+    private static void startDrainerOnce() {
+        if (drainerStarted) return;
+        drainerStarted = true;
+        Thread t = new Thread(AndroidAudioBridge::drainLoop, "RL-Audio-Drain");
+        t.setDaemon(true);
+        t.start();
+    }
+
+    private static void drainLoop() {
+        while (true) {
+            byte[] chunk;
+            try { chunk = sharedQueue.takeFirst(); }
+            catch (InterruptedException ie) { return; }
+            if (chunk == null || chunk.length == 0) continue;
+            queuedBytes.addAndGet(-chunk.length);
+
+            AudioTrack t;
+            synchronized (TRACK_LOCK) { t = sharedTrack; }
+            if (t == null) continue;
+
+            int written = 0;
+            while (written < chunk.length) {
+                int n;
+                try {
+                    n = t.write(chunk, written, chunk.length - written, AudioTrack.WRITE_BLOCKING);
+                } catch (IllegalStateException ignored) {
+                    break;
+                }
+                if (n < 0) break;     // ERROR_INVALID_OPERATION etc.
+                if (n == 0) {
+                    // Track is paused/stopped — back off so we don't spin.
+                    try { Thread.sleep(5); } catch (InterruptedException ie) { return; }
+                    continue;
+                }
+                written += n;
+                // If the track was swapped underneath us mid-chunk, abandon this
+                // chunk on the new track (we'd otherwise interleave stale samples).
+                synchronized (TRACK_LOCK) { if (sharedTrack != t) break; }
+            }
+        }
+    }
+
+    /** Enqueue PCM bytes from the game thread. Never blocks: if the queue is
+     *  already past its soft cap (drain is falling behind / track underflowed),
+     *  drop the OLDEST chunks rather than stall the producer. Brief audio glitch
+     *  beats freezing the game. */
+    private static int enqueue(byte[] b, int off, int len) {
+        if (len <= 0) return 0;
+        while (queuedBytes.get() + len > QUEUE_CAP_BYTES) {
+            byte[] dropped = sharedQueue.pollFirst();
+            if (dropped == null) break;
+            queuedBytes.addAndGet(-dropped.length);
+        }
+        byte[] copy = new byte[len];
+        System.arraycopy(b, off, copy, 0, len);
+        sharedQueue.offerLast(copy);
+        queuedBytes.addAndGet(len);
+        return len;
+    }
+
     private static final class AndroidSourceDataLine implements SourceDataLine {
         private final AudioFormat format;
         private final int bufferSize;
         private final List<LineListener> listeners = new ArrayList<>();
-        private AudioTrack track;
+        private AudioTrack track;          // shared reference, never released by us
         private boolean opened;
         private boolean running;
         private long framesWritten;
@@ -129,12 +207,12 @@ public final class AndroidAudioBridge {
 
         @Override
         public int write(byte[] b, int off, int len) {
-            if (!opened || track == null) return 0;
-            int written = track.write(b, off, len);
+            if (!opened) return 0;
+            int written = enqueue(b, off, len);
             if (written > 0 && format.getFrameSize() > 0) {
                 framesWritten += written / format.getFrameSize();
             }
-            return Math.max(0, written);
+            return written;
         }
 
         @Override
@@ -146,15 +224,13 @@ public final class AndroidAudioBridge {
 
         @Override
         public void flush() {
-            // No-op for the same reason as drain(). The obfuscated client calls flush()
-            // every few seconds during normal playback; honoring it drops up to ~1.5s of
-            // queued audio and produces the "skipping every 5-10s" symptom.
+            // No-op for the same reason as drain().
         }
 
         @Override
         public void start() {
             if (track != null && opened) {
-                try { track.play(); } catch (IllegalStateException ignored) {}
+                // The shared track is always playing; this just flips our running flag.
                 running = true;
                 fire(LineEvent.Type.START);
             }
@@ -163,10 +239,9 @@ public final class AndroidAudioBridge {
         @Override
         public void stop() {
             if (track != null && running) {
-                // Don't actually stop the shared track — pause keeps the buffer intact
-                // so the next start() resumes seamlessly. The client only calls stop()
-                // via close() anyway.
-                try { track.pause(); } catch (IllegalStateException ignored) {}
+                // DON'T pause the shared track — pausing it would deadlock the drainer
+                // thread, since it waits on AudioTrack.write which only returns once
+                // the hardware buffer drains, and a paused track never drains.
                 running = false;
                 fire(LineEvent.Type.STOP);
             }
@@ -179,9 +254,11 @@ public final class AndroidAudioBridge {
 
         @Override
         public int available() {
-            if (track == null) return 0;
-            int writtenSinceStart = bufferSize;
-            return writtenSinceStart;
+            // Bytes the producer can write before backpressure kicks in. Approximate via
+            // our queue cap minus current depth so the client's "should I produce more
+            // audio yet?" check responds to backpressure.
+            int remaining = QUEUE_CAP_BYTES - queuedBytes.get();
+            return Math.max(0, remaining);
         }
 
         @Override public int getFramePosition() { return (int) framesWritten; }
@@ -196,9 +273,8 @@ public final class AndroidAudioBridge {
 
         @Override
         public void close() {
-            // Hand the shared AudioTrack back to the pool without stopping/releasing it.
-            // The client closes its line every few seconds to reopen with a larger buffer;
-            // keeping the track alive avoids the audible gap from release+allocate.
+            // Bookkeeping only — the shared AudioTrack and drainer stay alive across
+            // line cycles so music doesn't gap when the client grows its buffer.
             track = null;
             if (opened) {
                 opened = false;

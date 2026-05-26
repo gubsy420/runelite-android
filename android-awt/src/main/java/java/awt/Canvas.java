@@ -13,6 +13,16 @@ public class Canvas extends Component {
     private static final long serialVersionUID = -2284879212465893870L;
     private static final AtomicReference<Canvas> LATEST = new AtomicReference<>();
 
+    /**
+     * Set when GpuGlesPlugin has taken over rendering. The Compose host then layers an
+     * EGL-backed SurfaceView at this Canvas's absolute window rect and the host paint
+     * walk skips the Canvas's CPU backbuffer — instead clearing its rect to alpha=0 so
+     * the SurfaceView shows through the chrome bitmap.
+     */
+    private static volatile boolean RENDERED_BY_GLES = false;
+    public static void setRenderedByGles(boolean v) { RENDERED_BY_GLES = v; }
+    public static boolean isRenderedByGles() { return RENDERED_BY_GLES; }
+
     private BufferedImage backbuffer;
 
     public Canvas() {
@@ -26,6 +36,20 @@ public class Canvas extends Component {
     /** Most-recently-instantiated canvas — the Compose host pulls pixels from here. */
     public static Canvas latest() {
         return LATEST.get();
+    }
+
+    /** Absolute origin + size of this Canvas within its top-level Window. Returns null
+     *  if not currently parented. Used by the GLES host to position the SurfaceView. */
+    public Rectangle getBoundsInWindow() {
+        int ax = this.x, ay = this.y;
+        Component p = getParent();
+        while (p != null && !(p instanceof Window)) {
+            ax += p.getX();
+            ay += p.getY();
+            p = p.getParent();
+        }
+        if (p == null) return null;
+        return new Rectangle(ax, ay, width, height);
     }
 
     public BufferedImage getBackbuffer() {

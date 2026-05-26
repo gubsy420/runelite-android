@@ -21,9 +21,11 @@ public class JLabel extends JComponent implements SwingConstants {
     }
 
     public String getText() { return text; }
-    public void setText(String text) { this.text = text == null ? "" : text; }
+    public void setText(String text) { this.text = text == null ? "" : text; cachedPref = null; }
     public Icon getIcon() { return icon; }
-    public void setIcon(Icon icon) { this.icon = icon; }
+    public void setIcon(Icon icon) { this.icon = icon; cachedPref = null; }
+    @Override
+    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; }
     public Icon getDisabledIcon() { return icon; }
     public void setDisabledIcon(Icon icon) {}
     public int getHorizontalAlignment() { return horizontalAlignment; }
@@ -44,9 +46,15 @@ public class JLabel extends JComponent implements SwingConstants {
     /** JShadowedLabel and friends call the typed overload — accept and discard. */
     public void setUI(javax.swing.plaf.LabelUI ui) { super.setUI(ui); }
 
+    /** Cached preferred size — invalidated when text/icon/font changes. Without this every
+     * BorderLayout layout pass remeasures the text via JNI/Minikin, which dominated profile. */
+    private java.awt.Dimension cachedPref;
+
     @Override
     public java.awt.Dimension getPreferredSize() {
         if (isPreferredSizeSet()) return super.getPreferredSize();
+        java.awt.Dimension c = cachedPref;
+        if (c != null) return new java.awt.Dimension(c);
         java.awt.FontMetrics fm = getFontMetrics(getFont());
         int textW = text == null ? 0 : fm.stringWidth(text);
         int iconW = icon == null ? 0 : icon.getIconWidth();
@@ -55,7 +63,9 @@ public class JLabel extends JComponent implements SwingConstants {
         int textH = fm.getHeight();
         int iconH = icon == null ? 0 : icon.getIconHeight();
         int h = Math.max(textH, iconH);
-        return new java.awt.Dimension(w + 2, h + 2);
+        c = new java.awt.Dimension(w + 2, h + 2);
+        cachedPref = c;
+        return new java.awt.Dimension(c);
     }
 
     @Override

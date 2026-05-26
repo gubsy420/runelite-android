@@ -1,5 +1,7 @@
 package java.awt;
 
+import java.awt.geom.AffineTransform;
+import java.awt.geom.PathIterator;
 import java.awt.geom.Rectangle2D;
 
 public interface Shape {
@@ -23,5 +25,18 @@ public interface Shape {
 
     default boolean intersects(Rectangle2D r) {
         return intersects(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+    }
+
+    /**
+     * Returns an iterator over the shape's path segments. Default returns {@code null}
+     * so existing implementations that don't override (eg. older shadow classes) keep
+     * compiling — callers must null-check and fall back to a bounding-box approximation.
+     */
+    default PathIterator getPathIterator(AffineTransform at) {
+        return null;
+    }
+
+    default PathIterator getPathIterator(AffineTransform at, double flatness) {
+        return getPathIterator(at);
     }
 }

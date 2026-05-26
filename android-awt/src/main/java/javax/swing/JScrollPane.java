@@ -28,6 +28,17 @@ public class JScrollPane extends JComponent implements ScrollPaneConstants {
     private void init() {
         setOpaque(true);
         super.add(viewport);
+        // Real Swing installs a MouseWheelListener that maps wheel rotations into
+        // viewport scroll offsets. Mirror that here so dispatching a MOUSE_WHEEL
+        // event on the scrollpane (or anywhere in its subtree, via the walk-up in
+        // Compose's input bridge) actually scrolls the content.
+        addMouseWheelListener(e -> {
+            if (e == null || viewport == null) return;
+            // Use the view's preferred row height (≈ a JLabel line) as the unit.
+            int unit = Math.max(16, getFont() == null ? 16 : getFontMetrics(getFont()).getHeight());
+            int amount = e.getWheelRotation() * unit * 3;
+            viewport.scrollBy(0, amount);
+        });
     }
 
     @Override

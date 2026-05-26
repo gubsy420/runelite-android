@@ -147,6 +147,50 @@ public class Polygon implements Shape, Serializable {
         return true;
     }
 
+    @Override
+    public java.awt.geom.PathIterator getPathIterator(java.awt.geom.AffineTransform at) {
+        return new PolygonPathIterator(this, at);
+    }
+
+    @Override
+    public java.awt.geom.PathIterator getPathIterator(java.awt.geom.AffineTransform at, double flatness) {
+        return getPathIterator(at);
+    }
+
+    private static final class PolygonPathIterator implements java.awt.geom.PathIterator {
+        private final Polygon poly;
+        private final java.awt.geom.AffineTransform at;
+        private int idx;
+
+        PolygonPathIterator(Polygon p, java.awt.geom.AffineTransform at) {
+            this.poly = p;
+            this.at = at;
+            this.idx = (p.npoints == 0) ? 1 : 0;
+        }
+
+        @Override public int getWindingRule() { return WIND_EVEN_ODD; }
+        @Override public boolean isDone() { return idx > poly.npoints; }
+        @Override public void next() { idx++; }
+
+        @Override
+        public int currentSegment(float[] coords) {
+            if (idx >= poly.npoints) return SEG_CLOSE;
+            coords[0] = poly.xpoints[idx];
+            coords[1] = poly.ypoints[idx];
+            if (at != null) at.transform(coords, 0, coords, 0, 1);
+            return (idx == 0) ? SEG_MOVETO : SEG_LINETO;
+        }
+
+        @Override
+        public int currentSegment(double[] coords) {
+            if (idx >= poly.npoints) return SEG_CLOSE;
+            coords[0] = poly.xpoints[idx];
+            coords[1] = poly.ypoints[idx];
+            if (at != null) at.transform(coords, 0, coords, 0, 1);
+            return (idx == 0) ? SEG_MOVETO : SEG_LINETO;
+        }
+    }
+
     private void calculateBounds(int[] xp, int[] yp, int np) {
         int boundsMinX = Integer.MAX_VALUE;
         int boundsMinY = Integer.MAX_VALUE;

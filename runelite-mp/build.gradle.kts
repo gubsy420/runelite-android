@@ -215,6 +215,15 @@ if (androidSdkAvailable) {
         buildTypes.named("release") {
             isMinifyEnabled = false
         }
+        // Debug builds normally set debuggable=true which enables CheckJNI — wraps every
+        // JNI call (AwtNative.blit/fillRect, Float.floatToRawIntBits, etc.) in validation
+        // that costs ~30% of JNI time, and disables JIT intrinsics. simpleperf already
+        // works via `<profileable>` in the manifest, so we don't need debuggable for perf
+        // testing. ~22% JNI trampoline in the in-game profile is mostly this overhead.
+        buildTypes.named("debug") {
+            isDebuggable = false
+            isJniDebuggable = false
+        }
 
         // Many of runelite-client's transitive jars (jna, netty, slf4j, lwjgl, …) ship the
         // same META-INF housekeeping files and per-OS native blobs. Drop everything that's
@@ -274,12 +283,22 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
         outFile.parentFile.mkdirs()
         var classesProcessed = 0
         var sitesRewritten = 0
+        var classesSkipped = 0
+        // runelite-api ships its own canonical OAuthApi; the injected client bundles
+        // a duplicate that breaks dex merging. Only OAuthApi conflicts — other
+        // com/jagex/oldscape/pub/ types (OtlTokenRequester, etc.) exist ONLY in the
+        // injected jar, so don't drop the whole package.
+        val skipExact = setOf("com/jagex/oldscape/pub/OAuthApi.class")
         JarFile(inFile).use { input ->
             JarOutputStream(outFile.outputStream().buffered()).use { output ->
                 val entries = input.entries()
                 while (entries.hasMoreElements()) {
                     val entry = entries.nextElement()
                     if (entry.isDirectory) continue
+                    if (skipExact.contains(entry.name)) {
+                        classesSkipped++
+                        continue
+                    }
                     val bytes = input.getInputStream(entry).use { it.readBytes() }
                     output.putNextEntry(JarEntry(entry.name))
                     if (entry.name.endsWith(".class")) {
@@ -294,7 +313,7 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
                 }
             }
         }
-        logger.lifecycle("desugarStringConcat: processed $classesProcessed classes, rewrote $sitesRewritten makeConcatWithConstants sites")
+        logger.lifecycle("desugarStringConcat: processed $classesProcessed classes, rewrote $sitesRewritten makeConcatWithConstants sites, skipped $classesSkipped (runelite-api duplicates)")
     }
 
     private fun rewriteClass(bytes: ByteArray, helperOwner: String): Pair<ByteArray, Int> {

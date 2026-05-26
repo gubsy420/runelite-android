@@ -19,6 +19,19 @@ private const val TAG = "PluginBootstrap"
 object PluginBootstrap {
     private const val PLUGIN_PACKAGE = "net.runelite.client.plugins"
 
+    /**
+     * Packages that won't load on Android because they depend on desktop-only natives
+     * (LWJGL/JOGL/AWTContext). Loading them would fail at first static init when their
+     * GL imports can't be resolved — usually caught silently, but Guice still tries
+     * to enumerate their @Provides methods and we'd rather skip them up front.
+     *
+     * The Android GPU renderer lives at net.runelite.client.plugins.gpugles
+     * ({@code GpuGlesPlugin}) — it uses Android EGL14/GLES31 instead.
+     */
+    private val EXCLUDED_PACKAGES = setOf(
+        "net.runelite.client.plugins.gpu",
+    )
+
     fun bootstrap(context: Context) {
         val started = System.currentTimeMillis()
         try {
@@ -93,7 +106,9 @@ object PluginBootstrap {
                     .invoke(dexFile) as java.util.Enumeration<String>
                 while (entries.hasMoreElements()) {
                     val name = entries.nextElement()
-                    if (name.startsWith("$PLUGIN_PACKAGE.")) names.add(name)
+                    if (!name.startsWith("$PLUGIN_PACKAGE.")) continue
+                    if (EXCLUDED_PACKAGES.any { excl -> name.startsWith("$excl.") || name == excl }) continue
+                    names.add(name)
                 }
             }
         } catch (t: Throwable) {
