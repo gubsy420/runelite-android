@@ -37,8 +37,16 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.viewinterop.AndroidView
 import kotlinx.coroutines.withTimeoutOrNull
 
-private const val FRAME_WIDTH = 1280
+// Fixed logical height; the width is derived from the device aspect ratio so the AWT
+// window fills the viewport without horizontal letterbox. On a 16:9 device this lands
+// at the classic 1280×720; on 19.5:9 it widens to ~1560×720.
 private const val FRAME_HEIGHT = 720
+private const val FRAME_WIDTH_FALLBACK = 1280
+
+private fun frameWidthFor(boxSize: IntSize): Int {
+    if (boxSize.width <= 0 || boxSize.height <= 0) return FRAME_WIDTH_FALLBACK
+    return (FRAME_HEIGHT.toLong() * boxSize.width / boxSize.height).toInt().coerceAtLeast(1)
+}
 
 @Composable
 fun AndroidApp() {
@@ -83,8 +91,17 @@ private fun GameViewport(modifier: Modifier = Modifier) {
         while (true) {
             withFrameNanos { /* tie sampling to display vsync */ }
             val window = java.awt.Window.primaryFrame()
-            if (window != null && (window.width != FRAME_WIDTH || window.height != FRAME_HEIGHT)) {
-                window.setSize(FRAME_WIDTH, FRAME_HEIGHT)
+            val frameWidth = frameWidthFor(boxSize)
+            // Don't force-resize the splash to the full client viewport — it's a
+            // small dialog (~322×~360) that paints its children at fixed absolute
+            // positions, so stretching its window to 1280×720 just leaves the
+            // splash content sitting in the top-left of a gray expanse.
+            // ContentScale.Fit on the Compose Image then naturally centers the
+            // small bitmap in the viewport. Only force the resize once a real
+            // client window (anything not named SplashScreen) becomes primary.
+            val isSplash = window != null && window.javaClass.simpleName == "SplashScreen"
+            if (!isSplash && window != null && (window.width != frameWidth || window.height != FRAME_HEIGHT)) {
+                window.setSize(frameWidth, FRAME_HEIGHT)
             }
             val now = System.currentTimeMillis()
             if (window != null && window.width > 0 && (window !== lastWindow || now > nextDumpAt)) {
@@ -119,19 +136,25 @@ private fun GameViewport(modifier: Modifier = Modifier) {
         modifier = modifier
             .background(Color.Black)
             .onSizeChanged { boxSize = it }
-            // Hover tracking: stylus / mouse / trackpad moves with no button down emit
-            // PointerEventType.Move events whose changes are not pressed. Forward those
-            // to MOUSE_MOVED so cursor-tracked UI (tooltips, hover highlights, the OSRS
-            // "look at" reticle) updates as the pointer glides over the surface. Kept in
-            // a separate pointerInput so it doesn't race with the gesture state machine.
+            // Pointer-tracking: forward every position update (hover OR while finger held
+            // down) to MOUSE_MOVED so cursor-tracked UI (tooltips, hover highlights, the
+            // OSRS "look at" reticle, world-map cursor coords) keeps tracking the finger
+            // through a press → drag. AWT's strict contract is MOVED-only-when-unpressed
+            // and DRAGGED-while-pressed, but on touch we have no concept of "hovering
+            // while pressed elsewhere," and the reticle goes stale during long drags
+            // otherwise. Runs on PointerEventPass.Initial so it observes events even
+            // when the gesture machine downstream consumes them.
             .pointerInput(Unit) {
                 awaitPointerEventScope {
                     while (true) {
                         val event = awaitPointerEvent(PointerEventPass.Initial)
+                        // Skip multi-touch — pinch handles those events and we don't want
+                        // the cursor jerking between two finger positions during zoom.
+                        if (event.changes.count { it.pressed } > 1) continue
                         val change = event.changes.firstOrNull() ?: continue
-                        if (change.pressed) continue
                         when (event.type) {
-                            PointerEventType.Move, PointerEventType.Enter -> {
+                            PointerEventType.Move, PointerEventType.Enter,
+                            PointerEventType.Press -> {
                                 dispatchMove(change.position, boxSize)
                             }
                         }
@@ -148,6 +171,7 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                     var lastPos: Offset = down.position
                     var totalMoved = 0f
                     var session: DragSession? = null
+                    var pinch: PinchSession? = null
                     var fired = false  // true once we've emitted tap / long-press / drag-start
                     var sawUp = false
 
@@ -158,8 +182,8 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                         // Until we've committed to a gesture, race the next pointer event
                         // against the long-press deadline. Compose only emits events on touch
                         // updates, so a perfectly still finger would otherwise never trigger
-                        // the long-press path.
-                        val ev = if (!fired) {
+                        // the long-press path. Pinch and drag both count as committed.
+                        val ev = if (!fired && pinch == null) {
                             val remaining = longPressMs - (System.currentTimeMillis() - downTime)
                             if (remaining > 0) {
                                 withTimeoutOrNull(remaining) { awaitPointerEvent(PointerEventPass.Main) }
@@ -171,18 +195,72 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                         }
 
                         if (ev == null) {
-                            // Long-press deadline expired without movement → right-click.
+                            // Long-press deadline expired without movement → right-click to
+                            // open the OSRS menu. Then track finger motion so MOUSE_MOVED
+                            // dispatches highlight the hovered option, and on release fire
+                            // a left-click at the final position — that's how desktop OSRS
+                            // selects a menu entry (right-click → move → left-click), and
+                            // the touchscreen has to fold all three into one held gesture.
                             fired = true
                             dispatchClick(lastPos, boxSize, BUTTON3)
-                            // Swallow remaining pointer events so the held-down finger doesn't
-                            // get re-interpreted as a second gesture when it finally lifts.
+                            var menuPos = lastPos
                             while (!sawUp) {
                                 val tail = awaitPointerEvent(PointerEventPass.Main)
                                 val tc = tail.changes.firstOrNull { it.id == downId } ?: break
                                 tc.consume()
-                                if (tc.changedToUpIgnoreConsumed() || !tc.pressed) sawUp = true
+                                menuPos = tc.position
+                                if (tc.changedToUpIgnoreConsumed() || !tc.pressed) {
+                                    sawUp = true
+                                } else {
+                                    // Keep the OSRS cursor in sync so the menu row under the
+                                    // finger highlights. dispatchMove is cheap (one hit-test +
+                                    // one fireMouse) and matches what desktop does on hover.
+                                    dispatchMove(menuPos, boxSize)
+                                }
+                            }
+                            // Only commit the selection if the lift lands ON the open menu.
+                            // Releasing in the world (the user changed their mind) cancels
+                            // — a stray BUTTON1 there would walk-here or attack instead.
+                            if (releaseHitsOpenMenu(menuPos, boxSize)) {
+                                dispatchClick(menuPos, boxSize, BUTTON1)
                             }
                             break
+                        }
+
+                        // Two-finger pinch: when a second pointer joins, abandon the
+                        // pending tap/long-press and switch to wheel-event dispatch so
+                        // the OSRS camera zooms (or the JScrollPane scrolls) under the
+                        // finger centroid. Pinch keeps running until either finger lifts.
+                        val pressed = ev.changes.filter { it.pressed }
+                        if (pinch == null && pressed.size >= 2) {
+                            // Cancel any in-progress single-finger drag — releasing the
+                            // press first keeps the OSRS click-and-drag camera from
+                            // sticking after we transition to pinch.
+                            session?.end()
+                            session = null
+                            fired = true
+                            pinch = PinchSession(pressed[0].position, pressed[1].position)
+                            pressed.forEach { it.consume() }
+                            continue
+                        }
+
+                        if (pinch != null) {
+                            if (pressed.size >= 2) {
+                                pinch!!.update(pressed[0].position, pressed[1].position, boxSize)
+                            } else {
+                                // Second finger lifted — release the BUTTON2 camera press
+                                // now (PinchSession.end is idempotent) so the OSRS camera
+                                // doesn't stay stuck mid-drag while the user reorganises
+                                // fingers. Remaining single finger sits idle until lift.
+                                pinch!!.end()
+                            }
+                            // When all fingers lift the gesture ends; if only one remains
+                            // down we stay in pinch-finished state so the lifting finger's
+                            // tap-up isn't re-interpreted as a click.
+                            val anyDown = ev.changes.any { it.pressed }
+                            ev.changes.forEach { it.consume() }
+                            if (!anyDown) break
+                            continue
                         }
 
                         val change = ev.changes.firstOrNull { it.id == downId } ?: break
@@ -209,7 +287,9 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                         change.consume()
                     }
 
-                    if (session != null) {
+                    if (pinch != null) {
+                        pinch!!.end()
+                    } else if (session != null) {
                         session.end()
                     } else if (!fired) {
                         // Quick tap with little movement → left click
@@ -225,7 +305,7 @@ private fun GameViewport(modifier: Modifier = Modifier) {
         val rect = canvasRect
         val density = LocalDensity.current
         if (rect != null && boxSize.width > 0 && boxSize.height > 0) {
-            val ww = FRAME_WIDTH.toFloat()
+            val ww = frameWidthFor(boxSize).toFloat()
             val wh = FRAME_HEIGHT.toFloat()
             val scale = minOf(boxSize.width / ww, boxSize.height / wh)
             val padX = ((boxSize.width - ww * scale) / 2f).toInt()
@@ -371,12 +451,6 @@ private fun dispatchClick(offset: Offset, boxSize: IntSize, button: Int) {
     }
 }
 
-/** Multiplier applied to canvas-drag deltas. The shadow window is rendered with
- *  ContentScale.Fit, so a finger movement of N Compose-px maps to <N AWT-px after the
- *  inverse-scale, which makes camera rotation feel sluggish. Amplifying inside the
- *  Canvas only keeps UI drags (scrollbars, etc.) at 1:1. */
-private const val CANVAS_DRAG_GAIN = 2.5f
-
 /** Common contract for "in-progress drag" handlers. The gesture state machine just
  *  feeds Compose pointer updates here; concrete implementations decide whether to
  *  dispatch MOUSE_DRAGGED, MOUSE_WHEEL, or something else. */
@@ -387,24 +461,21 @@ private interface DragSession {
 
 /** Live drag session — sends MOUSE_PRESSED to start, MOUSE_DRAGGED on each move, and
  *  MOUSE_RELEASED on end. button is BUTTON2 inside the game Canvas (camera-look) and
- *  BUTTON1 elsewhere (scrollbar, list, etc.). For canvas drags we accumulate scaled
- *  delta instead of replaying absolute coords, so finger speed → camera speed feels
- *  responsive even though the underlying window is letterboxed. */
+ *  BUTTON1 elsewhere (scrollbar, list, etc.). 1:1 position mapping in all cases so
+ *  the dispatched drag coords stay where the finger actually is — earlier we amplified
+ *  canvas-drag deltas 2.5× to make camera rotation feel faster, but that desyncs the
+ *  client's tracked cursor from the real finger position and the OSRS tooltip ends up
+ *  pointing somewhere off-screen. Native pace keeps tooltip / look-at sane. */
 private class MouseDragSession(
     val target: java.awt.Component,
     val originAbsX: Int,
     val originAbsY: Int,
     val button: Int,
-    val originWinX: Int,
-    val originWinY: Int,
-    val amplify: Boolean,
+    originWinX: Int,
+    originWinY: Int,
 ) : DragSession {
     private var lastX = originWinX - originAbsX
     private var lastY = originWinY - originAbsY
-    private var virtualX = lastX.toFloat()
-    private var virtualY = lastY.toFloat()
-    private var lastWinX = originWinX
-    private var lastWinY = originWinY
 
     fun start() {
         // MOVED to park the cursor at the press point, then the actual PRESSED.
@@ -415,17 +486,8 @@ private class MouseDragSession(
     override fun update(pos: Offset, boxSize: IntSize) {
         val window = java.awt.Window.primaryFrame() ?: return
         val (wx, wy) = composeToWindow(pos, boxSize, window) ?: return
-        if (amplify) {
-            virtualX += (wx - lastWinX) * CANVAS_DRAG_GAIN
-            virtualY += (wy - lastWinY) * CANVAS_DRAG_GAIN
-            lastWinX = wx
-            lastWinY = wy
-            lastX = virtualX.toInt()
-            lastY = virtualY.toInt()
-        } else {
-            lastX = wx - originAbsX
-            lastY = wy - originAbsY
-        }
+        lastX = wx - originAbsX
+        lastY = wy - originAbsY
         fireMouse(target, java.awt.event.MouseEvent.MOUSE_DRAGGED, lastX, lastY, button, true)
     }
 
@@ -496,6 +558,89 @@ private class ScrollDragSession(
     }
 }
 
+/** Two-finger pinch → mouse-wheel translation. Tracks the distance between the two
+ *  fingers; every time the distance changes by PINCH_NOTCH_PX in either direction,
+ *  fires one MOUSE_WHEEL notch on whatever Canvas/JScrollPane sits under the centroid.
+ *  Single-finger drag now handles camera rotation via MobileHitTest, so pinch is just
+ *  zoom and doesn't need a synthetic BUTTON2 press.
+ *
+ *  Sign convention: pinch OUT (fingers apart) → negative rotation = wheel-up = OSRS
+ *  zoom in. Pinch IN (fingers together) → positive rotation = wheel-down = zoom out. */
+private class PinchSession(initialA: Offset, initialB: Offset) {
+    private var lastDistance = distance(initialA, initialB)
+    private var accumulated = 0f
+    private var ended = false
+
+    fun update(a: Offset, b: Offset, boxSize: IntSize) {
+        if (ended) return
+        val newDist = distance(a, b)
+        val delta = newDist - lastDistance
+        lastDistance = newDist
+        // pinch OUT = positive delta = wheel up (negative rotation).
+        accumulated += -delta / PINCH_NOTCH_PX
+        val notches = accumulated.toInt()
+        if (notches != 0) {
+            accumulated -= notches.toFloat()
+            val centroid = Offset((a.x + b.x) / 2f, (a.y + b.y) / 2f)
+            dispatchWheel(centroid, boxSize, notches)
+        }
+    }
+
+    fun end() { ended = true }
+
+    companion object {
+        /** Pixels of pinch-distance change per wheel notch. Tuned so a "comfortable"
+         *  two-finger zoom (≈40% spread/contract on a phone screen) produces ~3 notches,
+         *  matching how a desktop mouse wheel feels for the same intent. */
+        private const val PINCH_NOTCH_PX = 40f
+
+        private fun distance(a: Offset, b: Offset): Float {
+            val dx = a.x - b.x
+            val dy = a.y - b.y
+            return kotlin.math.sqrt(dx * dx + dy * dy)
+        }
+    }
+}
+
+/** Send one MouseWheelEvent at the given Compose position. Targets the first Canvas in
+ *  the hit ancestry (so pinching over the game scene zooms the camera) or the first
+ *  JScrollPane (so a pinch over the plugin list scrolls it, matching the drag-scroll
+ *  path). Notches < 0 → wheel up (zoom in); notches > 0 → wheel down (zoom out). */
+private fun dispatchWheel(pos: Offset, boxSize: IntSize, notches: Int) {
+    if (notches == 0) return
+    val window = java.awt.Window.primaryFrame() ?: return
+    val (winX, winY) = composeToWindow(pos, boxSize, window) ?: return
+    val hit = hitTest(window, winX, winY) ?: return
+    val target = ancestorChain(hit.comp).firstOrNull {
+        it is java.awt.Canvas || it is javax.swing.JScrollPane
+    } ?: hit.comp
+    val (lx, ly) = localCoords(target, winX, winY)
+    val ev = java.awt.event.MouseWheelEvent(
+        target,
+        java.awt.event.MouseEvent.MOUSE_WHEEL,
+        System.currentTimeMillis(),
+        0, lx, ly, 0, false,
+        java.awt.event.MouseWheelEvent.WHEEL_UNIT_SCROLL,
+        kotlin.math.abs(notches),
+        notches,
+    )
+    target.dispatchMouseEvent(ev)
+}
+
+/** True iff the release position lies inside the currently-open right-click menu rect
+ *  published by MobileInputPlugin. Converts Compose-space → window-space → canvas-local
+ *  using the same path beginDrag uses so the coord systems match. */
+private fun releaseHitsOpenMenu(releasePos: Offset, boxSize: IntSize): Boolean {
+    val window = java.awt.Window.primaryFrame() ?: return false
+    val (winX, winY) = composeToWindow(releasePos, boxSize, window) ?: return false
+    val hit = hitTest(window, winX, winY) ?: return false
+    val canvas = ancestorChain(hit.comp).firstOrNull { it is java.awt.Canvas } as? java.awt.Canvas
+        ?: return false
+    val cHit = hitTestExact(window, canvas) ?: return false
+    return net.runelite.client.plugins.mobile.MobileHitTest.isMenuAt(
+        winX - cHit.absX, winY - cHit.absY)
+}
+
 private fun beginDrag(downPos: Offset, currentPos: Offset, boxSize: IntSize): DragSession? {
     val window = java.awt.Window.primaryFrame() ?: return null
     // Start the press at the original down location, not the slop-crossing point — that
@@ -504,12 +649,12 @@ private fun beginDrag(downPos: Offset, currentPos: Offset, boxSize: IntSize): Dr
     val (winX, winY) = composeToWindow(downPos, boxSize, window) ?: return null
     val hit = hitTest(window, winX, winY) ?: return null
     val ancestry = ancestorChain(hit.comp).toList()
-    val draggingCanvas = ancestry.any { it is java.awt.Canvas }
+    val canvas = ancestry.firstOrNull { it is java.awt.Canvas } as? java.awt.Canvas
     // Outside the game Canvas: if there's a JScrollPane in the ancestry the drag
     // translates into MOUSE_WHEEL events on that scrollpane (same path real Swing
     // takes when you wheel-scroll the plugin list). Replicates the desktop UX
     // without us needing to draw a scrollbar thumb to grab.
-    if (!draggingCanvas) {
+    if (canvas == null) {
         val scrollPane = ancestry.firstOrNull { it is javax.swing.JScrollPane } as? javax.swing.JScrollPane
         if (scrollPane != null) {
             val session = ScrollDragSession(scrollPane, winX, winY)
@@ -517,11 +662,28 @@ private fun beginDrag(downPos: Offset, currentPos: Offset, boxSize: IntSize): Dr
             return session
         }
     }
-    val button = if (draggingCanvas) BUTTON2 else BUTTON1
+    // Inside the game Canvas: ask MobileInputPlugin whether the touch landed on a
+    // visible RS widget (inventory slot, button, scrollbar) vs. on the 3D scene. UI
+    // widget → BUTTON1 drag so the user can drag inv slot-to-slot; scene → BUTTON2 so
+    // the OSRS camera rotates. Outside the Canvas (Swing sidebar etc.) every drag is
+    // BUTTON1 by default — those are click-based widgets anyway.
+    val button = if (canvas != null) {
+        val cHit = hitTestExact(window, canvas)
+        val cx = if (cHit != null) winX - cHit.absX else -1
+        val cy = if (cHit != null) winY - cHit.absY else -1
+        val isInterface = cHit != null
+            && net.runelite.client.plugins.mobile.MobileHitTest.isInterfaceAt(cx, cy)
+        val pick = if (isInterface) BUTTON1 else BUTTON2
+        android.util.Log.i("MobileInput",
+            "begin drag canvas=($cx,$cy) interface=$isInterface button=$pick")
+        pick
+    } else {
+        BUTTON1
+    }
     val target = walkUpToListener(hit.comp) ?: hit.comp
     // Compute target's absolute origin so update() can re-translate moves.
     val tHit = hitTestExact(window, target) ?: return null
-    val session = MouseDragSession(target, tHit.absX, tHit.absY, button, winX, winY, amplify = draggingCanvas)
+    val session = MouseDragSession(target, tHit.absX, tHit.absY, button, winX, winY)
     session.start()
     // Process the current pos as the first drag step so we don't lose the slop-crossing motion.
     session.update(currentPos, boxSize)

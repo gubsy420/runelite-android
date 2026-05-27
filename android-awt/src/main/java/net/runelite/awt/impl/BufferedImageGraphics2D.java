@@ -186,8 +186,22 @@ public class BufferedImageGraphics2D extends Graphics2D {
         TextRender r = TextCache.get(str, font, foreground.getRGB(), textAaMode());
         int dx = x + tx() + r.boundsLeft - TextCache.PADDING;
         int dy = y + ty() + r.boundsTop - TextCache.PADDING;
-        AwtNative.blit(r.pixels, r.w, r.h, 0, 0, r.w, r.h,
-            pixels, width, height, dx, dy, r.w, r.h, compositeRule(), compositeAlpha());
+        // Honor the clip — text in a scrolled JViewport otherwise paints
+        // outside the viewport bounds (same bug pattern as blit()). 1:1 scale
+        // here so source shift == dst clip offset.
+        int cx0 = clip.x, cy0 = clip.y;
+        int cx1 = clip.x + clip.width, cy1 = clip.y + clip.height;
+        int ndx = Math.max(dx, cx0);
+        int ndy = Math.max(dy, cy0);
+        int ndx2 = Math.min(dx + r.w, cx1);
+        int ndy2 = Math.min(dy + r.h, cy1);
+        int ndw = ndx2 - ndx;
+        int ndh = ndy2 - ndy;
+        if (ndw <= 0 || ndh <= 0) return;
+        int nsx = ndx - dx;
+        int nsy = ndy - dy;
+        AwtNative.blit(r.pixels, r.w, r.h, nsx, nsy, ndw, ndh,
+            pixels, width, height, ndx, ndy, ndw, ndh, compositeRule(), compositeAlpha());
     }
 
     /**
@@ -411,8 +425,41 @@ public class BufferedImageGraphics2D extends Graphics2D {
     private void blit(BufferedImage src, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh) {
         int[] srcPixels = src.backingArray();
         if (srcPixels == null) return;
-        AwtNative.blit(srcPixels, src.getWidth(), src.getHeight(), sx, sy, sw, sh,
-            pixels, width, height, dx + tx(), dy + ty(), dw, dh,
+
+        // Honor the active clip. Without this, components in a JViewport that
+        // ever blit an image (icon, sub-buffer, glyph cache hit) overflow the
+        // viewport bounds when scrolled — content visually "drags" over the
+        // parent UI even though fillRect/drawLine clip correctly. We clip the
+        // destination rect to the current clip, then shift the source rect
+        // proportionally so the same source pixels map to the same world
+        // positions.
+        int adx = dx + tx();
+        int ady = dy + ty();
+        int adx2 = adx + dw;
+        int ady2 = ady + dh;
+        int cx0 = clip.x, cy0 = clip.y;
+        int cx1 = clip.x + clip.width, cy1 = clip.y + clip.height;
+        int ndx = Math.max(adx, cx0);
+        int ndy = Math.max(ady, cy0);
+        int ndx2 = Math.min(adx2, cx1);
+        int ndy2 = Math.min(ady2, cy1);
+        int ndw = ndx2 - ndx;
+        int ndh = ndy2 - ndy;
+        if (ndw <= 0 || ndh <= 0) return;
+
+        // Source shift in destination-pixel units. With non-1:1 scaling the
+        // source advance per dest pixel is sw/dw, so multiply the dst clip
+        // offset by that ratio. Use long to avoid intermediate overflow.
+        int leftCut = ndx - adx;
+        int topCut = ndy - ady;
+        int nsx = sx + (int) ((long) leftCut * sw / dw);
+        int nsy = sy + (int) ((long) topCut * sh / dh);
+        int nsw = (int) ((long) ndw * sw / dw);
+        int nsh = (int) ((long) ndh * sh / dh);
+        if (nsw <= 0 || nsh <= 0) return;
+
+        AwtNative.blit(srcPixels, src.getWidth(), src.getHeight(), nsx, nsy, nsw, nsh,
+            pixels, width, height, ndx, ndy, ndw, ndh,
             compositeRuleFor(src), compositeAlpha());
     }
 

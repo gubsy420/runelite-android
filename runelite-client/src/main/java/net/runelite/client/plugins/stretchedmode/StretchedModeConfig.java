@@ -71,6 +71,6 @@ public interface StretchedModeConfig extends Config
 	@Units(Units.PERCENT)
 	default int scalingFactor()
 	{
-		return 50;
+		return 400;
 	}
 }

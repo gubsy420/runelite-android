@@ -38,7 +38,6 @@ import org.gradle.jvm.tasks.Jar;
 @CacheableTask
 public abstract class JarsignTask extends DefaultTask
 {
-
 	public JarsignTask()
 	{
 		dependsOn(getBuildTask());
@@ -90,5 +89,4 @@ public abstract class JarsignTask extends DefaultTask
 				getAlias().get()
 			));
 	}
-
 }

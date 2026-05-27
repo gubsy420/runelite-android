@@ -33,10 +33,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  *    {@code AudioTrack::releaseBuffer}; pausing it would deadlock the drain.
  */
 public final class AndroidAudioBridge {
-    /** Soft ceiling on queued-but-not-yet-played PCM bytes. ~200ms of stereo 16-bit at
-     *  44.1kHz is 35280 bytes; pick a value that buffers a few ticks of audio without
-     *  inducing noticeable lag between game state changes and the corresponding sound. */
-    private static final int QUEUE_CAP_BYTES = 192 * 1024;
+    /** Soft ceiling on queued-but-not-yet-played PCM bytes. The OSRS client streams
+     *  22050 Hz mono 16-bit (44 100 bytes/sec), so 32 KB ≈ 740 ms — past that the
+     *  enqueue path drops oldest chunks to clamp end-to-end latency. The previous
+     *  192 KB allowed ~4.3 s of audio to pile up, which is what users perceive as
+     *  the "delay between action and sound" lag. */
+    private static final int QUEUE_CAP_BYTES = 32 * 1024;
 
     private static final Object TRACK_LOCK = new Object();
     private static AudioTrack sharedTrack;
@@ -85,12 +87,17 @@ public final class AndroidAudioBridge {
                 old.release();
             }
 
-            int internalBuf = Math.max(Math.max(requestedBuf * 4, minBuf * 4), 64 * 1024);
+            // Use the smallest buffer that won't underrun. minBufferSize is the floor
+            // the audio HAL needs to keep the hardware fed; 2× gives us a glitch
+            // margin for jittery drains. Was max(reqBuf*4, minBuf*4, 64KB) which on
+            // OSRS's 22050 Hz mono produced ≥ 1.5 s of in-flight audio at the HAL
+            // alone — the dominant component of the 3-4 s perceived latency.
+            int internalBuf = Math.max(minBuf * 2, 8 * 1024);
             try {
-                AudioTrack t = new AudioTrack.Builder()
+                AudioTrack.Builder b = new AudioTrack.Builder()
                     .setAudioAttributes(new AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_GAME)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                         .build())
                     .setAudioFormat(new android.media.AudioFormat.Builder()
                         .setEncoding(encoding)
@@ -98,8 +105,13 @@ public final class AndroidAudioBridge {
                         .setChannelMask(channelMask)
                         .build())
                     .setBufferSizeInBytes(internalBuf)
-                    .setTransferMode(AudioTrack.MODE_STREAM)
-                    .build();
+                    .setTransferMode(AudioTrack.MODE_STREAM);
+                // PERFORMANCE_MODE_LOW_LATENCY (API 26+) asks the HAL to route through
+                // its fast-mixer path. The driver may refuse and silently fall back to
+                // NONE, which is fine — we still benefit from the smaller buffer.
+                try { b.setPerformanceMode(AudioTrack.PERFORMANCE_MODE_LOW_LATENCY); }
+                catch (Throwable ignored) {}
+                AudioTrack t = b.build();
                 try { t.play(); } catch (IllegalStateException ignored) {}
                 sharedTrack = t;
                 sharedSampleRate = sampleRate;

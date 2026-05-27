@@ -1,5 +1,6 @@
 package net.runelite.mp
 
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -22,6 +23,17 @@ class MainActivity : ComponentActivity() {
         // Fullscreen + edge-to-edge, hide system bars (immersive sticky behavior).
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        // Draw under the camera notch / display cutout instead of leaving a black bar
+        // there — the AWT chrome (sidebar, title bar) is empty in that strip otherwise.
+        // ALWAYS lets the layout extend into the cutout in any orientation; SHORT_EDGES
+        // is the fallback for API 28–29 where ALWAYS doesn't exist.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
         WindowInsetsControllerCompat(window, window.decorView).apply {
             hide(WindowInsetsCompat.Type.systemBars())
             systemBarsBehavior =

@@ -82,7 +82,17 @@ public final class ImageIO {
         if (name == null) return Bitmap.CompressFormat.PNG;
         String n = name.toLowerCase(java.util.Locale.ROOT);
         if (n.equals("jpeg") || n.equals("jpg")) return Bitmap.CompressFormat.JPEG;
-        if (n.equals("webp")) return Bitmap.CompressFormat.WEBP_LOSSLESS;
+        if (n.equals("webp")) {
+            // WEBP_LOSSLESS was split out of the deprecated WEBP enum in API 30. Our minSdk
+            // is 26, so gate the newer constant on Build.VERSION and fall back to plain WEBP
+            // (still lossless mode in practice) on older devices.
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                return Bitmap.CompressFormat.WEBP_LOSSLESS;
+            }
+            @SuppressWarnings("deprecation")
+            Bitmap.CompressFormat legacy = Bitmap.CompressFormat.WEBP;
+            return legacy;
+        }
         return Bitmap.CompressFormat.PNG;
     }
 }

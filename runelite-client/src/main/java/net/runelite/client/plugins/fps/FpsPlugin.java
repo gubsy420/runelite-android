@@ -49,7 +49,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "FPS Control",
 	description = "Show current FPS and/or set an FPS limit",
 	tags = {"frames", "framerate", "limit", "overlay"},
-	enabledByDefault = false
+	enabledByDefault = true
 )
 public class FpsPlugin extends Plugin
 {

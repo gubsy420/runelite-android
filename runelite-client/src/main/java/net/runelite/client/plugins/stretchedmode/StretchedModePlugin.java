@@ -40,7 +40,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 	name = "Stretched Mode",
 	description = "Stretches the game in fixed and resizable modes.",
 	tags = {"resize", "ui", "interface", "stretch", "scaling", "fixed"},
-	enabledByDefault = false
+	enabledByDefault = true
 )
 public class StretchedModePlugin extends Plugin
 {

@@ -54,6 +54,26 @@ public class EventBus
 {
 	private static final Marker DEDUPLICATE = MarkerFactory.getMarker("DEDUPLICATE");
 
+	/**
+	 * Android (Dalvik / ART) blocks reflective access to {@link LambdaMetafactory}
+	 * as a hidden-API; even with desugar_jdk_libs's polyfill in place, the runtime
+	 * metafactory call ends up returning a null CallSite (or one whose
+	 * {@code getTarget()} resolves to null), and the surrounding {@code try/catch}
+	 * in register() gets elided by D8 — the NPE bubbles up to whatever triggered
+	 * the registration and prevents any @Subscribe wiring from working. Skipping
+	 * the lambda creation entirely makes every Subscriber fall through to the
+	 * existing {@code method.invoke(...)} reflection path, which works fine.
+	 *
+	 * Detection is by VM name: ART/Dalvik reports "Dalvik" or similar; HotSpot
+	 * reports "OpenJDK 64-Bit Server VM" / "Java HotSpot(TM) 64-Bit Server VM".
+	 */
+	private static final boolean IS_ANDROID;
+	static
+	{
+		String vm = System.getProperty("java.vm.name", "");
+		IS_ANDROID = vm.contains("Dalvik") || vm.contains("Android");
+	}
+
 	@Value
 	public static class Subscriber
 	{
@@ -137,25 +157,28 @@ public class EventBus
 				method.setAccessible(true);
 				Consumer<Object> lambda = null;
 
-				try
+				if (!IS_ANDROID)
 				{
-					final MethodHandles.Lookup caller = ReflectUtil.privateLookupIn(clazz);
-					final MethodType subscription = MethodType.methodType(void.class, parameterClazz);
-					final MethodHandle target = caller.findVirtual(clazz, method.getName(), subscription);
-					final CallSite site = LambdaMetafactory.metafactory(
-						caller,
-						"accept",
-						MethodType.methodType(Consumer.class, clazz),
-						subscription.changeParameterType(0, Object.class),
-						target,
-						subscription);
+					try
+					{
+						final MethodHandles.Lookup caller = ReflectUtil.privateLookupIn(clazz);
+						final MethodType subscription = MethodType.methodType(void.class, parameterClazz);
+						final MethodHandle target = caller.findVirtual(clazz, method.getName(), subscription);
+						final CallSite site = LambdaMetafactory.metafactory(
+							caller,
+							"accept",
+							MethodType.methodType(Consumer.class, clazz),
+							subscription.changeParameterType(0, Object.class),
+							target,
+							subscription);
 
-					final MethodHandle factory = site.getTarget();
-					lambda = (Consumer<Object>) factory.bindTo(object).invokeExact();
-				}
-				catch (Throwable e)
-				{
-					log.warn("Unable to create lambda for method {}", method, e);
+						final MethodHandle factory = site.getTarget();
+						lambda = (Consumer<Object>) factory.bindTo(object).invokeExact();
+					}
+					catch (Throwable e)
+					{
+						log.warn("Unable to create lambda for method {}", method, e);
+					}
 				}
 
 				final Subscriber subscriber = new Subscriber(object, method, sub.priority(), lambda);
