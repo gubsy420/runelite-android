@@ -36,6 +36,10 @@ dependencyResolutionManagement {
             content {
                 includeGroupByRegex("com\\.android.*")
                 includeGroupByRegex("com\\.google\\.android.*")
+                // Firebase + Google Services live under com.google.firebase / com.google.gms;
+                // Crashlytics ingests through these so the regex needs to allow them.
+                includeGroupByRegex("com\\.google\\.firebase.*")
+                includeGroupByRegex("com\\.google\\.gms.*")
                 includeGroupByRegex("androidx.*")
             }
         }

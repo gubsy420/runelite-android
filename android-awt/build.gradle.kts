@@ -32,6 +32,10 @@ android {
         // anything below the dex API level.
         minSdk = 26
         lint.targetSdk = 35
+        // Propagate keep rules for java.awt.* / javax.swing.* / sun.* to any consuming
+        // app's R8 step. The gamepack calls these by name; renaming them at link time
+        // breaks Class.forName / reflection lookups inside the obfuscated client jar.
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {

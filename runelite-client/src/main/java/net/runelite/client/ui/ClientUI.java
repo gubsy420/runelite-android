@@ -150,6 +150,32 @@ public class ClientUI
 	private final boolean safeMode;
 	private final String title;
 
+	/**
+	 * When {@code -Drunelite.headlessChrome=true} is set, the AWT sidebar (JTabbedPane)
+	 * and toolbar (ClientToolbarPanel) get constructed exactly as they always do — so
+	 * NavigationButton add/remove, plugin panels, etc. keep working transparently — but
+	 * they're never inserted into the visible component tree and {@link #toggleSidebar}
+	 * becomes a no-op. The runelite-mp Android build sets this property in
+	 * {@code RuneLiteLauncher} before invoking {@link net.runelite.client.RuneLite#main}
+	 * because the Compose chrome is the sole UI on mobile and two stacked sidebars in
+	 * the bitmap blit would just look like a bug. Reflection-based hiding via
+	 * {@code ChromeSuppressor} used to do this from the outside; this property does it
+	 * at the source so no race exists between init and our suppression.
+	 */
+	private static final boolean HEADLESS_CHROME = Boolean.getBoolean("runelite.headlessChrome");
+
+	/**
+	 * When set, every call to {@link #openPanel(NavigationButton, boolean)} also fires
+	 * this listener. The runelite-mp Compose chrome registers one here at boot so
+	 * programmatic panel-opens (Hiscore "Lookup" from the player right-click menu,
+	 * loot tracker's auto-open on drop, etc.) can switch the *Compose* panel to the
+	 * matching tooltip instead of dead-ending at a hidden Swing tab.
+	 *
+	 * Volatile because the listener is set from the Compose-host thread but openPanel
+	 * fires from anywhere (Swing EDT, ClientThread).
+	 */
+	public static volatile java.util.function.Consumer<NavigationButton> externalPanelOpenListener;
+
 	private final Rectangle sidebarButtonPosition = new Rectangle();
 	private BufferedImage sidebarOpenIcon;
 	private BufferedImage sidebarCloseIcon;
@@ -477,7 +503,17 @@ public class ClientUI
 				}
 			});
 
+			// Always parent the sidebar to `content` — the custom Layout looks at
+			// content.getComponent(1) explicitly and skipping the add() would break
+			// the client/sidebar width arithmetic. Visibility is the real switch:
+			// when HEADLESS_CHROME is set we hide the tab pane immediately so the
+			// layout's `sidebar.isVisible() ? prefWidth : 0` clamps the sidebar to
+			// zero pixels and the client gets the full content width.
 			content.add(sidebar);
+			if (HEADLESS_CHROME)
+			{
+				sidebar.setVisible(false);
+			}
 
 			frame.setContentPane(content);
 
@@ -546,7 +582,10 @@ public class ClientUI
 			{
 				JMenuBar menuBar = new JMenuBar();
 				menuBar.add(Box.createGlue());
-				menuBar.add(toolbarPanel);
+				if (!HEADLESS_CHROME)
+				{
+					menuBar.add(toolbarPanel);
+				}
 				frame.setJMenuBar(menuBar);
 
 				JRootPane rp = frame.getRootPane();
@@ -599,7 +638,7 @@ public class ClientUI
 					.onClick(this::toggleSidebar)
 					.build(), false);
 			}
-			else
+			else if (!HEADLESS_CHROME)
 			{
 				sidebar.putClientProperty(
 					FlatClientProperties.TABBED_PANE_TRAILING_COMPONENT,
@@ -1053,6 +1092,18 @@ public class ClientUI
 			return;
 		}
 
+		// Forward the panel-open intent to whoever is listening. Used by runelite-mp to
+		// route Swing-only panel hooks (Hiscore "Lookup", Loot Tracker auto-show, etc.)
+		// to their Compose replacements when the AWT sidebar is suppressed via
+		// HEADLESS_CHROME. Fires before the Swing index/visibility swap so the listener
+		// can decide whether the Swing side should still react.
+		java.util.function.Consumer<NavigationButton> hook = externalPanelOpenListener;
+		if (hook != null && navBtn != null)
+		{
+			try { hook.accept(navBtn); }
+			catch (Throwable t) { log.warn("externalPanelOpenListener threw", t); }
+		}
+
 		int index = navBtn == null ? -1 : sidebarEntries.headSet(navBtn).size();
 		sidebar.setSelectedIndex(index);
 
@@ -1068,6 +1119,16 @@ public class ClientUI
 
 	private void toggleSidebar(boolean open, boolean pushHistory)
 	{
+		// Hard short-circuit when running headless-chrome (mobile). The sidebar never
+		// made it into the component tree, so flipping visibility would just leave us
+		// with a phantom JTabbedPane that would paint itself into the AWT backbuffer
+		// the moment something forced a revalidate — which is exactly the bug this
+		// flag exists to prevent.
+		if (HEADLESS_CHROME)
+		{
+			return;
+		}
+
 		if (sidebar.isVisible() == open)
 		{
 			return;

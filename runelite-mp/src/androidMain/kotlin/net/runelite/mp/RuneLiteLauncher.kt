@@ -11,8 +11,23 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import android.util.Log
 import net.runelite.awt.AwtCompat
+import net.runelite.mp.crash.AndroidCrashReporter
 
 private const val TAG = "RuneLiteLauncher"
+
+/**
+ * Where ExternalPluginClient pulls plugin manifests / icons / jars from. Override at
+ * build time by editing this constant — `runelite.pluginhub.url` from a properties file
+ * would also work, but a constant keeps the override visible. The path layout below the
+ * base must match the upstream contract:
+ *   <base>/manifest/<version>_lite.js
+ *   <base>/manifest/<version>_full.js
+ *   <base>/icon/<internalName>_<iconHash>.png
+ *   <base>/jar/<internalName>_<jarHash>.jar
+ * Produced by `pluginhub-lib :publishHub` under data/output/site/, then pushed to a
+ * public GitHub repo whose raw URL goes here.
+ */
+private const val ANDROID_PLUGIN_HUB_URL = "https://raw.githubusercontent.com/zeruth/plugin-hub-dex/main"
 
 /**
  * Drives RuneLite's headless boot from a Compose UI: kicks off `net.runelite.client.RuneLite.main`
@@ -31,6 +46,12 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
 
     private var job: Job? = null
 
+    /** Account whose credentials.properties the launcher should seed into the env on
+     *  the next [launch]. The Compose [net.runelite.mp.account.AccountPicker] sets this
+     *  before calling launch(); null falls back to the legacy `assets/credentials.properties`
+     *  path so older builds keep working. */
+    var accountFile: java.io.File? = null
+
     fun launch(scope: CoroutineScope, vararg args: String) {
         if (job?.isActive == true) return
         state = State.Starting
@@ -45,6 +66,29 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
                 state = State.Running
 
                 installLogTaps()
+
+                // Point the external plugin hub at our GitHub-hosted bundle. The unmodified
+                // ExternalPluginClient reads this via System.getProperty before its Guice
+                // injector binds the @Named("runelite.pluginhub.url") HttpUrl — must be set
+                // before RuneLite.main runs. Set to a raw.githubusercontent.com URL whose
+                // contents are produced by `pluginhub-lib :publishHub` (manifest/, jar/, icon/).
+                System.setProperty("runelite.pluginhub.url", ANDROID_PLUGIN_HUB_URL)
+                logLine("pluginhub.url → $ANDROID_PLUGIN_HUB_URL")
+                // ClientUI checks this static-init time — must be set *before* RuneLite.main
+                // touches that class. With this on, ClientUI never adds its JTabbedPane
+                // sidebar or ClientToolbarPanel to the visible component tree and
+                // toggleSidebar becomes a no-op. The Compose chrome is the sole UI on
+                // Android; without this flag the AWT sidebar would race ChromeSuppressor
+                // and occasionally paint into the bitmap blit.
+                System.setProperty("runelite.headlessChrome", "true")
+                logLine("headlessChrome → true (AWT sidebar/toolbar suppressed at source)")
+                // The bundled trust anchor is upstream RL's 4096-bit cert that signs the
+                // official hub. Our manifest is signed by the 2048-bit keystore that
+                // `pluginhub-lib :generateKeys` produces — ship that cert as a sibling
+                // resource (`externalplugins-android.crt`) and point ExternalPluginClient
+                // at it. Desktop never sets this property and stays on upstream's cert.
+                System.setProperty("runelite.pluginhub.cert", "externalplugins-android.crt")
+                logLine("pluginhub.cert → externalplugins-android.crt")
 
                 seedLauncherCredentials()
                 runNetSelfTest()
@@ -72,6 +116,10 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
                 logLine("FATAL: ${root.javaClass.name}: ${root.message}")
                 Log.e(TAG, "RuneLite.main failed", root)
                 root.stackTrace.take(20).forEach { logLine("  at $it") }
+                // RuneLite.main failures aren't uncaught (the launcher catches them
+                // here for UI display), so Crashlytics' uncaught handler never sees
+                // them. Report as a non-fatal so the failure still surfaces.
+                AndroidCrashReporter.nonFatal(root)
             }
         }
     }
@@ -79,6 +127,10 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
     private fun logLine(line: String) {
         log += line
         Log.i(TAG, line)
+        // Mirror into Crashlytics' rolling breadcrumb log — these are the highest-signal
+        // events for diagnosing a crash (netcheck results, credential seed, plugin
+        // bootstrap stage). Cheap; no-op when Crashlytics isn't installed.
+        AndroidCrashReporter.breadcrumb(line)
     }
 
     private fun intToBE(value: Int): ByteArray = byteArrayOf(
@@ -115,7 +167,11 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
             val host = addrs[0].hostAddress
             val sock = java.net.Socket()
             sock.connect(java.net.InetSocketAddress(host, 443), 5000)
-            logLine("netcheck Socket TCP $host:443 connected in ${System.currentTimeMillis() - socketT}ms (local=${sock.localAddress.hostAddress}:${sock.localPort})")
+            // Local port is kept (useful for diagnosing port-exhaustion / interface-pinning
+            // bugs) but the local IP is redacted — that value identifies the user's home or
+            // mobile network and would land in every Crashlytics report via the breadcrumb
+            // mirror. Server-side IP we resolved is already logged above.
+            logLine("netcheck Socket TCP $host:443 connected in ${System.currentTimeMillis() - socketT}ms (local-port=${sock.localPort})")
             sock.close()
 
             // Test the actual game/js5 endpoints the patched client connects to.
@@ -160,12 +216,21 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
     // is loaded.
     private fun seedLauncherCredentials() {
         val ctx = context ?: return
+        // Prefer the explicit AccountPicker selection. Falling back to the asset preserves
+        // the historical single-account boot path for builds that still ship one.
+        val source = accountFile
         val props = try {
-            ctx.assets.open("credentials.properties").use { stream ->
-                java.util.Properties().apply { load(stream) }
+            if (source != null && source.exists()) {
+                source.inputStream().use {
+                    java.util.Properties().apply { load(it) }
+                }
+            } else {
+                ctx.assets.open("credentials.properties").use { stream ->
+                    java.util.Properties().apply { load(stream) }
+                }
             }
         } catch (e: java.io.FileNotFoundException) {
-            logLine("no credentials.properties asset; skipping JX_* env seed")
+            logLine("no credentials.properties available; skipping JX_* env seed")
             return
         } catch (e: Throwable) {
             logLine("failed to read credentials.properties: ${e.message}")
@@ -182,7 +247,12 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
                 logLine("Os.setenv($key) failed: ${e.message}")
             }
         }
-        logLine("seeded $seeded launcher env var(s) from credentials.properties")
+        // Source label is intentionally generic — `source.name` is the .properties file's
+        // basename which equals the account display-name slug. Logging it would identify
+        // the user in every Crashlytics breadcrumb stream. The keys we just enumerated
+        // (already logged by name only, never value) are enough context for debugging.
+        val srcLabel = if (source != null) "selected account" else "assets/credentials.properties"
+        logLine("seeded $seeded launcher env var(s) from $srcLabel")
     }
 
     private fun installLogTaps() {

@@ -1,5 +1,6 @@
 package net.runelite.client.plugins.mobile;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,19 +41,65 @@ public class MobileInputPlugin extends Plugin
 	{
 		MobileHitTest.setInterfaceRects(null);
 		MobileHitTest.setMenuRect(null);
+		MobileHitTest.setFixedMode(false);
+		MobileHitTest.setViewportRect(null);
 	}
 
 	@Subscribe
 	public void onBeforeRender(BeforeRender ev)
 	{
+		// The engine reports all rect/coord APIs (viewport, menu, widget bounds) in
+		// "real" (internal) space — the same space TranslateMouseListener converts
+		// incoming mouse events INTO. Our Android touch handler delivers canvas-local
+		// pixels in "stretched" space (what the user actually sees on screen). Compute
+		// the scale once and apply at every publish site so rect-in-rect checks against
+		// touch coords just work. When stretched mode is off, the factor is 1 and the
+		// scaleRect path becomes a no-op.
+		double sx = 1.0;
+		double sy = 1.0;
+		if (client.isStretchedEnabled())
+		{
+			Dimension real = client.getRealDimensions();
+			Dimension stretched = client.getStretchedDimensions();
+			if (real != null && stretched != null
+				&& real.width > 0 && real.height > 0)
+			{
+				sx = (double) stretched.width / real.width;
+				sy = (double) stretched.height / real.height;
+			}
+		}
+
+		// Mode + viewport: published every frame so MobileHitTest can short-circuit on
+		// fixed mode (where the chrome layout is static and "is this on UI" reduces to
+		// "is this outside the 3D viewport"). The widget walk below is still done so
+		// resizable mode keeps working — and so fixed mode has a fallback for the first
+		// frame after a mode-change before the engine has computed viewport bounds.
+		boolean fixed = !client.isResized();
+		MobileHitTest.setFixedMode(fixed);
+		if (fixed)
+		{
+			int vw = client.getViewportWidth();
+			int vh = client.getViewportHeight();
+			if (vw > 0 && vh > 0)
+			{
+				MobileHitTest.setViewportRect(scaleRect(
+					client.getViewportXOffset(), client.getViewportYOffset(), vw, vh, sx, sy));
+			}
+		}
+		else
+		{
+			MobileHitTest.setViewportRect(null);
+		}
+
 		// Menu rect: published every frame so the touch driver knows whether a long-press
 		// release lands on a menu entry (→ select that entry with a left-click) or in the
 		// world (→ no click; the menu just stays open until dismissed).
 		if (client.isMenuOpen())
 		{
-			MobileHitTest.setMenuRect(new Rectangle(
+			MobileHitTest.setMenuRect(scaleRect(
 				client.getMenuX(), client.getMenuY(),
-				client.getMenuWidth(), client.getMenuHeight()));
+				client.getMenuWidth(), client.getMenuHeight(),
+				sx, sy));
 		}
 		else
 		{
@@ -70,7 +117,20 @@ public class MobileInputPlugin extends Plugin
 		{
 			collect(root, rects);
 		}
-		Rectangle[] arr = rects.toArray(new Rectangle[0]);
+		Rectangle[] arr;
+		if (sx == 1.0 && sy == 1.0)
+		{
+			arr = rects.toArray(new Rectangle[0]);
+		}
+		else
+		{
+			arr = new Rectangle[rects.size()];
+			for (int i = 0; i < arr.length; i++)
+			{
+				Rectangle r = rects.get(i);
+				arr[i] = scaleRect(r.x, r.y, r.width, r.height, sx, sy);
+			}
+		}
 		MobileHitTest.setInterfaceRects(arr);
 
 		// Periodic visibility into what's being treated as "interface". Helps diagnose
@@ -83,6 +143,16 @@ public class MobileInputPlugin extends Plugin
 			lastLoggedCount = arr.length;
 			log.info("mobile hit-test snapshot: {} blocking rects", arr.length);
 		}
+	}
+
+	/** Multiply a rect's origin + size by the real→stretched scale factor. Identity when
+	 *  the factor is 1 (stretched mode off). Allocates a fresh Rectangle either way. */
+	private static Rectangle scaleRect(int x, int y, int w, int h, double sx, double sy)
+	{
+		if (sx == 1.0 && sy == 1.0) return new Rectangle(x, y, w, h);
+		return new Rectangle(
+			(int) Math.round(x * sx), (int) Math.round(y * sy),
+			(int) Math.round(w * sx), (int) Math.round(h * sy));
 	}
 
 	/**
@@ -125,15 +195,45 @@ public class MobileInputPlugin extends Plugin
 	}
 
 	/**
-	 * The OSRS client uses {@code noClickThrough} to mark widgets that genuinely block
-	 * clicks from reaching the scene (inventory grid, chat box backdrop, minimap, etc.).
-	 * Earlier we also accepted any widget with actions or a non-zero clickMask, but a
-	 * lot of decorative overlay chrome (resizable-mode HUD trim, transparent button
-	 * hover targets) carries those without actually blocking — so taps in "empty" parts
-	 * of the scene were being classified as interface and never reaching BUTTON2 drag.
+	 * What counts as "interface that swallows a drag":
+	 * <ul>
+	 *   <li>{@code WidgetType.LAYER} → NEVER. LAYER widgets are RS's transparent
+	 *       group containers (the resizable-mode HUD trim is one big LAYER); flagging
+	 *       these routes every scene drag to BUTTON1 and breaks camera rotation.</li>
+	 *   <li>{@code noClickThrough} set → yes. The chat-box backdrop, inventory parent
+	 *       container, etc. carry this and it's authoritative.</li>
+	 *   <li>Non-empty {@code getActions()} → yes. Individual inventory item slots,
+	 *       ground-item entries, scrollbars all sit here: the parent container's
+	 *       bounds are too coarse for per-slot drag distinctions, and each slot
+	 *       carries its own "Drop / Examine / Use" actions which uniquely identifies
+	 *       it as click-intercepting. Dropping this branch was the regression that
+	 *       sent inventory drags to camera — the LAYER guard above already excludes
+	 *       the chrome containers that historically made this rule too broad.</li>
+	 *   <li>{@code getClickMask() != 0} → yes. Some custom widgets use clickMask
+	 *       without populating actions.</li>
+	 * </ul>
 	 */
 	private static boolean isClickBlocking(Widget w)
 	{
-		return w.getType() != WidgetType.LAYER && w.getNoClickThrough();
+		if (w.getType() == WidgetType.LAYER)
+		{
+			return false;
+		}
+		if (w.getNoClickThrough())
+		{
+			return true;
+		}
+		String[] actions = w.getActions();
+		if (actions != null)
+		{
+			for (String a : actions)
+			{
+				if (a != null && !a.isEmpty())
+				{
+					return true;
+				}
+			}
+		}
+		return w.getClickMask() != 0;
 	}
 }

@@ -55,4 +55,28 @@ public interface GpuGlesPluginConfig extends Config
 	@Range(max = 100)
 	@ConfigItem(keyName = "brightness", name = "Brightness", description = "Scene brightness.", position = 8)
 	default int brightness() { return 50; }
+
+	@Range(min = 25, max = 100)
+	@ConfigItem(
+		keyName = "resolutionScale",
+		name = "Resolution %",
+		description = "Render at a fraction of native resolution (Android upscales the result). " +
+			"Lower = much higher FPS on mobile, softer image. 100 = native (per-pixel sharp).",
+		position = 14)
+	default int resolutionScale() { return 75; }
+
+	enum MsaaSamples
+	{
+		OFF(0), TWO(2), FOUR(4);
+		final int samples;
+		MsaaSamples(int s) { this.samples = s; }
+	}
+
+	@ConfigItem(
+		keyName = "msaaSamples",
+		name = "MSAA",
+		description = "Hardware anti-aliasing samples. Heavy on mobile — leave off unless you can spare the GPU. " +
+			"Takes effect after restarting the plugin (toggle GPU GLES off → on).",
+		position = 15)
+	default MsaaSamples msaaSamples() { return MsaaSamples.OFF; }
 }

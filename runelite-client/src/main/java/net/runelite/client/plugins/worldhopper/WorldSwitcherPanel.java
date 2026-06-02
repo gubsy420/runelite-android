@@ -42,6 +42,7 @@ import javax.swing.SwingUtilities;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.EnumComposition;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;
@@ -49,6 +50,7 @@ import net.runelite.client.ui.PluginPanel;
 import net.runelite.http.api.worlds.World;
 import net.runelite.http.api.worlds.WorldType;
 
+@Slf4j
 class WorldSwitcherPanel extends PluginPanel
 {
 	private static final Color ODD_ROW = new Color(44, 44, 44);
@@ -178,7 +180,17 @@ class WorldSwitcherPanel extends PluginPanel
 
 	void updateList()
 	{
-		rows.sort((r1, r2) ->
+		// rows is mutated by the WorldHopper ping/refresh background thread (populate)
+		// and read here on the AWT dispatch thread. Sort on a snapshot under a brief
+		// lock so ArrayList.sort can't observe a concurrent structural modification
+		// and throw CME mid-sort.
+		List<WorldTableRow> snapshot;
+		synchronized (rows)
+		{
+			snapshot = new ArrayList<>(rows);
+		}
+
+		snapshot.sort((r1, r2) ->
 		{
 			switch (orderIndex)
 			{
@@ -205,18 +217,24 @@ class WorldSwitcherPanel extends PluginPanel
 			}
 		});
 
-		rows.sort((r1, r2) ->
+		snapshot.sort((r1, r2) ->
 		{
 			boolean b1 = plugin.isFavorite(r1.getWorld());
 			boolean b2 = plugin.isFavorite(r2.getWorld());
 			return Boolean.compare(b2, b1);
 		});
 
+		synchronized (rows)
+		{
+			rows.clear();
+			rows.addAll(snapshot);
+		}
+
 		listContainer.removeAll();
 
-		for (int i = 0; i < rows.size(); i++)
+		for (int i = 0; i < snapshot.size(); i++)
 		{
-			WorldTableRow row = rows.get(i);
+			WorldTableRow row = snapshot.get(i);
 			row.setBackground(i % 2 == 0 ? ODD_ROW : ColorScheme.DARK_GRAY_COLOR);
 			listContainer.add(row);
 		}
@@ -250,6 +268,16 @@ class WorldSwitcherPanel extends PluginPanel
 	void populate(List<World> worlds, @Nullable EnumComposition worldLocations)
 	{
 		rows.clear();
+
+		// One-shot visibility into what activity / player-count the worlds API is feeding us.
+		// If the field is null for every world here the issue is upstream (HTTP / JSON parse);
+		// if it's populated but missing on screen the issue is in WorldTableRow rendering.
+		if (!worlds.isEmpty())
+		{
+			World w0 = worlds.get(0);
+			log.info("worldhopper populate: {} worlds, sample id={} activity='{}' players={}",
+				worlds.size(), w0.getId(), w0.getActivity(), w0.getPlayers());
+		}
 
 		for (int i = 0; i < worlds.size(); i++)
 		{

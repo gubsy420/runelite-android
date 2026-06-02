@@ -1,28 +1,41 @@
 package net.runelite.mp
 
+import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.view.SurfaceView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.changedToUpIgnoreConsumed
@@ -34,6 +47,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import kotlinx.coroutines.withTimeoutOrNull
 
@@ -42,6 +56,13 @@ import kotlinx.coroutines.withTimeoutOrNull
 // at the classic 1280×720; on 19.5:9 it widens to ~1560×720.
 private const val FRAME_HEIGHT = 720
 private const val FRAME_WIDTH_FALLBACK = 1280
+
+// OSRS classic fixed-mode canvas dimensions. We hold the AWT Window at this size
+// during boot (splash → title → login screen) so the SW rasterizer never has to redraw
+// at an off-default size; the engine treats 765×503 as the most settled config and the
+// resize-to-aspect happens cleanly once GLES engages.
+private const val FIXED_WIDTH = 765
+private const val FIXED_HEIGHT = 503
 
 private fun frameWidthFor(boxSize: IntSize): Int {
     if (boxSize.width <= 0 || boxSize.height <= 0) return FRAME_WIDTH_FALLBACK
@@ -53,12 +74,36 @@ fun AndroidApp() {
     val context = LocalContext.current.applicationContext
     val launcher = remember { RuneLiteLauncher(context) }
     val scope = rememberCoroutineScope()
-    LaunchedEffect(Unit) { launcher.launch(scope) }
+    // Booted == the user has picked (or just imported) an account and we've kicked the
+    // launcher off. Until then the AccountPicker owns the screen. Saved across config
+    // changes via remember/state so a screen rotation doesn't drop us back to the picker
+    // mid-boot.
+    var booted by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black)
-    ) {
-        GameViewport(Modifier.fillMaxSize())
+    if (!booted) {
+        net.runelite.mp.account.AccountPicker(onSelect = { acc ->
+            launcher.accountFile = acc.file
+            launcher.launch(scope)
+            booted = true
+        })
+        return
+    }
+
+    // Once booted, swallow hardware/gesture back so an accidental press at the edge of
+    // the screen can't kill the activity (which would drop a logged-in session). The
+    // reducer first closes whatever sidebar/config panel is open; with nothing open it's
+    // a true no-op so the user has to explicitly leave through the OS task switcher.
+    androidx.activity.compose.BackHandler(enabled = true) {
+        net.runelite.mp.ui.WindowImpl.handleBack()
+    }
+
+    // Compose chrome wraps the game viewport. Sidebar / config panel render in the
+    // right column; the game viewport is the single child of WindowImpl.Window so it
+    // fills whatever space the sidebar isn't using.
+    net.runelite.mp.ui.WindowImpl.Window {
+        Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
+            GameViewport(Modifier.fillMaxSize())
+        }
     }
 }
 
@@ -79,19 +124,38 @@ private fun GameViewport(modifier: Modifier = Modifier) {
     // recomposition to track resizes and the canvas being moved around inside the frame.
     var canvasRect by remember { mutableStateOf<java.awt.Rectangle?>(null) }
 
-    // Step 1 of GpuGlesPlugin: enable the host pipeline so Window.hostPaint punches an
-    // alpha=0 hole at the Canvas rect and the SurfaceView underneath shows through. Later
-    // steps will gate this on the actual plugin being active; for now we always-on it to
-    // validate layering before EGL/shaders land.
-    LaunchedEffect(Unit) { java.awt.Canvas.setRenderedByGles(true) }
+    // Mirrors java.awt.Canvas.RENDERED_BY_GLES into Compose state. Flipped by
+    // GpuGlesPlugin's startUp/shutDown; we read it inside the per-frame loop and recompose
+    // both the SurfaceView block (gated below) and the bitmap recreation (so the alpha
+    // channel mode matches the active renderer). Default off so a stale Compose snapshot
+    // doesn't render the SurfaceView before the plugin has actually engaged.
+    var glesActive by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         var nextDumpAt = 0L
         var lastWindow: java.awt.Window? = null
         while (true) {
             withFrameNanos { /* tie sampling to display vsync */ }
+            // Sidebar/toolbar suppression now happens at the source via the
+            // `runelite.headlessChrome` system property — see RuneLiteLauncher and the
+            // HEADLESS_CHROME constant in ClientUI. No per-frame reflection needed.
             val window = java.awt.Window.primaryFrame()
-            val frameWidth = frameWidthFor(boxSize)
+            // Read the GLES toggle up front so it can gate both the target window size
+            // (below) and the bitmap-recreation branch (further down). Before GpuGles
+            // engages — i.e., during splash, title, login screen — hold the window at
+            // OSRS classic fixed dimensions; the SW rasterizer paints a clean baseline
+            // canvas, and we only flip to the resize-to-aspect mode once the engine has
+            // actually settled in-game.
+            val gles = java.awt.Canvas.isRenderedByGles()
+            val targetW: Int
+            val targetH: Int
+            if (gles) {
+                targetW = frameWidthFor(boxSize)
+                targetH = FRAME_HEIGHT
+            } else {
+                targetW = FIXED_WIDTH
+                targetH = FIXED_HEIGHT
+            }
             // Don't force-resize the splash to the full client viewport — it's a
             // small dialog (~322×~360) that paints its children at fixed absolute
             // positions, so stretching its window to 1280×720 just leaves the
@@ -100,17 +164,24 @@ private fun GameViewport(modifier: Modifier = Modifier) {
             // small bitmap in the viewport. Only force the resize once a real
             // client window (anything not named SplashScreen) becomes primary.
             val isSplash = window != null && window.javaClass.simpleName == "SplashScreen"
-            if (!isSplash && window != null && (window.width != frameWidth || window.height != FRAME_HEIGHT)) {
-                window.setSize(frameWidth, FRAME_HEIGHT)
+            if (!isSplash && window != null && (window.width != targetW || window.height != targetH)) {
+                window.setSize(targetW, targetH)
             }
             val now = System.currentTimeMillis()
-            if (window != null && window.width > 0 && (window !== lastWindow || now > nextDumpAt)) {
+            if (net.runelite.mp.BuildConfig.DEBUG && window != null && window.width > 0 && (window !== lastWindow || now > nextDumpAt)) {
                 android.util.Log.i("TreeDump", "tree (${window.javaClass.simpleName} ${window.width}x${window.height}):\n${window.dumpTree()}")
                 lastWindow = window
                 nextDumpAt = now + 8_000
             }
             val src = window?.renderToBackbuffer()
                 ?: java.awt.Canvas.latest()?.backbuffer
+            // `gles` was read at the top of the loop. A change forces the bitmap to be
+            // recreated below (hasAlpha differs between renderers), and the Compose
+            // recomposition then re-evaluates whether to mount the SurfaceView.
+            if (gles != glesActive) {
+                glesActive = gles
+                bitmap = null
+            }
             if (src != null && src.width > 0 && src.height > 0) {
                 val w = src.width
                 val h = src.height
@@ -122,7 +193,7 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                     // entirely — ~10% of frame time on this hot path. Disabled when the
                     // GLES host owns the canvas, because we *need* an honest alpha channel
                     // so the SurfaceView shows through the punched hole.
-                    if (!java.awt.Canvas.isRenderedByGles()) bmp.setHasAlpha(false)
+                    if (!gles) bmp.setHasAlpha(false)
                     bitmap = bmp
                 }
                 bmp.setPixels(src.backingArray(), 0, w, 0, 0, w, h)
@@ -292,19 +363,30 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                     } else if (session != null) {
                         session.end()
                     } else if (!fired) {
-                        // Quick tap with little movement → left click
-                        dispatchClick(down.position, boxSize, BUTTON1)
+                        // Quick tap with little movement → left click in normal mode.
+                        // When Alt is engaged we're in OverlayRenderer's "managing"
+                        // mode and there's no useful left-click action over the
+                        // canvas (left-clicks just start an overlay-drag, which is
+                        // already covered by the drag path). Make tap a right-click
+                        // instead so it hits OverlayRenderer.mousePressed's
+                        // `isRightMouseButton` branch and resets the hovered overlay
+                        // — the desktop equivalent of "alt-right-click overlay to
+                        // reset" without forcing the user to hold a perfectly still
+                        // long-press through the touch-slop threshold.
+                        val tapButton = if (net.runelite.mp.ui.bridge.ModifierState.altActive.value) BUTTON3 else BUTTON1
+                        dispatchClick(down.position, boxSize, tapButton)
                     }
                 }
             },
     ) {
         // GLES SurfaceView — sits underneath the chrome image, sized + offset to land
         // exactly where the AWT Canvas would be after the chrome Image's ContentScale.Fit
-        // letterbox. Currently painted solid red for visual validation of step 1; the
-        // EGL/GLES drawing path lands in step 2.
+        // letterbox. Only mounted while GpuGlesPlugin is active; when the plugin is
+        // disabled, the AWT canvas paints normally through the (now opaque) chrome image
+        // and the SurfaceView's last EGL frame stays hidden.
         val rect = canvasRect
         val density = LocalDensity.current
-        if (rect != null && boxSize.width > 0 && boxSize.height > 0) {
+        if (glesActive && rect != null && boxSize.width > 0 && boxSize.height > 0) {
             val ww = frameWidthFor(boxSize).toFloat()
             val wh = FRAME_HEIGHT.toFloat()
             val scale = minOf(boxSize.width / ww, boxSize.height / wh)
@@ -339,6 +421,162 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Fit,
             )
         }
+        // Compose splash overlays everything until the AWT splash dismisses. Replaces the
+        // tiny shadow JFrame with a full-screen branded splash so the user sees the actual
+        // boot stages on a phone-readable canvas.
+        ComposeSplash()
+    }
+}
+
+// RuneLite palette (mirrors ColorScheme.java).
+private val BrandOrange = Color(0xFFDC8A00)
+private val BrandOrangeBg = Color(0xFF553600)        // BRAND_ORANGE.darker().darker()
+private val DarkerGray = Color(0xFF1E1E1E)            // DARKER_GRAY_COLOR
+
+/**
+ * Full-screen branded splash that mirrors the AWT [net.runelite.client.ui.SplashScreen]
+ * state — same overallProgress / actionText / subActionText / progressText values, just
+ * rendered in Compose at native device resolution. Stays up from app launch until the
+ * AWT splash has opened AND then closed (`SplashScreen.isOpen()` was true once and is
+ * now false). A 30s hard cap prevents getting stuck if the splash never opens at all
+ * (eg. RuneLite.main aborted before reaching SplashScreen.init).
+ */
+@Composable
+private fun ComposeSplash() {
+    val logo = remember { loadSplashLogo() }
+    var visible by remember { mutableStateOf(true) }
+    var actionText by remember { mutableStateOf("Loading…") }
+    var subActionText by remember { mutableStateOf("") }
+    var progressText by remember { mutableStateOf<String?>(null) }
+    var progress by remember { mutableStateOf(0f) }
+    // History of distinct (action, sub) pairs seen since launch. Individual stages can
+    // fire <16ms apart, so polling alone would just blink past them. We append every
+    // distinct combo as it appears and render the tail of the list, so users get a
+    // visible trace of "what step are we on" even when the current step has moved on.
+    val history = remember { mutableStateListOf<String>() }
+
+    LaunchedEffect(Unit) {
+        val started = System.currentTimeMillis()
+        var hasBeenOpen = false
+        var lastSeen = ""
+        while (visible) {
+            withFrameNanos { }
+            val open = try {
+                net.runelite.client.ui.SplashScreen.isOpen()
+            } catch (t: Throwable) {
+                false
+            }
+            if (open) {
+                hasBeenOpen = true
+                actionText = net.runelite.client.ui.SplashScreen.currentActionText() ?: actionText
+                subActionText = net.runelite.client.ui.SplashScreen.currentSubActionText() ?: ""
+                progressText = net.runelite.client.ui.SplashScreen.currentProgressText()
+                progress = net.runelite.client.ui.SplashScreen.currentProgress().toFloat()
+                val combo = if (subActionText.isNotEmpty()) "$actionText — $subActionText" else actionText
+                if (combo != lastSeen) {
+                    lastSeen = combo
+                    history.add(combo)
+                    if (history.size > 8) history.removeAt(0)
+                    android.util.Log.i("Splash",
+                        "stage: $combo ${(progress * 100).toInt()}%" +
+                            (progressText?.let { " [$it]" } ?: ""))
+                }
+            }
+            // Dismiss once the AWT splash has come and gone, or after a safety timeout.
+            if (hasBeenOpen && !open) visible = false
+            if (System.currentTimeMillis() - started > 30_000) visible = false
+        }
+        // Whichever path dismissed us, signal the Compose chrome it's safe to
+        // render its sidebar/icon strip now.
+        net.runelite.mp.ui.WindowImpl.bootComplete.value = true
+    }
+
+    if (!visible) return
+
+    Box(
+        modifier = Modifier.fillMaxSize().background(DarkerGray),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(horizontal = 32.dp),
+        ) {
+            if (logo != null) {
+                Image(
+                    bitmap = logo,
+                    contentDescription = "RuneLite",
+                    modifier = Modifier.size(280.dp),
+                )
+            }
+            Spacer(Modifier.height(28.dp))
+            androidx.compose.material3.Text(
+                text = actionText,
+                color = Color.White,
+                fontSize = 24.sp,
+            )
+            Spacer(Modifier.height(8.dp))
+            androidx.compose.material3.Text(
+                text = subActionText,
+                color = Color(0xFFE0E0E0),
+                fontSize = 16.sp,
+            )
+            Spacer(Modifier.height(14.dp))
+            // Rounded orange progress bar, ~half the screen wide. Background is the darker
+            // brand-orange shade (matches the AWT splash); foreground fills proportionally.
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.6f)
+                    .height(18.dp)
+                    .clip(RoundedCornerShape(9.dp))
+                    .background(BrandOrangeBg),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(progress.coerceIn(0f, 1f))
+                        .fillMaxHeight()
+                        .background(BrandOrange),
+                )
+                progressText?.let {
+                    androidx.compose.material3.Text(
+                        text = it,
+                        color = Color.White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+                }
+            }
+            Spacer(Modifier.height(20.dp))
+            // Step history — every distinct stage since launch, so the user can see the
+            // full progression even when stages fire faster than a single render frame.
+            // Last entry rendered brightest (it's "current"); older entries fade.
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                val tail = history.toList()
+                tail.forEachIndexed { idx, line ->
+                    val isCurrent = idx == tail.lastIndex
+                    androidx.compose.material3.Text(
+                        text = line,
+                        color = if (isCurrent) Color.White else Color(0xFF808080),
+                        fontSize = 12.sp,
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** Loads `runelite_splash.png` from the SplashScreen package on the classpath. Returns
+ *  null and logs if decoding fails — the splash composable degrades to text-only. */
+private fun loadSplashLogo(): ImageBitmap? {
+    return try {
+        val cls = Class.forName("net.runelite.client.ui.SplashScreen")
+        cls.getResourceAsStream("runelite_splash.png")?.use { input ->
+            val bmp = BitmapFactory.decodeStream(input) ?: return null
+            bmp.asImageBitmap()
+        }
+    } catch (t: Throwable) {
+        android.util.Log.w("ComposeSplash", "failed to load splash logo", t)
+        null
     }
 }
 
@@ -667,15 +905,26 @@ private fun beginDrag(downPos: Offset, currentPos: Offset, boxSize: IntSize): Dr
     // widget → BUTTON1 drag so the user can drag inv slot-to-slot; scene → BUTTON2 so
     // the OSRS camera rotates. Outside the Canvas (Swing sidebar etc.) every drag is
     // BUTTON1 by default — those are click-based widgets anyway.
+    //
+    // Modifier override: when the user has the Alt chip engaged, OverlayRenderer is
+    // in `inOverlayManagingMode` (RuneLite's `dragHotkey` default is Alt) and treats
+    // a BUTTON1 press over the canvas as the start of an overlay drag. If we kept
+    // emitting BUTTON2 the camera would rotate and the overlay never moves. Force
+    // BUTTON1 over the scene while Alt is held so the drag reaches the overlay path.
+    val altHeld = net.runelite.mp.ui.bridge.ModifierState.altActive.value
     val button = if (canvas != null) {
         val cHit = hitTestExact(window, canvas)
         val cx = if (cHit != null) winX - cHit.absX else -1
         val cy = if (cHit != null) winY - cHit.absY else -1
         val isInterface = cHit != null
             && net.runelite.client.plugins.mobile.MobileHitTest.isInterfaceAt(cx, cy)
-        val pick = if (isInterface) BUTTON1 else BUTTON2
+        val pick = when {
+            altHeld -> BUTTON1
+            isInterface -> BUTTON1
+            else -> BUTTON2
+        }
         android.util.Log.i("MobileInput",
-            "begin drag canvas=($cx,$cy) interface=$isInterface button=$pick")
+            "begin drag canvas=($cx,$cy) interface=$isInterface alt=$altHeld button=$pick")
         pick
     } else {
         BUTTON1
@@ -743,6 +992,13 @@ private fun fireMouse(target: java.awt.Component, id: Int, x: Int, y: Int, butto
         BUTTON3 -> java.awt.event.InputEvent.BUTTON3_DOWN_MASK
         else -> 0
     } else 0
+    // Intentionally NOT ORing in ModifierState.modifierMask() here. The OSRS engine
+    // resolves shift/alt menu state from its internal pressed-keys array (mutated by
+    // the synthetic KeyEvent fired in ModifierState.dispatchModifier) — NOT from the
+    // MouseEvent.modifiers field. Setting ALT_DOWN_MASK on a MouseEvent actually
+    // caused the engine's mouse-handler to ignore clicks (its dispatch path treats
+    // alt-modified clicks as a no-op), which broke in-game tapping while the Alt
+    // chip was engaged.
     target.dispatchMouseEvent(
         java.awt.event.MouseEvent(
             target, id, System.currentTimeMillis(),

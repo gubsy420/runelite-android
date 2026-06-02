@@ -23,14 +23,23 @@ public final class BufferedImageFontMetrics extends FontMetrics {
         paint = new android.graphics.Paint();
         paint.setAntiAlias(true);
         paint.setTextSize(pxSize(font));
-        int style = font.getStyle();
-        android.graphics.Typeface tf;
-        if (style == Font.BOLD) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
-        else if (style == Font.ITALIC) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.ITALIC);
-        else if (style == (Font.BOLD | Font.ITALIC)) tf = android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD_ITALIC);
-        else tf = android.graphics.Typeface.DEFAULT;
-        paint.setTypeface(tf);
+        paint.setTypeface(typefaceFor(font));
         afm = paint.getFontMetrics();
+    }
+
+    /** Resolve an AWT Font down to an Android Typeface. If the family is registered
+     *  (e.g. runescape.ttf loaded via Font.createFont), use that Typeface as-is —
+     *  do NOT layer Typeface.BOLD/ITALIC on top, since the loaded face already
+     *  encodes those (RuneLite ships runescape_bold.ttf as its own family). Only
+     *  apply style bits when falling back to the system DEFAULT. */
+    static android.graphics.Typeface typefaceFor(Font font) {
+        android.graphics.Typeface registered = net.runelite.awt.impl.AwtFontRegistry.lookup(font.getName());
+        if (registered != null) return registered;
+        int style = font.getStyle();
+        if (style == Font.BOLD) return android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
+        if (style == Font.ITALIC) return android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.ITALIC);
+        if (style == (Font.BOLD | Font.ITALIC)) return android.graphics.Typeface.create(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD_ITALIC);
+        return android.graphics.Typeface.DEFAULT;
     }
 
     @Override

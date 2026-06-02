@@ -20,6 +20,10 @@ public class Cursor implements Serializable {
     public static final int HAND_CURSOR = 12;
     public static final int MOVE_CURSOR = 13;
 
+    /** Real AWT distinguishes custom cursors via {@code type == CUSTOM_CURSOR}.
+     *  Toolkit.createCustomCursor constructs one of these. */
+    public static final int CUSTOM_CURSOR = -1;
+
     private final int type;
     private final String name;
 

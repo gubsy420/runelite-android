@@ -71,6 +71,9 @@ public interface StretchedModeConfig extends Config
 	@Units(Units.PERCENT)
 	default int scalingFactor()
 	{
-		return 400;
+		// Mobile default. Upstream RuneLite ships 400 which is tuned for desktop monitors
+		// where users actually want the chrome upscaled large; on a phone viewport the
+		// game becomes unreadable at that scale and FPS tanks under the per-pixel work.
+		return 40;
 	}
 }

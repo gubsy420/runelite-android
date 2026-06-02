@@ -56,11 +56,18 @@ public class JLabel extends JComponent implements SwingConstants {
         java.awt.Dimension c = cachedPref;
         if (c != null) return new java.awt.Dimension(c);
         java.awt.FontMetrics fm = getFontMetrics(getFont());
-        int textW = text == null ? 0 : fm.stringWidth(text);
+        int textW, textH;
+        if (HtmlTextRenderer.isHtml(text)) {
+            HtmlTextRenderer.Layout layout = HtmlTextRenderer.measure(text, fm);
+            textW = layout.width;
+            textH = layout.height;
+        } else {
+            textW = text == null ? 0 : fm.stringWidth(text);
+            textH = fm.getHeight();
+        }
         int iconW = icon == null ? 0 : icon.getIconWidth();
         int gap = (text != null && !text.isEmpty() && icon != null) ? iconTextGap : 0;
         int w = iconW + gap + textW;
-        int textH = fm.getHeight();
         int iconH = icon == null ? 0 : icon.getIconHeight();
         int h = Math.max(textH, iconH);
         c = new java.awt.Dimension(w + 2, h + 2);
@@ -72,8 +79,11 @@ public class JLabel extends JComponent implements SwingConstants {
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
         java.awt.FontMetrics fm = g.getFontMetrics(getFont());
-        int textW = text == null ? 0 : fm.stringWidth(text);
-        int textH = fm.getHeight();
+        boolean html = HtmlTextRenderer.isHtml(text);
+        HtmlTextRenderer.Layout htmlLayout = html ? HtmlTextRenderer.measure(text, fm) : null;
+        int textW = htmlLayout != null ? htmlLayout.width
+            : (text == null ? 0 : fm.stringWidth(text));
+        int textH = htmlLayout != null ? htmlLayout.height : fm.getHeight();
         int iconW = icon == null ? 0 : icon.getIconWidth();
         int iconH = icon == null ? 0 : icon.getIconHeight();
         int gap = (text != null && !text.isEmpty() && icon != null) ? iconTextGap : 0;
@@ -93,10 +103,17 @@ public class JLabel extends JComponent implements SwingConstants {
         }
         if (text != null && !text.isEmpty()) {
             java.awt.Color saved = g.getColor();
-            g.setColor(getForeground());
             g.setFont(getFont());
-            int baseline = y + fm.getAscent();
-            g.drawString(text, x, baseline);
+            if (htmlLayout != null) {
+                // HTML: each run paints with its own color (or label foreground when
+                // no span override). y is the top of the text block; HtmlTextRenderer
+                // applies the per-line baseline shift internally.
+                HtmlTextRenderer.paint(g, htmlLayout, fm, x, y, getForeground());
+            } else {
+                g.setColor(getForeground());
+                int baseline = y + fm.getAscent();
+                g.drawString(text, x, baseline);
+            }
             if (saved != null) g.setColor(saved);
         }
     }

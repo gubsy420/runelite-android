@@ -156,6 +156,35 @@ public class SplashScreen extends JFrame implements ActionListener
 		return INSTANCE != null;
 	}
 
+	// Static snapshot accessors so the Android Compose splash can mirror the AWT splash's
+	// state without going through reflection. Each returns the current value or a sensible
+	// default when no splash is up. Read every frame from the Compose render loop.
+
+	public static double currentProgress()
+	{
+		SplashScreen s = INSTANCE;
+		return s == null ? 0 : s.overallProgress;
+	}
+
+	public static String currentActionText()
+	{
+		SplashScreen s = INSTANCE;
+		return s == null ? "Loading…" : s.actionText;
+	}
+
+	public static String currentSubActionText()
+	{
+		SplashScreen s = INSTANCE;
+		return s == null ? "" : s.subActionText;
+	}
+
+	@Nullable
+	public static String currentProgressText()
+	{
+		SplashScreen s = INSTANCE;
+		return s == null ? null : s.progressText;
+	}
+
 	public static void init()
 	{
 		try

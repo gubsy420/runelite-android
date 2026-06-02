@@ -20,6 +20,13 @@ public final class MobileHitTest
 	private static volatile Rectangle[] interfaceRects = EMPTY;
 	/** Right-click menu rect in canvas space, or null when no menu is open. */
 	private static volatile Rectangle menuRect;
+	/** True iff the OSRS client is in fixed (765×503) mode this frame. Drives the
+	 *  short-circuit in {@link #isInterfaceAt}: in fixed mode the chrome layout is
+	 *  static, so "is this touch on UI" reduces to "is it outside the 3D viewport". */
+	private static volatile boolean fixedMode = false;
+	/** 3D viewport rect in canvas-local pixels (top-left + width/height). Published
+	 *  every frame whenever fixed mode is active. Null otherwise. */
+	private static volatile Rectangle viewportRect;
 
 	private MobileHitTest() {}
 
@@ -34,6 +41,19 @@ public final class MobileHitTest
 	static void setMenuRect(Rectangle rect)
 	{
 		menuRect = rect;
+	}
+
+	/** Called by {@link MobileInputPlugin} on the client thread once per frame. */
+	static void setFixedMode(boolean fixed)
+	{
+		fixedMode = fixed;
+	}
+
+	/** Called by {@link MobileInputPlugin} on the client thread once per frame.
+	 *  Null when fixed mode isn't active or the engine isn't reporting viewport bounds. */
+	static void setViewportRect(Rectangle rect)
+	{
+		viewportRect = rect;
 	}
 
 	/** True if a right-click menu is open AND (canvasX, canvasY) lies inside it. Used
@@ -55,6 +75,24 @@ public final class MobileHitTest
 	 */
 	public static boolean isInterfaceAt(int canvasX, int canvasY)
 	{
+		// Fixed-mode short-circuit. The fixed-size chrome (sidebar, inventory tabs,
+		// prayer tabs, chat box, minimap) is a static layout around a fixed 3D viewport
+		// rect — there's no widget walk that gets this right without false positives.
+		// Anything OUTSIDE the viewport is by definition chrome; anything INSIDE is the
+		// scene. Same conclusion the widget walk would arrive at on a good day, just
+		// faster and without the over-flagging that routes scene drags to BUTTON1.
+		if (fixedMode)
+		{
+			Rectangle v = viewportRect;
+			if (v != null)
+			{
+				boolean inViewport = canvasX >= v.x && canvasY >= v.y
+					&& canvasX < v.x + v.width && canvasY < v.y + v.height;
+				return !inViewport;
+			}
+			// Viewport rect not yet published — fall through to the widget walk so we
+			// don't degrade to "everything is scene" before the first frame snapshot.
+		}
 		Rectangle[] snap = interfaceRects;
 		for (int i = 0; i < snap.length; i++)
 		{

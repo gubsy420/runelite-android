@@ -82,6 +82,14 @@ public class Ping
 
 		try
 		{
+			// Android reports os.name=Linux, but JNA (used by the Linux/MacOS ICMP path)
+			// isn't shipped on Android and raw ICMP sockets require root anyway. Route
+			// straight to TCP pinging so the world list shows real latency numbers.
+			if (isAndroid())
+			{
+				return tcpPing(inetAddress);
+			}
+
 			switch (OSType.getOSType())
 			{
 				case Windows:
@@ -116,6 +124,27 @@ public class Ping
 			log.warn("error pinging", ex);
 			return -1;
 		}
+	}
+
+	private static final boolean ANDROID;
+	static
+	{
+		boolean a;
+		try
+		{
+			Class.forName("android.os.Build");
+			a = true;
+		}
+		catch (Throwable t)
+		{
+			a = false;
+		}
+		ANDROID = a;
+	}
+
+	private static boolean isAndroid()
+	{
+		return ANDROID;
 	}
 
 	private static int windowsPing(InetAddress inetAddress)

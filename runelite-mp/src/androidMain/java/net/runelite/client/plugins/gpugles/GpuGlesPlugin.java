@@ -81,6 +81,7 @@ import com.google.inject.Provides;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import javax.inject.Inject;
 import net.runelite.api.BufferProvider;
 import net.runelite.api.Client;
@@ -232,6 +233,27 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private int lastCanvasWidth = -1;
 	private int lastCanvasHeight = -1;
 
+	/**
+	 * Offscreen framebuffer for the 3D scene render. Sized at
+	 * {@code surface * resolutionScale} so the heavy fragment work scales with the
+	 * slider while the UI (composited from {@link #interfaceTexture} after the blit)
+	 * always lands on the native-resolution default framebuffer. Recreated whenever
+	 * the surface or scale changes — see {@link #ensureSceneFbo}.
+	 */
+	private int sceneFbo;
+	private int sceneColorTex;
+	private int sceneDepthRbo;
+	private int sceneFboW;
+	private int sceneFboH;
+
+	/** Cached direct ByteBuffer that prepareInterfaceTexture streams the BufferProvider
+	 *  pixels through each frame. Was being [re]allocated per-frame (~3.7MB at 1280×720)
+	 *  which produced 100s of MB/sec of LOS garbage at unlocked FPS — the Android log
+	 *  shows the GC running every ~300ms with 185ms blocked-alloc pauses freeing ~49MB
+	 *  of LOS each cycle. Keep one buffer per canvas size, reuse forever. */
+	private ByteBuffer interfaceUploadBuf;
+	private IntBuffer interfaceUploadBufAsInts;
+
 	private final GlesBuffer glUniformBuffer = new GlesBuffer("uniform buffer");
 
 	// Scene-shader uniform locations. uniBase / uniEntityTint / uniEntityProj are
@@ -266,49 +288,144 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		}
 	}
 
+	/** Set once the GLES path is actually taking over rendering (after first transition
+	 *  out of {@link GameState#STARTING}). Guards [@link #engage()] against being run
+	 *  twice and tells [@link #shutDown()] whether teardown work is needed. */
+	private volatile boolean engaged;
+
 	@Override
 	protected void startUp()
 	{
-		// Allocate scene state up-front — these are CPU-only and don't need GL.
+		// Cheap CPU-side init only. The GLES handoff is deferred to [#engage()] so the
+		// boot sequence (splash → "Loading..." → title screen) renders through the SW
+		// path. We've seen GLES half-init artifacts when engaging during STARTING:
+		// SurfaceView attaches before the engine has reasonable Canvas dimensions, the
+		// first EGL surface comes up at the wrong size, and the chrome bitmap composite
+		// races the punched alpha hole. Holding engagement until LOGIN_SCREEN avoids
+		// all of that — by then the engine has settled and the first frame after engage
+		// is steady-state.
 		root = new SceneContext(NUM_ZONES, NUM_ZONES);
 		subs = new SceneContext[MAX_WORLDVIEWS];
 		clientUploader = new SceneUploader(renderCallbackManager);
 		mapUploader = new SceneUploader(renderCallbackManager);
 		facePrioritySorter = new FacePrioritySorter(clientUploader);
 
+		// If the plugin is enabled mid-game (already past STARTING), engage immediately
+		// — onGameStateChanged only fires on transitions, so there's nothing to wait
+		// for. Reading getGameState happens on the client thread for the same reason
+		// the existing engage block did.
 		clientThread.invoke(() -> {
-			try
+			if (client.getGameState() != GameState.STARTING)
 			{
-				bringUpGl();
-
-				client.setDrawCallbacks(this);
-				client.setGpuFlags(DrawCallbacks.GPU
-					| (config.removeVertexSnapping() ? DrawCallbacks.NO_VERTEX_SNAPPING : 0)
-					| DrawCallbacks.ZBUF);
-				client.setExpandedMapLoading(config.expandedMapLoadingZones());
-
-				// Force the BufferProvider rebuild so it gives us an RGBA-with-alpha
-				// pixel buffer — the desktop plugin does the same. The UI shader
-				// alpha-blends the overlay onto the GL scene below, so non-zero
-				// alpha matters.
-				client.resizeCanvas();
-			}
-			catch (Throwable t)
-			{
-				Log.e(TAG, "startUp failed", t);
-				try { shutDown(); } catch (Throwable ignored) {}
+				engage();
 			}
 			return true;
 		});
 	}
 
+	/**
+	 * Activate the GLES rendering path. Idempotent — safe to call multiple times.
+	 * Always invoked on the client thread, either from the deferred startUp() check
+	 * above or from onGameStateChanged() on the first transition out of STARTING.
+	 *
+	 * Order matters: flip [@link Canvas#setRenderedByGles] BEFORE bringUpGl so the
+	 * first frame after engage already has the alpha-hole punched in the chrome
+	 * bitmap (otherwise that frame paints the SW canvas through the bitmap and the
+	 * SurfaceView's first EGL frame appears underneath an opaque overlay).
+	 */
+	private void engage()
+	{
+		if (engaged) return;
+		engaged = true;
+		try
+		{
+			java.awt.Canvas.setRenderedByGles(true);
+
+			// Apply mobile render-scale + MSAA *before* bringUpGl: the MSAA value is
+			// baked into the EGL config at context creation, and a fixed-size request
+			// before the EGL surface exists means the first surfaceChanged callback
+			// already arrives at the scaled size (avoids a one-frame native-res render).
+			GlesHost.get().setRequestedMsaa(config.msaaSamples().samples);
+			GlesHost.get().setResolutionScale(config.resolutionScale() / 100f);
+
+			bringUpGl();
+
+			client.setDrawCallbacks(this);
+			client.setGpuFlags(DrawCallbacks.GPU
+				| (config.removeVertexSnapping() ? DrawCallbacks.NO_VERTEX_SNAPPING : 0)
+				| DrawCallbacks.ZBUF);
+			client.setExpandedMapLoading(config.expandedMapLoadingZones());
+			applyFpsConfig();
+
+			// Force the BufferProvider rebuild so it gives us an RGBA-with-alpha
+			// pixel buffer — the desktop plugin does the same. The UI shader
+			// alpha-blends the overlay onto the GL scene below, so non-zero
+			// alpha matters.
+			client.resizeCanvas();
+		}
+		catch (Throwable t)
+		{
+			Log.e(TAG, "engage failed", t);
+			engaged = false;
+			java.awt.Canvas.setRenderedByGles(false);
+			try { shutDown(); } catch (Throwable ignored) {}
+		}
+	}
+
+	/**
+	 * Push {@link GpuGlesPluginConfig#unlockFps} + {@link GpuGlesPluginConfig#fpsTarget}
+	 * down to the engine, the same way the desktop {@code GpuPlugin} does in its
+	 * {@code setupSyncMode}. Without this the patched client keeps its 50-cycle cap
+	 * regardless of what the config says.
+	 *
+	 * Also relaxes the EGL swap interval to 0 when uncapping, so the on-screen surface
+	 * doesn't hard-pin to the display's vsync once the engine is willing to deliver
+	 * more frames. Re-pinned to 1 when the unlock is turned back off.
+	 */
+	private void applyFpsConfig()
+	{
+		boolean unlock = config.unlockFps();
+		int target = config.fpsTarget();
+		client.setUnlockedFps(unlock);
+		client.setUnlockedFpsTarget(unlock ? target : 0);
+		// Drop vsync only when uncapping. With vsync on, the engine's uncapped scene
+		// rate still gets latched to the display refresh — fine on a 120Hz device, but
+		// users see ~60 on 60Hz screens when they asked for higher.
+		GlesHost.get().setSwapInterval(unlock ? 0 : 1);
+	}
+
+	@Subscribe
+	public void onConfigChanged(net.runelite.client.events.ConfigChanged ev)
+	{
+		if (!ev.getGroup().equals(GpuGlesPluginConfig.GROUP)) return;
+		if ("unlockFps".equals(ev.getKey()) || "fpsTarget".equals(ev.getKey()))
+		{
+			clientThread.invoke(() -> { applyFpsConfig(); return true; });
+		}
+		else if ("resolutionScale".equals(ev.getKey()))
+		{
+			GlesHost.get().setResolutionScale(config.resolutionScale() / 100f);
+		}
+		// MSAA changes require an EGL context rebuild — we surface that requirement in
+		// the config item description rather than try to re-init mid-frame.
+	}
+
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged ev)
 	{
+		GameState s = ev.getGameState();
+		// First transition out of STARTING is our cue to take over rendering. The OSRS
+		// engine has settled by then — Canvas dims are stable, the lobby world view is
+		// being prepped, the SW rasterizer was already given a chance to paint the
+		// title screen cleanly. engage() is idempotent so a redundant call is fine.
+		if (s != GameState.STARTING && !engaged)
+		{
+			engage();
+		}
 		// Force a scene rebuild whenever the game transitions back to LOGGED_IN so
 		// freshly-loaded zones get uploaded. The actual upload is driven by the
 		// client calling loadScene/swapScene; this just makes sure we're listening.
-		if (ev.getGameState() == GameState.LOADING)
+		if (s == GameState.LOADING)
 		{
 			// Mark all zones as needing rebuild on next swapScene.
 			if (root != null)
@@ -323,6 +440,16 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	@Override
 	protected void shutDown()
 	{
+		// Clear engage state so the next startUp will re-arm via onGameStateChanged
+		// (or via the immediate-engage check if the plugin is toggled back on mid-game).
+		engaged = false;
+
+		// Hand the canvas back to the software rasterizer BEFORE we tear down GL — once
+		// this flips, android-awt stops punching alpha holes and the Compose host stops
+		// rendering the SurfaceView, so the next CPU-rendered frame shows through cleanly
+		// without a one-frame transparent flash.
+		java.awt.Canvas.setRenderedByGles(false);
+
 		clientThread.invoke(() -> {
 			client.setGpuFlags(0);
 			client.setDrawCallbacks(null);
@@ -331,6 +458,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 			if (glInitted)
 			{
+				shutdownSceneFbo();
 				shutdownInterfaceTexture();
 				shutdownProgram();
 				shutdownVao();
@@ -534,6 +662,73 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		interfacePbo = interfaceTexture = 0;
 	}
 
+	/**
+	 * (Re)allocate the scene FBO + its colour/depth attachments so they match the
+	 * requested scaled dimensions. No-op if size hasn't changed. Called from
+	 * preSceneDrawToplevel each frame — cheap when stable.
+	 */
+	private boolean ensureSceneFbo(int targetW, int targetH)
+	{
+		if (targetW <= 0 || targetH <= 0) return false;
+		if (sceneFbo != 0 && targetW == sceneFboW && targetH == sceneFboH) return true;
+
+		// Tear down anything stale before re-creating.
+		shutdownSceneFbo();
+
+		int[] arr = new int[1];
+
+		GLES30.glGenFramebuffers(1, arr, 0);
+		sceneFbo = arr[0];
+
+		glGenTextures(1, arr, 0);
+		sceneColorTex = arr[0];
+		glBindTexture(GL_TEXTURE_2D, sceneColorTex);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, targetW, targetH, 0, GL_RGBA, GL_UNSIGNED_BYTE, null);
+		// LINEAR so the blit-back to the default FB gives a smooth upscale rather than
+		// hard nearest-neighbour blockiness when scale < 1.
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		GLES30.glGenRenderbuffers(1, arr, 0);
+		sceneDepthRbo = arr[0];
+		GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, sceneDepthRbo);
+		GLES30.glRenderbufferStorage(GLES30.GL_RENDERBUFFER, GLES30.GL_DEPTH_COMPONENT24, targetW, targetH);
+		GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, 0);
+
+		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, sceneFbo);
+		GLES30.glFramebufferTexture2D(GLES30.GL_FRAMEBUFFER, GLES30.GL_COLOR_ATTACHMENT0,
+			GL_TEXTURE_2D, sceneColorTex, 0);
+		GLES30.glFramebufferRenderbuffer(GLES30.GL_FRAMEBUFFER, GLES30.GL_DEPTH_ATTACHMENT,
+			GLES30.GL_RENDERBUFFER, sceneDepthRbo);
+
+		int status = GLES30.glCheckFramebufferStatus(GLES30.GL_FRAMEBUFFER);
+		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+
+		if (status != GLES30.GL_FRAMEBUFFER_COMPLETE)
+		{
+			Log.e(TAG, "scene FBO incomplete: 0x" + Integer.toHexString(status));
+			shutdownSceneFbo();
+			return false;
+		}
+
+		sceneFboW = targetW;
+		sceneFboH = targetH;
+		Log.i(TAG, "scene FBO (re)created " + targetW + "x" + targetH);
+		return true;
+	}
+
+	private void shutdownSceneFbo()
+	{
+		if (sceneFbo != 0)      GLES30.glDeleteFramebuffers(1, new int[]{ sceneFbo }, 0);
+		if (sceneColorTex != 0) glDeleteTextures(1, new int[]{ sceneColorTex }, 0);
+		if (sceneDepthRbo != 0) GLES30.glDeleteRenderbuffers(1, new int[]{ sceneDepthRbo }, 0);
+		sceneFbo = sceneColorTex = sceneDepthRbo = 0;
+		sceneFboW = sceneFboH = 0;
+	}
+
 	// -----------------------------------------------------------------------
 	// DrawCallbacks — invoked by the patched client. Only `draw(int)` and
 	// `swapScene` are non-default in the interface. The other zone/scene/dynamic
@@ -580,21 +775,28 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		prepareInterfaceTexture(canvasWidth, canvasHeight);
 
-		// IMPORTANT: do NOT glClear when scene was painted this frame. By the
-		// time draw() runs, preSceneDraw has already cleared the framebuffer to
-		// the sky color and drawZoneOpaque/Alpha have rasterised the 3D scene
-		// onto the EGL surface. A clear here would wipe the scene back to black
-		// and the UI shader would composite onto black instead of on top of
-		// the rendered scene. Desktop avoids this by rendering scene to an
-		// offscreen FBO and blitting it back here; we skip the FBO and rely on
-		// call ordering.
-		//
-		// At login/title (no scene draw this frame), we DO need to clear, else
-		// stale pixels from the last logged-in frame stay on the surface and
-		// show as garbage behind the UI overlay.
-		if (!scenePaintedThisFrame)
+		int surfW = GlesHost.get().getWidth();
+		int surfH = GlesHost.get().getHeight();
+
+		// Composite back to the EGL default framebuffer before drawUi. If the scene
+		// was painted this frame it lives in sceneFbo at scaled size — glBlitFramebuffer
+		// upsamples it (GL_LINEAR) to the native-size default FB so the UI compositing
+		// below paints onto a full-resolution backdrop. If no scene was painted (title /
+		// loading screens) just clear the default FB to black; the UI texture covers it.
+		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+		if (scenePaintedThisFrame && sceneFbo != 0)
 		{
-			GLES20.glViewport(0, 0, GlesHost.get().getWidth(), GlesHost.get().getHeight());
+			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, sceneFbo);
+			GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, 0);
+			GLES30.glBlitFramebuffer(
+				0, 0, sceneFboW, sceneFboH,
+				0, 0, surfW, surfH,
+				GL_COLOR_BUFFER_BIT, GL_LINEAR);
+			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, 0);
+		}
+		else
+		{
+			GLES20.glViewport(0, 0, surfW, surfH);
 			glClearColor(0f, 0f, 0f, 1f);
 			glClear(GL_COLOR_BUFFER_BIT);
 		}
@@ -686,6 +888,72 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		loadScene(scene);
 	}
 
+	/**
+	 * Engine callback fired when an object inside a zone changes state — gate opens,
+	 * door swings, lever flips, plant grows, etc. Without this hook, the static zone
+	 * VBO holds the pose captured at the last scene load forever, so a gate the player
+	 * just opened still renders closed even though the game's interaction layer treats
+	 * it as open. Mirrors GpuPlugin.invalidateZone — flagging the zone here, with the
+	 * actual rebuild deferred to {@link #onPostClientTick} so a tick that invalidates
+	 * many zones at once doesn't stall the render thread mid-frame.
+	 */
+	@Override
+	public void invalidateZone(Scene scene, int zx, int zz)
+	{
+		SceneContext ctx = context(scene);
+		if (ctx == null) return;
+		if (zx < 0 || zz < 0 || zx >= ctx.sizeX || zz >= ctx.sizeZ) return;
+		Zone z = ctx.zones[zx][zz];
+		if (!z.invalidate)
+		{
+			z.invalidate = true;
+		}
+	}
+
+	/**
+	 * After every client tick the engine settles all the per-tick state (animations,
+	 * gate openings, etc.) and fires {@link net.runelite.api.events.PostClientTick}.
+	 * That's our window to flush any zones flagged dirty by {@link #invalidateZone}
+	 * during the tick — once we hit GL on the client thread, the rebuilt VBO replaces
+	 * the stale pose and the next frame paints the object in its current state. Doing
+	 * this here (instead of inside the draw callback) keeps the rebuild off the hot
+	 * draw path, matching how GpuPlugin handles it on desktop.
+	 */
+	@Subscribe
+	public void onPostClientTick(net.runelite.api.events.PostClientTick ev)
+	{
+		if (!glInitted) return;
+		WorldView wv = client.getTopLevelWorldView();
+		if (wv == null) return;
+		if (!GlesHost.get().makeCurrent()) return;
+		rebuildDirty(wv.getScene());
+		for (net.runelite.api.WorldEntity we : wv.worldEntities())
+		{
+			WorldView sub = we.getWorldView();
+			if (sub != null) rebuildDirty(sub.getScene());
+		}
+	}
+
+	private void rebuildDirty(Scene scene)
+	{
+		SceneContext ctx = context(scene);
+		if (ctx == null) return;
+		// Cheap fast path: bail out of the EGL/GL section entirely when nothing changed
+		// this tick. The dirty flag is set during the tick itself; sweeping zones to
+		// find any dirty one is O(256) ints which is fine.
+		boolean anyDirty = false;
+		outer:
+		for (int x = 0; x < ctx.sizeX; ++x)
+		{
+			for (int z = 0; z < ctx.sizeZ; ++z)
+			{
+				if (ctx.zones[x][z].invalidate) { anyDirty = true; break outer; }
+			}
+		}
+		if (!anyDirty) return;
+		rebuild(scene);
+	}
+
 	@Override
 	public void despawnWorldView(WorldView wv)
 	{
@@ -749,7 +1017,12 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		glBindBufferBase(GL_UNIFORM_BUFFER, 0, glUniformBuffer.glBufferId);
 
-		// Viewport — render direct to the EGL surface (no offscreen FBO).
+		// Viewport — render to the scene FBO, sized at (surface * resolutionScale).
+		// The default framebuffer (EGL surface) stays at native canvas resolution so the
+		// UI compositing later in draw() can hit native pixels exactly. Picking the FBO
+		// size here also gates whether we have a usable FBO at all — if allocation fails
+		// we skip the scene draw rather than render to the default FB at scaled coords
+		// (which would tile the scene into the wrong screen region).
 		int viewportWidth = client.getViewportWidth();
 		int viewportHeight = client.getViewportHeight();
 		int canvasHeight = client.getCanvasHeight();
@@ -758,15 +1031,36 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		int surfW = GlesHost.get().getWidth();
 		int surfH = GlesHost.get().getHeight();
-		// Scale the client-relative viewport into surface space. The EGL surface
-		// is sized to the displayed canvas region, so client viewport coords map
-		// directly with one caveat: GL viewport origin is bottom-left.
-		float sx = surfW > 0 ? (float) surfW / client.getCanvasWidth() : 1f;
-		float sy = surfH > 0 ? (float) surfH / client.getCanvasHeight() : 1f;
-		int vx = (int) (viewportXOff * sx);
-		int vy = (int) ((canvasHeight - viewportHeight - viewportYOff) * sy);
-		int vw = (int) (viewportWidth * sx);
-		int vh = (int) (viewportHeight * sy);
+		float resScale = GlesHost.get().getResolutionScale();
+		int targetFboW = Math.max(1, Math.round(surfW * resScale));
+		int targetFboH = Math.max(1, Math.round(surfH * resScale));
+		if (!ensureSceneFbo(targetFboW, targetFboH))
+		{
+			// FBO unavailable — fall back to the default framebuffer so we at least
+			// render something this frame, even if the scaling slider has no effect.
+			GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+		}
+		else
+		{
+			GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, sceneFbo);
+		}
+
+		// Map the client-relative viewport into FBO space. The FBO covers the full
+		// canvas at scaled size, so the conversion is canvas-pixel * (fbo/canvas).
+		// Floor the left/top edge and ceil the right/bottom edge so the FBO viewport
+		// always *fully covers* the canvas-viewport region after glBlitFramebuffer's
+		// linear upscale to the default framebuffer. Otherwise integer truncation can
+		// leave a 1–2px sliver of FBO-clear pixels (skybox blue) inside the canvas
+		// viewport rect on fractional scales — visible as a thin column on the right
+		// edge of the scene.
+		float sx = sceneFboW > 0 ? (float) sceneFboW / client.getCanvasWidth() : 1f;
+		float sy = sceneFboH > 0 ? (float) sceneFboH / client.getCanvasHeight() : 1f;
+		int vx = (int) Math.floor(viewportXOff * sx);
+		int vy = (int) Math.floor((canvasHeight - viewportHeight - viewportYOff) * sy);
+		int rightFbo = (int) Math.ceil((viewportXOff + viewportWidth) * sx);
+		int topFbo = (int) Math.ceil((canvasHeight - viewportYOff) * sy);
+		int vw = Math.max(1, rightFbo - vx);
+		int vh = Math.max(1, topFbo - vy);
 		GLES20.glViewport(vx, vy, vw, vh);
 
 		// Sky / clear. Standard depth convention now (matches Mat4.projection's
@@ -1051,23 +1345,24 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		int h = bp.getHeight();
 		if (pixels == null || w <= 0 || h <= 0) return;
 
-		// Direct upload from a CPU-side ByteBuffer. The desktop plugin streams
-		// through a PBO with glMapBuffer for the async-DMA win; Android's GLES
-		// java bindings don't expose the PBO-offset overload of glTexSubImage2D,
-		// so we keep this synchronous for now. Revisit when porting to NDK
-		// bindings if profiling flags this as a hot path.
-		//
-		// The OSRS BufferProvider hands us ARGB-packed ints in native byte order
-		// → on little-endian Android those bytes land as B,G,R,A in memory.
-		// GLES doesn't expose GL_BGRA on standard 3.1, so colour channels will
-		// be swapped until we add a byte-swizzle (either in the fragui sampler
-		// or while staging into the buffer). Structural layout (chatbox bottom-
-		// left, minimap top-right, etc.) is still verifiable in this state.
-		ByteBuffer buf = ByteBuffer.allocateDirect(w * h * 4).order(ByteOrder.nativeOrder());
-		buf.asIntBuffer().put(pixels, 0, w * h);
-		buf.position(0);
+		// Reuse a per-canvas-size direct ByteBuffer for the pixel upload. Allocating one
+		// every frame was producing ~3.7MB of LOS garbage per frame at 1280×720, which
+		// under Unlock FPS = constant 185ms blocking-GC pauses (see logcat:
+		// "Background concurrent mark compact GC ... 49MB LOS objects ... 185ms total"
+		// followed by "WaitForGcToComplete blocked Alloc on Background for 121ms").
+		// The IntBuffer view is also cached because asIntBuffer() returns a fresh wrapper
+		// each call and that was an even smaller but still per-frame allocation.
+		int needBytes = w * h * 4;
+		if (interfaceUploadBuf == null || interfaceUploadBuf.capacity() < needBytes)
+		{
+			interfaceUploadBuf = ByteBuffer.allocateDirect(needBytes).order(ByteOrder.nativeOrder());
+			interfaceUploadBufAsInts = interfaceUploadBuf.asIntBuffer();
+		}
+		interfaceUploadBufAsInts.clear();
+		interfaceUploadBufAsInts.put(pixels, 0, w * h);
+		interfaceUploadBuf.position(0).limit(needBytes);
 		glBindTexture(GL_TEXTURE_2D, interfaceTexture);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL_RGBA, GL_UNSIGNED_BYTE, buf);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL_RGBA, GL_UNSIGNED_BYTE, interfaceUploadBuf);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 

@@ -205,12 +205,22 @@ public class RuneLite
 			logger.setLevel(Level.DEBUG);
 		}
 
+		final Thread.UncaughtExceptionHandler previousUncaughtHandler = Thread.getDefaultUncaughtExceptionHandler();
 		Thread.setDefaultUncaughtExceptionHandler((thread, throwable) ->
 		{
 			log.error("Uncaught exception:", throwable);
 			if (throwable instanceof AbstractMethodError)
 			{
 				log.error("Classes are out of date; Build with Gradle again.");
+			}
+			// Chain to whatever was installed before us. On Android this is the host's
+			// crash-reporter handler (AndroidCrashReporter installs Crashlytics first,
+			// then this method runs inside main() and was previously clobbering it). On
+			// desktop the chained-to handler is typically the JVM default, so behavior
+			// is unchanged.
+			if (previousUncaughtHandler != null)
+			{
+				previousUncaughtHandler.uncaughtException(thread, throwable);
 			}
 		});
 

@@ -41,6 +41,13 @@ agp = "8.6.1"
 androidxActivityCompose = "1.9.3"
 rustAndroidGradle = "0.9.6"
 
+# Firebase. BoM pins individual product versions so we don't have to. The gms plugin
+# wires google-services.json → res/values/ resources at build time; the crashlytics
+# gradle plugin uploads mapping.txt for R8-obfuscated stack traces.
+googleServices = "4.4.4"
+firebaseCrashlyticsGradle = "3.0.2"
+firebaseBom = "34.14.0"
+
 
 [libraries]
 rs-cache = { module = "net.runelite.rs:cache", version.ref = "cache" }
@@ -57,6 +64,7 @@ antlr-runtime = { module = "org.antlr:antlr4-runtime", version.ref="antlr" }
 asm-core = { module = "org.ow2.asm:asm", version.ref = "asm" }
 asm-tree = { module = "org.ow2.asm:asm-tree", version.ref = "asm" }
 asm-commons = { module = "org.ow2.asm:asm-commons", version.ref = "asm" }
+asm-util = { module = "org.ow2.asm:asm-util", version.ref = "asm" }
 vineflower = { module = "org.vineflower:vineflower", version.ref = "vineflower" }
 commons-compress = "org.apache.commons:commons-compress:1.10"
 commons-text = "org.apache.commons:commons-text:1.2"
@@ -91,13 +99,21 @@ tomlj = "org.tomlj:tomlj:1.1.0"
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
 
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-crashlytics-ndk = { module = "com.google.firebase:firebase-crashlytics-ndk" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+
 
 [plugins]
 lombok = { id = "io.freefair.lombok", version = "8.10.2" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 rust-android = { id = "org.mozilla.rust-android-gradle.rust-android", version.ref = "rustAndroidGradle" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsGradle" }

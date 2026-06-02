@@ -13,6 +13,8 @@ public abstract class Arc2D extends RectangularShape {
 
     public abstract double getAngleStart();
     public abstract double getAngleExtent();
+    public abstract void setAngleStart(double angSt);
+    public abstract void setAngleExtent(double angExt);
     public abstract void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure);
 
     public int getArcType() { return type; }
@@ -63,6 +65,8 @@ public abstract class Arc2D extends RectangularShape {
         @Override public double getHeight() { return height; }
         @Override public double getAngleStart() { return start; }
         @Override public double getAngleExtent() { return extent; }
+        @Override public void setAngleStart(double angSt) { this.start = angSt; }
+        @Override public void setAngleExtent(double angExt) { this.extent = angExt; }
         @Override public boolean isEmpty() { return width <= 0 || height <= 0; }
         @Override public void setFrame(double x, double y, double w, double h) {
             this.x = x; this.y = y; this.width = w; this.height = h;
@@ -88,6 +92,8 @@ public abstract class Arc2D extends RectangularShape {
         @Override public double getHeight() { return height; }
         @Override public double getAngleStart() { return start; }
         @Override public double getAngleExtent() { return extent; }
+        @Override public void setAngleStart(double angSt) { this.start = (float) angSt; }
+        @Override public void setAngleExtent(double angExt) { this.extent = (float) angExt; }
         @Override public boolean isEmpty() { return width <= 0 || height <= 0; }
         @Override public void setFrame(double x, double y, double w, double h) {
             this.x = (float) x; this.y = (float) y; this.width = (float) w; this.height = (float) h;

@@ -12,6 +12,13 @@ local.properties
 credentials.properties
 runelite-mp/src/androidMain/assets/credentials.properties
 
+# Release signing keystores. Lost-this-file = lost-update-channel on Play Store,
+# so back them up out-of-band — never commit. Passwords live in local.properties
+# alongside sdk.dir; that file is already gitignored above.
+*.jks
+*.keystore
+keystore/
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws

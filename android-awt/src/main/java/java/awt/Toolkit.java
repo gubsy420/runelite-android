@@ -50,7 +50,42 @@ public abstract class Toolkit {
         return bi;
     }
 
-    public Image getImage(String filename) { return null; }
+    /** Decode via ImageIO so callers that go through Toolkit (rather than
+     *  ImageIO directly) actually get a populated image. Real Swing/Toolkit
+     *  caches by filename + does async loading via ImageObserver; we just
+     *  return a fully-decoded BufferedImage synchronously. */
+    public Image getImage(String filename) {
+        if (filename == null) return null;
+        try { return javax.imageio.ImageIO.read(new java.io.File(filename)); }
+        catch (Throwable ignored) { return null; }
+    }
+
+    public Image getImage(java.net.URL url) {
+        if (url == null) return null;
+        try { return javax.imageio.ImageIO.read(url); }
+        catch (Throwable ignored) { return null; }
+    }
+
+    public Image createImage(String filename) { return getImage(filename); }
+    public Image createImage(java.net.URL url) { return getImage(url); }
+    public Image createImage(byte[] data) {
+        if (data == null) return null;
+        try { return javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(data)); }
+        catch (Throwable ignored) { return null; }
+    }
+    public Image createImage(byte[] data, int off, int len) {
+        if (data == null) return null;
+        try { return javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(data, off, len)); }
+        catch (Throwable ignored) { return null; }
+    }
+
+    /** Android can't host an OS-level cursor — just hand back a Cursor object
+     *  so callers that expect a non-null don't NPE. CustomCursorPlugin etc.
+     *  used to hit a NoSuchMethodError here and abort plugin startup. */
+    public Cursor createCustomCursor(Image image, Point hotspot, String name) {
+        return new Cursor(Cursor.CUSTOM_CURSOR);
+    }
+
     public void sync() {}
     public void beep() {}
 

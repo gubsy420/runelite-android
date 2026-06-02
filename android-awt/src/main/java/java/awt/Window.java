@@ -29,6 +29,22 @@ public class Window extends Container {
         return LATEST.get();
     }
 
+    /** Every Window the shim has ever constructed (filtered by WeakReference, so
+     *  garbage-collected entries drop out). The Compose-side input bridge uses this
+     *  to walk for KeyListeners — the OSRS engine's listener can be registered on a
+     *  Component inside a Window that {@link #primaryFrame} doesn't pick (the
+     *  primary-frame heuristic looks for the biggest visible game-Canvas-containing
+     *  Frame; non-visible utility Windows or windows the engine never paints into are
+     *  excluded by that filter even though their Components still receive input). */
+    public static java.util.List<Window> getAllWindows() {
+        java.util.List<Window> out = new java.util.ArrayList<>(ALL_WINDOWS.size());
+        for (java.lang.ref.WeakReference<Window> ref : ALL_WINDOWS) {
+            Window w = ref.get();
+            if (w != null) out.add(w);
+        }
+        return out;
+    }
+
     /**
      * Pick the frame the host should render. Preference order:
      *   1. Walk up from the current game Canvas — if it's in a Window tree, use that Window.
@@ -61,6 +77,35 @@ public class Window extends Container {
         if (withCanvas != null) return withCanvas;
         if (anyFrame != null) return anyFrame;
         return LATEST.get();
+    }
+
+    /** Cached lookup: does this Class hierarchy override
+     *  {@link Component#paint(Graphics)} below Component/Container/JComponent?
+     *  RuneLite uses paint() as a side-effect hook in a few places
+     *  (PluginIcon's async icon-load trigger), and our default paint walker
+     *  bypasses paint() to recurse manually. When a subclass really did
+     *  override paint(), we hand the JComponent its own paint() so those
+     *  side-effects fire. */
+    private static final java.util.concurrent.ConcurrentHashMap<Class<?>, Boolean> PAINT_OVERRIDE =
+        new java.util.concurrent.ConcurrentHashMap<>();
+    private static boolean overridesPaint(Class<?> cls) {
+        Boolean cached = PAINT_OVERRIDE.get(cls);
+        if (cached != null) return cached;
+        boolean result = false;
+        try {
+            java.lang.reflect.Method m = cls.getMethod("paint", Graphics.class);
+            Class<?> dc = m.getDeclaringClass();
+            // Anything outside the standard Component/Container/JComponent base
+            // counts as an override. JLabel doesn't override paint() — it only
+            // overrides paintComponent — so JLabel itself still takes the
+            // manual decomposition path.
+            String dcn = dc.getName();
+            result = !"java.awt.Component".equals(dcn)
+                && !"java.awt.Container".equals(dcn)
+                && !"javax.swing.JComponent".equals(dcn);
+        } catch (Throwable ignored) {}
+        PAINT_OVERRIDE.put(cls, result);
+        return result;
     }
 
     private static boolean containsCanvas(Component c) {
@@ -144,10 +189,58 @@ public class Window extends Container {
      * private backbuffer and never recurses into our shadow tree. We fill backgrounds, call
      * JComponent paintComponent/paintBorder, blit Canvas backbuffers, and recurse manually.
      */
+    /** Per-thread scratch state for the [#hostPaint] recursion. The save/restore at the
+     *  top and bottom of each call needs to capture the current Graphics2D transform +
+     *  clip; the JDK accessors allocate both an AffineTransform and a Rectangle every
+     *  time, which adds up to a few MB/sec across the OSRS UI tree. We instead keep a
+     *  pool of double[6]+int[4] pairs sized to the current recursion depth and rent
+     *  one per call. Pool grows on demand; never shrinks (max depth in practice is
+     *  ~30 for the OSRS applet hierarchy). */
+    private static final class PaintScratch {
+        double[][] txs = new double[16][];
+        int[][] clips = new int[16][];
+        int depth;
+        double[] tx() {
+            if (depth >= txs.length) {
+                txs = java.util.Arrays.copyOf(txs, txs.length * 2);
+                clips = java.util.Arrays.copyOf(clips, clips.length * 2);
+            }
+            double[] t = txs[depth];
+            if (t == null) { t = new double[6]; txs[depth] = t; }
+            return t;
+        }
+        int[] clip() {
+            int[] c = clips[depth];
+            if (c == null) { c = new int[4]; clips[depth] = c; }
+            return c;
+        }
+    }
+    private static final ThreadLocal<PaintScratch> SCRATCH = ThreadLocal.withInitial(PaintScratch::new);
+
     private static void hostPaint(java.awt.Graphics2D g, Component c) {
         if (!c.isVisible() || c.getWidth() <= 0 || c.getHeight() <= 0) return;
-        java.awt.geom.AffineTransform savedTx = g.getTransform();
-        java.awt.Shape savedClip = g.getClip();
+        // Fast-path the common BufferedImageGraphics2D case with the zero-alloc
+        // snapshot helpers. Fall back to the JDK-style save/restore when something
+        // else (eg. some plugin's custom Graphics) is on the stack so semantics stay
+        // identical for non-mainline callers.
+        net.runelite.awt.impl.BufferedImageGraphics2D fast =
+            g instanceof net.runelite.awt.impl.BufferedImageGraphics2D
+                ? (net.runelite.awt.impl.BufferedImageGraphics2D) g : null;
+        PaintScratch ps = fast != null ? SCRATCH.get() : null;
+        double[] savedTxArr = null;
+        int[] savedClipArr = null;
+        java.awt.geom.AffineTransform savedTx = null;
+        java.awt.Shape savedClip = null;
+        if (fast != null) {
+            savedTxArr = ps.tx();
+            savedClipArr = ps.clip();
+            fast.snapshotTransform(savedTxArr);
+            fast.snapshotClip(savedClipArr);
+            ps.depth++;
+        } else {
+            savedTx = g.getTransform();
+            savedClip = g.getClip();
+        }
         try {
             g.translate(c.getX(), c.getY());
             g.clipRect(0, 0, c.getWidth(), c.getHeight());
@@ -182,6 +275,30 @@ public class Window extends Container {
 
             if (c instanceof javax.swing.JComponent) {
                 javax.swing.JComponent jc = (javax.swing.JComponent) c;
+                // If the subclass overrides paint() (e.g. PluginHubPanel.PluginIcon
+                // kicks off an async icon-load inside paint()), route through the
+                // override so its side effects run. Otherwise, take the manual
+                // decomposition path — that's needed for parent panels that
+                // contain non-JComponent Containers like the patched RS client
+                // Applet, whose custom paint() does NOT recurse into its inner
+                // Canvas. If we called jc.paint() unconditionally, the recursion
+                // would go through the Applet's paint() and skip the Canvas,
+                // breaking the GLES alpha-hole punch and leaving the game area
+                // covered by opaque bitmap pixels.
+                //
+                // Exception: if a Canvas lives anywhere in this JComponent's
+                // subtree, we MUST take the manual recursion path — even if the
+                // JComponent overrides paint() — so the Canvas branch above fires
+                // and (when GLES is active) clears the canvas rect to alpha=0.
+                // This is what makes fixed-mode GLES work: the patched client's
+                // fixed-mode chrome layout wraps the game Canvas in a Swing panel
+                // whose own paint() doesn't recurse to children; without this
+                // bypass the Compose chrome bitmap stays opaque over the canvas
+                // and the SurfaceView never shows the scene through.
+                if (overridesPaint(jc.getClass()) && !containsCanvas(jc)) {
+                    try { jc.paint(g); } catch (Throwable ignored) {}
+                    return;
+                }
                 if (jc.isOpaque()) {
                     java.awt.Color saved = g.getColor();
                     g.setColor(jc.getBackground());
@@ -217,8 +334,14 @@ public class Window extends Container {
                 if (saved != null) g.setColor(saved);
             }
         } finally {
-            g.setTransform(savedTx);
-            g.setClip(savedClip);
+            if (fast != null) {
+                fast.restoreTransform(savedTxArr);
+                fast.restoreClip(savedClipArr);
+                ps.depth--;
+            } else {
+                g.setTransform(savedTx);
+                g.setClip(savedClip);
+            }
         }
     }
 

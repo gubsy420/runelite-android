@@ -95,6 +95,16 @@ public class ReflectUtil
 	 */
 	public static void installLookupHelper(PrivateLookupableClassLoader cl)
 	{
+		// Android packs classes into DEX, so getResourceAsStream("…/PrivateLookupHelper.class")
+		// returns null and the original code NPEs in ByteStreams.toByteArray. The lookup
+		// helper exists to give externally-loaded plugin classloaders MODULE|PRIVATE access
+		// when invoking LambdaMetafactory — but LambdaMetafactory itself is a hidden API on
+		// Android (we already work around that in EventBus) so the helper isn't useful here.
+		// Skip the install instead of crashing the external-plugin load chain.
+		String vm = System.getProperty("java.vm.name", "");
+		if (vm.contains("Dalvik") || vm.contains("Android")) {
+			return;
+		}
 		String name = PrivateLookupHelper.class.getName();
 		try (InputStream in = ReflectUtil.class.getResourceAsStream("/" + name.replace('.', '/') + ".class"))
 		{

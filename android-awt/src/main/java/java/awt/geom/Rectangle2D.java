@@ -117,6 +117,67 @@ public abstract class Rectangle2D implements Shape, Cloneable, Serializable {
         }
     }
 
+    @Override
+    public PathIterator getPathIterator(AffineTransform at) {
+        return new RectIterator(this, at);
+    }
+
+    @Override
+    public PathIterator getPathIterator(AffineTransform at, double flatness) {
+        return new RectIterator(this, at);
+    }
+
+    /** 5-step walk: MOVE → LINE → LINE → LINE → CLOSE. Without this, Shape's default
+     *  getPathIterator returns null and anything that walks a Rectangle as a generic Shape
+     *  (Geometry.intersectionPoints, BufferedImageGraphics2D.walkShape, clip-region walkers)
+     *  NPEs on the first isDone() call. */
+    private static final class RectIterator implements PathIterator {
+        private final double x, y, w, h;
+        private final AffineTransform at;
+        private int index = 0;
+
+        RectIterator(Rectangle2D r, AffineTransform at) {
+            this.x = r.getX();
+            this.y = r.getY();
+            this.w = r.getWidth();
+            this.h = r.getHeight();
+            this.at = at;
+            if (w < 0 || h < 0) index = 5; // degenerate — emit nothing
+        }
+
+        @Override public int getWindingRule() { return WIND_NON_ZERO; }
+        @Override public boolean isDone() { return index > 4; }
+        @Override public void next() { index++; }
+
+        @Override
+        public int currentSegment(float[] coords) {
+            if (index == 4) return SEG_CLOSE;
+            switch (index) {
+                case 0: coords[0] = (float) x;       coords[1] = (float) y;       break;
+                case 1: coords[0] = (float) (x + w); coords[1] = (float) y;       break;
+                case 2: coords[0] = (float) (x + w); coords[1] = (float) (y + h); break;
+                case 3: coords[0] = (float) x;       coords[1] = (float) (y + h); break;
+                default: throw new java.util.NoSuchElementException("rect done");
+            }
+            if (at != null) at.transform(coords, 0, coords, 0, 1);
+            return index == 0 ? SEG_MOVETO : SEG_LINETO;
+        }
+
+        @Override
+        public int currentSegment(double[] coords) {
+            if (index == 4) return SEG_CLOSE;
+            switch (index) {
+                case 0: coords[0] = x;     coords[1] = y;     break;
+                case 1: coords[0] = x + w; coords[1] = y;     break;
+                case 2: coords[0] = x + w; coords[1] = y + h; break;
+                case 3: coords[0] = x;     coords[1] = y + h; break;
+                default: throw new java.util.NoSuchElementException("rect done");
+            }
+            if (at != null) at.transform(coords, 0, coords, 0, 1);
+            return index == 0 ? SEG_MOVETO : SEG_LINETO;
+        }
+    }
+
     public static class Double extends Rectangle2D implements Serializable {
         private static final long serialVersionUID = 7771313791441850493L;
         public double x, y, width, height;

@@ -37,6 +37,15 @@ public class KeyEvent extends InputEvent {
     public int getKeyCode() { return keyCode; }
     public void setKeyCode(int keyCode) { this.keyCode = keyCode; }
 
+    /**
+     * JDK API used by {@link net.runelite.client.config.Keybind#matches}. The desktop
+     * JDK returns a Unicode-aware "extended" code that differs from {@link #getKeyCode}
+     * for non-ASCII layouts; we don't have a keymap, so for our synthesised events the
+     * raw key code is fine — Keybind treats it as identity for matching against the
+     * configured hotkey, which is also stored as a single int.
+     */
+    public int getExtendedKeyCode() { return keyCode; }
+
     public char getKeyChar() { return keyChar; }
     public void setKeyChar(char keyChar) { this.keyChar = keyChar; }
 

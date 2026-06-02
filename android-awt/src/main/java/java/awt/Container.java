@@ -90,6 +90,10 @@ public class Container extends Component {
 
     @Override
     public Dimension getPreferredSize() {
+        // Explicit setPreferredSize wins, mirroring real Swing — e.g. PluginListItem sets
+        // its row to (PANEL_WIDTH, 20) and expects that even though its BorderLayout would
+        // compute a smaller intrinsic size.
+        if (isPreferredSizeSet()) return super.getPreferredSize();
         if (layout != null) {
             Dimension d = layout.preferredLayoutSize(this);
             if (d != null && (d.width > 0 || d.height > 0)) return d;
@@ -99,6 +103,12 @@ public class Container extends Component {
 
     @Override
     public Dimension getMinimumSize() {
+        // Explicit setMinimumSize wins — ClientPanel sets GAME_FIXED_SIZE (765×503) as its
+        // floor so the OSRS canvas can never shrink below the legacy game viewport. Without
+        // this check, BorderLayout would sum the child Canvas's current bounds (often
+        // smaller) and ClientUI.Layout.layout() would let the game area shrink to absorb
+        // the sidebar instead of growing the frame.
+        if (isMinimumSizeSet()) return super.getMinimumSize();
         if (layout != null) {
             Dimension d = layout.minimumLayoutSize(this);
             if (d != null && (d.width > 0 || d.height > 0)) return d;

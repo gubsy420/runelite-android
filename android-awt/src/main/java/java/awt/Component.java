@@ -36,6 +36,13 @@ public abstract class Component implements ImageObserver, Serializable {
     protected boolean visible = true;
     protected boolean enabled = true;
     protected Container parent;
+    /** Mouse cursor — Android can't actually show one but RuneLite plugins
+     *  (CustomCursorPlugin, drag handlers) call setCursor/getCursor a lot and
+     *  hit NoSuchMethodError if these aren't here. */
+    protected Cursor cursor = Cursor.getDefaultCursor();
+
+    public Cursor getCursor() { return cursor; }
+    public void setCursor(Cursor cursor) { this.cursor = cursor; }
 
     private final List<ComponentListener> componentListeners = new ArrayList<>();
     private final List<FocusListener> focusListeners = new ArrayList<>();
@@ -75,14 +82,56 @@ public abstract class Component implements ImageObserver, Serializable {
     public boolean isMaximumSizeSet() { return maximumSize != null; }
     public Rectangle getBounds()  { return new Rectangle(x, y, width, height); }
 
-    public void setLocation(int x, int y)       { this.x = x; this.y = y; }
+    public void setLocation(int x, int y) {
+        boolean moved = this.x != x || this.y != y;
+        this.x = x; this.y = y;
+        if (moved) fireComponentMoved();
+    }
     public void setLocation(Point p)            { setLocation(p.x, p.y); }
-    public void setSize(int w, int h)           { width = w; height = h; }
+    public void setSize(int w, int h) {
+        boolean resized = width != w || height != h;
+        width = w; height = h;
+        if (resized) fireComponentResized();
+    }
     public void setSize(Dimension d)            { setSize(d.width, d.height); }
     public void setBounds(int x, int y, int w, int h) {
+        boolean moved = this.x != x || this.y != y;
+        boolean resized = this.width != w || this.height != h;
         this.x = x; this.y = y; this.width = w; this.height = h;
+        if (moved) fireComponentMoved();
+        if (resized) fireComponentResized();
     }
     public void setBounds(Rectangle r)          { setBounds(r.x, r.y, r.width, r.height); }
+
+    /**
+     * Notify registered {@link ComponentListener}s that this component just got bigger.
+     * Real AWT fires this from its native peer when the OS reports a window resize; we
+     * have no peer, so {@link #setSize}/{@link #setBounds} fire it manually. The OSRS
+     * engine subscribes to this event on its Canvas to refresh its internal canvas-
+     * dimension cache (`sd_fld`) — without the dispatch, `client.getRealDimensions()`
+     * keeps returning the construction-time size, which clamps overlay-drag regions to
+     * the left part of a wider mobile viewport.
+     */
+    private void fireComponentResized() {
+        if (componentListeners.isEmpty()) return;
+        java.awt.event.ComponentEvent e = new java.awt.event.ComponentEvent(
+            this, java.awt.event.ComponentEvent.COMPONENT_RESIZED);
+        for (java.awt.event.ComponentListener l : new java.util.ArrayList<>(componentListeners)) {
+            try { l.componentResized(e); } catch (Throwable ignored) {}
+        }
+    }
+
+    /** Companion to {@link #fireComponentResized} for setLocation/setBounds calls
+     *  that change the (x, y) origin. The engine's resize listener doesn't act on
+     *  this, but a few RL plugins do. */
+    private void fireComponentMoved() {
+        if (componentListeners.isEmpty()) return;
+        java.awt.event.ComponentEvent e = new java.awt.event.ComponentEvent(
+            this, java.awt.event.ComponentEvent.COMPONENT_MOVED);
+        for (java.awt.event.ComponentListener l : new java.util.ArrayList<>(componentListeners)) {
+            try { l.componentMoved(e); } catch (Throwable ignored) {}
+        }
+    }
 
     public Color getForeground()  { return foreground; }
     public void setForeground(Color c) { foreground = c; }

@@ -70,6 +70,48 @@ public abstract class AbstractButton extends JComponent {
     public ButtonModel getModel() { return model; }
     public void setModel(ButtonModel newModel) { this.model = newModel; }
 
+    /** Padding between the icon and the text when both are shown. Default 4 mirrors Swing.
+     *  External plugins (quest-helper / loot-tracker) call this on JButton, JToggleButton,
+     *  etc. — without it Dalvik throws NoSuchMethodError at plugin startup. */
+    private int iconTextGap = 4;
+    public int getIconTextGap() { return iconTextGap; }
+    public void setIconTextGap(int gap) { this.iconTextGap = gap; }
+
+    /** Insets between the border and the button's content. Stored but not honored by
+     *  paint (we draw text/icon centered) — plugins set it as a layout hint, that's all
+     *  we need to satisfy. Without the stub Dalvik throws NoSuchMethodError. */
+    private java.awt.Insets margin;
+    public java.awt.Insets getMargin() { return margin; }
+    public void setMargin(java.awt.Insets m) { this.margin = m; }
+
+    /**
+     * Compute a sensible preferred size from text + icon + padding. JComponent's default
+     * delegates to Component.getSize() which is (0,0) before layout — DynamicGridLayout
+     * (and any other layout that consults preferred size) then placed buttons with
+     * height=0, so Reset/Back in the plugin config panel never appeared. Real Swing
+     * derives this from BasicButtonUI; we just measure directly.
+     */
+    @Override
+    public java.awt.Dimension getPreferredSize() {
+        if (isPreferredSizeSet()) return super.getPreferredSize();
+        int textW = 0, textH = 0;
+        String t = text;
+        if (t != null && !t.isEmpty()) {
+            java.awt.FontMetrics fm = getFontMetrics(getFont());
+            if (fm != null) {
+                textW = fm.stringWidth(t);
+                textH = fm.getHeight();
+            }
+        }
+        int iconW = icon != null ? icon.getIconWidth() : 0;
+        int iconH = icon != null ? icon.getIconHeight() : 0;
+        int gap = (textW > 0 && iconW > 0) ? iconTextGap : 0;
+        int padX = 16, padY = 6;
+        int w = Math.max(textW + iconW + gap + padX * 2, 24);
+        int h = Math.max(Math.max(textH, iconH) + padY * 2, 24);
+        return new java.awt.Dimension(w, h);
+    }
+
     public boolean isSelected() { return model.isSelected(); }
     public void setSelected(boolean b) { model.setSelected(b); }
 

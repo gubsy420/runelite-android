@@ -44,11 +44,17 @@ public class ClientToolbar
 
 	public void addNavigation(NavigationButton button)
 	{
+		if (button == null) return;
 		SwingUtilities.invokeLater(() -> clientUI.addNavigation(button));
 	}
 
 	public void removeNavigation(final NavigationButton button)
 	{
+		// Some plugins call this with a null reference in shutDown() (lazy-inited button
+		// that never got created on Android). Silently dropping is preferable to dispatching
+		// a null-deref onto the EDT — Android's runtime treats the FATAL log line as a
+		// crash signal even though our EDT UEH catches the actual throw.
+		if (button == null) return;
 		SwingUtilities.invokeLater(() -> clientUI.removeNavigation(button));
 	}
 

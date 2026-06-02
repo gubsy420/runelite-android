@@ -346,7 +346,21 @@ public class NpcAggroAreaPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		WorldPoint newLocation = client.getLocalPlayer().getWorldLocation();
+		// localPlayer can be transiently null right at the LOGGED_IN edge on clients
+		// where the gamestate event leads the engine's local-player assignment by a
+		// tick (runelite-android). Bail and retry next tick rather than NPE'ing.
+		final net.runelite.api.Player localPlayer = client.getLocalPlayer();
+		if (localPlayer == null) return;
+
+		// If onGameStateChanged saw localPlayer null at LOGGED_IN it left loggingIn
+		// armed; pick up the deferred onLogin work now that the player object is real.
+		if (loggingIn)
+		{
+			loggingIn = false;
+			onLogin();
+		}
+
+		WorldPoint newLocation = localPlayer.getWorldLocation();
 
 		if (active && notifyOnce && Instant.now().isAfter(endTime))
 		{
@@ -485,11 +499,18 @@ public class NpcAggroAreaPlugin extends Plugin
 			case LOGGED_IN:
 				if (loggingIn)
 				{
-					loggingIn = false;
-					onLogin();
+					// Defer until localPlayer is populated (see onGameTick guard).
+					if (client.getLocalPlayer() != null)
+					{
+						loggingIn = false;
+						onLogin();
+					}
 				}
 
-				scanNpcs();
+				if (client.getLocalPlayer() != null)
+				{
+					scanNpcs();
+				}
 				break;
 
 			case LOGGING_IN:

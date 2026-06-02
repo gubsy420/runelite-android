@@ -70,6 +70,40 @@ public class BufferedImage extends Image {
     @Override public int getWidth(ImageObserver observer)  { return getWidth(); }
     @Override public int getHeight(ImageObserver observer) { return getHeight(); }
 
+    /**
+     * Real scaling — without this, the shadow {@link Image#getScaledInstance}
+     * returned the original image, which meant {@code ImageUtil.resizeImage}
+     * and any plugin that scales an icon via {@code img.getScaledInstance(w, h,
+     * SCALE_SMOOTH)} silently produced an unscaled image.
+     * Accepts -1 for either dimension to preserve aspect ratio (matches the
+     * JDK contract); scales via Android Bitmap.
+     */
+    @Override
+    public Image getScaledInstance(int width, int height, int hints) {
+        int srcW = getWidth();
+        int srcH = getHeight();
+        if (srcW <= 0 || srcH <= 0) return this;
+        if (width < 0 && height < 0) return this;
+        if (width < 0) width = (int) Math.round((double) srcW * height / srcH);
+        else if (height < 0) height = (int) Math.round((double) srcH * width / srcW);
+        if (width <= 0 || height <= 0) return this;
+        if (width == srcW && height == srcH) return this;
+
+        int[] src = backingArray();
+        if (src == null) return this; // unsupported image type — bail
+        boolean smooth = (hints & (SCALE_SMOOTH | SCALE_AREA_AVERAGING)) != 0;
+        android.graphics.Bitmap bmp = android.graphics.Bitmap.createBitmap(
+            srcW, srcH, android.graphics.Bitmap.Config.ARGB_8888);
+        bmp.setPixels(src, 0, srcW, 0, 0, srcW, srcH);
+        android.graphics.Bitmap scaled = android.graphics.Bitmap.createScaledBitmap(bmp, width, height, smooth);
+        bmp.recycle();
+
+        BufferedImage out = new BufferedImage(width, height, TYPE_INT_ARGB);
+        scaled.getPixels(out.backingArray(), 0, width, 0, 0, width, height);
+        if (scaled != bmp) scaled.recycle();
+        return out;
+    }
+
     /** Direct pixel buffer (TYPE_INT_* images only). Mutating it mutates the image. */
     public int[] backingArray() {
         return pixels;

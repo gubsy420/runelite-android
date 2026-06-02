@@ -1,6 +1,17 @@
 plugins {
     java
     application
+    // Kotlin alongside Java — used for the UpdateMapper (cross-revision annotation
+    // carry-over). The Kotlin plugin is already on the build classpath via
+    // runelite-mp's kotlin-multiplatform alias.
+    id("org.jetbrains.kotlin.jvm")
+}
+
+// Pin Kotlin's JVM target to match Java's (common.settings.gradle.kts sets
+// options.release = 11 on every JavaCompile). Without this, Kotlin defaults to
+// whatever the runtime is (21) and Gradle refuses to mix.
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
 }
 
 dependencies {
@@ -11,6 +22,9 @@ dependencies {
     // Provides @javax.inject.Named so its declared member types can be reflected over for bomb detection.
     implementation(libs.javax.inject)
     implementation(libs.vineflower)
+    // Lets the sanitizer's annotation-keep filter Class.forName our @ObfuscatedGetter
+    // when emitting it on rewritten fields, instead of treating it as unloadable noise.
+    implementation("net.runelite:runelite-api:${project.version}")
 }
 
 application {
@@ -30,6 +44,21 @@ tasks.register<JavaExec>("sanitize") {
     (findProperty("inJar") as? String)?.let { args(it) }
 }
 
+tasks.register<JavaExec>("updateMap") {
+    group = "application"
+    description = "Carry @Export/@Implements/@ObfuscatedName from a sanitized reference jar to a newer revision."
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("net.runelite.inspector.UpdateMapper")
+    workingDir = rootProject.projectDir
+    val refJar = (findProperty("refJar") as? String)
+        ?: "data/runelite-1.12.27-injected-26504454311.147-clean.jar"
+    val tgtJar = (findProperty("tgtJar") as? String)
+        ?: "data/runelite-1.12.27-SNAPSHOT-injected-26376428461.145.jar"
+    val outJar = (findProperty("outJar") as? String)
+        ?: tgtJar.replace(".jar", "-annotated.jar")
+    args(refJar, tgtJar, outJar)
+}
+
 tasks.register<JavaExec>("decompile") {
     group = "application"
     description = "Decompile a (sanitized) jar to .java sources under data/sources/<stem>/, full log to data/<stem>-decompile.log"
@@ -38,6 +67,15 @@ tasks.register<JavaExec>("decompile") {
     workingDir = rootProject.projectDir
     maxHeapSize = "6g"
     (findProperty("inJar") as? String)?.let { args(it) }
+}
+
+tasks.register<JavaExec>("patchSources") {
+    group = "application"
+    description = "Apply post-decompile source-level patches under data/sources/<stem>/ — fixes Vineflower artefacts (lost generics, method-ref arity, Throwable upcast) we can't repair upstream"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("net.runelite.inspector.SourcePatcher")
+    workingDir = rootProject.projectDir
+    (findProperty("stem") as? String)?.let { args(it) }
 }
 
 tasks.register("recompile") {

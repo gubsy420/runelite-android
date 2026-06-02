@@ -42,6 +42,34 @@ public abstract class InputEvent extends ComponentEvent {
     public boolean isAltDown() { return (modifiers & (ALT_MASK | ALT_DOWN_MASK)) != 0; }
     public boolean isAltGraphDown() { return (modifiers & (ALT_GRAPH_MASK | ALT_GRAPH_DOWN_MASK)) != 0; }
 
+    /**
+     * JDK API used by {@link net.runelite.client.config.Keybind#toString}. Translates
+     * an extended-modifier mask into a human-readable string like "Ctrl+Shift". On
+     * desktop the JDK uses the localized AWT toolkit; we just emit ASCII names. Without
+     * this, dragging a {@code WidgetOverlay} for the first time crashes inside
+     * {@code OverlayRenderer.mouseReleased} (it tries to format the user-visible
+     * "hold X to reposition again" chat message) — the unwind happens BEFORE
+     * `resetOverlayManagementMode()` so drag state hangs, which manifests as overlays
+     * stuck in a confined subspace until the client deadlocks.
+     */
+    public static String getModifiersExText(int modifiers) {
+        StringBuilder sb = new StringBuilder();
+        if ((modifiers & META_DOWN_MASK) != 0) appendPart(sb, "Meta");
+        if ((modifiers & CTRL_DOWN_MASK) != 0) appendPart(sb, "Ctrl");
+        if ((modifiers & ALT_DOWN_MASK) != 0) appendPart(sb, "Alt");
+        if ((modifiers & SHIFT_DOWN_MASK) != 0) appendPart(sb, "Shift");
+        if ((modifiers & ALT_GRAPH_DOWN_MASK) != 0) appendPart(sb, "Alt Graph");
+        if ((modifiers & BUTTON1_DOWN_MASK) != 0) appendPart(sb, "Button1");
+        if ((modifiers & BUTTON2_DOWN_MASK) != 0) appendPart(sb, "Button2");
+        if ((modifiers & BUTTON3_DOWN_MASK) != 0) appendPart(sb, "Button3");
+        return sb.toString();
+    }
+
+    private static void appendPart(StringBuilder sb, String name) {
+        if (sb.length() > 0) sb.append('+');
+        sb.append(name);
+    }
+
     @Override
     public void consume() { super.consume(); }
 

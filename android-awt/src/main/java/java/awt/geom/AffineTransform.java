@@ -134,6 +134,15 @@ public class AffineTransform implements Cloneable, Serializable {
         this.m02 = other.m02; this.m12 = other.m12;
     }
 
+    /** Standard JDK overload — set all six matrix elements in place. Used by callers
+     *  (e.g. BufferedImageGraphics2D's snapshot/restore path) that want to avoid the
+     *  allocation a `new AffineTransform(...)` would incur on the hot paint path. */
+    public void setTransform(double m00, double m10, double m01, double m11, double m02, double m12) {
+        this.m00 = m00; this.m10 = m10;
+        this.m01 = m01; this.m11 = m11;
+        this.m02 = m02; this.m12 = m12;
+    }
+
     /** Standard AWT API: transform {@code numPts} 2D points from {@code srcPts[srcOff..]}
      *  into {@code dstPts[dstOff..]}. Aliasing src and dst is allowed. */
     public void transform(float[] srcPts, int srcOff, float[] dstPts, int dstOff, int numPts) {

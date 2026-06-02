@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon foreground. The 108×108 dp adaptive icon canvas has a 72×72 dp safe
+  zone in the centre — anything outside that region can be clipped by the launcher's
+  mask (circle, squircle, teardrop, etc.). The bare 128px logo was sitting flush to
+  the edge so launchers chopped off the sword tip and the flames. Inset by 22% to
+  pull the logo back inside the safe zone with a comfortable margin.
+-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/runelite_logo"
+    android:inset="22%" />

@@ -25,6 +25,7 @@
 package net.runelite.client.externalplugins;
 
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -38,6 +39,13 @@ import net.runelite.client.util.ReflectUtil;
 
 class PluginHubClassLoader extends URLClassLoader implements ReflectUtil.PrivateLookupableClassLoader
 {
+	/** Dalvik doesn't run JVM bytecode, so URLClassLoader can't actually load .class files from
+	 *  a hub jar on Android. The pluginhub-lib pipeline dexes each jar (classes.dex + resources
+	 *  at the root), and on Android we delegate findClass to a DexClassLoader pointed at the
+	 *  same file. URLClassLoader still owns resource lookup so the stub-read in the constructor
+	 *  and any later getResource calls keep working through the same code path. */
+	private static final boolean IS_ANDROID = "Dalvik".equals(System.getProperty("java.vm.name"));
+
 	@Getter
 	private final PluginHubManifest.JarData jarData;
 
@@ -48,6 +56,8 @@ class PluginHubClassLoader extends URLClassLoader implements ReflectUtil.Private
 	@Setter
 	private MethodHandles.Lookup lookup;
 
+	private final ClassLoader dexClassLoader;
+
 	PluginHubClassLoader(PluginHubManifest.JarData jarData, URL[] urls, Gson gson) throws IOException
 	{
 		super(urls, PluginHubClassLoader.class.getClassLoader());
@@ -56,7 +66,48 @@ class PluginHubClassLoader extends URLClassLoader implements ReflectUtil.Private
 		{
 			this.stub = gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), PluginHubManifest.Stub.class);
 		}
+		this.dexClassLoader = IS_ANDROID ? createDexClassLoader(jarData.getJarFile()) : null;
 		ReflectUtil.installLookupHelper(this);
+	}
+
+	/** Reflective so runelite-client still compiles on a plain JDK (no dalvik.system on
+	 *  the desktop classpath). The constructor signature has been stable since API 14:
+	 *  (dexPath, optimizedDirectory, librarySearchPath, parent). optimizedDirectory has been
+	 *  ignored since Android 8 but is still non-null-required on older devices. Files
+	 *  downloaded by ExternalPluginManager land RW by default; Android API 29+ throws
+	 *  SecurityException("Writable dex file ... is not allowed.") so flip to read-only
+	 *  before handing the path to the class loader. */
+	private static ClassLoader createDexClassLoader(File jarFile)
+	{
+		try
+		{
+			if (jarFile.canWrite() && !jarFile.setReadOnly())
+			{
+				throw new IOException("Could not chmod " + jarFile + " to read-only");
+			}
+			Class<?> dcl = Class.forName("dalvik.system.DexClassLoader");
+			return (ClassLoader) dcl
+				.getConstructor(String.class, String.class, String.class, ClassLoader.class)
+				.newInstance(
+					jarFile.getAbsolutePath(),
+					jarFile.getParentFile().getAbsolutePath(),
+					null,
+					PluginHubClassLoader.class.getClassLoader());
+		}
+		catch (ReflectiveOperationException | IOException e)
+		{
+			throw new RuntimeException("Failed to create DexClassLoader for " + jarFile, e);
+		}
+	}
+
+	@Override
+	protected Class<?> findClass(String name) throws ClassNotFoundException
+	{
+		if (dexClassLoader != null)
+		{
+			return dexClassLoader.loadClass(name);
+		}
+		return super.findClass(name);
 	}
 
 	@Override

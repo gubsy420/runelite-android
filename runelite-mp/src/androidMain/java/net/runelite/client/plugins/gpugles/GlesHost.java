@@ -29,8 +29,20 @@ public final class GlesHost
 	private static final String TAG = "GlesHost";
 
 	/** MSAA samples requested for the on-screen surface. Falls back to no MSAA if
-	 *  the GPU/driver doesn't expose a matching config. */
-	private static final int MSAA_SAMPLES = 4;
+	 *  the GPU/driver doesn't expose a matching config. Mobile-friendly default is
+	 *  0; users can opt in via config. The number is read once at context creation
+	 *  because EGL configs are immutable on a live context — flipping the toggle
+	 *  requires a plugin restart so we can rebuild the EGL stack. */
+	private int requestedMsaa = 0;
+
+	/** 3D scene render-target scale (0..1). 1 = render the scene FBO at the SurfaceView's
+	 *  native pixel size. Lower = smaller scene FBO; {@link GpuGlesPlugin} blits the FBO
+	 *  back to the native-resolution EGL surface and then composites the UI texture on
+	 *  top at native res. Critical that only the 3D scene scales — using
+	 *  {@link SurfaceHolder#setFixedSize} (our previous approach) would scale the entire
+	 *  EGL surface including the UI, which SurfaceFlinger then bilinearly upscales,
+	 *  blurring text. Default 0.75 so first-launch users get a noticeable boost. */
+	private float requestedScale = 0.75f;
 
 	private static final GlesHost INSTANCE = new GlesHost();
 	public static GlesHost get() { return INSTANCE; }
@@ -103,6 +115,30 @@ public final class GlesHost
 	public int getWidth() { synchronized (lock) { return surfaceWidth; } }
 	public int getHeight() { synchronized (lock) { return surfaceHeight; } }
 
+	/** Set the 3D-scene render scale (0.25..1.0). Just stores the value; the plugin
+	 *  reads {@link #getResolutionScale} each frame to size its scene FBO. Safe to call
+	 *  from any thread. */
+	public void setResolutionScale(float scale)
+	{
+		float clamped = Math.max(0.25f, Math.min(1.0f, scale));
+		synchronized (lock) { requestedScale = clamped; }
+	}
+
+	public float getResolutionScale()
+	{
+		synchronized (lock) { return requestedScale; }
+	}
+
+	/** Set the MSAA sample count to request when the EGL context is next created.
+	 *  Has no effect on an already-running context — the plugin reads this on startUp
+	 *  via {@link #setRequestedMsaa(int)} and shutdown/restart cycles tear the context
+	 *  down so the next init() picks the new value up. */
+	public void setRequestedMsaa(int samples)
+	{
+		int n = (samples == 2 || samples == 4) ? samples : 0;
+		synchronized (lock) { requestedMsaa = n; }
+	}
+
 	/** True once {@link #makeCurrent} has bound a context to the current thread.
 	 *  Cheap to call from a render loop — only reads volatile state. */
 	public boolean hasContext() { return context != EGL14.EGL_NO_CONTEXT && eglSurface != EGL14.EGL_NO_SURFACE; }
@@ -147,6 +183,26 @@ public final class GlesHost
 		return EGL14.eglSwapBuffers(display, eglSurface);
 	}
 
+	/** EGL swap interval. 0 = present as fast as possible (no vsync), 1 = vsync at
+	 *  the surface's refresh rate. Driver may clamp values it doesn't support — eg.
+	 *  many Android implementations will silently treat anything &gt; 1 as 1. The
+	 *  GpuGlesPlugin calls this when {@code unlockFps} flips on/off so the engine's
+	 *  uncapped scene rate isn't hard-pinned to the display's vsync. */
+	public boolean setSwapInterval(int interval)
+	{
+		synchronized (lock)
+		{
+			if (display == EGL14.EGL_NO_DISPLAY) return false;
+			if (!EGL14.eglSwapInterval(display, interval))
+			{
+				Log.w(TAG, "eglSwapInterval(" + interval + ") failed: 0x" + Integer.toHexString(EGL14.eglGetError()));
+				return false;
+			}
+			return true;
+		}
+	}
+
+
 	private boolean initDisplayLocked()
 	{
 		display = EGL14.eglGetDisplay(EGL14.EGL_DEFAULT_DISPLAY);
@@ -168,11 +224,18 @@ public final class GlesHost
 
 	private boolean initContextLocked()
 	{
-		EGLConfig chosen = chooseConfig(true);
+		EGLConfig chosen = null;
+		if (requestedMsaa >= 2)
+		{
+			chosen = chooseConfig(requestedMsaa);
+			if (chosen == null)
+			{
+				Log.w(TAG, requestedMsaa + "× MSAA config unavailable, falling back to single-sample");
+			}
+		}
 		if (chosen == null)
 		{
-			Log.w(TAG, "MSAA config unavailable, falling back to single-sample");
-			chosen = chooseConfig(false);
+			chosen = chooseConfig(0);
 		}
 		if (chosen == null)
 		{
@@ -191,10 +254,10 @@ public final class GlesHost
 		return true;
 	}
 
-	private EGLConfig chooseConfig(boolean wantMsaa)
+	private EGLConfig chooseConfig(int msaaSamples)
 	{
 		int[] attrs;
-		if (wantMsaa)
+		if (msaaSamples >= 2)
 		{
 			attrs = new int[] {
 				EGL14.EGL_RED_SIZE, 8,
@@ -204,7 +267,7 @@ public final class GlesHost
 				EGL14.EGL_DEPTH_SIZE, 24,
 				EGL14.EGL_STENCIL_SIZE, 0,
 				EGL14.EGL_SAMPLE_BUFFERS, 1,
-				EGL14.EGL_SAMPLES, MSAA_SAMPLES,
+				EGL14.EGL_SAMPLES, msaaSamples,
 				EGL14.EGL_RENDERABLE_TYPE, EGLExt.EGL_OPENGL_ES3_BIT_KHR,
 				EGL14.EGL_SURFACE_TYPE, EGL14.EGL_WINDOW_BIT,
 				EGL14.EGL_NONE

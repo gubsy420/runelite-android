@@ -21,7 +21,6 @@ public class JComponent extends Container {
 
     private Border border;
     private String toolTipText;
-    private Dimension preferred, minimum, maximum;
     private boolean doubleBuffered = true;
     private boolean opaque;
     private float alignmentX = 0.5f;
@@ -35,18 +34,13 @@ public class JComponent extends Container {
     public String getToolTipText() { return toolTipText; }
     public void setToolTipText(String text) { this.toolTipText = text; }
 
-    @Override public Dimension getPreferredSize() {
-        if (preferred != null) return new Dimension(preferred);
-        return super.getPreferredSize();
-    }
-    public void setPreferredSize(Dimension d) { this.preferred = d; }
-    @Override public Dimension getMinimumSize() {
-        if (minimum != null) return new Dimension(minimum);
-        return super.getMinimumSize();
-    }
-    public void setMinimumSize(Dimension d) { this.minimum = d; }
-    @Override public Dimension getMaximumSize() { return maximum != null ? new Dimension(maximum) : new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE); }
-    public void setMaximumSize(Dimension d) { this.maximum = d; }
+    // Sizing is inherited from Component — JComponent used to keep parallel `preferred` /
+    // `minimum` / `maximum` fields, but that made `isPreferredSizeSet()` (which reads
+    // Component.preferredSize) return false even after JComponent.setPreferredSize. That
+    // caused AbstractButton / JLabel to skip the explicit override and fall through to
+    // their icon-based fallback — e.g. config + toggle in PluginListItem reported 50px
+    // wide despite both being set to 25, eating into the plugin name label. Removing the
+    // shadows fixes that for every JComponent subclass.
 
     public boolean isDoubleBuffered() { return doubleBuffered; }
     public void setDoubleBuffered(boolean d) { this.doubleBuffered = d; }

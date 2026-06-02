@@ -7,6 +7,9 @@ import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type
 import org.objectweb.asm.commons.GeneratorAdapter
+import java.security.KeyStore
+import java.security.MessageDigest
+import java.security.cert.X509Certificate
 import java.util.Properties
 import java.util.jar.JarEntry
 import java.util.jar.JarFile
@@ -42,6 +45,11 @@ buildscript {
             // Used by DesugarStringConcatTask below.
             classpath("org.ow2.asm:asm:9.8")
             classpath("org.ow2.asm:asm-commons:9.8")
+            // Firebase. apply(plugin = "...") below resolves against this buildscript
+            // classpath (legacy mechanism), so the gradle plugins have to live here in
+            // addition to the root-level plugins { ... apply false } registration.
+            classpath("com.google.gms:google-services:4.4.4")
+            classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.2")
         }
     }
 }
@@ -54,6 +62,11 @@ plugins {
 
 if (androidSdkAvailable) {
     apply(plugin = "com.android.application")
+    // Firebase wiring. Google Services plugin must come AFTER the Android plugin so it
+    // can hook the variant pipeline; Crashlytics plugin attaches mapping.txt upload to
+    // each release variant once R8 is on.
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
 }
 
 // common.settings.gradle.kts forces options.release = 11 on every JavaCompile task.
@@ -74,6 +87,24 @@ configurations.configureEach {
     // runelite-client's runtimeOnly("net.runelite:injected-client:…") would drag in the
     // published Maven copy alongside our locally-desugared one. Drop the Maven one.
     exclude(group = "net.runelite", module = "injected-client")
+    // rlawt ships JOGL-bound AWTContext native code that won't load on Android. We
+    // provide our own pure-Java AWTContext under net.runelite.rlawt that delegates
+    // to GlesHost; excluding the real artifact avoids a duplicate-class dex error.
+    exclude(group = "net.runelite", module = "rlawt")
+    // LWJGL ships native JOGL/OpenGL bindings — we provide pure-Java shim classes
+    // under org.lwjgl.* that delegate to android.opengl.GLES32. Drop the real
+    // artifact group-wide so the shim doesn't dex-collide with the upstream copy.
+    exclude(group = "org.lwjgl")
+    // Force-pin Guava to the project's chosen version. Firebase Analytics pulls in an
+    // older Guava-android variant through play-services-measurement which lacks
+    // ImmutableMap.toImmutableMap(Function, Function) — and because Android's dex
+    // merger picks ONE copy, the older one shadows ours at runtime and breaks
+    // ExternalPluginManager.refreshPlugins (NoSuchMethodError on toImmutableMap).
+    // Constraint forces resolution to the modern coordinates regardless of who else
+    // requests Guava transitively.
+    resolutionStrategy {
+        force("com.google.guava:guava:23.2-jre")
+    }
 }
 
 // --------------------------------------------------------------------------------------
@@ -89,7 +120,7 @@ configurations.configureEach {
 // --------------------------------------------------------------------------------------
 val desugarStringConcat = if (androidSdkAvailable) {
     tasks.register<DesugarStringConcatTask>("desugarStringConcat") {
-        inputJar.set(rootProject.file("data/runelite-1.12.27-SNAPSHOT-injected-26242283652.141.jar"))
+        inputJar.set(rootProject.file("data/runelite-1.12.27-injected-26504454311.147-mixed.jar"))
         outputJar.set(layout.buildDirectory.file("desugared/injected-client.jar"))
         helperOwner.set("net/runelite/mp/util/IndyConcat")
     }
@@ -139,6 +170,17 @@ kotlin {
             val androidMain by getting {
                 dependencies {
                     implementation(libs.androidx.activity.compose)
+                    // Firebase. BoM coordinates the individual product versions so they
+                    // can't drift apart. Crashlytics auto-installs an uncaught handler on
+                    // first FirebaseApp init; we still front it with AndroidCrashReporter
+                    // to add Compose-state breadcrumbs that Crashlytics can't see.
+                    //
+                    // KotlinDependencyHandler.platform() doesn't accept the catalog's
+                    // Provider<MinimalExternalModuleDependency> directly, so route
+                    // through the project's standard DependencyHandler which does.
+                    implementation(project.dependencies.platform(libs.firebase.bom))
+                    implementation(libs.firebase.crashlytics)
+                    implementation(libs.firebase.analytics)
                     // android-awt provides the shadow java.awt / javax.swing / javax.sound surface
                     // the runelite jars compile against; it must be on the classpath before
                     // anything that touches AWT can resolve at dex time.
@@ -173,6 +215,11 @@ kotlin {
 if (androidSdkAvailable) {
     dependencies {
         add("coreLibraryDesugaring", "com.android.tools:desugar_jdk_libs:2.1.4")
+        // Lombok — 117HD's java sources use @Slf4j / @Getter / @AllArgsConstructor.
+        // Wired here because KMP source-set closures don't expose `annotationProcessor`;
+        // AGP creates the config for the android variant.
+        add("compileOnly", "org.projectlombok:lombok:1.18.30")
+        add("annotationProcessor", "org.projectlombok:lombok:1.18.30")
     }
 }
 
@@ -191,8 +238,29 @@ if (androidSdkAvailable) {
             // injected client crash on first invocation.
             minSdk = 26
             targetSdk = 34
-            versionCode = 1
+            // Derive versionCode from the dotted project version so each RuneLite cycle
+            // (1.12.27 → 1.12.28 → 1.13.0 → …) lands a monotonically-increasing integer
+            // without manual bumping. Encoding: major*1_000_000 + minor*1_000 + patch,
+            // so 1.12.27 → 1_012_027. Max minor/patch are 999 each — comfortable headroom
+            // versus how OSRS-RuneLite actually versions. Monotonic across any of
+            // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
+            val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
+            versionCode = (v.getOrElse(0) { 0 } * 1_000_000) +
+                (v.getOrElse(1) { 0 } * 1_000) +
+                v.getOrElse(2) { 0 }
             versionName = project.version.toString()
+            // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
+            // refuses to run when the on-device APK's signing SHA-256 doesn't match.
+            // Default is empty (= skip), so debug builds and release-with-debug-fallback
+            // both run. Release with a real keystore overwrites this with the cert SHA
+            // computed below — no hardcoded hash to drift on key rotation.
+            buildConfigField("String", "EXPECTED_SIGNING_SHA256", "\"\"")
+        }
+
+        buildFeatures {
+            // Required so SignatureGuard can read EXPECTED_SIGNING_SHA256 from
+            // BuildConfig at runtime.
+            buildConfig = true
         }
 
         compileOptions {
@@ -212,8 +280,115 @@ if (androidSdkAvailable) {
             assets.srcDirs("src/androidMain/assets")
         }
 
+        // Release signing.
+        //
+        // Production builds read keystore path + passwords + alias from local.properties
+        // (already gitignored via the SDK-dir line at .gitignore:8). When any of the
+        // four keys is missing — common in dev iteration, CI without secrets, or first
+        // checkout — we silently fall back to the debug keystore so the build still
+        // produces an installable APK; logs identify which path was taken.
+        //
+        // Setup (one-time, per developer):
+        //
+        //   1. Generate a keystore. Stay OUT of the repo tree so a stray `git clean -fd`
+        //      can't wipe your update channel:
+        //
+        //          keytool -genkeypair -v \
+        //              -keystore "$HOME/keystores/runelite-mp-release.jks" \
+        //              -storetype JKS \
+        //              -keyalg RSA -keysize 4096 -validity 9125 \
+        //              -alias runelite-mp
+        //
+        //      (9125 days = 25 years — Play Store requires the key be valid until at
+        //      least Oct 22, 2033, and longer doesn't hurt. Use distinct passwords for
+        //      the store and the key.)
+        //
+        //   2. Add to local.properties (path can be absolute or relative-to-rootProject):
+        //
+        //          runeliteMp.signing.storeFile=/Users/<you>/keystores/runelite-mp-release.jks
+        //          runeliteMp.signing.storePassword=<store password>
+        //          runeliteMp.signing.keyAlias=runelite-mp
+        //          runeliteMp.signing.keyPassword=<key password>
+        //
+        //   3. Back up the keystore out-of-band (1Password, encrypted USB, whatever).
+        //      Losing it permanently breaks the update channel for net.runelite.mp —
+        //      Play Store rejects any future APK signed with a different key.
+        val signingProps = rootProject.file("local.properties").takeIf { it.isFile }?.let { f ->
+            Properties().apply { f.inputStream().use { load(it) } }
+        } ?: Properties()
+        val releaseStoreFile = signingProps.getProperty("runeliteMp.signing.storeFile")
+        val releaseStorePassword = signingProps.getProperty("runeliteMp.signing.storePassword")
+        val releaseKeyAlias = signingProps.getProperty("runeliteMp.signing.keyAlias")
+        val releaseKeyPassword = signingProps.getProperty("runeliteMp.signing.keyPassword")
+        val haveReleaseSigning = listOf(releaseStoreFile, releaseStorePassword, releaseKeyAlias, releaseKeyPassword)
+            .all { !it.isNullOrBlank() }
+            && releaseStoreFile?.let { rootProject.file(it).isFile } == true
+
+        signingConfigs {
+            getByName("debug") {
+                // AGP creates a debug keystore at ~/.android/debug.keystore on first
+                // build; nothing extra to do here.
+            }
+            if (haveReleaseSigning) {
+                create("release") {
+                    storeFile = rootProject.file(releaseStoreFile!!)
+                    storePassword = releaseStorePassword
+                    keyAlias = releaseKeyAlias
+                    keyPassword = releaseKeyPassword
+                }
+            }
+        }
+
+        // Compute the SHA-256 of the release signing certificate at configure time so
+        // SignatureGuard can hard-fail any APK that was re-signed by a third party.
+        // Derived from the same keystore we're about to sign with — no hardcoded hash
+        // to drift if you ever rotate keys. Empty when we fall back to debug signing.
+        val expectedReleaseSigSha = if (haveReleaseSigning) {
+            try {
+                val ks = KeyStore.getInstance("JKS")
+                rootProject.file(releaseStoreFile!!).inputStream().use {
+                    ks.load(it, releaseStorePassword!!.toCharArray())
+                }
+                val cert = ks.getCertificate(releaseKeyAlias!!) as X509Certificate
+                val digest = MessageDigest.getInstance("SHA-256").digest(cert.encoded)
+                digest.joinToString("") { b -> "%02x".format(b) }
+            } catch (e: Throwable) {
+                logger.warn("runelite-mp release: failed to read signing cert (${e.message}); disabling SignatureGuard")
+                ""
+            }
+        } else ""
+
         buildTypes.named("release") {
-            isMinifyEnabled = false
+            // R8 + resource shrinking. Crashlytics gradle plugin auto-uploads
+            // mapping.txt to Firebase so stack traces deobfuscate in the console.
+            //
+            // Using the conservative `proguard-android.txt` (NOT the -optimize variant)
+            // because the optimize-enabled defaults include class merging and method
+            // hoisting that collapse anonymous TypeLiteral / TypeToken subclasses into
+            // their enclosing class. Guice and Gson both rely on those anonymous
+            // classes' generic supertype Signature to read type arguments at runtime;
+            // when R8 merges them away, getGenericSuperclass() returns a plain Class
+            // instead of ParameterizedType and Key construction blows up at injector
+            // creation. The conservative default still does name obfuscation + dead
+            // code elimination — we just give up the marginal optimizer wins.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                "proguard-rules.pro"
+            )
+            signingConfig = if (haveReleaseSigning) {
+                logger.lifecycle("runelite-mp release: signing with $releaseStoreFile (alias=$releaseKeyAlias)")
+                signingConfigs.getByName("release")
+            } else {
+                logger.lifecycle("runelite-mp release: no production keystore in local.properties; signing with debug key")
+                signingConfigs.getByName("debug")
+            }
+            // Overwrite the default empty hash with the actual prod cert SHA-256.
+            // SignatureGuard inside the APK reads this and refuses to boot if the
+            // installed APK's signing key doesn't match (e.g. someone disassembled,
+            // patched, and re-signed it with a different cert).
+            buildConfigField("String", "EXPECTED_SIGNING_SHA256", "\"$expectedReleaseSigSha\"")
         }
         // Debug builds normally set debuggable=true which enables CheckJNI — wraps every
         // JNI call (AwtNative.blit/fillRect, Float.floatToRawIntBits, etc.) in validation

@@ -5,17 +5,39 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.event.EventListenerList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
+/**
+ * Swing Timer shim. The original implementation just flipped a {@code running} flag
+ * and never actually fired — the splash screen relies on a 100ms repeating Timer to
+ * push progress/text updates into its JLabels, so without real firing the splash
+ * froze on the constructor defaults ("Loading", empty subaction, empty bar).
+ *
+ * Single shared scheduled executor across all Timers. Listeners run on the executor
+ * thread (real Swing fires on the EDT; our shim's repaint walks the component tree
+ * each Compose frame anyway, so cross-thread setText is safe enough for the splash).
+ */
 public class Timer implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private static final ScheduledExecutorService EXEC =
+        Executors.newSingleThreadScheduledExecutor(r -> {
+            Thread t = new Thread(r, "AWT-Timer");
+            t.setDaemon(true);
+            return t;
+        });
+
     private final List<ActionListener> listeners = new ArrayList<>();
     private int delay;
     private int initialDelay;
     private boolean repeats = true;
-    private boolean running;
+    private volatile boolean running;
     private boolean coalesce = true;
     private String actionCommand;
+    private volatile ScheduledFuture<?> task;
 
     public Timer(int delay, ActionListener listener) {
         this.delay = delay;
@@ -37,9 +59,35 @@ public class Timer implements Serializable {
     public void setCoalesce(boolean flag) { this.coalesce = flag; }
     public String getActionCommand() { return actionCommand; }
     public void setActionCommand(String command) { this.actionCommand = command; }
-    public void start() { running = true; }
-    public void restart() { running = true; }
-    public void stop() { running = false; }
+
+    public synchronized void start() {
+        if (running) return;
+        running = true;
+        Runnable r = () -> {
+            try {
+                ActionEvent ev = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
+                    actionCommand, System.currentTimeMillis(), 0);
+                fireActionPerformed(ev);
+            } catch (Throwable t) {
+                // Swallow; don't kill the shared scheduler thread.
+            }
+            if (!repeats) running = false;
+        };
+        int start = Math.max(0, initialDelay);
+        int every = Math.max(1, delay);
+        task = repeats
+            ? EXEC.scheduleAtFixedRate(r, start, every, TimeUnit.MILLISECONDS)
+            : EXEC.schedule(r, start, TimeUnit.MILLISECONDS);
+    }
+
+    public synchronized void restart() { stop(); start(); }
+
+    public synchronized void stop() {
+        running = false;
+        ScheduledFuture<?> t = task;
+        if (t != null) { t.cancel(false); task = null; }
+    }
+
     public boolean isRunning() { return running; }
     public void setLogTimers(boolean flag) {}
     public static boolean getLogTimers() { return false; }

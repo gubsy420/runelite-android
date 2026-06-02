@@ -40,4 +40,42 @@ public class JProgressBar extends JComponent implements SwingConstants {
     public void removeChangeListener(ChangeListener l) {}
     public void setUI(javax.swing.plaf.ProgressBarUI ui) { super.setUI(ui); }
     public javax.swing.plaf.ProgressBarUI getUI() { return (javax.swing.plaf.ProgressBarUI) super.getUI(); }
+
+    /**
+     * Draw the bar ourselves — real Swing delegates to ProgressBarUI but we don't ship
+     * a working UI delegate, so without this the splash's bar stays invisible (just an
+     * empty rect between the action and subAction labels). Horizontal fill only; this
+     * is what the SplashScreen + a couple of plugin status overlays need.
+     */
+    @Override
+    protected void paintComponent(java.awt.Graphics g) {
+        int w = getWidth(), h = getHeight();
+        if (w <= 0 || h <= 0) return;
+        java.awt.Color bg = getBackground();
+        if (bg != null) {
+            g.setColor(bg);
+            g.fillRect(0, 0, w, h);
+        }
+        double pct = getPercentComplete();
+        if (pct > 0) {
+            int fillW = (int) Math.round(w * Math.max(0, Math.min(1, pct)));
+            java.awt.Color fg = getForeground();
+            if (fg != null) {
+                g.setColor(fg);
+                g.fillRect(0, 0, fillW, h);
+            }
+        }
+        if (stringPainted) {
+            String s = progressString != null
+                ? progressString
+                : ((int) (getPercentComplete() * 100)) + "%";
+            java.awt.Font f = getFont();
+            if (f != null) g.setFont(f);
+            java.awt.FontMetrics fm = g.getFontMetrics();
+            int tx = (w - fm.stringWidth(s)) / 2;
+            int ty = (h + fm.getAscent() - fm.getDescent()) / 2;
+            g.setColor(java.awt.Color.BLACK);
+            g.drawString(s, tx, ty);
+        }
+    }
 }

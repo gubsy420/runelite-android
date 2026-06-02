@@ -17,7 +17,12 @@ private const val TAG = "PluginBootstrap"
  * resulting class list to `PluginManager.loadPlugins` and start them.
  */
 object PluginBootstrap {
-    private const val PLUGIN_PACKAGE = "net.runelite.client.plugins"
+    /** Every root we scan dex entries under for @PluginDescriptor classes. Comma-namespaced
+     *  so we pick up 117HD's {@code rs117.hd} alongside RuneLite's main plugin tree. */
+    private val PLUGIN_PACKAGES = listOf(
+        "net.runelite.client.plugins",
+        "rs117.hd",
+    )
 
     /**
      * Packages that won't load on Android because they depend on desktop-only natives
@@ -63,8 +68,83 @@ object PluginBootstrap {
             val startPlugins = pluginManagerClass.getMethod("startPlugins")
             startPlugins.invoke(pluginManager)
             Log.i(TAG, "started plugins in ${System.currentTimeMillis() - started}ms")
+
+            pinDefaultPluginsIfUnset(injector)
+
+            // Retry external plugin load now that builtins are registered. The first
+            // pass ran inside RuneLite.main BEFORE PluginBootstrap, so any plugin-hub
+            // plugin that declares an @PluginDependency on a builtin (rasta-hud →
+            // XpTrackerPlugin is the canonical case) failed with "Unmet dependency"
+            // and never loaded. Re-running loadExternalPlugins picks them up: the
+            // already-loaded externals are detected via getPlugins() and skipped, and
+            // the previously-failed ones get a second chance with the builtin registry
+            // populated. SplashScreen has closed by now so the second pass also
+            // applies default config + starts them (same code path as in-session install).
+            retryExternalPluginLoad(injector)
+
+            // Hook in the Compose-side listeners for the desktop plugins' "open the
+            // sidebar panel for X" callbacks. With HEADLESS_CHROME the Swing sidebar
+            // is invisible, so without these the right-click "Lookup", loot-tracker's
+            // auto-show, etc. would silently no-op. See HiscoresBridge.installExternalHooks
+            // for the wiring.
+            try { net.runelite.mp.ui.panels.HiscoresBridge.installExternalHooks() }
+            catch (t: Throwable) { Log.w(TAG, "installExternalHooks failed", t) }
         } catch (t: Throwable) {
             Log.e(TAG, "bootstrap failed", t)
+        }
+    }
+
+    /** Plugins we want pinned (starred at the top of the Compose plugin list) on first
+     *  launch. IDs are full class names — that's what
+     *  [net.runelite.mp.ui.bridge.FavoritesBridge] persists in its set. The Compose UI
+     *  reads back via the same FQN. */
+    private val DEFAULT_PINNED_PLUGINS = listOf(
+        "net.runelite.client.plugins.gpugles.GpuGlesPlugin",
+        "net.runelite.client.plugins.stretchedmode.StretchedModePlugin",
+    )
+
+    /**
+     * Seed the Compose-side favorites set on first launch so GPU (GLES) and Stretched
+     * Mode appear starred at the top of the plugin list. The set lives under config
+     * group `runelite-mp` / key `favorites` (see [FavoritesBridge]) — NOT the desktop
+     * RuneLite `runelite/pinnedPlugins` key (the Swing list reads that one, but the
+     * Compose UI on Android doesn't). Skip if the user has already set a value: they
+     * may have un-favorited the defaults and we don't want to undo that every launch.
+     */
+    private fun pinDefaultPluginsIfUnset(injector: Any) {
+        try {
+            val configManagerClass = Class.forName("net.runelite.client.config.ConfigManager")
+            val getInstance = injector.javaClass.getMethod("getInstance", Class::class.java)
+            val configManager = getInstance.invoke(injector, configManagerClass)
+            val getConfig = configManagerClass.getMethod(
+                "getConfiguration", String::class.java, String::class.java
+            )
+            val current = getConfig.invoke(configManager, "runelite-mp", "favorites") as String?
+            if (!current.isNullOrEmpty()) {
+                Log.i(TAG, "favorites already set ($current); leaving alone")
+                return
+            }
+            val setConfig = configManagerClass.getMethod(
+                "setConfiguration", String::class.java, String::class.java, String::class.java
+            )
+            val value = DEFAULT_PINNED_PLUGINS.sorted().joinToString(",")
+            setConfig.invoke(configManager, "runelite-mp", "favorites", value)
+            Log.i(TAG, "seeded default favorites=$value")
+        } catch (t: Throwable) {
+            Log.w(TAG, "could not seed default favorites", t)
+        }
+    }
+
+    private fun retryExternalPluginLoad(injector: Any) {
+        try {
+            val epmClass = Class.forName("net.runelite.client.externalplugins.ExternalPluginManager")
+            val getInstance = injector.javaClass.getMethod("getInstance", Class::class.java)
+            val epm = getInstance.invoke(injector, epmClass)
+            val loadExternal = epmClass.getMethod("loadExternalPlugins")
+            loadExternal.invoke(epm)
+            Log.i(TAG, "retried loadExternalPlugins() after builtin registration")
+        } catch (t: Throwable) {
+            Log.w(TAG, "retry of loadExternalPlugins() failed", t)
         }
     }
 
@@ -106,7 +186,7 @@ object PluginBootstrap {
                     .invoke(dexFile) as java.util.Enumeration<String>
                 while (entries.hasMoreElements()) {
                     val name = entries.nextElement()
-                    if (!name.startsWith("$PLUGIN_PACKAGE.")) continue
+                    if (PLUGIN_PACKAGES.none { p -> name.startsWith("$p.") }) continue
                     if (EXCLUDED_PACKAGES.any { excl -> name.startsWith("$excl.") || name == excl }) continue
                     names.add(name)
                 }

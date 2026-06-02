@@ -91,8 +91,33 @@ public class Canvas extends Component {
     @Override
     public void paint(Graphics g) {
         ensureBackbuffer();
-        // Blit our backbuffer into whatever graphics our parent gave us.
-        g.drawImage(backbuffer, 0, 0, null);
+        if (RENDERED_BY_GLES) {
+            // GpuGlesPlugin owns this canvas — clear our rect to fully transparent
+            // so the EGL-backed SurfaceView underneath the Compose chrome image
+            // shows through. Same logic as Window.hostPaint's top-level Canvas
+            // branch, repeated here in case JComponent.paintChildren reaches us
+            // via the normal recursion.
+            if (g instanceof java.awt.Graphics2D) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
+                java.awt.Composite saved = g2.getComposite();
+                g2.setComposite(java.awt.AlphaComposite.Clear);
+                g2.fillRect(0, 0, getWidth(), getHeight());
+                g2.setComposite(saved);
+            }
+            return;
+        }
+        // Blit our backbuffer into whatever graphics our parent gave us. Force
+        // SRC composite — OSRS writes RGB into the backbuffer with alpha=0, and
+        // default SRC_OVER would treat those as fully transparent and skip.
+        if (g instanceof java.awt.Graphics2D) {
+            java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
+            java.awt.Composite saved = g2.getComposite();
+            g2.setComposite(java.awt.AlphaComposite.Src);
+            g2.drawImage(backbuffer, 0, 0, null);
+            g2.setComposite(saved);
+        } else {
+            g.drawImage(backbuffer, 0, 0, null);
+        }
     }
 
     @Override
