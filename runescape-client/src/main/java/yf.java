@@ -9,12 +9,12 @@ class yf implements yn {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedGetter(
-		longValue = -1830821599044531181L
-	)
 	@ObfuscatedName("fr")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -1830821599044531181L
 	)
 	static long fr_fld;
 
@@ -24,7 +24,7 @@ class yf implements yn {
 	)
 	@Override
 	public void ay(Object var1, xi var2) {
-		sv(this, (sl)var1, var2, -2096657750);
+		this.ak((sl)var1, var2);
 	}
 
 	yf() {
@@ -45,7 +45,7 @@ class yf implements yn {
 	)
 	@Override
 	public void az(Object var1, xi var2, byte var3) {
-		sv(this, (sl)var1, var2, -2096657750);
+		this.ak((sl)var1, var2);
 	}
 
 	@ObfuscatedName("as")
@@ -54,7 +54,7 @@ class yf implements yn {
 	)
 	@Override
 	public void as(Object var1, xi var2) {
-		sv(this, (sl)var1, var2, -2096657750);
+		this.ak((sl)var1, var2);
 	}
 
 	@ObfuscatedName("aw")
@@ -75,16 +75,12 @@ class yf implements yn {
 		return pv.aa(var1);
 	}
 
-	@ObfuscatedName("sv")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lyf;Lsl;Lxi;I)V"
+		descriptor = "(Lsl;Lxi;I)V"
 	)
-	public static void sv(yf var0, sl var1, xi var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var1.an(var2, 1886100220);
-		}
+	void ak(sl var1, xi var2) {
+		var1.an(var2, 1886100220);
 	}
 
 	@ObfuscatedName("av")
@@ -101,13 +97,5 @@ class yf implements yn {
 	)
 	void ae(sl var1, xi var2) {
 		var1.an(var2, 2025706321);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lsl;Lxi;I)V"
-	)
-	void ak(sl var1, xi var2, int var3) {
-		var1.an(var2, 1886100220);
 	}
 }

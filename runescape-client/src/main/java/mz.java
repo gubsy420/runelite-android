@@ -1,4 +1,5 @@
 import java.io.EOFException;
+import java.util.Arrays;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -18,7 +19,7 @@ public class mz extends vw {
 	mz(xi var1) {
 		var1.au_fld = var1.al_fld.length - 3;
 		int var2 = var1.cg();
-		int var3 = xi.tx(var1, 1293187923);
+		int var3 = var1.cm();
 		int var4 = 14 + var2 * 10;
 		var1.au_fld = 0;
 		int var5 = 0;
@@ -170,11 +171,11 @@ public class mz extends vw {
 		var1.au_fld += var5 * 686797371;
 		this.ag_fld = new byte[var4];
 		xi var51 = new xi(this.ag_fld);
-		xi.ld(var51, 1297377380, (byte)88);
-		xi.ld(var51, 6, (byte)92);
-		var51.bw(var2 > 1 ? 1 : 0);
-		var51.bw(var2);
-		var51.bw(var3);
+		var51.eb(1297377380);
+		var51.eb(6);
+		xi.vy(var51, var2 > 1 ? 1 : 0);
+		xi.vy(var51, var2);
+		xi.vy(var51, var3);
 		var1.au_fld = var78;
 		int var52 = 0;
 		byte var53 = 0;
@@ -191,7 +192,7 @@ public class mz extends vw {
 		var60[9] = 128;
 
 		for (int var63 = 0; var63 < var2; var63++) {
-			xi.ld(var51, 1297379947, (byte)82);
+			var51.eb(1297379947);
 			var51.au_fld += 4;
 			int var64 = var51.au_fld;
 			int var65 = var64;
@@ -199,71 +200,71 @@ public class mz extends vw {
 
 			while (true) {
 				int var67 = var1.dd();
-				var51.cn(var67, -1758086084);
+				xi.ro(var51, var67, -1758086084);
 				var65 += var67;
 				int var68 = var1.al_fld[var83++] & 255;
 				boolean var69 = var68 != var66;
 				var66 = var68 & 15;
 				if (var68 == 7) {
 					if (var69) {
-						var51.bc(255);
+						var51.ea(255);
 					}
 
-					var51.bc(47);
-					var51.bc(0);
-					var51.cx(var51.au_fld - var64);
+					var51.ea(47);
+					var51.ea(0);
+					var51.ed(var51.au_fld - var64);
 					break;
 				}
 
 				if (var68 == 23) {
 					if (var69) {
-						var51.bc(255);
+						var51.ea(255);
 					}
 
-					var51.bc(81);
-					var51.bc(3);
-					var51.bc(var1.al_fld[var50++]);
-					var51.bc(var1.al_fld[var50++]);
-					var51.bc(var1.al_fld[var50++]);
+					var51.ea(81);
+					var51.ea(3);
+					var51.ea(var1.al_fld[var50++]);
+					var51.ea(var1.al_fld[var50++]);
+					var51.ea(var1.al_fld[var50++]);
 				} else {
 					var52 ^= var68 >> 4;
 					if (var66 == 0) {
 						if (var69) {
-							var51.bc(144 + var52);
+							var51.ea(144 + var52);
 						}
 
 						var53 += var1.al_fld[var37++];
 						var54 += var1.al_fld[var38++];
 						int var89 = var53 & 127;
 						int var90 = var54 & 127;
-						var51.bc(var89);
-						var51.bc(var90);
+						var51.ea(var89);
+						var51.ea(var90);
 						if (var90 > 0) {
 							int var72 = var61[var52];
-							mc var73 = (mc)this.ak_fld.ak(var72);
+							mc var73 = (mc)xz.tw(this.ak_fld, var72);
 							if (var73 == null) {
 								var73 = new mc(var65);
-								this.ak_fld.az(var73, var72);
+								xz.fe(this.ak_fld, var73, var72);
 							}
 
 							var73.ak_fld.set(var89);
 						}
 					} else if (var66 == 1) {
 						if (var69) {
-							var51.bc(128 + var52);
+							var51.ea(128 + var52);
 						}
 
 						var53 += var1.al_fld[var37++];
 						var55 += var1.al_fld[var40++];
-						var51.bc(var53 & 127);
-						var51.bc(var55 & 127);
+						var51.ea(var53 & 127);
+						var51.ea(var55 & 127);
 					} else if (var66 == 2) {
 						if (var69) {
-							var51.bc(176 + var52);
+							var51.ea(176 + var52);
 						}
 
 						var28 = var28 + var1.al_fld[var81++] & 127;
-						var51.bc(var28);
+						var51.ea(var28);
 						byte var87;
 						if (var28 == 0 || var28 == 32) {
 							var87 = var1.al_fld[var44++];
@@ -296,7 +297,7 @@ public class mz extends vw {
 						int var88 = var87 + var59[var28];
 						var59[var28] = var88;
 						int var71 = var88 & 127;
-						var51.bc(var71);
+						var51.ea(var71);
 						if (var28 == 0) {
 							var60[var52] = (var60[var52] & -2080769) + (var71 << 14);
 						}
@@ -306,41 +307,41 @@ public class mz extends vw {
 						}
 					} else if (var66 == 3) {
 						if (var69) {
-							var51.bc(224 + var52);
+							var51.ea(224 + var52);
 						}
 
 						int var86 = var56 + var1.al_fld[var45++];
 						var56 = var86 + (var1.al_fld[var33++] << 7);
-						var51.bc(var56 & 127);
-						var51.bc(var56 >> 7 & 127);
+						var51.ea(var56 & 127);
+						var51.ea(var56 >> 7 & 127);
 					} else if (var66 == 4) {
 						if (var69) {
-							var51.bc(208 + var52);
+							var51.ea(208 + var52);
 						}
 
 						var57 += var1.al_fld[var32++];
-						var51.bc(var57 & 127);
+						var51.ea(var57 & 127);
 					} else if (var66 == 5) {
 						if (var69) {
-							var51.bc(160 + var52);
+							var51.ea(160 + var52);
 						}
 
 						var53 += var1.al_fld[var37++];
 						var58 += var1.al_fld[var31++];
-						var51.bc(var53 & 127);
-						var51.bc(var58 & 127);
+						var51.ea(var53 & 127);
+						var51.ea(var58 & 127);
 					} else {
 						if (var66 != 6) {
 							throw new RuntimeException();
 						}
 
 						if (var69) {
-							var51.bc(192 + var52);
+							var51.ea(192 + var52);
 						}
 
 						byte var70 = var1.al_fld[var44++];
 						var61[var52] = var60[var52] + var70;
-						var51.bc(var70);
+						var51.ea(var70);
 					}
 				}
 			}
@@ -358,6 +359,14 @@ public class mz extends vw {
 		} catch (Throwable var5) {
 			throw new RuntimeException(var5);
 		}
+	}
+
+	@ObfuscatedName("pq")
+	@ObfuscatedSignature(
+		descriptor = "(Laq;)I"
+	)
+	public static int pq(aq var0) {
+		return var0.az_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -384,6 +393,21 @@ public class mz extends vw {
 		} catch (Throwable var5) {
 			throw new RuntimeException(var5);
 		}
+	}
+
+	@ObfuscatedName("gw")
+	@ObfuscatedSignature(
+		descriptor = "(Lrc;)V"
+	)
+	public static void gw(rc var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ar_fld = 0;
+		Arrays.fill(var0.af_fld, null);
+		var0.al_fld.clear();
+		var0.au_fld.clear();
 	}
 
 	@ObfuscatedName("ak")

@@ -30,33 +30,53 @@ public class hs {
 	)
 	static char ah_fld;
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	final int ag(int var1, int var2) {
+		return this.ag_fld[var1 + var2 * 64];
+	}
+
 	hs(int[] var1) {
 		this.ag_fld = var1;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	final int ak(int var1, int var2) {
 		return this.ag_fld[var1 + var2 * 64];
+	}
+
+	@ObfuscatedName("om")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)V"
+	)
+	public static void om(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.bt_fld = null;
 	}
 
 	hs() {
 		this.ag_fld = new int[4096];
 	}
 
-	@ObfuscatedName("jm")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)Z"
+		descriptor = "(II)I"
 	)
-	public static boolean jm(da var0) {
-		return lf.ak_fld == var0.cg_fld.ag_fld && kx.ak_fld != var0.cg_fld.av_fld && -1 != 974676213 * var0.cg_fld.ae_fld;
+	final int az(int var1, int var2) {
+		return this.ag_fld[var1 + var2 * 64];
 	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void as() throws EOFException {
 		he.cq_fld.trim();
@@ -81,26 +101,10 @@ public class hs {
 
 	@ObfuscatedName("go")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static final int go() {
-		float var1 = 200.0F * ((float)cn.db(cx.kq_fld, -1822420087) - 0.5F);
+		float var1 = 200.0F * ((float)cn.zp(cx.kq_fld, -1822420087) - 0.5F);
 		return 100 - Math.round(var1);
-	}
-
-	@ObfuscatedName("ii")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)I"
-	)
-	public static int ii(da var0) {
-		return var0.cw_fld.ah();
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	final int av(int var1, int var2) {
-		return this.ag_fld[var1 + var2 * 64];
 	}
 }

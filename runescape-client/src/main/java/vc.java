@@ -12,77 +12,53 @@ public class vc extends vw {
 	@ObfuscatedSignature(
 		descriptor = "Lvc;"
 	)
-	public vc fn_fld;
+	public vc fn_vc;
 	@ObfuscatedName("ft")
 	@ObfuscatedSignature(
 		descriptor = "Lvc;"
 	)
 	public vc ft_fld;
 
-	public vc() {
-	}
-
-	@ObfuscatedName("kv")
+	@ObfuscatedName("me")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void kv_void() {
-		this.mq_void();
+	public void me() {
+		this.vi();
 	}
 
-	@ObfuscatedName("tc")
+	@ObfuscatedName("io")
 	@ObfuscatedSignature(
 		descriptor = "(Lvc;)V"
 	)
-	public static void tc(vc var0) {
+	public static void io(vc var0) {
 		if (var0.ft_fld != null) {
-			var0.ft_fld.fn_fld = var0.fn_fld;
-			var0.fn_fld.ft_fld = var0.ft_fld;
-			var0.fn_fld = null;
+			var0.ft_fld.fn_vc = var0.fn_vc;
+			var0.fn_vc.ft_fld = var0.ft_fld;
+			var0.fn_vc = null;
 			var0.ft_fld = null;
 		}
 	}
 
-	@ObfuscatedName("xn")
+	@ObfuscatedName("ye")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;)I"
+		descriptor = "(Lvc;)V"
 	)
-	public static int xn(ku var0) {
-		return var0.ad_fld;
-	}
-
-	@ObfuscatedName("md")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void md() {
-		if (this.ft_fld != null) {
-			this.ft_fld.fn_fld = this.fn_fld;
-			this.fn_fld.ft_fld = this.ft_fld;
-			this.fn_fld = null;
-			this.ft_fld = null;
+	public static void ye(vc var0) {
+		if (var0.ft_fld != null) {
+			var0.ft_fld.fn_vc = var0.fn_vc;
+			var0.fn_vc.ft_fld = var0.ft_fld;
+			var0.fn_vc = null;
+			var0.ft_fld = null;
 		}
 	}
 
-	@ObfuscatedName("hx")
+	@ObfuscatedName("kd")
 	@ObfuscatedSignature(
 		descriptor = "()Lvc;"
 	)
-	public vc hx_vc() {
-		return this.fn_fld;
-	}
-
-	@ObfuscatedName("mk")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void mk() {
-		if (this.ft_fld != null) {
-			this.ft_fld.fn_fld = this.fn_fld;
-			this.fn_fld.ft_fld = this.ft_fld;
-			this.fn_fld = null;
-			this.ft_fld = null;
-		}
+	public vc kd_vc() {
+		return this.fn_vc;
 	}
 
 	@ObfuscatedName("mq")
@@ -91,9 +67,25 @@ public class vc extends vw {
 	)
 	public void mq_void() {
 		if (this.ft_fld != null) {
-			this.ft_fld.fn_fld = this.fn_fld;
-			this.fn_fld.ft_fld = this.ft_fld;
-			this.fn_fld = null;
+			this.ft_fld.fn_vc = this.fn_vc;
+			this.fn_vc.ft_fld = this.ft_fld;
+			this.fn_vc = null;
+			this.ft_fld = null;
+		}
+	}
+
+	public vc() {
+	}
+
+	@ObfuscatedName("vi")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void vi() {
+		if (this.ft_fld != null) {
+			this.ft_fld.fn_vc = this.fn_vc;
+			this.fn_vc.ft_fld = this.ft_fld;
+			this.fn_vc = null;
 			this.ft_fld = null;
 		}
 	}

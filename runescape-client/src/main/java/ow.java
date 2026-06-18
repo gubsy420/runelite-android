@@ -34,7 +34,7 @@ public class ow extends vc {
 		descriptor = "()V"
 	)
 	public static void av() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("ag")
@@ -42,19 +42,58 @@ public class ow extends vc {
 		descriptor = "()V"
 	)
 	public static void ag() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
-	@ObfuscatedName("ql")
+	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)I"
+		descriptor = "(Lyv;III)V"
 	)
-	public static int ql(pi var0) {
+	public static void dw(yv var0, int var1, int var2, int var3) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return var0.aq_fld;
+		var1 += var0.as_fld;
+		var2 += var0.ar_fld;
+		int var4 = var1 + var2 * yv.au_fld;
+		int var5 = 0;
+		int var6 = var0.ay_fld;
+		int var7 = var0.aw_fld;
+		int var8 = yv.au_fld - var7;
+		int var9 = 0;
+		if (var2 < yv.aa_fld) {
+			int var10 = yv.aa_fld - var2;
+			var6 -= var10;
+			var2 = yv.aa_fld;
+			var5 += var10 * var7;
+			var4 += var10 * yv.au_fld;
+		}
+
+		if (var2 + var6 > yv.ai_fld) {
+			var6 -= var2 + var6 - yv.ai_fld;
+		}
+
+		if (var1 < yv.aq_fld) {
+			int var13 = yv.aq_fld - var1;
+			var7 -= var13;
+			var1 = yv.aq_fld;
+			var5 += var13;
+			var4 += var13;
+			var9 += var13;
+			var8 += var13;
+		}
+
+		if (var1 + var7 > yv.am_fld) {
+			int var14 = var1 + var7 - yv.am_fld;
+			var7 -= var14;
+			var9 += var14;
+			var8 += var14;
+		}
+
+		if (var7 > 0 && var6 > 0) {
+			yv.ae(yv.al_fld, var0.ah_fld, 0, var5, var4, var7, var6, var8, var9, var3);
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -62,7 +101,7 @@ public class ow extends vc {
 		descriptor = "()V"
 	)
 	public static void az() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("av")
@@ -70,14 +109,14 @@ public class ow extends vc {
 		descriptor = "(IIIIB)V"
 	)
 	static void av(int var0, int var1, int var2, int var3, byte var4) {
-		bg var5 = (bg)bg.ak_fld.ak(var0);
+		bg var5 = (bg)xz.tw(bg.ak_fld, var0);
 		if (null == var5) {
 			if (var4 <= 8) {
 				return;
 			}
 
 			var5 = new bg();
-			bg.ak_fld.az(var5, var0);
+			xz.fe(bg.ak_fld, var5, var0);
 		}
 
 		if (var5.ag_fld.length <= var1) {
@@ -112,7 +151,7 @@ public class ow extends vc {
 
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void ap() {
 		if (gv.ak()) {

@@ -4,11 +4,11 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ua")
 public abstract class ua {
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public abstract int al() throws IOException;
+	public abstract int au() throws IOException;
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -43,17 +43,17 @@ public abstract class ua {
 	)
 	public abstract void ah(byte var1);
 
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	public abstract boolean aw(int var1) throws IOException;
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	public abstract boolean ay(int var1) throws IOException;
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public abstract boolean as(int var1) throws IOException;
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
@@ -73,17 +73,17 @@ public abstract class ua {
 	)
 	public abstract int ar() throws IOException;
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public abstract int au() throws IOException;
-
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	public abstract int af() throws IOException;
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public abstract int al() throws IOException;
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
@@ -91,11 +91,11 @@ public abstract class ua {
 	)
 	public abstract int ax(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
-	public abstract boolean aw(int var1) throws IOException;
+	public abstract boolean as(int var1) throws IOException;
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
@@ -129,7 +129,7 @@ public abstract class ua {
 
 	@ObfuscatedName("gp")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static final int gp() {
 		return xy.kh_fld.ae(-270318804);

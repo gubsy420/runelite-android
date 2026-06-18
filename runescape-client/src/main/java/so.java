@@ -1,4 +1,3 @@
-import java.awt.event.WindowEvent;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
@@ -10,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("so")
 public class so extends ao {
-	@ObfuscatedGetter(
-		intValue = 209066057
-	)
 	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 209066057
 	)
 	int bk_fld;
 	@ObfuscatedName("af")
@@ -43,16 +42,6 @@ public class so extends ao {
 		if (this.af_fld != null) {
 			this.af_fld.close();
 			this.af_fld = null;
-		}
-	}
-
-	@ObfuscatedName("vg")
-	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/awt/event/WindowEvent;)V"
-	)
-	public static void vg(tf var0, WindowEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
 		}
 	}
 

@@ -52,9 +52,18 @@ public class qt {
 	)
 	static int cx_fld;
 
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(Lvp;F)V"
+	)
+	void bt(vp var1, float var2) {
+		this.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
+		fd(this, 1094302496);
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljavax/net/ssl/HttpsURLConnection;)V"
+		descriptor = "(Ljavax/net/ssl/HttpsURLConnection;I)V"
 	)
 	public void ak(HttpsURLConnection var1) {
 		Iterator var3 = this.av_fld.entrySet().iterator();
@@ -67,7 +76,7 @@ public class qt {
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	String au() {
 		ArrayList var2 = new ArrayList(this.ae_fld.entrySet());
@@ -92,70 +101,35 @@ public class qt {
 		return var3.toString();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("oi")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;B)V"
+		descriptor = "(Lqt;Lqj;Ljava/lang/String;I)V"
 	)
-	public void az(String var1, String var2, byte var3) {
-		if (var1 != null) {
-			if (var3 != 96) {
-				return;
-			}
-
-			if (!var1.isEmpty()) {
-				if (var3 != 96) {
-					return;
-				}
-
-				this.av_fld.put(var1, null != var2 ? var2 : "");
-			}
+	public static void oi(qt var0, qj var1, String var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
 		}
-	}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	public void ah(String var1) {
-		this.ae(qj.ak_fld, var1);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lqj;Ljava/lang/String;)V"
-	)
-	void ae(qj var1, String var2) {
 		String var4 = String.format("%s %s", (Object[])(new Object[]{var1.ak(), var2}));
-		this.az("Authorization", var4, (byte)96);
+		kn(var0, "Authorization", var4, (byte)96);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("qk")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Map;"
+		descriptor = "(Lqt;Ljavax/net/ssl/HttpsURLConnection;)V"
 	)
-	public Map am() {
-		return this.av_fld;
-	}
+	public static void qk(qt var0, HttpsURLConnection var1) {
+		Iterator var2 = var0.av_fld.entrySet().iterator();
 
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void as() {
-		this.av_fld.remove("Content-Type");
-	}
-
-	@ObfuscatedName("zz")
-	@ObfuscatedSignature(
-		descriptor = "(Lbs;)Z"
-	)
-	public static boolean zz(bs var0) {
-		return var0.ag_fld;
+		while (var2.hasNext()) {
+			Entry var3 = (Entry)(Entry)var2.next();
+			var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
+		}
 	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;)V"
+		descriptor = "(Lvp;I)V"
 	)
 	public void ay(vp var1) {
 		this.av_fld.put("Content-Type", var1.ak());
@@ -166,39 +140,40 @@ public class qt {
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	public void bd(String var1) {
-		this.ae(qj.ak_fld, var1);
+		oi(this, qj.ak_fld, var1, 1790880503);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;)V"
 	)
-	public void ao(String var1, String var2) {
+	public void ab(String var1, String var2) {
 		if (var1 != null && !var1.isEmpty()) {
 			this.av_fld.put(var1, null != var2 ? var2 : "");
 		}
-	}
-
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(Lqt;Lvp;)V"
-	)
-	public static void nu(qt var0, vp var1) {
-		var0.av_fld.put("Content-Type", var1.ak());
 	}
 
 	public qt() {
 		this.ah_fld.setMaximumFractionDigits(2);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lvp;)V"
 	)
-	void al() {
-		this.av_fld.remove("Accept");
-		if (!this.ae_fld.isEmpty()) {
-			this.av_fld.put("Accept", this.au());
+	public void bh(vp var1) {
+		this.av_fld.put("Content-Type", var1.ak());
+	}
+
+	@ObfuscatedName("yb")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;Ljava/lang/String;B)V"
+	)
+	public static void yb(qt var0, String var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			oi(var0, qj.ak_fld, var1, 1385298460);
 		}
 	}
 
@@ -215,11 +190,11 @@ public class qt {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;B)V"
 	)
-	public void av(String var1, byte var2) {
+	public void ah(String var1, byte var2) {
 		if (var1 != null && !var1.isEmpty()) {
 			if (var2 >= 6) {
 				return;
@@ -229,12 +204,25 @@ public class qt {
 		}
 	}
 
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(Ljavax/net/ssl/HttpsURLConnection;)V"
+	)
+	public void aa(HttpsURLConnection var1) {
+		Iterator var2 = this.av_fld.entrySet().iterator();
+
+		while (var2.hasNext()) {
+			Entry var3 = (Entry)(Entry)var2.next();
+			var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
+		}
+	}
+
 	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "(Lvp;)V"
 	)
 	public void bx(vp var1) {
-		bg(this, var1, 1.0F, -2040722444);
+		this.af(var1, 1.0F);
 	}
 
 	@ObfuscatedName("bk")
@@ -245,14 +233,52 @@ public class qt {
 		this.av_fld.put("Content-Type", var1.ak());
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;)V"
 	)
-	public void ab(String var1, String var2) {
+	public void ad(String var1, String var2) {
 		if (var1 != null && !var1.isEmpty()) {
 			this.av_fld.put(var1, null != var2 ? var2 : "");
 		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;)V"
+	)
+	public void ao(String var1, String var2) {
+		if (var1 != null && !var1.isEmpty()) {
+			this.av_fld.put(var1, null != var2 ? var2 : "");
+		}
+	}
+
+	@ObfuscatedName("zu")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;Lcv;)V"
+	)
+	public static void zu(cl var0, cv var1) {
+		var0.ak_fld.add(var1);
+	}
+
+	@ObfuscatedName("mz")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;Lvp;)V"
+	)
+	public static void mz(qt var0, vp var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.af(var1, 1.0F);
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	public void br(String var1) {
+		oi(this, qj.ag_fld, var1, -1155676565);
 	}
 
 	@ObfuscatedName("ap")
@@ -260,16 +286,6 @@ public class qt {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;)V"
 	)
 	public void ap(String var1, String var2) {
-		if (var1 != null && !var1.isEmpty()) {
-			this.av_fld.put(var1, null != var2 ? var2 : "");
-		}
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;)V"
-	)
-	public void ad(String var1, String var2) {
 		if (var1 != null && !var1.isEmpty()) {
 			this.av_fld.put(var1, null != var2 ? var2 : "");
 		}
@@ -295,22 +311,12 @@ public class qt {
 		}
 	}
 
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	public void aj(String var1) {
-		if (var1 != null && !var1.isEmpty()) {
-			this.av_fld.remove(var1);
-		}
-	}
-
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	public void bm(String var1) {
-		this.ae(qj.ak_fld, var1);
+		oi(this, qj.ak_fld, var1, 1505958397);
 	}
 
 	@ObfuscatedName("be")
@@ -318,7 +324,7 @@ public class qt {
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	public void be(String var1) {
-		this.ae(qj.ag_fld, var1);
+		oi(this, qj.ag_fld, var1, -183241274);
 	}
 
 	@ObfuscatedName("bz")
@@ -326,25 +332,21 @@ public class qt {
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	public void bz(String var1) {
-		this.ae(qj.ak_fld, var1);
+		oi(this, qj.ak_fld, var1, 1255038985);
 	}
 
-	@ObfuscatedName("eh")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;Lvp;F)V"
+		descriptor = "(Lvp;FI)V"
 	)
-	public static void eh(qt var0, vp var1, float var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-		var0.al();
+	void af(vp var1, float var2) {
+		this.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
+		fd(this, -942108932);
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Map;"
+		descriptor = "(I)Ljava/util/Map;"
 	)
 	public Map ag() {
 		return this.av_fld;
@@ -363,33 +365,24 @@ public class qt {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("mz")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;)V"
+		descriptor = "(Lqt;I)V"
 	)
-	public void ar(vp var1) {
-		bg(this, var1, 1.0F, -1249394228);
-	}
-
-	@ObfuscatedName("wa")
-	@ObfuscatedSignature(
-		descriptor = "(Lqt;Ljavax/net/ssl/HttpsURLConnection;)V"
-	)
-	public static void wa(qt var0, HttpsURLConnection var1) {
-		Iterator var2 = var0.av_fld.entrySet().iterator();
-
-		while (var2.hasNext()) {
-			Entry var3 = (Entry)(Entry)var2.next();
-			var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
+	public static void mz(qt var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.av_fld.remove("Content-Type");
 		}
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lvp;B)V"
 	)
-	public void bj() {
-		this.av_fld.remove("Content-Type");
+	public void ar(vp var1) {
+		this.af(var1, 1.0F);
 	}
 
 	@ObfuscatedName("bf")
@@ -405,15 +398,7 @@ public class qt {
 		descriptor = "(Lvp;)V"
 	)
 	public void by(vp var1) {
-		bg(this, var1, 1.0F, 1295424848);
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "(Lvp;)V"
-	)
-	public void bl(vp var1) {
-		bg(this, var1, 1.0F, -558438998);
+		this.af(var1, 1.0F);
 	}
 
 	@ObfuscatedName("aq")
@@ -430,7 +415,7 @@ public class qt {
 	)
 	void bo(vp var1, float var2) {
 		this.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-		this.al();
+		fd(this, -1389332873);
 	}
 
 	@ObfuscatedName("bp")
@@ -439,15 +424,15 @@ public class qt {
 	)
 	void bp(vp var1, float var2) {
 		this.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-		this.al();
+		fd(this, -97894378);
 	}
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;I)V"
 	)
 	public void aw(String var1) {
-		this.ae(qj.ag_fld, var1);
+		oi(this, qj.ag_fld, var1, 602689305);
 	}
 
 	@ObfuscatedName("bv")
@@ -458,19 +443,6 @@ public class qt {
 		this.av_fld.remove("Accept");
 		if (!this.ae_fld.isEmpty()) {
 			this.av_fld.put("Accept", this.au());
-		}
-	}
-
-	@ObfuscatedName("ta")
-	@ObfuscatedSignature(
-		descriptor = "(Lqt;Ljavax/net/ssl/HttpsURLConnection;)V"
-	)
-	public static void ta(qt var0, HttpsURLConnection var1) {
-		Iterator var2 = var0.av_fld.entrySet().iterator();
-
-		while (var2.hasNext()) {
-			Entry var3 = (Entry)(Entry)var2.next();
-			var1.setRequestProperty((String)var3.getKey(), (String)var3.getValue());
 		}
 	}
 
@@ -501,6 +473,14 @@ public class qt {
 		return var2.toString();
 	}
 
+	@ObfuscatedName("rt")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;Lvp;)V"
+	)
+	public static void rt(qt var0, vp var1) {
+		var0.av_fld.put("Content-Type", var1.ak());
+	}
+
 	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
@@ -528,25 +508,98 @@ public class qt {
 		return var2.toString();
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("fd")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;Lvp;FI)V"
+		descriptor = "(Lqt;I)V"
 	)
-	public static void bg(qt var0, vp var1, float var2, int var3) {
+	public static void fd(qt var0, int var1) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			var0.ae_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-			var0.al();
+		}
+
+		var0.av_fld.remove("Accept");
+		if (!var0.ae_fld.isEmpty()) {
+			var0.av_fld.put("Accept", var0.au());
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;FI)V"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;B)V"
 	)
-	void af(vp var1, float var2, int var3) {
-		this.av_fld.put(var1, Math.max(0.0F, Math.min(1.0F, var2)));
-		this.al();
+	public void az(String var1, String var2, byte var3) {
+		if (var1 != null) {
+			if (var3 != 96) {
+				return;
+			}
+
+			if (!var1.isEmpty()) {
+				if (var3 != 96) {
+					return;
+				}
+
+				this.av_fld.put(var1, null != var2 ? var2 : "");
+			}
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V"
+	)
+	public void av(String var1, byte var2) {
+		oi(this, qj.ag_fld, var1, 1385298460);
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lqj;Ljava/lang/String;I)V"
+	)
+	void ae(qj var1, String var2, int var3) {
+		String var4 = String.format("%s %s", (Object[])(new Object[]{var1.ak(), var2}));
+		kn(this, "Authorization", var4, (byte)96);
+	}
+
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;Ljava/lang/String;Ljava/lang/String;B)V"
+	)
+	public static void kn(qt var0, String var1, String var2, byte var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1 != null) {
+			if (var3 != 96) {
+				return;
+			}
+
+			if (!var1.isEmpty()) {
+				if (var3 != 96) {
+					return;
+				}
+
+				var0.av_fld.put(var1, null != var2 ? var2 : "");
+			}
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void as(int var1) {
+		this.av_fld.remove("Content-Type");
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void al(int var1) {
+		this.av_fld.remove("Accept");
+		if (!this.av_fld.isEmpty()) {
+			this.av_fld.put("Accept", this.au());
+		}
 	}
 }

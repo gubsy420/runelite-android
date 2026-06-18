@@ -1,4 +1,5 @@
 import net.runelite.api.VarbitComposition;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -7,35 +8,35 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("ph")
 @Implements({"VarbitComposition"})
 public class ph extends vc implements VarbitComposition {
-	@ObfuscatedGetter(
-		intValue = 316985927
-	)
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int ah_fld;
-	@ObfuscatedGetter(
-		intValue = 2041933517
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 316985927
+	)
 	public int ae_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2041933517
+	)
+	public int av_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "Liw;"
 	)
 	static iw az_fld = new iw(64);
-	@ObfuscatedGetter(
-		intValue = -384013537
-	)
-	@ObfuscatedName("av")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
+	@ObfuscatedGetter(
+		intValue = -384013537
+	)
+	public int ah_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lub;"
@@ -50,47 +51,6 @@ public class ph extends vc implements VarbitComposition {
 	ph() {
 	}
 
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "(Lph;I)I"
-	)
-	public static int tb(ph var0, int var1) {
-		int var2 = ak_fld[var0.av_fld - var0.ah_fld];
-		return var1 >> var0.ah_fld & var2;
-	}
-
-	@ObfuscatedName("jq")
-	@ObfuscatedSignature(
-		descriptor = "(Lph;Lxi;II)V"
-	)
-	public static void jq(ph var0, xi var1, int var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var2 == 1) {
-				if (var3 == -1936444468) {
-					return;
-				}
-
-				var0.ae_fld = xi.tx(var1, 656868958);
-				var0.ah_fld = var1.cg();
-				var0.av_fld = var1.cg();
-			}
-		}
-	}
-
-	@ObfuscatedName("zd")
-	@ObfuscatedSignature(
-		descriptor = "(Lew;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int zd(ew var0, Object var1, Object var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return ew.uy(var0, (rr)var1, (rr)var2, 172675043);
-		}
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;B)V"
@@ -102,7 +62,7 @@ public class ph extends vc implements VarbitComposition {
 				return;
 			}
 
-			jq(this, var1, var3, 678852977);
+			this.ae(var1, var3, 678852977);
 		}
 	}
 
@@ -111,7 +71,19 @@ public class ph extends vc implements VarbitComposition {
 		descriptor = "()V"
 	)
 	public static void af() {
-		az_fld.vh();
+		az_fld.av();
+	}
+
+	@ObfuscatedName("ok")
+	@ObfuscatedSignature(
+		descriptor = "(Loy;)I"
+	)
+	public static int ok(oy var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.bd_fld;
 	}
 
 	static {
@@ -121,6 +93,16 @@ public class ph extends vc implements VarbitComposition {
 			ak_fld[var1] = var0 - 1;
 			var0 += var0;
 		}
+	}
+
+	@ObfuscatedName("getLeastSignificantBit")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getLeastSignificantBit")
+	@Override
+	public int getLeastSignificantBit() {
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -136,48 +118,23 @@ public class ph extends vc implements VarbitComposition {
 		descriptor = "(IB)I"
 	)
 	int ah(int var1, byte var2) {
-		int var3 = ak_fld[this.av_fld - this.ah_fld];
-		return var1 >> this.ah_fld & var3;
+		int var3 = ak_fld[this.ah_fld - this.ae_fld];
+		return var1 >> this.ae_fld & var3;
 	}
 
-	@ObfuscatedName("getMostSignificantBit")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lxi;II)V"
 	)
-	@Override
-	public int getMostSignificantBit() {
-		return this.av_fld;
-	}
-
-	@ObfuscatedName("fw")
-	@ObfuscatedSignature(
-		descriptor = "(Lph;Lxi;I)V"
-	)
-	public static void fw(ph var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	void ae(xi var1, int var2, int var3) {
 		if (var2 == 1) {
-			var0.ae_fld = xi.tx(var1, 773822344);
-			var0.ah_fld = var1.cg();
-			var0.av_fld = var1.cg();
-		}
-	}
+			if (var3 == -1936444468) {
+				return;
+			}
 
-	@ObfuscatedName("ma")
-	@ObfuscatedSignature(
-		descriptor = "(Lph;Lxi;I)V"
-	)
-	public static void ma(ph var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var2 == 1) {
-			var0.ae_fld = xi.tx(var1, 385354450);
-			var0.ah_fld = var1.cg() * 1101925757;
-			var0.av_fld = var1.cg() * 1121342700;
+			this.av_fld = var1.cm();
+			this.ae_fld = var1.cg();
+			this.ah_fld = var1.cg();
 		}
 	}
 
@@ -186,7 +143,7 @@ public class ph extends vc implements VarbitComposition {
 		descriptor = "()V"
 	)
 	public static void as() {
-		az_fld.vh();
+		az_fld.av();
 	}
 
 	@ObfuscatedName("ar")
@@ -194,7 +151,7 @@ public class ph extends vc implements VarbitComposition {
 		descriptor = "()V"
 	)
 	public static void ar() {
-		az_fld.vh();
+		az_fld.av();
 	}
 
 	@ObfuscatedName("al")
@@ -202,22 +159,7 @@ public class ph extends vc implements VarbitComposition {
 		descriptor = "()V"
 	)
 	public static void al() {
-		az_fld.vh();
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	void ax(xi var1) {
-		while (true) {
-			int var2 = var1.cg();
-			if (0 == var2) {
-				return;
-			}
-
-			jq(this, var1, var2, -679117816);
-		}
+		az_fld.av();
 	}
 
 	@ObfuscatedName("au")
@@ -231,26 +173,27 @@ public class ph extends vc implements VarbitComposition {
 				return;
 			}
 
-			jq(this, var1, var2, -1185526785);
+			this.ae(var1, var2, -1185526785);
 		}
 	}
 
-	@ObfuscatedName("hz")
+	@ObfuscatedName("sn")
 	@ObfuscatedSignature(
-		descriptor = "(Lph;I)I"
+		descriptor = "(Lph;Lxi;)V"
 	)
-	public static int hz(ph var0, int var1) {
-		int var2 = ak_fld[var0.av_fld - var0.ah_fld];
-		return var1 >> var0.ah_fld & var2;
-	}
+	public static void sn(ph var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 
-	@ObfuscatedName("getIndex")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getIndex() {
-		return this.ae_fld;
+		while (true) {
+			int var2 = var1.cg();
+			if (0 == var2) {
+				return;
+			}
+
+			var0.ae(var1, var2, -393698678);
+		}
 	}
 
 	@ObfuscatedName("ay")
@@ -261,33 +204,90 @@ public class ph extends vc implements VarbitComposition {
 		ag_fld = var0;
 	}
 
-	@ObfuscatedName("getLeastSignificantBit")
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	void aa(xi var1, int var2) {
+		if (var2 == 1) {
+			this.av_fld = var1.cm();
+			this.ae_fld = var1.cg() * 1101925757;
+			this.ah_fld = var1.cg() * 1121342700;
+		}
+	}
+
+	@ObfuscatedName("getIndex")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getIndex")
 	@Override
-	public int getLeastSignificantBit() {
+	public int getIndex() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getMostSignificantBit")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getMostSignificantBit")
+	@Override
+	public int getMostSignificantBit() {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lxi;I)V"
 	)
-	void an(xi var1) {
-		while (true) {
-			int var2 = var1.cg();
-			if (0 == var2) {
-				return;
-			}
-
-			jq(this, var1, var2, -393698678);
+	void ai(xi var1, int var2) {
+		if (var2 == 1) {
+			this.av_fld = var1.cm();
+			this.ae_fld = var1.cg();
+			this.ah_fld = var1.cg();
 		}
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int am(int var1) {
+		int var2 = ak_fld[this.ah_fld - this.ae_fld];
+		return var1 >> this.ae_fld & var2;
+	}
+
+	@ObfuscatedName("qd")
+	@ObfuscatedSignature(
+		descriptor = "(Lph;Lxi;)V"
+	)
+	public static void qd(ph var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			while (true) {
+				int var2 = var1.cg();
+				if (0 == var2) {
+					return;
+				}
+
+				var0.ae(var1, var2, -679117816);
+			}
+		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int aq(int var1) {
+		int var2 = ak_fld[this.ah_fld - this.ae_fld];
+		return var1 >> this.ae_fld & var2;
 	}
 
 	@ObfuscatedName("hj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Z)Ljava/lang/String;"
+		descriptor = "(Ljava/lang/String;ZB)Ljava/lang/String;"
 	)
 	static String hj(String var0, boolean var1) {
 		String var3 = var1 ? "https://" : "http://";
@@ -312,19 +312,18 @@ public class ph extends vc implements VarbitComposition {
 		return var3 + var0 + "." + var5 + "/l=" + ku.gi_fld + "/a=" + ub.gm_fld + var4 + "/";
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;II)V"
+		descriptor = "(Lxi;)V"
 	)
-	void ae(xi var1, int var2, int var3) {
-		if (var2 == 1) {
-			if (var3 == -1936444468) {
+	void ax(xi var1) {
+		while (true) {
+			int var2 = var1.cg();
+			if (0 == var2) {
 				return;
 			}
 
-			this.ah_fld = xi.tx(var1, 656868958) * 1136406021;
-			this.ae_fld = var1.co() * -614254729;
-			this.av_fld = var1.ew();
+			this.ae(var1, var2, -393698678);
 		}
 	}
 }

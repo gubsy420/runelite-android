@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -15,10 +14,10 @@ class yr implements yn {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lxi;)V"
+		descriptor = "(Ljava/lang/String;Lxi;B)V"
 	)
 	void ak(String var1, xi var2) {
-		var2.cc(var1, 2074380416);
+		xi.ph(var2, var1, 2074380416);
 	}
 
 	@ObfuscatedName("ag")
@@ -27,15 +26,19 @@ class yr implements yn {
 	)
 	@Override
 	public Object ag(xi var1, int var2) {
-		return xi.kc(var1, 1094555303);
+		return xi.at(var1, 1094555303);
 	}
 
-	@ObfuscatedName("sr")
+	@ObfuscatedName("ue")
 	@ObfuscatedSignature(
-		descriptor = "(Lma;)Ljava/util/ArrayList;"
+		descriptor = "(Lyr;Ljava/lang/String;Lxi;)V"
 	)
-	public static ArrayList sr(ma var0) {
-		return var0.af_fld.az_fld;
+	public static void ue(yr var0, String var1, xi var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		xi.ph(var2, var1, 1245531223);
 	}
 
 	@ObfuscatedName("az")
@@ -53,19 +56,7 @@ class yr implements yn {
 	)
 	@Override
 	public Object ah(xi var1) {
-		return xi.kc(var1, -951695631);
-	}
-
-	@ObfuscatedName("ws")
-	@ObfuscatedSignature(
-		descriptor = "(Luo;)Lui;"
-	)
-	public static ui ws(uo var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.bm_fld;
+		return xi.at(var1, -951695631);
 	}
 
 	yr() {
@@ -86,14 +77,6 @@ class yr implements yn {
 	)
 	@Override
 	public Object aw(xi var1) {
-		return xi.kc(var1, -1973783745);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lxi;)V"
-	)
-	void ae(String var1, xi var2) {
-		var2.cc(var1, 1245531223);
+		return xi.at(var1, -1973783745);
 	}
 }

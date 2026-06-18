@@ -1,3 +1,4 @@
+import java.awt.event.WindowEvent;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -9,12 +10,12 @@ public class io extends ht {
 		descriptor = "Ljava/lang/String;"
 	)
 	String ag_fld;
-	@ObfuscatedGetter(
-		intValue = 132101181
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 132101181
 	)
 	int ak_fld;
 	// $VF: synthetic field
@@ -31,7 +32,7 @@ public class io extends ht {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;)V"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;B)V"
 	)
 	static void ag(int var0, String var1, String var2) {
 		ro.az(var0, var1, var2, null);
@@ -56,8 +57,8 @@ public class io extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = var1.co();
-		this.ag_fld = xi.kc(var1, -519061123);
+		this.ak_fld = var1.co((byte)-63);
+		this.ag_fld = xi.at(var1, -519061123);
 	}
 
 	@ObfuscatedName("az")
@@ -66,8 +67,8 @@ public class io extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = var1.co() * -338690654;
-		this.ag_fld = xi.kc(var1, 442260027);
+		this.ak_fld = var1.co((byte)-112) * -338690654;
+		this.ag_fld = xi.at(var1, 442260027);
 	}
 
 	@ObfuscatedName("ae")
@@ -76,8 +77,8 @@ public class io extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = xi.kc(var1, -858057229);
+		this.ak_fld = var1.co((byte)-87);
+		this.ag_fld = xi.at(var1, -858057229);
 	}
 
 	@ObfuscatedName("ah")
@@ -89,6 +90,14 @@ public class io extends ht {
 		var1.am(this.ak_fld, this.ag_fld, 840549192);
 	}
 
+	@ObfuscatedName("od")
+	@ObfuscatedSignature(
+		descriptor = "(Luf;Luf;)Z"
+	)
+	public static boolean od(uf var0, uf var1) {
+		return var0.av_fld <= var1.af() && var1.as() <= var0.af() && var0.ae_fld <= var1.al() && var1.ar() <= var0.al();
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lik;)V"
@@ -96,6 +105,18 @@ public class io extends ht {
 	@Override
 	void aw(ik var1) {
 		var1.am(this.ak_fld, this.ag_fld, 840549192);
+	}
+
+	@ObfuscatedName("sd")
+	@ObfuscatedSignature(
+		descriptor = "(Ltf;Ljava/awt/event/WindowEvent;)V"
+	)
+	public static void sd(tf var0, WindowEvent var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.destroy();
 	}
 
 	@ObfuscatedName("ay")
@@ -109,7 +130,7 @@ public class io extends ht {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;)Z"
+		descriptor = "(Ljava/lang/CharSequence;B)Z"
 	)
 	public static boolean az(CharSequence var0) {
 		boolean var3 = false;
@@ -183,7 +204,7 @@ public class io extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = xi.kc(var1, -1630506546);
+		this.ak_fld = var1.co((byte)-125);
+		this.ag_fld = xi.at(var1, -1630506546);
 	}
 }

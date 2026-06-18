@@ -35,9 +35,17 @@ public class oz extends vc {
 	)
 	static int ay_fld;
 
+	@ObfuscatedName("wv")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;)I"
+	)
+	public static int wv(da var0) {
+		return var0.cg_fld.as_fld * 1129140675;
+	}
+
 	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int bg(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -47,12 +55,12 @@ public class oz extends vc {
 			} else if (6501 == var0) {
 				ct var17 = gk.aw();
 				if (null != var17) {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.af_fld;
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.al_fld;
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var17.an_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.aa_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.au_fld;
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var17.ax_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.ai_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var17.af_fld;
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var17.aq_fld;
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = -1;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = 0;
@@ -66,12 +74,12 @@ public class oz extends vc {
 			} else if (6502 == var0) {
 				ct var16 = ey.ay();
 				if (var16 != null) {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.af_fld;
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.al_fld;
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var16.an_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.aa_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.au_fld;
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var16.ax_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.ai_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var16.af_fld;
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var16.aq_fld;
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = -1;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = 0;
@@ -87,19 +95,19 @@ public class oz extends vc {
 				ct var24 = null;
 
 				for (int var30 = 0; var30 < ct.ah_fld; var30++) {
-					if (-407267201 * yd.ae_fld[var30].af_fld == var15) {
+					if (-407267201 * yd.ae_fld[var30].aa_fld == var15) {
 						var24 = yd.ae_fld[var30];
 						break;
 					}
 				}
 
 				if (null != var24) {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.af_fld;
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.al_fld;
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var24.an_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.aa_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.au_fld;
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var24.ax_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.ai_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var24.af_fld;
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var24.aq_fld;
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = -1;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = 0;
@@ -122,12 +130,12 @@ public class oz extends vc {
 				int var13 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 				if (var13 >= 0 && var13 < ct.ah_fld) {
 					ct var22 = yd.ae_fld[var13];
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.af_fld;
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.al_fld;
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var22.an_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.aa_fld;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.au_fld;
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var22.ax_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.ai_fld;
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var22.af_fld;
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var22.aq_fld;
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = -1;
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = 0;
@@ -147,11 +155,11 @@ public class oz extends vc {
 				int var21 = bp.au_fld[1 + gz.ax_fld];
 				px var28 = kb.ag_px(var21, -735774509);
 				if (var28.aw()) {
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = ca.az(var12).ax(var21, var28.as_fld, (byte)30);
-				} else if (px.ll(var28, (short)10000)) {
-					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = ca.az(var12).au(var21, var28.ay_fld);
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = pp.mf(ca.az(var12), var21, var28.as_fld, (byte)30);
+				} else if (var28.ay()) {
+					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = pp.nj(ca.az(var12), var21, var28.ay_fld);
 				} else {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = pp.kt(ca.az(var12), var21, var28.aw_fld, (byte)0);
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = pp.qp(ca.az(var12), var21, var28.aw_fld, (byte)0);
 				}
 
 				return 1;
@@ -162,8 +170,8 @@ public class oz extends vc {
 				px var27 = kb.ag_px(var20, -1076937145);
 				if (var27.aw()) {
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = ko.az(var11).ai(var20, var27.as_fld, -1233003183);
-				} else if (px.ll(var27, (short)10000)) {
-					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = ko.az(var11).aa(var20, var27.ay_fld);
+				} else if (var27.ay()) {
+					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = ko.az(var11).bq(var20, var27.ay_fld);
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = ko.az(var11).an(var20, var27.aw_fld, -2126021483);
 				}
@@ -175,11 +183,11 @@ public class oz extends vc {
 				int var19 = bp.au_fld[gz.ax_fld + 1];
 				px var26 = kb.ag_px(var19, -1099583768);
 				if (var26.aw()) {
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = og.sw(kb.ag(var10, -1752383175), var19, var26.as_fld, (byte)59);
-				} else if (px.ll(var26, (short)10000)) {
-					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = og.pv(kb.ag(var10, -1752383175), var19, var26.ay_fld);
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = kb.ag(var10, -1752383175).ab(var19, var26.as_fld, (byte)59);
+				} else if (var26.ay()) {
+					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = kb.ag(var10, -1752383175).ao(var19, var26.ay_fld);
 				} else {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = kb.ag(var10, -1752383175).ad(var19, var26.aw_fld, -1190576956);
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = og.mz(kb.ag(var10, -1752383175), var19, var26.aw_fld);
 				}
 
 				return 1;
@@ -190,8 +198,8 @@ public class oz extends vc {
 				px var25 = kb.ag_px(var18, -1928113232);
 				if (var25.aw()) {
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = cr.ak(var9).aw(var18, var25.as_fld, 1087418095);
-				} else if (px.ll(var25, (short)10000)) {
-					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = pw.bv(cr.ak(var9), var18, var25.ay_fld);
+				} else if (var25.ay()) {
+					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = cr.ak(var9).ah(var18, var25.ay_fld);
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = cr.ak(var9).ae(var18, var25.aw_fld, -1466857487);
 				}
@@ -235,7 +243,7 @@ public class oz extends vc {
 				if (var6.aw()) {
 					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = lg.ak(var4, 1850431589).ae(var5, var6.as_fld);
 				} else {
-					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = lg.ak(var4, 1416199934).av(var5, var6.aw_fld, 2011751109);
+					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = ny.jf(lg.ak(var4, 1416199934), var5, var6.aw_fld);
 				}
 
 				return 1;
@@ -260,12 +268,12 @@ public class oz extends vc {
 		descriptor = "()V"
 	)
 	public static void az() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)I"
 	)
 	static final int ch() throws EOFException {
 		try {
@@ -291,6 +299,6 @@ public class oz extends vc {
 		descriptor = "()V"
 	)
 	public static void ag() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 }

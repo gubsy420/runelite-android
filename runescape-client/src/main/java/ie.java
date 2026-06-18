@@ -1,6 +1,4 @@
 import java.io.EOFException;
-import java.io.IOException;
-import javax.net.ssl.HandshakeCompletedListener;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -28,12 +26,12 @@ public class ie extends ht {
 		descriptor = "I"
 	)
 	public static int aw_fld;
-	@ObfuscatedGetter(
-		longValue = -1738948502613052373L
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -1738948502613052373L
 	)
 	long ak_fld;
 	@ObfuscatedName("ar")
@@ -57,32 +55,22 @@ public class ie extends ht {
 	)
 	static int cv_fld;
 
-	@ObfuscatedName("er")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;Ljavax/net/ssl/HandshakeCompletedListener;)V"
-	)
-	public static void er(qf var0, HandshakeCompletedListener var1) throws IOException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("uw")
-	@ObfuscatedSignature(
-		descriptor = "(Lgy;)I"
-	)
-	public static int uw(gy var0) {
-		return var0.az_fld;
-	}
-
 	ie(ia var1) {
 		this.this$0 = var1;
 		this.ak_fld = -186047548659460739L;
 		this.ag_fld = null;
+	}
+
+	@ObfuscatedName("zj")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;)I"
+	)
+	public static int zj(rg var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.av_fld.ag();
 	}
 
 	@ObfuscatedName("ak")
@@ -93,10 +81,10 @@ public class ie extends ht {
 	void ak(xi var1, int var2) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, 1022937383);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
+		this.ag_fld = var1.cl();
 	}
 
 	@ObfuscatedName("ag")
@@ -135,10 +123,10 @@ public class ie extends ht {
 	void av(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, -1297935346);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
+		this.ag_fld = var1.cl();
 	}
 
 	@ObfuscatedName("ae")
@@ -149,10 +137,10 @@ public class ie extends ht {
 	void ae(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, 1423955828);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
+		this.ag_fld = var1.cl();
 	}
 
 	@ObfuscatedName("ah")
@@ -184,7 +172,7 @@ public class ie extends ht {
 
 	@ObfuscatedName("cr")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;)V"
+		descriptor = "(Ldx;I)V"
 	)
 	static void cr(dx var0) throws EOFException {
 		try {
@@ -197,6 +185,21 @@ public class ie extends ht {
 		}
 	}
 
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "(Luu;)V"
+	)
+	public static void ls(uu var0) {
+		if (var0.as_fld != null) {
+			try {
+				var0.as_fld.ah((byte)90);
+			} catch (Exception var2) {
+			}
+
+			var0.as_fld = null;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
@@ -205,9 +208,9 @@ public class ie extends ht {
 	void az(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, -378869192);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
+		this.ag_fld = var1.cl();
 	}
 }

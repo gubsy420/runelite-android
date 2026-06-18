@@ -1,6 +1,7 @@
 import java.awt.Image;
 import java.io.EOFException;
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -22,11 +23,23 @@ public abstract class rz implements Comparator {
 	)
 	static int aw_fld;
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("tn")
+	@ObfuscatedSignature(
+		descriptor = "(Lrz;Ljava/util/Comparator;)V"
+	)
+	public static void tn(rz var0, Comparator var1) {
+		if (var0.ag_fld == null) {
+			var0.ag_fld = var1;
+		} else if (var0.ag_fld instanceof rz) {
+			((rz)var0.ag_fld).ay(var1, 1630011462);
+		}
+	}
+
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;)V"
 	)
-	final void af(Comparator var1) {
+	final void au(Comparator var1) {
 		if (this.ag_fld == null) {
 			this.ag_fld = var1;
 		} else if (this.ag_fld instanceof rz) {
@@ -60,7 +73,7 @@ public abstract class rz implements Comparator {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;)I"
+		descriptor = "(Lub;Lub;I)I"
 	)
 	static int ak(ub var0, ub var1) throws EOFException {
 		try {
@@ -98,6 +111,14 @@ public abstract class rz implements Comparator {
 		}
 	}
 
+	@ObfuscatedName("jm")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jm(Object var1) {
+		return super.equals(var1);
+	}
+
 	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
@@ -114,19 +135,11 @@ public abstract class rz implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("jm")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jm(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;)V"
 	)
-	final void ar(Comparator var1) {
+	final void af(Comparator var1) {
 		if (this.ag_fld == null) {
 			this.ag_fld = var1;
 		} else if (this.ag_fld instanceof rz) {
@@ -138,16 +151,17 @@ public abstract class rz implements Comparator {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;)V"
 	)
-	final void au(Comparator var1) {
+	final void al(Comparator var1) {
 		if (this.ag_fld == null) {
 			this.ag_fld = var1;
 		} else if (this.ag_fld instanceof rz) {
@@ -157,7 +171,7 @@ public abstract class rz implements Comparator {
 
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int bs(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -182,23 +196,23 @@ public abstract class rz implements Comparator {
 					var32 = tf.av(var23);
 				}
 
-				jm var35 = gi.ak(jb.do_fld, client.aq_fld.av_fld);
-				xi.ld(var35.ay_fld, var32, (byte)109);
-				client.aq_fld.az(var35);
+				jm var35 = gi.ak(jb.do_fld, client.appletStub.av_fld);
+				var35.ay_fld.eb(var32);
+				client.appletStub.az(var35);
 				return 1;
 			} else if (3105 == var0) {
 				String var22 = (String)bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525];
-				jm var31 = gi.ak(jb.bz_fld, client.aq_fld.av_fld);
-				var31.ay_fld.bc(var22.length() + 1);
-				var31.ay_fld.cc(var22, -638166850);
-				client.aq_fld.az(var31);
+				jm var31 = gi.ak(jb.bz_fld, client.appletStub.av_fld);
+				var31.ay_fld.ea(var22.length() + 1);
+				xi.ph(var31.ay_fld, var22, -638166850);
+				client.appletStub.az(var31);
 				return 1;
 			} else if (var0 == 3106) {
 				String var21 = (String)bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525];
-				jm var30 = gi.ak(jb.cd_fld, client.aq_fld.av_fld);
-				var30.ay_fld.bc(var21.length() + 1);
-				var30.ay_fld.cc(var21, 487699711);
-				client.aq_fld.az(var30);
+				jm var30 = gi.ak(jb.cd_fld, client.appletStub.av_fld);
+				var30.ay_fld.ea(var21.length() + 1);
+				xi.ph(var30.ay_fld, var21, 487699711);
+				client.appletStub.az(var30);
 				return 1;
 			} else if (var0 == 3107) {
 				int var20 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
@@ -211,7 +225,7 @@ public abstract class rz implements Comparator {
 				int var28 = bp.au_fld[1 + gz.ax_fld];
 				int var34 = bp.au_fld[gz.ax_fld + 2];
 				lu var37 = cf.cg_fld.ak(var34);
-				if (!client.ng_fld && cf.cg_fld.br(var37, var19, var28)) {
+				if (!client.ng_fld && uo.wn(cf.cg_fld, var37, var19, var28)) {
 					ot.ft();
 				}
 
@@ -221,7 +235,7 @@ public abstract class rz implements Comparator {
 				int var18 = bp.au_fld[gz.ax_fld];
 				int var27 = bp.au_fld[1 + gz.ax_fld];
 				lu var33 = var2 ? gs.ap_fld : bp.ab_fld;
-				if (!client.ng_fld && cf.cg_fld.br(var33, var18, var27)) {
+				if (!client.ng_fld && uo.wn(cf.cg_fld, var33, var18, var27)) {
 					ot.ft();
 				}
 
@@ -247,15 +261,15 @@ public abstract class rz implements Comparator {
 					var26 = gj.aw(var16);
 				}
 
-				jm var36 = gi.ak(jb.cu_fld, client.aq_fld.av_fld);
-				var36.ay_fld.fn(var26);
-				client.aq_fld.az(var36);
+				jm var36 = gi.ak(jb.cu_fld, client.appletStub.av_fld);
+				var36.ay_fld.ft(var26);
+				client.appletStub.az(var36);
 				return 1;
 			} else if (var0 == 3115) {
 				int var15 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
-				jm var25 = gi.ak(jb.ex_fld, client.aq_fld.av_fld);
-				var25.ay_fld.bw(var15);
-				client.aq_fld.az(var25);
+				jm var25 = gi.ak(jb.ex_fld, client.appletStub.av_fld);
+				xi.vy(var25.ay_fld, var15);
+				client.appletStub.az(var25);
 				return 1;
 			} else if (3116 == var0) {
 				int var14 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
@@ -267,12 +281,12 @@ public abstract class rz implements Comparator {
 				} else if (var6.length() > 500) {
 					return 1;
 				} else {
-					jm var7 = gi.ak(jb.ba_fld, client.aq_fld.av_fld);
-					var7.ay_fld.bw(1 + iq.bu(var5) + iq.bu(var6));
-					var7.ay_fld.cc(var6, 1072139550);
-					xi.rs(var7.ay_fld, var14);
-					var7.ay_fld.cc(var5, 1930875267);
-					client.aq_fld.az(var7);
+					jm var7 = gi.ak(jb.ba_fld, client.appletStub.av_fld);
+					xi.vy(var7.ay_fld, 1 + iq.bu(var5) + iq.bu(var6));
+					xi.ph(var7.ay_fld, var6, 1072139550);
+					var7.ay_fld.cx(var14);
+					xi.ph(var7.ay_fld, var5, 1930875267);
+					client.appletStub.az(var7);
 					return 1;
 				}
 			} else if (3117 == var0) {
@@ -377,7 +391,7 @@ public abstract class rz implements Comparator {
 				cx.kq_fld.ay(var13, (byte)116);
 				return 1;
 			} else if (var0 == 3142) {
-				bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = cn.za(cx.kq_fld, 2146222987) ? 1 : 0;
+				bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = cx.kq_fld.bl(2146222987) ? 1 : 0;
 				return 1;
 			} else if (var0 == 3143) {
 				boolean var12 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127] == 1;
@@ -394,10 +408,10 @@ public abstract class rz implements Comparator {
 				return 1;
 			} else if (3146 == var0) {
 				boolean var11 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127] == 1;
-				cn.up(cx.kq_fld, !var11, (byte)2);
+				cn.eu(cx.kq_fld, !var11, (byte)2);
 				return 1;
 			} else if (3147 == var0) {
-				bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = cx.kq_fld.as((short)27165) ? 0 : 1;
+				bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = cn.mv(cx.kq_fld, (short)27165) ? 0 : 1;
 				return 1;
 			} else if (var0 == 3148) {
 				return 1;
@@ -517,10 +531,10 @@ public abstract class rz implements Comparator {
 				return 1;
 			} else if (var0 == 3185) {
 				int var10 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
-				cn.tu(cx.kq_fld, var10);
+				cx.kq_fld.bk(var10, 2132603015);
 				return 1;
 			} else if (3186 == var0) {
-				int var9 = cn.ka(cx.kq_fld, (byte)1);
+				int var9 = cx.kq_fld.ax((byte)1);
 				bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var9;
 				return 1;
 			} else if (3189 == var0) {
@@ -535,11 +549,11 @@ public abstract class rz implements Comparator {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;)V"
 	)
-	final void al(Comparator var1) {
+	final void ax(Comparator var1) {
 		if (this.ag_fld == null) {
 			this.ag_fld = var1;
 		} else if (this.ag_fld instanceof rz) {
@@ -560,7 +574,7 @@ public abstract class rz implements Comparator {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;)I"
+		descriptor = "(Lsl;B)I"
 	)
 	public static int ah(sl var0) {
 		om.ap(var0, null, false, (byte)0);
@@ -576,7 +590,7 @@ public abstract class rz implements Comparator {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, -1735702581);
 
 			for (int var11 = var2; var11 < var3; var11++) {
 				if (var4 == -1 || var9[var11] > var9[var4]) {
@@ -597,17 +611,5 @@ public abstract class rz implements Comparator {
 		}
 
 		return var4;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;)V"
-	)
-	final void ax(Comparator var1) {
-		if (this.ag_fld == null) {
-			this.ag_fld = var1;
-		} else if (this.ag_fld instanceof rz) {
-			((rz)this.ag_fld).ay(var1, 1630011462);
-		}
 	}
 }

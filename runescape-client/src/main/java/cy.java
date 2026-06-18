@@ -99,21 +99,9 @@ public class cy {
 	)
 	public static int ao_fld;
 
-	@ObfuscatedName("kp")
-	@ObfuscatedSignature(
-		descriptor = "(Lma;)I"
-	)
-	public static int kp(ma var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.al_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	public static int ag(int var0, int var1) {
 		return (int)Math.round(Math.atan2(var0, var1) * 2607.5945876176133) & 16383;
@@ -121,29 +109,29 @@ public class cy {
 
 	@ObfuscatedName("hr")
 	@ObfuscatedSignature(
-		descriptor = "(IIZ)V"
+		descriptor = "(IIZB)V"
 	)
 	static final void hr(int var0, int var1, boolean var2) {
 		if (client.fv_fld[var0] != null) {
 			if (var1 >= 0 && var1 < client.fv_fld[var0].av(-1091125853)) {
 				hx var4 = (hx)(hx)client.fv_fld[var0].ak_fld.get(var1);
-				jm var5 = gi.ak(jb.br_fld, client.aq_fld.av_fld);
-				var5.ay_fld.bc(4 + iq.bu(var4.az_fld.ak(-2137299272)));
-				var5.ay_fld.bc(var0);
-				var5.ay_fld.bw(var1);
+				jm var5 = gi.ak(jb.br_fld, client.appletStub.av_fld);
+				var5.ay_fld.ea(4 + iq.bu(var4.az_fld.ak(-2137299272)));
+				var5.ay_fld.ea(var0);
+				xi.vy(var5.ay_fld, var1);
 				var5.ay_fld.cd(var2);
-				var5.ay_fld.cc(var4.az_fld.ak(-827083708), -3022979);
-				client.aq_fld.az(var5);
+				xi.ph(var5.ay_fld, var4.az_fld.ak(-827083708), -3022979);
+				client.appletStub.az(var5);
 			}
 		}
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void ak() {
-		oi.ak_fld.vh();
+		oi.ak_fld.av();
 	}
 
 	cy() {

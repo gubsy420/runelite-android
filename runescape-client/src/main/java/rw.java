@@ -49,9 +49,9 @@ public class rw {
 
 				bn.dq_fld = false;
 				yu.dj(0, 0, yu.au_fld, yu.ax_fld, 0);
-				hu.ce_fld.ao(bn.bo_fld, 0);
-				nq.cn_fld.ao(382 + bn.bo_fld, 0);
-				hk.cr_fld.ad(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
+				hu.ce_fld.dq(bn.bo_fld, 0);
+				nq.cn_fld.dq(382 + bn.bo_fld, 0);
+				hk.cr_fld.ae(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
 				return;
 			}
 
@@ -177,16 +177,16 @@ public class rw {
 
 					bn.dq_fld = false;
 					yu.dj(0, 0, yu.au_fld, yu.ax_fld, 0);
-					hu.ce_fld.ao(bn.bo_fld, 0);
-					nq.cn_fld.ao(382 + bn.bo_fld, 0);
-					hk.cr_fld.ad(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
+					hu.ce_fld.dq(bn.bo_fld, 0);
+					nq.cn_fld.dq(382 + bn.bo_fld, 0);
+					hk.cr_fld.ae(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
 				}
 			} else if (bn.ds_fld != -1) {
 				ct var7 = yd.ae_fld[bn.ds_fld];
 				boolean var8 = bp.ak(client.gt_fld, wu.ai_fld);
-				boolean var9 = ct.cr(var7, -29492843);
+				boolean var9 = var7.al(-29492843);
 				ku.dc_fld = var9;
-				var7.aq_fld = var9 ? "beta" : var7.aq_fld;
+				var7.an_fld = var9 ? "beta" : var7.an_fld;
 				mv.ab(var7, 1958573397);
 				if (34 == bn.co_fld) {
 					lu.ai(false, (byte)5);
@@ -194,9 +194,9 @@ public class rw {
 
 				bn.dq_fld = false;
 				yu.dj(0, 0, yu.au_fld, yu.ax_fld, 0);
-				hu.ce_fld.ao(bn.bo_fld, 0);
-				nq.cn_fld.ao(bn.bo_fld + 382, 0);
-				hk.cr_fld.ad(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
+				hu.ce_fld.dq(bn.bo_fld, 0);
+				nq.cn_fld.dq(bn.bo_fld + 382, 0);
+				hk.cr_fld.ae(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
 				if (var8 != var9) {
 					cb.as((byte)-86);
 				}
@@ -232,9 +232,17 @@ public class rw {
 		}
 	}
 
+	@ObfuscatedName("vm")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;)I"
+	)
+	public static int vm(da var0) {
+		return var0.bn_fld;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)I"
+		descriptor = "(IIII)I"
 	)
 	public static int ak(int var0, int var1, int var2) {
 		var2 &= 3;

@@ -9,12 +9,12 @@ public class rk {
 		descriptor = "I"
 	)
 	public static int aq_fld;
-	@ObfuscatedGetter(
-		intValue = 1375760171
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1375760171
 	)
 	int ag_fld;
 	@ObfuscatedName("ak")
@@ -33,16 +33,35 @@ public class rk {
 	)
 	static int bf_fld;
 
+	@ObfuscatedName("ni")
+	@ObfuscatedSignature(
+		descriptor = "(Lnp;Luq;)V"
+	)
+	public static void ni(np var0, uq var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1.av_fld != null) {
+			uq.xr(var1);
+		}
+
+		var1.av_fld = var0.ag_fld.av_fld;
+		var1.ae_fld = var0.ag_fld;
+		var1.av_fld.ae_fld = var1;
+		var1.ae_fld.av_fld = var1;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Luz;)Luz;"
+		descriptor = "(Luz;B)Luz;"
 	)
 	static uz az(uz var0) {
 		synchronized (uz.ak_fld) {
 			if (uz.az_fld == 0) {
 				return new uz(var0);
 			} else {
-				uz.ak_fld[(uz.az_fld -= -1833938397) * 770960779].aw(var0);
+				uz.ik(uz.ak_fld[(uz.az_fld -= -1833938397) * 770960779], var0, (byte)-16);
 				return uz.ak_fld[uz.az_fld];
 			}
 		}
@@ -53,7 +72,7 @@ public class rk {
 
 	@ObfuscatedName("cf")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int cf(int var0, ba var1, boolean var2) {
 		if (var0 == 7463) {

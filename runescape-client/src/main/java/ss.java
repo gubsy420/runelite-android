@@ -19,22 +19,22 @@ public class ss implements xm {
 		descriptor = "I"
 	)
 	public static int ay_fld;
-	@ObfuscatedGetter(
-		intValue = 1516560481
-	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int av_fld;
-	@ObfuscatedGetter(
-		intValue = 1470555267
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1516560481
+	)
 	int ae_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1470555267
+	)
+	int av_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lss;"
@@ -56,17 +56,35 @@ public class ss implements xm {
 	)
 	public static int ap_fld;
 
-	ss(int var1, int var2) {
-		this.av_fld = var1;
-		this.ae_fld = var2;
+	@ObfuscatedName("pm")
+	@ObfuscatedSignature(
+		descriptor = "(Lzv;Ljava/lang/String;IIIII[I)V"
+	)
+	public static void pm(zv var0, String var1, int var2, int var3, int var4, int var5, int var6, int[] var7) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1 != null) {
+			zv.on(var0, var4, var5);
+			int[] var8 = null;
+			if (var7 != null) {
+				var8 = var0.hy(var7, var1.length());
+			}
+
+			int[] var9 = new int[var1.length()];
+
+			for (int var10 = 0; var10 < var1.length(); var10++) {
+				var9[var10] = (int)(Math.sin(var10 / 2.0 + var6 / 5.0) * 5.0);
+			}
+
+			var0.bx(var1, var2 - var0.an(var1) / 2, var3, var8, null, var9);
+		}
 	}
 
-	@ObfuscatedName("ut")
-	@ObfuscatedSignature(
-		descriptor = "(Lma;)Lmx;"
-	)
-	public static mx ut(ma var0) {
-		return var0.ar_fld;
+	ss(int var1, int var2) {
+		this.ae_fld = var1;
+		this.av_fld = var2;
 	}
 
 	@ObfuscatedName("aw")
@@ -83,7 +101,7 @@ public class ss implements xm {
 	)
 	@Override
 	public int av() {
-		return this.ae_fld;
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -92,15 +110,7 @@ public class ss implements xm {
 	)
 	@Override
 	public int ae() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("dc")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;)Ljava/lang/String;"
-	)
-	public static String dc(yz var0) {
-		return var0.af_fld;
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -109,7 +119,7 @@ public class ss implements xm {
 	)
 	@Override
 	public int ah() {
-		return this.ae_fld;
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -126,6 +136,6 @@ public class ss implements xm {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.ae_fld;
+		return this.av_fld;
 	}
 }

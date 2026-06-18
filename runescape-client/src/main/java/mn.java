@@ -1,5 +1,5 @@
-import java.util.Iterator;
 import java.util.concurrent.ThreadFactory;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -32,48 +32,25 @@ class mn implements ThreadFactory {
 	)
 	public static short[][] av_fld;
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public Thread az(Runnable var1) {
-		return new Thread(var1, "OSRS WAV Load");
-	}
-
-	@ObfuscatedName("qo")
-	@ObfuscatedSignature(
-		descriptor = "(Lmn;Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public static Thread qo(mn var0, Runnable var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return new Thread(var1, "OSRS WAV Load");
-		}
-	}
-
 	@ObfuscatedName("newThread")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
+	@Export("newThread")
 	@Override
 	public Thread newThread(Runnable var1) {
 		return new Thread(var1, "OSRS WAV Load");
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("lz")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
+		descriptor = "(Lmn;Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
-	public Thread ag(Runnable var1) {
-		return new Thread(var1, "OSRS WAV Load");
-	}
+	public static Thread lz(mn var0, Runnable var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public Thread ak(Runnable var1) {
 		return new Thread(var1, "OSRS WAV Load");
 	}
 
@@ -85,63 +62,29 @@ class mn implements ThreadFactory {
 		return new Thread(var1, "OSRS WAV Load");
 	}
 
-	@ObfuscatedName("tu")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lli;)Z"
+		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
-	public static boolean tu(li var0) {
-		return var0.ad_fld;
-	}
-
-	@ObfuscatedName("uw")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;III)[I"
-	)
-	public static int[] uw(gf var0, int var1, int var2, int var3) {
-		Iterator var4 = var0.ar_fld.iterator();
-
-		while (var4.hasNext()) {
-			hj var5 = (hj)(hj)var4.next();
-			if (var5.ag(var1, var2, var3, -1501648118)) {
-				return var5.av(var1, var2, var3, -145367476);
-			}
-		}
-
-		return null;
+	public Thread ae(Runnable var1) {
+		return new Thread(var1, "OSRS WAV Load");
 	}
 
 	mn(ml var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("qz")
-	@ObfuscatedSignature(
-		descriptor = "(Lfo;IIII)V"
-	)
-	public static void qz(fo var0, int var1, int var2, int var3, int var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ao_fld = var1 - var2;
-		var0.br_fld = var3 - var4;
-		var0.ab_fld = -var0.ao_fld;
-		var0.al_fld = var0.ac_fld - var0.ao_fld;
-		var0.be_fld = -var0.br_fld;
-		var0.am_fld = var0.at_fld - var0.br_fld;
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	public static void av() {
-		og.dl_fld.vh();
+		og.dl_fld.av();
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I[[[IIII[I[I[I)V"
+		descriptor = "(I[[[IIII[I[I[IB)V"
 	)
 	public static void ak(int var0, int[][][] var1, int var2, int var3, int var4, int[] var5, int[] var6, int[] var7) {
 		int[] var9 = fa.ar_fld[var0];
@@ -155,9 +98,33 @@ class mn implements ThreadFactory {
 		}
 	}
 
+	@ObfuscatedName("lr")
+	@ObfuscatedSignature(
+		descriptor = "(Lmn;Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public static Thread lr(mn var0, Runnable var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return new Thread(var1, "OSRS WAV Load");
+	}
+
+	@ObfuscatedName("pc")
+	@ObfuscatedSignature(
+		descriptor = "(Lmn;Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public static Thread pc(mn var0, Runnable var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return new Thread(var1, "OSRS WAV Load");
+	}
+
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	static int bw(int var0) {
 		return (int)Math.pow(2.0, 7.0F + var0 / 256.0F);

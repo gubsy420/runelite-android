@@ -19,51 +19,22 @@ public class ym implements xm {
 		descriptor = "Lym;"
 	)
 	static ym az_fld = new ym(2, 2);
-	@ObfuscatedGetter(
-		intValue = 2086400689
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = -79906945
+		intValue = 2086400689
 	)
+	int ae_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -79906945
+	)
 	public int av_fld;
-
-	@ObfuscatedName("wv")
-	@ObfuscatedSignature(
-		descriptor = "(Lsi;I)[F"
-	)
-	public static float[] wv(si var0, int var1) {
-		return var0.af_fld[var1];
-	}
-
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;Z)V"
-	)
-	public static void bw(cn var0, boolean var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ad_fld = var1;
-		og.ag();
-	}
-
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(Lqg;)Lyz;"
-	)
-	public static yz ka(qg var0) {
-		return (yz)(yz)var0.az_fld.ae();
-	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -98,6 +69,18 @@ public class ym implements xm {
 	@Override
 	public int ae() {
 		return this.ae_fld;
+	}
+
+	@ObfuscatedName("jl")
+	@ObfuscatedSignature(
+		descriptor = "(Ley;J)V"
+	)
+	public static void jl(ey var0, long var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.az_fld = var1;
 	}
 
 	@ObfuscatedName("ah")

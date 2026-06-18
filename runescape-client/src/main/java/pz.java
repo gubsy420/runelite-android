@@ -19,14 +19,6 @@ public class pz extends RuntimeException {
 	)
 	static int al_fld;
 
-	@ObfuscatedName("jc")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V"
-	)
-	public static void jc(pi var0, int var1) {
-		var0.av_fld[(var0.ae_fld += -866564185) * -1031606249 - 1 & 31] = var1;
-	}
-
 	public pz(String var1, Object[] var2) {
 		super(String.format(var1, (Object[])var2));
 	}

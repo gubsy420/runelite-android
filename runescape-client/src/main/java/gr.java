@@ -4,36 +4,36 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("gr")
 public abstract class gr {
-	@ObfuscatedGetter(
-		intValue = 1559074455
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1677341167
+		intValue = 1559074455
 	)
+	public int av_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 193297079
+		intValue = 1677341167
 	)
+	public int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int az_fld;
 	@ObfuscatedGetter(
-		intValue = 913053231
+		intValue = 193297079
 	)
+	public int az_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 913053231
 	)
 	public int ak_fld;
 	@ObfuscatedName("ah")
@@ -44,7 +44,7 @@ public abstract class gr {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lah;"
+		descriptor = "(I)[Lah;"
 	)
 	public static ah[] ak() {
 		return new ah[]{ah.ak_fld};
@@ -52,12 +52,39 @@ public abstract class gr {
 
 	@ObfuscatedName("by")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(IB)V"
 	)
 	static void by(int var0) {
-		jm var2 = gi.ak(jb.df_fld, client.aq_fld.av_fld);
-		var2.ay_fld.dy(var0);
-		client.aq_fld.az(var2);
+		jm var2 = gi.ak(jb.df_fld, client.appletStub.av_fld);
+		var2.ay_fld.bq(var0);
+		client.appletStub.az(var2);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgn;)Z"
+	)
+	protected abstract boolean az(int var1, int var2, int var3, gn var4);
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgn;)Z"
+	)
+	protected abstract boolean ae(int var1, int var2, int var3, gn var4);
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgn;I)Z"
+	)
+	protected abstract boolean ak(int var1, int var2, int var3, gn var4, int var5);
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgn;)Z"
+	)
+	protected abstract boolean av(int var1, int var2, int var3, gn var4);
+
+	protected gr() {
 	}
 
 	@ObfuscatedName("ag")
@@ -66,36 +93,9 @@ public abstract class gr {
 	)
 	protected abstract boolean ag(int var1, int var2, int var3, gn var4);
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(IIILgn;)Z"
-	)
-	protected abstract boolean az(int var1, int var2, int var3, gn var4);
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IIILgn;I)Z"
-	)
-	protected abstract boolean ak(int var1, int var2, int var3, gn var4, int var5);
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(IIILgn;)Z"
-	)
-	protected abstract boolean ae(int var1, int var2, int var3, gn var4);
-
-	protected gr() {
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(IIILgn;)Z"
-	)
-	protected abstract boolean av(int var1, int var2, int var3, gn var4);
-
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)I"
+		descriptor = "(Ljava/lang/String;I)I"
 	)
 	public static int bn(String var0) {
 		return var0.length() + 2;

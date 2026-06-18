@@ -25,6 +25,20 @@ public class kv {
 		throw new Error();
 	}
 
+	@ObfuscatedName("lt")
+	@ObfuscatedSignature(
+		descriptor = "(Ltf;)V"
+	)
+	public static void lt(tf var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (tf.qs_fld == var0 && !tf.qo_fld) {
+			tf.qu_fld = lz.ak() + 4000L;
+		}
+	}
+
 	static {
 		int var0 = 0;
 
@@ -36,24 +50,48 @@ public class kv {
 		}
 	}
 
+	@ObfuscatedName("hu")
+	@ObfuscatedSignature(
+		descriptor = "(Lsl;)[Ljava/lang/Object;"
+	)
+	public static Object[] hu(sl var0) {
+		return (Object[])var0.as_fld;
+	}
+
+	@ObfuscatedName("hb")
+	@ObfuscatedSignature(
+		descriptor = "(Lwq;)Z"
+	)
+	public static boolean hb(wq var0) {
+		return var0.ak_fld;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Luy;"
+		descriptor = "(B)Luy;"
 	)
 	public static uy ak() {
 		synchronized (uy.ag_fld) {
 			if (0 == uy.av_fld) {
 				return new uy();
 			} else {
-				uy.ag_fld[(uy.av_fld -= 1453506371) * 848250219].aw();
+				uy.ag_fld[(uy.av_fld -= 1453506371) * 848250219].ay();
 				return uy.ag_fld[uy.av_fld];
 			}
 		}
 	}
 
+	@ObfuscatedName("qt")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;II)I"
+	)
+	public static int qt(pp var0, int var1, int var2) {
+		return my.ag(var0.ep_fld, var1, var2);
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static final int aq(int var0, int var1) {
 		int var3 = cf.am(var0 - 1, var1 - 1) + cf.am(var0 + 1, var1 - 1) + cf.am(var0 - 1, 1 + var1) + cf.am(var0 + 1, var1 + 1);

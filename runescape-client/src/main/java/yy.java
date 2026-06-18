@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -9,22 +10,37 @@ public class yy {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedGetter(
-		intValue = 809952885
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int az_fld = (int)(Math.pow(2.0, 4.0) - 1.0);
 	@ObfuscatedGetter(
-		intValue = 1589713857
+		intValue = 809952885
 	)
+	static int az_fld = (int)(Math.pow(2.0, 4.0) - 1.0);
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1589713857
+	)
 	static int av_fld = (int)(Math.pow(2.0, 8.0) - 1.0);
+
+	@ObfuscatedName("hr")
+	@ObfuscatedSignature(
+		descriptor = "(Lrc;)V"
+	)
+	public static void hr(rc var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ar_fld = 0;
+		Arrays.fill(var0.af_fld, null);
+		var0.al_fld.clear();
+		var0.au_fld.clear();
+	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
@@ -76,6 +92,18 @@ public class yy {
 	)
 	public static int ar(int var0) {
 		return (var0 & az_fld) - 1;
+	}
+
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)I"
+	)
+	public static int bi(yz var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.au_fld;
 	}
 
 	@ObfuscatedName("af")
@@ -149,14 +177,6 @@ public class yy {
 		}
 
 		return (Object[])var3;
-	}
-
-	@ObfuscatedName("pz")
-	@ObfuscatedSignature(
-		descriptor = "(Lsi;)Luy;"
-	)
-	public static uy pz(si var0) {
-		return var0.ay_fld;
 	}
 
 	@ObfuscatedName("as")

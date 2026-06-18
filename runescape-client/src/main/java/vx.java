@@ -14,12 +14,12 @@ public abstract class vx {
 		descriptor = "D"
 	)
 	double af_fld;
-	@ObfuscatedGetter(
-		intValue = 1076816293
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1076816293
 	)
 	int ar_fld;
 	@ObfuscatedName("ay")
@@ -27,20 +27,20 @@ public abstract class vx {
 		descriptor = "I"
 	)
 	static int ay_fld;
-	@ObfuscatedGetter(
-		intValue = 1076816293
-	)
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int al_fld;
 	@ObfuscatedGetter(
-		intValue = -751100539
+		intValue = 17728559
 	)
+	int al_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -751100539
 	)
 	int as_fld = 0;
 
@@ -52,23 +52,12 @@ public abstract class vx {
 		return this.af_fld;
 	}
 
-	@ObfuscatedName("wk")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lvx;B)V"
+		descriptor = "()D"
 	)
-	public static void wk(vx var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var0.ar_fld < var0.as_fld) {
-				var0.ar_fld++;
-				int var2 = var0.ar_fld;
-				int var3 = var0.as_fld;
-				int var5 = var0.al_fld * 17728559;
-				zm var4 = zm.br_fld[var5];
-				var0.af_fld = nl.az(var2, var3, var4);
-			}
-		}
+	double aa() {
+		return this.af_fld;
 	}
 
 	@ObfuscatedName("ax")
@@ -94,18 +83,23 @@ public abstract class vx {
 		return this.af_fld;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("is")
 	@ObfuscatedSignature(
-		descriptor = "(Ltu;FFF)V"
+		descriptor = "(Lvx;B)V"
 	)
-	public static void az(tu var0, float var1, float var2, float var3) {
+	public static void is(vx var0, byte var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.ay_fld = var1;
-		var0.as_fld = var2;
-		var0.ar_fld = var3;
+		if (var0.ar_fld < var0.as_fld) {
+			var0.ar_fld++;
+			int var2 = var0.ar_fld;
+			int var3 = var0.as_fld;
+			int var5 = var0.al_fld;
+			zm var4 = zm.br_fld[var5];
+			var0.af_fld = nl.az(var2, var3, var4);
+		}
 	}
 
 	vx(int var1, int var2) {
@@ -117,7 +111,7 @@ public abstract class vx {
 		this.al_fld = -1929297201 * (var2 >= 0 && var2 <= 27 ? var2 : 0);
 		int var4 = this.ar_fld;
 		int var5 = this.as_fld;
-		int var7 = 17728559 * this.al_fld;
+		int var7 = this.al_fld;
 		zm var6 = zm.br_fld[var7];
 		this.af_fld = nl.az(var4, var5, var6);
 	}
@@ -135,13 +129,32 @@ public abstract class vx {
 		descriptor = "(B)V"
 	)
 	public void al(byte var1) {
-		if (this.al_fld < this.as_fld) {
-			this.as_fld = this.ar_fld + 165533229;
-			int var2 = this.al_fld;
-			int var3 = this.as_fld;
-			int var5 = this.ar_fld * 17728559;
+		if (this.al_fld < this.ar_fld) {
+			this.ar_fld = this.al_fld + 165533229;
+			int var2 = this.ar_fld;
+			int var3 = -751100539 * this.ar_fld;
+			int var5 = this.as_fld * 17728559;
 			zm var4 = zm.br_fld[var5];
 			this.af_fld = nl.az(var2, var3, var4);
+		}
+	}
+
+	@ObfuscatedName("tf")
+	@ObfuscatedSignature(
+		descriptor = "(Lvx;)V"
+	)
+	public static void tf(vx var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var0.ar_fld < var0.as_fld) {
+				var0.ar_fld++;
+				int var1 = var0.ar_fld;
+				int var2 = var0.as_fld;
+				int var4 = var0.al_fld;
+				zm var3 = zm.br_fld[var4];
+				var0.af_fld = nl.az(var1, var2, var3);
+			}
 		}
 	}
 
@@ -150,11 +163,11 @@ public abstract class vx {
 		descriptor = "()V"
 	)
 	public void an() {
-		if (this.al_fld < this.ar_fld) {
-			this.al_fld = this.as_fld + 165533229;
-			int var1 = this.al_fld;
-			int var2 = -751100539 * this.ar_fld;
-			int var4 = this.as_fld * 17728559;
+		if (this.al_fld < this.al_fld) {
+			this.ar_fld = this.as_fld + 165533229;
+			int var1 = 1076816293 * this.al_fld;
+			int var2 = this.as_fld;
+			int var4 = this.ar_fld * 17728559;
 			zm var3 = zm.br_fld[var4];
 			this.af_fld = nl.az(var1, var2, var3);
 		}

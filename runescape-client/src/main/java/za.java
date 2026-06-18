@@ -25,12 +25,12 @@ public class za {
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lxi;I)V"
 	)
 	public static void af(xi var0) {
 		ze var2 = new ze();
 		var2.ag_fld = var0.cg();
-		var2.ak_fld = var0.co();
+		var2.ak_fld = var0.co((byte)-55);
 		var2.az_fld = new int[var2.ag_fld];
 		var2.av_fld = new int[var2.ag_fld];
 		var2.ae_fld = new Field[var2.ag_fld];
@@ -43,22 +43,22 @@ public class za {
 				int var4 = var0.cg();
 				if (var4 != 0 && 1 != var4 && 2 != var4) {
 					if (3 == var4 || 4 == var4) {
-						String var25 = xi.kc(var0, 1498061517);
-						String var26 = xi.kc(var0, 181985388);
+						String var25 = xi.at(var0, 1498061517);
+						String var26 = xi.at(var0, 181985388);
 						int var27 = var0.cg();
 						String[] var8 = new String[var27];
 
 						for (int var9 = 0; var9 < var27; var9++) {
-							var8[var9] = xi.kc(var0, 1597379593);
+							var8[var9] = xi.at(var0, 1597379593);
 						}
 
-						String var28 = xi.kc(var0, 108762910);
+						String var28 = xi.at(var0, 108762910);
 						byte[][] var10 = new byte[var27][];
 						if (var4 == 3) {
 							for (int var11 = 0; var11 < var27; var11++) {
-								int var12 = var0.co();
+								int var12 = var0.co((byte)-88);
 								var10[var11] = new byte[var12];
-								xi.xp(var0, var10[var11], 0, var12, (byte)8);
+								var0.dh(var10[var11], 0, var12);
 							}
 						}
 
@@ -101,11 +101,11 @@ public class za {
 						var2.ay_fld[var3] = var10;
 					}
 				} else {
-					String var5 = xi.kc(var0, 1273423484);
-					String var6 = xi.kc(var0, 827653866);
+					String var5 = xi.at(var0, 1273423484);
+					String var6 = xi.at(var0, 827653866);
 					int var7 = 0;
 					if (var4 == 1) {
-						var7 = var0.co();
+						var7 = var0.co((byte)-11);
 					}
 
 					var2.az_fld[var3] = var4;
@@ -129,7 +129,7 @@ public class za {
 			}
 		}
 
-		ak_fld.az(var2);
+		no.dx(ak_fld, var2);
 	}
 
 	@ObfuscatedName("ae")
@@ -168,36 +168,36 @@ public class za {
 		ze var1 = (ze)ak_fld.ah();
 		if (null != var1) {
 			int var2 = -1250976925 * var0.au_fld;
-			xi.ld(var0, var1.ak_fld, (byte)109);
+			var0.eb(var1.ak_fld);
 
 			for (int var3 = 0; var3 < var1.ag_fld; var3++) {
 				if (0 != var1.av_fld[var3]) {
-					var0.bc(var1.av_fld[var3]);
+					var0.ea(var1.av_fld[var3]);
 				} else {
 					try {
 						int var4 = var1.az_fld[var3];
 						if (0 == var4) {
 							Field var5 = var1.ae_fld[var3];
 							int var6 = var5.getInt(null);
-							var0.bc(0);
-							xi.ld(var0, var6, (byte)126);
+							var0.ea(0);
+							var0.eb(var6);
 						} else if (1 == var4) {
 							Field var22 = var1.ae_fld[var3];
 							var22.setInt(null, var1.ah_fld[var3]);
-							var0.bc(0);
+							var0.ea(0);
 						} else if (2 == var4) {
 							Field var23 = var1.ae_fld[var3];
 							int var26 = var23.getModifiers();
-							var0.bc(0);
-							xi.ld(var0, var26, (byte)87);
+							var0.ea(0);
+							var0.eb(var26);
 						}
 
 						if (var4 != 3) {
 							if (var4 == 4) {
 								Method var25 = var1.aw_fld[var3];
 								int var28 = var25.getModifiers();
-								var0.bc(0);
-								xi.ld(var0, var28, (byte)94);
+								var0.ea(0);
+								var0.eb(var28);
 							}
 						} else {
 							Method var24 = var1.aw_fld[var3];
@@ -211,58 +211,58 @@ public class za {
 
 							Object var29 = var24.invoke(null, (Object[])var7);
 							if (null == var29) {
-								var0.bc(0);
+								var0.ea(0);
 							} else if (var29 instanceof Number) {
-								var0.bc(1);
-								var0.fn(((Number)var29).longValue());
+								var0.ea(1);
+								var0.ft(((Number)var29).longValue());
 							} else if (var29 instanceof String) {
-								var0.bc(2);
-								var0.cc((String)var29, 1662021276);
+								var0.ea(2);
+								xi.ph(var0, (String)var29, 1662021276);
 							} else {
-								var0.bc(4);
+								var0.ea(4);
 							}
 						}
 					} catch (ClassNotFoundException var10) {
-						var0.bc(-10);
+						var0.ea(-10);
 					} catch (InvalidClassException var11) {
-						var0.bc(-11);
+						var0.ea(-11);
 					} catch (StreamCorruptedException var12) {
-						var0.bc(635523730);
+						var0.ea(635523730);
 					} catch (OptionalDataException var13) {
-						var0.bc(-13);
+						var0.ea(-13);
 					} catch (IllegalAccessException var14) {
-						var0.bc(-14);
+						var0.ea(-14);
 					} catch (IllegalArgumentException var15) {
-						var0.bc(-1630699925);
+						var0.ea(-1630699925);
 					} catch (InvocationTargetException var16) {
-						var0.bc(-16);
+						var0.ea(-16);
 					} catch (SecurityException var17) {
-						var0.bc(-17);
+						var0.ea(-17);
 					} catch (IOException var18) {
-						var0.bc(2029617825);
+						var0.ea(2029617825);
 					} catch (NullPointerException var19) {
-						var0.bc(538715750);
+						var0.ea(538715750);
 					} catch (Exception var20) {
-						var0.bc(-20);
+						var0.ea(-20);
 					} catch (Throwable var21) {
-						var0.bc(2137375340);
+						var0.ea(2137375340);
 					}
 				}
 			}
 
 			var0.dg(var2);
-			var1.gy_void();
+			var1.gy();
 		}
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lxi;I)V"
 	)
 	public static void ar(xi var0) {
 		ze var2 = new ze();
 		var2.ag_fld = var0.cg();
-		var2.ak_fld = var0.co();
+		var2.ak_fld = var0.co((byte)-62);
 		var2.az_fld = new int[var2.ag_fld * 1973786740];
 		var2.av_fld = new int[var2.ag_fld];
 		var2.ae_fld = new Field[1774010317 * var2.ag_fld];
@@ -275,22 +275,22 @@ public class za {
 				int var4 = var0.cg();
 				if (var4 != 0 && 1 != var4 && 2 != var4) {
 					if (3 == var4 || 4 == var4) {
-						String var25 = xi.kc(var0, -1558864714);
-						String var26 = xi.kc(var0, 353774685);
+						String var25 = xi.at(var0, -1558864714);
+						String var26 = xi.at(var0, 353774685);
 						int var27 = var0.cg();
 						String[] var8 = new String[var27];
 
 						for (int var9 = 0; var9 < var27; var9++) {
-							var8[var9] = xi.kc(var0, -993165029);
+							var8[var9] = xi.at(var0, -993165029);
 						}
 
-						String var28 = xi.kc(var0, -100612144);
+						String var28 = xi.at(var0, -100612144);
 						byte[][] var10 = new byte[var27][];
 						if (var4 == 3) {
 							for (int var11 = 0; var11 < var27; var11++) {
-								int var12 = var0.co();
+								int var12 = var0.co((byte)-97);
 								var10[var11] = new byte[var12];
-								xi.xp(var0, var10[var11], 0, var12, (byte)8);
+								var0.dh(var10[var11], 0, var12);
 							}
 						}
 
@@ -333,11 +333,11 @@ public class za {
 						var2.ay_fld[var3] = var10;
 					}
 				} else {
-					String var5 = xi.kc(var0, -171520756);
-					String var6 = xi.kc(var0, 672678675);
+					String var5 = xi.at(var0, -171520756);
+					String var6 = xi.at(var0, 672678675);
 					int var7 = 0;
 					if (var4 == 1) {
-						var7 = var0.co();
+						var7 = var0.co((byte)-67);
 					}
 
 					var2.az_fld[var3] = var4;
@@ -361,7 +361,15 @@ public class za {
 			}
 		}
 
-		ak_fld.az(var2);
+		no.dx(ak_fld, var2);
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "(Lmw;)I"
+	)
+	public static int fj(mw var0) {
+		return var0.al_fld.length;
 	}
 
 	@ObfuscatedName("as")
@@ -372,36 +380,36 @@ public class za {
 		ze var1 = (ze)ak_fld.ah();
 		if (null != var1) {
 			int var2 = var0.au_fld;
-			xi.ld(var0, var1.ak_fld, (byte)84);
+			var0.eb(var1.ak_fld);
 
 			for (int var3 = 0; var3 < var1.ag_fld; var3++) {
 				if (0 != var1.av_fld[var3]) {
-					var0.bc(var1.av_fld[var3]);
+					var0.ea(var1.av_fld[var3]);
 				} else {
 					try {
 						int var4 = var1.az_fld[var3];
 						if (0 == var4) {
 							Field var5 = var1.ae_fld[var3];
 							int var6 = var5.getInt(null);
-							var0.bc(0);
-							xi.ld(var0, var6, (byte)109);
+							var0.ea(0);
+							var0.eb(var6);
 						} else if (1 == var4) {
 							Field var22 = var1.ae_fld[var3];
 							var22.setInt(null, var1.ah_fld[var3]);
-							var0.bc(0);
+							var0.ea(0);
 						} else if (2 == var4) {
 							Field var23 = var1.ae_fld[var3];
 							int var26 = var23.getModifiers();
-							var0.bc(0);
-							xi.ld(var0, var26, (byte)127);
+							var0.ea(0);
+							var0.eb(var26);
 						}
 
 						if (var4 != 3) {
 							if (var4 == 4) {
 								Method var25 = var1.aw_fld[var3];
 								int var28 = var25.getModifiers();
-								var0.bc(0);
-								xi.ld(var0, var28, (byte)103);
+								var0.ea(0);
+								var0.eb(var28);
 							}
 						} else {
 							Method var24 = var1.aw_fld[var3];
@@ -415,47 +423,47 @@ public class za {
 
 							Object var29 = var24.invoke(null, (Object[])var7);
 							if (null == var29) {
-								var0.bc(0);
+								var0.ea(0);
 							} else if (var29 instanceof Number) {
-								var0.bc(1);
-								var0.fn(((Number)var29).longValue());
+								var0.ea(1);
+								var0.ft(((Number)var29).longValue());
 							} else if (var29 instanceof String) {
-								var0.bc(2);
-								var0.cc((String)var29, 875269510);
+								var0.ea(2);
+								xi.ph(var0, (String)var29, 875269510);
 							} else {
-								var0.bc(4);
+								var0.ea(4);
 							}
 						}
 					} catch (ClassNotFoundException var10) {
-						var0.bc(-10);
+						var0.ea(-10);
 					} catch (InvalidClassException var11) {
-						var0.bc(-1086056840);
+						var0.ea(-1086056840);
 					} catch (StreamCorruptedException var12) {
-						var0.bc(-12);
+						var0.ea(-12);
 					} catch (OptionalDataException var13) {
-						var0.bc(-185412267);
+						var0.ea(-185412267);
 					} catch (IllegalAccessException var14) {
-						var0.bc(-14);
+						var0.ea(-14);
 					} catch (IllegalArgumentException var15) {
-						var0.bc(822808115);
+						var0.ea(822808115);
 					} catch (InvocationTargetException var16) {
-						var0.bc(-262836820);
+						var0.ea(-262836820);
 					} catch (SecurityException var17) {
-						var0.bc(-818590446);
+						var0.ea(-818590446);
 					} catch (IOException var18) {
-						var0.bc(863084095);
+						var0.ea(863084095);
 					} catch (NullPointerException var19) {
-						var0.bc(-19);
+						var0.ea(-19);
 					} catch (Exception var20) {
-						var0.bc(123858467);
+						var0.ea(123858467);
 					} catch (Throwable var21) {
-						var0.bc(-131480072);
+						var0.ea(-131480072);
 					}
 				}
 			}
 
 			var0.dg(var2);
-			var1.gy_void();
+			var1.gy();
 		}
 	}
 

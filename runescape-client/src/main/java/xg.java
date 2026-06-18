@@ -21,12 +21,12 @@ public class xg implements xm {
 		descriptor = "Lxg;"
 	)
 	static xg az_fld = new xg("", 2, new xo[]{xo.az_fld, xo.ag_fld, xo.av_fld});
-	@ObfuscatedGetter(
-		intValue = -1064857867
-	)
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1064857867
 	)
 	int ax_fld;
 	@ObfuscatedName("ae")
@@ -64,12 +64,12 @@ public class xg implements xm {
 		descriptor = "Lxg;"
 	)
 	static xg af_fld = new xg("", 11, new xo[]{xo.az_fld});
-	@ObfuscatedGetter(
-		intValue = 1043139737
-	)
 	@ObfuscatedName("mo")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1043139737
 	)
 	static int mo_fld;
 	@ObfuscatedName("ah")
@@ -103,14 +103,6 @@ public class xg implements xm {
 	)
 	public static int cl_fld;
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)Ljava/lang/String;"
-	)
-	public static String ac(aax var0) {
-		return var0.ag_fld;
-	}
-
 	xg(String var1, int var2) {
 		this.ax_fld = var2;
 	}
@@ -142,6 +134,18 @@ public class xg implements xm {
 		return this.ax_fld;
 	}
 
+	@ObfuscatedName("sb")
+	@ObfuscatedSignature(
+		descriptor = "(Lmw;I)V"
+	)
+	public static void sb(mw var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.al_fld[var1] = var0.aw_fld.au_fld * -661977895;
+	}
+
 	xg(String var1, int var2, xo[] var3) {
 		this.ax_fld = var2;
 		xo[] var4 = var3;
@@ -166,7 +170,7 @@ public class xg implements xm {
 		descriptor = "(I)V"
 	)
 	public static void az(int var0) {
-		ph.az_fld.vh();
+		ph.az_fld.av();
 	}
 
 	@ObfuscatedName("az")

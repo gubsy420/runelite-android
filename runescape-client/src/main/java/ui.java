@@ -19,12 +19,12 @@ public class ui {
 		descriptor = "Llu;"
 	)
 	lu ak_fld;
-	@ObfuscatedGetter(
-		intValue = 966695779
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 966695779
 	)
 	int az_fld = 0;
 	@ObfuscatedName("do")
@@ -33,17 +33,33 @@ public class ui {
 	)
 	static yv[] do_fld;
 
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)V"
+	)
+	public void ae(lu var1) {
+		this.ak_fld = var1;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)Z"
+		descriptor = "(Llu;I)Z"
 	)
 	public boolean ag(lu var1) {
 		return this.ak_fld == var1;
 	}
 
+	@ObfuscatedName("ya")
+	@ObfuscatedSignature(
+		descriptor = "(Lui;Llu;)Z"
+	)
+	public static boolean ya(ui var0, lu var1) {
+		return var1 == var0.ag_fld && 50 == var0.az_fld;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	public void ak() {
 		if (this.ag_fld != null) {
@@ -55,11 +71,23 @@ public class ui {
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("il")
+	@ObfuscatedSignature(
+		descriptor = "(Lui;Llu;B)Z"
+	)
+	public static boolean il(ui var0, lu var1, byte var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var1 == var0.ag_fld && 50 == var0.az_fld;
+		}
+	}
+
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void aw() {
+	public void ah() {
 		if (this.ag_fld != null) {
 			if (this.az_fld < 1814775742) {
 				this.az_fld++;
@@ -71,17 +99,17 @@ public class ui {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)V"
+		descriptor = "(Llu;I)V"
 	)
 	public void az(lu var1) {
 		this.ag_fld = var1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void ah() {
+	public void aw() {
 		if (this.ag_fld != null) {
 			if (this.az_fld < 50) {
 				this.az_fld++;
@@ -91,27 +119,7 @@ public class ui {
 		}
 	}
 
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(Lui;Llu;I)V"
-	)
-	public static void nu(ui var0, lu var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ak_fld = var1;
-	}
-
 	ui() {
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)Z"
-	)
-	public boolean as(lu var1) {
-		return this.ak_fld == var1;
 	}
 
 	@ObfuscatedName("au")
@@ -122,12 +130,28 @@ public class ui {
 		return this.ak_fld == var1;
 	}
 
-	@ObfuscatedName("cx")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lui;Llu;)Z"
+		descriptor = "(Llu;)Z"
 	)
-	public static boolean cx(ui var0, lu var1) {
-		return var1 == var0.ag_fld && 50 == var0.az_fld;
+	public boolean an(lu var1) {
+		return this.ak_fld == var1;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)Z"
+	)
+	public boolean as(lu var1) {
+		return this.ak_fld == var1;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)V"
+	)
+	public void ai(lu var1) {
+		this.ak_fld = var1;
 	}
 
 	@ObfuscatedName("af")
@@ -138,12 +162,12 @@ public class ui {
 		this.ak_fld = var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)V"
+		descriptor = "(Llu;)Z"
 	)
-	public void al(lu var1) {
-		this.ak_fld = var1;
+	public boolean ar(lu var1) {
+		return var1 == this.ag_fld && 50 == this.az_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -154,39 +178,11 @@ public class ui {
 		return var1 == this.ag_fld && 50 == this.az_fld;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;)V"
 	)
-	public void aa(lu var1) {
-		this.ag_fld = var1;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)V"
-	)
-	public void ai(lu var1) {
-		this.ag_fld = var1;
-	}
-
-	@ObfuscatedName("in")
-	@ObfuscatedSignature(
-		descriptor = "(Lui;Llu;B)Z"
-	)
-	public static boolean in(ui var0, lu var1, byte var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1 == var0.ag_fld && 50 == var0.az_fld;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)V"
-	)
-	public void ae(lu var1, int var2) {
+	public void al(lu var1) {
 		this.ag_fld = var1;
 	}
 

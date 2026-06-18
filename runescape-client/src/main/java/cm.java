@@ -11,12 +11,12 @@ public class cm implements jd {
 	)
 	public static int ak_fld;
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean aa() {
+	public boolean at() {
 		return client.gk_fld;
 	}
 
@@ -38,21 +38,21 @@ public class cm implements jd {
 		return client.ge_fld;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean am() {
+	public boolean ad() {
 		return gu.hh_fld;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean af() {
+	public boolean aa() {
 		return bx.ar_fld < 3;
 	}
 
@@ -65,29 +65,21 @@ public class cm implements jd {
 		return gu.hh_fld;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	@Override
-	public int ah(int var1) {
-		return tf.ql_int;
+	public int ag(int var1) {
+		return tf.ql_fld;
 	}
 
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;)I"
-	)
-	public static int us(rg var0) {
-		return var0.aa_fld.ah();
-	}
-
-	@ObfuscatedName("ac")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int ac() {
+	public int bz() {
 		return client.js_fld;
 	}
 
@@ -100,12 +92,12 @@ public class cm implements jd {
 		return client.ca_fld.ax_fld;
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int bz() {
+	public int br() {
 		return client.js_fld;
 	}
 
@@ -118,31 +110,31 @@ public class cm implements jd {
 		return client.js_fld;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean ax() {
+	public boolean af() {
 		return client.ng_fld;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int ao() {
+	public int al() {
 		wz var1 = client.nr_fld;
-		return var1.ag_fld;
+		return var1.ot_fld;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean aq() {
+	public boolean au() {
 		return bx.ar_fld < 3;
 	}
 
@@ -167,45 +159,8 @@ public class cm implements jd {
 		if (var2 == null) {
 			return 2;
 		} else {
-			return var2.av() ? 0 : 1;
+			return sp.sp(var2, -2079036724) ? 0 : 1;
 		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean at() {
-		return bx.ar_fld < 3;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	@Override
-	public int ag(int var1) {
-		wz var2 = client.nr_fld;
-		return var2.ag_fld;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean au() {
-		return client.ge_fld;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)I"
-	)
-	@Override
-	public int aj(lu var1, int var2) {
-		return ds.fz(var1, var2);
 	}
 
 	@ObfuscatedName("an")
@@ -214,34 +169,17 @@ public class cm implements jd {
 	)
 	@Override
 	public boolean an() {
-		return gu.hh_fld;
+		return bx.ar_fld < 3;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)I"
 	)
 	@Override
-	public boolean ad() {
-		return gu.hh_fld;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int ab() {
-		return tf.ql_int;
-	}
-
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int br() {
-		return tf.ql_int;
+	public int ah(int var1) {
+		wz var2 = client.nr_fld;
+		return var2.ot_fld;
 	}
 
 	@ObfuscatedName("ai")
@@ -250,18 +188,72 @@ public class cm implements jd {
 	)
 	@Override
 	public boolean ai() {
+		return client.ge_fld;
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)I"
+	)
+	@Override
+	public int bm(lu var1, int var2) {
+		return ds.fz(var1, var2);
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Override
+	public boolean am() {
+		return gu.hh_fld;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Override
+	public boolean aq() {
+		return gu.hh_fld;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int ao() {
+		return tf.ql_fld;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int ab() {
+		return tf.ql_fld;
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Override
+	public boolean ap() {
 		return client.gk_fld;
 	}
 
 	cm() {
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int al() {
+	public int ac() {
 		return client.ca_fld.ax_fld;
 	}
 
@@ -274,15 +266,6 @@ public class cm implements jd {
 		return ds.fz(var1, var2);
 	}
 
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)I"
-	)
-	@Override
-	public int bm(lu var1, int var2) {
-		return ds.fz(var1, var2);
-	}
-
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)I"
@@ -290,6 +273,23 @@ public class cm implements jd {
 	@Override
 	public int bd(lu var1, int var2) {
 		return ds.fz(var1, var2);
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)I"
+	)
+	@Override
+	public int aj(lu var1, int var2) {
+		return ds.fz(var1, var2);
+	}
+
+	@ObfuscatedName("fb")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	public static void fb(xi var0, int var1) {
+		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)(0 - var1);
 	}
 
 	@ObfuscatedName("az")
@@ -301,12 +301,12 @@ public class cm implements jd {
 		return bx.ar_fld < 3;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	public boolean ap() {
+	public boolean ax() {
 		return bx.ar_fld < 3;
 	}
 
@@ -343,13 +343,13 @@ public class cm implements jd {
 				dx var2 = (dx)(dx)var1.next();
 
 				for (int var3 = 0; var3 < client.db_fld.al_fld; var3++) {
-					cv var4 = (cv)bw.dk_fld.au_fld.ak(client.db_fld.az_fld[var3]);
+					cv var4 = (cv)bw.dk_fld.au_fld.ae(client.db_fld.ar_fld[var3]);
 					if (var4 != null) {
 						if (var0 <= 1976547526) {
 							return;
 						}
 
-						cv.ex(var4, 1390461246);
+						cv.fc(var4, 1390461246);
 					}
 				}
 			}
@@ -360,7 +360,7 @@ public class cm implements jd {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;)V"
+		descriptor = "(Lub;Lub;B)V"
 	)
 	public static void ak(ub var0, ub var1) {
 		pa.az_fld = var0;

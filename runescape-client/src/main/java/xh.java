@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import java.util.Locale;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -53,12 +54,12 @@ public class xh implements xm {
 		descriptor = "Lxh;"
 	)
 	static xh aw_fld = new xh("ES_MX", "es-mx", "Spanish (Latin American)", xg.ak_fld, 6, "MX");
-	@ObfuscatedGetter(
-		intValue = -1997957569
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1997957569
 	)
 	int ar_fld;
 	@ObfuscatedName("af")
@@ -81,17 +82,9 @@ public class xh implements xm {
 		return this.ar_fld;
 	}
 
-	@ObfuscatedName("hp")
-	@ObfuscatedSignature(
-		descriptor = "(Lku;)I"
-	)
-	public static int hp(ku var0) {
-		return var0.ad_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	String az() {
 		return this.af_fld;
@@ -121,6 +114,7 @@ public class xh implements xm {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		return this.az().toLowerCase(Locale.ENGLISH);
@@ -152,7 +146,7 @@ public class xh implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lxh;"
+		descriptor = "(II)Lxh;"
 	)
 	public static xh ak(int var0) {
 		return var0 >= 0 && var0 < as_fld.length ? as_fld[var0] : null;
@@ -164,6 +158,16 @@ public class xh implements xm {
 	)
 	public static xh aw(int var0) {
 		return var0 >= 0 && var0 < as_fld.length ? as_fld[var0] : null;
+	}
+
+	@ObfuscatedName("zg")
+	@ObfuscatedSignature(
+		descriptor = "(Lhd;)V"
+	)
+	public static void zg(hd var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("gi")
@@ -207,9 +211,17 @@ public class xh implements xm {
 		return this.af_fld;
 	}
 
+	@ObfuscatedName("qf")
+	@ObfuscatedSignature(
+		descriptor = "(Lcr;)Z"
+	)
+	public static boolean qf(cr var0) {
+		return var0.av_fld.ar();
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;I)V"
 	)
 	static final void ak(String var0) {
 		io.ag(30, "", var0);
@@ -222,22 +234,22 @@ public class xh implements xm {
 	static final void en(dx var0, int var1, int var2, int var3, int var4) throws EOFException {
 		na var5 = var0.aa_fld[var1][var2][var3];
 		if (var5 == null) {
-			var0.az_fld.bw(var1, var2, var3);
-			client.zo(var0, var1, var2, var3);
+			fh.hh(var0.az_fld, var1, var2, var3);
+			client.ij(var0, var1, var2, var3);
 		} else {
 			long var6 = -99999999L;
 			dw var8 = null;
 
-			for (dw var9 = (dw)var5.aw(); null != var9; var9 = (dw)var5.as()) {
-				og var10 = kb.ag(var9.ag_fld, -1752383175);
+			for (dw var9 = (dw)var5.aw(); null != var9; var9 = (dw)na.iy(var5)) {
+				og var10 = kb.ag(var9.ah_fld, -1752383175);
 				long var11 = -1489673433 * var10.es_fld;
 				if (1 == var10.dj_fld) {
-					var11 *= var9.az_fld < Integer.MAX_VALUE ? var9.az_fld + 1 : var9.az_fld;
+					var11 *= var9.ay_fld < Integer.MAX_VALUE ? var9.ay_fld + 1 : var9.ay_fld;
 				}
 
 				if (var11 > var6) {
 					if (var4 >= 2124540861) {
-						client.zo(var0, var1, var2, var3);
+						client.ij(var0, var1, var2, var3);
 						return;
 					}
 
@@ -248,20 +260,20 @@ public class xh implements xm {
 
 			if (null == var8) {
 				if (var4 >= 2124540861) {
-					client.zo(var0, var1, var2, var3);
+					client.ij(var0, var1, var2, var3);
 				} else {
-					var0.az_fld.bw(var1, var2, var3);
-					client.zo(var0, var1, var2, var3);
+					fh.hh(var0.az_fld, var1, var2, var3);
+					client.ij(var0, var1, var2, var3);
 				}
 			} else {
-				var5.ai(var8);
+				var5.av(var8);
 				dw var42 = null;
 				dw var43 = null;
 
-				for (dw var41 = (dw)var5.aw(); null != var41; var41 = (dw)var5.as()) {
-					if (var41.ag_fld != var8.ag_fld) {
+				for (dw var41 = (dw)var5.aw(); null != var41; var41 = (dw)na.iy(var5)) {
+					if (var41.ah_fld != var8.ah_fld) {
 						if (var4 >= 2124540861) {
-							client.zo(var0, var1, var2, var3);
+							client.ij(var0, var1, var2, var3);
 							return;
 						}
 
@@ -269,9 +281,9 @@ public class xh implements xm {
 							var42 = var41;
 						}
 
-						if (var41.ag_fld != var42.ag_fld && var43 == null) {
+						if (var41.ah_fld != var42.ah_fld && var43 == null) {
 							if (var4 >= 2124540861) {
-								client.zo(var0, var1, var2, var3);
+								client.ij(var0, var1, var2, var3);
 								return;
 							}
 
@@ -280,7 +292,7 @@ public class xh implements xm {
 					}
 				}
 
-				int var12 = ev.av(var0.az_fld, var1, var2, var3);
+				int var12 = var0.az_fld.bz(var1, var2, var3);
 				tu var13 = tu.av_fld;
 				if (var12 == 0) {
 					int var15 = var1;
@@ -295,7 +307,7 @@ public class xh implements xm {
 					tu var20 = sh.ak(128 + var16, var0.af_fld[var15][var2 + 1][var3 + 1], var17 + 128);
 					tu var21 = sh.ak(var16, var0.af_fld[var15][var2][1 + var3], 128 + var17);
 					tu var14;
-					if (var18.as_fld == var19.as_fld && var20.as_fld == var18.as_fld && var21.as_fld == var18.as_fld) {
+					if (var18.ay_fld == var19.ay_fld && var20.ay_fld == var18.ay_fld && var21.ay_fld == var18.ay_fld) {
 						var18.ah();
 						var19.ah();
 						var20.ah();
@@ -306,13 +318,13 @@ public class xh implements xm {
 						synchronized (tu.ae_fld) {
 							if (tu.aw_fld == 0) {
 								if (var4 >= 2124540861) {
-									client.zo(var0, var1, var2, var3);
+									client.ij(var0, var1, var2, var3);
 									return;
 								}
 
 								var23 = new tu(var19);
 							} else {
-								tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var19);
+								tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var19, -1645983469);
 								var23 = tu.ae_fld[tu.aw_fld];
 							}
 						}
@@ -323,7 +335,7 @@ public class xh implements xm {
 							if (0 == tu.aw_fld) {
 								var25 = new tu(var21);
 							} else {
-								tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var21);
+								tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var21, -1645983469);
 								var25 = tu.ae_fld[tu.aw_fld];
 							}
 						}
@@ -337,7 +349,7 @@ public class xh implements xm {
 							if (tu.aw_fld == 0) {
 								var28 = new tu(var19);
 							} else {
-								tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var19);
+								tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var19, -1645983469);
 								var28 = tu.ae_fld[tu.aw_fld];
 							}
 						}
@@ -348,7 +360,7 @@ public class xh implements xm {
 							if (tu.aw_fld == 0) {
 								var30 = new tu(var21);
 							} else {
-								tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var21);
+								tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var21, -1645983469);
 								var30 = tu.ae_fld[tu.aw_fld];
 							}
 						}
@@ -365,18 +377,18 @@ public class xh implements xm {
 						synchronized (tu.ae_fld) {
 							if (tu.aw_fld == 0) {
 								if (var4 >= 2124540861) {
-									client.zo(var0, var1, var2, var3);
+									client.ij(var0, var1, var2, var3);
 									return;
 								}
 
 								var33 = new tu(var45);
 							} else {
-								tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var45);
+								tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var45, -1645983469);
 								var33 = tu.ae_fld[tu.aw_fld];
 							}
 						}
 
-						tu.dk(var33, var46, (byte)-22);
+						var33.au(var46);
 						var45.ah();
 						var46.ah();
 						tu var47 = ex.ag(var33);
@@ -397,8 +409,8 @@ public class xh implements xm {
 				}
 
 				long var44 = dt.ay(var1, var2, var3, 3, false, 0, var0.ag_fld);
-				var0.az_fld.br(var1, var2, var3, jf.dv(var0, kj.as(var2), kj.as(var3), var1), var8, var44, var42, var43, var12);
-				client.zo(var0, var1, var2, var3);
+				ev.kn(var0.az_fld, var1, var2, var3, jf.dv(var0, kj.as(var2), kj.as(var3), var1), var8, var44, var42, var43, var12);
+				client.ij(var0, var1, var2, var3);
 			}
 		}
 	}

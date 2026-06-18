@@ -9,11 +9,11 @@ public interface jd {
 	)
 	boolean aw(int var1);
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int br();
+	int ab();
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -33,17 +33,17 @@ public interface jd {
 	)
 	boolean ae(int var1);
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	int ag(int var1);
+	int ah(int var1);
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean aa();
+	boolean at();
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
@@ -57,71 +57,11 @@ public interface jd {
 	)
 	int as(lu var1, int var2, int var3);
 
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean at();
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean ax();
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ab();
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean aq();
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean ap();
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(B)I"
-	)
-	int ar(byte var1);
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ac();
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int ah(int var1);
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean ad();
-
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	boolean an();
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean am();
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
@@ -129,23 +69,77 @@ public interface jd {
 	)
 	boolean af();
 
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ao();
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean au();
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean ax();
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(B)I"
+	)
+	int ar(byte var1);
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int bz();
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int ag(int var1);
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean aq();
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean am();
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean ad();
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean aa();
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean ak(int var1);
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean ai();
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ao();
+	boolean ap();
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -153,11 +147,11 @@ public interface jd {
 	)
 	int al();
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;I)I"
+		descriptor = "()I"
 	)
-	int aj(lu var1, int var2);
+	int ac();
 
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
@@ -171,15 +165,21 @@ public interface jd {
 	)
 	int bd(lu var1, int var2);
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)I"
+	)
+	int aj(lu var1, int var2);
+
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean au();
+	boolean ai();
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int bz();
+	int br();
 }

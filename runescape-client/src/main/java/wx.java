@@ -9,12 +9,12 @@ public class wx extends ws {
 		descriptor = "Lme;"
 	)
 	me ak_fld = null;
-	@ObfuscatedGetter(
-		intValue = -1579080913
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1579080913
 	)
 	int ag_fld = 0;
 	@ObfuscatedName("am")
@@ -23,26 +23,6 @@ public class wx extends ws {
 	)
 	public static int am_fld;
 
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "(Lev;III)Lfj;"
-	)
-	public static fj lk(ev var0, int var1, int var2, int var3) {
-		ei var4 = var0.bl_fld[var1][var2][var3];
-		if (var4 == null) {
-			return null;
-		} else {
-			for (int var5 = 0; var5 < var4.ah_fld; var5++) {
-				fj var6 = var4.aw_fld[var5];
-				if (bw.ag(var6.az_fld) && var6.ay_fld == var2 && var6.ar_fld == var3) {
-					return var6;
-				}
-			}
-
-			return null;
-		}
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -50,10 +30,10 @@ public class wx extends ws {
 	@Override
 	public boolean ag() {
 		if (this.ak_fld != null && this.ak_fld.af_fld != null) {
-			this.ak_fld.ar_fld = true;
+			this.ak_fld.as_fld = true;
 
 			try {
-				if (this.ak_fld.ae_fld < 1153128559 * this.ak_fld.av_fld && this.ak_fld.af_fld.ax()) {
+				if (this.ak_fld.ae_fld < 1153128559 * this.ak_fld.av_fld && ml.dc(this.ak_fld.af_fld, -1698174259)) {
 					float var1 = this.ag_fld == 0 ? this.ag_fld : (float)(1153128559 * this.ak_fld.av_fld) / this.ag_fld;
 					this.ak_fld.ae_fld = this.ak_fld.ae_fld + (var1 == 0.0F ? 1153128559 * this.ak_fld.av_fld : var1);
 					if (this.ak_fld.ae_fld > 1153128559 * this.ak_fld.av_fld) {
@@ -64,15 +44,23 @@ public class wx extends ws {
 					return false;
 				}
 			} catch (Exception var2) {
-				this.al(var2.getMessage());
+				ws.dx(this, var2.getMessage(), (byte)-81);
 				return true;
 			}
 
-			this.ak_fld.ar_fld = false;
+			this.ak_fld.as_fld = false;
 			return true;
 		} else {
 			return true;
 		}
+	}
+
+	@ObfuscatedName("gm")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;)I"
+	)
+	public static int gm(cn var0) {
+		return var0.ai_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -82,10 +70,10 @@ public class wx extends ws {
 	@Override
 	public boolean ak(short var1) {
 		if (this.ak_fld != null && this.ak_fld.af_fld != null) {
-			this.ak_fld.ar_fld = true;
+			this.ak_fld.as_fld = true;
 
 			try {
-				if (this.ak_fld.ae_fld < 1153128559 * this.ak_fld.av_fld && this.ak_fld.af_fld.ax()) {
+				if (this.ak_fld.ae_fld < 1153128559 * this.ak_fld.av_fld && ml.dc(this.ak_fld.af_fld, -1723012100)) {
 					float var2 = this.ag_fld == 0 ? this.ag_fld : (float)(1153128559 * this.ak_fld.av_fld) / this.ag_fld;
 					this.ak_fld.ae_fld = this.ak_fld.ae_fld + (var2 == 0.0F ? 1153128559 * this.ak_fld.av_fld : var2);
 					if (this.ak_fld.ae_fld > 1153128559 * this.ak_fld.av_fld) {
@@ -96,11 +84,11 @@ public class wx extends ws {
 					return false;
 				}
 			} catch (Exception var3) {
-				this.al(var3.getMessage());
+				ws.dx(this, var3.getMessage(), (byte)-112);
 				return true;
 			}
 
-			this.ak_fld.ar_fld = false;
+			this.ak_fld.as_fld = false;
 			return true;
 		} else {
 			return true;

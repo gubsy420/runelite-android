@@ -31,19 +31,19 @@ public class qp {
 	)
 	public static int ae(qa var0, int var1, qy var2) throws EOFException {
 		byte var3 = 0;
-		if (!var0.av()) {
-			var0.au(0);
+		if (!qa.jv(var0, -547871024)) {
+			qa.uh(var0, 0, (short)256);
 			return var3;
 		} else {
-			ol var4 = var0.ae();
+			ol var4 = qa.kw(var0, 752228892);
 			if (-1 == var4.bl_fld) {
 				var3 |= 8;
 			}
 
 			if (var4.ao((byte)-32)) {
-				var0.au(0);
+				qa.uh(var0, 0, (short)256);
 			} else {
-				var0.au(var0.al() + var1);
+				qa.uh(var0, var0.al() + var1, (short)256);
 			}
 
 			int var5;
@@ -63,19 +63,19 @@ public class qp {
 	)
 	public static int av(qa var0, int var1, qy var2) throws EOFException {
 		byte var3 = 0;
-		if (!var0.av()) {
-			var0.au(0);
+		if (!qa.jv(var0, 884942233)) {
+			qa.uh(var0, 0, (short)256);
 			return var3;
 		} else {
-			ol var4 = var0.ae();
+			ol var4 = qa.kw(var0, 545739500);
 			if (-1 == var4.bl_fld) {
 				var3 |= 8;
 			}
 
 			if (var4.ao((byte)25)) {
-				var0.au(0);
+				qa.uh(var0, 0, (short)256);
 			} else {
-				var0.au(var0.al() + var1);
+				qa.uh(var0, var0.al() + var1, (short)256);
 			}
 
 			int var5;
@@ -95,12 +95,12 @@ public class qp {
 	)
 	static int aw(qa var0, int var1, qy var2) {
 		byte var3 = 0;
-		ol var4 = var0.ae();
+		ol var4 = qa.kw(var0, -1965677411);
 		if (var4.bl_fld > 0 && var1 > 0) {
 			var1 -= (var1 - 1) / var4.bl_fld * var4.bl_fld;
 		}
 
-		int var5 = qa.do_(var0, -1431102927);
+		int var5 = var0.aw(-1431102927);
 		int var6 = var0.as();
 
 		while (var1 > 0) {
@@ -131,7 +131,7 @@ public class qp {
 			}
 		}
 
-		var0.ai(var5, var6);
+		qa.tk(var0, var5, var6);
 		return var3;
 	}
 
@@ -141,13 +141,13 @@ public class qp {
 	)
 	static int ah(qa var0, int var1, qy var2) {
 		byte var3 = 0;
-		ol var4 = var0.ae();
+		ol var4 = qa.kw(var0, -1188339784);
 		if (var4.bl_fld > 0 && var4.by_fld > 0) {
 			var1 %= var4.by_fld;
 		}
 
-		int var5 = qa.do_(var0, 481257475);
-		int var6 = qa.jy(var0, -1840133392);
+		int var5 = var0.aw(481257475);
+		int var6 = var0.ay();
 		int var7 = var0.as();
 		if (var5 >= var4.bk_fld.length) {
 			var5 = 0;
@@ -197,12 +197,12 @@ public class qp {
 	)
 	static int ay(qa var0, int var1, qy var2) {
 		byte var3 = 0;
-		ol var4 = var0.ae();
+		ol var4 = qa.kw(var0, -1407240925);
 		if (var4.bl_fld > 0 && var1 > 0) {
 			var1 -= (var1 - 1) / var4.bl_fld * var4.bl_fld;
 		}
 
-		int var5 = qa.do_(var0, 1592467296);
+		int var5 = var0.aw(1592467296);
 		int var6 = var0.as();
 
 		while (var1 > 0) {
@@ -233,7 +233,7 @@ public class qp {
 			}
 		}
 
-		var0.ai(var5, var6);
+		qa.tk(var0, var5, var6);
 		return var3;
 	}
 
@@ -243,12 +243,12 @@ public class qp {
 	)
 	static int as(qa var0, int var1, qy var2) {
 		byte var3 = 0;
-		ol var4 = var0.ae();
+		ol var4 = qa.kw(var0, 1933871695);
 		if (var4.bl_fld > 0 && var1 > 0) {
 			var1 -= (var1 - 1) / var4.bl_fld * var4.bl_fld;
 		}
 
-		int var5 = qa.do_(var0, -314314164);
+		int var5 = var0.aw(-314314164);
 		int var6 = var0.as();
 
 		while (var1 > 0) {
@@ -279,7 +279,7 @@ public class qp {
 			}
 		}
 
-		var0.ai(var5, var6);
+		qa.tk(var0, var5, var6);
 		return var3;
 	}
 }

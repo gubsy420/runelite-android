@@ -59,9 +59,17 @@ public class ag implements Callable {
 	)
 	static int au_fld;
 
+	@ObfuscatedName("yi")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;)F"
+	)
+	public static float yi(cn var0) {
+		return var0.am_fld / 100.0F;
+	}
+
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Z)V"
+		descriptor = "(Llu;ZI)V"
 	)
 	static void af(lu var0, boolean var1) {
 		if (null != var0) {
@@ -95,7 +103,7 @@ public class ag implements Callable {
 
 	@ObfuscatedName("agv")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	protected static int agv() {
 		int var1 = 0;
@@ -141,7 +149,7 @@ public class ag implements Callable {
 
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int bn(int var0, ba var1, boolean var2) {
 		if (5504 == var0) {
@@ -150,7 +158,7 @@ public class ag implements Callable {
 			int var5 = bp.au_fld[gz.ax_fld + 1];
 			if (!client.ki_fld) {
 				client.jf_fld = var6;
-				client.dl();
+				client.bc();
 				client.js_fld = var5;
 			}
 
@@ -179,7 +187,7 @@ public class ag implements Callable {
 
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)I"
+		descriptor = "(Llu;I)I"
 	)
 	static int at(lu var0) {
 		if (var0.bx_fld != 11) {
@@ -194,7 +202,7 @@ public class ag implements Callable {
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "([I)Lsl;"
+		descriptor = "([IB)Lsl;"
 	)
 	public static sl al(int[] var0) {
 		sl var2 = new sl(yq.ak_fld, true);
@@ -204,17 +212,17 @@ public class ag implements Callable {
 		return var2;
 	}
 
-	@ObfuscatedName("mg")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)I"
+		descriptor = "()Ljava/lang/Object;"
 	)
-	public static int mg(lu var0) {
-		return var0.hd_fld != null && !var0.hd_fld.isEmpty() ? 1 : 0;
+	public Object ag() {
+		return this.ag_fld.ak(this.ak_fld);
 	}
 
 	@ObfuscatedName("hd")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(IB)V"
 	)
 	static void hd(int var0) {
 		client.dg_fld = var0;

@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("jm")
 public class jm extends vw {
-	@ObfuscatedGetter(
-		intValue = 1810843567
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1276154647
 	)
 	public int as_fld;
 	@ObfuscatedName("ag")
@@ -27,12 +27,12 @@ public class jm extends vw {
 		descriptor = "[Lyc;"
 	)
 	static yc[] ca_fld;
-	@ObfuscatedGetter(
-		intValue = -245342379
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -245342379
 	)
 	static int ae_fld = 0;
 	@ObfuscatedName("av")
@@ -40,12 +40,12 @@ public class jm extends vw {
 		descriptor = "[Ljm;"
 	)
 	static jm[] av_fld = new jm[300];
-	@ObfuscatedGetter(
-		intValue = -252176539
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -252176539
 	)
 	int aw_fld;
 	@ObfuscatedName("ay")
@@ -105,7 +105,7 @@ public class jm extends vw {
 			var2.ay_fld = new xj(900952517);
 		}
 
-		var2.ay_fld.az(var1, 984771330);
+		xj.uo(var2.ay_fld, var1, 984771330);
 		var2.ay_fld.av(241412761 * var2.ah_fld.ef_fld, -849455182);
 		var2.as_fld = 0;
 		return var2;
@@ -137,7 +137,7 @@ public class jm extends vw {
 			var2.ay_fld = new xj(-1346592698);
 		}
 
-		var2.ay_fld.az(var1, 713982709);
+		xj.uo(var2.ay_fld, var1, 713982709);
 		var2.ay_fld.av(-236920035 * var2.ah_fld.ef_fld, 1894943865);
 		var2.as_fld = 0;
 		return var2;
@@ -169,23 +169,13 @@ public class jm extends vw {
 			var2.ay_fld = new xj(260);
 		}
 
-		var2.ay_fld.az(var1, 1918562894);
+		xj.uo(var2.ay_fld, var1, 1918562894);
 		var2.ay_fld.av(-1740426857 * var2.ah_fld.ef_fld, 247600995);
 		var2.as_fld = 0;
 		return var2;
 	}
 
 	jm() {
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void az() {
-		if (ae_fld < av_fld.length) {
-			av_fld[(ae_fld += -586111491) * -245342379 - 1] = this;
-		}
 	}
 
 	@ObfuscatedName("ar")
@@ -232,7 +222,7 @@ public class jm extends vw {
 			var2.ay_fld = new xj(260);
 		}
 
-		var2.ay_fld.az(var1, 1435326557);
+		xj.uo(var2.ay_fld, var1, 1435326557);
 		var2.ay_fld.av(-1740426857 * var2.ah_fld.ef_fld, -1940256822);
 		var2.as_fld = 0;
 		return var2;
@@ -254,6 +244,20 @@ public class jm extends vw {
 		var0.aw_fld = 0;
 		var0.ay_fld = new xj(5000);
 		return var0;
+	}
+
+	@ObfuscatedName("ga")
+	@ObfuscatedSignature(
+		descriptor = "(Ljm;I)V"
+	)
+	public static void ga(jm var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (ae_fld < av_fld.length) {
+			av_fld[(ae_fld += -586111491) * -245342379 - 1] = var0;
+		}
 	}
 
 	@ObfuscatedName("ah")
@@ -282,7 +286,7 @@ public class jm extends vw {
 			var2.ay_fld = new xj(260);
 		}
 
-		var2.ay_fld.az(var1, -1208532695);
+		xj.uo(var2.ay_fld, var1, -1208532695);
 		var2.ay_fld.av(-1740426857 * var2.ah_fld.ef_fld, -1555285457);
 		var2.as_fld = 0;
 		return var2;
@@ -342,23 +346,41 @@ public class jm extends vw {
 		return var0;
 	}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void ax() {
-		if (ae_fld < av_fld.length) {
-			av_fld[(ae_fld += -586111491) * -245342379 - 1] = this;
-		}
-	}
-
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	public void an() {
 		if (ae_fld < av_fld.length) {
+			av_fld[(ae_fld += -586111491) * -245342379 - 1] = this;
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ax() {
+		if (ae_fld < av_fld.length) {
 			av_fld[(ae_fld += -168482604) * 1197596377 - 1] = this;
+		}
+	}
+
+	@ObfuscatedName("vq")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;)I"
+	)
+	public static int vq(ol var0) {
+		return var0.bh_fld - var0.bs_fld;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void az(int var1) {
+		if (ae_fld < av_fld.length) {
+			av_fld[(ae_fld += -586111491) * -245342379 - 1] = this;
 		}
 	}
 }

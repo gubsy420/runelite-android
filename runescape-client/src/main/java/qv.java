@@ -24,12 +24,12 @@ public class qv {
 		descriptor = "I"
 	)
 	static int ae_fld;
-	@ObfuscatedGetter(
-		intValue = -131271695
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -131271695
 	)
 	int av_fld;
 	@ObfuscatedName("ak")
@@ -43,19 +43,11 @@ public class qv {
 	)
 	static yc cx_fld;
 
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "(Lqv;I)Ljava/util/concurrent/ThreadPoolExecutor;"
-	)
-	public static ThreadPoolExecutor gr(qv var0, int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(var0.av_fld), var0.ag_fld);
-	}
-
-	@ObfuscatedName("al")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void al() {
+	public final void ar() {
 		try {
 			this.az_fld.shutdown();
 		} catch (Exception var2) {
@@ -65,10 +57,22 @@ public class qv {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/util/concurrent/ThreadPoolExecutor;"
+		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;"
 	)
 	final ThreadPoolExecutor ak(int var1) {
 		return new ThreadPoolExecutor(0, var1, 2L, TimeUnit.MINUTES, new ArrayBlockingQueue<>(this.av_fld), this.ag_fld);
+	}
+
+	@ObfuscatedName("vt")
+	@ObfuscatedSignature(
+		descriptor = "(Lqv;)V"
+	)
+	public static void vt(qv var0) {
+		try {
+			var0.az_fld.shutdown();
+		} catch (Exception var2) {
+			System.err.println("Error shutting down RestRequestService\r\n" + var2);
+		}
 	}
 
 	@ObfuscatedName("cs")
@@ -79,22 +83,22 @@ public class qv {
 		client.no_fld = var0;
 		client.np_fld = var1;
 		client.mi_fld++;
-		bw.dk_fld.az_fld.dx(client.dv_fld);
-		if (client.qk_fld != -1 && re.uu(bw.dk_fld.az_fld) != client.qk_fld) {
+		bw.dk_fld.az_fld.qe(client.dv_fld);
+		if (client.qk_fld != -1 && bw.dk_fld.az_fld.ak() != client.qk_fld) {
 			if (var4 != 0) {
 				return;
 			}
 
 			eg var5 = eg.ak(ab.hu_fld, client.qk_fld, 0);
 			if (var5 != null) {
-				bw.dk_fld.az_fld.ag(client.qk_fld, dn.ki(var5));
+				bw.dk_fld.az_fld.ag(client.qk_fld, var5.bo());
 			}
 		}
 
 		label104: {
 			cv var10 = ot.ef();
 			if (var10 != null) {
-				if (var10.bo_fld >> 7 != client.oq_fld || var10.bp_fld >> 7 != client.or_fld) {
+				if (var10.bi_fld >> 7 != client.oq_fld || var10.dm_fld >> 7 != client.or_fld) {
 					break label104;
 				}
 
@@ -109,7 +113,7 @@ public class qv {
 
 		ie.cr(bw.dk_fld);
 		dx var11 = bw.dk_fld;
-		int var6 = client.nr_fld.ag_fld - 1;
+		int var6 = client.nr_fld.ot_fld - 1;
 		if (null != cb.mz_fld && bw.dk_fld == var11 && var6 >= 0 && 60 == client.nr_fld.ae_fld[var6]) {
 			if (var4 != 0) {
 				return;
@@ -131,7 +135,7 @@ public class qv {
 		}
 
 		dx var7 = bw.dk_fld;
-		if (client.nq_fld >= 0 && var7.au_fld.ak(client.nq_fld) != null) {
+		if (client.nq_fld >= 0 && var7.au_fld.ae(client.nq_fld) != null) {
 			hb.cw(var7, client.nq_fld, false, (byte)22);
 		}
 
@@ -154,28 +158,45 @@ public class qv {
 		bj.cp();
 	}
 
-	@ObfuscatedName("us")
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;)Lqw;"
+	)
+	public qw ay(qk var1) {
+		if (this.az_fld.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.az_fld.getCorePoolSize() + " Queue capacity " + this.av_fld);
+			return new qw("Queue full");
+		} else {
+			return new qw(this.az_fld.submit(new qn(this, var1)));
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;I)Lqw;"
+	)
+	public qw ag(qk var1) {
+		if (this.az_fld.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.az_fld.getCorePoolSize() + " Queue capacity " + this.av_fld);
+			return new qw("Queue full");
+		} else {
+			return new qw(this.az_fld.submit(new qn(this, var1)));
+		}
+	}
+
+	@ObfuscatedName("lf")
 	@ObfuscatedSignature(
 		descriptor = "(Lqv;)V"
 	)
-	public static void us(qv var0) {
+	public static void lf(qv var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		try {
 			var0.az_fld.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
-		}
-	}
-
-	@ObfuscatedName("xo")
-	@ObfuscatedSignature(
-		descriptor = "(Lqv;Lqk;)Lqw;"
-	)
-	public static qw xo(qv var0, qk var1) {
-		if (var0.az_fld.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + var0.az_fld.getCorePoolSize() + " Queue capacity " + var0.av_fld);
-			return new qw("Queue full");
-		} else {
-			return new qw(var0.az_fld.submit(new qn(var0, var1)));
 		}
 	}
 
@@ -195,11 +216,31 @@ public class qv {
 		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(this.av_fld), this.ag_fld);
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/util/concurrent/ThreadPoolExecutor;"
+	)
+	final ThreadPoolExecutor aw(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(this.av_fld), this.ag_fld);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	public final void az() {
+		try {
+			this.az_fld.shutdown();
+		} catch (Exception var3) {
+			System.err.println("Error shutting down RestRequestService\r\n" + var3);
+		}
+	}
+
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void as() {
+	public final void al() {
 		try {
 			this.az_fld.shutdown();
 		} catch (Exception var2) {
@@ -207,16 +248,38 @@ public class qv {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lpp;)Lpp;"
 	)
-	public final void ar() {
-		try {
-			this.az_fld.shutdown();
-		} catch (Exception var2) {
-			System.err.println("Error shutting down RestRequestService\r\n" + var2);
+	public static pp av(pp var0) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
 		}
+
+		int var1 = -1;
+		if (var0.di_fld != -1) {
+			var1 = dv.ag(var0.di_fld, (byte)97);
+		} else if (-1 != var0.dn_fld) {
+			var1 = rt.ag_fld[var0.dn_fld];
+		}
+
+		int var2;
+		if (var1 >= 0 && var1 < var0.dy_fld.length - 1) {
+			var2 = var0.dy_fld[var1];
+		} else {
+			var2 = var0.dy_fld[var0.dy_fld.length - 1];
+		}
+
+		return var2 != -1 ? ca.az(var2) : null;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/util/concurrent/ThreadPoolExecutor;"
+	)
+	final ThreadPoolExecutor av(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(this.av_fld), this.ag_fld);
 	}
 
 	public qv(String var1, int var2, int var3) {
@@ -228,7 +291,7 @@ public class qv {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;Ljava/lang/Object;II)I"
+		descriptor = "(Lsl;Ljava/lang/Object;III)I"
 	)
 	public static int av(sl var0, Object var1, int var2, int var3) {
 		if (var2 < 0) {
@@ -250,7 +313,7 @@ public class qv {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var10 = var0.ag();
+			long[] var10 = sl.ob(var0, -1407986911);
 			long var12 = (Long)var1;
 
 			for (int var9 = var2; var9 < var3; var9++) {
@@ -271,84 +334,15 @@ public class qv {
 		return var5;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lqk;I)Lqw;"
+		descriptor = "()V"
 	)
-	public qw ag(qk var1, int var2) {
-		if (this.az_fld.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.az_fld.getCorePoolSize() + " Queue capacity " + this.av_fld);
-			return new qw("Queue full");
-		} else {
-			return new qw(this.az_fld.submit(new qn(this, var1)));
-		}
-	}
-
-	@ObfuscatedName("ye")
-	@ObfuscatedSignature(
-		descriptor = "(Lqv;B)V"
-	)
-	public static void ye(qv var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		try {
-			var0.az_fld.shutdown();
-		} catch (Exception var3) {
-			System.err.println("Error shutting down RestRequestService\r\n" + var3);
-		}
-	}
-
-	@ObfuscatedName("vo")
-	@ObfuscatedSignature(
-		descriptor = "(Lqv;I)Ljava/util/concurrent/ThreadPoolExecutor;"
-	)
-	public static ThreadPoolExecutor vo(qv var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(var0.av_fld), var0.ag_fld);
-		}
-	}
-
-	@ObfuscatedName("oz")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;I)Lyb;"
-	)
-	public static yb oz(yb var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var0.av_fld = var1;
-			return var0;
-		}
-	}
-
-	@ObfuscatedName("xm")
-	@ObfuscatedSignature(
-		descriptor = "(Lqv;Lqk;I)Lqw;"
-	)
-	public static qw xm(qv var0, qk var1, int var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (var0.az_fld.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + var0.az_fld.getCorePoolSize() + " Queue capacity " + var0.av_fld);
-			return new qw("Queue full");
-		} else {
-			return new qw(var0.az_fld.submit(new qn(var0, var1)));
-		}
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(B)V"
-	)
-	public final void az(byte var1) {
+	public final void af() {
 		try {
 			this.az_fld.shutdown();
-		} catch (Exception var3) {
-			System.err.println("Error shutting down RestRequestService\r\n" + var3);
+		} catch (Exception var2) {
+			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
 	}
 }

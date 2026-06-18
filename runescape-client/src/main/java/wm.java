@@ -24,12 +24,12 @@ class wm implements xw {
 	)
 	static int cv_fld;
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
 	@Override
-	public xs az() {
+	public xs ag() {
 		return xs.aw_fld;
 	}
 
@@ -42,23 +42,15 @@ class wm implements xw {
 		return xs.aw_fld;
 	}
 
-	@ObfuscatedName("hb")
-	@ObfuscatedSignature(
-		descriptor = "(Ldj;)[B"
-	)
-	public static byte[] hb(dj var0) {
-		return var0.ae_fld;
-	}
-
 	wm() {
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
 	@Override
-	public xs ag() {
+	public xs az() {
 		return xs.aw_fld;
 	}
 }

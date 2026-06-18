@@ -31,7 +31,7 @@ import net.runelite.mixins.annotations.Mixin;
 @Mixin("vu")
 public abstract class FingerprintMixin
 {
-	private static final int DECODE_BT = -2048773107;
+/*	private static final int DECODE_BT = -2048773107;
 	private static final int DECODE_BI = 205734307;
 	private static final int DECODE_BU = 855290095;
 	private static final int DECODE_BQ = 2076850581;
@@ -96,5 +96,5 @@ public abstract class FingerprintMixin
 			case 5: return "Oracle";
 			default: return "unknown";
 		}
-	}
+	}*/
 }

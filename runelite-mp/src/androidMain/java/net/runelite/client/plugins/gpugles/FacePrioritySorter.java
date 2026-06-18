@@ -24,6 +24,8 @@
  */
 package net.runelite.client.plugins.gpugles;
 
+import android.util.Log;
+
 import java.nio.IntBuffer;
 import java.util.Arrays;
 import net.runelite.api.Model;
@@ -50,10 +52,17 @@ class FacePrioritySorter
 
 	private static final int[] vertexBuffer;
 
-	static final int MAX_VERTEX_COUNT = 6500;
-	static final int MAX_FACE_COUNT = 8192; // was 6500
-	static final int MAX_DIAMETER = 6000;
-	private static final int MAX_FACES_PER_PRIORITY = 4000; // was 2500
+	// Bumped from 6500 / 8192 / 6000 so high-poly bosses (Gemstone Crab, Hueycoatl,
+	// Phantom Muspah, etc.) actually upload instead of AIOOBE-ing inside the vertex
+	// loop and silently rendering as nothing. Per-instance memory cost is ~1.5 MB of
+	// static arrays — trivial against a 512 MB largeHeap process.
+	static final int MAX_VERTEX_COUNT = 16384;
+	static final int MAX_FACE_COUNT = 16384;
+	static final int MAX_DIAMETER = 16384;
+	// Per-priority bucket cap. Bumped alongside MAX_FACE_COUNT so a model whose faces
+	// all share one priority bucket can't AIOOBE on orderedFaces[pri][...]; bumping
+	// MAX_FACE_COUNT alone would just relocate the crash to that array.
+	private static final int MAX_FACES_PER_PRIORITY = MAX_FACE_COUNT;
 	private static final int FACE_SIZE = (VAO.VERT_SIZE >> 2) * 3;
 
 	static
@@ -89,6 +98,14 @@ class FacePrioritySorter
 	int uploadSortedModel(Projection proj, Model model, int orientation, int x, int y, int z, IntBuffer opaqueBuffer, IntBuffer alphaBuffer, boolean prioritySort)
 	{
 		final int vertexCount = model.getVerticesCount();
+		// Defense in depth: a model with more verts than our static buffers would AIOOBE
+		// inside the loop at modelLocalX[v] writes. Skip + log so we get a single warning
+		// per oversize model instead of a render-loop-killing exception.
+		if (vertexCount > MAX_VERTEX_COUNT)
+		{
+			Log.w("FacePrioritySorter", "skipping model: vertices=" + vertexCount + " > MAX_VERTEX_COUNT=" + MAX_VERTEX_COUNT);
+			return 0;
+		}
 		final float[] verticesX = model.getVerticesX();
 		final float[] verticesY = model.getVerticesY();
 		final float[] verticesZ = model.getVerticesZ();
@@ -144,6 +161,12 @@ class FacePrioritySorter
 			p = proj.project(vertexX, vertexY, vertexZ);
 			if (p[2] < 50)
 			{
+				if (faceCount >= 1500)
+				{
+					Log.i("FacePrioritySorter", "NEAR-CLIP drop: faces=" + faceCount
+						+ " verts=" + vertexCount + " atVert=" + v + " p[2]=" + p[2]
+						+ " pos=(" + x + "," + y + "," + z + ")");
+				}
 				return 0;
 			}
 
@@ -156,7 +179,18 @@ class FacePrioritySorter
 		final int radius = model.getRadius();
 		if (diameter >= MAX_DIAMETER)
 		{
+			Log.i("FacePrioritySorter", "DIAMETER drop: faces=" + faceCount
+				+ " verts=" + vertexCount + " diameter=" + diameter
+				+ " pos=(" + x + "," + y + "," + z + ")");
 			return 0;
+		}
+
+		// Also log if we hit the face-count cap (would render partial model).
+		if (model.getFaceCount() > MAX_FACE_COUNT)
+		{
+			Log.i("FacePrioritySorter", "FACE-CAP: model=" + model.getFaceCount()
+				+ " capped=" + faceCount + " verts=" + vertexCount
+				+ " pos=(" + x + "," + y + "," + z + ")");
 		}
 
 		Arrays.fill(zsortHead, 0, diameter, (char) -1);
@@ -259,6 +293,16 @@ class FacePrioritySorter
 					vertexBuffer[vbOff++] = sv2 & 0xffff;
 				}
 			}
+		}
+
+		// Detect "all faces failed backface culling" for big models — minFz stays at
+		// the diameter and maxFz stays at 0, so no face was z-bucketed. Helps tell
+		// "model arrived, all faces culled" from "model never arrived".
+		if (faceCount >= 1500 && maxFz == 0 && minFz == diameter)
+		{
+			Log.i("FacePrioritySorter", "ALL-BACKFACE-CULLED: faces=" + faceCount
+				+ " verts=" + vertexCount + " diameter=" + diameter
+				+ " pos=(" + x + "," + y + "," + z + ")");
 		}
 
 		int len = 0;

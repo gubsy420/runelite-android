@@ -10,12 +10,12 @@ public class jv {
 		descriptor = "Ljv;"
 	)
 	public static jv co_fld = new jv(71, -2);
-	@ObfuscatedGetter(
-		intValue = 1505206999
-	)
 	@ObfuscatedName("fh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1505206999
 	)
 	public int fh_fld;
 	@ObfuscatedName("az")
@@ -703,12 +703,12 @@ public class jv {
 		descriptor = "Ljv;"
 	)
 	public static jv dd_fld = new jv(86, 6);
-	@ObfuscatedGetter(
-		intValue = 1506468235
-	)
 	@ObfuscatedName("fc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1506468235
 	)
 	public int fc_fld;
 	@ObfuscatedName("cn")
@@ -1696,41 +1696,41 @@ public class jv {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "([B)Lba;"
+		descriptor = "([BB)Lba;"
 	)
 	static ba av(byte[] var0) {
 		ba var2 = new ba();
 		xi var3 = new xi(var0);
 		var3.au_fld = var3.al_fld.length - 2;
-		int var4 = xi.tx(var3, 623084758);
+		int var4 = var3.cm();
 		int var5 = var3.al_fld.length - 2 - var4 - 16;
 		var3.au_fld = var5;
-		int var6 = var3.co();
-		var2.ay_fld = xi.tx(var3, 1865971416);
-		var2.ar_fld = xi.tx(var3, 1082538989);
-		var2.as_fld = xi.tx(var3, 780396866);
-		var2.af_fld = xi.tx(var3, 862036300);
-		var2.al_fld = xi.tx(var3, 2064818086);
-		var2.au_fld = xi.tx(var3, 1809731742);
+		int var6 = var3.co((byte)-82);
+		var2.ay_fld = var3.cm();
+		var2.ar_fld = var3.cm();
+		var2.as_fld = var3.cm();
+		var2.af_fld = var3.cm();
+		var2.al_fld = var3.cm();
+		var2.au_fld = var3.cm();
 		int var7 = var3.cg();
 		if (var7 > 0) {
-			var2.ag_fld = ba.nm(var2, var7);
+			var2.ag_fld = var2.ay(var7, -1853396189);
 
 			for (int var8 = 0; var8 < var7; var8++) {
-				int var9 = xi.tx(var3, 1161519909);
+				int var9 = var3.cm();
 				xv var10 = new xv(var9 > 0 ? wp.ay(var9) : 1);
 				var2.ag_fld[var8] = var10;
 
 				while (var9-- > 0) {
-					int var11 = var3.co();
-					int var12 = var3.co();
+					int var11 = var3.co((byte)0);
+					int var12 = var3.co((byte)-39);
 					var10.ag(new vl(var12), var11);
 				}
 			}
 		}
 
 		var3.au_fld = 0;
-		var2.az_fld = var3.ch();
+		var2.az_fld = var3.cl();
 		var2.av_fld = new int[var6];
 		var2.ae_fld = new int[var6];
 		var2.ah_fld = new String[var6];
@@ -1738,10 +1738,10 @@ public class jv {
 		int var13 = 0;
 
 		while (var3.au_fld < var5) {
-			int var14 = xi.tx(var3, 523238404);
+			int var14 = var3.cm();
 			switch (var14) {
 				case 3:
-					var2.ah_fld[var13] = xi.kc(var3, 494158629);
+					var2.ah_fld[var13] = xi.at(var3, 494158629);
 					break;
 				case 21:
 				case 38:
@@ -1751,11 +1751,11 @@ public class jv {
 					var2.ae_fld[var13] = var3.cg();
 					break;
 				case 61:
-					var2.aw_fld[var13] = xi.ob(var3, 663724333);
+					var2.aw_fld[var13] = var3.cu();
 					break;
 				default:
 					if (var14 <= 99) {
-						var2.ae_fld[var13] = var3.co();
+						var2.ae_fld[var13] = var3.co((byte)-109);
 					} else {
 						var2.ae_fld[var13] = var3.cg();
 					}
@@ -1767,9 +1767,27 @@ public class jv {
 		return var2;
 	}
 
+	@ObfuscatedName("ne")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;)V"
+	)
+	public static void ne(fn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			for (int var1 = 0; var1 < var0.bi_fld; var1++) {
+				float var2 = var0.fn_Arrfloat[var1];
+				var0.fn_Arrfloat[var1] = var0.kp_fld[var1];
+				var0.kp_fld[var1] = -var2;
+			}
+
+			var0.fv();
+		}
+	}
+
 	@ObfuscatedName("er")
 	@ObfuscatedSignature(
-		descriptor = "(III)V"
+		descriptor = "(IIII)V"
 	)
 	static final void er(int var0, int var1, int var2) throws EOFException {
 		xh.en(hk.mt_fld, var0, var1, var2, -497055714);

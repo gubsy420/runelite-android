@@ -12,9 +12,9 @@ import java.awt.*;
 @Mixin("te")
 public abstract class DrawMixin
 {
-	@Replace
+/*	@Replace
 	@Export("DrawFull0")
 	final void drawFull0Stub(Graphics var1, int var2, int var3) {
 
-	}
+	}*/
 }

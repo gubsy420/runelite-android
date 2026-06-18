@@ -29,12 +29,12 @@ public class qe implements xm {
 		descriptor = "Lqe;"
 	)
 	static qe ae_fld = new qe(4, "DELETE", false, true);
-	@ObfuscatedGetter(
-		intValue = -1605516367
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1605516367
 	)
 	int ah_fld;
 	@ObfuscatedName("az")
@@ -66,27 +66,35 @@ public class qe implements xm {
 		return this.ay_fld;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean aw() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String az() {
-		return this.aw_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean ak(int var1) {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("ll")
+	@ObfuscatedSignature(
+		descriptor = "(Lli;)I"
+	)
+	public static int ll(li var0) {
+		return var0.bm_fld;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public String az() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean aw() {
 		return this.as_fld;
 	}
 
@@ -115,14 +123,6 @@ public class qe implements xm {
 	@Override
 	public int ae() {
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String au() {
-		return this.aw_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -173,6 +173,14 @@ public class qe implements xm {
 		this.as_fld = var4;
 	}
 
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean ax() {
+		return this.as_fld;
+	}
+
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -187,5 +195,13 @@ public class qe implements xm {
 	)
 	public static ss[] ak(byte var0) {
 		return new ss[]{ss.ak_fld, ss.ag_fld, ss.az_fld};
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String af() {
+		return this.aw_fld;
 	}
 }

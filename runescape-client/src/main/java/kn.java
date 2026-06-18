@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -120,12 +119,12 @@ public class kn implements xm {
 		descriptor = "Lkn;"
 	)
 	static kn aq_fld = new kn(19, 2);
-	@ObfuscatedGetter(
-		intValue = -248030491
-	)
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -248030491
 	)
 	public int at_fld;
 	@ObfuscatedName("ac")
@@ -140,18 +139,6 @@ public class kn implements xm {
 	)
 	public static boolean al(int var0) {
 		return ap_fld.at_fld == var0;
-	}
-
-	@ObfuscatedName("sa")
-	@ObfuscatedSignature(
-		descriptor = "(Lap;I)Lal;"
-	)
-	public static al sa(ap var0, int var1) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.az(var1, null);
 	}
 
 	@ObfuscatedName("ag")
@@ -228,7 +215,7 @@ public class kn implements xm {
 
 	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	static boolean cl() {
 		return (client.ez_fld & 1) != 0;

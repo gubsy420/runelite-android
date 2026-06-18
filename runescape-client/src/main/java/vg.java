@@ -4,52 +4,52 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("vg")
 public class vg extends vq {
-	@ObfuscatedGetter(
-		intValue = -1174679197
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -709780697
+		intValue = -1174679197
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = 1952802087
+		intValue = -709780697
 	)
+	int az_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1725483091
+		intValue = 1952802087
 	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 1504666749
+		intValue = 1725483091
 	)
+	int ae_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld = 0;
 	@ObfuscatedGetter(
-		intValue = 1140759777
+		intValue = 1504666749
 	)
+	int ak_fld = 0;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1140759777
 	)
 	int ah_fld;
 
@@ -63,12 +63,12 @@ public class vg extends vq {
 		return (int)Math.round((this.ae_fld - this.ag_fld) * var1 + 1259913070 * this.ag_fld);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	@Override
-	public int ak(int var1) {
+	public int az(int var1) {
 		double var2 = this.au_double((byte)61);
 		return (int)Math.round((this.av_fld - this.ak_fld) * var2 + this.ak_fld);
 	}
@@ -83,12 +83,12 @@ public class vg extends vq {
 		return (int)Math.round((this.av_fld - this.ak_fld) * var1 + 805275539 * this.ak_fld);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	@Override
-	public int az(int var1) {
+	public int ag(int var1) {
 		double var2 = this.au_double((byte)10);
 		return (int)Math.round(var2 * (this.ah_fld - this.az_fld) + this.az_fld);
 	}
@@ -138,12 +138,12 @@ public class vg extends vq {
 		return (int)Math.round((this.ae_fld - this.ag_fld) * var1 + this.ag_fld);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	@Override
-	public int ag(int var1) {
+	public int ak(int var1) {
 		double var2 = this.au_double((byte)-72);
 		return (int)Math.round((this.ae_fld - this.ag_fld) * var2 + this.ag_fld);
 	}

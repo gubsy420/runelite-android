@@ -49,12 +49,20 @@ public class bl extends gr {
 	)
 	public static ub dm_fld;
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lwj;)Lac;"
+	)
+	public static ac as(wj var0) {
+		return var0.ak_fld;
+	}
+
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(IIILgn;)Z"
 	)
 	@Override
-	protected boolean ae(int var1, int var2, int var3, gn var4) {
+	protected boolean av(int var1, int var2, int var3, gn var4) {
 		return this.ak_fld == var2 && var3 == this.ag_fld;
 	}
 
@@ -67,15 +75,6 @@ public class bl extends gr {
 		return this.ak_fld == var2 && var3 == this.ag_fld;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(IIILgn;)Z"
-	)
-	@Override
-	protected boolean ag(int var1, int var2, int var3, gn var4) {
-		return this.ak_fld == var2 && var3 == this.ag_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(IIILgn;)Z"
@@ -85,38 +84,34 @@ public class bl extends gr {
 		return this.ak_fld == var2 && var3 == this.ag_fld;
 	}
 
-	bl() {
-	}
-
-	@ObfuscatedName("zc")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;Z)V"
-	)
-	public static void zc(cn var0, boolean var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.as_fld = var1;
-		og.ag();
-	}
-
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(IIILgn;)Z"
 	)
 	@Override
-	protected boolean av(int var1, int var2, int var3, gn var4) {
+	protected boolean ae(int var1, int var2, int var3, gn var4) {
+		return this.ak_fld == var2 && var3 == this.ag_fld;
+	}
+
+	bl() {
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgn;)Z"
+	)
+	@Override
+	protected boolean ag(int var1, int var2, int var3, gn var4) {
 		return this.ak_fld == var2 && var3 == this.ag_fld;
 	}
 
 	@ObfuscatedName("gx")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void gx() {
-		jm var1 = gi.ak(jb.cm_fld, client.aq_fld.av_fld);
-		var1.ay_fld.bc(0);
-		client.aq_fld.az(var1);
+		jm var1 = gi.ak(jb.cm_fld, client.appletStub.av_fld);
+		var1.ay_fld.ea(0);
+		client.appletStub.az(var1);
 	}
 }

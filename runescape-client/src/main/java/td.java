@@ -23,7 +23,7 @@ public abstract class td implements th {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/Object;"
+		descriptor = "(I)Ljava/lang/Object;"
 	)
 	Object aw() {
 		if (this.ak_fld == yq.ak_fld) {
@@ -32,45 +32,6 @@ public abstract class td implements th {
 			return -1L;
 		} else {
 			return yq.az_fld == this.ak_fld ? "" : null;
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	public void ae(xi var1) {
-		while (true) {
-			int var3 = var1.cg();
-			if (var3 == 0) {
-				return;
-			}
-
-			ti[] var4 = new ti[]{ti.ag_fld, ti.av_fld, ti.az_fld, ti.ak_fld};
-			ti var5 = (ti)ka.ak(var4, var3);
-			if (null != var5) {
-				switch (var5.ah_fld) {
-					case 0:
-						var1.cl();
-						break;
-					case 1:
-					default:
-						throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var5);
-					case 2:
-						int var6 = var1.cg();
-						this.ak_fld = eu.ag(var6, -1779856707);
-						if (this.ak_fld != null) {
-							break;
-						}
-
-						throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var6);
-					case 3:
-						ky[] var7 = new ky[]{ky.ag_fld, ky.av_fld, ky.az_fld, ky.ak_fld};
-						ka.ak(var7, var1.cg());
-				}
-			} else {
-				this.ak(var1, var3, (byte)0);
-			}
 		}
 	}
 
@@ -88,9 +49,9 @@ public abstract class td implements th {
 			ti[] var3 = new ti[]{ti.ag_fld, ti.av_fld, ti.az_fld, ti.ak_fld};
 			ti var4 = (ti)ka.ak(var3, var2);
 			if (null != var4) {
-				switch (var4.ah_fld) {
+				switch (var4.ae_fld) {
 					case 0:
-						var1.cl();
+						var1.ct();
 						break;
 					case 1:
 					default:
@@ -113,11 +74,53 @@ public abstract class td implements th {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(Ltd;Lxi;B)V"
+	)
+	public static void ih(td var0, xi var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		while (true) {
+			int var3 = var1.cg();
+			if (var3 == 0) {
+				return;
+			}
+
+			ti[] var4 = new ti[]{ti.ag_fld, ti.av_fld, ti.az_fld, ti.ak_fld};
+			ti var5 = (ti)ka.ak(var4, var3);
+			if (null != var5) {
+				switch (var5.ae_fld) {
+					case 0:
+						var1.ct();
+						break;
+					case 1:
+					default:
+						throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var5);
+					case 2:
+						int var6 = var1.cg();
+						var0.ak_fld = eu.ag(var6, -1779856707);
+						if (var0.ak_fld == null) {
+							throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var6);
+						}
+						break;
+					case 3:
+						ky[] var7 = new ky[]{ky.ag_fld, ky.av_fld, ky.az_fld, ky.ak_fld};
+						ka.ak(var7, var1.cg());
+				}
+			} else {
+				var0.ak(var1, var3, (byte)0);
+			}
+		}
+	}
+
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean al() {
+	boolean ar() {
 		return null != this.ak_fld;
 	}
 
@@ -139,6 +142,18 @@ public abstract class td implements th {
 	)
 	abstract void av(xi var1, int var2);
 
+	@ObfuscatedName("wf")
+	@ObfuscatedSignature(
+		descriptor = "(Ltd;B)Z"
+	)
+	public static boolean wf(td var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return null != var0.ak_fld;
+	}
+
 	td(int var1) {
 	}
 
@@ -156,9 +171,9 @@ public abstract class td implements th {
 			ti[] var3 = new ti[]{ti.ag_fld, ti.av_fld, ti.az_fld, ti.ak_fld};
 			ti var4 = (ti)ka.ak(var3, var2);
 			if (null != var4) {
-				switch (var4.ah_fld) {
+				switch (var4.ae_fld) {
 					case 0:
-						var1.cl();
+						var1.ct();
 						break;
 					case 1:
 					default:
@@ -181,37 +196,25 @@ public abstract class td implements th {
 		}
 	}
 
-	@ObfuscatedName("le")
-	@ObfuscatedSignature(
-		descriptor = "(Ltd;B)Z"
-	)
-	public static boolean le(td var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return null != var0.ak_fld;
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;IB)V"
 	)
 	abstract void ak(xi var1, int var2, byte var3);
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean ar() {
-		return null != this.ak_fld;
-	}
-
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	boolean af() {
+		return null != this.ak_fld;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean al() {
 		return null != this.ak_fld;
 	}
 
@@ -283,6 +286,53 @@ public abstract class td implements th {
 		do_.ar_fld = null;
 		ch.as_fld = null;
 		ch.ay_fld = null;
+	}
+
+	@ObfuscatedName("rs")
+	@ObfuscatedSignature(
+		descriptor = "(Ldj;)[B"
+	)
+	public static byte[] rs(dj var0) {
+		return var0.ae_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;B)V"
+	)
+	public void ae(xi var1, byte var2) {
+		while (true) {
+			int var3 = var1.dv();
+			if (var3 == 0) {
+				return;
+			}
+
+			ti[] var4 = new ti[]{ti.av_fld, ti.ak_fld, ti.ak_fld, ti.ag_fld};
+			ti var5 = (ti)ka.ak(var4, var3);
+			if (null != var5) {
+				switch (var5.ah_fld * -42281481) {
+					case 0:
+						var1.ct();
+						break;
+					case 1:
+					default:
+						throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var5);
+					case 2:
+						int var6 = var1.em();
+						this.ak_fld = eu.ag(var6, -1779856707);
+						if (this.ak_fld != null) {
+							break;
+						}
+
+						throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var6);
+					case 3:
+						ky[] var7 = new ky[]{ky.av_fld, ky.av_fld, ky.ak_fld, ky.ag_fld};
+						ka.ak(var7, var1.cg());
+				}
+			} else {
+				this.ak(var1, var3, (byte)0);
+			}
+		}
 	}
 
 	@ObfuscatedName("ah")

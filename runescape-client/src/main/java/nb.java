@@ -1,5 +1,7 @@
+import java.io.EOFException;
 import net.runelite.api.GrandExchangeOffer;
 import net.runelite.api.GrandExchangeOfferState;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,68 +10,57 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("nb")
 @Implements({"GrandExchangeOffer"})
 public class nb implements GrandExchangeOffer {
-	@ObfuscatedGetter(
-		intValue = -2082911
-	)
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ah_fld;
+	@ObfuscatedGetter(
+		intValue = -2082911
+	)
+	public int ag_fld;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = -1164425433
 	)
+	public int ae_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int az_fld;
 	@ObfuscatedGetter(
 		intValue = -220330603
 	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int av_fld;
+	public int az_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "B"
 	)
 	byte ak_fld;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = -701801723
 	)
-	@ObfuscatedName("ae")
+	public int ah_fld;
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ae_fld;
 	@ObfuscatedGetter(
 		intValue = 626220965
 	)
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int ag_fld;
+	public int av_fld;
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Integer;)V"
 	)
 	void ah(Integer var1) {
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(II)V"
-	)
-	void ae(int var1, int var2) {
-		this.ak_fld &= -9;
-		if (1 == var1) {
-			this.ak_fld = (byte)(this.ak_fld | 8);
-		}
 	}
 
 	@ObfuscatedName("ak")
@@ -79,30 +70,24 @@ public class nb implements GrandExchangeOffer {
 	void ak(Integer var1, byte var2) {
 	}
 
-	@ObfuscatedName("getTotalQuantity")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	@Override
-	public int getTotalQuantity() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ar() {
+	public int aa() {
 		return this.ak_fld & 7;
 	}
 
-	@ObfuscatedName("getSpent")
+	@ObfuscatedName("st")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lui;Llu;)V"
 	)
-	@Override
-	public int getSpent() {
-		return this.ae_fld;
+	public static void st(ui var0, lu var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ag_fld = var1;
 	}
 
 	@ObfuscatedName("ag")
@@ -111,6 +96,16 @@ public class nb implements GrandExchangeOffer {
 	)
 	public int ag(int var1) {
 		return this.ak_fld & 7;
+	}
+
+	@ObfuscatedName("getItemId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getItemId")
+	@Override
+	public int getItemId() {
+		return this.ag_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -125,12 +120,12 @@ public class nb implements GrandExchangeOffer {
 	}
 
 	public nb(xi var1, boolean var2) {
-		this.ak_fld = xi.rp(var1, -448318265);
-		this.ah_fld = xi.tx(var1, 1183463577);
-		this.av_fld = var1.co();
-		this.ag_fld = var1.co();
-		this.az_fld = var1.co();
-		this.ae_fld = var1.co();
+		this.ak_fld = var1.cw();
+		this.ag_fld = var1.cm();
+		this.az_fld = var1.co((byte)-8);
+		this.av_fld = var1.co((byte)-128);
+		this.ae_fld = var1.co((byte)-59);
+		this.ah_fld = var1.co((byte)-84);
 		if (var2) {
 			int var4 = 0;
 			boolean var5 = false;
@@ -154,15 +149,23 @@ public class nb implements GrandExchangeOffer {
 					}
 
 					var1.au_fld--;
-					if (xi.tx(var1, 1078368666) != 0) {
+					if (var1.cm() != 0) {
 						throw new IllegalStateException("");
 					}
 
-					var4 = var1.co();
+					var4 = var1.co((byte)2);
 					var5 = true;
 				}
 			}
 		}
+	}
+
+	@ObfuscatedName("ve")
+	@ObfuscatedSignature(
+		descriptor = "()B"
+	)
+	public byte ve() {
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -172,34 +175,65 @@ public class nb implements GrandExchangeOffer {
 	void aw(Integer var1) {
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int as() {
+	public int ar() {
 		return this.ak_fld & 7;
 	}
 
-	@ObfuscatedName("qx")
+	@ObfuscatedName("es")
 	@ObfuscatedSignature(
 		descriptor = "(Lnb;I)V"
 	)
-	public static void qx(nb var0, int var1) {
+	public static void es(nb var0, int var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.ak_fld &= -8;
-		var0.ak_fld = (byte)(var0.ak_fld | var1 & 7);
+		var0.ak_fld = (byte)(var0.ak_fld & 1433125605);
+		if (1 == var1) {
+			var0.ak_fld = (byte)(var0.ak_fld | 8);
+		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	void ax(int var1) {
+	void al(int var1) {
 		this.ak_fld = (byte)(this.ak_fld & 861829633);
 		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("getPrice")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getPrice")
+	@Override
+	public int getPrice() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void au(int var1) {
+		this.ak_fld &= -8;
+		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("getTotalQuantity")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getTotalQuantity")
+	@Override
+	public int getTotalQuantity() {
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("af")
@@ -207,17 +241,66 @@ public class nb implements GrandExchangeOffer {
 		descriptor = "(I)V"
 	)
 	void af(int var1) {
+		this.ak_fld = (byte)(this.ak_fld & -881307288);
+		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void an(int var1) {
 		this.ak_fld &= -8;
 		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(II)V"
+	)
+	void az(int var1, int var2) {
+		this.ak_fld &= -8;
+		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void ax(int var1) {
+		this.ak_fld &= -8;
+		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	}
+
+	@ObfuscatedName("jk")
+	@ObfuscatedSignature(
+		descriptor = "(Llp;II)V"
+	)
+	public static void jk(lp var0, int var1, int var2) throws EOFException {
+		try {
+			var0.al_fld[var1] = var2;
+			var0.au((short)4229);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int ai() {
+		return (this.ak_fld & 8) == 8 ? 1 : 0;
 	}
 
 	@ObfuscatedName("getState")
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/GrandExchangeOfferState;"
 	)
+	@Export("getState")
 	@Override
 	public GrandExchangeOfferState getState() {
-		byte var1 = this.na();
+		byte var1 = this.ve();
 		boolean var2 = (var1 & 8) == 8;
 		boolean var3 = (var1 & 4) == 4;
 		if (var1 == 0) {
@@ -231,92 +314,45 @@ public class nb implements GrandExchangeOffer {
 		}
 	}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void al(int var1) {
-		this.ak_fld = (byte)(this.ak_fld & -881307288);
-		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void au(int var1) {
-		this.ak_fld &= -8;
-		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void an(int var1) {
-		this.ak_fld &= -8;
-		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
-	}
-
-	@ObfuscatedName("aa")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int aa() {
+	public int aq() {
 		return (this.ak_fld & 8) == 8 ? 1 : 0;
 	}
 
-	@ObfuscatedName("getItemId")
+	@ObfuscatedName("getSpent")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getSpent")
 	@Override
-	public int getItemId() {
+	public int getSpent() {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ok")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lnb;II)V"
 	)
-	public int ai() {
-		return (this.ak_fld & 8) == 8 ? 1 : 0;
+	public static void ok(nb var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ak_fld &= -9;
+			if (1 == var1) {
+				var0.ak_fld = (byte)(var0.ak_fld | 8);
+			}
+		}
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(C)Z"
+		descriptor = "(CI)Z"
 	)
 	static final boolean az(char var0) {
 		return var0 == 160 || ' ' == var0 || var0 == '_' || '-' == var0;
-	}
-
-	@ObfuscatedName("na")
-	@ObfuscatedSignature(
-		descriptor = "()B"
-	)
-	public byte na() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("getQuantitySold")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getQuantitySold() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void am(int var1) {
-		this.ak_fld = (byte)(this.ak_fld & 1433125605);
-		if (1 == var1) {
-			this.ak_fld = (byte)(this.ak_fld | 8);
-		}
 	}
 
 	@ObfuscatedName("ae")
@@ -337,29 +373,40 @@ public class nb implements GrandExchangeOffer {
 		throw new RuntimeException();
 	}
 
-	@ObfuscatedName("getPrice")
+	@ObfuscatedName("ms")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lmw;)Z"
 	)
-	@Override
-	public int getPrice() {
-		return this.av_fld;
+	public static boolean ms(mw var0) {
+		return var0.aw_fld.al_fld != null;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int aq() {
+	public int ay() {
 		return (this.ak_fld & 8) == 8 ? 1 : 0;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("getQuantitySold")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getQuantitySold")
+	@Override
+	public int getQuantitySold() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
 	)
-	void az(int var1, int var2) {
-		this.ak_fld &= -8;
-		this.ak_fld = (byte)(this.ak_fld | var1 & 7);
+	void ae(int var1, int var2) {
+		this.ak_fld &= -9;
+		if (1 == var1) {
+			this.ak_fld = (byte)(this.ak_fld | 8);
+		}
 	}
 }

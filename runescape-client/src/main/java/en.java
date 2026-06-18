@@ -1,7 +1,6 @@
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Shape;
-import java.awt.event.FocusEvent;
 import java.awt.geom.Area;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
@@ -11,6 +10,7 @@ import net.runelite.api.ItemLayer;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -21,71 +21,71 @@ import net.runelite.api.coords.WorldPoint;
 @ObfuscatedName("en")
 @Implements({"ItemLayer", "TileObject"})
 public class en implements ItemLayer, TileObject {
-	@ObfuscatedGetter(
-		longValue = -3709018470773594609L
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	long aw_fld;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	em ae_fld;
 	@ObfuscatedGetter(
-		intValue = 1658697135
+		longValue = -3709018470773594609L
 	)
-	@ObfuscatedName("az")
+	long aw_fld;
+	@ObfuscatedName("yn")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
+	public int yn_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lem;"
 	)
 	em av_fld;
-	@ObfuscatedName("bo")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int bo_fld;
 	@ObfuscatedGetter(
-		intValue = -819998019
+		intValue = 1658697135
 	)
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ak_fld;
-	@ObfuscatedName("mb")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int mb_fld;
-	@ObfuscatedGetter(
-		intValue = -65086195
-	)
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ag_fld;
-	@ObfuscatedGetter(
-		intValue = -738574689
-	)
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ay_fld;
+	int az_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lem;"
 	)
 	em ah_fld;
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	static int bo_fld;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -819998019
+	)
+	int ak_fld;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -65086195
+	)
+	int ag_fld;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -738574689
+	)
+	int ay_fld;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	em ae_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -97,10 +97,135 @@ public class en implements ItemLayer, TileObject {
 	)
 	static jq gs_fld;
 
+	@ObfuscatedName("getMinimapLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getMinimapLocation")
+	@Override
+	public Point getMinimapLocation() {
+		return Perspective.localToMinimap(og.ci_fld, this.getLocalLocation());
+	}
+
+	@ObfuscatedName("io")
+	@ObfuscatedSignature(
+		descriptor = "()Lem;"
+	)
+	public em getBottom() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getZ")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getZ")
+	@Override
+	public int getZ() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("getY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getY")
+	@Override
+	public int getY() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("getCanvasLocation")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasLocation")
+	@Override
+	public Point getCanvasLocation(int var1) {
+		return Perspective.localToCanvas(og.ci_fld, this.getLocalLocation(), this.getPlane(), var1);
+	}
+
+	@ObfuscatedName("getLocalLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
+	)
+	@Export("getLocalLocation")
+	@Override
+	public LocalPoint getLocalLocation() {
+		return new LocalPoint(this.getX(), this.getY(), this.bg());
+	}
+
+	@ObfuscatedName("isOpShown")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	@Export("isOpShown")
+	@Override
+	public boolean isOpShown(int var1) {
+		cs var2 = this.getWorldView().tt(this.getHash());
+		return var2 == null ? true : var2.fz(var1);
+	}
+
+	en() {
+	}
+
+	@ObfuscatedName("oq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void oq(int var1) {
+		this.yn_fld = var1;
+	}
+
+	@ObfuscatedName("getPlane")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getPlane")
+	@Override
+	public int getPlane() {
+		return this.yn_fld;
+	}
+
+	@ObfuscatedName("getCanvasTextLocation")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Graphics2D;Ljava/lang/String;I)Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasTextLocation")
+	@Override
+	public Point getCanvasTextLocation(Graphics2D var1, String var2, int var3) {
+		return Perspective.getCanvasTextLocation(og.ci_fld, var1, this.getLocalLocation(), var2, var3);
+	}
+
+	@ObfuscatedName("getHash")
+	@ObfuscatedSignature(
+		descriptor = "()J"
+	)
+	@Export("getHash")
+	@Override
+	public long getHash() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("bg")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bg() {
+		long var1 = this.getHash();
+		int var3 = (int)(var1 >> 52 & 4095L);
+		if (var3 == 4095L) {
+			var3 = -1;
+		}
+
+		return var3;
+	}
+
 	@ObfuscatedName("getClickbox")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/awt/Shape;"
 	)
+	@Export("getClickbox")
 	@Override
 	public Shape getClickbox() {
 		try {
@@ -123,67 +248,6 @@ public class en implements ItemLayer, TileObject {
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
 		}
-	}
-
-	@ObfuscatedName("getLocalLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
-	)
-	@Override
-	public LocalPoint getLocalLocation() {
-		return new LocalPoint(this.getX(), this.getY(), this.gh());
-	}
-
-	@Nullable
-	@ObfuscatedName("getOpOverride")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
-	)
-	@Override
-	public String getOpOverride(int var1) {
-		cs var2 = this.getWorldView().dg(this.getHash());
-		return var2 == null ? null : var2.ky(var1);
-	}
-
-	@ObfuscatedName("kk")
-	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/awt/event/FocusEvent;)V"
-	)
-	public static void kk(tf var0, FocusEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		tf.rl_fld = false;
-	}
-
-	@ObfuscatedName("getCanvasLocation")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasLocation(int var1) {
-		return Perspective.localToCanvas(og.ci_fld, this.getLocalLocation(), this.getPlane(), var1);
-	}
-
-	en() {
-	}
-
-	@ObfuscatedName("gn")
-	@ObfuscatedSignature(
-		descriptor = "()Lem;"
-	)
-	public em getMiddle() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("getMinimapLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getMinimapLocation() {
-		return Perspective.localToMinimap(og.ci_fld, this.getLocalLocation());
 	}
 
 	@ObfuscatedName("bx")
@@ -236,7 +300,7 @@ public class en implements ItemLayer, TileObject {
 			}
 
 			if (var0.equalsIgnoreCase("displayfps")) {
-				cn.of(cx.kq_fld, 239763703);
+				cx.kq_fld.af(239763703);
 			}
 
 			if (var0.equalsIgnoreCase("renderself")) {
@@ -252,7 +316,7 @@ public class en implements ItemLayer, TileObject {
 
 				try {
 					int var3 = Integer.parseInt(var8[1]);
-					cn.tu(cx.kq_fld, var3);
+					cx.kq_fld.bk(var3, 2132603015);
 				} catch (NumberFormatException var6) {
 					io.ag(
 						99,
@@ -288,7 +352,7 @@ public class en implements ItemLayer, TileObject {
 					return;
 				}
 
-				io.ag(99, "", String.format("%d", (Object[])(new Object[]{cn.ka(cx.kq_fld, (byte)1)})));
+				io.ag(99, "", String.format("%d", (Object[])(new Object[]{cx.kq_fld.ax((byte)1)})));
 			}
 
 			if (client.jl_fld >= 2) {
@@ -316,11 +380,11 @@ public class en implements ItemLayer, TileObject {
 						return;
 					}
 
-					cn.ij(cx.kq_fld, true, 1346630224);
+					cx.kq_fld.au(true, 1346630224);
 				}
 
 				if (var0.equalsIgnoreCase("fpsoff")) {
-					cn.ij(cx.kq_fld, false, 1039805218);
+					cx.kq_fld.au(false, 1039805218);
 				}
 
 				if (var0.equalsIgnoreCase("gc")) {
@@ -379,147 +443,50 @@ public class en implements ItemLayer, TileObject {
 				}
 			}
 
-			jm var12 = gi.ak(jb.cx_fld, client.aq_fld.av_fld);
-			var12.ay_fld.bc(var0.length() + 1);
-			var12.ay_fld.cc(var0, -684168449);
-			client.aq_fld.az(var12);
+			jm var12 = gi.ak(jb.cx_fld, client.appletStub.av_fld);
+			var12.ay_fld.ea(var0.length() + 1);
+			xi.ph(var12.ay_fld, var0, -684168449);
+			client.appletStub.az(var12);
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
 		}
 	}
 
-	@ObfuscatedName("getHeight")
+	@ObfuscatedName("ms")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()Lem;"
 	)
-	@Override
-	public int getHeight() {
-		return this.ay_fld;
+	public em getTop() {
+		return this.ah_fld;
 	}
 
-	@ObfuscatedName("fe")
+	@ObfuscatedName("mq")
 	@ObfuscatedSignature(
 		descriptor = "()Ldx;"
 	)
 	public dx getWorldView() {
-		return dx.ws(this.gh());
-	}
-
-	@ObfuscatedName("getPlane")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getPlane() {
-		return this.mb_fld;
+		return dx.bu(this.bg());
 	}
 
 	@ObfuscatedName("getId")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getId")
 	@Override
 	public int getId() {
 		long var1 = this.getHash();
 		return (int)(var1 >>> 20 & 4294967295L);
 	}
 
-	@ObfuscatedName("isOpShown")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	@Override
-	public boolean isOpShown(int var1) {
-		cs var2 = this.getWorldView().dg(this.getHash());
-		return var2 == null ? true : var2.ap(var1);
-	}
-
-	@ObfuscatedName("getCanvasTextLocation")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics2D;Ljava/lang/String;I)Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasTextLocation(Graphics2D var1, String var2, int var3) {
-		return Perspective.getCanvasTextLocation(og.ci_fld, var1, this.getLocalLocation(), var2, var3);
-	}
-
-	@ObfuscatedName("gv")
-	@ObfuscatedSignature(
-		descriptor = "()Lem;"
-	)
-	public em getBottom() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("getCanvasLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasLocation() {
-		return this.getCanvasLocation(0);
-	}
-
-	@ObfuscatedName("gh")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int gh() {
-		long var1 = this.getHash();
-		int var3 = (int)(var1 >> 52 & 4095L);
-		if (var3 == 4095L) {
-			var3 = -1;
-		}
-
-		return var3;
-	}
-
-	@ObfuscatedName("getZ")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getZ() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("getY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getY() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getX() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("qy")
-	@ObfuscatedSignature(
-		descriptor = "(Lnj;)Lvc;"
-	)
-	public static vc qy(nj var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ah(null);
-	}
-
 	@ObfuscatedName("getWorldLocation")
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/coords/WorldPoint;"
 	)
+	@Export("getWorldLocation")
 	@Override
 	public WorldPoint getWorldLocation() {
-		dx var1 = dx.ws(this.gh());
+		dx var1 = dx.bu(this.bg());
 		if (var1 == null) {
 			var1 = bw.dk_fld;
 		}
@@ -536,27 +503,11 @@ public class en implements ItemLayer, TileObject {
 		}
 	}
 
-	@ObfuscatedName("oq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void oq(int var1) {
-		this.mb_fld = var1;
-	}
-
-	@ObfuscatedName("getHash")
-	@ObfuscatedSignature(
-		descriptor = "()J"
-	)
-	@Override
-	public long getHash() {
-		return this.aw_fld;
-	}
-
 	@ObfuscatedName("getCanvasTilePoly")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/awt/Polygon;"
 	)
+	@Export("getCanvasTilePoly")
 	@Override
 	public Polygon getCanvasTilePoly() {
 		int var1 = 1;
@@ -570,17 +521,59 @@ public class en implements ItemLayer, TileObject {
 		return Perspective.getCanvasTileAreaPoly(og.ci_fld, this.getLocalLocation(), var1, var2, this.getPlane(), 0);
 	}
 
-	@ObfuscatedName("ma")
+	@ObfuscatedName("getX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getX")
+	@Override
+	public int getX() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("getHeight")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHeight")
+	@Override
+	public int getHeight() {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("gd")
 	@ObfuscatedSignature(
 		descriptor = "()Lem;"
 	)
-	public em getTop() {
-		return this.av_fld;
+	public em getMiddle() {
+		return this.ae_fld;
+	}
+
+	@Nullable
+	@ObfuscatedName("getOpOverride")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	@Export("getOpOverride")
+	@Override
+	public String getOpOverride(int var1) {
+		cs var2 = this.getWorldView().tt(this.getHash());
+		return var2 == null ? null : var2.qf(var1);
+	}
+
+	@ObfuscatedName("getCanvasLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasLocation")
+	@Override
+	public Point getCanvasLocation() {
+		return this.getCanvasLocation(0);
 	}
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFIII)V"
+		descriptor = "(FFFFIIII)V"
 	)
 	public static final void ax(float var0, float var1, float var2, float var3, int var4, int var5, int var6) {
 		if (!ej.bk_fld) {

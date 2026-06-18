@@ -39,12 +39,12 @@ public class sv implements xm {
 		descriptor = "Lsv;"
 	)
 	static sv aw_fld = new sv(6, 6);
-	@ObfuscatedGetter(
-		intValue = -323232499
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -323232499
 	)
 	int ar_fld;
 	@ObfuscatedName("as")
@@ -57,12 +57,12 @@ public class sv implements xm {
 		descriptor = "Lsv;"
 	)
 	static sv ay_fld = new sv(7, 7);
-	@ObfuscatedGetter(
-		intValue = -1626279033
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1626279033
 	)
 	int af_fld;
 
@@ -80,14 +80,6 @@ public class sv implements xm {
 		return this.af_fld;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lvr;II)I"
-	)
-	public static int aq(vr var0, int var1, int var2) {
-		return var0.ag_fld[var1][var2];
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -97,12 +89,16 @@ public class sv implements xm {
 		return this.af_fld;
 	}
 
-	@ObfuscatedName("zu")
+	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)I"
+		descriptor = "(Luy;Luy;)V"
 	)
-	public static int zu(uk var0) {
-		return var0.au_fld;
+	public static void ii(uy var0, uy var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			uy.es(var0, var1, -464363234);
+		}
 	}
 
 	@ObfuscatedName("av")

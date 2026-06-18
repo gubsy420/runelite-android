@@ -20,12 +20,12 @@ public class fe extends vc {
 		descriptor = "I"
 	)
 	static int bh_fld;
-	@ObfuscatedGetter(
-		intValue = -365804263
-	)
 	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -365804263
 	)
 	static int bg_fld;
 	@ObfuscatedName("bl")
@@ -54,21 +54,9 @@ public class fe extends vc {
 	)
 	static int av_fld;
 
-	@ObfuscatedName("sw")
-	@ObfuscatedSignature(
-		descriptor = "(Lfe;I)Z"
-	)
-	public static boolean sw(fe var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak_fld[var1].af_fld;
-	}
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Ljava/lang/String;"
+		descriptor = "(CIB)Ljava/lang/String;"
 	)
 	public static String aa(char var0, int var1) {
 		char[] var3 = new char[var1];
@@ -80,20 +68,24 @@ public class fe extends vc {
 		return new String(var3);
 	}
 
-	@ObfuscatedName("rh")
+	@ObfuscatedName("pu")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lfe;"
+		descriptor = "(I)Z"
 	)
-	public static fe rh(int var0) throws EOFException {
-		try {
-			return gz.ag(var0);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
+	public boolean pu(int var1) {
+		return this.ag(var1);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z"
+	)
+	public boolean ag(int var1) {
+		return this.ak_fld[var1].af_fld;
 	}
 
 	fe(ub var1, ub var2, int var3) throws EOFException {
-		int var4 = rl1.ei(var1, var3);
+		int var4 = var1.ce(var3, -532144643);
 		this.ak_fld = new eq[var4];
 		ea var5 = null;
 		int[] var6 = var1.cp(var3, (byte)50);
@@ -126,27 +118,23 @@ public class fe extends vc {
 		return this.ak_fld[var1].af_fld;
 	}
 
-	@ObfuscatedName("xv")
+	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(I)Lfe;"
 	)
-	public boolean xv(int var1) {
-		return sw(this, var1);
+	public static fe ci(int var0) throws EOFException {
+		try {
+			return gz.ag(var0);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
 	}
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	public static boolean aw() {
 		return !mb.ay_fld.isEmpty();
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z"
-	)
-	public boolean ag(int var1, int var2) {
-		return this.ak_fld[var1].af_fld;
 	}
 }

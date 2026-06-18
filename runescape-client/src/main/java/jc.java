@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("jc")
 public class jc {
-	@ObfuscatedGetter(
-		longValue = -7230516611136759705L
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -7230516611136759705L
 	)
 	static long ak_fld;
 	@ObfuscatedName("as")
@@ -32,6 +32,14 @@ public class jc {
 		descriptor = "I"
 	)
 	public static int at_fld;
+
+	@ObfuscatedName("de")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;)Lko;"
+	)
+	public static ko de(rg var0) {
+		return var0.af_fld;
+	}
 
 	jc() throws Throwable {
 		throw new Error();

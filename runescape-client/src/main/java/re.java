@@ -34,26 +34,6 @@ public class re extends rc {
 	)
 	static int az_fld;
 
-	@ObfuscatedName("wl")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;)I"
-	)
-	public static int wl(uk var0) {
-		return var0.au_fld;
-	}
-
-	@ObfuscatedName("uu")
-	@ObfuscatedSignature(
-		descriptor = "(Lev;)I"
-	)
-	public static int uu(ev var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.do_fld;
-		}
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;IS)V"
@@ -66,7 +46,7 @@ public class re extends rc {
 					return;
 				}
 
-				aax var10 = new aax(xi.kc(var1, -1278077725), this.ae_fld);
+				aax var10 = new aax(xi.at(var1, -1278077725), this.ae_fld);
 				if (!var10.az(1004146027)) {
 					throw new IllegalStateException();
 				}
@@ -75,9 +55,9 @@ public class re extends rc {
 				la.fq_fld.am(var10.ak(990853902), var11, -1524373658);
 			} else {
 				boolean var5 = 0 != (var4 & 1);
-				aax var6 = new aax(xi.kc(var1, -1927468051), this.ae_fld);
-				aax var7 = new aax(xi.kc(var1, -966904464), this.ae_fld);
-				xi.kc(var1, -289724133);
+				aax var6 = new aax(xi.at(var1, -1927468051), this.ae_fld);
+				aax var7 = new aax(xi.at(var1, -966904464), this.ae_fld);
+				xi.at(var1, -289724133);
 				if (!var6.az(1004146027)) {
 					throw new IllegalStateException();
 				}
@@ -91,7 +71,7 @@ public class re extends rc {
 					rt var9 = (rt)this.bt(var7, (byte)-117);
 					if (null != var9 && var8 != var9) {
 						if (var8 != null) {
-							this.cc(var9, -1116861132);
+							this.bu(var9, -1116861132);
 						} else {
 							var8 = var9;
 						}
@@ -136,35 +116,61 @@ public class re extends rc {
 		return new rt[var1];
 	}
 
-	@ObfuscatedName("dr")
+	@ObfuscatedName("kn")
 	@ObfuscatedSignature(
-		descriptor = "(Lag;)Ljava/lang/Object;"
+		descriptor = "(Lre;Lxi;I)V"
 	)
-	public static Object dr(ag var0) {
-		return var0.ag_fld.ak(var0.ak_fld);
-	}
-
-	@ObfuscatedName("wx")
-	@ObfuscatedSignature(
-		descriptor = "(Lzv;[II)[I"
-	)
-	public static int[] wx(zv var0, int[] var1, int var2) {
+	public static void kn(re var0, xi var1, int var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		if (var2 == 0) {
-			return null;
-		} else {
-			int[] var3 = new int[var2];
-			float var4 = (float)var1.length / var2;
+		while (var1.au_fld < var2) {
+			int var3 = var1.cg();
+			if (4 == var3) {
+				aax var4 = new aax(xi.at(var1, 1122318081), var0.ae_fld);
+				if (!var4.az(1004146027)) {
+					throw new IllegalStateException();
+				}
 
-			for (int var5 = 0; var5 < var2; var5++) {
-				var3[var5] = var1[(int)(var5 * var4)];
+				boolean var5 = false;
+				la.fq_fld.am(var4.ak(-1263170383), var5, -1524373658);
+			} else {
+				boolean var9 = 0 != (var3 & 1);
+				aax var10 = new aax(xi.at(var1, 1562912432), var0.ae_fld);
+				aax var6 = new aax(xi.at(var1, -863657580), var0.ae_fld);
+				xi.at(var1, -512362241);
+				var10.az(1004146027);
+				rt var7 = (rt)var0.bt(var10, (byte)-67);
+				if (var9) {
+					rt var8 = (rt)var0.bt(var6, (byte)-32);
+					if (null != var8 && var7 != var8) {
+						if (var7 != null) {
+							var0.bu(var8, -298852729);
+						} else {
+							var7 = var8;
+						}
+					}
+				}
+
+				if (null != var7) {
+					var0.bq(var7, var10, var6, 2092619176);
+				} else if (var0.bl(-1440239599) < 400) {
+					int var12 = var0.bl(-1440239599);
+					var7 = (rt)var0.bc(var10, var6, (byte)41);
+					var7.ak_fld = var12;
+				}
 			}
-
-			return var3;
 		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "()Lrl;"
+	)
+	@Override
+	rl av() {
+		return new rt();
 	}
 
 	@ObfuscatedName("ae")
@@ -176,13 +182,71 @@ public class re extends rc {
 		return new rt();
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("tg")
 	@ObfuscatedSignature(
-		descriptor = "()Lrl;"
+		descriptor = "(Lre;Lxi;I)V"
 	)
-	@Override
-	rl av() {
-		return new rt();
+	public static void tg(re var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		while (var1.au_fld < var2) {
+			int var3 = var1.cg();
+			if (4 == var3) {
+				aax var4 = new aax(xi.at(var1, 2059281951), var0.ae_fld);
+				var4.az(1004146027);
+				boolean var5 = false;
+				la.fq_fld.am(var4.ak(-1100887208), var5, -1524373658);
+			} else {
+				boolean var9 = 0 != (var3 & 1);
+				aax var10 = new aax(xi.at(var1, -1200706541), var0.ae_fld);
+				aax var6 = new aax(xi.at(var1, 403878918), var0.ae_fld);
+				xi.at(var1, 1611450092);
+				if (!var10.az(1004146027)) {
+					throw new IllegalStateException();
+				}
+
+				rt var7 = (rt)var0.bt(var10, (byte)-75);
+				if (var9) {
+					rt var8 = (rt)var0.bt(var6, (byte)-116);
+					if (null != var8 && var7 != var8) {
+						if (var7 != null) {
+							var0.bu(var8, 501455394);
+						} else {
+							var7 = var8;
+						}
+					}
+				}
+
+				if (null != var7) {
+					var0.bq(var7, var10, var6, 1377670281);
+				} else if (var0.bl(-1440239599) < 400) {
+					int var12 = var0.bl(-1440239599);
+					var7 = (rt)var0.bc(var10, var6, (byte)21);
+					var7.ak_fld = var12 * 653442481;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;)V"
+	)
+	public static void hh(dr var0) {
+		if (var0.ar_fld != null) {
+			wh var1 = var0.ar_fld.av_fld;
+			if (var0.as_fld != null) {
+				wj.uv(var0.as_fld, 0, var0.as_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(var0.as_fld, 1958953740);
+			}
+
+			if (var0.af_fld != null) {
+				wj.uv(var0.af_fld, 0, var0.af_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(var0.af_fld, 2145777782);
+			}
+		}
 	}
 
 	@ObfuscatedName("ah")
@@ -235,50 +299,6 @@ public class re extends rc {
 		return new rt();
 	}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	public void al(xi var1, int var2) {
-		while (var1.au_fld < var2) {
-			int var3 = var1.cg();
-			if (4 == var3) {
-				aax var9 = new aax(xi.kc(var1, 2059281951), this.ae_fld);
-				var9.az(1004146027);
-				boolean var10 = false;
-				la.fq_fld.am(var9.ak(-1100887208), var10, -1524373658);
-			} else {
-				boolean var4 = 0 != (var3 & 1);
-				aax var5 = new aax(xi.kc(var1, -1200706541), this.ae_fld);
-				aax var6 = new aax(xi.kc(var1, 403878918), this.ae_fld);
-				xi.kc(var1, 1611450092);
-				if (!var5.az(1004146027)) {
-					throw new IllegalStateException();
-				}
-
-				rt var7 = (rt)this.bt(var5, (byte)-75);
-				if (var4) {
-					rt var8 = (rt)this.bt(var6, (byte)-116);
-					if (null != var8 && var7 != var8) {
-						if (var7 != null) {
-							this.cc(var8, 501455394);
-						} else {
-							var7 = var8;
-						}
-					}
-				}
-
-				if (null != var7) {
-					this.bq(var7, var5, var6, 1377670281);
-				} else if (this.bl(-1440239599) < 400) {
-					int var12 = this.bl(-1440239599);
-					var7 = (rt)this.bc(var5, var6, (byte)21);
-					var7.ak_fld = var12 * 653442481;
-				}
-			}
-		}
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
@@ -287,7 +307,7 @@ public class re extends rc {
 		while (var1.au_fld < var2) {
 			int var3 = var1.cg();
 			if (4 == var3) {
-				aax var9 = new aax(xi.kc(var1, -2130492557), this.ae_fld);
+				aax var9 = new aax(xi.at(var1, -2130492557), this.ae_fld);
 				if (!var9.az(1004146027)) {
 					throw new IllegalStateException();
 				}
@@ -296,9 +316,9 @@ public class re extends rc {
 				la.fq_fld.am(var9.ak(-932718459), var10, -1524373658);
 			} else {
 				boolean var4 = 0 != (var3 & 1);
-				aax var5 = new aax(xi.kc(var1, 1600561789), this.ae_fld);
-				aax var6 = new aax(xi.kc(var1, 2120216122), this.ae_fld);
-				xi.kc(var1, -1007219415);
+				aax var5 = new aax(xi.at(var1, 1600561789), this.ae_fld);
+				aax var6 = new aax(xi.at(var1, 2120216122), this.ae_fld);
+				xi.at(var1, -1007219415);
 				if (!var5.az(1004146027)) {
 					throw new IllegalStateException();
 				}
@@ -308,7 +328,7 @@ public class re extends rc {
 					rt var8 = (rt)this.bt(var6, (byte)-34);
 					if (null != var8 && var7 != var8) {
 						if (var7 != null) {
-							this.cc(var8, 53646853);
+							this.bu(var8, 53646853);
 						} else {
 							var7 = var8;
 						}
@@ -320,50 +340,6 @@ public class re extends rc {
 				} else if (this.bl(-1440239599) < 400) {
 					int var12 = this.bl(-1440239599);
 					var7 = (rt)this.bc(var5, var6, (byte)116);
-					var7.ak_fld = var12;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	public void ax(xi var1, int var2) {
-		while (var1.au_fld < var2) {
-			int var3 = var1.cg();
-			if (4 == var3) {
-				aax var9 = new aax(xi.kc(var1, 1122318081), this.ae_fld);
-				if (!var9.az(1004146027)) {
-					throw new IllegalStateException();
-				}
-
-				boolean var10 = false;
-				la.fq_fld.am(var9.ak(-1263170383), var10, -1524373658);
-			} else {
-				boolean var4 = 0 != (var3 & 1);
-				aax var5 = new aax(xi.kc(var1, 1562912432), this.ae_fld);
-				aax var6 = new aax(xi.kc(var1, -863657580), this.ae_fld);
-				xi.kc(var1, -512362241);
-				var5.az(1004146027);
-				rt var7 = (rt)this.bt(var5, (byte)-67);
-				if (var4) {
-					rt var8 = (rt)this.bt(var6, (byte)-32);
-					if (null != var8 && var7 != var8) {
-						if (var7 != null) {
-							this.cc(var8, -298852729);
-						} else {
-							var7 = var8;
-						}
-					}
-				}
-
-				if (null != var7) {
-					this.bq(var7, var5, var6, 2092619176);
-				} else if (this.bl(-1440239599) < 400) {
-					int var12 = this.bl(-1440239599);
-					var7 = (rt)this.bc(var5, var6, (byte)41);
 					var7.ak_fld = var12;
 				}
 			}

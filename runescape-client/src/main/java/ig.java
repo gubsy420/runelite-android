@@ -19,31 +19,23 @@ public abstract class ig extends vc {
 		this.ag_fld = var1;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	abstract boolean ag();
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	abstract boolean ah();
 
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	abstract boolean aw();
+
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
 	)
 	abstract Object av();
-
-	@ObfuscatedName("zk")
-	@ObfuscatedSignature(
-		descriptor = "(Lfz;)Z"
-	)
-	public static boolean zk(fz var0) {
-		return var0.ag_fld >= 128;
-	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -57,9 +49,9 @@ public abstract class ig extends vc {
 	)
 	abstract Object ak();
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	abstract boolean aw();
+	abstract boolean ag();
 }

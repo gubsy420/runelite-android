@@ -60,7 +60,7 @@ public class lr {
 
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int bc(int var0, ba var1, boolean var2) {
 		if (var0 == 5630) {

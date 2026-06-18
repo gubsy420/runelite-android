@@ -1,5 +1,5 @@
-import java.awt.event.WindowEvent;
 import net.runelite.api.ScriptEvent;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,12 +8,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("yz")
 @Implements({"ScriptEvent"})
 public class yz extends vw implements ScriptEvent {
-	@ObfuscatedGetter(
-		intValue = -1842485713
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1842485713
 	)
 	int ah_fld;
 	@ObfuscatedName("ag")
@@ -21,44 +21,44 @@ public class yz extends vw implements ScriptEvent {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	Object[] ag_fld;
-	@ObfuscatedGetter(
-		intValue = 2015393673
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1596122377
+		intValue = 2015393673
 	)
+	int av_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = -587577453
+		intValue = 1596122377
 	)
+	int aw_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 1811208177
+		intValue = -587577453
 	)
+	int ae_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = -196917065
+		intValue = 1811208177
 	)
+	int ar_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -196917065
 	)
 	int al_fld;
 	@ObfuscatedName("ay")
@@ -66,12 +66,12 @@ public class yz extends vw implements ScriptEvent {
 		descriptor = "Llu;"
 	)
 	lu ay_fld;
-	@ObfuscatedGetter(
-		intValue = 122425255
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 122425255
 	)
 	int as_fld;
 	@ObfuscatedName("ak")
@@ -89,39 +89,45 @@ public class yz extends vw implements ScriptEvent {
 		descriptor = "Llu;"
 	)
 	lu az_fld;
-	@ObfuscatedGetter(
-		intValue = -1842485713
-	)
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -520194263
+	)
 	int au_fld;
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String bn() {
+	public String bu() {
 		return this.af_fld;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Ljava/lang/Object;"
+	)
+	public Object[] az(int var1) {
+		return (Object[])this.ag_fld;
+	}
+
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String bi() {
+		return this.af_fld;
+	}
+
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bs() {
+	public int bx() {
 		return this.as_fld;
-	}
-
-	@ObfuscatedName("ou")
-	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/awt/event/WindowEvent;)V"
-	)
-	public static void ou(tf var0, WindowEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
 	}
 
 	@ObfuscatedName("ah")
@@ -132,21 +138,12 @@ public class yz extends vw implements ScriptEvent {
 		return this.av_fld;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	public int ay(int var1) {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("getTypedKeyCode")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getTypedKeyCode() {
-		return this.as_fld;
+	public int aw(int var1) {
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("cd")
@@ -157,29 +154,12 @@ public class yz extends vw implements ScriptEvent {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("getTypedKeyChar")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getTypedKeyChar() {
-		return this.ar_fld;
-	}
-
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	public int ar(int var1) {
 		return this.as_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int af(int var1) {
-		return this.ar_fld;
 	}
 
 	@ObfuscatedName("al")
@@ -190,20 +170,12 @@ public class yz extends vw implements ScriptEvent {
 		return this.aw_fld;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
+		descriptor = "()I"
 	)
-	public String au(int var1) {
-		return this.af_fld;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z"
-	)
-	public boolean an(byte var1) {
-		return this.ak_fld;
+	public int bh() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("aa")
@@ -212,6 +184,16 @@ public class yz extends vw implements ScriptEvent {
 	)
 	public static yb aa(lu var0) {
 		return ln.ak(var0);
+	}
+
+	@ObfuscatedName("getOpbase")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getOpbase")
+	@Override
+	public String getOpbase() {
+		return this.af_fld;
 	}
 
 	yz(yb var1) {
@@ -246,12 +228,34 @@ public class yz extends vw implements ScriptEvent {
 		return gs.ag(var0);
 	}
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int br() {
+	public int bo() {
 		return this.ar_fld;
+	}
+
+	@ObfuscatedName("xl")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;I)I"
+	)
+	public static int xl(yz var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ah_fld;
+		}
+	}
+
+	@ObfuscatedName("getArguments")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/Object;"
+	)
+	@Export("getArguments")
+	@Override
+	public Object[] getArguments() {
+		return (Object[])this.ag_fld;
 	}
 
 	@ObfuscatedName("ao")
@@ -262,17 +266,20 @@ public class yz extends vw implements ScriptEvent {
 		return gs.ag(var0);
 	}
 
-	@ObfuscatedName("run")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)Llu;"
 	)
-	@Override
-	public void run() {
-		try {
-			client.to(this);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
+	public lu as(int var1) {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/Object;"
+	)
+	public Object[] ap() {
+		return (Object[])this.ag_fld;
 	}
 
 	@ObfuscatedName("at")
@@ -283,53 +290,14 @@ public class yz extends vw implements ScriptEvent {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("bg")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean bg() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("bk")
+	@ObfuscatedName("getTypedKeyCode")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bk() {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ac() {
-		return this.av_fld;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int aj() {
-		return this.av_fld;
-	}
-
-	@ObfuscatedName("getMouseY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
+	@Export("getTypedKeyCode")
 	@Override
-	public int getMouseY() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bx() {
-		return this.ae_fld;
+	public int getTypedKeyCode() {
+		return this.as_fld;
 	}
 
 	@ObfuscatedName("bm")
@@ -337,27 +305,7 @@ public class yz extends vw implements ScriptEvent {
 		descriptor = "()I"
 	)
 	public int bm() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bt() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("ri")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;S)I"
-	)
-	public static int ri(yz var0, short var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.al_fld;
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("bd")
@@ -365,7 +313,85 @@ public class yz extends vw implements ScriptEvent {
 		descriptor = "()I"
 	)
 	public int bd() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("lb")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;I)I"
+	)
+	public static int lb(yz var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.au_fld;
+	}
+
+	@ObfuscatedName("qi")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;I)I"
+	)
+	public static int qi(yz var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ar_fld;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bz() {
 		return this.ae_fld;
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int br() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int be() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("sx")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;B)Z"
+	)
+	public static boolean sx(yz var0, byte var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld;
+		}
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bs() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("getOp")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOp")
+	@Override
+	public int getOp() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ai")
@@ -376,29 +402,34 @@ public class yz extends vw implements ScriptEvent {
 		return ln.ak(var0);
 	}
 
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bz() {
-		return this.as_fld;
-	}
-
 	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	public int bl() {
-		return this.ah_fld;
+		return this.as_fld;
 	}
 
-	@ObfuscatedName("getOp")
+	@ObfuscatedName("qf")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;I)Ljava/lang/String;"
+	)
+	public static String qf(yz var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.af_fld;
+		}
+	}
+
+	@ObfuscatedName("getMouseY")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getMouseY")
 	@Override
-	public int getOp() {
-		return this.ah_fld;
+	public int getMouseY() {
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("bf")
@@ -409,16 +440,14 @@ public class yz extends vw implements ScriptEvent {
 		return this.ay_fld;
 	}
 
-	@ObfuscatedName("hw")
+	@ObfuscatedName("getTypedKeyChar")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;I)[Ljava/lang/Object;"
+		descriptor = "()I"
 	)
-	public static Object[] hw(yz var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return (Object[])var0.ag_fld;
-		}
+	@Export("getTypedKeyChar")
+	@Override
+	public int getTypedKeyChar() {
+		return this.ar_fld;
 	}
 
 	@ObfuscatedName("by")
@@ -429,11 +458,19 @@ public class yz extends vw implements ScriptEvent {
 		return this.ay_fld;
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(S)I"
+	)
+	public int ax(short var1) {
+		return this.al_fld;
+	}
+
+	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String bu() {
+	public String bn() {
 		return this.af_fld;
 	}
 
@@ -445,45 +482,12 @@ public class yz extends vw implements ScriptEvent {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("jh")
-	@ObfuscatedSignature(
-		descriptor = "()Llu;"
-	)
-	public lu getSource() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bo() {
+	public int bp() {
 		return this.ar_fld;
-	}
-
-	@ObfuscatedName("getOpbase")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getOpbase() {
-		return this.af_fld;
-	}
-
-	@ObfuscatedName("nn")
-	@ObfuscatedSignature(
-		descriptor = "()Llu;"
-	)
-	public lu getTarget() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bh() {
-		return this.aw_fld;
 	}
 
 	@ObfuscatedName("bq")
@@ -494,38 +498,6 @@ public class yz extends vw implements ScriptEvent {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bw() {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ba() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int ae(int var1) {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bj() {
-		return this.al_fld;
-	}
-
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -534,23 +506,37 @@ public class yz extends vw implements ScriptEvent {
 		return this.al_fld;
 	}
 
-	@ObfuscatedName("wa")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;I)Llu;"
-	)
-	public static lu wa_lu(yz var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ay_fld;
-		}
-	}
-
-	@ObfuscatedName("be")
+	@ObfuscatedName("getMouseX")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int be() {
+	@Export("getMouseX")
+	@Override
+	public int getMouseX() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("wr")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;)I"
+	)
+	public static int wr(pd var0) {
+		return var0.av_fld;
+	}
+
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bw() {
+		return this.al_fld;
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int ba() {
 		return this.al_fld;
 	}
 
@@ -562,6 +548,22 @@ public class yz extends vw implements ScriptEvent {
 		return gs.ag(var0);
 	}
 
+	@ObfuscatedName("fh")
+	@ObfuscatedSignature(
+		descriptor = "()Llu;"
+	)
+	public lu getSource() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String bv() {
+		return this.af_fld;
+	}
+
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/Object;"
@@ -570,73 +572,81 @@ public class yz extends vw implements ScriptEvent {
 		return (Object[])this.ag_fld;
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Ljava/lang/Object;"
-	)
-	public Object[] az(int var1) {
-		return (Object[])this.ag_fld;
-	}
-
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	public int aw(int var1) {
-		return this.aw_fld;
+	public int ay(int var1) {
+		return this.al_fld;
 	}
 
-	@ObfuscatedName("wa")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;I)I"
+		descriptor = "()Llu;"
 	)
-	public static int wa(yz var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ae_fld;
-	}
-
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bp() {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu as(int var1) {
+	public lu getTarget() {
 		return this.ay_fld;
 	}
 
-	@ObfuscatedName("getArguments")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
+		descriptor = "(I)I"
 	)
-	@Override
-	public Object[] getArguments() {
-		return (Object[])this.ag_fld;
+	public int af(int var1) {
+		return this.ah_fld;
 	}
 
-	@ObfuscatedName("getMouseX")
+	@ObfuscatedName("run")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	@Export("run")
+	@Override
+	public void run() {
+		try {
+			client.wk(this);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public String au(int var1) {
+		return this.af_fld;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z"
+	)
+	public boolean an(byte var1) {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	@Override
-	public int getMouseX() {
-		return this.av_fld;
+	public int aj() {
+		return this.ae_fld;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "(S)I"
+		descriptor = "()I"
 	)
-	public int ax(short var1) {
-		return this.al_fld;
+	public int bt() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int ae(int var1) {
+		return this.au_fld;
 	}
 }

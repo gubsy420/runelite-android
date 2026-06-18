@@ -5,12 +5,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("hy")
 public class hy extends ho {
-	@ObfuscatedGetter(
-		intValue = -1786729189
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1786729189
 	)
 	int ag_fld;
 	@ObfuscatedName("ad")
@@ -60,21 +60,21 @@ public class hy extends ho {
 	)
 	static int bh_fld;
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void az(xi var1) {
+	void av(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			xi.ob(var1, 925935629);
+			var1.cu();
 		}
 
-		this.ak_fld = var1.ch();
-		this.ag_fld = xi.tx(var1, 1387046840);
-		this.az_fld = xi.rp(var1, -1960473387);
-		xi.ob(var1, -1014031500);
+		this.ak_fld = var1.cl();
+		this.ag_fld = var1.cm();
+		this.az_fld = var1.cw();
+		var1.cu();
 	}
 
 	@ObfuscatedName("ak")
@@ -85,21 +85,13 @@ public class hy extends ho {
 	void ak(xi var1, int var2) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			xi.ob(var1, -2072870123);
+			var1.cu();
 		}
 
-		this.ak_fld = var1.ch();
-		this.ag_fld = xi.tx(var1, 718607721);
-		this.az_fld = xi.rp(var1, -152750064);
-		xi.ob(var1, -525920078);
-	}
-
-	@ObfuscatedName("fb")
-	@ObfuscatedSignature(
-		descriptor = "(Lay;)Z"
-	)
-	public static boolean fb(ay var0) {
-		return var0.av_fld.isDone();
+		this.ak_fld = var1.cl();
+		this.ag_fld = var1.cm();
+		this.az_fld = var1.cw();
+		var1.cu();
 	}
 
 	@ObfuscatedName("ah")
@@ -115,33 +107,21 @@ public class hy extends ho {
 		var1.ag(var2, -1613729020);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void ae(xi var1) {
+	void az(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			xi.ob(var1, 512021501);
+			var1.cu();
 		}
 
-		this.ak_fld = var1.ch();
-		this.ag_fld = xi.tx(var1, 1977672211);
-		this.az_fld = xi.rp(var1, 3968468);
-		xi.ob(var1, 335847961);
-	}
-
-	@ObfuscatedName("df")
-	@ObfuscatedSignature(
-		descriptor = "(Lku;)V"
-	)
-	public static void df(ku var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ax_fld = 0;
+		this.ak_fld = var1.cl();
+		this.ag_fld = var1.cm();
+		this.az_fld = var1.cw();
+		var1.cu();
 	}
 
 	@ObfuscatedName("aw")
@@ -157,21 +137,21 @@ public class hy extends ho {
 		var1.ag(var2, -1757160166);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void av(xi var1) {
+	void ae(xi var1) {
 		if (var1.cg() != -828161769) {
 			var1.au_fld--;
-			xi.ob(var1, 1223927121);
+			var1.cu();
 		}
 
-		this.ak_fld = var1.ch();
-		this.ag_fld = xi.tx(var1, 1048755254);
-		this.az_fld = xi.rp(var1, -1734165753);
-		xi.ob(var1, 1067180530);
+		this.ak_fld = var1.cl();
+		this.ag_fld = var1.cm();
+		this.az_fld = var1.cw();
+		var1.cu();
 	}
 
 	hy(hm var1) {
@@ -181,7 +161,7 @@ public class hy extends ho {
 
 	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Llu;)V"
+		descriptor = "(Llu;Llu;I)V"
 	)
 	static void cz(lu var0, lu var1) {
 		if (var0.bx_fld == 0) {
@@ -211,15 +191,15 @@ public class hy extends ho {
 
 	@ObfuscatedName("fu")
 	@ObfuscatedSignature(
-		descriptor = "(Lds;IIII)V"
+		descriptor = "(Lds;IIIII)V"
 	)
 	static final void fu(ds var0, int var1, int var2, int var3, int var4) throws EOFException {
 		try {
-			boolean var6 = ev.jb(var0, false);
+			boolean var6 = ev.ti(var0, false);
 			if (var6) {
 				int var12 = 295181013;
 				pp var13 = var0.ah_fld;
-				if (client.nr_fld.ag_fld < 400) {
+				if (client.nr_fld.ot_fld < 400) {
 					if (var13.dy_fld != null) {
 						var13 = var13.ar((byte)6);
 					}
@@ -229,9 +209,9 @@ public class hy extends ho {
 						}
 					} else if (var13.df_fld && (!var13.dp_fld || client.kl_fld == var1)) {
 						int var14 = sq.ei();
-						String var15 = var0.ay((byte)1);
-						if (var13.dx_fld != 0 && 0 != var0.da_fld) {
-							int var16 = var0.da_fld != -1 ? var0.da_fld : var13.dx_fld;
+						String var15 = ds.lh(var0, (byte)1);
+						if (var13.dx_fld != 0 && 0 != var0.bo_fld) {
+							int var16 = var0.bo_fld != -1 ? var0.bo_fld : var13.dx_fld;
 							int var19 = var14 - var16;
 							String var18;
 							if (var19 < -9) {

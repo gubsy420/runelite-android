@@ -123,41 +123,6 @@ public class nt {
 		return var5;
 	}
 
-	@ObfuscatedName("ze")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;Lxj;)V"
-	)
-	public static void ze(di var0, xj var1) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			di.lk(var0, 1442419582);
-			var1.ap(-1765525869);
-			int var2 = client.dj_fld * -1593647060;
-			cl var3 = var0.av_fld[var2];
-			int var4 = var1.ar(30, -106081977);
-			var3.ag(-1);
-			kj.am(var3.az_fld, var4);
-			var3.av_fld = 0;
-			var0.al_fld = 0;
-			var0.az_fld[(var0.al_fld += 1227014965) * -1482869773 - 1] = var2;
-			var0.au_fld = 0;
-
-			for (int var5 = 1; var5 < 2048; var5++) {
-				if (var5 != var2) {
-					int var6 = var1.ar(18, -106081977);
-					int var7 = var6 >> 16;
-					int var8 = var6 >> 8 & -1813100345;
-					int var9 = var6 & -252866092;
-					var0.av_fld[var5].ag(kj.ak(var7, var8, var9));
-					var0.as_fld[(var0.au_fld += -260300649) * 1540972327 - 1] = var5;
-				}
-			}
-
-			var1.as(366283578);
-		}
-	}
-
 	@ObfuscatedName("fc")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;I)V"
@@ -165,10 +130,10 @@ public class nt {
 	static void fc(int var0, int var1, int var2, int var3, String var4, int var5) throws EOFException {
 		int var6 = var0 >>> 16;
 		int var7 = var0 & 65535;
-		lu var8 = cf.cg_fld.ag(var1, var2, 429680137);
+		lu var8 = cf.cg_fld.ag(var1, var2);
 		if (null != var8) {
 			if (var8.ft_fld != null) {
-				yz var9 = yb.jo(tu.ak(var8).av((Object[])var8.ft_fld, 2125813735).au(var7, -1509689627).ae(var6, -1135016894), var4, 2076456789).ax(-554383950);
+				yz var9 = yb.vn(yb.mn(tu.ak(var8).av((Object[])var8.ft_fld, 2125813735).aw(var7, -1509689627).ay(var6, -1135016894), var4, 2076456789), -554383950);
 				va.ak(var9);
 			}
 
@@ -184,20 +149,20 @@ public class nt {
 							return;
 						}
 
-						jm var10 = gi.ak(jb.dx_fld, client.aq_fld.av_fld);
-						xi.ld(var10.ay_fld, var1, (byte)107);
-						var10.ay_fld.bw(var2);
-						var10.ay_fld.bw(var3);
-						var10.ay_fld.bc(var7);
-						client.aq_fld.az(var10);
+						jm var10 = gi.ak(jb.dx_fld, client.appletStub.av_fld);
+						var10.ay_fld.eb(var1);
+						xi.vy(var10.ay_fld, var2);
+						xi.vy(var10.ay_fld, var3);
+						var10.ay_fld.ea(var7);
+						client.appletStub.az(var10);
 					} else {
-						jm var12 = gi.ak(jb.dy_fld, client.aq_fld.av_fld);
-						xi.ld(var12.ay_fld, var1, (byte)105);
-						var12.ay_fld.bw(var2);
-						var12.ay_fld.bw(var3);
-						var12.ay_fld.bc(var7);
-						var12.ay_fld.bc(var6 - 1);
-						client.aq_fld.az(var12);
+						jm var12 = gi.ak(jb.dy_fld, client.appletStub.av_fld);
+						var12.ay_fld.eb(var1);
+						xi.vy(var12.ay_fld, var2);
+						xi.vy(var12.ay_fld, var3);
+						var12.ay_fld.ea(var7);
+						var12.ay_fld.ea(var6 - 1);
+						client.appletStub.az(var12);
 					}
 				}
 			}
@@ -693,7 +658,7 @@ public class nt {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ag(int var0) {
 		return var0 >> 11 & 63;

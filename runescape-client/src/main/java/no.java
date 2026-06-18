@@ -1,5 +1,6 @@
 import java.util.Collection;
 import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -16,13 +17,25 @@ public class no implements Iterable, Collection {
 	)
 	vw ak_fld = new vw();
 
+	@ObfuscatedName("yi")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Ljava/lang/Object;)Z"
+	)
+	public static boolean yi(no var0, Object var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		throw new RuntimeException();
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	public void ag() {
-		while (this.ak_fld.hg_vw != this.ak_fld) {
-			this.ak_fld.hg_vw.gy_void();
+		while (this.ak_fld.hw_fld != this.ak_fld) {
+			this.ak_fld.hw_fld.gy();
 		}
 	}
 
@@ -31,22 +44,22 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;Lvw;)V"
 	)
 	public static void ak(vw var0, vw var1) {
-		if (var0.hw_fld != null) {
-			var0.gy_void();
+		if (var0.hg_fld != null) {
+			var0.gy();
 		}
 
-		var0.hw_fld = var1;
-		var0.hg_vw = var1.hg_vw;
-		var0.hw_fld.hg_vw = var0;
-		var0.hg_vw.hw_fld = var0;
+		var0.hg_fld = var1;
+		var0.hw_fld = var1.hw_fld;
+		var0.hg_fld.hw_fld = var0;
+		var0.hw_fld.hg_fld = var0;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "(Lvw;)Z"
 	)
-	boolean al(vw var1) {
-		this.az(var1);
+	boolean bb(vw var1) {
+		dx(this, var1);
 		return true;
 	}
 
@@ -54,9 +67,20 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
 	)
+	@Export("addAll")
 	@Override
 	public boolean addAll(Collection var1) {
 		throw new RuntimeException();
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ax() {
+		while (this.ak_fld.hw_fld != this.ak_fld) {
+			this.ak_fld.hw_fld.gy();
+		}
 	}
 
 	@ObfuscatedName("ae")
@@ -64,11 +88,11 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ae() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			return null;
 		} else {
-			var1.gy_void();
+			var1.gy();
 			return var1;
 		}
 	}
@@ -78,25 +102,17 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ah() {
-		return this.aj(null);
+		return this.aw(null);
 	}
 
-	@ObfuscatedName("om")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
-	)
-	public static void om(pi var0) {
-		var0.an_fld = var0.az_fld * -349353067;
-	}
-
-	@ObfuscatedName("aj")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lvw;)Lvw;"
 	)
-	vw aj(vw var1) {
+	vw aw(vw var1) {
 		vw var2;
 		if (var1 == null) {
-			var2 = this.ak_fld.hg_vw;
+			var2 = this.ak_fld.hw_fld;
 		} else {
 			var2 = var1;
 		}
@@ -105,7 +121,7 @@ public class no implements Iterable, Collection {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var2.hg_vw;
+			this.ag_fld = var2.hw_fld;
 			return var2;
 		}
 	}
@@ -120,33 +136,31 @@ public class no implements Iterable, Collection {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hg_vw;
+			this.ag_fld = var1.hw_fld;
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int as() {
+		int var1 = 0;
+
+		for (vw var2 = this.ak_fld.hw_fld; var2 != this.ak_fld; var2 = var2.hw_fld) {
+			var1++;
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean bi() {
-		return this.ak_fld.hg_vw == this.ak_fld;
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jt(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("of")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw of() {
-		return this.ak_fld;
+	public boolean ar() {
+		return this.ak_fld.hw_fld == this.ak_fld;
 	}
 
 	@ObfuscatedName("au")
@@ -154,68 +168,24 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;Lvw;)V"
 	)
 	public static void au(vw var0, vw var1) {
-		if (var0.hw_fld != null) {
-			var0.gy_void();
+		if (var0.hg_fld != null) {
+			var0.gy();
 		}
 
-		var0.hw_fld = var1;
-		var0.hg_vw = var1.hg_vw;
-		var0.hw_fld.hg_vw = var0;
-		var0.hg_vw.hw_fld = var0;
-	}
-
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;)I"
-	)
-	public static int bd(no var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var1 = 0;
-
-		for (vw var2 = var0.ak_fld.hg_vw; var2 != var0.ak_fld; var2 = var2.hg_vw) {
-			var1++;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("ih")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;)Lvw;"
-	)
-	public static vw ih(no var0) {
-		vw var1 = var0.ag_fld;
-		if (var1 == var0.ak_fld) {
-			var0.ag_fld = null;
-			return null;
-		} else {
-			var0.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("sn")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/lang/Object;)Z"
-	)
-	public static boolean sn(no var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.equals(var1);
+		var0.hg_fld = var1;
+		var0.hw_fld = var1.hw_fld;
+		var0.hg_fld.hw_fld = var0;
+		var0.hw_fld.hg_fld = var0;
 	}
 
 	@ObfuscatedName("isEmpty")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("isEmpty")
 	@Override
 	public boolean isEmpty() {
-		return this.bi();
+		return this.ar();
 	}
 
 	@ObfuscatedName("contains")
@@ -231,32 +201,22 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/Object;"
 	)
+	@Export("toArray")
 	@Override
 	public Object[] toArray() {
-		return by(this);
-	}
-
-	@ObfuscatedName("mc")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/util/Collection;)Z"
-	)
-	public static boolean mc(no var0, Collection var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new RuntimeException();
+		return av(this);
 	}
 
 	@ObfuscatedName("toArray")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;)[Ljava/lang/Object;"
 	)
+	@Export("toArray")
 	@Override
 	public Object[] toArray(Object[] var1) {
 		int var2 = 0;
 
-		for (vw var3 = this.ak_fld.hg_vw; var3 != this.ak_fld; var3 = var3.hg_vw) {
+		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hw_fld) {
 			var1[var2++] = var3;
 		}
 
@@ -271,27 +231,87 @@ public class no implements Iterable, Collection {
 		throw new RuntimeException();
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("xi")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
+		descriptor = "(Lno;Ljava/lang/Object;)Z"
 	)
-	public boolean bn(Object var1) {
-		throw new RuntimeException();
+	public static boolean xi(no var0, Object var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.equals(var1);
+	}
+
+	@ObfuscatedName("ni")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Lvw;)Lvw;"
+	)
+	public static vw ni(no var0, vw var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		vw var2;
+		if (var1 == null) {
+			var2 = var0.ak_fld.hw_fld;
+		} else {
+			var2 = var1;
+		}
+
+		if (var2 == var0.ak_fld) {
+			var0.ag_fld = null;
+			return null;
+		} else {
+			var0.ag_fld = var2.hw_fld;
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)Lvw;"
+	)
+	vw bm(vw var1) {
+		vw var2;
+		if (var1 == null) {
+			var2 = this.ak_fld.hw_fld;
+		} else {
+			var2 = var1;
+		}
+
+		if (var2 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var2.hw_fld;
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("pk")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw pk() {
+		return this.ay();
 	}
 
 	@ObfuscatedName("add")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("add")
 	@Override
 	public boolean add(Object var1) {
-		return this.al((vw)var1);
+		return this.bb((vw)var1);
 	}
 
 	@ObfuscatedName("removeAll")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
 	)
+	@Export("removeAll")
 	@Override
 	public boolean removeAll(Collection var1) {
 		throw new RuntimeException();
@@ -301,6 +321,7 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Iterator;"
 	)
+	@Export("iterator")
 	@Override
 	public Iterator iterator() {
 		return new nf(this);
@@ -310,61 +331,35 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("clear")
 	@Override
 	public void clear() {
 		this.ag();
-	}
-
-	@ObfuscatedName("is")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/lang/Object;)Z"
-	)
-	public static boolean is(no var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.equals(var1);
-	}
-
-	@ObfuscatedName("ps")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Lvw;)Lvw;"
-	)
-	public static vw ps(no var0, vw var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		vw var2;
-		if (var1 == null) {
-			var2 = var0.ak_fld.hg_vw;
-		} else {
-			var2 = var1;
-		}
-
-		if (var2 == var0.ak_fld) {
-			var0.ag_fld = null;
-			return null;
-		} else {
-			var0.ag_fld = var2.hg_vw;
-			return var2;
-		}
 	}
 
 	@ObfuscatedName("containsAll")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
 	)
+	@Export("containsAll")
 	@Override
 	public boolean containsAll(Collection var1) {
 		throw new RuntimeException();
+	}
+
+	@ObfuscatedName("rf")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw rf() {
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
@@ -374,17 +369,10 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
 	)
+	@Export("retainAll")
 	@Override
 	public boolean retainAll(Collection var1) {
 		throw new RuntimeException();
-	}
-
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Iterator;"
-	)
-	public Iterator cc() {
-		return new nf(this);
 	}
 
 	@ObfuscatedName("cd")
@@ -395,44 +383,52 @@ public class no implements Iterable, Collection {
 		return new nf(this);
 	}
 
+	@ObfuscatedName("dx")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Lvw;)V"
+	)
+	public static void dx(no var0, vw var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var1.hg_fld != null) {
+				var1.gy();
+			}
+
+			var1.hg_fld = var0.ak_fld.hg_fld;
+			var1.hw_fld = var0.ak_fld;
+			var1.hg_fld.hw_fld = var1;
+			var1.hw_fld.hg_fld = var1;
+		}
+	}
+
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Iterator;"
+	)
+	public Iterator cc() {
+		return new nf(this);
+	}
+
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/Object;"
 	)
 	public Object[] ba() {
-		return by(this);
+		return av(this);
 	}
 
 	public no() {
-		this.ak_fld.hg_vw = this.ak_fld;
 		this.ak_fld.hw_fld = this.ak_fld;
+		this.ak_fld.hg_fld = this.ak_fld;
 	}
 
-	@ObfuscatedName("jn")
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;)[Lvw;"
+		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public static vw[] jn(no var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		vw[] var1 = new vw[na(var0)];
-		int var2 = 0;
-
-		for (vw var3 = var0.ak_fld.hg_vw; var3 != var0.ak_fld; var3 = var3.hg_vw) {
-			var1[var2++] = var3;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("afc")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int afc() {
-		return super.hashCode();
+	public boolean jg(Object var1) {
+		return super.equals(var1);
 	}
 
 	@ObfuscatedName("afm")
@@ -440,6 +436,14 @@ public class no implements Iterable, Collection {
 		descriptor = "()I"
 	)
 	public int afm() {
+		return super.hashCode();
+	}
+
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bv() {
 		return super.hashCode();
 	}
 
@@ -453,24 +457,53 @@ public class no implements Iterable, Collection {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hg_vw;
+			this.ag_fld = var1.hw_fld;
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("na")
+	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;)I"
+		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public static int na(no var0) {
+	public boolean jm(Object var1) {
+		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ru")
+	@ObfuscatedSignature(
+		descriptor = "(Loe;ILjava/lang/String;)Ljava/lang/String;"
+	)
+	public static String ru(oe var0, int var1, String var2) {
+		return ih.av(var0.es_fld, var1, var2);
+	}
+
+	@ObfuscatedName("oi")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Ljava/lang/Object;)Z"
+	)
+	public static boolean oi(no var0, Object var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		int var1 = 0;
+		throw new RuntimeException();
+	}
 
-		for (vw var2 = var0.ak_fld.hg_vw; var2 != var0.ak_fld; var2 = var2.hg_vw) {
-			var1++;
+	@ObfuscatedName("kz")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;)[Lvw;"
+	)
+	public static vw[] kz(no var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		vw[] var1 = new vw[var0.as()];
+		int var2 = 0;
+
+		for (vw var3 = var0.ak_fld.hw_fld; var3 != var0.ak_fld; var3 = var3.hw_fld) {
+			var1[var2++] = var3;
 		}
 
 		return var1;
@@ -481,14 +514,26 @@ public class no implements Iterable, Collection {
 		descriptor = "()[Lvw;"
 	)
 	vw[] by() {
-		vw[] var1 = new vw[na(this)];
+		vw[] var1 = new vw[this.as()];
 		int var2 = 0;
 
-		for (vw var3 = this.ak_fld.hg_vw; var3 != this.ak_fld; var3 = var3.hg_vw) {
+		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hw_fld) {
 			var1[var2++] = var3;
 		}
 
 		return var1;
+	}
+
+	@ObfuscatedName("re")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Ljava/lang/Object;)Z"
+	)
+	public static boolean re(no var0, Object var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		throw new RuntimeException();
 	}
 
 	@ObfuscatedName("an")
@@ -496,8 +541,27 @@ public class no implements Iterable, Collection {
 		descriptor = "()V"
 	)
 	public void an() {
-		while (this.ak_fld.hg_vw != this.ak_fld) {
-			this.ak_fld.hg_vw.gy_void();
+		while (this.ak_fld.hw_fld != this.ak_fld) {
+			this.ak_fld.hw_fld.gy();
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;)[Lvw;"
+	)
+	public static vw[] av(no var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			vw[] var1 = new vw[var0.as()];
+			int var2 = 0;
+
+			for (vw var3 = var0.ak_fld.hw_fld; var3 != var0.ak_fld; var3 = var3.hw_fld) {
+				var1[var2++] = var3;
+			}
+
+			return var1;
 		}
 	}
 
@@ -506,33 +570,41 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;)V"
 	)
 	public void aa(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld.hw_fld;
-		var1.hg_vw = this.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld = this.ak_fld.hg_fld;
+		var1.hw_fld = this.ak_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("by")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;)[Lvw;"
+		descriptor = "(Lvw;)V"
 	)
-	public static vw[] by(no var0) {
+	public void ai(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
+		}
+
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
+	}
+
+	@ObfuscatedName("we")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;Ljava/util/Collection;)Z"
+	)
+	public static boolean we(no var0, Collection var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		vw[] var1 = new vw[na(var0)];
-		int var2 = 0;
-
-		for (vw var3 = var0.ak_fld.hg_vw; var3 != var0.ak_fld; var3 = var3.hg_vw) {
-			var1[var2++] = var3;
-		}
-
-		return var1;
+		throw new RuntimeException();
 	}
 
 	@ObfuscatedName("aq")
@@ -540,29 +612,14 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;)V"
 	)
 	public void aq(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)V"
-	)
-	public void az(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
-		}
-
+		var1.hg_fld = this.ak_fld;
 		var1.hw_fld = this.ak_fld.hw_fld;
-		var1.hg_vw = this.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
 	@ObfuscatedName("ad")
@@ -570,13 +627,21 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ad() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			return null;
 		} else {
-			var1.gy_void();
+			var1.gy();
 			return var1;
 		}
+	}
+
+	@ObfuscatedName("en")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw en() {
+		return this.ah();
 	}
 
 	@ObfuscatedName("ao")
@@ -584,33 +649,61 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ao() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			return null;
 		} else {
-			var1.gy_void();
+			var1.gy();
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("qu")
+	@ObfuscatedName("wo")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/lang/Object;)Z"
+		descriptor = "(Leg;Leg;I)I"
 	)
-	public static boolean qu(no var0, Object var1) {
+	public static int wo(eg var0, eg var1, int var2) {
 		if (var0 == null) {
-			var0.getClass();
-		}
+			throw new NullPointerException();
+		} else {
+			int var3 = -1;
+			int var4 = (int)var1.qh_fld[var2];
+			int var5 = (int)var1.ph_fld[var2];
+			int var6 = (int)var1.wl_fld[var2];
 
-		throw new RuntimeException();
+			for (int var7 = 0; var7 < var0.as_fld; var7++) {
+				if (var4 == (int)var0.qh_fld[var7] && var5 == (int)var0.ph_fld[var7] && var6 == (int)var0.wl_fld[var7]) {
+					var3 = var7;
+					break;
+				}
+			}
+
+			if (var3 == -1) {
+				var0.qh_fld[var0.as_fld] = var4;
+				var0.ph_fld[var0.as_fld] = var5;
+				var0.wl_fld[var0.as_fld] = var6;
+				if (var1.bf_fld != null) {
+					var0.bf_fld[var0.as_fld] = var1.bf_fld[var2];
+				}
+
+				if (var1.bk_fld != null) {
+					var0.bk_fld[var0.as_fld] = var1.bk_fld[var2];
+					var0.bj_fld[var0.as_fld] = var1.bj_fld[var2];
+				}
+
+				var3 = var0.as_fld++;
+			}
+
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("afc")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bp() {
-		return na(this);
+	public int afc() {
+		return this.as();
 	}
 
 	@ObfuscatedName("ab")
@@ -618,19 +711,7 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ab() {
-		return this.aj(null);
-	}
-
-	@ObfuscatedName("fi")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/lang/Object;)Z"
-	)
-	public static boolean fi(no var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new RuntimeException();
+		return this.aw(null);
 	}
 
 	@ObfuscatedName("at")
@@ -638,7 +719,7 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw at() {
-		return this.aj(null);
+		return this.aw(null);
 	}
 
 	@ObfuscatedName("ac")
@@ -646,7 +727,7 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ac() {
-		return this.aj(null);
+		return this.aw(null);
 	}
 
 	@ObfuscatedName("bw")
@@ -662,90 +743,14 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;)V"
 	)
 	public void am(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)Lvw;"
-	)
-	vw aw(vw var1) {
-		vw var2;
-		if (var1 == null) {
-			var2 = this.ak_fld.hg_vw;
-		} else {
-			var2 = var1;
-		}
-
-		if (var2 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var2.hg_vw;
-			return var2;
-		}
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)Lvw;"
-	)
-	vw bz(vw var1) {
-		vw var2;
-		if (var1 == null) {
-			var2 = this.ak_fld.hg_vw;
-		} else {
-			var2 = var1;
-		}
-
-		if (var2 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var2.hg_vw;
-			return var2;
-		}
-	}
-
-	@ObfuscatedName("size")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int size() {
-		return na(this);
-	}
-
-	@ObfuscatedName("afa")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int afa() {
-		return super.hashCode();
-	}
-
-	@ObfuscatedName("hashCode")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@ObfuscatedName("bu")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean bu() {
-		return this.ak_fld.hg_vw == this.ak_fld;
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
 	@ObfuscatedName("br")
@@ -755,7 +760,7 @@ public class no implements Iterable, Collection {
 	vw br(vw var1) {
 		vw var2;
 		if (var1 == null) {
-			var2 = this.ak_fld.hg_vw;
+			var2 = this.ak_fld.hw_fld;
 		} else {
 			var2 = var1;
 		}
@@ -764,39 +769,59 @@ public class no implements Iterable, Collection {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var2.hg_vw;
+			this.ag_fld = var2.hw_fld;
 			return var2;
 		}
 	}
 
-	@ObfuscatedName("bl")
+	@ObfuscatedName("size")
 	@ObfuscatedSignature(
-		descriptor = "()[Lvw;"
+		descriptor = "()I"
 	)
-	vw[] bl() {
-		vw[] var1 = new vw[na(this)];
-		int var2 = 0;
-
-		for (vw var3 = this.ak_fld.hg_vw; var3 != this.ak_fld; var3 = var3.hg_vw) {
-			var1[var2++] = var3;
-		}
-
-		return var1;
+	@Export("size")
+	@Override
+	public int size() {
+		return this.as();
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("xs")
 	@ObfuscatedSignature(
-		descriptor = "()[Lvw;"
+		descriptor = "(Lno;Lvw;)Lvw;"
 	)
-	vw[] bx() {
-		vw[] var1 = new vw[na(this)];
-		int var2 = 0;
-
-		for (vw var3 = this.ak_fld.hg_vw; var3 != this.ak_fld; var3 = var3.hg_vw) {
-			var1[var2++] = var3;
+	public static vw xs(no var0, vw var1) {
+		if (var0 == null) {
+			var0.getClass();
 		}
 
-		return var1;
+		vw var2;
+		if (var1 == null) {
+			var2 = var0.ak_fld.hw_fld;
+		} else {
+			var2 = var1;
+		}
+
+		if (var2 == var0.ak_fld) {
+			var0.ag_fld = null;
+			return null;
+		} else {
+			var0.ag_fld = var2.hw_fld;
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("yq")
+	@ObfuscatedSignature(
+		descriptor = "(Lno;)Lvw;"
+	)
+	public static vw yq(no var0) {
+		vw var1 = var0.ag_fld;
+		if (var1 == var0.ak_fld) {
+			var0.ag_fld = null;
+			return null;
+		} else {
+			var0.ag_fld = var1.hw_fld;
+			return var1;
+		}
 	}
 
 	@ObfuscatedName("bt")
@@ -804,35 +829,31 @@ public class no implements Iterable, Collection {
 		descriptor = "()I"
 	)
 	public int bt() {
-		return na(this);
+		return super.hashCode();
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("hashCode")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bv() {
-		return na(this);
+	@Export("hashCode")
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 
-	@ObfuscatedName("zs")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/util/Collection;)Z"
+		descriptor = "()I"
 	)
-	public static boolean zs(no var0, Collection var1) {
-		if (var0 == null) {
-			var0.getClass();
+	int bj() {
+		int var1 = 0;
+
+		for (vw var2 = this.ak_fld.hw_fld; var2 != this.ak_fld; var2 = var2.hw_fld) {
+			var1++;
 		}
 
-		throw new RuntimeException();
-	}
-
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw kn() {
-		return this.ay();
+		return var1;
 	}
 
 	@ObfuscatedName("bf")
@@ -840,34 +861,104 @@ public class no implements Iterable, Collection {
 		descriptor = "()Z"
 	)
 	public boolean bf() {
-		return this.bi();
+		return this.ak_fld.hw_fld == this.ak_fld;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)Lvw;"
+	)
+	vw aj(vw var1) {
+		vw var2;
+		if (var1 == null) {
+			var2 = this.ak_fld.hw_fld;
+		} else {
+			var2 = var1;
+		}
+
+		if (var2 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var2.hw_fld;
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("bx")
+	@ObfuscatedSignature(
+		descriptor = "()[Lvw;"
+	)
+	vw[] bx() {
+		vw[] var1 = new vw[this.as()];
+		int var2 = 0;
+
+		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hw_fld) {
+			var1[var2++] = var3;
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "()[Lvw;"
+	)
+	vw[] bo() {
+		vw[] var1 = new vw[this.as()];
+		int var2 = 0;
+
+		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hw_fld) {
+			var1[var2++] = var3;
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int bk() {
+		int var1 = 0;
+
+		for (vw var2 = this.ak_fld.hw_fld; var2 != this.ak_fld; var2 = var2.hw_fld) {
+			var1++;
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("bp")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bp() {
+		return this.as();
+	}
+
+	@ObfuscatedName("afa")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int afa() {
+		return this.as();
+	}
+
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean ar() {
-		return this.bi();
+	public boolean bu() {
+		return this.ar();
 	}
 
-	@ObfuscatedName("nn")
+	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;Lvw;)V"
+		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public static void nn(no var0, vw var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1.hw_fld != null) {
-			var1.gy_void();
-		}
-
-		var1.hw_fld = var0.ak_fld;
-		var1.hg_vw = var0.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+	public boolean cw(Object var1) {
+		return this.bb((vw)var1);
 	}
 
 	@ObfuscatedName("bq")
@@ -877,7 +968,7 @@ public class no implements Iterable, Collection {
 	public Object[] bq(Object[] var1) {
 		int var2 = 0;
 
-		for (vw var3 = this.ak_fld.hg_vw; var3 != this.ak_fld; var3 = var3.hg_vw) {
+		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hw_fld) {
 			var1[var2++] = var3;
 		}
 
@@ -888,6 +979,7 @@ public class no implements Iterable, Collection {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("remove")
 	@Override
 	public boolean remove(Object var1) {
 		throw new RuntimeException();
@@ -898,14 +990,23 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;)V"
 	)
 	public void av(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)Z"
+	)
+	boolean al(vw var1) {
+		dx(this, var1);
+		return true;
 	}
 
 	@ObfuscatedName("bg")
@@ -913,24 +1014,15 @@ public class no implements Iterable, Collection {
 		descriptor = "(Lvw;)Z"
 	)
 	boolean bg(vw var1) {
-		this.az(var1);
+		dx(this, var1);
 		return true;
 	}
 
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)Z"
-	)
-	boolean bb(vw var1) {
-		this.az(var1);
-		return true;
-	}
-
-	@ObfuscatedName("cv")
+	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean cv(Object var1) {
+	public boolean cq(Object var1) {
 		throw new RuntimeException();
 	}
 
@@ -942,6 +1034,22 @@ public class no implements Iterable, Collection {
 		throw new RuntimeException();
 	}
 
+	@ObfuscatedName("cf")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Collection;)Z"
+	)
+	public boolean cf(Collection var1) {
+		throw new RuntimeException();
+	}
+
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Collection;)Z"
+	)
+	public boolean cx(Collection var1) {
+		throw new RuntimeException();
+	}
+
 	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
@@ -950,27 +1058,11 @@ public class no implements Iterable, Collection {
 		throw new RuntimeException();
 	}
 
-	@ObfuscatedName("xy")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw xy() {
-		return this.ah();
-	}
-
 	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Collection;)Z"
 	)
 	public boolean cp(Collection var1) {
-		throw new RuntimeException();
-	}
-
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Collection;)Z"
-	)
-	public boolean ce(Collection var1) {
 		throw new RuntimeException();
 	}
 
@@ -995,7 +1087,7 @@ public class no implements Iterable, Collection {
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
 	public boolean cg(Object var1) {
-		return this.al((vw)var1);
+		return this.bb((vw)var1);
 	}
 
 	@ObfuscatedName("ap")
@@ -1003,34 +1095,20 @@ public class no implements Iterable, Collection {
 		descriptor = "()Lvw;"
 	)
 	public vw ap() {
-		return this.aj(null);
+		return this.aw(null);
 	}
 
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int as() {
-		int var1 = 0;
-
-		for (vw var2 = this.ag_fld.hg_vw; var2 != this.ak_fld; var2 = var2.hw_fld) {
-			var1++;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("hs")
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "(Lno;)Lvw;"
 	)
-	public static vw hs(no var0) {
+	public static vw ba(no var0) {
 		vw var1 = var0.ag_fld;
 		if (var1 == var0.ak_fld) {
 			var0.ag_fld = null;
 			return null;
 		} else {
-			var0.ag_fld = var1.hg_vw;
+			var0.ag_fld = var1.hw_fld;
 			return var1;
 		}
 	}
@@ -1040,21 +1118,28 @@ public class no implements Iterable, Collection {
 		descriptor = "()[Lvw;"
 	)
 	vw[] af() {
-		vw[] var1 = new vw[na(this)];
+		vw[] var1 = new vw[this.bk()];
 		int var2 = 0;
 
-		for (vw var3 = this.ak_fld.hw_fld; var3 != this.ag_fld; var3 = var3.hg_vw) {
+		for (vw var3 = this.ag_fld.hw_fld; var3 != this.ak_fld; var3 = var3.hg_fld) {
 			var1[var2++] = var3;
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("cm")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
+		descriptor = "(Lvw;)V"
 	)
-	public boolean cm(Object var1) {
-		return this.al((vw)var1);
+	public void az(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.jy();
+		}
+
+		var1.hg_fld = this.ak_fld.hg_fld;
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld.hg_fld = var1;
+		var1.hw_fld.hw_fld = var1;
 	}
 }

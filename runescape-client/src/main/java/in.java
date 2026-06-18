@@ -31,8 +31,8 @@ public class in extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = xi.kc(var1, 576915572);
-		var1.co();
+		this.ak_fld = xi.at(var1, 576915572);
+		var1.co((byte)-110);
 	}
 
 	@ObfuscatedName("ak")
@@ -41,8 +41,24 @@ public class in extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = xi.kc(var1, 1785153444);
-		var1.co();
+		this.ak_fld = xi.at(var1, 1785153444);
+		var1.co((byte)-36);
+	}
+
+	@ObfuscatedName("ug")
+	@ObfuscatedSignature(
+		descriptor = "(Luy;)V"
+	)
+	public static void ug(uy var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		synchronized (uy.ag_fld) {
+			if (uy.av_fld < uy.az_fld) {
+				uy.ag_fld[(uy.av_fld += 788485024) * 848250219 - 1] = var0;
+			}
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -56,7 +72,7 @@ public class in extends ht {
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/lang/String;"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;"
 	)
 	public static String an(String var0) {
 		int var2 = var0.length();
@@ -126,13 +142,13 @@ public class in extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = xi.kc(var1, 133030834);
-		var1.co();
+		this.ak_fld = xi.at(var1, 133030834);
+		var1.co((byte)-9);
 	}
 
 	@ObfuscatedName("fn")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z"
+		descriptor = "(III)Z"
 	)
 	static boolean fn(int var0, int var1) {
 		if (var1 >= 2000) {
@@ -140,7 +156,7 @@ public class in extends ht {
 		}
 
 		sb var3 = client.da_fld.ax(var0, (byte)-109);
-		rg var4 = (rg)client.da_fld.ah(-225377813).an_fld.ak(var0);
+		rg var4 = (rg)cx.gw(client.da_fld, -225377813).an_fld.ak(var0);
 		boolean var5 = 0 == var0;
 		boolean var6 = client.es_fld == var0;
 		boolean var7 = false;
@@ -149,7 +165,7 @@ public class in extends ht {
 			if (!var6) {
 				jf var8 = var4.aw_fld.ax(305786880);
 				boolean var9 = 1002 == var1 || var1 == 1003 || var1 == 1004 || var1 == 1013;
-				if (var9 && !var8.aw_fld) {
+				if (var9 && !var8.ah_fld) {
 					return false;
 				}
 
@@ -165,28 +181,28 @@ public class in extends ht {
 					var16 = var13;
 				}
 
-				if (var16 && !var8.ah_fld) {
+				if (var16 && !var8.aw_fld) {
 					return false;
 				}
 			}
 		}
 
-		if (km.ak(var1) && !var3.ax(var7, var5, var6)) {
+		if (km.ak(var1) && !var3.ay(var7, var5, var6)) {
 			return false;
 		} else {
 			boolean var14 = 16 == var1 || 17 == var1 || var1 >= 18 && var1 <= 22;
 			if (var14 && !var3.as(var7, var5, var6)) {
 				return false;
-			} else if (sq.ag(var1) && !sb.qv(var3, var7, var5, var6, (byte)19)) {
+			} else if (sq.ag(var1) && !var3.ar(var7, var5, var6)) {
 				return false;
 			} else {
 				boolean var15 = var1 == 14 || var1 == 15 || var1 >= 44 && var1 <= 51;
-				if (var15 && !sb.ly(var3, var7, var5, var6, -254405456)) {
+				if (var15 && !var3.af(var7, var5, var6)) {
 					return false;
-				} else if (1002 == var1 && !var3.af(var7, var5, var6)) {
+				} else if (1002 == var1 && !var3.al(var7, var5, var6)) {
 					return false;
 				} else {
-					return var1 == 1004 && !sb.xb(var3, var7, var5, var6, -1255103822) ? false : 1003 != var1 || var3.au(var7, var5, var6);
+					return var1 == 1004 && !sb.jf(var3, var7, var5, var6, -1255103822) ? false : 1003 != var1 || var3.ax(var7, var5, var6);
 				}
 			}
 		}
@@ -198,7 +214,7 @@ public class in extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = xi.kc(var1, 1356010913);
-		var1.co();
+		this.ak_fld = xi.at(var1, 1356010913);
+		var1.co((byte)-92);
 	}
 }

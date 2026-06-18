@@ -28,15 +28,15 @@ public abstract class ho extends vw {
 	)
 	abstract void ah(ib var1);
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
-	abstract void ae(xi var1);
+	abstract void az(xi var1);
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lmq;)V"
+		descriptor = "(Lmq;I)V"
 	)
 	public static void ak(mq var0) {
 		if (!mb.ak_fld.contains(var0)) {
@@ -44,11 +44,11 @@ public abstract class ho extends vw {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
-	abstract void av(xi var1);
+	abstract void ae(xi var1);
 
 	ho() {
 	}
@@ -59,25 +59,11 @@ public abstract class ho extends vw {
 	)
 	abstract void aw(ib var1);
 
-	@ObfuscatedName("vn")
-	@ObfuscatedSignature(
-		descriptor = "(Lnj;)Lvc;"
-	)
-	public static vc vn(nj var0) {
-		vc var1 = var0.ak_fld.fn_fld;
-		if (var1 == var0.ak_fld) {
-			return null;
-		} else {
-			var1.mq_void();
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
-	abstract void az(xi var1);
+	abstract void av(xi var1);
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -87,7 +73,7 @@ public abstract class ho extends vw {
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IZZZZ)Luv;"
+		descriptor = "(IZZZZI)Luv;"
 	)
 	static uv am(int var0, boolean var1, boolean var2, boolean var3, boolean var4) throws EOFException {
 		try {

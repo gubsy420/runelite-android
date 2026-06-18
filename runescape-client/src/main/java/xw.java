@@ -1,15 +1,13 @@
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("xw")
 public interface xw {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
-	xs az();
+	xs ag();
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -17,38 +15,29 @@ public interface xw {
 	)
 	xs ak(int var1);
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("vm")
 	@ObfuscatedSignature(
-		descriptor = "(Lwl;)V"
+		descriptor = "(Lku;)I"
 	)
-	static void at(wl var0) {
+	static int vm(ku var0) {
+		return var0.aa_fld;
+	}
+
+	@ObfuscatedName("fx")
+	@ObfuscatedSignature(
+		descriptor = "(Lek;)I"
+	)
+	static int fx(ek var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.bo_fld = 702894342;
+		return var0.ag_fld.length;
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lae;)Ljava/security/MessageDigest;"
-	)
-	static MessageDigest ak(ae var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		try {
-			return MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException var2) {
-			var2.printStackTrace();
-			return null;
-		}
-	}
-
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
-	xs ag();
+	xs az();
 }

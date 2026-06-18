@@ -8,27 +8,27 @@ import sun.misc.Unsafe;
 
 @ObfuscatedName("zx")
 public class zx extends zs {
-	@ObfuscatedName("wp")
+	@ObfuscatedName("sn")
 	@ObfuscatedSignature(
 		descriptor = "Lsun/misc/Unsafe;"
 	)
-	public static Unsafe wp_fld = zi();
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int cc_fld;
-	@ObfuscatedName("km")
+	public static Unsafe sn_fld = eo();
+	@ObfuscatedName("pu")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	public long km_fld;
+	public long pu_fld;
+	@ObfuscatedName("nn")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int nn_fld;
 	// $VF: synthetic field
-	@ObfuscatedName("bk")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public static boolean bk_fld = !zx.class.desiredAssertionStatus();
+	public static boolean aj_fld = !zx.class.desiredAssertionStatus();
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/nio/ByteBuffer;"
@@ -47,38 +47,15 @@ public class zx extends zs {
 		return var1;
 	}
 
-	@ObfuscatedName("zi")
-	@ObfuscatedSignature(
-		descriptor = "()Lsun/misc/Unsafe;"
-	)
-	public static Unsafe zi() {
-		try {
-			Field var0 = Unsafe.class.getDeclaredField("theUnsafe");
-			if (!var0.getType().equals(Unsafe.class)) {
-				return null;
-			} else {
-				int var1 = var0.getModifiers();
-				if (Modifier.isStatic(var1) && Modifier.isFinal(var1)) {
-					var0.setAccessible(true);
-					return (Unsafe)(Unsafe)var0.get(null);
-				} else {
-					return null;
-				}
-			}
-		} catch (Exception var2) {
-			return null;
-		}
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B"
 	)
 	@Override
 	byte[] ag(int var1) {
-		if (wp_fld != null) {
-			byte[] var3 = new byte[this.cc_fld];
-			wp_fld.copyMemory(null, this.km_fld, var3, Unsafe.ARRAY_BYTE_BASE_OFFSET, this.cc_fld);
+		if (sn_fld != null) {
+			byte[] var3 = new byte[this.nn_fld];
+			sn_fld.copyMemory(null, this.pu_fld, var3, Unsafe.ARRAY_BYTE_BASE_OFFSET, this.nn_fld);
 			return var3;
 		} else {
 			byte[] var2 = new byte[this.ak_fld.capacity()];
@@ -94,28 +71,20 @@ public class zx extends zs {
 	)
 	@Override
 	public void az(byte[] var1, byte var2) {
-		if (wp_fld != null) {
-			if (!bk_fld && this.km_fld != 0L) {
+		if (sn_fld != null) {
+			if (!aj_fld && this.pu_fld != 0L) {
 				throw new AssertionError();
 			}
 
-			long var3 = wp_fld.allocateMemory(var1.length);
-			wp_fld.copyMemory(var1, Unsafe.ARRAY_BYTE_BASE_OFFSET, null, var3, var1.length);
-			this.km_fld = var3;
-			this.cc_fld = var1.length;
+			long var3 = sn_fld.allocateMemory(var1.length);
+			sn_fld.copyMemory(var1, Unsafe.ARRAY_BYTE_BASE_OFFSET, null, var3, var1.length);
+			this.pu_fld = var3;
+			this.nn_fld = var1.length;
 		} else {
 			this.ak_fld = ByteBuffer.allocateDirect(var1.length);
 			this.ak_fld.position(0);
 			this.ak_fld.put(var1);
 		}
-	}
-
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-		descriptor = "(Loy;)I"
-	)
-	public static int bd(oy var0) {
-		return var0.by_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -131,26 +100,6 @@ public class zx extends zs {
 	}
 
 	public zx() {
-	}
-
-	@ObfuscatedName("yi")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void yi() {
-		if (wp_fld != null) {
-			wp_fld.freeMemory(this.km_fld);
-			this.km_fld = 0L;
-			this.cc_fld = 0;
-		}
-	}
-
-	@ObfuscatedName("qs")
-	@ObfuscatedSignature(
-		descriptor = "([B)V"
-	)
-	public void qs(byte[] var1) {
-		this.az(var1, (byte)-79);
 	}
 
 	@ObfuscatedName("as")
@@ -199,6 +148,29 @@ public class zx extends zs {
 		this.ak_fld.put(var1);
 	}
 
+	@ObfuscatedName("eo")
+	@ObfuscatedSignature(
+		descriptor = "()Lsun/misc/Unsafe;"
+	)
+	public static Unsafe eo() {
+		try {
+			Field var0 = Unsafe.class.getDeclaredField("theUnsafe");
+			if (!var0.getType().equals(Unsafe.class)) {
+				return null;
+			} else {
+				int var1 = var0.getModifiers();
+				if (Modifier.isStatic(var1) && Modifier.isFinal(var1)) {
+					var0.setAccessible(true);
+					return (Unsafe)(Unsafe)var0.get(null);
+				} else {
+					return null;
+				}
+			}
+		} catch (Exception var2) {
+			return null;
+		}
+	}
+
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "([B)V"
@@ -210,6 +182,18 @@ public class zx extends zs {
 		this.ak_fld.put(var1);
 	}
 
+	@ObfuscatedName("lx")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void lx() {
+		if (sn_fld != null) {
+			sn_fld.freeMemory(this.pu_fld);
+			this.pu_fld = 0L;
+			this.nn_fld = 0;
+		}
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "([B)V"
@@ -219,6 +203,14 @@ public class zx extends zs {
 		this.ak_fld = ByteBuffer.allocateDirect(var1.length);
 		((Buffer)this.ak_fld).position(0);
 		this.ak_fld.put(var1);
+	}
+
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "([B)V"
+	)
+	public void cj(byte[] var1) {
+		this.az(var1, (byte)-79);
 	}
 
 	@ObfuscatedName("ax")
@@ -233,8 +225,8 @@ public class zx extends zs {
 	}
 
 	static {
-		if (wp_fld == null) {
-			client.ii_fld.info("unable to find Unsafe, using direct buffer");
+		if (sn_fld == null) {
+			client.logger.info("unable to find Unsafe, using direct buffer");
 		}
 	}
 }

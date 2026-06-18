@@ -24,18 +24,12 @@ public class oa extends vc {
 	)
 	public static iw ak_fld = new iw(64);
 
-	@ObfuscatedName("ys")
+	@ObfuscatedName("xw")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;)V"
+		descriptor = "(Lgj;)[I"
 	)
-	public static void ys(no var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		while (var0.ak_fld.hg_vw != var0.ak_fld) {
-			var0.ak_fld.hg_vw.gy_void();
-		}
+	public static int[] xw(gj var0) {
+		return var0.av_fld;
 	}
 
 	oa() throws Throwable {
@@ -44,7 +38,7 @@ public class oa extends vc {
 
 	@ObfuscatedName("cv")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int cv(int var0, ba var1, boolean var2) {
 		return 2;

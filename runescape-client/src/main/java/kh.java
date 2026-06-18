@@ -1627,7 +1627,7 @@ public class kh {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "()Lyv;"
+		descriptor = "(I)Lyv;"
 	)
 	static yv as() {
 		yv var1 = new yv();
@@ -1649,43 +1649,75 @@ public class kh {
 		return var1;
 	}
 
+	@ObfuscatedName("xd")
+	@ObfuscatedSignature(
+		descriptor = "(Lgn;III)V"
+	)
+	public static void xd(gn var0, int var1, int var2, int var3) {
+		var0.bp_fld[var1][var2] = var0.bp_fld[var1][var2] | var3;
+	}
+
+	@ObfuscatedName("tl")
+	@ObfuscatedSignature(
+		descriptor = "(Les;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int tl(es var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return es.dl(var0, (rr)var1, (rr)var2, (byte)-30);
+	}
+
+	@ObfuscatedName("vo")
+	@ObfuscatedSignature(
+		descriptor = "(Lqw;)Z"
+	)
+	public static boolean vo(qw var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.az() ? true : var0.ak_fld.isDone();
+	}
+
 	kh() throws Throwable {
 		throw new Error();
 	}
 
 	@ObfuscatedName("da")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(S)V"
 	)
 	static final void da() throws EOFException {
 		if (!client.$assertionsDisabled && !client.kx_fld) {
 			throw new AssertionError();
 		} else {
-			if (client.ul_fld == null) {
-				rl4 var1 = new rl4(client.fa_fld, client.wo_fld, bw.dk_fld, client.qf_fld);
-				var1.yl_int = var1.zu_fld.ay_fld;
-				var1.nv_fld = var1.zu_fld.as_fld;
-				var1.vj_int = ef.jb_fld;
-				var1.wq_fld = cz.jt_fld;
-				var1.me_fld = hk.mt_fld.ae_fld;
-				if (!client.$assertionsDisabled && client.je_rl4 != null) {
+			if (client.sw_fld == null) {
+				rl4 var1 = new rl4(client.bt_fld, client.yk_fld, bw.dk_fld, client.qf_fld);
+				var1.gh_fld = var1.lk_fld.as_fld;
+				var1.vu_fld = var1.lk_fld.ay_fld;
+				var1.be_fld = ef.jb_fld;
+				var1.hs_int = cz.jt_fld;
+				var1.xf_fld = hk.mt_fld.ae_fld;
+				if (!client.$assertionsDisabled && client.la_rl4 != null) {
 					throw new AssertionError();
 				}
 
-				client.ul_fld = var1;
-				var1.gb();
-			} else if (client.ul_fld.kh()) {
-				rl4 var2 = client.ul_fld;
-				if (!client.$assertionsDisabled && client.je_rl4 != null) {
+				client.sw_fld = var1;
+				var1.wp();
+			} else if (client.sw_fld.zj()) {
+				rl4 var2 = client.sw_fld;
+				if (!client.$assertionsDisabled && client.la_rl4 != null) {
 					throw new AssertionError();
 				}
 
-				client.ul_fld = null;
-				client.al_boolean = false;
-				bw.dk_fld.ae_fld = var2.me_fld;
-				client.yv(var2);
-				client.eo(var2);
-				if (!client.$assertionsDisabled && og.ci_fld.oq() != 25) {
+				client.sw_fld = null;
+				client.vf_fld = false;
+				bw.dk_fld.ae_fld = var2.xf_fld;
+				client.pz(var2);
+				client.ax(var2);
+				if (!client.$assertionsDisabled && og.ci_fld.kx() != 25) {
 					throw new AssertionError();
 				}
 
@@ -1693,8 +1725,8 @@ public class kh {
 					throw new AssertionError();
 				}
 
-				if (client.fa_fld != var2.wn_fld && client.fa_fld != null) {
-					client.ii_fld.info("Reloading due to draw callbacks change while loading!");
+				if (client.bt_fld != var2.yb_fld && client.bt_fld != null) {
+					client.logger.info("Reloading due to draw callbacks change while loading!");
 					client.kx_fld = true;
 				}
 			}

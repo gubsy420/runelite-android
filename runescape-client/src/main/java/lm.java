@@ -72,7 +72,7 @@ public class lm {
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/ArrayList;IIII)V"
+		descriptor = "(Ljava/util/ArrayList;IIIII)V"
 	)
 	public static void au(ArrayList var0, int var1, int var2, int var3, int var4) {
 		mb.ay_fld.clear();
@@ -85,19 +85,11 @@ public class lm {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void aw() {
 		ev.ac_fld = false;
 		client.gk_fld = false;
-	}
-
-	@ObfuscatedName("gy")
-	@ObfuscatedSignature(
-		descriptor = "(Lma;)Ljava/util/ArrayList;"
-	)
-	public static ArrayList gy(ma var0) {
-		return var0.af_fld.ag_fld;
 	}
 
 	lm() throws Throwable {
@@ -106,7 +98,7 @@ public class lm {
 
 	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
-		descriptor = "(Lyq;Ljava/lang/Object;)V"
+		descriptor = "(Lyq;Ljava/lang/Object;I)V"
 	)
 	static void cw(yq var0, Object var1) {
 		if (var0 == null) {

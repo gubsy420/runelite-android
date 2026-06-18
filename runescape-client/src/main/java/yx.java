@@ -1,4 +1,6 @@
+import java.io.EOFException;
 import net.runelite.api.BufferProvider;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -12,12 +14,12 @@ public abstract class yx implements BufferProvider {
 		descriptor = "[F"
 	)
 	protected float[] ah_fld;
-	@ObfuscatedGetter(
-		intValue = -1696518071
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1696518071
 	)
 	public int av_fld;
 	@ObfuscatedName("az")
@@ -30,41 +32,41 @@ public abstract class yx implements BufferProvider {
 		descriptor = "I"
 	)
 	static int bo_fld;
-	@ObfuscatedGetter(
-		intValue = 1829709341
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1829709341
+	)
 	public int ae_fld;
+
+	protected yx() {
+	}
 
 	@ObfuscatedName("getWidth")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getWidth")
 	@Override
 	public int getWidth() {
 		return this.av_fld;
 	}
 
-	@ObfuscatedName("getPixels")
+	@ObfuscatedName("hl")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(I)Z"
 	)
-	@Override
-	public int[] getPixels() {
-		return this.az_fld;
+	static boolean hl() {
+		return cx.kq_fld.bj((byte)115) >= client.ga_fld;
 	}
 
-	protected yx() {
-	}
-
-	@ObfuscatedName("uo")
+	@ObfuscatedName("fs")
 	@ObfuscatedSignature(
 		descriptor = "(Lyx;Z)V"
 	)
-	public static void uo(yx var0, boolean var1) {
+	public static void fs(yx var0, boolean var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -72,19 +74,21 @@ public abstract class yx implements BufferProvider {
 		var0.ah_fld = var1 ? new float[1 + var0.av_fld * var0.ae_fld] : null;
 	}
 
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	static boolean hl() {
-		return cx.kq_fld.bj((byte)115) >= client.ga_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(III)V"
 	)
 	public abstract void ag(int var1, int var2, int var3);
+
+	@ObfuscatedName("getPixels")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getPixels")
+	@Override
+	public int[] getPixels() {
+		return this.az_fld;
+	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
@@ -94,27 +98,11 @@ public abstract class yx implements BufferProvider {
 		yu.du(this.az_fld, this.av_fld, this.ae_fld, this.ah_fld);
 	}
 
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "(Lyx;)V"
-	)
-	public static void lf(yx var0) {
-		yu.du(var0.az_fld, var0.av_fld, var0.ae_fld, var0.ah_fld);
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
 	)
 	public abstract void aw(int var1, int var2);
-
-	@ObfuscatedName("uc")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void uc() {
-		this.au(-1576280039);
-	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
@@ -122,37 +110,20 @@ public abstract class yx implements BufferProvider {
 	)
 	public abstract void ah(int var1, int var2);
 
-	@ObfuscatedName("getHeight")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()V"
 	)
-	@Override
-	public int getHeight() {
-		return this.ae_fld;
+	public final void an() {
+		yu.du(this.az_fld, this.av_fld, this.ae_fld, this.ah_fld);
 	}
 
-	@ObfuscatedName("ma")
+	@ObfuscatedName("lt")
 	@ObfuscatedSignature(
-		descriptor = "(Lyx;)V"
+		descriptor = "()V"
 	)
-	public static void ma(yx var0) {
-		yu.du(var0.az_fld, var0.av_fld * -854924920, var0.ae_fld, var0.ah_fld);
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	public final void ad(boolean var1) {
-		this.ah_fld = var1 ? new float[1 + this.av_fld * this.ae_fld] : null;
-	}
-
-	@ObfuscatedName("rx")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	public void rx(boolean var1) {
-		this.ax(var1, (byte)-2);
+	public void lt() {
+		this.au(-1576280039);
 	}
 
 	@ObfuscatedName("ai")
@@ -163,16 +134,24 @@ public abstract class yx implements BufferProvider {
 		yu.du(this.az_fld, this.av_fld, this.ae_fld, this.ah_fld);
 	}
 
-	@ObfuscatedName("ff")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lyx;Z)V"
+		descriptor = "(Z)V"
 	)
-	public static void ff(yx var0, boolean var1) {
+	public final void aq(boolean var1) {
+		this.ah_fld = var1 ? new float[1 + this.av_fld * this.ae_fld] : null;
+	}
+
+	@ObfuscatedName("jy")
+	@ObfuscatedSignature(
+		descriptor = "(Las;)I"
+	)
+	public static int jy(as var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.ah_fld = var1 ? new float[1 + var0.av_fld * var0.ae_fld] : null;
+		return var0.ag_fld;
 	}
 
 	@ObfuscatedName("ax")
@@ -183,6 +162,44 @@ public abstract class yx implements BufferProvider {
 		this.ah_fld = var1 ? new float[1 + this.av_fld * this.ae_fld] : null;
 	}
 
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public final void am(boolean var1) {
+		this.ah_fld = var1 ? new float[1 + this.av_fld * this.ae_fld] : null;
+	}
+
+	@ObfuscatedName("getHeight")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHeight")
+	@Override
+	public int getHeight() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("py")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;)V"
+	)
+	public static void py(da var0) throws EOFException {
+		try {
+			qa.gr(var0.cm_fld, 217142388);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("hn")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void hn(boolean var1) {
+		this.ax(var1, (byte)-2);
+	}
+
 	@ObfuscatedName("ed")
 	@ObfuscatedSignature(
 		descriptor = "(Ldx;IIIIIIII[Ljava/lang/String;IIB)V"
@@ -191,7 +208,7 @@ public abstract class yx implements BufferProvider {
 		na var13 = var0.ai_fld;
 		cs var14 = null;
 
-		for (cs var15 = (cs)var13.aw(); var15 != null; var15 = (cs)var13.as()) {
+		for (cs var15 = (cs)var13.aw(); var15 != null; var15 = (cs)na.iy(var13)) {
 			if (var15.ag_fld == var1) {
 				if (var12 == 7) {
 					return;
@@ -212,7 +229,7 @@ public abstract class yx implements BufferProvider {
 			var14.ae_fld = var3;
 			var14.al_fld = 85669797;
 			ai.ex(var0, var14, -2021994835);
-			var13.av(var14);
+			var13.az(var14);
 		}
 
 		var14.as_fld = var5;
@@ -220,7 +237,15 @@ public abstract class yx implements BufferProvider {
 		var14.ar_fld = var7;
 		var14.au_fld = var10;
 		var14.ax_fld = var11;
-		cs.ln(var14, var8);
-		cs.vw(var14, var9, -1964957929);
+		var14.ak(var8, -666287811);
+		var14.ag(var9);
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public final void aa() {
+		yu.du(this.az_fld, this.av_fld * -854924920, this.ae_fld, this.ah_fld);
 	}
 }

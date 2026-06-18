@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import net.runelite.api.Animation;
 import net.runelite.api.Model;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -14,22 +15,27 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("ol")
 @Implements({"Animation"})
 public class ol extends vc implements Animation {
-	@ObfuscatedGetter(
-		intValue = -1232992871
-	)
 	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bv_fld;
 	@ObfuscatedGetter(
-		intValue = 86449255
+		intValue = -1232992871
 	)
+	public int bv_fld;
 	@ObfuscatedName("by")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 86449255
+	)
 	public int by_fld;
+	@ObfuscatedName("vf")
+	@ObfuscatedSignature(
+		descriptor = "Ljava/util/Set;"
+	)
+	public static Set vf_fld = ImmutableSet.of(472, 1729);
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -55,11 +61,11 @@ public class ol extends vc implements Animation {
 		descriptor = "I"
 	)
 	static int ai_fld;
-	@ObfuscatedName("bx")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] bx_fld;
+	int[] bj_fld;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -85,38 +91,33 @@ public class ol extends vc implements Animation {
 		descriptor = "I"
 	)
 	static int ad_fld;
-	@ObfuscatedGetter(
-		intValue = -2142444285
-	)
 	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int br_fld;
-	@ObfuscatedName("zj")
-	@ObfuscatedSignature(
-		descriptor = "Ljava/util/Set;"
+	@ObfuscatedGetter(
+		intValue = -2142444285
 	)
-	public static Set zj_fld = ImmutableSet.of(472, 1729);
+	public int br_fld;
 	@ObfuscatedName("be")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/Map;"
 	)
 	public Map be_fld;
-	@ObfuscatedGetter(
-		intValue = -1298860101
-	)
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int bs_fld;
 	@ObfuscatedGetter(
-		intValue = 1794806863
+		intValue = -1298860101
 	)
+	int bs_fld;
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1794806863
 	)
 	public int bc_fld;
 	@ObfuscatedName("bk")
@@ -124,12 +125,12 @@ public class ol extends vc implements Animation {
 		descriptor = "[I"
 	)
 	public int[] bk_fld;
-	@ObfuscatedGetter(
-		intValue = -1029766317
-	)
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1029766317
 	)
 	int bh_fld;
 	@ObfuscatedName("ak")
@@ -147,32 +148,24 @@ public class ol extends vc implements Animation {
 		descriptor = "Liw;"
 	)
 	public static iw bd_fld = new iw(100);
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] bj_fld;
+	int[] bx_fld;
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "[Z"
 	)
 	boolean[] bo_fld;
-	@ObfuscatedGetter(
-		intValue = 67262061
-	)
 	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bp_fld;
 	@ObfuscatedGetter(
-		intValue = 1853075277
+		intValue = 67262061
 	)
-	@ObfuscatedName("yl")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int yl_fld = -1;
+	public int bp_fld;
 	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "Z"
@@ -183,28 +176,28 @@ public class ol extends vc implements Animation {
 		descriptor = "I"
 	)
 	public static int az_fld;
-	@ObfuscatedGetter(
-		intValue = 1853075277
-	)
 	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bi_fld;
 	@ObfuscatedGetter(
-		intValue = -460905393
+		intValue = 1853075277
 	)
+	public int bi_fld;
 	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bu_fld;
 	@ObfuscatedGetter(
-		intValue = -1013782557
+		intValue = -460905393
 	)
+	public int bu_fld;
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1013782557
 	)
 	public int bn_fld;
 	@ObfuscatedName("bt")
@@ -212,36 +205,41 @@ public class ol extends vc implements Animation {
 		descriptor = "Z"
 	)
 	public boolean bt_fld;
-	@ObfuscatedGetter(
-		intValue = 1795231779
-	)
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bw_fld;
 	@ObfuscatedGetter(
-		intValue = -1553941237
+		intValue = 1795231779
 	)
+	public int bw_fld;
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int gt_fld = -1;
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ba_fld;
 	@ObfuscatedGetter(
-		intValue = -1129501115
+		intValue = -1553941237
 	)
+	public int ba_fld;
 	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int bq_fld;
 	@ObfuscatedGetter(
-		intValue = 780273437
+		intValue = -1129501115
 	)
+	int bq_fld;
 	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 780273437
 	)
 	public int bl_fld;
 	@ObfuscatedName("an")
@@ -249,6 +247,18 @@ public class ol extends vc implements Animation {
 		descriptor = "Ljava/lang/String;"
 	)
 	static String an_fld;
+
+	@ObfuscatedName("ee")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;I)Lfn;"
+	)
+	public fn ee(fn var1, int var2) {
+		try {
+			return this.al(var1, var2, (short)187);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
 
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
@@ -272,10 +282,52 @@ public class ol extends vc implements Animation {
 			if (var1 == null) {
 				return 2;
 			} else {
-				return var1.av() ? 0 : 1;
+				return sp.sp(var1, -309548105) ? 0 : 1;
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("gp")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;I)Z"
+	)
+	public static boolean gp(ol var0, int var1) throws EOFException {
+		try {
+			if (var0.bi_fld > 0 || var0.bu_fld > 0) {
+				return true;
+			} else if (!var0.aa(92781618)) {
+				var1 = var0.bk_fld[var1];
+				fe var10 = gz.ag(var1 >> 16);
+				var1 &= 65535;
+				return var10 == null ? false : var10.ag(var1);
+			} else {
+				int var3 = var0.br_fld;
+				sp var5 = (sp)bd_fld.ak(var3);
+				sp var4;
+				if (null != var5) {
+					var4 = var5;
+				} else {
+					var5 = ld.ak(mc.at_fld, pm.ac_fld, var3);
+					if (null != var5) {
+						bd_fld.az(var5, var3);
+					}
+
+					var4 = var5;
+				}
+
+				sp var2;
+				if (null != var4 && sp.sp(var4, 178147807)) {
+					var2 = var4;
+				} else {
+					var2 = null;
+				}
+
+				return var2 == null ? false : var2.ah();
+			}
+		} catch (Throwable var7) {
+			throw new RuntimeException(var7);
 		}
 	}
 
@@ -293,7 +345,7 @@ public class ol extends vc implements Animation {
 				var1 = new ol();
 				var1.bq_fld = var0;
 				if (null != var2) {
-					var1.bi(new xi(var2), 458242773);
+					var1.ah(new xi(var2), 458242773);
 				}
 
 				var1.ay((byte)1);
@@ -316,7 +368,7 @@ public class ol extends vc implements Animation {
 			boolean var3 = false;
 			boolean var4 = false;
 			boolean var5 = false;
-			int var6 = xi.tx(var0, 2062762458);
+			int var6 = var0.cm();
 			int var7 = var0.cg();
 			int var8 = var0.cg();
 			int var9 = var0.cg();
@@ -336,7 +388,7 @@ public class ol extends vc implements Animation {
 	void ay(byte var1) {
 		label54:
 		if (this.bc_fld == -1) {
-			if (null == this.bj_fld) {
+			if (null == this.bx_fld) {
 				if (var1 != 1) {
 					return;
 				}
@@ -351,7 +403,7 @@ public class ol extends vc implements Animation {
 		}
 
 		if (-1 == this.bw_fld) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bw_fld = 0;
 			} else {
 				this.bw_fld = -2142224618;
@@ -393,19 +445,21 @@ public class ol extends vc implements Animation {
 			if (var1 == null) {
 				return 2;
 			} else {
-				return var1.av() ? 0 : 1;
+				return sp.sp(var1, -1083523274) ? 0 : 1;
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
 	}
 
-	@ObfuscatedName("xe")
+	@ObfuscatedName("getFrameLengths")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()[I"
 	)
-	public int xe() {
-		return this.ai(-1509908899);
+	@Export("getFrameLengths")
+	@Override
+	public int[] getFrameLengths() {
+		return this.bf_fld;
 	}
 
 	@ObfuscatedName("am")
@@ -430,7 +484,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var2;
-				if (null != var4 && var4.av()) {
+				if (null != var4 && sp.sp(var4, -1512727056)) {
 					var2 = var4;
 				} else {
 					var2 = null;
@@ -443,27 +497,6 @@ public class ol extends vc implements Animation {
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;IIB)Lfn;"
-	)
-	fn af(fn var1, int var2, int var3, byte var4) {
-		try {
-			return this.xj(rl21.no_fld, var1, var2, var3);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("getFrameStep")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getFrameStep() {
-		return this.bl_fld;
 	}
 
 	@ObfuscatedName("al")
@@ -482,21 +515,21 @@ public class ol extends vc implements Animation {
 				}
 
 				int var7 = this.bk_fld[var2];
-				fe var8 = og.ci_fld.tz(var7 >> 16);
+				fe var8 = og.ci_fld.qj(var7 >> 16);
 				int var9 = var7 & 65535;
 				int var10 = -1;
 				fe var11 = null;
 				if (var6 != -1) {
 					int var12 = this.bk_fld[var6];
-					var11 = og.ci_fld.tz(var12 >> 16);
+					var11 = og.ci_fld.qj(var12 >> 16);
 					var10 = var12 & 65535;
 				}
 
 				if (var8 == null) {
-					return var1.ax(true);
+					return var1.eg(true);
 				} else {
-					fn var24 = var1.ax(!var8.ak_fld[var9].af_fld);
-					var24.nr(rl21.no_fld, var8, var9, var11, var10, var5, this.bf_fld[var2]);
+					fn var24 = var1.eg(!var8.ak_fld[var9].af_fld);
+					var24.ji(rl21.ao_fld, var8, var9, var11, var10, var5, this.bf_fld[var2]);
 					return var24;
 				}
 			} else {
@@ -515,8 +548,8 @@ public class ol extends vc implements Animation {
 						fn var13 = var1.as(true);
 						var10000 = var13;
 					} else {
-						fn var18 = var1.as(!fe.sw(var17, var15));
-						var18.di(var17, var15);
+						fn var18 = var1.as(!var17.ag(var15));
+						var18.bm(var17, var15);
 						var10000 = var18;
 					}
 				} else {
@@ -535,7 +568,7 @@ public class ol extends vc implements Animation {
 					}
 
 					sp var27;
-					if (var19 != null && var19.av()) {
+					if (var19 != null && sp.sp(var19, -1369722628)) {
 						var27 = var19;
 					} else {
 						var27 = null;
@@ -546,7 +579,7 @@ public class ol extends vc implements Animation {
 						var10000 = var25;
 					} else {
 						fn var30 = var1.as(!var27.ah());
-						fn.sb(var30, var27, var2);
+						var30.bd(var27, var2);
 						var10000 = var30;
 					}
 				}
@@ -555,149 +588,6 @@ public class ol extends vc implements Animation {
 			}
 		} catch (Throwable var21) {
 			throw new RuntimeException(var21);
-		}
-	}
-
-	@ObfuscatedName("getDuration")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getDuration() {
-		if (this.isMayaAnim()) {
-			return this.xe();
-		} else {
-			return this.bf_fld != null ? this.bf_fld.length : 1;
-		}
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;ILol;II)Lfn;"
-	)
-	public fn au(fn var1, int var2, ol var3, int var4, int var5) {
-		try {
-			if (var2 < 0) {
-				int var6 = var2 ^ Integer.MIN_VALUE;
-				var2 = var6 & 65535;
-			}
-
-			if (var4 < 0) {
-				int var19 = var4 ^ Integer.MIN_VALUE;
-				var4 = var19 & 65535;
-			}
-
-			int var9 = var2;
-			int var12 = 1694329828;
-			fn var10000;
-			if (bz_fld && !this.aa(-964078597) && !var3.aa(373293630)) {
-				fn var21 = this.ax(var1, var2, var3, var4, 2120417893);
-				var10000 = var21;
-			} else {
-				fn var13 = var1.ay(false);
-				boolean var14 = false;
-				fe var15 = null;
-				ea var16 = null;
-				if (this.aa(-1056235022)) {
-					sp var17 = this.am((byte)15);
-					if (null == var17) {
-						return var13;
-					}
-
-					if (var3.aa(1076999793) && null == this.bo_fld) {
-						fn.sb(var13, var17, var2);
-						return var13;
-					}
-
-					var16 = var17.ah_fld;
-					var13.bs(var16, var17, var2, this.bo_fld, false, !var3.aa(-1729740320));
-				} else {
-					var9 = this.bk_fld[var2];
-					var15 = gz.ag(var9 >> 16);
-					var9 &= 65535;
-					if (null == var15) {
-						return var3.as(var1, var4, (byte)-115);
-					}
-
-					if (!var3.aa(808748803) && (null == this.bj_fld || var4 == -1)) {
-						var13.di(var15, var9);
-						return var13;
-					}
-
-					if (this.bj_fld == null || var4 == -1) {
-						var13.di(var15, var9);
-						return var13;
-					}
-
-					var14 = var3.aa(-725110837);
-					if (!var14) {
-						var13.bh(var15, var9, this.bj_fld, false);
-					}
-				}
-
-				if (var3.aa(836900580)) {
-					sp var24 = var3.am((byte)15);
-					if (var24 == null) {
-						return var13;
-					}
-
-					if (var16 == null) {
-						var16 = var24.ah_fld;
-					}
-
-					var13.bs(var16, var24, var4, this.bo_fld, true, true);
-				} else {
-					int var11 = var3.bk_fld[var4];
-					fe var25 = gz.ag(var11 >> 16);
-					var11 &= 65535;
-					if (var25 == null) {
-						return this.as(var1, var9, (byte)-101);
-					}
-
-					var13.bh(var25, var11, this.bj_fld, true);
-				}
-
-				if (var14 && var15 != null) {
-					var13.bh(var15, var9, this.bj_fld, false);
-				}
-
-				var13.dw();
-				var10000 = var13;
-			}
-
-			return var10000;
-		} catch (Throwable var18) {
-			throw new RuntimeException(var18);
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;ILol;II)Lfn;"
-	)
-	fn ax(fn var1, int var2, ol var3, int var4, int var5) {
-		try {
-			var2 = this.bk_fld[var2];
-			fe var6 = gz.ag(var2 >> 16);
-			var2 &= 65535;
-			if (null == var6) {
-				return var3.as(var1, var4, (byte)-54);
-			} else {
-				var4 = var3.bk_fld[var4];
-				fe var7 = gz.ag(var4 >> 16);
-				var4 &= 65535;
-				if (var7 == null) {
-					fn var14 = var1.ay(!fe.sw(var6, var2));
-					var14.di(var6, var2);
-					return var14;
-				} else {
-					fn var8 = var1.ay(!fe.sw(var6, var2) & !fe.sw(var7, var4));
-					fn.fl(var8, var6, var2, var7, var4, this.bj_fld);
-					return var8;
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
 		}
 	}
 
@@ -715,7 +605,7 @@ public class ol extends vc implements Animation {
 				var1 = new ol();
 				var1.bq_fld = -1950140837 * var0;
 				if (null != var2) {
-					var1.bi(new xi(var2), 1848391515);
+					var1.ah(new xi(var2), 1848391515);
 				}
 
 				var1.ay((byte)1);
@@ -757,13 +647,88 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("isMayaAnim")
+	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lfn;ILol;I)Lfn;"
 	)
-	@Override
-	public boolean isMayaAnim() {
-		return this.aa(-848244389);
+	public fn cs(fn var1, int var2, ol var3, int var4) {
+		try {
+			if (bz_fld && !this.aa(1341206696) && !var3.aa(1040218931)) {
+				return ps(this, var1, var2, var3, var4);
+			} else {
+				fn var5 = var1.ay(false);
+				boolean var6 = false;
+				fe var7 = null;
+				ea var8 = null;
+				if (this.aa(1653002995)) {
+					sp var9 = this.am((byte)15);
+					if (null == var9) {
+						return var5;
+					}
+
+					if (var3.aa(158379179) && null == this.bo_fld) {
+						var5.bd(var9, var2);
+						return var5;
+					}
+
+					var8 = var9.ah_fld;
+					var5.bs(var8, var9, var2, this.bo_fld, false, !var3.aa(225325488));
+				} else {
+					var2 = this.bk_fld[var2];
+					var7 = gz.ag(var2 >> 16);
+					var2 &= -912087254;
+					if (null == var7) {
+						return var3.as(var1, var4, (byte)-4);
+					}
+
+					if (!var3.aa(-1963952404) && (null == this.bx_fld || var4 == -1)) {
+						var5.bm(var7, var2);
+						return var5;
+					}
+
+					if (this.bx_fld == null || var4 == -1) {
+						var5.bm(var7, var2);
+						return var5;
+					}
+
+					var6 = var3.aa(1457186665);
+					if (!var6) {
+						fn.bf(var5, var7, var2, this.bx_fld, false);
+					}
+				}
+
+				if (var3.aa(732012186)) {
+					sp var15 = var3.am((byte)15);
+					if (var15 == null) {
+						return var5;
+					}
+
+					if (var8 == null) {
+						var8 = var15.ah_fld;
+					}
+
+					var5.bs(var8, var15, var4, this.bo_fld, true, true);
+				} else {
+					var4 = var3.bk_fld[var4];
+					fe var16 = gz.ag(var4 >> 16);
+					var4 &= 65535;
+					if (var16 == null) {
+						return this.as(var1, var2, (byte)-121);
+					}
+
+					fn.bf(var5, var16, var4, this.bx_fld, true);
+				}
+
+				if (var6 && var7 != null) {
+					fn.bf(var5, var7, var2, this.bx_fld, false);
+				}
+
+				var5.aj();
+				return var5;
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
 	}
 
 	@ObfuscatedName("an")
@@ -781,20 +746,20 @@ public class ol extends vc implements Animation {
 				} else {
 					fe var6 = null;
 					int var7 = 0;
-					if (this.bx_fld != null && var2 < this.bx_fld.length) {
-						var7 = this.bx_fld[var2];
+					if (this.bj_fld != null && var2 < this.bj_fld.length) {
+						var7 = this.bj_fld[var2];
 						var6 = gz.ag(var7 >> 16);
 						var7 &= 65535;
 					}
 
 					if (null != var6 && 65535 != var7) {
-						fn var12 = var1.ay(!fe.sw(var5, var4) & !fe.sw(var6, var7));
-						var12.di(var5, var4);
-						var12.di(var6, var7);
+						fn var12 = var1.ay(!var5.ag(var4) & !var6.ag(var7));
+						var12.bm(var5, var4);
+						var12.bm(var6, var7);
 						return var12;
 					} else {
-						fn var8 = var1.ay(!fe.sw(var5, var4));
-						var8.di(var5, var4);
+						fn var8 = var1.ay(!var5.ag(var4));
+						var8.bm(var5, var4);
 						return var8;
 					}
 				}
@@ -814,6 +779,20 @@ public class ol extends vc implements Animation {
 		return this.bq_fld;
 	}
 
+	@ObfuscatedName("getNumFrames")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getNumFrames")
+	@Override
+	public int getNumFrames() {
+		if (this.isMayaAnim()) {
+			return this.dk();
+		} else {
+			return this.bk_fld != null ? this.bk_fld.length : 1;
+		}
+	}
+
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z"
@@ -824,15 +803,6 @@ public class ol extends vc implements Animation {
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
-	}
-
-	@ObfuscatedName("getRestartMode")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRestartMode() {
-		return this.ba_fld;
 	}
 
 	@ObfuscatedName("ab")
@@ -849,7 +819,7 @@ public class ol extends vc implements Animation {
 				var1 = new ol();
 				var1.bq_fld = var0;
 				if (null != var2) {
-					var1.bi(new xi(var2), -459745193);
+					var1.ah(new xi(var2), -459745193);
 				}
 
 				var1.ay((byte)1);
@@ -875,7 +845,7 @@ public class ol extends vc implements Animation {
 				var1 = new ol();
 				var1.bq_fld = -309984525 * var0;
 				if (null != var2) {
-					var1.bi(new xi(var2), 1336520027);
+					var1.ah(new xi(var2), 1336520027);
 				}
 
 				var1.ay((byte)1);
@@ -884,6 +854,20 @@ public class ol extends vc implements Animation {
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("getDuration")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getDuration")
+	@Override
+	public int getDuration() {
+		if (this.isMayaAnim()) {
+			return this.dk();
+		} else {
+			return this.bf_fld != null ? this.bf_fld.length : 1;
 		}
 	}
 
@@ -922,7 +906,7 @@ public class ol extends vc implements Animation {
 				var2 = var22 & 65535;
 				int var7 = var2 + 1;
 				if (var7 >= this.bk_fld.length) {
-					if (zj_fld.contains(this.yl_fld)) {
+					if (vf_fld.contains(this.gt_fld)) {
 						var7 = -1;
 					} else if (this.bl_fld > 0) {
 						var7 -= this.bl_fld;
@@ -932,21 +916,21 @@ public class ol extends vc implements Animation {
 				}
 
 				int var8 = this.bk_fld[var2];
-				fe var9 = og.ci_fld.tz(var8 >> 16);
+				fe var9 = og.ci_fld.qj(var8 >> 16);
 				int var10 = var8 & 65535;
 				int var11 = -1;
 				fe var12 = null;
 				if (var7 >= 0 && var7 < this.bk_fld.length) {
 					int var13 = this.bk_fld[var7];
-					var12 = og.ci_fld.tz(var13 >> 16);
+					var12 = og.ci_fld.qj(var13 >> 16);
 					var11 = var13 & 65535;
 				}
 
 				if (var9 == null) {
-					return var1.ap(true);
+					return var1.vu(true);
 				} else {
-					fn var23 = var1.ap(!var9.ak_fld[var10].af_fld);
-					var23.nr(rl21.no_fld, var9, var10, var12, var11, var5, this.bf_fld[var2]);
+					fn var23 = var1.vu(!var9.ak_fld[var10].af_fld);
+					var23.ji(rl21.ao_fld, var9, var10, var12, var11, var5, this.bf_fld[var2]);
 					return var23;
 				}
 			} else {
@@ -965,8 +949,8 @@ public class ol extends vc implements Animation {
 						fn var14 = var1.ay(true);
 						var10000 = var14;
 					} else {
-						fn var19 = var1.ay(!fe.sw(var18, var16));
-						var19.di(var18, var16);
+						fn var19 = var1.ay(!var18.ag(var16));
+						var19.bm(var18, var16);
 						var10000 = var19;
 					}
 				} else {
@@ -976,7 +960,7 @@ public class ol extends vc implements Animation {
 						var10000 = var24;
 					} else {
 						fn var27 = var1.ay(!var26.ah());
-						fn.sb(var27, var26, var2);
+						var27.bd(var26, var2);
 						var10000 = var27;
 					}
 				}
@@ -988,114 +972,14 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	void ah(xi var1, int var2) {
-		if (1 == var2) {
-			int var3 = xi.tx(var1, 467855545);
-			this.bf_fld = new int[var3];
-
-			for (int var4 = 0; var4 < var3; var4++) {
-				this.bf_fld[var4] = xi.tx(var1, 1228132749);
-			}
-
-			this.bk_fld = new int[var3];
-
-			for (int var12 = 0; var12 < var3; var12++) {
-				this.bk_fld[var12] = xi.tx(var1, 1278211737);
-			}
-
-			for (int var13 = 0; var13 < var3; var13++) {
-				this.bk_fld[var13] = (xi.tx(var1, 1141336283) << 16) + this.bk_fld[var13];
-			}
-		} else if (2 == var2) {
-			this.bl_fld = xi.tx(var1, 1328036880) * 2134630910;
-		} else if (3 == var2) {
-			int var7 = var1.cg();
-			this.bj_fld = new int[1 + var7];
-
-			for (int var14 = 0; var14 < var7; var14++) {
-				this.bj_fld[var14] = var1.cg();
-			}
-
-			this.bj_fld[var7] = 9999999;
-		} else if (var2 == 4) {
-			this.bt_fld = true;
-		} else if (5 == var2) {
-			this.bv_fld = var1.cg() * -1528857313;
-		} else if (var2 == 6) {
-			this.bi_fld = xi.tx(var1, 1886737378) * 320805038;
-		} else if (7 == var2) {
-			this.bu_fld = xi.tx(var1, 802075200);
-		} else if (8 == var2) {
-			this.bn_fld = var1.cg() * -1394680039;
-		} else if (var2 == 9) {
-			this.bc_fld = var1.cg();
-		} else if (var2 == 10) {
-			this.bw_fld = var1.cg();
-		} else if (11 == var2) {
-			this.ba_fld = var1.cg();
-		} else if (var2 == 12) {
-			int var8 = var1.cg();
-			this.bx_fld = new int[var8];
-
-			for (int var15 = 0; var15 < var8; var15++) {
-				this.bx_fld[var15] = xi.tx(var1, 1565168095);
-			}
-
-			for (int var16 = 0; var16 < var8; var16++) {
-				this.bx_fld[var16] = (xi.tx(var1, 1708759227) << 16) + this.bx_fld[var16];
-			}
-		} else if (var2 == 13) {
-			this.br_fld = var1.co();
-		} else if (14 == var2) {
-			int var9 = xi.tx(var1, 1821772667);
-			if (null == this.be_fld) {
-				this.be_fld = new HashMap();
-			}
-
-			for (int var17 = 0; var17 < var9; var17++) {
-				int var5 = xi.tx(var1, 1540696828);
-				oc var6 = lp.ae(var1);
-				if (null != var6) {
-					if (!this.be_fld.containsKey(var5)) {
-						this.be_fld.put(var5, new ArrayList());
-					}
-
-					((ArrayList)this.be_fld.get(var5)).add(var6);
-				}
-			}
-		} else if (var2 == 15) {
-			this.bs_fld = xi.tx(var1, 1661980758) * 1224146757;
-			this.bh_fld = xi.tx(var1, 2116012227);
-		} else if (16 == var2) {
-			this.bp_fld = xi.rp(var1, 1506995427) * 950514649;
-		} else if (var2 == 17) {
-			this.bo_fld = new boolean[256];
-
-			for (int var10 = 0; var10 < this.bo_fld.length; var10++) {
-				this.bo_fld[var10] = false;
-			}
-
-			int var11 = var1.cg();
-
-			for (int var18 = 0; var18 < var11; var18++) {
-				this.bo_fld[var1.cg()] = true;
-			}
-		} else if (19 == var2) {
-			this.bg_fld = true;
-		}
-	}
-
-	@ObfuscatedName("getId")
+	@ObfuscatedName("getRestartMode")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getRestartMode")
 	@Override
-	public int getId() {
-		return this.yl_fld;
+	public int getRestartMode() {
+		return this.ba_fld;
 	}
 
 	@ObfuscatedName("bm")
@@ -1120,18 +1004,6 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("vi")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;ILol;I)Lnet/runelite/api/Model;"
-	)
-	public Model vi(fn var1, int var2, ol var3, int var4) {
-		try {
-			return this.au(var1, var2, var3, var4, 1694329828);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lol;"
@@ -1146,7 +1018,7 @@ public class ol extends vc implements Animation {
 				var1 = new ol();
 				var1.bq_fld = var0;
 				if (null != var2) {
-					var1.bi(new xi(var2), 2040537449);
+					var1.ah(new xi(var2), 2040537449);
 				}
 
 				var1.ay((byte)1);
@@ -1168,7 +1040,7 @@ public class ol extends vc implements Animation {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ltu;F)Ltu;"
+		descriptor = "(Ltu;FI)Ltu;"
 	)
 	public static final tu ae(tu var0, float var1) {
 		tu var3;
@@ -1176,12 +1048,12 @@ public class ol extends vc implements Animation {
 			if (tu.aw_fld == 0) {
 				var3 = new tu(var0);
 			} else {
-				tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var0);
+				tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var0, -1645983469);
 				var3 = tu.ae_fld[tu.aw_fld];
 			}
 		}
 
-		tu.rw(var3, var1, (byte)0);
+		var3.am(var1);
 		return var3;
 	}
 
@@ -1207,11 +1079,65 @@ public class ol extends vc implements Animation {
 			if (var1 == null) {
 				return 2;
 			} else {
-				return var1.av() ? 0 : 1;
+				return sp.sp(var1, -1281870855) ? 0 : 1;
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
+	}
+
+	@ObfuscatedName("qf")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lfn;I)Lfn;"
+	)
+	public static fn qf(ol var0, fn var1, int var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (!var0.aa(-92165518)) {
+				int var3 = var0.bk_fld[var2];
+				fe var4 = gz.ag(var3 >> 16);
+				var3 &= 65535;
+				if (var4 == null) {
+					return var1.ay(true);
+				} else {
+					fe var5 = null;
+					int var6 = 0;
+					if (var0.bj_fld != null && var2 < var0.bj_fld.length) {
+						var6 = var0.bj_fld[var2];
+						var5 = gz.ag(var6 >> 16);
+						var6 &= 65535;
+					}
+
+					if (null != var5 && 65535 != var6) {
+						fn var12 = var1.ay(!var4.ag(var3) & !var5.ag(var6));
+						var12.bm(var4, var3);
+						var12.bm(var5, var6);
+						return var12;
+					} else {
+						fn var7 = var1.ay(!var4.ag(var3));
+						var7.bm(var4, var3);
+						return var7;
+					}
+				}
+			} else {
+				return var0.as(var1, var2, (byte)-11);
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("getFrameStep")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getFrameStep")
+	@Override
+	public int getFrameStep() {
+		return this.bl_fld;
 	}
 
 	@ObfuscatedName("ch")
@@ -1223,6 +1149,18 @@ public class ol extends vc implements Animation {
 			return this.aa(-1181970656) ? this.aq(251357783) == 0 : this.bk_fld != null && this.bk_fld.length > 0 && gz.ag(this.bk_fld[0] >> 16) != null;
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("cu")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;I)Lnet/runelite/api/Model;"
+	)
+	public Model cu(fn var1, int var2) {
+		try {
+			return this.as(var1, var2, (byte)-9);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
 	}
 
@@ -1245,7 +1183,7 @@ public class ol extends vc implements Animation {
 				var1 = var2;
 			}
 
-			return var1 != null && var1.av() ? var1 : null;
+			return var1 != null && sp.sp(var1, -532671336) ? var1 : null;
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
@@ -1270,39 +1208,182 @@ public class ol extends vc implements Animation {
 				var1 = var2;
 			}
 
-			return var1 != null && var1.av() ? var1 : null;
+			return var1 != null && sp.sp(var1, -2061576738) ? var1 : null;
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
 	}
 
-	@ObfuscatedName("hg")
+	@ObfuscatedName("px")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;ILol;I)Lfn;"
+		descriptor = "(Lfn;ILol;I)Lnet/runelite/api/Model;"
 	)
-	public static fn hg(ol var0, fn var1, int var2, ol var3, int var4) throws EOFException {
+	public Model px(fn var1, int var2, ol var3, int var4) {
 		try {
-			var2 = var0.bk_fld[var2];
-			fe var5 = gz.ag(var2 >> 16);
-			var2 &= 65535;
-			if (null == var5) {
-				return var3.as(var1, var4, (byte)-61);
-			} else {
-				var4 = var3.bk_fld[var4];
-				fe var6 = gz.ag(var4 >> 16);
-				var4 &= 65535;
-				if (var6 == null) {
-					fn var14 = var1.ay(!fe.sw(var5, var2));
-					var14.di(var5, var2);
-					return var14;
+			return uq(this, var1, var2, var3, var4);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;)Lsp;"
+	)
+	public static sp ia(ol var0) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var0.aa(1299498937)) {
+				int var2 = var0.br_fld * 1851697780;
+				sp var4 = (sp)bd_fld.ak(var2);
+				sp var3;
+				if (null != var4) {
+					var3 = var4;
 				} else {
-					fn var7 = var1.ay(!fe.sw(var5, var2) & !fe.sw(var6, var4));
-					fn.fl(var7, var5, var2, var6, var4, var0.bj_fld);
+					var4 = ld.ak(mc.at_fld, pm.ac_fld, var2);
+					if (var4 != null) {
+						bd_fld.az(var4, var2);
+					}
+
+					var3 = var4;
+				}
+
+				sp var1;
+				if (null != var3 && sp.sp(var3, -1635942139)) {
+					var1 = var3;
+				} else {
+					var1 = null;
+				}
+
+				return var1;
+			} else {
+				return null;
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Lrl21;Lfn;II)Lfn;"
+	)
+	public fn jt(rl21 var1, fn var2, int var3, int var4) {
+		try {
+			if (var3 < 0 && !this.isMayaAnim()) {
+				int var24 = var3 ^ Integer.MIN_VALUE;
+				int var26 = var24 >> 16 & 16383;
+				var3 = var24 & 65535;
+				int var27 = var3 + 1;
+				if (var27 >= this.bk_fld.length) {
+					if (vf_fld.contains(this.gt_fld)) {
+						var27 = -1;
+					} else {
+						var27 -= this.bl_fld;
+					}
+				}
+
+				int var8 = this.bk_fld[var3];
+				fe var9 = fe.ci(var8 >> 16);
+				int var10 = var8 & 65535;
+				int var11 = -1;
+				fe var12 = null;
+				if (var27 >= 0 && var27 < this.bk_fld.length) {
+					int var13 = this.bk_fld[var27];
+					var12 = fe.ci(var13 >> 16);
+					var11 = var13 & 65535;
+				}
+
+				if (var9 == null) {
+					return var2.hw(var1, true);
+				} else {
+					fn var28 = var2.hw(var1, !var9.ak_fld[var10].af_fld);
+					var4 &= 3;
+					if (var4 == 1) {
+						var28.rotateY270Ccw();
+					} else if (var4 == 2) {
+						var28.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var28.rotateY90Ccw();
+					}
+
+					var28.ji(var1, var9, var10, var12, var11, var26, this.bf_fld[var3]);
+					if (var4 == 1) {
+						var28.rotateY90Ccw();
+					} else if (var4 == 2) {
+						var28.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var28.rotateY270Ccw();
+					}
+
+					return var28;
+				}
+			} else if (!this.isMayaAnim()) {
+				var3 = this.bk_fld[var3];
+				fe var23 = fe.ci(var3 >> 16);
+				var3 &= 65535;
+				if (var23 == null) {
+					return var2.hw(var1, true);
+				} else {
+					fn var25 = var2.hw(var1, !var23.pu(var3));
+					var4 &= 3;
+					if (var4 == 1) {
+						var25.rotateY270Ccw();
+					} else if (var4 == 2) {
+						var25.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var25.rotateY90Ccw();
+					}
+
+					var25.du(var1, var23, var3);
+					if (var4 == 1) {
+						var25.rotateY90Ccw();
+					} else if (var4 == 2) {
+						var25.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var25.rotateY270Ccw();
+					}
+
+					return var25;
+				}
+			} else {
+				if (var3 < 0) {
+					int var5 = var3 ^ Integer.MIN_VALUE;
+					var3 = var5 & 65535;
+				}
+
+				int var22 = this.br_fld;
+				sp var6 = sp.hc(var22);
+				if (var6 != null && var6.ul()) {
+					fn var7 = var2.hw(var1, !var6.ay_fld);
+					var4 &= 3;
+					if (var4 == 1) {
+						var7.rotateY270Ccw();
+					} else if (var4 == 2) {
+						var7.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var7.rotateY90Ccw();
+					}
+
+					var7.sw(var1, var6, var3);
+					if (var4 == 1) {
+						var7.rotateY90Ccw();
+					} else if (var4 == 2) {
+						var7.rotateY180Ccw();
+					} else if (var4 == 3) {
+						var7.rotateY270Ccw();
+					}
+
 					return var7;
+				} else {
+					return var2.hw(var1, true);
 				}
 			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
+		} catch (Throwable var15) {
+			throw new RuntimeException(var15);
 		}
 	}
 
@@ -1317,7 +1398,7 @@ public class ol extends vc implements Animation {
 			boolean var3 = false;
 			boolean var4 = false;
 			boolean var5 = false;
-			int var6 = xi.tx(var0, 616609565);
+			int var6 = var0.cm();
 			int var7 = var0.cg();
 			int var8 = var0.cg();
 			int var9 = var0.cg();
@@ -1328,6 +1409,47 @@ public class ol extends vc implements Animation {
 		}
 
 		return null;
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;)Lsp;"
+	)
+	public static sp bf(ol var0) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var0.aa(526167821)) {
+				int var2 = var0.br_fld * -1545236868;
+				sp var4 = (sp)bd_fld.ak(var2);
+				sp var3;
+				if (null != var4) {
+					var3 = var4;
+				} else {
+					var4 = ld.ak(mc.at_fld, pm.ac_fld, var2);
+					if (var4 != null) {
+						bd_fld.az(var4, var2);
+					}
+
+					var3 = var4;
+				}
+
+				sp var1;
+				if (null != var3 && sp.sp(var3, -1682308998)) {
+					var1 = var3;
+				} else {
+					var1 = null;
+				}
+
+				return var1;
+			} else {
+				return null;
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
 	}
 
 	@ObfuscatedName("ar")
@@ -1342,7 +1464,7 @@ public class ol extends vc implements Animation {
 				var1 = this.bk_fld[var1];
 				fe var10 = gz.ag(var1 >> 16);
 				var1 &= 65535;
-				return var10 == null ? false : fe.sw(var10, var1);
+				return var10 == null ? false : var10.ag(var1);
 			} else {
 				int var4 = this.br_fld;
 				sp var6 = (sp)bd_fld.ak(var4);
@@ -1359,7 +1481,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var3;
-				if (null != var5 && var5.av()) {
+				if (null != var5 && sp.sp(var5, -915816223)) {
 					var3 = var5;
 				} else {
 					var3 = null;
@@ -1369,6 +1491,111 @@ public class ol extends vc implements Animation {
 			}
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
+		}
+	}
+
+	@ObfuscatedName("ux")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lxi;I)V"
+	)
+	public static void ux(ol var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (1 == var2) {
+			int var3 = var1.cm();
+			var0.bf_fld = new int[var3];
+
+			for (int var4 = 0; var4 < var3; var4++) {
+				var0.bf_fld[var4] = var1.cm();
+			}
+
+			var0.bk_fld = new int[var3];
+
+			for (int var12 = 0; var12 < var3; var12++) {
+				var0.bk_fld[var12] = var1.cm();
+			}
+
+			for (int var13 = 0; var13 < var3; var13++) {
+				var0.bk_fld[var13] = (var1.cm() << 16) + var0.bk_fld[var13];
+			}
+		} else if (2 == var2) {
+			var0.bl_fld = var1.cm() * 2134630910;
+		} else if (3 == var2) {
+			int var7 = var1.cg();
+			var0.bx_fld = new int[1 + var7];
+
+			for (int var14 = 0; var14 < var7; var14++) {
+				var0.bx_fld[var14] = var1.cg();
+			}
+
+			var0.bx_fld[var7] = 9999999;
+		} else if (var2 == 4) {
+			var0.bt_fld = true;
+		} else if (5 == var2) {
+			var0.bv_fld = var1.cg() * -1528857313;
+		} else if (var2 == 6) {
+			var0.bi_fld = var1.cm() * 320805038;
+		} else if (7 == var2) {
+			var0.bu_fld = var1.cm();
+		} else if (8 == var2) {
+			var0.bn_fld = var1.cg() * -1394680039;
+		} else if (var2 == 9) {
+			var0.bc_fld = var1.cg();
+		} else if (var2 == 10) {
+			var0.bw_fld = var1.cg();
+		} else if (11 == var2) {
+			var0.ba_fld = var1.cg();
+		} else if (var2 == 12) {
+			int var8 = var1.cg();
+			var0.bj_fld = new int[var8];
+
+			for (int var15 = 0; var15 < var8; var15++) {
+				var0.bj_fld[var15] = var1.cm();
+			}
+
+			for (int var16 = 0; var16 < var8; var16++) {
+				var0.bj_fld[var16] = (var1.cm() << 16) + var0.bj_fld[var16];
+			}
+		} else if (var2 == 13) {
+			var0.br_fld = var1.co((byte)-26);
+		} else if (14 == var2) {
+			int var9 = var1.cm();
+			if (null == var0.be_fld) {
+				var0.be_fld = new HashMap();
+			}
+
+			for (int var17 = 0; var17 < var9; var17++) {
+				int var5 = var1.cm();
+				oc var6 = lp.ae(var1);
+				if (null != var6) {
+					if (!var0.be_fld.containsKey(var5)) {
+						var0.be_fld.put(var5, new ArrayList());
+					}
+
+					((ArrayList)var0.be_fld.get(var5)).add(var6);
+				}
+			}
+		} else if (var2 == 15) {
+			var0.bs_fld = var1.cm() * 1224146757;
+			var0.bh_fld = var1.cm();
+		} else if (16 == var2) {
+			var0.bp_fld = var1.cw() * 950514649;
+		} else if (var2 == 17) {
+			var0.bo_fld = new boolean[256];
+
+			for (int var10 = 0; var10 < var0.bo_fld.length; var10++) {
+				var0.bo_fld[var10] = false;
+			}
+
+			int var11 = var1.cg();
+
+			for (int var18 = 0; var18 < var11; var18++) {
+				var0.bo_fld[var1.cg()] = true;
+			}
+		} else if (19 == var2) {
+			var0.bg_fld = true;
 		}
 	}
 
@@ -1383,7 +1610,7 @@ public class ol extends vc implements Animation {
 			boolean var3 = false;
 			boolean var4 = false;
 			boolean var5 = false;
-			int var6 = xi.tx(var0, 358297705);
+			int var6 = var0.cm();
 			int var7 = var0.cg();
 			int var8 = var0.cg();
 			int var9 = var0.cg();
@@ -1411,6 +1638,46 @@ public class ol extends vc implements Animation {
 		}
 	}
 
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;I)Lfn;"
+	)
+	public fn cn(fn var1, int var2) {
+		try {
+			if (!this.aa(1576213363)) {
+				int var3 = this.bk_fld[var2];
+				fe var4 = gz.ag(var3 >> 16);
+				var3 &= 65535;
+				if (var4 == null) {
+					return var1.ay(true);
+				} else {
+					fe var5 = null;
+					int var6 = 0;
+					if (this.bj_fld != null && var2 < this.bj_fld.length) {
+						var6 = this.bj_fld[var2];
+						var5 = gz.ag(var6 >> 16);
+						var6 &= 65535;
+					}
+
+					if (null != var5 && 65535 != var6) {
+						fn var12 = var1.ay(!var4.ag(var3) & !var5.ag(var6));
+						var12.bm(var4, var3);
+						var12.bm(var5, var6);
+						return var12;
+					} else {
+						fn var7 = var1.ay(!var4.ag(var3));
+						var7.bm(var4, var3);
+						return var7;
+					}
+				}
+			} else {
+				return this.as(var1, var2, (byte)-42);
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
@@ -1426,47 +1693,77 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("gq")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;)V"
+	)
+	public static void gq(ol var0) {
+		if (var0.bc_fld == -1) {
+			if (null == var0.bx_fld && var0.bo_fld == null) {
+				var0.bc_fld = 0;
+			} else {
+				var0.bc_fld = 2103969118;
+			}
+		}
+
+		if (-1 == var0.bw_fld) {
+			if (null == var0.bx_fld && var0.bo_fld == null) {
+				var0.bw_fld = 0;
+			} else {
+				var0.bw_fld = 354417244;
+			}
+		}
+
+		if (null != var0.bf_fld) {
+			var0.by_fld = 0;
+
+			for (int var1 = 0; var1 < var0.bf_fld.length; var1++) {
+				var0.by_fld = var0.by_fld + -1886896297 * var0.bf_fld[var1];
+			}
+		}
+	}
+
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void bv(xi var1, int var2) {
+	void bp(xi var1, int var2) {
 		if (1 == var2) {
-			int var3 = xi.tx(var1, 1194909728);
+			int var3 = var1.cm();
 			this.bf_fld = new int[var3];
 
 			for (int var4 = 0; var4 < var3; var4++) {
-				this.bf_fld[var4] = xi.tx(var1, 1941014570);
+				this.bf_fld[var4] = var1.cm();
 			}
 
 			this.bk_fld = new int[var3];
 
 			for (int var12 = 0; var12 < var3; var12++) {
-				this.bk_fld[var12] = xi.tx(var1, 892381034);
+				this.bk_fld[var12] = var1.cm();
 			}
 
 			for (int var13 = 0; var13 < var3; var13++) {
-				this.bk_fld[var13] = (xi.tx(var1, 677337046) << 16) + this.bk_fld[var13];
+				this.bk_fld[var13] = (var1.cm() << 16) + this.bk_fld[var13];
 			}
 		} else if (2 == var2) {
-			this.bl_fld = xi.tx(var1, 1023518048);
+			this.bl_fld = var1.cm();
 		} else if (3 == var2) {
 			int var7 = var1.cg();
-			this.bj_fld = new int[1 + var7];
+			this.bx_fld = new int[1 + var7];
 
 			for (int var14 = 0; var14 < var7; var14++) {
-				this.bj_fld[var14] = var1.cg();
+				this.bx_fld[var14] = var1.cg();
 			}
 
-			this.bj_fld[var7] = 9999999;
+			this.bx_fld[var7] = 9999999;
 		} else if (var2 == 4) {
 			this.bt_fld = true;
 		} else if (5 == var2) {
 			this.bv_fld = var1.cg();
 		} else if (var2 == 6) {
-			this.bi_fld = xi.tx(var1, 476553484);
+			this.bi_fld = var1.cm();
 		} else if (7 == var2) {
-			this.bu_fld = xi.tx(var1, 641926175);
+			this.bu_fld = var1.cm();
 		} else if (8 == var2) {
 			this.bn_fld = var1.cg();
 		} else if (var2 == 9) {
@@ -1477,25 +1774,25 @@ public class ol extends vc implements Animation {
 			this.ba_fld = var1.cg();
 		} else if (var2 == 12) {
 			int var8 = var1.cg();
-			this.bx_fld = new int[var8];
+			this.bj_fld = new int[var8];
 
 			for (int var15 = 0; var15 < var8; var15++) {
-				this.bx_fld[var15] = xi.tx(var1, 713406148);
+				this.bj_fld[var15] = var1.cm();
 			}
 
 			for (int var16 = 0; var16 < var8; var16++) {
-				this.bx_fld[var16] = (xi.tx(var1, 1419893480) << 16) + this.bx_fld[var16];
+				this.bj_fld[var16] = (var1.cm() << 16) + this.bj_fld[var16];
 			}
 		} else if (var2 == 13) {
-			this.br_fld = var1.co();
+			this.br_fld = var1.co((byte)3);
 		} else if (14 == var2) {
-			int var9 = xi.tx(var1, 537711540);
+			int var9 = var1.cm();
 			if (null == this.be_fld) {
 				this.be_fld = new HashMap();
 			}
 
 			for (int var17 = 0; var17 < var9; var17++) {
-				int var5 = xi.tx(var1, 378306973);
+				int var5 = var1.cm();
 				oc var6 = lp.ae(var1);
 				if (null != var6) {
 					if (!this.be_fld.containsKey(var5)) {
@@ -1506,10 +1803,10 @@ public class ol extends vc implements Animation {
 				}
 			}
 		} else if (var2 == 15) {
-			this.bs_fld = xi.tx(var1, 1083767485);
-			this.bh_fld = xi.tx(var1, 740747913);
+			this.bs_fld = var1.cm();
+			this.bh_fld = var1.cm();
 		} else if (16 == var2) {
-			this.bp_fld = xi.rp(var1, 527346899);
+			this.bp_fld = var1.cw();
 		} else if (var2 == 17) {
 			this.bo_fld = new boolean[256];
 
@@ -1540,8 +1837,8 @@ public class ol extends vc implements Animation {
 				if (var11 == null) {
 					return var1.as(true);
 				} else {
-					fn var12 = var1.as(!fe.sw(var11, var2));
-					var12.di(var11, var2);
+					fn var12 = var1.as(!var11.ag(var2));
+					var12.bm(var11, var2);
 					return var12;
 				}
 			} else {
@@ -1560,7 +1857,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var3;
-				if (var5 != null && var5.av()) {
+				if (var5 != null && sp.sp(var5, -514614953)) {
 					var3 = var5;
 				} else {
 					var3 = null;
@@ -1570,7 +1867,7 @@ public class ol extends vc implements Animation {
 					return var1.as(true);
 				} else {
 					fn var14 = var1.as(!var3.ah());
-					fn.sb(var14, var3, var2);
+					var14.bd(var3, var2);
 					return var14;
 				}
 			}
@@ -1596,47 +1893,47 @@ public class ol extends vc implements Animation {
 		this.bg_fld = false;
 	}
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void bt(xi var1, int var2) {
+	void bi(xi var1, int var2) {
 		if (1 == var2) {
-			int var3 = xi.tx(var1, 2095146021);
+			int var3 = var1.cm();
 			this.bf_fld = new int[var3];
 
 			for (int var4 = 0; var4 < var3; var4++) {
-				this.bf_fld[var4] = xi.tx(var1, 346778201);
+				this.bf_fld[var4] = var1.cm();
 			}
 
 			this.bk_fld = new int[var3];
 
 			for (int var12 = 0; var12 < var3; var12++) {
-				this.bk_fld[var12] = xi.tx(var1, 1643315201);
+				this.bk_fld[var12] = var1.cm();
 			}
 
 			for (int var13 = 0; var13 < var3; var13++) {
-				this.bk_fld[var13] = (xi.tx(var1, 955232295) << 16) + this.bk_fld[var13];
+				this.bk_fld[var13] = (var1.cm() << 16) + this.bk_fld[var13];
 			}
 		} else if (2 == var2) {
-			this.bl_fld = xi.tx(var1, 1836579383);
+			this.bl_fld = var1.cm();
 		} else if (3 == var2) {
 			int var7 = var1.cg();
-			this.bj_fld = new int[1 + var7];
+			this.bx_fld = new int[1 + var7];
 
 			for (int var14 = 0; var14 < var7; var14++) {
-				this.bj_fld[var14] = var1.cg();
+				this.bx_fld[var14] = var1.cg();
 			}
 
-			this.bj_fld[var7] = 9999999;
+			this.bx_fld[var7] = 9999999;
 		} else if (var2 == 4) {
 			this.bt_fld = true;
 		} else if (5 == var2) {
 			this.bv_fld = var1.cg();
 		} else if (var2 == 6) {
-			this.bi_fld = xi.tx(var1, 1893461981);
+			this.bi_fld = var1.cm();
 		} else if (7 == var2) {
-			this.bu_fld = xi.tx(var1, 1171265172);
+			this.bu_fld = var1.cm();
 		} else if (8 == var2) {
 			this.bn_fld = var1.cg();
 		} else if (var2 == 9) {
@@ -1647,25 +1944,25 @@ public class ol extends vc implements Animation {
 			this.ba_fld = var1.cg();
 		} else if (var2 == 12) {
 			int var8 = var1.cg();
-			this.bx_fld = new int[var8];
+			this.bj_fld = new int[var8];
 
 			for (int var15 = 0; var15 < var8; var15++) {
-				this.bx_fld[var15] = xi.tx(var1, 1426688850);
+				this.bj_fld[var15] = var1.cm();
 			}
 
 			for (int var16 = 0; var16 < var8; var16++) {
-				this.bx_fld[var16] = (xi.tx(var1, 961808450) << 16) + this.bx_fld[var16];
+				this.bj_fld[var16] = (var1.cm() << 16) + this.bj_fld[var16];
 			}
 		} else if (var2 == 13) {
-			this.br_fld = var1.co();
+			this.br_fld = var1.co((byte)-39);
 		} else if (14 == var2) {
-			int var9 = xi.tx(var1, 427737236);
+			int var9 = var1.cm();
 			if (null == this.be_fld) {
 				this.be_fld = new HashMap();
 			}
 
 			for (int var17 = 0; var17 < var9; var17++) {
-				int var5 = xi.tx(var1, 1148675363);
+				int var5 = var1.cm();
 				oc var6 = lp.ae(var1);
 				if (null != var6) {
 					if (!this.be_fld.containsKey(var5)) {
@@ -1676,10 +1973,10 @@ public class ol extends vc implements Animation {
 				}
 			}
 		} else if (var2 == 15) {
-			this.bs_fld = xi.tx(var1, 1863420682);
-			this.bh_fld = xi.tx(var1, 1784871984);
+			this.bs_fld = var1.cm();
+			this.bh_fld = var1.cm();
 		} else if (16 == var2) {
-			this.bp_fld = xi.rp(var1, 70778816);
+			this.bp_fld = var1.cw();
 		} else if (var2 == 17) {
 			this.bo_fld = new boolean[256];
 
@@ -1697,43 +1994,13 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bu")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void bu() {
-		if (this.bc_fld == -1) {
-			if (null == this.bj_fld && this.bo_fld == null) {
-				this.bc_fld = 0;
-			} else {
-				this.bc_fld = 2103969118;
-			}
-		}
-
-		if (-1 == this.bw_fld) {
-			if (null == this.bj_fld && this.bo_fld == null) {
-				this.bw_fld = 0;
-			} else {
-				this.bw_fld = 354417244;
-			}
-		}
-
-		if (null != this.bf_fld) {
-			this.by_fld = 0;
-
-			for (int var1 = 0; var1 < this.bf_fld.length; var1++) {
-				this.by_fld = this.by_fld + -1886896297 * this.bf_fld[var1];
-			}
-		}
-	}
-
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	void bn() {
 		if (this.bc_fld == -1) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bc_fld = 0;
 			} else {
 				this.bc_fld = 2103969118;
@@ -1741,7 +2008,7 @@ public class ol extends vc implements Animation {
 		}
 
 		if (-1 == this.bw_fld) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bw_fld = 0;
 			} else {
 				this.bw_fld = -2142224618;
@@ -1763,7 +2030,7 @@ public class ol extends vc implements Animation {
 	)
 	void bc() {
 		if (this.bc_fld == -1) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bc_fld = 0;
 			} else {
 				this.bc_fld = 306280768;
@@ -1771,7 +2038,7 @@ public class ol extends vc implements Animation {
 		}
 
 		if (-1 == this.bw_fld) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bw_fld = 0;
 			} else {
 				this.bw_fld = -2142224618;
@@ -1793,7 +2060,7 @@ public class ol extends vc implements Animation {
 	)
 	void bw() {
 		if (this.bc_fld == -1) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bc_fld = 0;
 			} else {
 				this.bc_fld = 2103969118;
@@ -1801,7 +2068,7 @@ public class ol extends vc implements Animation {
 		}
 
 		if (-1 == this.bw_fld) {
-			if (null == this.bj_fld && this.bo_fld == null) {
+			if (null == this.bx_fld && this.bo_fld == null) {
 				this.bw_fld = 0;
 			} else {
 				this.bw_fld = -2142224618;
@@ -1814,42 +2081,6 @@ public class ol extends vc implements Animation {
 			for (int var1 = 0; var1 < this.bf_fld.length; var1++) {
 				this.by_fld = this.by_fld + -1886896297 * this.bf_fld[var1];
 			}
-		}
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;I)Lfn;"
-	)
-	public static fn al(ol var0, fn var1, int var2) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (!var0.aa(1065359647)) {
-				var2 = var0.bk_fld[var2];
-				fe var9 = gz.ag(var2 >> 16);
-				var2 &= 65535;
-				if (null == var9) {
-					return var1.ay(true);
-				} else {
-					fn var10 = var1.ay(!fe.sw(var9, var2));
-					var10.di(var9, var2);
-					return var10;
-				}
-			} else {
-				sp var3 = mb.av(var0.br_fld);
-				if (var3 == null) {
-					return var1.ay(true);
-				} else {
-					fn var4 = var1.ay(!var3.ah());
-					fn.sb(var4, var3, var2);
-					return var4;
-				}
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
 		}
 	}
 
@@ -1866,8 +2097,8 @@ public class ol extends vc implements Animation {
 				if (null == var9) {
 					return var1.ay(true);
 				} else {
-					fn var10 = var1.ay(!fe.sw(var9, var2));
-					var10.di(var9, var2);
+					fn var10 = var1.ay(!var9.ag(var2));
+					var10.bm(var9, var2);
 					return var10;
 				}
 			} else {
@@ -1876,7 +2107,7 @@ public class ol extends vc implements Animation {
 					return var1.ay(true);
 				} else {
 					fn var4 = var1.ay(!var3.ah());
-					fn.sb(var4, var3, var2);
+					var4.bd(var3, var2);
 					return var4;
 				}
 			}
@@ -1898,8 +2129,8 @@ public class ol extends vc implements Animation {
 				if (null == var9) {
 					return var1.ay(true);
 				} else {
-					fn var10 = var1.ay(!fe.sw(var9, var2));
-					var10.di(var9, var2);
+					fn var10 = var1.ay(!var9.ag(var2));
+					var10.bm(var9, var2);
 					return var10;
 				}
 			} else {
@@ -1908,7 +2139,7 @@ public class ol extends vc implements Animation {
 					return var1.ay(true);
 				} else {
 					fn var4 = var1.ay(!var3.ah());
-					fn.sb(var4, var3, var2);
+					var4.bd(var3, var2);
 					return var4;
 				}
 			}
@@ -1917,30 +2148,30 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "(Lfn;I)Lfn;"
 	)
-	public fn bg(fn var1, int var2) {
+	public fn bb(fn var1, int var2) {
 		try {
-			if (!this.aa(81749609)) {
+			if (!this.aa(1065359647)) {
 				var2 = this.bk_fld[var2];
 				fe var9 = gz.ag(var2 >> 16);
 				var2 &= 65535;
 				if (null == var9) {
 					return var1.ay(true);
 				} else {
-					fn var10 = var1.ay(!fe.sw(var9, var2));
-					var10.di(var9, var2);
+					fn var10 = var1.ay(!var9.ag(var2));
+					var10.bm(var9, var2);
 					return var10;
 				}
 			} else {
-				sp var3 = mb.av(184352143 * this.br_fld);
+				sp var3 = mb.av(this.br_fld);
 				if (var3 == null) {
 					return var1.ay(true);
 				} else {
 					fn var4 = var1.ay(!var3.ah());
-					fn.sb(var4, var3, var2);
+					var4.bd(var3, var2);
 					return var4;
 				}
 			}
@@ -1949,302 +2180,54 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean cc(int var1) {
-		try {
-			if (this.bi_fld > 0 || this.bu_fld > 0) {
-				return true;
-			} else if (!this.aa(2013337862)) {
-				var1 = this.bk_fld[var1];
-				fe var10 = gz.ag(var1 >> 16);
-				var1 &= 65535;
-				return var10 == null ? false : fe.sw(var10, var1);
-			} else {
-				int var3 = this.br_fld;
-				sp var5 = (sp)bd_fld.ak(var3);
-				sp var4;
-				if (null != var5) {
-					var4 = var5;
-				} else {
-					var5 = ld.ak(mc.at_fld, pm.ac_fld, var3);
-					if (null != var5) {
-						bd_fld.az(var5, var3);
-					}
-
-					var4 = var5;
-				}
-
-				sp var2;
-				if (null != var4 && var4.av()) {
-					var2 = var4;
-				} else {
-					var2 = null;
-				}
-
-				return var2 == null ? false : var2.ah();
-			}
-		} catch (Throwable var7) {
-			throw new RuntimeException(var7);
-		}
-	}
-
-	@ObfuscatedName("wr")
-	@ObfuscatedSignature(
-		descriptor = "(Lco;)V"
-	)
-	public static void wr(co var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ay_fld = rw.ak_fld;
-	}
-
-	@ObfuscatedName("setRestartMode")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setRestartMode(int var1) {
-		this.ba_fld = var1;
-	}
-
-	@ObfuscatedName("getFrameLengths")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getFrameLengths() {
-		return this.bf_fld;
-	}
-
-	@ObfuscatedName("cq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean cq(int var1) {
-		try {
-			if (this.bi_fld > 0 || this.bu_fld > 0) {
-				return true;
-			} else if (!this.aa(92781618)) {
-				var1 = this.bk_fld[var1];
-				fe var10 = gz.ag(var1 >> 16);
-				var1 &= 65535;
-				return var10 == null ? false : fe.sw(var10, var1);
-			} else {
-				int var3 = this.br_fld;
-				sp var5 = (sp)bd_fld.ak(var3);
-				sp var4;
-				if (null != var5) {
-					var4 = var5;
-				} else {
-					var5 = ld.ak(mc.at_fld, pm.ac_fld, var3);
-					if (null != var5) {
-						bd_fld.az(var5, var3);
-					}
-
-					var4 = var5;
-				}
-
-				sp var2;
-				if (null != var4 && var4.av()) {
-					var2 = var4;
-				} else {
-					var2 = null;
-				}
-
-				return var2 == null ? false : var2.ah();
-			}
-		} catch (Throwable var7) {
-			throw new RuntimeException(var7);
-		}
-	}
-
-	@ObfuscatedName("yb")
-	@ObfuscatedSignature(
-		descriptor = "(Lqa;ILqy;)I"
-	)
-	public static int yb(qa var0, int var1, qy var2) throws EOFException {
-		try {
-			return cf.ak(var0, var1, var2);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("xj")
-	@ObfuscatedSignature(
-		descriptor = "(Lrl21;Lfn;II)Lfn;"
-	)
-	public fn xj(rl21 var1, fn var2, int var3, int var4) {
-		try {
-			if (var3 < 0 && !this.isMayaAnim()) {
-				int var24 = var3 ^ Integer.MIN_VALUE;
-				int var26 = var24 >> 16 & 16383;
-				var3 = var24 & 65535;
-				int var27 = var3 + 1;
-				if (var27 >= this.bk_fld.length) {
-					if (zj_fld.contains(this.yl_fld)) {
-						var27 = -1;
-					} else {
-						var27 -= this.bl_fld;
-					}
-				}
-
-				int var8 = this.bk_fld[var3];
-				fe var9 = fe.rh(var8 >> 16);
-				int var10 = var8 & 65535;
-				int var11 = -1;
-				fe var12 = null;
-				if (var27 >= 0 && var27 < this.bk_fld.length) {
-					int var13 = this.bk_fld[var27];
-					var12 = fe.rh(var13 >> 16);
-					var11 = var13 & 65535;
-				}
-
-				if (var9 == null) {
-					return var2.to(var1, true);
-				} else {
-					fn var28 = var2.to(var1, !var9.ak_fld[var10].af_fld);
-					var4 &= 3;
-					if (var4 == 1) {
-						var28.rotateY270Ccw();
-					} else if (var4 == 2) {
-						var28.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var28.rotateY90Ccw();
-					}
-
-					var28.nr(var1, var9, var10, var12, var11, var26, this.bf_fld[var3]);
-					if (var4 == 1) {
-						var28.rotateY90Ccw();
-					} else if (var4 == 2) {
-						var28.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var28.rotateY270Ccw();
-					}
-
-					return var28;
-				}
-			} else if (!this.isMayaAnim()) {
-				var3 = this.bk_fld[var3];
-				fe var23 = fe.rh(var3 >> 16);
-				var3 &= 65535;
-				if (var23 == null) {
-					return var2.to(var1, true);
-				} else {
-					fn var25 = var2.to(var1, !var23.xv(var3));
-					var4 &= 3;
-					if (var4 == 1) {
-						var25.rotateY270Ccw();
-					} else if (var4 == 2) {
-						var25.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var25.rotateY90Ccw();
-					}
-
-					var25.na(var1, var23, var3);
-					if (var4 == 1) {
-						var25.rotateY90Ccw();
-					} else if (var4 == 2) {
-						var25.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var25.rotateY270Ccw();
-					}
-
-					return var25;
-				}
-			} else {
-				if (var3 < 0) {
-					int var5 = var3 ^ Integer.MIN_VALUE;
-					var3 = var5 & 65535;
-				}
-
-				int var22 = this.br_fld;
-				sp var6 = sp.iv(var22);
-				if (var6 != null && var6.kg()) {
-					fn var7 = var2.to(var1, !var6.ay_fld);
-					var4 &= 3;
-					if (var4 == 1) {
-						var7.rotateY270Ccw();
-					} else if (var4 == 2) {
-						var7.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var7.rotateY90Ccw();
-					}
-
-					var7.pe(var1, var6, var3);
-					if (var4 == 1) {
-						var7.rotateY90Ccw();
-					} else if (var4 == 2) {
-						var7.rotateY180Ccw();
-					} else if (var4 == 3) {
-						var7.rotateY270Ccw();
-					}
-
-					return var7;
-				} else {
-					return var2.to(var1, true);
-				}
-			}
-		} catch (Throwable var15) {
-			throw new RuntimeException(var15);
-		}
-	}
-
-	@ObfuscatedName("cv")
+	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "(Lfn;I)Lfn;"
 	)
-	fn cv(fn var1, int var2) {
+	public fn cd(fn var1, int var2) {
 		try {
-			if (!this.aa(1756849141)) {
+			if (!this.aa(2125621905)) {
 				var2 = this.bk_fld[var2];
-				fe var11 = gz.ag(var2 >> 16);
-				var2 &= -556022227;
-				if (var11 == null) {
-					return var1.as(true);
+				fe var9 = gz.ag(var2 >> 16);
+				var2 &= 65535;
+				if (null == var9) {
+					return var1.ay(true);
 				} else {
-					fn var12 = var1.as(!fe.sw(var11, var2));
-					var12.di(var11, var2);
-					return var12;
+					fn var10 = var1.ay(!var9.ag(var2));
+					var10.bm(var9, var2);
+					return var10;
 				}
 			} else {
-				int var4 = this.br_fld * -220635486;
-				sp var6 = (sp)bd_fld.ak(var4);
-				sp var5;
-				if (var6 != null) {
-					var5 = var6;
-				} else {
-					var6 = ld.ak(mc.at_fld, pm.ac_fld, var4);
-					if (var6 != null) {
-						bd_fld.az(var6, var4);
-					}
-
-					var5 = var6;
-				}
-
-				sp var3;
-				if (var5 != null && var5.av()) {
-					var3 = var5;
-				} else {
-					var3 = null;
-				}
-
+				sp var3 = mb.av(this.br_fld);
 				if (var3 == null) {
-					return var1.as(true);
+					return var1.ay(true);
 				} else {
-					fn var14 = var1.as(!var3.ah());
-					fn.sb(var14, var3, var2);
-					return var14;
+					fn var4 = var1.ay(!var3.ah());
+					var4.bd(var3, var2);
+					return var4;
 				}
 			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
+	}
+
+	@ObfuscatedName("isMayaAnim")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isMayaAnim")
+	@Override
+	public boolean isMayaAnim() {
+		return this.aa(-848244389);
+	}
+
+	@ObfuscatedName("dk")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int dk() {
+		return this.ai(-1509908899);
 	}
 
 	@ObfuscatedName("aq")
@@ -2259,92 +2242,14 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("uf")
+	@ObfuscatedName("setRestartMode")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;ILol;I)Lfn;"
+		descriptor = "(I)V"
 	)
-	public static fn uf(ol var0, fn var1, int var2, ol var3, int var4) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (bz_fld && !var0.aa(-1526562900) && !var3.aa(1209142142)) {
-				return var0.ax(var1, var2, var3, var4, 2114210050);
-			} else {
-				fn var5 = var1.ay(false);
-				boolean var6 = false;
-				fe var7 = null;
-				ea var8 = null;
-				if (var0.aa(-1671218432)) {
-					sp var9 = var0.am((byte)15);
-					if (null == var9) {
-						return var5;
-					}
-
-					if (var3.aa(-1461561949) && null == var0.bo_fld) {
-						fn.sb(var5, var9, var2);
-						return var5;
-					}
-
-					var8 = var9.ah_fld;
-					var5.bs(var8, var9, var2, var0.bo_fld, false, !var3.aa(850916192));
-				} else {
-					var2 = var0.bk_fld[var2];
-					var7 = gz.ag(var2 >> 16);
-					var2 &= 65535;
-					if (null == var7) {
-						return var3.as(var1, var4, (byte)-25);
-					}
-
-					if (!var3.aa(-673397879) && (null == var0.bj_fld || var4 == -1)) {
-						var5.di(var7, var2);
-						return var5;
-					}
-
-					if (var0.bj_fld == null || var4 == -1) {
-						var5.di(var7, var2);
-						return var5;
-					}
-
-					var6 = var3.aa(1479195201);
-					if (!var6) {
-						var5.bh(var7, var2, var0.bj_fld, false);
-					}
-				}
-
-				if (var3.aa(1566513313)) {
-					sp var15 = var3.am((byte)15);
-					if (var15 == null) {
-						return var5;
-					}
-
-					if (var8 == null) {
-						var8 = var15.ah_fld;
-					}
-
-					var5.bs(var8, var15, var4, var0.bo_fld, true, true);
-				} else {
-					var4 = var3.bk_fld[var4];
-					fe var16 = gz.ag(var4 >> 16);
-					var4 &= 65535;
-					if (var16 == null) {
-						return var0.as(var1, var2, (byte)-11);
-					}
-
-					var5.bh(var16, var4, var0.bj_fld, true);
-				}
-
-				if (var6 && var7 != null) {
-					var5.bh(var7, var2, var0.bj_fld, false);
-				}
-
-				var5.dw();
-				return var5;
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
+	@Export("setRestartMode")
+	@Override
+	public void setRestartMode(int var1) {
+		this.ba_fld = var1;
 	}
 
 	@ObfuscatedName("cf")
@@ -2360,8 +2265,8 @@ public class ol extends vc implements Animation {
 				if (var11 == null) {
 					return var1.as(true);
 				} else {
-					fn var12 = var1.as(!fe.sw(var11, var2));
-					var12.di(var11, var2);
+					fn var12 = var1.as(!var11.ag(var2));
+					var12.bm(var11, var2);
 					return var12;
 				}
 			} else {
@@ -2380,7 +2285,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var3;
-				if (var5 != null && var5.av()) {
+				if (var5 != null && sp.sp(var5, -1288324320)) {
 					var3 = var5;
 				} else {
 					var3 = null;
@@ -2390,7 +2295,7 @@ public class ol extends vc implements Animation {
 					return var1.as(true);
 				} else {
 					fn var14 = var1.as(!var3.ah());
-					fn.sb(var14, var3, var2);
+					var14.bd(var3, var2);
 					return var14;
 				}
 			}
@@ -2399,47 +2304,175 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;ILol;I)Lfn;"
+	)
+	public fn cx(fn var1, int var2, ol var3, int var4) {
+		try {
+			if (bz_fld && !this.aa(-1526562900) && !var3.aa(1209142142)) {
+				return ps(this, var1, var2, var3, var4);
+			} else {
+				fn var5 = var1.ay(false);
+				boolean var6 = false;
+				fe var7 = null;
+				ea var8 = null;
+				if (this.aa(-1671218432)) {
+					sp var9 = this.am((byte)15);
+					if (null == var9) {
+						return var5;
+					}
+
+					if (var3.aa(-1461561949) && null == this.bo_fld) {
+						var5.bd(var9, var2);
+						return var5;
+					}
+
+					var8 = var9.ah_fld;
+					var5.bs(var8, var9, var2, this.bo_fld, false, !var3.aa(850916192));
+				} else {
+					var2 = this.bk_fld[var2];
+					var7 = gz.ag(var2 >> 16);
+					var2 &= 65535;
+					if (null == var7) {
+						return var3.as(var1, var4, (byte)-25);
+					}
+
+					if (!var3.aa(-673397879) && (null == this.bx_fld || var4 == -1)) {
+						var5.bm(var7, var2);
+						return var5;
+					}
+
+					if (this.bx_fld == null || var4 == -1) {
+						var5.bm(var7, var2);
+						return var5;
+					}
+
+					var6 = var3.aa(1479195201);
+					if (!var6) {
+						fn.bf(var5, var7, var2, this.bx_fld, false);
+					}
+				}
+
+				if (var3.aa(1566513313)) {
+					sp var15 = var3.am((byte)15);
+					if (var15 == null) {
+						return var5;
+					}
+
+					if (var8 == null) {
+						var8 = var15.ah_fld;
+					}
+
+					var5.bs(var8, var15, var4, this.bo_fld, true, true);
+				} else {
+					var4 = var3.bk_fld[var4];
+					fe var16 = gz.ag(var4 >> 16);
+					var4 &= 65535;
+					if (var16 == null) {
+						return this.as(var1, var2, (byte)-11);
+					}
+
+					fn.bf(var5, var16, var4, this.bx_fld, true);
+				}
+
+				if (var6 && var7 != null) {
+					fn.bf(var5, var7, var2, this.bx_fld, false);
+				}
+
+				var5.aj();
+				return var5;
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
+	}
+
+	@ObfuscatedName("ps")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lfn;ILol;II)Lfn;"
+	)
+	public static fn ps(ol var0, fn var1, int var2, ol var3, int var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var2 = var0.bk_fld[var2];
+			fe var6 = gz.ag(var2 >> 16);
+			var2 &= 65535;
+			if (null == var6) {
+				return var3.as(var1, var4, (byte)-54);
+			} else {
+				var4 = var3.bk_fld[var4];
+				fe var7 = gz.ag(var4 >> 16);
+				var4 &= 65535;
+				if (var7 == null) {
+					fn var14 = var1.ay(!var6.ag(var2));
+					var14.bm(var6, var2);
+					return var14;
+				} else {
+					fn var8 = var1.ay(!var6.ag(var2) & !var7.ag(var4));
+					fn.ut(var8, var6, var2, var7, var4, var0.bx_fld);
+					return var8;
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("getId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getId")
+	@Override
+	public int getId() {
+		return this.gt_fld;
+	}
+
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void bp(xi var1, int var2) {
+	void bt(xi var1, int var2) {
 		if (1 == var2) {
-			int var3 = xi.tx(var1, 1301871792);
+			int var3 = var1.cm();
 			this.bf_fld = new int[var3];
 
 			for (int var4 = 0; var4 < var3; var4++) {
-				this.bf_fld[var4] = xi.tx(var1, 1590751160);
+				this.bf_fld[var4] = var1.cm();
 			}
 
 			this.bk_fld = new int[var3];
 
 			for (int var12 = 0; var12 < var3; var12++) {
-				this.bk_fld[var12] = xi.tx(var1, 1237864985);
+				this.bk_fld[var12] = var1.cm();
 			}
 
 			for (int var13 = 0; var13 < var3; var13++) {
-				this.bk_fld[var13] = (xi.tx(var1, 1006573775) << 16) + this.bk_fld[var13];
+				this.bk_fld[var13] = (var1.cm() << 16) + this.bk_fld[var13];
 			}
 		} else if (2 == var2) {
-			this.bl_fld = xi.tx(var1, 426880253) * -664479975;
+			this.bl_fld = var1.cm() * -664479975;
 		} else if (3 == var2) {
 			int var7 = var1.cg();
-			this.bj_fld = new int[1 + var7];
+			this.bx_fld = new int[1 + var7];
 
 			for (int var14 = 0; var14 < var7; var14++) {
-				this.bj_fld[var14] = var1.cg();
+				this.bx_fld[var14] = var1.cg();
 			}
 
-			this.bj_fld[var7] = 587738781;
+			this.bx_fld[var7] = 587738781;
 		} else if (var2 == 4) {
 			this.bt_fld = true;
 		} else if (5 == var2) {
 			this.bv_fld = var1.cg() * 191553552;
 		} else if (var2 == 6) {
-			this.bi_fld = xi.tx(var1, 1547320048);
+			this.bi_fld = var1.cm();
 		} else if (7 == var2) {
-			this.bu_fld = xi.tx(var1, 1427163061);
+			this.bu_fld = var1.cm();
 		} else if (8 == var2) {
 			this.bn_fld = var1.cg() * -1576686901;
 		} else if (var2 == 9) {
@@ -2450,25 +2483,25 @@ public class ol extends vc implements Animation {
 			this.ba_fld = var1.cg() * 149311931;
 		} else if (var2 == 12) {
 			int var8 = var1.cg();
-			this.bx_fld = new int[var8];
+			this.bj_fld = new int[var8];
 
 			for (int var15 = 0; var15 < var8; var15++) {
-				this.bx_fld[var15] = xi.tx(var1, 1760877882);
+				this.bj_fld[var15] = var1.cm();
 			}
 
 			for (int var16 = 0; var16 < var8; var16++) {
-				this.bx_fld[var16] = (xi.tx(var1, 1143209615) << 16) + this.bx_fld[var16];
+				this.bj_fld[var16] = (var1.cm() << 16) + this.bj_fld[var16];
 			}
 		} else if (var2 == 13) {
-			this.br_fld = var1.co();
+			this.br_fld = var1.co((byte)-102);
 		} else if (14 == var2) {
-			int var9 = xi.tx(var1, 596120442);
+			int var9 = var1.cm();
 			if (null == this.be_fld) {
 				this.be_fld = new HashMap();
 			}
 
 			for (int var17 = 0; var17 < var9; var17++) {
-				int var5 = xi.tx(var1, 1770811026);
+				int var5 = var1.cm();
 				oc var6 = lp.ae(var1);
 				if (null != var6) {
 					if (!this.be_fld.containsKey(var5)) {
@@ -2479,10 +2512,10 @@ public class ol extends vc implements Animation {
 				}
 			}
 		} else if (var2 == 15) {
-			this.bs_fld = xi.tx(var1, 1673370423) * -1685129773;
-			this.bh_fld = xi.tx(var1, 371229746);
+			this.bs_fld = var1.cm() * -1685129773;
+			this.bh_fld = var1.cm();
 		} else if (16 == var2) {
-			this.bp_fld = xi.rp(var1, 4664908);
+			this.bp_fld = var1.cw();
 		} else if (var2 == 17) {
 			this.bo_fld = new boolean[-18950067];
 
@@ -2500,11 +2533,83 @@ public class ol extends vc implements Animation {
 		}
 	}
 
+	@ObfuscatedName("ha")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;I)Z"
+	)
+	public static boolean ha(ol var0, int var1) throws EOFException {
+		try {
+			if (var0.bi_fld > 0 || var0.bu_fld > 0) {
+				return true;
+			} else if (!var0.aa(2013337862)) {
+				var1 = var0.bk_fld[var1];
+				fe var10 = gz.ag(var1 >> 16);
+				var1 &= 65535;
+				return var10 == null ? false : var10.ag(var1);
+			} else {
+				int var3 = var0.br_fld;
+				sp var5 = (sp)bd_fld.ak(var3);
+				sp var4;
+				if (null != var5) {
+					var4 = var5;
+				} else {
+					var5 = ld.ak(mc.at_fld, pm.ac_fld, var3);
+					if (null != var5) {
+						bd_fld.az(var5, var3);
+					}
+
+					var4 = var5;
+				}
+
+				sp var2;
+				if (null != var4 && sp.sp(var4, -1737507381)) {
+					var2 = var4;
+				} else {
+					var2 = null;
+				}
+
+				return var2 == null ? false : var2.ah();
+			}
+		} catch (Throwable var7) {
+			throw new RuntimeException(var7);
+		}
+	}
+
 	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
 		descriptor = "(Lfn;ILol;I)Lfn;"
 	)
 	fn ce(fn var1, int var2, ol var3, int var4) {
+		try {
+			var2 = this.bk_fld[var2];
+			fe var5 = gz.ag(var2 >> 16);
+			var2 &= 65535;
+			if (null == var5) {
+				return var3.as(var1, var4, (byte)-61);
+			} else {
+				var4 = var3.bk_fld[var4];
+				fe var6 = gz.ag(var4 >> 16);
+				var4 &= 65535;
+				if (var6 == null) {
+					fn var14 = var1.ay(!var5.ag(var2));
+					var14.bm(var5, var2);
+					return var14;
+				} else {
+					fn var7 = var1.ay(!var5.ag(var2) & !var6.ag(var4));
+					fn.ut(var7, var5, var2, var6, var4, this.bx_fld);
+					return var7;
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;ILol;I)Lfn;"
+	)
+	fn cp(fn var1, int var2, ol var3, int var4) {
 		try {
 			var2 = this.bk_fld[var2];
 			fe var5 = gz.ag(var2 >> 16);
@@ -2516,12 +2621,12 @@ public class ol extends vc implements Animation {
 				fe var6 = gz.ag(var4 >> 16);
 				var4 &= -718810225;
 				if (var6 == null) {
-					fn var14 = var1.ay(!fe.sw(var5, var2));
-					var14.di(var5, var2);
+					fn var14 = var1.ay(!var5.ag(var2));
+					var14.bm(var5, var2);
 					return var14;
 				} else {
-					fn var7 = var1.ay(!fe.sw(var5, var2) & !fe.sw(var6, var4));
-					fn.fl(var7, var5, var2, var6, var4, this.bj_fld);
+					fn var7 = var1.ay(!var5.ag(var2) & !var6.ag(var4));
+					fn.ut(var7, var5, var2, var6, var4, this.bx_fld);
 					return var7;
 				}
 			}
@@ -2530,11 +2635,11 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void bi(xi var1, int var2) {
+	void ah(xi var1, int var2) {
 		while (true) {
 			int var3 = var1.cg();
 			if (var3 == 0) {
@@ -2553,40 +2658,6 @@ public class ol extends vc implements Animation {
 		return this.br_fld >= 0;
 	}
 
-	@ObfuscatedName("ec")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;I)Lfn;"
-	)
-	public static fn ec(ol var0, fn var1, int var2) throws EOFException {
-		try {
-			if (var0 == null) {
-				throw new NullPointerException();
-			} else if (!var0.aa(2125621905)) {
-				var2 = var0.bk_fld[var2];
-				fe var9 = gz.ag(var2 >> 16);
-				var2 &= 65535;
-				if (null == var9) {
-					return var1.ay(true);
-				} else {
-					fn var10 = var1.ay(!fe.sw(var9, var2));
-					var10.di(var9, var2);
-					return var10;
-				}
-			} else {
-				sp var3 = mb.av(var0.br_fld);
-				if (var3 == null) {
-					return var1.ay(true);
-				} else {
-					fn var4 = var1.ay(!var3.ah());
-					fn.sb(var4, var3, var2);
-					return var4;
-				}
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "(Lfn;I)Lfn;"
@@ -2602,20 +2673,20 @@ public class ol extends vc implements Animation {
 				} else {
 					fe var5 = null;
 					int var6 = 0;
-					if (this.bx_fld != null && var2 < this.bx_fld.length) {
-						var6 = this.bx_fld[var2];
+					if (this.bj_fld != null && var2 < this.bj_fld.length) {
+						var6 = this.bj_fld[var2];
 						var5 = gz.ag(var6 >> 16);
 						var6 &= 65535;
 					}
 
 					if (null != var5 && 65535 != var6) {
-						fn var12 = var1.ay(!fe.sw(var4, var3) & !fe.sw(var5, var6));
-						var12.di(var4, var3);
-						var12.di(var5, var6);
+						fn var12 = var1.ay(!var4.ag(var3) & !var5.ag(var6));
+						var12.bm(var4, var3);
+						var12.bm(var5, var6);
 						return var12;
 					} else {
-						fn var7 = var1.ay(!fe.sw(var4, var3));
-						var7.di(var4, var3);
+						fn var7 = var1.ay(!var4.ag(var3));
+						var7.bm(var4, var3);
 						return var7;
 					}
 				}
@@ -2650,14 +2721,6 @@ public class ol extends vc implements Animation {
 		return this.br_fld >= 0;
 	}
 
-	@ObfuscatedName("cm")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int cm() {
-		return this.bh_fld - this.bs_fld;
-	}
-
 	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -2667,43 +2730,6 @@ public class ol extends vc implements Animation {
 			return this.aa(-1245196397) ? cm.az(this.br_fld, -2069062073) : 2;
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ck")
-	@ObfuscatedSignature(
-		descriptor = "()Lsp;"
-	)
-	public sp ck() {
-		try {
-			if (this.aa(1299498937)) {
-				int var2 = this.br_fld * 1851697780;
-				sp var4 = (sp)bd_fld.ak(var2);
-				sp var3;
-				if (null != var4) {
-					var3 = var4;
-				} else {
-					var4 = ld.ak(mc.at_fld, pm.ac_fld, var2);
-					if (var4 != null) {
-						bd_fld.az(var4, var2);
-					}
-
-					var3 = var4;
-				}
-
-				sp var1;
-				if (null != var3 && var3.av()) {
-					var1 = var3;
-				} else {
-					var1 = null;
-				}
-
-				return var1;
-			} else {
-				return null;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
 		}
 	}
 
@@ -2729,7 +2755,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var1;
-				if (null != var3 && var3.av()) {
+				if (null != var3 && sp.sp(var3, -501726225)) {
 					var1 = var3;
 				} else {
 					var1 = null;
@@ -2744,55 +2770,14 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("bn")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;)Lsp;"
-	)
-	public static sp bn(ol var0) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (var0.aa(1437982197)) {
-				int var2 = var0.br_fld;
-				sp var4 = (sp)bd_fld.ak(var2);
-				sp var3;
-				if (null != var4) {
-					var3 = var4;
-				} else {
-					var4 = ld.ak(mc.at_fld, pm.ac_fld, var2);
-					if (var4 != null) {
-						bd_fld.az(var4, var2);
-					}
-
-					var3 = var4;
-				}
-
-				sp var1;
-				if (null != var3 && var3.av()) {
-					var1 = var3;
-				} else {
-					var1 = null;
-				}
-
-				return var1;
-			} else {
-				return null;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("cu")
+	@ObfuscatedName("co")
 	@ObfuscatedSignature(
 		descriptor = "()Lsp;"
 	)
-	public sp cu() {
+	public sp co() {
 		try {
-			if (this.aa(526167821)) {
-				int var2 = this.br_fld * -1545236868;
+			if (this.aa(1437982197)) {
+				int var2 = this.br_fld;
 				sp var4 = (sp)bd_fld.ak(var2);
 				sp var3;
 				if (null != var4) {
@@ -2807,7 +2792,7 @@ public class ol extends vc implements Animation {
 				}
 
 				sp var1;
-				if (null != var3 && var3.av()) {
+				if (null != var3 && sp.sp(var3, -515676968)) {
 					var1 = var3;
 				} else {
 					var1 = null;
@@ -2819,6 +2804,18 @@ public class ol extends vc implements Animation {
 			}
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("fi")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;ILqy;)I"
+	)
+	public static int fi(qa var0, int var1, qy var2) throws EOFException {
+		try {
+			return cf.ak(var0, var1, var2);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
 	}
 
@@ -2830,6 +2827,110 @@ public class ol extends vc implements Animation {
 		return this.bq_fld;
 	}
 
+	@ObfuscatedName("uq")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lfn;ILol;II)Lfn;"
+	)
+	public static fn uq(ol var0, fn var1, int var2, ol var3, int var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var2 < 0) {
+				int var6 = var2 ^ Integer.MIN_VALUE;
+				var2 = var6 & 65535;
+			}
+
+			if (var4 < 0) {
+				int var19 = var4 ^ Integer.MIN_VALUE;
+				var4 = var19 & 65535;
+			}
+
+			int var9 = var2;
+			int var12 = 1694329828;
+			fn var10000;
+			if (bz_fld && !var0.aa(-964078597) && !var3.aa(373293630)) {
+				fn var21 = ps(var0, var1, var2, var3, var4);
+				var10000 = var21;
+			} else {
+				fn var13 = var1.ay(false);
+				boolean var14 = false;
+				fe var15 = null;
+				ea var16 = null;
+				if (var0.aa(-1056235022)) {
+					sp var17 = var0.am((byte)15);
+					if (null == var17) {
+						return var13;
+					}
+
+					if (var3.aa(1076999793) && null == var0.bo_fld) {
+						var13.bd(var17, var2);
+						return var13;
+					}
+
+					var16 = var17.ah_fld;
+					var13.bs(var16, var17, var2, var0.bo_fld, false, !var3.aa(-1729740320));
+				} else {
+					var9 = var0.bk_fld[var2];
+					var15 = gz.ag(var9 >> 16);
+					var9 &= 65535;
+					if (null == var15) {
+						return var3.as(var1, var4, (byte)-115);
+					}
+
+					if (!var3.aa(808748803) && (null == var0.bx_fld || var4 == -1)) {
+						var13.bm(var15, var9);
+						return var13;
+					}
+
+					if (var0.bx_fld == null || var4 == -1) {
+						var13.bm(var15, var9);
+						return var13;
+					}
+
+					var14 = var3.aa(-725110837);
+					if (!var14) {
+						fn.bf(var13, var15, var9, var0.bx_fld, false);
+					}
+				}
+
+				if (var3.aa(836900580)) {
+					sp var24 = var3.am((byte)15);
+					if (var24 == null) {
+						return var13;
+					}
+
+					if (var16 == null) {
+						var16 = var24.ah_fld;
+					}
+
+					var13.bs(var16, var24, var4, var0.bo_fld, true, true);
+				} else {
+					int var11 = var3.bk_fld[var4];
+					fe var25 = gz.ag(var11 >> 16);
+					var11 &= 65535;
+					if (var25 == null) {
+						return var0.as(var1, var9, (byte)-101);
+					}
+
+					fn.bf(var13, var25, var11, var0.bx_fld, true);
+				}
+
+				if (var14 && var15 != null) {
+					fn.bf(var13, var15, var9, var0.bx_fld, false);
+				}
+
+				var13.aj();
+				var10000 = var13;
+			}
+
+			return var10000;
+		} catch (Throwable var18) {
+			throw new RuntimeException(var18);
+		}
+	}
+
 	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -2838,105 +2939,9 @@ public class ol extends vc implements Animation {
 		return this.bq_fld;
 	}
 
-	@ObfuscatedName("hp")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;I)Lfn;"
-	)
-	public static fn hp(ol var0, fn var1, int var2) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (!var0.aa(1576213363)) {
-				int var3 = var0.bk_fld[var2];
-				fe var4 = gz.ag(var3 >> 16);
-				var3 &= 65535;
-				if (var4 == null) {
-					return var1.ay(true);
-				} else {
-					fe var5 = null;
-					int var6 = 0;
-					if (var0.bx_fld != null && var2 < var0.bx_fld.length) {
-						var6 = var0.bx_fld[var2];
-						var5 = gz.ag(var6 >> 16);
-						var6 &= 65535;
-					}
-
-					if (null != var5 && 65535 != var6) {
-						fn var12 = var1.ay(!fe.sw(var4, var3) & !fe.sw(var5, var6));
-						var12.di(var4, var3);
-						var12.di(var5, var6);
-						return var12;
-					} else {
-						fn var7 = var1.ay(!fe.sw(var4, var3));
-						var7.di(var4, var3);
-						return var7;
-					}
-				}
-			} else {
-				return var0.as(var1, var2, (byte)-42);
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("xu")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;I)Lnet/runelite/api/Model;"
-	)
-	public Model xu(fn var1, int var2) {
-		try {
-			return this.as(var1, var2, (byte)-9);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("cr")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;I)Lfn;"
-	)
-	public fn cr(fn var1, int var2) {
-		try {
-			if (!this.aa(-92165518)) {
-				int var3 = this.bk_fld[var2];
-				fe var4 = gz.ag(var3 >> 16);
-				var3 &= 65535;
-				if (var4 == null) {
-					return var1.ay(true);
-				} else {
-					fe var5 = null;
-					int var6 = 0;
-					if (this.bx_fld != null && var2 < this.bx_fld.length) {
-						var6 = this.bx_fld[var2];
-						var5 = gz.ag(var6 >> 16);
-						var6 &= 65535;
-					}
-
-					if (null != var5 && 65535 != var6) {
-						fn var12 = var1.ay(!fe.sw(var4, var3) & !fe.sw(var5, var6));
-						var12.di(var4, var3);
-						var12.di(var5, var6);
-						return var12;
-					} else {
-						fn var7 = var1.ay(!fe.sw(var4, var3));
-						var7.di(var4, var3);
-						return var7;
-					}
-				}
-			} else {
-				return this.as(var1, var2, (byte)-11);
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lpn;"
+		descriptor = "(IB)Lpn;"
 	)
 	public static pn ag(int var0) throws EOFException {
 		try {
@@ -2964,41 +2969,41 @@ public class ol extends vc implements Animation {
 	)
 	void aw(xi var1, int var2, byte var3) {
 		if (1 == var2) {
-			int var4 = xi.tx(var1, 1876002228);
+			int var4 = var1.cm();
 			this.bf_fld = new int[var4];
 
 			for (int var5 = 0; var5 < var4; var5++) {
-				this.bf_fld[var5] = xi.tx(var1, 2042902110);
+				this.bf_fld[var5] = var1.cm();
 			}
 
 			this.bk_fld = new int[var4];
 
 			for (int var13 = 0; var13 < var4; var13++) {
-				this.bk_fld[var13] = xi.tx(var1, 1491553691);
+				this.bk_fld[var13] = var1.cm();
 			}
 
 			for (int var14 = 0; var14 < var4; var14++) {
-				this.bk_fld[var14] = (xi.tx(var1, 1145710891) << 16) + this.bk_fld[var14];
+				this.bk_fld[var14] = (var1.cm() << 16) + this.bk_fld[var14];
 			}
 		} else if (2 == var2) {
-			this.bl_fld = xi.tx(var1, 797382853);
+			this.bl_fld = var1.cm();
 		} else if (3 == var2) {
 			int var8 = var1.cg();
-			this.bj_fld = new int[1 + var8];
+			this.bx_fld = new int[1 + var8];
 
 			for (int var15 = 0; var15 < var8; var15++) {
-				this.bj_fld[var15] = var1.cg();
+				this.bx_fld[var15] = var1.cg();
 			}
 
-			this.bj_fld[var8] = 9999999;
+			this.bx_fld[var8] = 9999999;
 		} else if (var2 == 4) {
 			this.bt_fld = true;
 		} else if (5 == var2) {
 			this.bv_fld = var1.cg();
 		} else if (var2 == 6) {
-			this.bi_fld = xi.tx(var1, 1098434051);
+			this.bi_fld = var1.cm();
 		} else if (7 == var2) {
-			this.bu_fld = xi.tx(var1, 1988419371);
+			this.bu_fld = var1.cm();
 		} else if (8 == var2) {
 			this.bn_fld = var1.cg();
 		} else if (var2 == 9) {
@@ -3013,19 +3018,19 @@ public class ol extends vc implements Animation {
 			this.ba_fld = var1.cg();
 		} else if (var2 == 12) {
 			int var9 = var1.cg();
-			this.bx_fld = new int[var9];
+			this.bj_fld = new int[var9];
 
 			for (int var16 = 0; var16 < var9; var16++) {
-				this.bx_fld[var16] = xi.tx(var1, 1070942518);
+				this.bj_fld[var16] = var1.cm();
 			}
 
 			for (int var17 = 0; var17 < var9; var17++) {
-				this.bx_fld[var17] = (xi.tx(var1, 1311483574) << 16) + this.bx_fld[var17];
+				this.bj_fld[var17] = (var1.cm() << 16) + this.bj_fld[var17];
 			}
 		} else if (var2 == 13) {
-			this.br_fld = var1.co();
+			this.br_fld = var1.co((byte)-50);
 		} else if (14 == var2) {
-			int var10 = xi.tx(var1, 604720530);
+			int var10 = var1.cm();
 			if (null == this.be_fld) {
 				this.be_fld = new HashMap();
 			}
@@ -3035,7 +3040,7 @@ public class ol extends vc implements Animation {
 					return;
 				}
 
-				int var6 = xi.tx(var1, 1333402242);
+				int var6 = var1.cm();
 				oc var7 = lp.ae(var1);
 				if (null != var7) {
 					if (!this.be_fld.containsKey(var6)) {
@@ -3046,10 +3051,10 @@ public class ol extends vc implements Animation {
 				}
 			}
 		} else if (var2 == 15) {
-			this.bs_fld = xi.tx(var1, 1248143541);
-			this.bh_fld = xi.tx(var1, 1612777593);
+			this.bs_fld = var1.cm();
+			this.bh_fld = var1.cm();
 		} else if (16 == var2) {
-			this.bp_fld = xi.rp(var1, 759871673);
+			this.bp_fld = var1.cw();
 		} else if (var2 == 17) {
 			this.bo_fld = new boolean[256];
 
@@ -3067,60 +3072,145 @@ public class ol extends vc implements Animation {
 		}
 	}
 
-	@ObfuscatedName("getNumFrames")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lfn;IIB)Lfn;"
 	)
-	@Override
-	public int getNumFrames() {
-		if (this.isMayaAnim()) {
-			return this.xe();
-		} else {
-			return this.bk_fld != null ? this.bk_fld.length : 1;
-		}
-	}
-
-	@ObfuscatedName("yf")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;I)Lfn;"
-	)
-	public fn yf(fn var1, int var2) {
+	fn af(fn var1, int var2, int var3, byte var4) {
 		try {
-			return this.al(var1, var2, (short)187);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;I)Lfn;"
-	)
-	public fn bb(fn var1, int var2) {
-		try {
-			if (!this.cc(1065359647)) {
-				var2 = this.bk_fld[var2];
-				fe var9 = gz.ag(var2 >> 16);
-				var2 &= 65535;
-				if (null == var9) {
-					return var1.ay(true);
-				} else {
-					fn var10 = var1.cl(!fe.sw(var9, var2));
-					var10.di(var9, var2);
-					return var10;
-				}
-			} else {
-				sp var3 = mb.av(-2142444285 * this.bp_fld);
-				if (var3 == null) {
-					return var1.as(true);
-				} else {
-					fn var4 = var1.ap(!var3.ah());
-					fn.sb(var4, var3, var2);
-					return var4;
-				}
-			}
+			return this.jt(rl21.ao_fld, var1, var2, var3);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;ILol;II)Lfn;"
+	)
+	public fn au(fn var1, int var2, ol var3, int var4, int var5) {
+		try {
+			if (var2 < 0) {
+				int var6 = var2 ^ Integer.MIN_VALUE;
+				var2 = var6 & 65535;
+			}
+
+			if (var4 < 0) {
+				int var19 = var4 ^ Integer.MIN_VALUE;
+				var4 = var19 & 65535;
+			}
+
+			int var9 = var2;
+			int var12 = 1694329828;
+			fn var10000;
+			if (bz_fld && !this.aa(-964078597) && !var3.aa(373293630)) {
+				fn var21 = ps(this, var1, var2, var3, var4);
+				var10000 = var21;
+			} else {
+				fn var13 = var1.ct(false);
+				boolean var14 = false;
+				fe var15 = null;
+				ea var16 = null;
+				if (this.aa(-1056235022)) {
+					sp var17 = this.am((byte)15);
+					if (null == var17) {
+						return var13;
+					}
+
+					if (var3.aa(1076999793) && null == this.bo_fld) {
+						var13.dp(var17, var2);
+						return var13;
+					}
+
+					var16 = var17.ah_fld;
+					var13.bs(var16, var17, var2, this.bo_fld, false, !var3.aa(-1729740320));
+				} else {
+					var9 = this.bf_fld[var2];
+					var15 = gz.ag(var9 >> 16);
+					var9 &= 65535;
+					if (null == var15) {
+						return var3.as(var1, var4, (byte)-115);
+					}
+
+					if (!var3.aa(808748803) && (null == this.bj_fld || var4 == -1)) {
+						var13.bm(var15, var9);
+						return var13;
+					}
+
+					if (this.bx_fld == null || var4 == -1) {
+						var13.dy(var15, var9);
+						return var13;
+					}
+
+					var14 = var3.aa(-725110837);
+					if (!var14) {
+						fn.bf(var13, var15, var9, this.bx_fld, false);
+					}
+				}
+
+				if (var3.aa(836900580)) {
+					sp var24 = var3.am((byte)15);
+					if (var24 == null) {
+						return var13;
+					}
+
+					if (var16 == null) {
+						var16 = var24.ah_fld;
+					}
+
+					var13.bs(var16, var24, var4, this.bo_fld, true, true);
+				} else {
+					int var11 = var3.bk_fld[var4];
+					fe var25 = gz.ag(var11 >> 16);
+					var11 &= 65535;
+					if (var25 == null) {
+						return this.as(var1, var9, (byte)-101);
+					}
+
+					fn.bf(var13, var25, var11, this.bx_fld, true);
+				}
+
+				if (var14 && var15 != null) {
+					fn.bf(var13, var15, var9, this.bx_fld, false);
+				}
+
+				var13.ap();
+				var10000 = var13;
+			}
+
+			return var10000;
+		} catch (Throwable var18) {
+			throw new RuntimeException(var18);
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;ILol;II)Lfn;"
+	)
+	fn ax(fn var1, int var2, ol var3, int var4, int var5) {
+		try {
+			var2 = this.bk_fld[var2];
+			fe var6 = gz.ag(var2 >> 16);
+			var2 &= 65535;
+			if (null == var6) {
+				return var3.as(var1, var4, (byte)-54);
+			} else {
+				var4 = var3.bk_fld[var4];
+				fe var7 = gz.ag(var4 >> 16);
+				var4 &= 65535;
+				if (var7 == null) {
+					fn var14 = var1.vu(!var6.ag(var2));
+					var14.dy(var6, var2);
+					return var14;
+				} else {
+					fn var8 = var1.cl(!var6.ag(var2) & !var7.ag(var4));
+					fn.ut(var8, var6, var2, var7, var4, this.bx_fld);
+					return var8;
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
 		}
 	}
 }

@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("av")
 public class av {
-	@ObfuscatedGetter(
-		intValue = 1809168103
-	)
 	@ObfuscatedName("nj")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1809168103
 	)
 	static int nj_fld;
 	@ObfuscatedName("ap")
@@ -77,7 +77,7 @@ public class av {
 						var12++;
 					}
 				} else if (yq.ag_fld == var0.ag_fld) {
-					long[] var16 = var0.ag();
+					long[] var16 = sl.ob(var0, -198487768);
 					px.at(var16, 0, var3 - 1);
 					px.at(var16, 0, var1 - 1);
 					px.at(var16, var1, var3 - 1);
@@ -93,7 +93,7 @@ public class av {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I"
+		descriptor = "(IIIII)I"
 	)
 	static final int ak(int var0, int var1, int var2, int var3) {
 		return var2 * var0 + var1 * var3 >> 16;
@@ -105,10 +105,10 @@ public class av {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(IIB)I"
 	)
 	static int ak(int var0, int var1) {
-		bg var3 = (bg)bg.ak_fld.ak(var0);
+		bg var3 = (bg)xz.tw(bg.ak_fld, var0);
 		if (var3 == null) {
 			return -1;
 		} else {
@@ -118,7 +118,7 @@ public class av {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(IB)I"
 	)
 	public static int ak(int var0) {
 		return wo.ak_fld[var0 << 1];

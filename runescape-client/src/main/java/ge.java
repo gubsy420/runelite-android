@@ -4,28 +4,28 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ge")
 public class ge {
-	@ObfuscatedGetter(
-		intValue = -1805943069
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
 	@ObfuscatedGetter(
-		intValue = 934427455
+		intValue = -1805943069
 	)
+	int ak_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = 1087707119
+		intValue = 934427455
 	)
+	int az_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1087707119
 	)
 	int ag_fld;
 	@ObfuscatedName("cc")
@@ -48,14 +48,6 @@ public class ge {
 		this.az_fld = var3;
 	}
 
-	@ObfuscatedName("lh")
-	@ObfuscatedSignature(
-		descriptor = "(Lsl;)[Ljava/lang/Object;"
-	)
-	public static Object[] lh(sl var0) {
-		return (Object[])var0.as_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(B)[Lcc;"
@@ -64,21 +56,9 @@ public class ge {
 		return new cc[]{cc.ak_fld, cc.az_fld, cc.ae_fld, cc.av_fld, cc.ag_fld};
 	}
 
-	@ObfuscatedName("fi")
-	@ObfuscatedSignature(
-		descriptor = "(Lwl;)V"
-	)
-	public static void fi(wl var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		ga.ae_fld.aw();
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)[B"
+		descriptor = "(Ljava/lang/String;I)[B"
 	)
 	static byte[] ag(String var0) {
 		byte var2 = 48;

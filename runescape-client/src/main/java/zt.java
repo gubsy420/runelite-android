@@ -15,12 +15,12 @@ public class zt {
 		descriptor = "F"
 	)
 	static float ag_fld;
-	@ObfuscatedGetter(
-		intValue = 1108417649
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1108417649
 	)
 	int as_fld;
 	@ObfuscatedName("av")
@@ -54,18 +54,6 @@ public class zt {
 	)
 	int[] aw_fld = new int[2048];
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyv;"
-	)
-	yv ay(int var1) {
-		if (!this.ae_fld.containsKey(var1)) {
-			this.ak(var1, (byte)-26);
-		}
-
-		return (yv)(yv)this.ae_fld.get(var1);
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -76,7 +64,7 @@ public class zt {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lyv;"
+		descriptor = "(II)Lyv;"
 	)
 	yv ag(int var1) {
 		if (!this.ae_fld.containsKey(var1)) {
@@ -86,33 +74,27 @@ public class zt {
 		return (yv)(yv)this.ae_fld.get(var1);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("tw")
 	@ObfuscatedSignature(
-		descriptor = "(III)V"
+		descriptor = "(Lzt;III)V"
 	)
-	public final void az(int var1, int var2, int var3) {
-		if (this.as_fld >= this.aw_fld.length) {
+	public static void tw(zt var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else if (var0.as_fld >= var0.aw_fld.length) {
 			if (var3 != 1140452111) {
 				;
 			}
 		} else {
-			this.aw_fld[this.as_fld] = var1;
-			this.ay_fld[this.as_fld] = var2;
-			this.as_fld++;
+			var0.aw_fld[var0.as_fld] = var1;
+			var0.ay_fld[var0.as_fld] = var2;
+			var0.as_fld++;
 		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public final void av() {
-		this.as_fld = 0;
 	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IILyv;F)V"
+		descriptor = "(IILyv;FI)V"
 	)
 	public final void ae(int var1, int var2, yv var3, float var4) {
 		int var6 = (int)(var4 * 18.0F);
@@ -120,7 +102,7 @@ public class zt {
 		int var8 = 2 * var6 + 1;
 		uf var9 = new uf(0, 0, var3.aw_fld, var3.ay_fld);
 		uf var10 = new uf(0, 0);
-		uf.uo(this.ah_fld, var8, var8);
+		this.ah_fld.az(var8, var8);
 		System.nanoTime();
 
 		for (int var11 = 0; var11 < this.as_fld; var11++) {
@@ -130,7 +112,7 @@ public class zt {
 			int var15 = (int)(var3.ay_fld - var4 * (var13 - var2)) - var6;
 			this.ah_fld.ag(var14, var15);
 			this.ah_fld.ah(var9, var10);
-			this.ah(var7, var3, var10, 192853767);
+			yp(this, var7, var3, var10, 192853767);
 		}
 
 		System.nanoTime();
@@ -155,57 +137,6 @@ public class zt {
 		}
 
 		System.nanoTime();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lyv;Lyv;Luf;I)V"
-	)
-	void ah(yv var1, yv var2, uf var3, int var4) {
-		if (var3.ah_fld != 0) {
-			if (0 != var3.aw_fld) {
-				int var5 = 0;
-				int var6 = 0;
-				if (0 == var3.av_fld) {
-					var5 = var1.aw_fld - var3.ah_fld;
-				}
-
-				if (0 == var3.ae_fld) {
-					if (var4 == -1017722577) {
-						return;
-					}
-
-					var6 = var1.ay_fld - var3.aw_fld;
-				}
-
-				int var7 = var5 + var1.aw_fld * var6;
-				int var8 = var2.aw_fld * var3.ae_fld + var3.av_fld;
-
-				for (int var9 = 0; var9 < var3.aw_fld; var9++) {
-					for (int var10 = 0; var10 < var3.ah_fld; var10++) {
-						int var10001 = var8++;
-						var2.ah_fld[var10001] = var2.ah_fld[var10001] + var1.ah_fld[var7++];
-					}
-
-					var7 += var1.aw_fld - var3.ah_fld;
-					var8 += var2.aw_fld - var3.ah_fld;
-				}
-
-				return;
-			}
-
-			if (var4 == -1017722577) {
-				return;
-			}
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public final void ax() {
-		this.as_fld = 0;
 	}
 
 	@ObfuscatedName("ai")
@@ -239,37 +170,62 @@ public class zt {
 		}
 	}
 
-	@ObfuscatedName("zt")
+	@ObfuscatedName("yp")
 	@ObfuscatedSignature(
-		descriptor = "(Lik;I)V"
+		descriptor = "(Lzt;Lyv;Lyv;Luf;I)V"
 	)
-	public static void zt(ik var0, int var1) {
-		if (var0.bz_fld) {
-			if (var0.ac_fld != null) {
-				System.arraycopy(var0.ac_fld, 0, var0.ac_fld = new long[var1], 0, var0.at_fld);
-			} else {
-				var0.ac_fld = new long[var1];
-			}
-		}
+	public static void yp(zt var0, yv var1, yv var2, uf var3, int var4) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var3.ah_fld != 0) {
+				if (0 != var3.aw_fld) {
+					int var5 = 0;
+					int var6 = 0;
+					if (0 == var3.av_fld) {
+						var5 = var1.aw_fld - var3.ah_fld;
+					}
 
-		if (var0.br_fld) {
-			if (null != var0.bm_fld) {
-				System.arraycopy(var0.bm_fld, 0, var0.bm_fld = new String[var1], 0, var0.at_fld);
-			} else {
-				var0.bm_fld = new String[var1];
+					if (0 == var3.ae_fld) {
+						if (var4 == -1017722577) {
+							return;
+						}
+
+						var6 = var1.ay_fld - var3.aw_fld;
+					}
+
+					int var7 = var5 + var1.aw_fld * var6;
+					int var8 = var2.aw_fld * var3.ae_fld + var3.av_fld;
+
+					for (int var9 = 0; var9 < var3.aw_fld; var9++) {
+						for (int var10 = 0; var10 < var3.ah_fld; var10++) {
+							int var10001 = var8++;
+							var2.ah_fld[var10001] = var2.ah_fld[var10001] + var1.ah_fld[var7++];
+						}
+
+						var7 += var1.aw_fld - var3.ah_fld;
+						var8 += var2.aw_fld - var3.ah_fld;
+					}
+
+					return;
+				}
+
+				if (var4 == -1017722577) {
+					return;
+				}
 			}
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("df")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(Lzt;II)V"
 	)
-	public final void as(int var1, int var2) {
-		if (this.as_fld < this.aw_fld.length) {
-			this.aw_fld[this.as_fld] = var1;
-			this.ay_fld[this.as_fld] = var2;
-			this.as_fld++;
+	public static void df(zt var0, int var1, int var2) {
+		if (var0.as_fld < var0.aw_fld.length) {
+			var0.aw_fld[var0.as_fld] = var1;
+			var0.ay_fld[var0.as_fld] = var2;
+			var0.as_fld++;
 		}
 	}
 
@@ -328,6 +284,30 @@ public class zt {
 	)
 	public final void al() {
 		this.as_fld = 0;
+	}
+
+	@ObfuscatedName("wm")
+	@ObfuscatedSignature(
+		descriptor = "(Lzt;)V"
+	)
+	public static void wm(zt var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.as_fld = 0;
+	}
+
+	@ObfuscatedName("dp")
+	@ObfuscatedSignature(
+		descriptor = "(Lea;)Lek;"
+	)
+	public static ek dp(ea var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.as_fld;
 	}
 
 	public zt() {
@@ -391,6 +371,18 @@ public class zt {
 		this.ae_fld.put(var1, var21);
 	}
 
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "(Lzt;I)V"
+	)
+	public static void bc(zt var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.as_fld = 0;
+	}
+
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -439,6 +431,73 @@ public class zt {
 			this.aw_fld[this.as_fld] = var1;
 			this.ay_fld[this.as_fld * 417592358] = var2;
 			this.as_fld++;
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public final void az(int var1, int var2, int var3) {
+		if (this.as_fld >= this.ay_fld.length) {
+			if (var3 != 1140452111) {
+				;
+			}
+		} else {
+			this.aw_fld[this.as_fld] = var1;
+			this.aw_fld[this.as_fld] = var2;
+			this.as_fld++;
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public final void av(int var1) {
+		this.as_fld = 0;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lyv;Lyv;Luf;I)V"
+	)
+	void ah(yv var1, yv var2, uf var3, int var4) {
+		if (var3.aw_fld * -1460419515 != 0) {
+			if (0 != var3.ah_fld) {
+				int var5 = 0;
+				int var6 = 0;
+				if (0 == var3.av_fld) {
+					var5 = var1.ay_fld - var3.ah_fld;
+				}
+
+				if (0 == var3.aw_fld) {
+					if (var4 == -1017722577) {
+						return;
+					}
+
+					var6 = var1.ao_fld - var3.aw_fld;
+				}
+
+				int var7 = var5 + var1.aw_fld * var6;
+				int var8 = var2.ao_fld * var3.ah_fld + var3.aw_fld;
+
+				for (int var9 = 0; var9 < var3.av_fld; var9++) {
+					for (int var10 = 0; var10 < var3.aw_fld; var10++) {
+						int var10001 = var8++;
+						var2.ah_fld[var10001] = var2.ah_fld[var10001] + var1.ah_fld[var7++];
+					}
+
+					var7 += var1.ad_fld - var3.aw_fld;
+					var8 += var2.ad_fld - var3.av_fld;
+				}
+
+				return;
+			}
+
+			if (var4 == -1017722577) {
+				return;
+			}
 		}
 	}
 }

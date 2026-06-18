@@ -26,12 +26,12 @@ public class ls extends mu {
 		descriptor = "I"
 	)
 	static int ah_fld;
-	@ObfuscatedGetter(
-		intValue = 678094141
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 678094141
 	)
 	int ak_fld;
 
@@ -46,7 +46,7 @@ public class ls extends mu {
 
 	@ObfuscatedName("ea")
 	@ObfuscatedSignature(
-		descriptor = "()Lkj;"
+		descriptor = "(I)Lkj;"
 	)
 	static kj ea() {
 		tu var2 = sq.ek();
@@ -54,30 +54,17 @@ public class ls extends mu {
 		if (var2.af()) {
 			var1 = new kj();
 		} else {
-			int var3 = kj.ay((int)var2.ay_fld);
-			int var4 = kj.ay((int)var2.ar_fld);
-			var1 = new kj((int)var2.as_fld, var3, var4);
+			int var3 = kj.ay((int)var2.ar_fld);
+			int var4 = kj.ay((int)var2.as_fld);
+			var1 = new kj((int)var2.ay_fld, var3, var4);
 		}
 
-		if (kj.en(var1, 469243276)) {
+		if (var1.ax()) {
+			var1.ak_fld = var1.ak_fld - bw.dk_fld.as_fld;
 			var1.ag_fld = var1.ag_fld - bw.dk_fld.ay_fld;
-			var1.az_fld = var1.az_fld - bw.dk_fld.as_fld;
 		}
 
 		return var1;
-	}
-
-	@ObfuscatedName("yz")
-	@ObfuscatedSignature(
-		descriptor = "(Lxz;)Lvw;"
-	)
-	public static vw yz(xz var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ae_fld = 0;
-		return xz.aa(var0);
 	}
 
 	@ObfuscatedName("az")
@@ -127,14 +114,14 @@ public class ls extends mu {
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;I)V"
 	)
 	static void fj(int var0, int var1, int var2, int var3, String var4, String var5, int var6) throws EOFException {
-		lu var7 = cf.cg_fld.ag(var0, var1, -702126174);
+		lu var7 = cf.cg_fld.ag(var0, var1);
 		if (var7 != null) {
 			if (var6 >= 1585550388) {
 				return;
 			}
 
 			if (var7.fk_fld != null) {
-				yz var8 = tu.ak(var7).av((Object[])var7.fk_fld, 1632096669).ax(1552430063);
+				yz var8 = yb.vn(tu.ak(var7).av((Object[])var7.fk_fld, 1632096669), 1552430063);
 				va.ak(var8);
 			}
 		}

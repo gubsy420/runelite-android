@@ -14,12 +14,12 @@ public class wh {
 		descriptor = "Lzm;"
 	)
 	static zm ag_fld = zm.ak_fld;
-	@ObfuscatedGetter(
-		intValue = -956891123
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -956891123
 	)
 	int aw_fld;
 	@ObfuscatedName("av")
@@ -42,12 +42,12 @@ public class wh {
 		descriptor = "Lzm;"
 	)
 	static zm ak_fld = zm.ak_fld;
-	@ObfuscatedGetter(
-		intValue = -721705823
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -721705823
 	)
 	int as_fld;
 	@ObfuscatedName("ay")
@@ -72,7 +72,7 @@ public class wh {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lzm;I)V"
+		descriptor = "(Lzm;II)V"
 	)
 	public void ak(zm var1, int var2) {
 		this.ah_fld = var1;
@@ -81,7 +81,7 @@ public class wh {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lzm;I)V"
+		descriptor = "(Lzm;IB)V"
 	)
 	public void ag(zm var1, int var2) {
 		this.ay_fld = var1;
@@ -90,17 +90,25 @@ public class wh {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lzm;)V"
+		descriptor = "(Lzm;B)V"
 	)
 	public void az(zm var1) {
 		this.ar_fld = var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()Lzm;"
+		descriptor = "(B)Lzm;"
 	)
-	public zm ay() {
+	public zm av() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lzm;"
+	)
+	public zm ah(int var1) {
 		return this.ay_fld;
 	}
 
@@ -111,18 +119,6 @@ public class wh {
 		this.ar_fld = ak_fld;
 	}
 
-	@ObfuscatedName("wa")
-	@ObfuscatedSignature(
-		descriptor = "(Lwh;B)Lzm;"
-	)
-	public static zm wa(wh var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ah_fld;
-		}
-	}
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -131,33 +127,12 @@ public class wh {
 		return this.as_fld;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)I"
 	)
-	public int aw() {
+	public int ae() {
 		return this.aw_fld;
-	}
-
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "(Lwh;I)Lzm;"
-	)
-	public static zm pw(wh var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ar_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Lzm;I)V"
-	)
-	public void af(zm var1, int var2) {
-		this.ay_fld = var1;
-		this.as_fld = var2 * 2039383547;
 	}
 
 	@ObfuscatedName("as")
@@ -169,16 +144,12 @@ public class wh {
 		this.as_fld = var2;
 	}
 
-	@ObfuscatedName("hh")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lco;)V"
+		descriptor = "()Lzm;"
 	)
-	public static void hh(co var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.as_fld = rw.ak_fld;
-		}
+	public zm au() {
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("ax")
@@ -189,12 +160,32 @@ public class wh {
 		return this.ay_fld;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int ae() {
+	public int an() {
 		return this.as_fld;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(B)I"
+	)
+	public int aw() {
+		return this.as_fld;
+	}
+
+	@ObfuscatedName("qx")
+	@ObfuscatedSignature(
+		descriptor = "(Lwh;I)Lzm;"
+	)
+	public static zm qx(wh var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ar_fld;
+		}
 	}
 
 	@ObfuscatedName("ai")
@@ -205,19 +196,11 @@ public class wh {
 		return this.ar_fld;
 	}
 
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lzm;"
-	)
-	public zm av(byte var1) {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lzm;"
 	)
-	public zm ah(int var1) {
+	public zm ay(int var1) {
 		return this.ar_fld;
 	}
 }

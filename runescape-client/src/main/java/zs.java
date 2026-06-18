@@ -146,14 +146,6 @@ public abstract class zs {
 	)
 	public abstract void au(byte[] var1);
 
-	@ObfuscatedName("mq")
-	@ObfuscatedSignature(
-		descriptor = "(Lsi;I)[F"
-	)
-	public static float[] mq(si var0, int var1) {
-		return var0.af_fld[var1];
-	}
-
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "([B)V"
@@ -168,7 +160,7 @@ public abstract class zs {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;)I"
+		descriptor = "(Lsl;I)I"
 	)
 	public static int ae(sl var0) {
 		om.ap(var0, null, false, (byte)0);
@@ -184,7 +176,7 @@ public abstract class zs {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, 212580981);
 
 			for (int var11 = var2; var11 < var3; var11++) {
 				if (-1 == var4 || var9[var11] < var9[var4]) {

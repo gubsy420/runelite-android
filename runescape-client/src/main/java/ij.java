@@ -9,12 +9,12 @@ public class ij extends ht {
 		descriptor = "I"
 	)
 	static int aj_fld;
-	@ObfuscatedGetter(
-		intValue = 1545772707
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1545772707
 	)
 	int ak_fld;
 	// $VF: synthetic field
@@ -55,7 +55,7 @@ public class ij extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = xi.tx(var1, 1129210184);
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("ag")
@@ -65,14 +65,6 @@ public class ij extends ht {
 	@Override
 	void ag(ik var1, int var2) {
 		var1.af(this.ak_fld, 31061501);
-	}
-
-	@ObfuscatedName("vh")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;)I"
-	)
-	public static int vh(gf var0) {
-		return var0.ae_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -90,7 +82,7 @@ public class ij extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = xi.tx(var1, 1265133282) * 929478419;
+		this.ak_fld = var1.cm() * 929478419;
 	}
 
 	@ObfuscatedName("av")
@@ -99,7 +91,7 @@ public class ij extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = xi.tx(var1, 546984447);
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("ae")
@@ -108,15 +100,7 @@ public class ij extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = xi.tx(var1, 594183628);
-	}
-
-	@ObfuscatedName("lz")
-	@ObfuscatedSignature(
-		descriptor = "(Lpx;)Z"
-	)
-	public static boolean lz(px var0) {
-		return eu.ag(var0.ah_fld, -1905233451) == yq.ag_fld;
+		this.ak_fld = var1.cm();
 	}
 
 	ij(ia var1) {
@@ -133,12 +117,12 @@ public class ij extends ht {
 		var1.af(this.ak_fld, -2129065918);
 	}
 
-	@ObfuscatedName("er")
+	@ObfuscatedName("ts")
 	@ObfuscatedSignature(
-		descriptor = "(Lnl;)Ljava/lang/String;"
+		descriptor = "(Lcn;)I"
 	)
-	public static String er(nl var0) {
-		return var0.ae_fld;
+	public static int ts(cn var0) {
+		return var0.aq_fld;
 	}
 
 	@ObfuscatedName("ay")

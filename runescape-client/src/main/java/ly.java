@@ -20,21 +20,25 @@ public class ly extends mu {
 		descriptor = "Lmj;"
 	)
 	mj this$0;
-	@ObfuscatedGetter(
-		intValue = -725222449
-	)
 	@ObfuscatedName("mv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -725222449
+	)
 	static int mv_fld;
 
-	@ObfuscatedName("hy")
+	@ObfuscatedName("hm")
 	@ObfuscatedSignature(
-		descriptor = "(Lzg;)I"
+		descriptor = "(Lpi;)I"
 	)
-	public static int hy(zg var0) {
-		return var0.at_fld;
+	public static int hm(pi var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ax_fld;
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -44,14 +48,6 @@ public class ly extends mu {
 	@Override
 	public int az() {
 		return 1;
-	}
-
-	@ObfuscatedName("wj")
-	@ObfuscatedSignature(
-		descriptor = "(Ldj;)[B"
-	)
-	public static byte[] wj(dj var0) {
-		return var0.ae_fld;
 	}
 
 	@ObfuscatedName("ak")

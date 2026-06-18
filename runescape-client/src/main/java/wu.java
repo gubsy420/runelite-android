@@ -164,12 +164,12 @@ public class wu implements xm {
 		descriptor = "Lwu;"
 	)
 	public static wu br_fld = new wu(536870912, true);
-	@ObfuscatedGetter(
-		intValue = 1955187067
-	)
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1955187067
 	)
 	int bh_fld;
 
@@ -188,7 +188,7 @@ public class wu implements xm {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;[I)[Ljava/lang/Object;"
+		descriptor = "(Lxi;[II)[Ljava/lang/Object;"
 	)
 	static Object[] av(xi var0, int[] var1) {
 		int var3 = var0.dz();
@@ -205,17 +205,15 @@ public class wu implements xm {
 		return (Object[])var4;
 	}
 
-	@ObfuscatedName("di")
+	@ObfuscatedName("ew")
 	@ObfuscatedSignature(
-		descriptor = "(Ltf;)V"
+		descriptor = "(Lbo;)Z"
 	)
-	public static void di(tf var0) {
+	public static boolean ew(bo var0) {
 		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (tf.qs_fld == var0 && !tf.qo_fld) {
-			tf.qu_fld = 0L;
+			throw new NullPointerException();
+		} else {
+			return var0.aw_fld == 2;
 		}
 	}
 

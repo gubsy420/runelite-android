@@ -1,4 +1,5 @@
 import net.runelite.api.ScriptEventBuilder;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,12 +9,12 @@ import net.runelite.api.widgets.Widget;
 @ObfuscatedName("yb")
 @Implements({"ScriptEventBuilder"})
 public class yb implements ScriptEventBuilder {
-	@ObfuscatedGetter(
-		intValue = 875093587
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 875093587
 	)
 	int ah_fld;
 	@ObfuscatedName("ag")
@@ -21,20 +22,20 @@ public class yb implements ScriptEventBuilder {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	Object[] ag_fld;
-	@ObfuscatedGetter(
-		intValue = -1098344837
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 808084993
+		intValue = -1098344837
 	)
+	int ae_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 808084993
 	)
 	int av_fld;
 	@ObfuscatedName("ay")
@@ -42,20 +43,20 @@ public class yb implements ScriptEventBuilder {
 		descriptor = "Llu;"
 	)
 	lu ay_fld;
-	@ObfuscatedGetter(
-		intValue = 1811268377
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = 1096850189
+		intValue = 1811268377
 	)
+	int ar_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1096850189
 	)
 	int aw_fld;
 	@ObfuscatedName("az")
@@ -63,12 +64,12 @@ public class yb implements ScriptEventBuilder {
 		descriptor = "Llu;"
 	)
 	lu az_fld;
-	@ObfuscatedGetter(
-		intValue = 1753093045
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1753093045
 	)
 	int as_fld;
 	@ObfuscatedName("ak")
@@ -81,40 +82,22 @@ public class yb implements ScriptEventBuilder {
 		descriptor = "Ljava/lang/String;"
 	)
 	String af_fld;
-	@ObfuscatedGetter(
-		intValue = -1406688725
-	)
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int al_fld;
 	@ObfuscatedGetter(
-		intValue = 1083501305
+		intValue = -1406688725
 	)
+	int al_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1083501305
+	)
 	int au_fld;
-
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyb;"
-	)
-	public yb bw(int var1) {
-		this.ar_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(ZB)Lyb;"
-	)
-	public yb az(boolean var1, byte var2) {
-		this.ak_fld = var1;
-		return this;
-	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -125,12 +108,30 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("wk")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;)Lyb;"
 	)
-	public yb wk(Object[] var1) {
+	public yb aj(Object[] var1) {
 		this.ag_fld = (Object[])var1;
+		return this;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lyb;"
+	)
+	public yb ah(int var1, int var2) {
+		this.ae_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lyb;"
+	)
+	public yb aw(int var1, int var2) {
+		this.ah_fld = var1;
 		return this;
 	}
 
@@ -139,54 +140,6 @@ public class yb implements ScriptEventBuilder {
 		descriptor = "(II)Lyb;"
 	)
 	public yb ay(int var1, int var2) {
-		this.ae_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("jo")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;Ljava/lang/String;I)Lyb;"
-	)
-	public static yb jo(yb var0, String var1, int var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var0.af_fld = var1;
-			return var0;
-		}
-	}
-
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(
-		descriptor = "()Llu;"
-	)
-	public lu getSource() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)Lyb;"
-	)
-	public yb setArguments(Object[] var1) {
-		this.ag_fld = (Object[])var1;
-		return this;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lyb;"
-	)
-	public yb au(int var1, int var2) {
-		this.ah_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lyb;"
-	)
-	public yb ae(int var1, int var2) {
 		this.aw_fld = var1;
 		return this;
 	}
@@ -206,21 +159,20 @@ public class yb implements ScriptEventBuilder {
 		this.au_fld = 0;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ic")
+	@ObfuscatedSignature(
+		descriptor = "()Llu;"
+	)
+	public lu getTarget() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(II)Lyb;"
 	)
-	public yb ah(int var1, int var2) {
+	public yb al(int var1, int var2) {
 		this.ar_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Lyb;"
-	)
-	public yb bp(String var1) {
-		this.af_fld = var1;
 		return this;
 	}
 
@@ -243,15 +195,6 @@ public class yb implements ScriptEventBuilder {
 		return var1;
 	}
 
-	@ObfuscatedName("db")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/widgets/Widget;)Lyb;"
-	)
-	public yb setSource(Widget var1) {
-		this.ay_fld = (lu)var1;
-		return this;
-	}
-
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
@@ -262,6 +205,15 @@ public class yb implements ScriptEventBuilder {
 		return var1;
 	}
 
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Lyb;"
+	)
+	public yb ac(boolean var1) {
+		this.ak_fld = var1;
+		return this;
+	}
+
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
@@ -270,15 +222,6 @@ public class yb implements ScriptEventBuilder {
 		yb var1 = new yb();
 		var1.au_fld = var0;
 		return var1;
-	}
-
-	@ObfuscatedName("kj")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/widgets/Widget;)Lyb;"
-	)
-	public yb setTarget(Widget var1) {
-		this.az_fld = (lu)var1;
-		return this;
 	}
 
 	@ObfuscatedName("ad")
@@ -301,13 +244,12 @@ public class yb implements ScriptEventBuilder {
 		return var1;
 	}
 
-	@ObfuscatedName("getArguments")
+	@ObfuscatedName("mh")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
+		descriptor = "()Llu;"
 	)
-	@Override
-	public Object[] getArguments() {
-		return (Object[])this.ag_fld;
+	public lu getSource() {
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -329,6 +271,14 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
+	@ObfuscatedName("rx")
+	@ObfuscatedSignature(
+		descriptor = "()Lyz;"
+	)
+	public yz build() {
+		return new yz(this);
+	}
+
 	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "()Lyz;"
@@ -337,12 +287,34 @@ public class yb implements ScriptEventBuilder {
 		return new yz(this);
 	}
 
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;II)Lyb;"
+	)
+	public static yb ls(yb var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.al_fld = var1;
+		return var0;
+	}
+
 	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
 	)
 	public yb bj(int var1) {
 		this.aw_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)Lyb;"
+	)
+	public yb bm(Object[] var1) {
+		this.ag_fld = (Object[])var1;
 		return this;
 	}
 
@@ -365,35 +337,21 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("be")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
 	)
-	public yb be(int var1) {
-		this.ae_fld = var1;
+	public yb br(int var1) {
+		this.av_fld = var1;
 		return this;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("it")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lyb;"
+		descriptor = "(Lxi;I)V"
 	)
-	public yb bs(int var1) {
-		this.ae_fld = var1 * 962472488;
-		return this;
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;I)Lyb;"
-	)
-	public static yb bl(yb var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var0.as_fld = var1;
-			return var0;
-		}
+	public static void it(xi var0, int var1) {
+		var0.al_fld[(var0.au_fld += 284452618) * -661977895 - 1] = (byte)var1;
 	}
 
 	@ObfuscatedName("ba")
@@ -405,20 +363,21 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("rw")
-	@ObfuscatedSignature(
-		descriptor = "()Lyz;"
-	)
-	public yz build() {
-		return new yz(this);
-	}
-
 	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
 	)
 	public yb bk(int var1) {
 		this.ah_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("gh")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/widgets/Widget;)Lyb;"
+	)
+	public yb setSource(Widget var1) {
+		this.ay_fld = (lu)var1;
 		return this;
 	}
 
@@ -431,19 +390,6 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("ti")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;Z)Lyb;"
-	)
-	public static yb ti(yb var0, boolean var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ak_fld = var1;
-		return var0;
-	}
-
 	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
@@ -453,17 +399,17 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("jc")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(Lyb;I)Lyb;"
+		descriptor = "(Lyb;ZB)Lyb;"
 	)
-	public static yb jc(yb var0, int var1) {
+	public static yb bj(yb var0, boolean var1, byte var2) {
 		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var0.al_fld = var1;
-			return var0;
+			var0.getClass();
 		}
+
+		var0.ak_fld = var1;
+		return var0;
 	}
 
 	@ObfuscatedName("by")
@@ -475,29 +421,12 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("getOp")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)Lyb;"
 	)
-	@Override
-	public int getOp() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("re")
-	@ObfuscatedSignature(
-		descriptor = "()Llu;"
-	)
-	public lu getTarget() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Lyb;"
-	)
-	public yb bx(String var1) {
-		this.af_fld = var1;
+	public yb bg(int var1) {
+		this.al_fld = var1;
 		return this;
 	}
 
@@ -516,6 +445,15 @@ public class yb implements ScriptEventBuilder {
 	)
 	public yb bl(String var1) {
 		this.af_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)Lyb;"
+	)
+	public yb bt(lu var1) {
+		this.az_fld = var1;
 		return this;
 	}
 
@@ -547,19 +485,6 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;Llu;B)Lyb;"
-	)
-	public static yb cc(yb var0, lu var1, byte var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.az_fld = var1;
-		return var0;
-	}
-
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyb;"
@@ -569,12 +494,33 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("yk")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)Lyb;"
+		descriptor = "(I)Lyb;"
 	)
-	public yb bv(lu var1) {
-		this.az_fld = var1;
+	public yb setOp(int var1) {
+		this.ah_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("vn")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;I)Lyz;"
+	)
+	public static yz vn(yb var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return new yz(var0);
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lyb;"
+	)
+	public yb af(int var1, int var2) {
+		this.as_fld = var1;
 		return this;
 	}
 
@@ -588,14 +534,6 @@ public class yb implements ScriptEventBuilder {
 		return var1;
 	}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyz;"
-	)
-	public yz ax(int var1) {
-		return new yz(this);
-	}
-
 	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "()Lyz;"
@@ -604,21 +542,25 @@ public class yb implements ScriptEventBuilder {
 		return new yz(this);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("kv")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;Llu;B)Lyb;"
+	)
+	public static yb kv(yb var0, lu var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.az_fld = var1;
+		return var0;
+	}
+
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(II)Lyb;"
 	)
-	public yb aw(int var1, int var2) {
+	public yb ae(int var1, int var2) {
 		this.av_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("gm")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyb;"
-	)
-	public yb setOp(int var1) {
-		this.ah_fld = var1;
 		return this;
 	}
 
@@ -630,15 +572,46 @@ public class yb implements ScriptEventBuilder {
 		return new yz(this);
 	}
 
+	@ObfuscatedName("le")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)Lyb;"
+	)
+	public yb setArguments(Object[] var1) {
+		this.ag_fld = (Object[])var1;
+		return this;
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(JII)J"
+		descriptor = "(JIIB)J"
 	)
 	public static long ae(long var0, int var2, int var3) {
 		long var5 = ub.ak(1 + (var3 - var2), -1793925999);
 		var5 <<= var2;
 		long var7;
 		return var7 = var0 & ~var5;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)Lyb;"
+	)
+	public yb az(boolean var1, byte var2) {
+		this.ak_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;I)Lyb;"
+	)
+	public static yb cw(yb var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ar_fld = var1;
+		return var0;
 	}
 
 	@ObfuscatedName("as")
@@ -650,48 +623,71 @@ public class yb implements ScriptEventBuilder {
 		return this;
 	}
 
+	@ObfuscatedName("getOp")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOp")
+	@Override
+	public int getOp() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("ci")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/widgets/Widget;)Lyb;"
+	)
+	public yb setTarget(Widget var1) {
+		this.az_fld = (lu)var1;
+		return this;
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;B)Lyb;"
 	)
 	public yb ar(lu var1, byte var2) {
-		this.az_fld = var1;
+		this.ay_fld = var1;
 		return this;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(II)Lyb;"
 	)
-	public yb af(int var1, int var2) {
-		this.as_fld = -1688597373 * var1;
+	public yb au(int var1, int var2) {
+		this.as_fld = -72111163 * var1;
 		return this;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("getArguments")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)Lyb;"
+		descriptor = "()[Ljava/lang/Object;"
 	)
-	public yb aj(Object[] var1) {
-		this.ag_fld = (Object[])var1;
-		return this;
+	@Export("getArguments")
+	@Override
+	public Object[] getArguments() {
+		return (Object[])this.ag_fld;
 	}
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("mn")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lyb;"
+		descriptor = "(Lyb;Ljava/lang/String;I)Lyb;"
 	)
-	public yb br(int var1) {
-		this.as_fld = var1 * 410622465;
-		return this;
+	public static yb mn(yb var0, String var1, int var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			var0.af_fld = var1;
+			return var0;
+		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lyb;"
+		descriptor = "(I)Lyz;"
 	)
-	public yb al(int var1, int var2) {
-		this.as_fld = var1;
-		return this;
+	public yz ax(int var1) {
+		return new yz(this);
 	}
 }

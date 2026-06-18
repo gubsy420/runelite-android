@@ -1,6 +1,7 @@
 import java.io.EOFException;
 import java.util.Arrays;
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -32,13 +33,25 @@ public class es implements Comparator {
 	)
 	boolean ak_fld;
 
+	@ObfuscatedName("dl")
+	@ObfuscatedSignature(
+		descriptor = "(Les;Lrr;Lrr;B)I"
+	)
+	public static int dl(es var0, rr var1, rr var2, byte var3) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
+		}
+	}
+
 	public es(boolean var1) {
 		this.ak_fld = var1;
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)Ljava/lang/String;"
+		descriptor = "(Lxi;II)Ljava/lang/String;"
 	)
 	static String az(xi var0, int var1) {
 		try {
@@ -48,11 +61,19 @@ public class es implements Comparator {
 			}
 
 			byte[] var4 = new byte[var3];
-			var0.au_fld = var0.au_fld + kd.ak_fld.ag(var0.al_fld, var0.au_fld, var4, 0, var3) * 228932457;
+			var0.au_fld = var0.au_fld + kq.rb(kd.ak_fld, var0.al_fld, var0.au_fld, var4, 0, var3) * 228932457;
 			return pc.ae(var4, 0, var3);
 		} catch (Exception var6) {
 			return "Cabbage";
 		}
+	}
+
+	@ObfuscatedName("kj")
+	@ObfuscatedSignature(
+		descriptor = "(Log;ILjava/lang/String;)Ljava/lang/String;"
+	)
+	public static String kj(og var0, int var1, String var2) {
+		return ih.av(var0.ey_fld, var1, var2);
 	}
 
 	@ObfuscatedName("compare")
@@ -61,47 +82,16 @@ public class es implements Comparator {
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return this.ak((rr)var1, (rr)var2, (byte)-33);
+		return dl(this, (rr)var1, (rr)var2, (byte)-33);
 	}
 
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;B)I"
-	)
-	int ak(rr var1, rr var2, byte var3) {
-		return this.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int ah(Object var1, Object var2) {
-		return this.ak((rr)var1, (rr)var2, (byte)-58);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int ae(Object var1, Object var2) {
-		return this.ak((rr)var1, (rr)var2, (byte)-115);
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jg(Object var1) {
 		return super.equals(var1);
 	}
 
@@ -111,6 +101,14 @@ public class es implements Comparator {
 	)
 	public boolean jt(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("im")
+	@ObfuscatedSignature(
+		descriptor = "(Ltl;Lts;I)V"
+	)
+	public static void im(tl var0, ts var1, int var2) {
+		var0.az_fld[var2] = var1;
 	}
 
 	@ObfuscatedName("jm")
@@ -123,14 +121,14 @@ public class es implements Comparator {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(III)V"
 	)
 	public static void az(int var0, int var1) throws EOFException {
 		try {
-			ph var3 = lu.ag(var0);
-			int var4 = var3.ae_fld;
-			int var5 = var3.ah_fld;
-			int var6 = var3.av_fld;
+			ph var3 = lu.ag(var0, 1425659899);
+			int var4 = var3.av_fld;
+			int var5 = var3.ae_fld;
+			int var6 = var3.ah_fld;
 			int var7 = lb.az_fld[var6 - var5];
 			if (var1 < 0 || var1 > var7) {
 				var1 = 0;
@@ -138,7 +136,7 @@ public class es implements Comparator {
 
 			var7 <<= var5;
 			rt.ag_fld[var4] = rt.ag_fld[var4] & ~var7 | var1 << var5 & var7;
-			client.un(var4);
+			client.sc(var4);
 		} catch (Throwable var8) {
 			throw new RuntimeException(var8);
 		}
@@ -159,25 +157,25 @@ public class es implements Comparator {
 			client.hp_fld = true;
 			client.kz_fld = 6367152160194799937L;
 			lj.ak();
-			df.xd(client.aq_fld, -883105296);
-			client.aq_fld.as_fld = 0;
-			client.aq_fld.ae_fld.au_fld = 0;
-			client.aq_fld.ax_fld = null;
-			client.aq_fld.an_fld = null;
-			client.aq_fld.au_fld = null;
-			client.aq_fld.ah_fld = null;
-			client.aq_fld.ar_fld = 0;
-			client.aq_fld.al_fld = 0;
+			client.appletStub.ak(-883105296);
+			client.appletStub.af_fld = 0;
+			client.appletStub.ae_fld.au_fld = 0;
+			client.appletStub.ah_fld = null;
+			client.appletStub.au_fld = null;
+			client.appletStub.ax_fld = null;
+			client.appletStub.an_fld = null;
+			client.appletStub.aw_fld = 0;
+			client.appletStub.as_fld = 0;
 			client.hb_fld = 0;
 			client.hf_fld = "";
 			client.jk_fld = 0;
-			client.le_fld.ak();
+			ku.qn(client.le_fld, (byte)83);
 			qu.eh();
 			tj.au_fld = 0;
-			client.rw();
+			client.vq();
 			cz.ak_fld.clear();
-			cz.ag_fld.az();
-			cz.az_fld.ar();
+			xv.aa(cz.ag_fld);
+			km.ts(cz.az_fld);
 			cz.av_fld = 0;
 			client.ee_fld = 0;
 			client.nk_fld = false;
@@ -193,8 +191,8 @@ public class es implements Comparator {
 			client.lw_fld = ca.av_fld;
 			client.da_fld.an((byte)82);
 			client.es_fld = 0;
-			client.ds_fld.ag();
-			di.lk(client.db_fld, 2032872613);
+			na.mh(client.ds_fld);
+			client.db_fld.an();
 			la.fq_fld.af();
 			nr.av();
 			if (null != ob.ek_fld) {
@@ -207,10 +205,10 @@ public class es implements Comparator {
 
 			client.kl_fld = -1515799147;
 			if (cf.cg_fld.aa_fld != -1) {
-				lw.mw(cf.cg_fld, cf.cg_fld.aa_fld, (byte)58);
+				lw.dn(cf.cg_fld, cf.cg_fld.aa_fld, (byte)58);
 			}
 
-			for (pk var1 = (pk)cf.cg_fld.ai_fld.aq(); null != var1; var1 = (pk)xz.aa(cf.cg_fld.ai_fld)) {
+			for (pk var1 = (pk)cf.cg_fld.an_fld.av(); null != var1; var1 = (pk)cf.cg_fld.an_fld.ae()) {
 				if (var0 == -761713741) {
 					return;
 				}
@@ -224,32 +222,32 @@ public class es implements Comparator {
 
 			for (int var3 = 0; var3 < 8; var3++) {
 				client.nl_fld[var3] = null;
-				client.ue(var3);
+				client.vp(var3);
 				client.nz_fld[var3] = false;
 			}
 
 			ng.aw();
 			client.ge_fld = true;
-			if (null != client.aq_fld) {
+			if (null != client.appletStub) {
 				if (var0 == -761713741) {
 					return;
 				}
 
-				if (client.aq_fld.av_fld != null) {
-					jm var4 = gi.ak(jb.bv_fld, client.aq_fld.av_fld);
-					var4.ay_fld.bc(xy.cy());
-					var4.ay_fld.bw(pf.qw_fld);
-					var4.ay_fld.bw(bc.qx_fld);
-					client.aq_fld.az(var4);
+				if (client.appletStub.av_fld != null) {
+					jm var4 = gi.ak(jb.bv_fld, client.appletStub.av_fld);
+					var4.ay_fld.ea(xy.cy());
+					xi.vy(var4.ay_fld, pf.qw_fld);
+					xi.vy(var4.ay_fld, bc.qx_fld);
+					client.appletStub.az(var4);
 				}
 			}
 
 			jr.fa_fld = null;
-			client.zv(-1);
+			client.xo(-1);
 			eu.fo_fld = null;
 			Arrays.fill(client.fp_fld, null);
 			fp.fx_fld = null;
-			client.by();
+			client.rd(-1);
 			Arrays.fill(client.fv_fld, null);
 
 			for (int var5 = 0; var5 < 8; var5++) {
@@ -258,7 +256,7 @@ public class es implements Comparator {
 				}
 
 				client.fs_fld[var5] = new nb();
-				client.cy(var5);
+				client.zf(var5);
 			}
 
 			ue.fu_fld = null;
@@ -272,11 +270,43 @@ public class es implements Comparator {
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+		descriptor = "(Lrr;Lrr;B)I"
 	)
-	public int aw(Object var1, Object var2) {
-		return this.ak((rr)var1, (rr)var2, (byte)-30);
+	int ak(rr var1, rr var2, byte var3) {
+		return this.ak_fld ? var1.aw_fld - var2.ae_fld : var2.ae_fld - var1.ae_fld;
+	}
+
+	@ObfuscatedName("zi")
+	@ObfuscatedSignature(
+		descriptor = "(Les;Ljava/lang/Object;)Z"
+	)
+	public static boolean zi(es var0, Object var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.equals(var1);
+		}
+	}
+
+	@ObfuscatedName("pt")
+	@ObfuscatedSignature(
+		descriptor = "(Loo;I)I"
+	)
+	public static int pt(oo var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var1 == 0 ? 2026738091 * var0.ar_fld : var0.aw_fld;
+		}
+	}
+
+	@ObfuscatedName("jg")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jg(Object var1) {
+		return super.equals(var1);
 	}
 }

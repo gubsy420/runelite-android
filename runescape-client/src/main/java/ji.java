@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -47,6 +48,19 @@ public class ji {
 		return var0 >> 14 & 1023;
 	}
 
+	@ObfuscatedName("gp")
+	@ObfuscatedSignature(
+		descriptor = "(Lpb;I[I)I"
+	)
+	public static int gp(pb var0, int var1, int[] var2) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		ph var3 = lu.ag(var1, 1425659899);
+		return var3.ah(var2[var3.av_fld], (byte)-24);
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -73,7 +87,7 @@ public class ji {
 
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	static final int bo(int var0) {
 		return Math.min(Math.max(var0, ev.aw(client.dw_fld)), ev.ay(client.dw_fld));

@@ -1,15 +1,17 @@
+import java.awt.Graphics;
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("gb")
 public class gb {
-	@ObfuscatedGetter(
-		intValue = 455105703
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 455105703
 	)
 	int az_fld;
 	@ObfuscatedName("ag")
@@ -42,9 +44,33 @@ public class gb {
 		this.az_fld = var1;
 	}
 
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(Lte;Ljava/awt/Graphics;II)V"
+	)
+	public static void hh(te var0, Graphics var1, int var2, int var3) {
+		try {
+			var1.drawImage(var0.ak_fld, var2, var3, var0.ag_fld);
+		} catch (Exception var5) {
+			var0.ag_fld.repaint();
+		}
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(Lrh;)V"
+	)
+	public static void be(rh var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ag_fld = rw.ak_fld;
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int as(int var0) {
 		int var2 = 0;
@@ -76,68 +102,24 @@ public class gb {
 		return var0 + var2;
 	}
 
+	@ObfuscatedName("ig")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;Z)Lkt;"
+	)
+	public static kt ig(rg var0, boolean var1) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var1 ? kt.ag_fld : oy.bz(var0.aw_fld, (byte)59);
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(IB)I"
 	)
 	static int ah(int var0) {
 		bq var2 = (bq)(bq)cz.ak_fld.get(var0);
 		return var2 == null ? 0 : var2.az(1126813738);
-	}
-
-	@ObfuscatedName("wp")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)Ljava/lang/String;"
-	)
-	public static String wp(aax var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak(-698622201);
-	}
-
-	@ObfuscatedName("fa")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)Z"
-	)
-	public static boolean fa(li var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (!var0.cq()) {
-			return false;
-		} else {
-			boolean var1 = false;
-			if (var0.am_fld.ae() > var0.bs_fld) {
-				var0.am_fld.aq(405294111 * var0.bs_fld, var0.am_fld.ae(), -1275020628);
-				var1 = true;
-			}
-
-			int var2 = var0.cx();
-			if (var0.am_fld.aj() > var2) {
-				int var3 = zg.vd(var0.am_fld, 0, var2, (byte)27) - 1;
-				var0.am_fld.aq(var3, var0.am_fld.ae(), -1942876164);
-				var1 = true;
-			}
-
-			if (var1) {
-				int var6 = var0.bm_fld;
-				int var4 = 1123580313 * var0.bd_fld;
-				int var5 = var0.am_fld.ae();
-				if (var0.bm_fld > var5) {
-					var6 = var5;
-				}
-
-				if (var0.bd_fld > var5) {
-					var4 = var5;
-				}
-
-				li.ik(var0, var4, var6, (byte)-52);
-			}
-
-			return var1;
-		}
 	}
 }

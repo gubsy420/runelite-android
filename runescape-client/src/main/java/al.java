@@ -34,20 +34,12 @@ public class al extends ad {
 	)
 	boolean ah_fld = false;
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean ag() {
+	boolean av() {
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ie")
-	@ObfuscatedSignature(
-		descriptor = "(Lal;)Z"
-	)
-	public static boolean ie(al var0) {
-		return var0.ah_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -55,6 +47,14 @@ public class al extends ad {
 		descriptor = "()Z"
 	)
 	boolean ak() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean az() {
 		return this.ah_fld;
 	}
 

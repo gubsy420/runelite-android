@@ -14,12 +14,12 @@ public class hv {
 		descriptor = "Lkj;"
 	)
 	public kj ag_fld;
-	@ObfuscatedGetter(
-		intValue = -1407372575
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1407372575
 	)
 	public int ak_fld;
 	@ObfuscatedName("ai")
@@ -45,7 +45,7 @@ public class hv {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I"
+		descriptor = "(IIIII)I"
 	)
 	static final int ag(int var0, int var1, int var2, int var3) {
 		return var2 * var1 - var3 * var0 >> 16;

@@ -40,34 +40,30 @@ public class od {
 	)
 	static od az_fld = new od(2);
 
+	@ObfuscatedName("gc")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;)Lko;"
+	)
+	public static ko gc(rg var0) {
+		return var0.af_fld;
+	}
+
 	@ObfuscatedName("dn")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;IIIII)V"
+		descriptor = "(Ldx;IIIIIB)V"
 	)
 	static void dn(dx var0, int var1, int var2, int var3, int var4, int var5) throws EOFException {
 		na var7 = var0.aa_fld[var1][var2][var3];
 		if (var7 != null) {
-			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)var7.as()) {
-				if (var4 == var8.ag_fld && var5 == var8.az_fld) {
-					dw.ez(var8, -1795549268);
+			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)na.iy(var7)) {
+				if (var4 == var8.ah_fld && var5 == var8.ay_fld) {
+					var8.as(-1795549268);
 					break;
 				}
 			}
 
 			jv.er(var1, var2, var3);
 		}
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lku;)V"
-	)
-	public static void ag(ku var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ax_fld = 0;
 	}
 
 	od(int var1) {

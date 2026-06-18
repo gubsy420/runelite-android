@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.util.Iterator;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -69,6 +70,18 @@ public class je {
 		}
 	}
 
+	@ObfuscatedName("oj")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;)I"
+	)
+	public static int oj(ku var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ax_fld;
+		}
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(J)V"
@@ -121,7 +134,7 @@ public class je {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(III)V"
 	)
 	public static void ag(int var0, int var1) {
 		Iterator var3 = mb.ak_fld.iterator();
@@ -134,9 +147,9 @@ public class je {
 
 	@ObfuscatedName("fe")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIII)I"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)I"
 	)
-	public static final int fe(String var0, String var1, int var2, int var3, int var4, int var5) {
+	public static final int fe(String var0, String var1, int var2, int var3, int var4, int var5) throws EOFException {
 		return ky.fl(var0, var1, var2, var3, var4, var5, -1, false, 0);
 	}
 }

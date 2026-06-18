@@ -9,21 +9,25 @@ public class ii extends ig {
 	)
 	Object ak_fld;
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("rp")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;)I"
+	)
+	public static int rp(zg var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ai_fld;
+		}
+	}
+
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean ag() {
+	boolean ah() {
 		return false;
-	}
-
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "(Lds;)Lpg;"
-	)
-	public static pg ki(ds var0) {
-		return var0.af_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -35,12 +39,12 @@ public class ii extends ig {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean aw() {
+	boolean ag() {
 		return false;
 	}
 
@@ -71,12 +75,12 @@ public class ii extends ig {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean ah() {
+	boolean aw() {
 		return false;
 	}
 

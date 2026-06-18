@@ -14,7 +14,7 @@ public class kg {
 		descriptor = "Lvu;"
 	)
 	@Export("fingerprint")
-	static vu ps_fld;
+	static vu fingerprint;
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
@@ -50,6 +50,18 @@ public class kg {
 		} else {
 			return var2 == 2 ? 7 - var1 : var0;
 		}
+	}
+
+	@ObfuscatedName("tg")
+	@ObfuscatedSignature(
+		descriptor = "(Leb;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int tg(eb var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return eb.qz(var0, (rr)var1, (rr)var2, 921291199);
 	}
 
 	@ObfuscatedName("ah")

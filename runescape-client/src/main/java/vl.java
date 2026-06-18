@@ -1,4 +1,5 @@
 import net.runelite.api.IntegerNode;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -16,40 +17,17 @@ public class vl extends vw implements IntegerNode {
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
+	@Export("setValue")
 	@Override
 	public void setValue(int var1) {
 		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("ye")
-	@ObfuscatedSignature(
-		descriptor = "(Lov;)I"
-	)
-	public static int ye(ov var0) {
-		return var0.au_fld;
-	}
-
-	@ObfuscatedName("nt")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;I)V"
-	)
-	public static void nt(ib var0, int var1) {
-		var0.ak_fld.remove(var1);
-		var0.ay_fld = null;
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Lma;)I"
-	)
-	public static int jg(ma var0) {
-		return var0.al_fld;
 	}
 
 	@ObfuscatedName("getValue")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getValue")
 	@Override
 	public int getValue() {
 		return this.ak_fld;

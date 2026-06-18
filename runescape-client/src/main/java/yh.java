@@ -15,12 +15,12 @@ public class yh {
 		descriptor = "[I"
 	)
 	public static int[] aw_fld;
-	@ObfuscatedGetter(
-		intValue = 1459641139
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1459641139
 	)
 	public static int az_fld;
 	@ObfuscatedName("av")
@@ -38,20 +38,20 @@ public class yh {
 		descriptor = "[I"
 	)
 	public static int[] ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1144730429
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public static int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 764623883
+		intValue = 1144730429
 	)
+	public static int ag_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 764623883
 	)
 	static int ak_fld;
 
@@ -60,7 +60,7 @@ public class yh {
 		descriptor = "(Lub;I)Z"
 	)
 	public static boolean bh(ub var0, int var1) throws EOFException {
-		byte[] var2 = ub.ae(var0, var1, (byte)88);
+		byte[] var2 = ub.xk(var0, var1, (byte)88);
 		if (var2 == null) {
 			return false;
 		} else {
@@ -84,6 +84,19 @@ public class yh {
 
 	yh() throws Throwable {
 		throw new Error();
+	}
+
+	@ObfuscatedName("tz")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;Z)V"
+	)
+	public static void tz(cn var0, boolean var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ay_fld = var1;
+			og.ag();
+		}
 	}
 
 	@ObfuscatedName("aa")
@@ -255,7 +268,7 @@ public class yh {
 		descriptor = "(Lub;Ljava/lang/String;Ljava/lang/String;)[Lyc;"
 	)
 	public static yc[] at(ub var0, String var1, String var2) throws EOFException {
-		if (!ub.mo(var0, var1, var2, (byte)18)) {
+		if (!var0.ck(var1, var2, (byte)18)) {
 			return null;
 		} else {
 			int var3 = var0.cm(var1, (byte)1);
@@ -269,7 +282,7 @@ public class yh {
 		descriptor = "(Lub;Ljava/lang/String;Ljava/lang/String;)[Lyc;"
 	)
 	public static yc[] ac(ub var0, String var1, String var2) throws EOFException {
-		if (!ub.mo(var0, var1, var2, (byte)1)) {
+		if (!var0.ck(var1, var2, (byte)1)) {
 			return null;
 		} else {
 			int var3 = var0.cm(var1, (byte)1);
@@ -283,7 +296,7 @@ public class yh {
 		descriptor = "(Lub;Ljava/lang/String;Ljava/lang/String;)Lyc;"
 	)
 	public static yc aj(ub var0, String var1, String var2) throws EOFException {
-		if (!ub.mo(var0, var1, var2, (byte)21)) {
+		if (!var0.ck(var1, var2, (byte)21)) {
 			return null;
 		} else {
 			int var3 = var0.cm(var1, (byte)1);
@@ -446,7 +459,7 @@ public class yh {
 		descriptor = "(Lub;I)Z"
 	)
 	public static boolean bk(ub var0, int var1) throws EOFException {
-		byte[] var2 = ub.ae(var0, var1, (byte)125);
+		byte[] var2 = ub.xk(var0, var1, (byte)125);
 		if (var2 == null) {
 			return false;
 		} else {
@@ -460,7 +473,7 @@ public class yh {
 		descriptor = "(Lub;I)Z"
 	)
 	public static boolean bj(ub var0, int var1) throws EOFException {
-		byte[] var2 = ub.ae(var0, var1, (byte)60);
+		byte[] var2 = ub.xk(var0, var1, (byte)60);
 		if (var2 == null) {
 			return false;
 		} else {
@@ -474,7 +487,7 @@ public class yh {
 		descriptor = "(Lub;I)Z"
 	)
 	public static boolean bf(ub var0, int var1) throws EOFException {
-		byte[] var2 = ub.ae(var0, var1, (byte)59);
+		byte[] var2 = ub.xk(var0, var1, (byte)59);
 		if (var2 == null) {
 			return false;
 		} else {
@@ -490,38 +503,38 @@ public class yh {
 	static void by(byte[] var0) {
 		xi var1 = new xi(var0);
 		var1.au_fld = 228932457 * (var0.length - 2);
-		ak_fld = xi.tx(var1, 378119831);
+		ak_fld = var1.cm();
 		av_fld = new int[ak_fld * -48327361];
 		ae_fld = new int[ak_fld];
 		ah_fld = new int[ak_fld * -447745276];
 		aw_fld = new int[ak_fld];
 		yo.as_fld = new byte[ak_fld][];
 		var1.au_fld = (var0.length - 7 - ak_fld) * 1661102340;
-		ag_fld = xi.tx(var1, 959169113) * 1427930946;
-		az_fld = xi.tx(var1, 1210633907);
+		ag_fld = var1.cm() * 1427930946;
+		az_fld = var1.cm();
 		int var2 = (var1.cg() & 0xFF) + 1;
 
 		for (int var3 = 0; var3 < ak_fld; var3++) {
-			av_fld[var3] = xi.tx(var1, 1183739295);
+			av_fld[var3] = var1.cm();
 		}
 
 		for (int var13 = 0; var13 < ak_fld; var13++) {
-			ae_fld[var13] = xi.tx(var1, 2087228665);
+			ae_fld[var13] = var1.cm();
 		}
 
 		for (int var14 = 0; var14 < ak_fld; var14++) {
-			ah_fld[var14] = xi.tx(var1, 1447787414);
+			ah_fld[var14] = var1.cm();
 		}
 
 		for (int var15 = 0; var15 < ak_fld; var15++) {
-			aw_fld[var15] = xi.tx(var1, 1133478261);
+			aw_fld[var15] = var1.cm();
 		}
 
 		var1.au_fld = 228932457 * (var0.length - 7 - ak_fld - (var2 - 1) * 3);
 		ay_fld = new int[var2];
 
 		for (int var16 = 1; var16 < var2; var16++) {
-			ay_fld[var16] = var1.ck();
+			ay_fld[var16] = xi.lx(var1, -1587702274);
 			if (ay_fld[var16] == 0) {
 				ay_fld[var16] = 1;
 			}
@@ -540,12 +553,12 @@ public class yh {
 			boolean var10 = (var8 & 2) == 2;
 			if (!var9) {
 				for (int var18 = 0; var18 < var6; var18++) {
-					var7[var18] = xi.rp(var1, -1026068996);
+					var7[var18] = var1.cw();
 				}
 			} else {
 				for (int var11 = 0; var11 < var4; var11++) {
 					for (int var12 = 0; var12 < var5; var12++) {
-						var7[var12 * var4 + var11] = xi.rp(var1, 1129555023);
+						var7[var12 * var4 + var11] = var1.cw();
 					}
 				}
 			}

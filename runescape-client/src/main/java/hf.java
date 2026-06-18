@@ -5,48 +5,64 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("hf")
 public class hf {
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = -1936218911
 	)
+	int av_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
 		intValue = -1291504879
 	)
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ak_fld;
+	int ag_fld;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	static int ab_fld;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = 2115450829
 	)
+	int ak_fld = 820998907;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld = 820998907;
 	@ObfuscatedGetter(
 		intValue = -1683164347
 	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int av_fld;
+	int az_fld;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
 	)
 	public static String an_fld;
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;)[I"
+	)
+	public static int[] ab(ds var0) {
+		return null != var0.ar_fld ? xu.zg(var0.ar_fld, -929120066) : pp.mm(var0.ah_fld, -2079987222);
+	}
+
+	@ObfuscatedName("uw")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;)V"
+	)
+	public static void uw(cl var0) {
+		var0.ak_fld.clear();
+	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -92,23 +108,10 @@ public class hf {
 		}
 	}
 
-	@ObfuscatedName("fz")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;I)V"
-	)
-	public static void fz(cn var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ar_fld = var1;
-		og.ag();
-	}
-
 	hf() {
-		this.ak_fld = 0;
-		this.av_fld = -2107418509;
 		this.ag_fld = 0;
+		this.az_fld = -2107418509;
+		this.av_fld = 0;
 	}
 
 	@ObfuscatedName("ag")
@@ -125,14 +128,14 @@ public class hf {
 				}
 
 				byte var6 = -1;
-				qa.ju(var0.aa_fld, var6, 108960076);
+				qa.hs(var0.aa_fld, var6, 108960076);
 				var0.aa_fld.ar(461909079);
 				var0.ai_fld = var5;
 			} else {
 				label54: {
-					ol var7 = var0.aa_fld.ae();
+					ol var7 = qa.kw(var0.aa_fld, -1445610365);
 					if (null != var7) {
-						if (var4 == rg.zv(var0, (byte)0)) {
+						if (var4 == rg.dp(var0, (byte)0)) {
 							int var8 = var7.ba_fld;
 							if (var8 == 1) {
 								var0.aa_fld.ar(461909079);
@@ -140,7 +143,7 @@ public class hf {
 							}
 
 							if (2 == var8) {
-								var0.aa_fld.af();
+								qa.qn(var0.aa_fld, -260982720);
 							}
 							break label54;
 						}
@@ -150,7 +153,7 @@ public class hf {
 						}
 					}
 
-					qa.ju(var0.aa_fld, var4, 1385460180);
+					qa.hs(var0.aa_fld, var4, 1385460180);
 					var0.aa_fld.ar(461909079);
 					var0.ai_fld = var5;
 				}
@@ -159,7 +162,7 @@ public class hf {
 
 		if ((var2 & 1) != 0) {
 			int var9 = var1.df();
-			rg.em(var0, var9, (short)5281);
+			rg.xc(var0, var9, (short)5281);
 		}
 	}
 }

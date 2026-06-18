@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -36,7 +37,28 @@ public class nn extends vc {
 		descriptor = "()V"
 	)
 	public static void ag() {
-		ak_fld.vh();
+		ak_fld.av();
+	}
+
+	@ObfuscatedName("ng")
+	@ObfuscatedSignature(
+		descriptor = "(Lpb;II)I"
+	)
+	public static int ng(pb var0, int var1, int var2) {
+		if (var1 >= var0.ag_fld.size()) {
+			return -1;
+		} else {
+			ArrayList var3 = (ArrayList)(ArrayList)var0.ag_fld.get(var1);
+
+			for (int var4 = 0; var4 < var3.size(); var4++) {
+				pm var5 = (pm)(pm)var3.get(var4);
+				if (var5.ak_fld == var2) {
+					return var4;
+				}
+			}
+
+			return -1;
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -44,16 +66,16 @@ public class nn extends vc {
 		descriptor = "()V"
 	)
 	public static void az() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;Lda;I)V"
+		descriptor = "(Ldx;Lda;IB)V"
 	)
 	static void ay(dx var0, da var1, int var2) throws EOFException {
 		try {
-			id.as(var0, var1.bo_fld, var1.bp_fld, var2, var1.br((byte)63), -714968971);
+			id.as(var0, var1.bi_fld, var1.dm_fld, var2, var1.br((byte)63), -714968971);
 		} catch (Throwable var3) {
 			throw new RuntimeException(var3);
 		}
@@ -61,7 +83,7 @@ public class nn extends vc {
 
 	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int bp(int var0, ba var1, boolean var2) {
 		if (4000 == var0) {

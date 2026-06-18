@@ -27,7 +27,7 @@ public class rv {
 			} else {
 				af var10 = var9.ak_fld;
 				if (null == var10) {
-					int var11 = rl1.ei(var3, var9.aw_fld) - 1;
+					int var11 = var3.ce(var9.aw_fld, 1134307) - 1;
 					var10 = af.ag(var3, var9.aw_fld, var11);
 					if (var10 == null) {
 						continue;
@@ -46,8 +46,8 @@ public class rv {
 						int var15 = var9.az_fld;
 						dx var16 = var1.ae(var15, (byte)-68);
 						tu var17 = mf.bn(var16, kj.aw(var13), kj.aw(var14));
-						int var18 = kj.ay((int)var17.ay_fld);
-						int var19 = kj.ay((int)var17.ar_fld);
+						int var18 = kj.ay((int)var17.ar_fld);
+						int var19 = kj.ay((int)var17.as_fld);
 						var17.ah();
 						int var20 = client.nw_fld;
 						int var22 = client.nd_fld;
@@ -85,7 +85,7 @@ public class rv {
 						ac var36 = ac.az(var35, 100, var34);
 						if (null != var36) {
 							var36.bm(var9.ah_fld - 1);
-							var2.ax(var36);
+							var2.ak(var36);
 						}
 					}
 
@@ -112,7 +112,7 @@ public class rv {
 			} else {
 				af var10 = var9.ak_fld;
 				if (null == var10) {
-					int var11 = rl1.ei(var3, var9.aw_fld) - 1;
+					int var11 = var3.ce(var9.aw_fld, -1206280447) - 1;
 					var10 = af.ag(var3, -1999964060 * var9.aw_fld, var11);
 					if (var10 == null) {
 						continue;
@@ -131,8 +131,8 @@ public class rv {
 						int var15 = var9.az_fld * -967111977;
 						dx var16 = var1.ae(var15, (byte)-117);
 						tu var17 = mf.bn(var16, kj.aw(var13), kj.aw(var14));
-						int var18 = kj.ay((int)var17.ay_fld);
-						int var19 = kj.ay((int)var17.ar_fld);
+						int var18 = kj.ay((int)var17.ar_fld);
+						int var19 = kj.ay((int)var17.as_fld);
 						var17.ah();
 						int var20 = client.nw_fld;
 						int var22 = client.nd_fld;
@@ -170,7 +170,7 @@ public class rv {
 						ac var36 = ac.az(var35, -204102309, var34);
 						if (null != var36) {
 							var36.bm(var9.ah_fld - 1);
-							var2.ax(var36);
+							var2.ak(var36);
 						}
 					}
 

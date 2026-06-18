@@ -31,7 +31,7 @@ public class ed extends rz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
+		descriptor = "(Lrr;Lrr;I)I"
 	)
 	int ak(rr var1, rr var2) {
 		if (var1.ae_fld == client.ch_fld) {
@@ -43,6 +43,38 @@ public class ed extends rz {
 		}
 
 		return this.as(var1, var2, 736258687);
+	}
+
+	@ObfuscatedName("zv")
+	@ObfuscatedSignature(
+		descriptor = "(Led;Lrr;Lrr;)I"
+	)
+	public static int zv(ed var0, rr var1, rr var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			if (var1.ae_fld == client.ch_fld) {
+				if (client.ch_fld != var2.ae_fld) {
+					return var0.ak_fld ? -1 : 1;
+				}
+			} else if (var2.ae_fld == client.ch_fld) {
+				return var0.ak_fld ? 1 : -1;
+			}
+
+			return var0.as(var1, var2, 845113775);
+		}
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Led;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int at(ed var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak((rr)var1, (rr)var2);
 	}
 
 	public ed(boolean var1) {
@@ -74,27 +106,11 @@ public class ed extends rz {
 		return this.ak((rr)var1, (rr)var2);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lrr;Lrr;)I"
 	)
-	int av(rr var1, rr var2) {
-		if (var1.ae_fld == client.ch_fld) {
-			if (client.ch_fld != var2.ae_fld) {
-				return this.ak_fld ? -1 : 1;
-			}
-		} else if (var2.ae_fld == client.ch_fld) {
-			return this.ak_fld ? 1 : -1;
-		}
-
-		return this.as(var1, var2, 845113775);
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
-	)
-	int ag(rr var1, rr var2) {
+	int az(rr var1, rr var2) {
 		if (var1.ae_fld == client.ch_fld) {
 			if (client.ch_fld != var2.ae_fld) {
 				return this.ak_fld ? -1 : 1;
@@ -106,11 +122,11 @@ public class ed extends rz {
 		return this.as(var1, var2, 815365158);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lrr;Lrr;)I"
 	)
-	int az(rr var1, rr var2) {
+	int av(rr var1, rr var2) {
 		if (var1.ae_fld == client.ch_fld) {
 			if (client.ch_fld != var2.ae_fld) {
 				return this.ak_fld ? -1 : 1;

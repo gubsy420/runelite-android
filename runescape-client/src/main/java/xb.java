@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("xb")
 public class xb {
-	@ObfuscatedGetter(
-		intValue = 199967369
-	)
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 199967369
 	)
 	int aj_fld;
 	@ObfuscatedName("ag")
@@ -52,28 +52,28 @@ public class xb {
 		descriptor = "[B"
 	)
 	byte[] as_fld;
-	@ObfuscatedGetter(
-		intValue = -219817731
-	)
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int am_fld;
 	@ObfuscatedGetter(
-		intValue = -692255083
+		intValue = -219817731
 	)
+	int am_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int af_fld;
 	@ObfuscatedGetter(
-		intValue = -162553225
+		intValue = -692255083
 	)
+	int af_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -162553225
 	)
 	int al_fld;
 	@ObfuscatedName("au")
@@ -81,12 +81,12 @@ public class xb {
 		descriptor = "[B"
 	)
 	byte[] au_fld;
-	@ObfuscatedGetter(
-		intValue = 1526462263
-	)
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1526462263
 	)
 	int ax_fld;
 	@ObfuscatedName("ao")
@@ -94,12 +94,12 @@ public class xb {
 		descriptor = "I"
 	)
 	int ao_fld;
-	@ObfuscatedGetter(
-		intValue = 2110354801
-	)
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2110354801
 	)
 	int aa_fld;
 	@ObfuscatedName("ai")
@@ -107,12 +107,12 @@ public class xb {
 		descriptor = "B"
 	)
 	byte ai_fld;
-	@ObfuscatedGetter(
-		intValue = 1920042553
-	)
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1920042553
 	)
 	int aq_fld;
 	@ObfuscatedName("ah")
@@ -120,12 +120,12 @@ public class xb {
 		descriptor = "I"
 	)
 	int ah_fld;
-	@ObfuscatedGetter(
-		intValue = -1095050285
-	)
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1095050285
 	)
 	int ad_fld;
 	@ObfuscatedName("av")
@@ -133,28 +133,28 @@ public class xb {
 		descriptor = "I"
 	)
 	int av_fld = 258;
-	@ObfuscatedGetter(
-		intValue = 1220698841
-	)
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ab_fld;
 	@ObfuscatedGetter(
-		intValue = 360229183
+		intValue = 1220698841
 	)
+	int ab_fld;
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ap_fld;
 	@ObfuscatedGetter(
-		intValue = -828111567
+		intValue = 360229183
 	)
+	int ap_fld;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -828111567
 	)
 	int at_fld;
 	@ObfuscatedName("ac")
@@ -172,12 +172,12 @@ public class xb {
 		descriptor = "[I"
 	)
 	int[] bm_fld;
-	@ObfuscatedGetter(
-		intValue = -1566295583
-	)
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1566295583
 	)
 	int bd_fld;
 	@ObfuscatedName("bz")
@@ -185,12 +185,12 @@ public class xb {
 		descriptor = "[Z"
 	)
 	boolean[] bz_fld;
-	@ObfuscatedGetter(
-		intValue = -996403027
-	)
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -996403027
 	)
 	int an_fld;
 	@ObfuscatedName("bh")
@@ -203,26 +203,26 @@ public class xb {
 		descriptor = "[B"
 	)
 	byte[] bs_fld;
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "[[I"
-	)
-	int[][] by_fld;
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "[[B"
-	)
-	byte[][] bk_fld;
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "[[I"
-	)
-	int[][] bj_fld;
 	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "[[I"
 	)
 	int[][] bf_fld;
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "[[B"
+	)
+	byte[][] bk_fld;
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "[[I"
+	)
+	int[][] by_fld;
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "[[I"
+	)
+	int[][] bj_fld;
 	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "[Z"
@@ -233,12 +233,12 @@ public class xb {
 		descriptor = "[I"
 	)
 	int[] bl_fld;
-	@ObfuscatedGetter(
-		intValue = 437023477
-	)
 	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 437023477
 	)
 	int bx_fld;
 	@ObfuscatedName("eo")
@@ -246,6 +246,18 @@ public class xb {
 		descriptor = "I"
 	)
 	static int eo_fld;
+
+	@ObfuscatedName("wa")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)Z"
+	)
+	public static boolean wa(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.be_fld != -1 && var0.bs_fld != -1;
+	}
 
 	xb() {
 		this.ae_fld = 6;
@@ -263,9 +275,9 @@ public class xb {
 		this.bs_fld = new byte[4096];
 		this.bh_fld = new int[16];
 		this.bk_fld = new byte[6][258];
+		this.by_fld = new int[6][258];
 		this.bj_fld = new int[6][258];
 		this.bf_fld = new int[6][258];
-		this.by_fld = new int[6][258];
 		this.bl_fld = new int[6];
 	}
 }

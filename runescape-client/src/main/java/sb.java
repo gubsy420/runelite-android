@@ -19,99 +19,59 @@ public class sb implements xm {
 		descriptor = "Lsb;"
 	)
 	static sb av_fld = new sb(3, 3, 499, 499, 499, 507);
-	@ObfuscatedGetter(
-		intValue = -1338455693
-	)
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ar_fld;
-	@ObfuscatedGetter(
-		intValue = 979286157
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 979286157
+		intValue = -1338455693
 	)
+	int ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 2144619279
+	)
 	int ah_fld;
-	@ObfuscatedGetter(
-		intValue = -1227846745
-	)
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int aw_fld;
-	@ObfuscatedGetter(
-		intValue = 111087335
-	)
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ay_fld;
-	@ObfuscatedGetter(
-		intValue = 487536257
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 979286157
+	)
 	int as_fld;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1227846745
+	)
+	int ay_fld;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 111087335
+	)
+	int ar_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 487536257
+	)
+	int aw_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lsb;"
 	)
 	static sb ak_fld = new sb(0, 0, 0, 0, 0, 0);
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IZZZ)Z"
-	)
-	boolean aq(int var1, boolean var2, boolean var3, boolean var4) {
-		byte var5 = 0;
-		int var6 = var5 | (var3 ? 2 : 0);
-		var6 |= var2 ? 16 : 64;
-		var6 |= var4 ? 1394462102 : 0;
-		return 0 != (var1 & var6);
-	}
-
-	@ObfuscatedName("xb")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZI)Z"
-	)
-	public static boolean xb(sb var0, boolean var1, boolean var2, boolean var3, int var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.aw(var0.aw_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;IZZZ)Z"
-	)
-	public static boolean ip(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			byte var5 = 0;
-			int var6 = var5 | (var3 ? 1 : 0);
-			var6 |= var2 ? 8 : 32;
-			var6 |= var4 ? 128 : 0;
-			return (var1 & var6) != 0;
-		}
-	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
@@ -119,12 +79,12 @@ public class sb implements xm {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.ar_fld;
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IZZZ)Z"
+		descriptor = "(IZZZI)Z"
 	)
 	boolean aw(int var1, boolean var2, boolean var3, boolean var4) {
 		byte var6 = 0;
@@ -136,7 +96,7 @@ public class sb implements xm {
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIFFF)F"
+		descriptor = "(IIIIIIIIFFFI)F"
 	)
 	public static float au(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, float var8, float var9, float var10) {
 		float var12 = (var4 - var3) * (var5 - var7) + (var2 - var4) * (var6 - var7);
@@ -152,63 +112,39 @@ public class sb implements xm {
 	)
 	@Override
 	public int ah() {
-		return this.ar_fld;
+		return this.ae_fld;
 	}
 
-	@ObfuscatedName("lj")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZ)Z"
+		descriptor = "(ZZZB)Z"
 	)
-	public static boolean lj(sb var0, boolean var1, boolean var2, boolean var3) {
-		return var0.aw(var0.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("nl")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;IZZZ)Z"
-	)
-	public static boolean nl(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		byte var5 = 0;
-		int var6 = var5 | (var3 ? 2 : 0);
-		var6 |= var2 ? 16 : 64;
-		var6 |= var4 ? 256 : 0;
-		return 0 != (var1 & var6);
+	public boolean ar(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.ar_fld, var1, var2, var3);
 	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
+		descriptor = "(ZZZB)Z"
 	)
 	public boolean as(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.aw_fld, var1, var2, var3);
+		return this.az(this.ay_fld, var1, var2, var3);
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
+		descriptor = "(ZZZI)Z"
 	)
-	public boolean af(boolean var1, boolean var2, boolean var3) {
-		return this.aw(this.ah_fld, var1, var2, var3);
+	public boolean al(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.as_fld, var1, var2, var3);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
+		descriptor = "(ZZZI)Z"
 	)
-	public boolean au(boolean var1, boolean var2, boolean var3) {
-		return this.aw(this.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Lqj;)Ljava/lang/String;"
-	)
-	public static String as(qj var0) {
-		return var0.az_fld;
+	public boolean ax(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.ar_fld, var1, var2, var3);
 	}
 
 	@ObfuscatedName("av")
@@ -217,23 +153,7 @@ public class sb implements xm {
 	)
 	@Override
 	public int av() {
-		return this.ar_fld;
-	}
-
-	@ObfuscatedName("rj")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;IZZZ)Z"
-	)
-	public static boolean rj(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			byte var5 = 0;
-			int var6 = var5 | (var3 ? 2 : 0);
-			var6 |= var2 ? 16 : 1982898256;
-			var6 |= var4 ? 706263677 : 0;
-			return 0 != (var1 & var6);
-		}
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -242,35 +162,15 @@ public class sb implements xm {
 	)
 	@Override
 	public int ae() {
-		return this.ar_fld;
+		return this.ae_fld;
 	}
 
-	@ObfuscatedName("ua")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lgj;)I"
+		descriptor = "(ZZZI)Z"
 	)
-	public static int ua(gj var0) {
-		return var0.ae_fld;
-	}
-
-	@ObfuscatedName("qv")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZB)Z"
-	)
-	public static boolean qv(sb var0, boolean var1, boolean var2, boolean var3, byte var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.az(var0.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean ax(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.ah_fld, var1, var2, var3);
+	public boolean ay(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.as_fld, var1, var2, var3);
 	}
 
 	@ObfuscatedName("an")
@@ -279,163 +179,6 @@ public class sb implements xm {
 	)
 	public static sb[] an() {
 		return new sb[]{ak_fld, ag_fld, az_fld, av_fld};
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bs(boolean var1, boolean var2, boolean var3) {
-		return this.aw(this.aw_fld * 1838720024, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(IZZZ)Z"
-	)
-	boolean ab(int var1, boolean var2, boolean var3, boolean var4) {
-		byte var5 = 0;
-		int var6 = var5 | (var3 ? 2 : 0);
-		var6 |= var2 ? 16 : 64;
-		var6 |= var4 ? 256 : 0;
-		return 0 != (var1 & var6);
-	}
-
-	@ObfuscatedName("px")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;IZZZ)Z"
-	)
-	public static boolean px(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		byte var5 = 0;
-		int var6 = var5 | (var3 ? 2 : 0);
-		var6 |= var2 ? 16 : 64;
-		var6 |= var4 ? 256 : 0;
-		return 0 != (var1 & var6);
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean at(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.aw_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bm(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.ay_fld, var1, var2, var3);
-	}
-
-	sb(int var1, int var2, int var3, int var4, int var5, int var6) {
-		this.ae_fld = var1 * 944194543;
-		this.ar_fld = var2;
-		this.ah_fld = var3;
-		this.aw_fld = var4;
-		this.ay_fld = var5;
-		this.as_fld = var6;
-	}
-
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bd(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bz(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.as_fld * 346168083, var1, var2, var3);
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean aj(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean ap(boolean var1, boolean var2, boolean var3) {
-		return this.az(415170308 * this.ah_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bh(boolean var1, boolean var2, boolean var3) {
-		return this.aw(this.aw_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean bk(boolean var1, boolean var2, boolean var3) {
-		return this.aw(this.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(IZZZ)Z"
-	)
-	boolean az(int var1, boolean var2, boolean var3, boolean var4) {
-		byte var6 = 0;
-		int var7 = var6 | (var3 ? 1 : 0);
-		var7 |= var2 ? 8 : 32;
-		var7 |= var4 ? 128 : 0;
-		return (var1 & var7) != 0;
-	}
-
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZ)Z"
-	)
-	public boolean br(boolean var1, boolean var2, boolean var3) {
-		return this.az(this.as_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ly")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZI)Z"
-	)
-	public static boolean ly(sb var0, boolean var1, boolean var2, boolean var3, int var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.az(var0.as_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZB)Z"
-	)
-	public boolean ar(boolean var1, boolean var2, boolean var3, byte var4) {
-		return this.az(this.ah_fld * 111087335, var1, var2, var3);
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(ZZZI)Z"
-	)
-	public boolean al(boolean var1, boolean var2, boolean var3, int var4) {
-		return this.az(this.ae_fld, var1, var2, var3);
 	}
 
 	@ObfuscatedName("aa")
@@ -462,11 +205,220 @@ public class sb implements xm {
 		return (var1 & var6) != 0;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(Lsb;ZZZI)Z"
+	)
+	public static boolean jf(sb var0, boolean var1, boolean var2, boolean var3, int var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.aw(var0.ay_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZ)Z"
+	)
+	boolean am(int var1, boolean var2, boolean var3, boolean var4) {
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 64;
+		var6 |= var4 ? 256 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZ)Z"
+	)
+	boolean ad(int var1, boolean var2, boolean var3, boolean var4) {
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 1982898256;
+		var6 |= var4 ? 706263677 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean bs(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.ay_fld * 1838720024, var1, var2, var3);
+	}
+
+	@ObfuscatedName("us")
+	@ObfuscatedSignature(
+		descriptor = "(Lsb;IZZZ)Z"
+	)
+	public static boolean us(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 64;
+		var6 |= var4 ? 256 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZ)Z"
+	)
+	boolean ab(int var1, boolean var2, boolean var3, boolean var4) {
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 64;
+		var6 |= var4 ? 256 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("zl")
+	@ObfuscatedSignature(
+		descriptor = "(Lsb;IZZZ)Z"
+	)
+	public static boolean zl(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 64;
+		var6 |= var4 ? 1394462102 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(ZZZI)Z"
 	)
-	public boolean ay(boolean var1, boolean var2, boolean var3, int var4) {
-		return this.az(979286157 * this.as_fld, var1, var2, var3);
+	public boolean af(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.aw_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean at(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.ay_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean ac(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.ay_fld, var1, var2, var3);
+	}
+
+	sb(int var1, int var2, int var3, int var4, int var5, int var6) {
+		this.ah_fld = var1;
+		this.ae_fld = var2;
+		this.as_fld = var3;
+		this.ay_fld = var4;
+		this.ar_fld = var5;
+		this.aw_fld = var6;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean bz(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.aw_fld * 346168083, var1, var2, var3);
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean aj(boolean var1, boolean var2, boolean var3) {
+		return this.az(this.ar_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("mn")
+	@ObfuscatedSignature(
+		descriptor = "(Lsb;ZZZ)Z"
+	)
+	public static boolean mn(sb var0, boolean var1, boolean var2, boolean var3) {
+		return var0.aw(var0.ar_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean be(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.as_fld * -786133429, var1, var2, var3);
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean ap(boolean var1, boolean var2, boolean var3) {
+		return this.az(415170308 * this.as_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean bh(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.ay_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean bk(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.ar_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZB)Z"
+	)
+	boolean az(int var1, boolean var2, boolean var3, boolean var4) {
+		byte var6 = 0;
+		int var7 = var6 | (var3 ? 1 : 0);
+		var7 |= var2 ? 8 : 32;
+		var7 |= var4 ? 128 : 0;
+		return (var1 & var7) != 0;
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZ)Z"
+	)
+	public boolean bf(boolean var1, boolean var2, boolean var3) {
+		return this.aw(this.ar_fld, var1, var2, var3);
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZ)Z"
+	)
+	boolean aq(int var1, boolean var2, boolean var3, boolean var4) {
+		byte var5 = 0;
+		int var6 = var5 | (var3 ? 2 : 0);
+		var6 |= var2 ? 16 : 64;
+		var6 |= var4 ? 1394462102 : 0;
+		return 0 != (var1 & var6);
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(ZZZI)Z"
+	)
+	public boolean au(boolean var1, boolean var2, boolean var3, int var4) {
+		return this.aw(this.aw_fld * -1227846745, var1, var2, var3);
 	}
 }

@@ -51,12 +51,21 @@ tasks.register<JavaExec>("updateMap") {
     mainClass.set("net.runelite.inspector.UpdateMapper")
     workingDir = rootProject.projectDir
     val refJar = (findProperty("refJar") as? String)
-        ?: "data/runelite-1.12.27-injected-26504454311.147-clean.jar"
+        ?: "data/runelite-1.12.28-injected-26877631509.154-clean.jar"
     val tgtJar = (findProperty("tgtJar") as? String)
         ?: "data/runelite-1.12.27-SNAPSHOT-injected-26376428461.145.jar"
     val outJar = (findProperty("outJar") as? String)
         ?: tgtJar.replace(".jar", "-annotated.jar")
     args(refJar, tgtJar, outJar)
+}
+
+tasks.register<JavaExec>("findUnused") {
+    group = "application"
+    description = "Walk a sanitized jar and emit a TSV of every method's in-degree (direct + polymorphic) to surface obfuscator decoy methods"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("net.runelite.inspector.UnusedMethods")
+    workingDir = rootProject.projectDir
+    (findProperty("inJar") as? String)?.let { args(it) }
 }
 
 tasks.register<JavaExec>("decompile") {

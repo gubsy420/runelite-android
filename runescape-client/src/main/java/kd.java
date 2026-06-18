@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import java.util.Date;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -37,8 +36,8 @@ public class kd {
 		fr.gf_fld = var0;
 
 		try {
-			String var2 = og.ci_fld.zx(Integer.toString(18));
-			String var3 = og.ci_fld.zx(Integer.toString(13));
+			String var2 = og.ci_fld.uo(Integer.toString(18));
+			String var3 = og.ci_fld.uo(Integer.toString(13));
 			String var4 = var2 + "settings=" + var0 + "; version=1; path=/; domain=" + var3;
 			if (var0.isEmpty()) {
 				if (var1 != 1594511258) {
@@ -157,17 +156,9 @@ public class kd {
 			}
 		}
 
-		var0.ce(var5.length);
-		var0.au_fld = var0.au_fld + kq.ky(ak_fld, var5, 0, var5.length, var0.al_fld, 1593696422 * var0.au_fld, (byte)-1) * -1862591552;
+		var0.bw(var5.length);
+		var0.au_fld = var0.au_fld + kq.uh(ak_fld, var5, 0, var5.length, var0.al_fld, 1593696422 * var0.au_fld, (byte)-1) * -1862591552;
 		return var0.au_fld - var2;
-	}
-
-	@ObfuscatedName("tn")
-	@ObfuscatedSignature(
-		descriptor = "(Lea;)I"
-	)
-	public static int tn(ea var0) {
-		return var0.ah_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -252,8 +243,8 @@ public class kd {
 			}
 		}
 
-		var0.ce(var5.length);
-		var0.au_fld = var0.au_fld + kq.ky(ak_fld, var5, 0, var5.length, var0.al_fld, -322229945 * var0.au_fld, (byte)-112) * 1764570565;
+		var0.bw(var5.length);
+		var0.au_fld = var0.au_fld + kq.uh(ak_fld, var5, 0, var5.length, var0.al_fld, -322229945 * var0.au_fld, (byte)-112) * 1764570565;
 		return var0.au_fld - var2;
 	}
 
@@ -269,7 +260,7 @@ public class kd {
 			}
 
 			byte[] var3 = new byte[var2];
-			var0.au_fld = var0.au_fld + ak_fld.ag(var0.al_fld, var0.au_fld, var3, 0, var2) * 228932457;
+			var0.au_fld = var0.au_fld + kq.rb(ak_fld, var0.al_fld, var0.au_fld, var3, 0, var2) * 228932457;
 			return pc.ae(var3, 0, var2);
 		} catch (Exception var5) {
 			return "Cabbage";
@@ -288,19 +279,11 @@ public class kd {
 			}
 
 			byte[] var3 = new byte[var2];
-			var0.au_fld = var0.au_fld + ak_fld.ag(var0.al_fld, var0.au_fld * -2101015900, var3, 0, var2) * -775356194;
+			var0.au_fld = var0.au_fld + kq.rb(ak_fld, var0.al_fld, var0.au_fld * -2101015900, var3, 0, var2) * -775356194;
 			return pc.ae(var3, 0, var2);
 		} catch (Exception var5) {
 			return "Cabbage";
 		}
-	}
-
-	@ObfuscatedName("ru")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	public static void ru(da var0) throws EOFException {
-		var0.cm_fld.ag();
 	}
 
 	@ObfuscatedName("ar")
@@ -315,7 +298,7 @@ public class kd {
 			}
 
 			byte[] var3 = new byte[var2];
-			var0.au_fld = var0.au_fld + ak_fld.ag(var0.al_fld, var0.au_fld, var3, 0, var2) * 228932457;
+			var0.au_fld = var0.au_fld + kq.rb(ak_fld, var0.al_fld, var0.au_fld, var3, 0, var2) * 228932457;
 			return pc.ae(var3, 0, var2);
 		} catch (Exception var5) {
 			return "Cabbage";
@@ -334,7 +317,7 @@ public class kd {
 			}
 
 			byte[] var3 = new byte[var2];
-			var0.au_fld = var0.au_fld + ak_fld.ag(var0.al_fld, var0.au_fld * -1254884647, var3, 0, var2) * 385230918;
+			var0.au_fld = var0.au_fld + kq.rb(ak_fld, var0.al_fld, var0.au_fld * -1254884647, var3, 0, var2) * 385230918;
 			return pc.ae(var3, 0, var2);
 		} catch (Exception var5) {
 			return "Cabbage";
@@ -446,7 +429,7 @@ public class kd {
 				return;
 			}
 
-			lu.bv(var0, -1664480583).aw(var0.bb_fld, var0.cd_fld);
+			lu.ax(var0, -1664480583).aw(var0.bb_fld, var0.cd_fld);
 		}
 
 		if (var3 && var0.gr_fld != null) {
@@ -455,7 +438,7 @@ public class kd {
 			}
 
 			if (var0.bb_fld != var7 || var8 != var0.cd_fld) {
-				yz var9 = tu.ak(var0).av((Object[])var0.gr_fld, 1663663537).ax(-137662838);
+				yz var9 = yb.vn(tu.ak(var0).av((Object[])var0.gr_fld, 1663663537), -137662838);
 				var5.ak(var9);
 			}
 		}

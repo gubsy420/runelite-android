@@ -45,20 +45,20 @@ public class cq implements xm {
 		descriptor = "Lcq;"
 	)
 	static cq ag_fld = new cq(1, 2);
-	@ObfuscatedGetter(
-		intValue = 1716794191
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = 99090547
+		intValue = 1716794191
 	)
+	int ar_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 99090547
 	)
 	int as_fld;
 	@ObfuscatedName("af")
@@ -117,6 +117,18 @@ public class cq implements xm {
 		return this.as_fld;
 	}
 
+	@ObfuscatedName("mi")
+	@ObfuscatedSignature(
+		descriptor = "(Lgn;IIIIZ)V"
+	)
+	public static void mi(gn var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ax(var1, var2, var3, var4, 0, var5, -1942928115);
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "()[Lcq;"
@@ -152,7 +164,7 @@ public class cq implements xm {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static int ag(int var0, int var1) {
 		if (-2 == var0) {
@@ -179,10 +191,10 @@ public class cq implements xm {
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;Ljava/lang/String;Ljava/lang/String;)Lzf;"
+		descriptor = "(Lub;Lub;Ljava/lang/String;Ljava/lang/String;I)Lzf;"
 	)
 	public static zf ay(ub var0, ub var1, String var2, String var3) throws EOFException {
-		if (!ub.mo(var0, var2, var3, (byte)31)) {
+		if (!var0.ck(var2, var3, (byte)31)) {
 			return null;
 		} else {
 			int var5 = var0.cm(var2, (byte)1);

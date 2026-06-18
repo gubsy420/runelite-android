@@ -24,12 +24,12 @@ public class hk implements xm {
 		descriptor = "Lhk;"
 	)
 	static hk av_fld = new hk(3, (byte)3);
-	@ObfuscatedGetter(
-		intValue = -1358916679
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1358916679
 	)
 	int ae_fld;
 	@ObfuscatedName("ah")
@@ -37,12 +37,12 @@ public class hk implements xm {
 		descriptor = "B"
 	)
 	byte ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1461120801
-	)
 	@ObfuscatedName("dc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1461120801
 	)
 	static int dc_fld;
 	@ObfuscatedName("dl")
@@ -83,7 +83,7 @@ public class hk implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lhk;"
+		descriptor = "(I)[Lhk;"
 	)
 	static hk[] ak() {
 		return new hk[]{av_fld, ak_fld, az_fld, ag_fld};
@@ -101,6 +101,16 @@ public class hk implements xm {
 	@Override
 	public int ag(int var1) {
 		return this.ah_fld;
+	}
+
+	@ObfuscatedName("nq")
+	@ObfuscatedSignature(
+		descriptor = "(Loh;)V"
+	)
+	public static void nq(oh var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("ah")
@@ -123,15 +133,15 @@ public class hk implements xm {
 
 	@ObfuscatedName("ew")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void ew() {
-		for (cs var1 = (cs)bw.dk_fld.ai_fld.aw(); null != var1; var1 = (cs)bw.dk_fld.ai_fld.as()) {
+		for (cs var1 = (cs)bw.dk_fld.ai_fld.aw(); null != var1; var1 = (cs)na.iy(bw.dk_fld.ai_fld)) {
 			if (var1.ax_fld == -1) {
 				var1.au_fld = 0;
 				ai.ex(bw.dk_fld, var1, -1323804254);
 			} else {
-				var1.gy_void();
+				var1.gy();
 			}
 		}
 	}

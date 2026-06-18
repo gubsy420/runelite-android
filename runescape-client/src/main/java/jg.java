@@ -49,20 +49,20 @@ public class jg implements jn {
 		descriptor = "[Ljg;"
 	)
 	static jg[] as_fld = new jg[33];
-	@ObfuscatedGetter(
-		intValue = -453446773
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ar_fld;
 	@ObfuscatedGetter(
-		intValue = 236620579
+		intValue = -453446773
 	)
+	public int ar_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 236620579
 	)
 	public int af_fld;
 	@ObfuscatedName("bj")
@@ -70,12 +70,12 @@ public class jg implements jn {
 		descriptor = "I"
 	)
 	public static int bj_fld;
-	@ObfuscatedGetter(
-		longValue = 9194500432155369601L
-	)
 	@ObfuscatedName("hq")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = 9194500432155369601L
 	)
 	static long hq_fld;
 	@ObfuscatedName("av")
@@ -91,13 +91,13 @@ public class jg implements jn {
 
 	@ObfuscatedName("fk")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(IIB)V"
 	)
 	static void fk(int var0, int var1) {
-		jm var3 = gi.ak(jb.bu_fld, client.aq_fld.av_fld);
-		var3.ay_fld.ea(var0);
-		xi.si(var3.ay_fld, var1);
-		client.aq_fld.az(var3);
+		jm var3 = gi.ak(jb.bu_fld, client.appletStub.av_fld);
+		var3.ay_fld.et(var0);
+		var3.ay_fld.ca(var1);
+		client.appletStub.az(var3);
 	}
 
 	@ObfuscatedName("gb")
@@ -118,15 +118,23 @@ public class jg implements jn {
 				}
 
 				String var5 = var4.az_fld.ak(-915963285);
-				jm var6 = gi.ak(jb.bx_fld, client.aq_fld.av_fld);
-				var6.ay_fld.bc(3 + iq.bu(var5));
-				var6.ay_fld.bc(var0);
-				var6.ay_fld.bw(var1);
-				var6.ay_fld.cc(var5, 1317478836);
-				client.aq_fld.az(var6);
+				jm var6 = gi.ak(jb.bx_fld, client.appletStub.av_fld);
+				var6.ay_fld.ea(3 + iq.bu(var5));
+				var6.ay_fld.ea(var0);
+				xi.vy(var6.ay_fld, var1);
+				xi.ph(var6.ay_fld, var5, 1317478836);
+				client.appletStub.az(var6);
 				return;
 			}
 		}
+	}
+
+	@ObfuscatedName("hl")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;)I"
+	)
+	public static int hl(qa var0) {
+		return var0.av_fld;
 	}
 
 	static {
@@ -136,6 +144,14 @@ public class jg implements jn {
 		for (int var2 = 0; var2 < var1.length; var2++) {
 			as_fld[var1[var2].ar_fld * -453446773] = var1[var2];
 		}
+	}
+
+	@ObfuscatedName("tn")
+	@ObfuscatedSignature(
+		descriptor = "(Lsb;ZZZ)Z"
+	)
+	public static boolean tn(sb var0, boolean var1, boolean var2, boolean var3) {
+		return var0.az(var0.ar_fld, var1, var2, var3);
 	}
 
 	@ObfuscatedName("hi")
@@ -152,21 +168,6 @@ public class jg implements jn {
 		}
 	}
 
-	@ObfuscatedName("yd")
-	@ObfuscatedSignature(
-		descriptor = "(Lac;)V"
-	)
-	public static void yd(ac var0) {
-		if (var0.al_fld != 0) {
-			if (var0.az_fld == Integer.MIN_VALUE) {
-				var0.az_fld = 0;
-			}
-
-			var0.al_fld = 0;
-			var0.er();
-		}
-	}
-
 	jg(int var1, int var2) {
 		this.ar_fld = var1;
 		this.af_fld = var2;
@@ -174,7 +175,7 @@ public class jg implements jn {
 
 	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int cs(int var0, ba var1, boolean var2) {
 		return 2;

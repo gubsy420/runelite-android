@@ -20,7 +20,11 @@ public class vs extends ws {
 	)
 	@Override
 	public boolean ak(short var1) {
-		if (mb.av_fld.size() > 1 && mb.av_fld.get(0) != null && ((me)mb.av_fld.get(0)).af_fld.ax() && mb.av_fld.get(1) != null && ((me)mb.av_fld.get(1)).af_fld.ax()) {
+		if (mb.av_fld.size() > 1
+			&& mb.av_fld.get(0) != null
+			&& ml.dc(((me)mb.av_fld.get(0)).af_fld, 986066567)
+			&& mb.av_fld.get(1) != null
+			&& ml.dc(((me)mb.av_fld.get(1)).af_fld, -133554324)) {
 			me var2 = (me)(me)mb.av_fld.get(0);
 			mb.av_fld.set(0, mb.av_fld.get(1));
 			mb.av_fld.set(1, var2);
@@ -35,7 +39,11 @@ public class vs extends ws {
 	)
 	@Override
 	public boolean ag() {
-		if (mb.av_fld.size() > 1 && mb.av_fld.get(0) != null && ((me)mb.av_fld.get(0)).af_fld.ax() && mb.av_fld.get(1) != null && ((me)mb.av_fld.get(1)).af_fld.ax()) {
+		if (mb.av_fld.size() > 1
+			&& mb.av_fld.get(0) != null
+			&& ml.dc(((me)mb.av_fld.get(0)).af_fld, -1524907516)
+			&& mb.av_fld.get(1) != null
+			&& ml.dc(((me)mb.av_fld.get(1)).af_fld, -1885635975)) {
 			me var1 = (me)(me)mb.av_fld.get(0);
 			mb.av_fld.set(0, mb.av_fld.get(1));
 			mb.av_fld.set(1, var1);

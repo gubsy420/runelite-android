@@ -24,6 +24,14 @@ public class xo {
 	)
 	static xo ak_fld = new xo();
 
+	@ObfuscatedName("ty")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;)I"
+	)
+	public static int ty(pp var0) {
+		return var0.ef_fld;
+	}
+
 	xo() {
 	}
 }

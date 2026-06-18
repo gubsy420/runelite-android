@@ -36,7 +36,7 @@ public class vj extends ws {
 							}
 
 							if (var2.af_fld.aw_fld * -1034371599 == 0) {
-								var2.af_fld.au();
+								var2.af_fld.av();
 								var2.af_fld.ar();
 								var2.af_fld.ak(0);
 							}
@@ -47,7 +47,7 @@ public class vj extends ws {
 					}
 				} catch (Exception var4) {
 					gl.ak(null, var4);
-					this.al(var4.getMessage());
+					ws.dx(this, var4.getMessage(), (byte)-106);
 					mb.av_fld.clear();
 					return true;
 				}
@@ -81,7 +81,7 @@ public class vj extends ws {
 							}
 
 							if (var3.af_fld.aw_fld * -1034371599 == 0) {
-								var3.af_fld.au();
+								var3.af_fld.av();
 								var3.af_fld.ar();
 								var3.af_fld.ak(0);
 							}
@@ -92,7 +92,7 @@ public class vj extends ws {
 					}
 				} catch (Exception var5) {
 					gl.ak(null, var5);
-					this.al(var5.getMessage());
+					ws.dx(this, var5.getMessage(), (byte)-11);
 					mb.av_fld.clear();
 					return true;
 				}
@@ -104,12 +104,12 @@ public class vj extends ws {
 
 	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int be(int var0, ba var1, boolean var2) throws EOFException {
 		lu var4 = cf.cg_fld.ak(bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127]);
 		if (var0 == 2800) {
-			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = nt.ag(uo.sa(cf.cg_fld, var4, 195514530));
+			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = nt.ag(uo.xd(cf.cg_fld, var4, 195514530));
 			return 1;
 		} else if (2801 != var0) {
 			if (var0 == 2802) {
@@ -138,26 +138,26 @@ public class vj extends ws {
 
 	@ObfuscatedName("el")
 	@ObfuscatedSignature(
-		descriptor = "(Lds;)V"
+		descriptor = "(Lds;B)V"
 	)
 	static void el(ds var0) {
-		var0.bv_fld = -152112395 * var0.ah_fld.cw_fld;
-		var0.dt_fld = 101542575 * var0.ah_fld.dw_fld;
-		var0.bc_fld = var0.ah_fld.cu_fld * -591887589;
-		var0.bw_fld = var0.ah_fld.ci_fld * -1302247577;
-		var0.ba_fld = -1394609019 * var0.ah_fld.cj_fld;
-		var0.bq_fld = -181977101 * var0.ah_fld.ch_fld;
-		var0.bi_fld = -2079640667 * var0.ah_fld.ck_fld;
-		var0.bu_fld = var0.ah_fld.cb_fld * -652084157;
-		var0.bn_fld = var0.ah_fld.co_fld * 823353091;
-		var0.bg_fld = var0.ah_fld.ct_fld * 1644659833;
-		var0.bb_fld = -768103617 * var0.ah_fld.cl_fld;
-		var0.cd_fld = -1416230141 * var0.ah_fld.dc_fld;
-		var0.cc_fld = -1974742505 * var0.ah_fld.dh_fld;
-		var0.cq_fld = var0.ah_fld.dv_fld * 139103385;
-		var0.cv_fld = var0.ah_fld.dz_fld * 1778724481;
-		var0.cy_fld = var0.ah_fld.dt_fld * -436652797;
-		var0.cf_fld = var0.ah_fld.dm_fld;
+		var0.bn_fld = -152112395 * var0.ah_fld.cw_fld;
+		var0.bw_fld = 101542575 * var0.ah_fld.dw_fld;
+		var0.dr_fld = var0.ah_fld.cu_fld * -591887589;
+		var0.cy_fld = var0.ah_fld.ci_fld * -1302247577;
+		var0.bx_fld = -1394609019 * var0.ah_fld.cj_fld;
+		var0.dc_fld = -181977101 * var0.ah_fld.ch_fld;
+		var0.cr_fld = -2079640667 * var0.ah_fld.ck_fld;
+		var0.bl_fld = var0.ah_fld.cb_fld * -652084157;
+		var0.cj_fld = var0.ah_fld.co_fld * 823353091;
+		var0.cl_fld = var0.ah_fld.ct_fld * 1644659833;
+		var0.dl_fld = -768103617 * var0.ah_fld.cl_fld;
+		var0.dt_fld = -1416230141 * var0.ah_fld.dc_fld;
+		var0.dz_fld = -1974742505 * var0.ah_fld.dh_fld;
+		var0.ba_fld = var0.ah_fld.dv_fld * 139103385;
+		var0.cc_fld = var0.ah_fld.dz_fld * 1778724481;
+		var0.bp_fld = var0.ah_fld.dt_fld * -436652797;
+		var0.co_fld = var0.ah_fld.dm_fld;
 	}
 
 	public vj(ws var1, ArrayList var2) {
@@ -168,7 +168,7 @@ public class vj extends ws {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(C)B"
+		descriptor = "(CI)B"
 	)
 	public static byte ak(char var0) {
 		byte var2;

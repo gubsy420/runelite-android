@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -15,42 +14,68 @@ public class yd {
 		descriptor = "[Lct;"
 	)
 	static ct[] ae_fld;
-	@ObfuscatedGetter(
-		longValue = 1607003436380827679L
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
+	@ObfuscatedGetter(
+		longValue = 1607003436380827679L
+	)
 	static long ag_fld;
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("fx")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(Lyd;II)I"
 	)
-	public int ak(int var1) {
-		int var3 = (this.ak_fld.length >> 1) - 1;
-		int var4 = var1 & var3;
+	public static int fx(yd var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			int var3 = (var0.ak_fld.length >> 1) - 1;
+			int var4 = var1 & var3;
 
-		while (true) {
-			int var5 = this.ak_fld[1 + var4 + var4];
-			if (var5 == -1) {
-				return -1;
+			while (true) {
+				int var5 = var0.ak_fld[1 + var4 + var4];
+				if (var5 == -1) {
+					return -1;
+				}
+
+				if (var0.ak_fld[var4 + var4] == var1) {
+					return var5;
+				}
+
+				var4 = 1 + var4 & var3;
 			}
-
-			if (this.ak_fld[var4 + var4] == var1) {
-				return var5;
-			}
-
-			var4 = 1 + var4 & var3;
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	public int az(int var1) {
+	public int av(int var1) {
+		int var2 = (this.ak_fld.length >> 1) - 1;
+		int var3 = var1 & var2;
+
+		while (true) {
+			int var4 = this.ak_fld[1 + var3 + var3];
+			if (var4 == -1) {
+				return -1;
+			}
+
+			if (this.ak_fld[var3 + var3] == var1) {
+				return var4;
+			}
+
+			var3 = 1 + var3 & var2;
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int ag(int var1) {
 		int var2 = (this.ak_fld.length >> 1) - 1;
 		int var3 = var1 & var2;
 
@@ -95,48 +120,25 @@ public class yd {
 		}
 	}
 
-	@ObfuscatedName("cx")
+	@ObfuscatedName("th")
 	@ObfuscatedSignature(
-		descriptor = "(Lgc;IILuo;II)V"
+		descriptor = "(Lqt;Ljava/lang/String;)V"
 	)
-	public static void cx(gc var0, int var1, int var2, uo var3, int var4, int var5) throws EOFException {
+	public static void th(qt var0, String var1) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			if (var3.aa_fld != -1) {
-				var0.af(var3.aa_fld, var3, var5, (byte)-72);
-				gc.aj(var0, var3.aa_fld, 0, 0, var1, var2, 0, 0, var3, var4, 145878348);
-			}
+		}
+
+		if (var1 != null && !var1.isEmpty()) {
+			var0.av_fld.remove(var1);
 		}
 	}
 
-	@ObfuscatedName("ym")
-	@ObfuscatedSignature(
-		descriptor = "(Lyd;I)I"
-	)
-	public static int ym(yd var0, int var1) {
-		int var2 = (var0.ak_fld.length >> 1) - 1;
-		int var3 = var1 & var2;
-
-		while (true) {
-			int var4 = var0.ak_fld[1 + var3 + var3];
-			if (var4 == -1) {
-				return -1;
-			}
-
-			if (var0.ak_fld[var3 + var3] == var1) {
-				return var4;
-			}
-
-			var3 = 1 + var3 & var2;
-		}
-	}
-
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	public int ag(int var1) {
+	public int az(int var1) {
 		int var2 = (this.ak_fld.length >> 1) - 1;
 		int var3 = var1 & var2;
 
@@ -151,6 +153,28 @@ public class yd {
 			}
 
 			var3 = 1 + var3 & var2;
+		}
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int ak(int var1, int var2) {
+		int var3 = (this.ak_fld.length >> 1) - 1;
+		int var4 = var1 & var3;
+
+		while (true) {
+			int var5 = this.ak_fld[1 + var4 + var4];
+			if (var5 == -1) {
+				return -1;
+			}
+
+			if (this.ak_fld[var4 + var4] == var1) {
+				return var5;
+			}
+
+			var4 = 1 + var4 & var3;
 		}
 	}
 }

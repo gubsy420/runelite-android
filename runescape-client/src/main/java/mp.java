@@ -15,12 +15,12 @@ public class mp {
 		descriptor = "I"
 	)
 	static int as_fld;
-	@ObfuscatedGetter(
-		intValue = -1981835385
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1981835385
 	)
 	int ak_fld;
 
@@ -31,15 +31,15 @@ public class mp {
 
 	@ObfuscatedName("co")
 	@ObfuscatedSignature(
-		descriptor = "(Lds;)Z"
+		descriptor = "(Lds;B)Z"
 	)
 	static boolean co(ds var0) {
 		if (!var0.ah_fld.ao((short)180)) {
 			return false;
 		} else {
-			for (int var2 = 0; var2 < bw.dk_fld.am_fld.az(); var2++) {
-				rg var3 = (rg)bw.dk_fld.an_fld.ak(bw.dk_fld.am_fld.ag(var2));
-				if (null != var3 && client.dv_fld == var3.ah_fld.az_fld.by_fld && !var3.av(-1169938664) && lg.cb(var3, var0)) {
+			for (int var2 = 0; var2 < bw.dk_fld.ad_fld.az(); var2++) {
+				rg var3 = (rg)bw.dk_fld.an_fld.ak(yw.wk(bw.dk_fld.ad_fld, var2, (byte)47));
+				if (null != var3 && client.dv_fld == var3.ah_fld.az_fld.bp_fld && !var3.av(-1169938664) && lg.cb(var3, var0)) {
 					return true;
 				}
 			}
@@ -50,7 +50,7 @@ public class mp {
 
 	@ObfuscatedName("ep")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)Z"
+		descriptor = "(IIIIIII)Z"
 	)
 	static boolean ep(int var0, int var1, int var2, int var3, int var4, int var5) throws EOFException {
 		return lw.eb(hk.mt_fld.ae_fld, var0, var1, var2, var3, var4, var5);

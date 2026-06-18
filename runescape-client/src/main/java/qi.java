@@ -2,6 +2,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
@@ -76,6 +77,7 @@ class qi extends DefaultTlsClient {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Hashtable;"
 	)
+	@Export("getClientExtensions")
 	@Override
 	public Hashtable getClientExtensions() throws IOException {
 		Hashtable var1 = super.getClientExtensions();

@@ -19,20 +19,20 @@ public class pv implements xm {
 		descriptor = "Lpv;"
 	)
 	static pv az_fld = new pv(1, 2);
-	@ObfuscatedGetter(
-		intValue = -1817025895
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
 	@ObfuscatedGetter(
-		intValue = -1972467765
+		intValue = -1817025895
 	)
+	public int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1972467765
 	)
 	int ae_fld;
 
@@ -52,18 +52,6 @@ public class pv implements xm {
 	@Override
 	public int ag(int var1) {
 		return this.ae_fld;
-	}
-
-	@ObfuscatedName("vd")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	public static void vd(xi var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.al_fld[(var0.au_fld += -308482632) * -661977895 - 1] = (byte)(128 - var1);
 	}
 
 	@ObfuscatedName("av")
@@ -91,17 +79,17 @@ public class pv implements xm {
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)Lsl;"
+		descriptor = "(Lxi;I)Lsl;"
 	)
 	public static sl aa(xi var0) {
-		int var2 = xi.tx(var0, 2054908118);
+		int var2 = var0.cm();
 		if (var2 >= 0 && var2 <= 5000) {
 			int var3 = var0.cg();
 			if (var3 == 0) {
 				int[] var8 = new int[var2];
 
 				for (int var10 = 0; var10 < var2; var10++) {
-					var8[var10] = var0.co();
+					var8[var10] = var0.co((byte)-1);
 				}
 
 				return pm.au(var8);
@@ -109,7 +97,7 @@ public class pv implements xm {
 				long[] var7 = new long[var2];
 
 				for (int var9 = 0; var9 < var2; var9++) {
-					var7[var9] = xi.ob(var0, -519150733);
+					var7[var9] = var0.cu();
 				}
 
 				return wn.ax(var7);
@@ -119,7 +107,7 @@ public class pv implements xm {
 				String[] var4 = new String[var2];
 
 				for (int var5 = 0; var5 < var2; var5++) {
-					var4[var5] = xi.kc(var0, 2008146716);
+					var4[var5] = xi.at(var0, 2008146716);
 				}
 
 				sl var6 = new sl(yq.az_fld, false);

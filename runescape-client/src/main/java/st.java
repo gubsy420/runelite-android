@@ -14,22 +14,12 @@ public class st implements su {
 	)
 	static int aw_fld;
 
-	@ObfuscatedName("ps")
+	@ObfuscatedName("ul")
 	@ObfuscatedSignature(
-		descriptor = "(Leg;)V"
+		descriptor = "(Lpw;ILjava/lang/String;)Ljava/lang/String;"
 	)
-	public static void ps(eg var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var1 = 0; var1 < var0.as_fld; var1++) {
-			float var2 = var0.uv_fld[var1];
-			var0.uv_fld[var1] = var0.dw_fld[var1];
-			var0.dw_fld[var1] = -var2;
-		}
-
-		var0.xy();
+	public static String ul(pw var0, int var1, String var2) {
+		return ih.av(var0.az_fld, var1, var2);
 	}
 
 	public st() {

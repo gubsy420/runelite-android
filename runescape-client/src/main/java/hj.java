@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -9,17 +10,25 @@ public interface hj {
 	)
 	boolean ag(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z"
 	)
-	boolean an(int var1, int var2);
+	boolean au(int var1, int var2);
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)Z"
 	)
 	boolean az(int var1, int var2, byte var3);
+
+	@ObfuscatedName("tt")
+	@ObfuscatedSignature(
+		descriptor = "(Lle;)[I"
+	)
+	static int[] tt(le var0) {
+		return Arrays.copyOf(var0.ah_fld, var0.ae_fld);
+	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -63,37 +72,17 @@ public interface hj {
 	)
 	boolean af(int var1, int var2, int var3);
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z"
-	)
-	boolean al(int var1, int var2);
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z"
-	)
-	boolean au(int var1, int var2);
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z"
 	)
 	boolean aa(int var1, int var2);
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lhf;B)V"
+		descriptor = "(II)Z"
 	)
-	void ak(hf var1, byte var2);
-
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "(Lku;)I"
-	)
-	static int jd(ku var0) {
-		return var0.aq_fld;
-	}
+	boolean al(int var1, int var2);
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
@@ -101,25 +90,17 @@ public interface hj {
 	)
 	boolean ax(int var1, int var2);
 
-	@ObfuscatedName("ks")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lgn;)V"
+		descriptor = "(Lhf;B)V"
 	)
-	static void ks(gn var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	void ak(hf var1, byte var2);
 
-		for (int var1 = 0; var1 < var0.bx_fld; var1++) {
-			for (int var2 = 0; var2 < var0.bo_fld; var2++) {
-				if (var1 >= 1 && var2 >= 1 && var1 < var0.bx_fld - 5 && var2 < var0.bo_fld - 5) {
-					var0.bp_fld[var1][var2] = 1073741824;
-				} else {
-					var0.bp_fld[var1][var2] = -1775358218;
-				}
-			}
-		}
-	}
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z"
+	)
+	boolean an(int var1, int var2);
 
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
@@ -144,14 +125,6 @@ public interface hj {
 		descriptor = "(IIB)Lkj;"
 	)
 	kj ae(int var1, int var2, byte var3);
-
-	@ObfuscatedName("oh")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;)Llu;"
-	)
-	static lu oh(uk var0) {
-		return var0.ag_fld;
-	}
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(

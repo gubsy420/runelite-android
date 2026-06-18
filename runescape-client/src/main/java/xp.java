@@ -1,4 +1,5 @@
 import net.runelite.api.WorldView;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -6,28 +7,28 @@ import net.runelite.api.coords.LocalPoint;
 
 @ObfuscatedName("xp")
 public class xp implements xl {
-	@ObfuscatedGetter(
-		intValue = -2022614563
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
 	@ObfuscatedGetter(
-		intValue = -459485599
+		intValue = -2022614563
 	)
+	int ak_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 1068595693
+		intValue = -459485599
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1068595693
 	)
 	int az_fld;
 	@ObfuscatedName("ae")
@@ -35,6 +36,14 @@ public class xp implements xl {
 		descriptor = "I"
 	)
 	static int ae_fld;
+
+	@ObfuscatedName("ta")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public void ta(int var1, int var2, int var3) {
+		this.ag(var1, var2, var3);
+	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -45,12 +54,21 @@ public class xp implements xl {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("hv")
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)V"
+	)
+	public void ag(int var1, int var2, int var3) {
+		this.ak_fld = kj.as(var2);
+		this.ag_fld = kj.as(var3);
+	}
+
+	@ObfuscatedName("hl")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int hv() {
+	public int hl() {
 		return this.ak_fld;
 	}
 
@@ -67,88 +85,10 @@ public class xp implements xl {
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/WorldView;"
 	)
+	@Export("getWorldView")
 	@Override
 	public WorldView getWorldView() {
 		return null;
-	}
-
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int hl() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int bf() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int bj() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("gp")
-	@ObfuscatedSignature(
-		descriptor = "(Lqc;)I"
-	)
-	public static int gp(qc var0) {
-		return var0.ah_fld;
-	}
-
-	@ObfuscatedName("hq")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int hq() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("hc")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int hc() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("getCameraFocus")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
-	)
-	@Override
-	public LocalPoint getCameraFocus() {
-		return null;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void av(int var1, int var2, int var3) {
-		this.ak_fld = kj.as(var2) * 1068048041;
-		this.ag_fld = kj.as(var3);
-	}
-
-	@ObfuscatedName("rj")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void rj(int var1, int var2, int var3) {
-		mh(this, var1, var2, var3, (byte)-26);
 	}
 
 	@ObfuscatedName("hg")
@@ -160,17 +100,68 @@ public class xp implements xl {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("mh")
+	@ObfuscatedName("getCameraFocus")
 	@ObfuscatedSignature(
-		descriptor = "(Lxp;IIIB)V"
+		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
 	)
-	public static void mh(xp var0, int var1, int var2, int var3, byte var4) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ak_fld = kj.as(var2);
-			var0.ag_fld = kj.as(var3);
-		}
+	@Export("getCameraFocus")
+	@Override
+	public LocalPoint getCameraFocus() {
+		return null;
+	}
+
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int bj() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int bf() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int hs() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("hq")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int hq() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public void av(int var1, int var2, int var3) {
+		this.ak_fld = kj.as(var2) * 1068048041;
+		this.ag_fld = kj.as(var3);
+	}
+
+	@ObfuscatedName("hw")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int hw_int() {
+		return this.ag_fld;
 	}
 
 	public xp() {
@@ -185,12 +176,12 @@ public class xp implements xl {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("hs")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int hs() {
+	public int hv() {
 		return this.ag_fld;
 	}
 
@@ -203,12 +194,12 @@ public class xp implements xl {
 		this.ag_fld = kj.as(var3);
 	}
 
-	@ObfuscatedName("hw")
+	@ObfuscatedName("hc")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int hw() {
+	public int hc() {
 		return this.ak_fld;
 	}
 
@@ -221,30 +212,21 @@ public class xp implements xl {
 		this.ag_fld = kj.as(var3);
 	}
 
-	@ObfuscatedName("xp")
+	@ObfuscatedName("yd")
 	@ObfuscatedSignature(
 		descriptor = "()F"
 	)
 	@Override
-	public float xp() {
+	public float yd() {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("ub")
+	@ObfuscatedName("kn")
 	@ObfuscatedSignature(
 		descriptor = "()F"
 	)
 	@Override
-	public float ub() {
+	public float kn() {
 		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)V"
-	)
-	public void ag(int var1, int var2, int var3, byte var4) {
-		this.ag_fld = kj.as(var2) * 132499061;
-		this.ak_fld = kj.ae(var3) * -1101245023;
 	}
 }

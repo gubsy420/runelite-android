@@ -1,4 +1,5 @@
 import net.runelite.api.Node;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -10,78 +11,94 @@ public class vw implements Node {
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	public long hc_fld;
-	@ObfuscatedName("hg")
-	@ObfuscatedSignature(
-		descriptor = "Lvw;"
-	)
-	public vw hg_vw;
+	public long hc_long;
 	@ObfuscatedName("hw")
 	@ObfuscatedSignature(
 		descriptor = "Lvw;"
 	)
 	public vw hw_fld;
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "Lvw;"
+	)
+	public vw hg_fld;
 
 	@ObfuscatedName("ge")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void ge_void() {
-		if (this.hw_fld != null) {
-			this.hw_fld.hg_vw = this.hg_vw;
-			this.hg_vw.hw_fld = this.hw_fld;
-			this.hg_vw = null;
+	public void ge() {
+		if (this.hg_fld != null) {
+			this.hg_fld.hw_fld = this.hw_fld;
+			this.hw_fld.hg_fld = this.hg_fld;
 			this.hw_fld = null;
+			this.hg_fld = null;
 		}
 	}
 
-	@ObfuscatedName("kb")
+	@ObfuscatedName("pz")
 	@ObfuscatedSignature(
-		descriptor = "(Lvw;)Z"
+		descriptor = "()V"
 	)
-	public static boolean kb(vw var0) {
+	public void pz_void() {
+		this.gy();
+	}
+
+	@ObfuscatedName("hf")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void hf_void() {
+	}
+
+	@ObfuscatedName("xi")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;Lbb;)V"
+	)
+	public static void xi(da var0, bb var1) {
+		var0.cg_fld.ag(var1);
+	}
+
+	@ObfuscatedName("mf")
+	@ObfuscatedSignature(
+		descriptor = "(Luo;)V"
+	)
+	public static void mf(uo var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return var0.hw_fld != null;
-	}
-
-	@ObfuscatedName("xp")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void xp_void() {
-	}
-
-	@ObfuscatedName("qc")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw getNext() {
-		return this.hg_vw;
-	}
-
-	@ObfuscatedName("xh")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void xh() {
-		this.gy_void();
+		var0.ac_fld = null;
 	}
 
 	@ObfuscatedName("gy")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void gy_void() {
-		this.fo_void();
-		if (this.hw_fld != null) {
-			this.hw_fld.hg_vw = this.hg_vw;
-			this.hg_vw.hw_fld = this.hw_fld;
-			this.hg_vw = null;
+	public void gy() {
+		this.jy();
+		if (this.hg_fld != null) {
+			this.hg_fld.hw_fld = this.hw_fld;
+			this.hw_fld.hg_fld = this.hg_fld;
 			this.hw_fld = null;
+			this.hg_fld = null;
 		}
+	}
+
+	@ObfuscatedName("xg")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw getNext() {
+		return this.hw_fld;
+	}
+
+	@ObfuscatedName("mc")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean mc() {
+		return this.hg_fld != null;
 	}
 
 	@ObfuscatedName("gz")
@@ -89,40 +106,45 @@ public class vw implements Node {
 		descriptor = "()V"
 	)
 	public void gz() {
-		if (this.hw_fld != null) {
-			this.hw_fld.hg_vw = this.hg_vw;
-			this.hg_vw.hw_fld = this.hw_fld;
-			this.hg_vw = null;
+		if (this.hg_fld != null) {
+			this.hg_fld.hw_fld = this.hw_fld;
+			this.hw_fld.hg_fld = this.hg_fld;
 			this.hw_fld = null;
+			this.hg_fld = null;
 		}
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;)Z"
+	)
+	public static boolean an(rg var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return 0.01F == var0.ah_fld.az_fld.bi_fld;
+		}
+	}
+
+	public vw() {
 	}
 
 	@ObfuscatedName("getHash")
 	@ObfuscatedSignature(
 		descriptor = "()J"
 	)
+	@Export("getHash")
 	@Override
 	public long getHash() {
-		return this.hc_fld;
+		return this.hc_long;
 	}
 
-	@ObfuscatedName("go")
+	@ObfuscatedName("sx")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
 	public vw getPrevious() {
-		return this.hw_fld;
-	}
-
-	public vw() {
-	}
-
-	@ObfuscatedName("fo")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void fo_void() {
-		this.xp_void();
+		return this.hg_fld;
 	}
 
 	@ObfuscatedName("gw")
@@ -130,12 +152,20 @@ public class vw implements Node {
 		descriptor = "()V"
 	)
 	public void gw() {
-		if (this.hw_fld != null) {
-			this.hw_fld.hg_vw = this.hg_vw;
-			this.hg_vw.hw_fld = this.hw_fld;
-			this.hg_vw = null;
+		if (this.hg_fld != null) {
+			this.hg_fld.hw_fld = this.hw_fld;
+			this.hw_fld.hg_fld = this.hg_fld;
 			this.hw_fld = null;
+			this.hg_fld = null;
 		}
+	}
+
+	@ObfuscatedName("jy")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void jy() {
+		this.hf_void();
 	}
 
 	@ObfuscatedName("gx")
@@ -143,19 +173,19 @@ public class vw implements Node {
 		descriptor = "()V"
 	)
 	public void gx() {
-		if (this.hw_fld != null) {
-			this.hw_fld.hg_vw = this.hg_vw;
-			this.hg_vw.hw_fld = this.hw_fld;
-			this.hg_vw = null;
+		if (this.hg_fld != null) {
+			this.hg_fld.hw_fld = this.hw_fld;
+			this.hw_fld.hg_fld = this.hg_fld;
 			this.hw_fld = null;
+			this.hg_fld = null;
 		}
 	}
 
-	@ObfuscatedName("mc")
+	@ObfuscatedName("mi")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean mc_boolean() {
-		return this.hg_vw != null;
+	public boolean mi() {
+		return this.hg_fld != null;
 	}
 }

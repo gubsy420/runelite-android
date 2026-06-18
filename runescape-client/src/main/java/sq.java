@@ -43,8 +43,8 @@ public class sq {
 					}
 				}
 			} else if (var0.ag_fld == yq.ag_fld && var1.ag_fld == yq.ag_fld) {
-				long[] var9 = var0.ag();
-				long[] var11 = var1.ag();
+				long[] var9 = sl.ob(var0, -1072346235);
+				long[] var11 = sl.ob(var1, 565439115);
 
 				for (int var13 = 0; var13 < var4; var13++) {
 					if (var9[var13] < var11[var13]) {
@@ -102,7 +102,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 852438277);
 			long var10 = (Long)var1;
 
 			for (int var7 = var2; var7 < var3; var7++) {
@@ -146,7 +146,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -1923213528);
 			long var10 = (Long)var1;
 
 			for (int var7 = var2; var7 < var3; var7++) {
@@ -190,7 +190,7 @@ public class sq {
 				}
 			}
 		} else if (var0.ag_fld == yq.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 1758745430);
 			long var10 = (Long)var1;
 
 			for (int var7 = var3 - 1; var7 >= var2; var7--) {
@@ -235,7 +235,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, -1420841789);
 			long var11 = (Long)var1;
 
 			for (int var8 = var2; var8 < var3; var8++) {
@@ -270,7 +270,7 @@ public class sq {
 					var3[var1] = var3[var2];
 					var3[var2] = var4;
 				} else if (var0.ag_fld == yq.ag_fld) {
-					long[] var6 = var0.ag();
+					long[] var6 = sl.ob(var0, -2006579029);
 					long var8 = var6[var1];
 					var6[var1] = var6[var2];
 					var6[var2] = var8;
@@ -310,7 +310,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, 744197251);
 			long var11 = (Long)var1;
 
 			for (int var8 = var2; var8 < var3; var8++) {
@@ -355,7 +355,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, 1680499339);
 			long var11 = (Long)var1;
 
 			for (int var8 = var2; var8 < var3; var8++) {
@@ -399,7 +399,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 1428502617);
 			long var10 = (Long)var1;
 
 			for (int var7 = var2; var7 < var3; var7++) {
@@ -444,7 +444,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, -798434355);
 			long var11 = (Long)var1;
 
 			for (int var8 = var2; var8 < var3; var8++) {
@@ -516,7 +516,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -148687895);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (-1 == var3 || var8[var10] < var8[var3]) {
@@ -557,7 +557,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -497096542);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (var3 == -1 || var8[var10] > var8[var3]) {
@@ -598,7 +598,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 1080773509);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (var3 == -1 || var8[var10] > var8[var3]) {
@@ -639,7 +639,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -1730206883);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (var3 == -1 || var8[var10] > var8[var3]) {
@@ -680,7 +680,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 1157632386);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (var3 == -1 || var8[var10] > var8[var3]) {
@@ -705,7 +705,7 @@ public class sq {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIIII)Z"
+		descriptor = "(IIIIIIIIIIIIB)Z"
 	)
 	public static boolean ak(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
 		return client.az(var0, var1, var2, var3, var8, var9, var10, var11)
@@ -732,7 +732,7 @@ public class sq {
 		if (var0.ag_fld == yq.ak_fld) {
 			Arrays.fill(var0.ak(), var2, var4, ((Integer)var1).intValue());
 		} else if (yq.ag_fld == var0.ag_fld) {
-			Arrays.fill(var0.ag(), var2, var4, ((Long)var1).longValue());
+			Arrays.fill(sl.ob(var0, -2109867372), var2, var4, ((Long)var1).longValue());
 		} else {
 			Arrays.fill((Object[])var0.az(), var2, var4, var1);
 		}
@@ -756,7 +756,7 @@ public class sq {
 		if (var0.ag_fld == yq.ak_fld) {
 			Arrays.fill(var0.ak(), var2, var4, ((Integer)var1).intValue());
 		} else if (yq.ag_fld == var0.ag_fld) {
-			Arrays.fill(var0.ag(), var2, var4, ((Long)var1).longValue());
+			Arrays.fill(sl.ob(var0, 416181263), var2, var4, ((Long)var1).longValue());
 		} else {
 			Arrays.fill((Object[])var0.az(), var2, var4, var1);
 		}
@@ -858,7 +858,7 @@ public class sq {
 						var11++;
 					}
 				} else if (yq.ag_fld == var0.ag_fld) {
-					long[] var15 = var0.ag();
+					long[] var15 = sl.ob(var0, 15898882);
 					px.at(var15, 0, var2 - 1);
 					px.at(var15, 0, var1 - 1);
 					px.at(var15, var1, var2 - 1);
@@ -918,7 +918,7 @@ public class sq {
 						var11++;
 					}
 				} else if (yq.ag_fld == var0.ag_fld) {
-					long[] var15 = var0.ag();
+					long[] var15 = sl.ob(var0, 1756279572);
 					px.at(var15, 0, var2 - 1);
 					px.at(var15, 0, var1 - 1);
 					px.at(var15, var1, var2 - 1);
@@ -960,7 +960,7 @@ public class sq {
 					var3[var1] = var3[var2];
 					var3[var2] = var4;
 				} else if (var0.ag_fld == yq.ag_fld) {
-					long[] var6 = var0.ag();
+					long[] var6 = sl.ob(var0, -1943872960);
 					long var8 = var6[var1];
 					var6[var1] = var6[var2];
 					var6[var2] = var8;
@@ -1022,7 +1022,7 @@ public class sq {
 						var11++;
 					}
 				} else if (yq.ag_fld == var0.ag_fld) {
-					long[] var15 = var0.ag();
+					long[] var15 = sl.ob(var0, 92758881);
 					px.at(var15, 0, var2 - 1);
 					px.at(var15, 0, var1 - 1);
 					px.at(var15, var1, var2 - 1);
@@ -1054,7 +1054,7 @@ public class sq {
 		if (var0.ag_fld == yq.ak_fld) {
 			Arrays.fill(var0.ak(), var2, var4, ((Integer)var1).intValue());
 		} else if (yq.ag_fld == var0.ag_fld) {
-			Arrays.fill(var0.ag(), var2, var4, ((Long)var1).longValue());
+			Arrays.fill(sl.ob(var0, -1095206244), var2, var4, ((Long)var1).longValue());
 		} else {
 			Arrays.fill((Object[])var0.az(), var2, var4, var1);
 		}
@@ -1081,19 +1081,19 @@ public class sq {
 					} else if (var1.ag_fld == yq.ak_fld) {
 						ti.ah(var0.ak(), var1.ak(), 0, var2 - 1);
 					} else if (var1.ag_fld == yq.ag_fld) {
-						ft.aw(var0.ak(), var1.ag(), 0, var2 - 1);
+						ft.aw(var0.ak(), sl.ob(var1, -1885383181), 0, var2 - 1);
 					} else {
 						id.al(var0.ak(), (Object[])var1.az(), 0, var2 - 1, (byte)50);
 					}
 				} else if (var0.ag_fld == yq.ag_fld) {
 					if (var1 == null) {
-						Arrays.sort(var0.ag(), 0, var2);
+						Arrays.sort(sl.ob(var0, 1385428298), 0, var2);
 					} else if (var1.ag_fld == yq.ak_fld) {
-						gd.ay(var0.ag(), var1.ak(), 0, var2 - 1, 382724211);
+						gd.ay(sl.ob(var0, -1556105245), var1.ak(), 0, var2 - 1, 382724211);
 					} else if (yq.ag_fld == var1.ag_fld) {
-						as(var0.ag(), var1.ag(), 0, var2 - 1);
+						as(sl.ob(var0, -383313626), sl.ob(var1, -1016558671), 0, var2 - 1);
 					} else {
-						nd.au(var0.ag(), (Object[])var1.az(), 0, var2 - 1);
+						nd.au(sl.ob(var0, 4652730), (Object[])var1.az(), 0, var2 - 1);
 					}
 				} else {
 					if (yq.az_fld != var0.ag_fld) {
@@ -1105,7 +1105,7 @@ public class sq {
 					} else if (yq.ak_fld == var1.ag_fld) {
 						mf.az((String[])(String[])var0.az(), var1.ak(), 0, var2 - 1);
 					} else if (var1.ag_fld == yq.ag_fld) {
-						md.av((String[])(String[])var0.az(), var1.ag(), 0, var2 - 1);
+						md.av((String[])(String[])var0.az(), sl.ob(var1, -719295368), 0, var2 - 1);
 					} else {
 						wn.ae((String[])(String[])var0.az(), (Object[])var1.az(), 0, var2 - 1, 1669446353);
 					}
@@ -1135,19 +1135,19 @@ public class sq {
 					} else if (var1.ag_fld == yq.ak_fld) {
 						ti.ah(var0.ak(), var1.ak(), 0, var2 - 1);
 					} else if (var1.ag_fld == yq.ag_fld) {
-						ft.aw(var0.ak(), var1.ag(), 0, var2 - 1);
+						ft.aw(var0.ak(), sl.ob(var1, -326221019), 0, var2 - 1);
 					} else {
 						id.al(var0.ak(), (Object[])var1.az(), 0, var2 - 1, (byte)3);
 					}
 				} else if (var0.ag_fld == yq.ag_fld) {
 					if (var1 == null) {
-						Arrays.sort(var0.ag(), 0, var2);
+						Arrays.sort(sl.ob(var0, 1002103640), 0, var2);
 					} else if (var1.ag_fld == yq.ak_fld) {
-						gd.ay(var0.ag(), var1.ak(), 0, var2 - 1, 753623135);
+						gd.ay(sl.ob(var0, 1758560048), var1.ak(), 0, var2 - 1, 753623135);
 					} else if (yq.ag_fld == var1.ag_fld) {
-						as(var0.ag(), var1.ag(), 0, var2 - 1);
+						as(sl.ob(var0, 1653120782), sl.ob(var1, 126988652), 0, var2 - 1);
 					} else {
-						nd.au(var0.ag(), (Object[])var1.az(), 0, var2 - 1);
+						nd.au(sl.ob(var0, -1024879489), (Object[])var1.az(), 0, var2 - 1);
 					}
 				} else {
 					if (yq.az_fld != var0.ag_fld) {
@@ -1159,7 +1159,7 @@ public class sq {
 					} else if (yq.ak_fld == var1.ag_fld) {
 						mf.az((String[])(String[])var0.az(), var1.ak(), 0, var2 - 1);
 					} else if (var1.ag_fld == yq.ag_fld) {
-						md.av((String[])(String[])var0.az(), var1.ag(), 0, var2 - 1);
+						md.av((String[])(String[])var0.az(), sl.ob(var1, -609142473), 0, var2 - 1);
 					} else {
 						wn.ae((String[])(String[])var0.az(), (Object[])var1.az(), 0, var2 - 1, 1669446353);
 					}
@@ -1178,7 +1178,7 @@ public class sq {
 			if (yq.ak_fld == var0.ag_fld) {
 				ya.al(var0.ak(), var0.av(), var1, var2);
 			} else if (yq.ag_fld == var0.ag_fld) {
-				ya.au(var0.ag(), var0.av(), var1, var2);
+				ya.au(sl.ob(var0, -1906927545), var0.av(), var1, var2);
 			} else {
 				ya.ax((Object[])var0.az(), var0.av(), var1, var2);
 			}
@@ -1195,7 +1195,7 @@ public class sq {
 			if (yq.ak_fld == var0.ag_fld) {
 				ya.al(var0.ak(), var0.av(), var1, var2);
 			} else if (yq.ag_fld == var0.ag_fld) {
-				ya.au(var0.ag(), var0.av(), var1, var2);
+				ya.au(sl.ob(var0, 1818456784), var0.av(), var1, var2);
 			} else {
 				ya.ax((Object[])var0.az(), var0.av(), var1, var2);
 			}
@@ -1204,7 +1204,7 @@ public class sq {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "([J[JII)V"
+		descriptor = "([J[JIII)V"
 	)
 	public static void as(long[] var0, long[] var1, int var2, int var3) {
 		if (var2 < var3) {
@@ -1350,14 +1350,14 @@ public class sq {
 
 	@ObfuscatedName("ek")
 	@ObfuscatedSignature(
-		descriptor = "()Ltu;"
+		descriptor = "(I)Ltu;"
 	)
 	static tu ek() {
 		dx var1 = client.da_fld.ae(client.es_fld, (byte)-7);
-		cv var3 = dx.ii(var1, client.dj_fld);
+		cv var3 = dx.pe(var1, client.dj_fld);
 		if (var3 != null) {
 			tu var8 = mf.bn(var1, var3.dp(694494426), var3.dj(189745805));
-			var8.as_fld = var3.ak(-1212899817);
+			var8.ay_fld = var3.ak(-1212899817);
 			return var8;
 		} else {
 			synchronized (tu.ae_fld) {
@@ -1386,7 +1386,7 @@ public class sq {
 				eb.aj(var0, var1, var0, 1 + var1, var0.av_fld - var1);
 			}
 
-			sl.fa(var0, var1, var2, (byte)-53);
+			var0.ah(var1, var2);
 			var0.av_fld++;
 		} else {
 			throw new RuntimeException();
@@ -1405,7 +1405,7 @@ public class sq {
 				eb.aj(var0, var1, var0, 1 + var1, var0.av_fld - var1);
 			}
 
-			sl.fa(var0, var1, var2, (byte)-36);
+			var0.ah(var1, var2);
 			var0.av_fld++;
 		} else {
 			throw new RuntimeException();
@@ -1469,7 +1469,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, 1131672013);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (-1 == var3 || var8[var10] < var8[var3]) {
@@ -1647,7 +1647,7 @@ public class sq {
 				}
 			}
 		} else if (var0.ag_fld == yq.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -1843585910);
 			long var10 = (Long)var1;
 
 			for (int var7 = var3 - 1; var7 >= var2; var7--) {
@@ -1759,7 +1759,7 @@ public class sq {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	static final boolean ag(int var0) {
 		return 7 == var0 || 8 == var0 || var0 >= 9 && var0 <= 13;
@@ -1767,11 +1767,11 @@ public class sq {
 
 	@ObfuscatedName("ei")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static int ei() {
 		cv var1 = ot.ef();
-		return null != var1 ? var1.ay_fld : 0;
+		return null != var1 ? var1.ad_fld : 0;
 	}
 
 	@ObfuscatedName("bx")
@@ -1792,7 +1792,7 @@ public class sq {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var8 = var0.ag();
+			long[] var8 = sl.ob(var0, -411056230);
 
 			for (int var10 = var1; var10 < var2; var10++) {
 				if (-1 == var3 || var8[var10] < var8[var3]) {
@@ -1827,6 +1827,18 @@ public class sq {
 			var1++;
 			var2--;
 		}
+	}
+
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(Lxv;J)Lvw;"
+	)
+	public static vw jx(xv var0, long var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak(var1);
 	}
 
 	@ObfuscatedName("dc")

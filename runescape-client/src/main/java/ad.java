@@ -9,12 +9,12 @@ public abstract class ad extends vw {
 	)
 	int aw_fld;
 
-	@ObfuscatedName("hy")
+	@ObfuscatedName("jc")
 	@ObfuscatedSignature(
-		descriptor = "(Lrg;)I"
+		descriptor = "(Lgh;)I"
 	)
-	public static int hy(rg var0) {
-		return var0.av_fld.av();
+	public static int jc(gh var0) {
+		return var0.ar_fld * var0.af_fld;
 	}
 
 	ad() {

@@ -9,12 +9,12 @@ public class om extends vc {
 		descriptor = "I"
 	)
 	static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -2027027811
-	)
 	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2027027811
 	)
 	static int cl_fld;
 	@ObfuscatedName("ak")
@@ -40,30 +40,6 @@ public class om extends vc {
 
 	om() throws Throwable {
 		throw new Error();
-	}
-
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(Lev;IIII)Z"
-	)
-	public static boolean kv(ev var0, int var1, int var2, int var3, int var4) {
-		return ev.aq(var0, var0.ed_fld, var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;IZZZ)Z"
-	)
-	public static boolean bl(sb var0, int var1, boolean var2, boolean var3, boolean var4) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			byte var5 = 0;
-			int var6 = var5 | (var3 ? 1 : 0);
-			var6 |= var2 ? 8 : 32;
-			var6 |= var4 ? 128 : 0;
-			return (var1 & var6) != 0;
-		}
 	}
 
 	@ObfuscatedName("ap")

@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("cd")
 public class cd extends dr {
-	@ObfuscatedGetter(
-		intValue = -1274586283
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1274586283
 	)
 	int ag_fld;
 	@ObfuscatedName("ak")
@@ -17,28 +17,28 @@ public class cd extends dr {
 		descriptor = "Loe;"
 	)
 	oe ak_fld;
-	@ObfuscatedGetter(
-		intValue = 1753459933
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -216457321
+		intValue = 1753459933
 	)
+	int az_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1281230585
+		intValue = -216457321
 	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1281230585
 	)
 	int ae_fld;
 	@ObfuscatedName("cw")
@@ -105,18 +105,6 @@ public class cd extends dr {
 		return this.ae_fld;
 	}
 
-	@ObfuscatedName("dk")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;I)V"
-	)
-	public static void dk(rg var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.al_fld = var1;
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -125,13 +113,13 @@ public class cd extends dr {
 	void aw() {
 		try {
 			if (this.ak_fld != null) {
-				oe var1 = this.ak_fld.ax((byte)109);
+				oe var1 = oe.bm(this.ak_fld, (byte)109);
 				if (var1 == null) {
 					this.ax_fld = true;
 				} else {
-					int var2 = this.ar_fld.ag_fld * 1077344343;
-					dr.xf(this, var1.am(314528291), var1.ad((byte)-30), -1937441824);
-					if (1077344343 * this.ar_fld.ag_fld != var2) {
+					int var2 = this.ar_fld.az_fld * 1077344343;
+					this.ab(var1.am(314528291), var1.ad((byte)-30), -1937441824);
+					if (1077344343 * this.ar_fld.az_fld != var2) {
 						this.ax_fld = true;
 					}
 				}
@@ -216,13 +204,13 @@ public class cd extends dr {
 	void ah() {
 		try {
 			if (this.ak_fld != null) {
-				oe var1 = this.ak_fld.ax((byte)85);
+				oe var1 = oe.bm(this.ak_fld, (byte)85);
 				if (var1 == null) {
 					this.ax_fld = true;
 				} else {
-					int var2 = this.ar_fld.ag_fld * -1051527880;
-					dr.xf(this, var1.am(314528291), var1.ad((byte)24), -1937441824);
-					if (-1982774480 * this.ar_fld.ag_fld != var2) {
+					int var2 = this.ar_fld.az_fld * -1051527880;
+					this.ab(var1.am(314528291), var1.ad((byte)24), -1937441824);
+					if (-1982774480 * this.ar_fld.az_fld != var2) {
 						this.ax_fld = true;
 					}
 				}
@@ -234,10 +222,10 @@ public class cd extends dr {
 
 	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void gs() {
-		xy.kh_fld.az(cn.kw(cx.kq_fld, (short)375), cx.kq_fld.bf(465869533));
+		xy.kh_fld.az(cx.kq_fld.ad((short)375), cn.uk(cx.kq_fld, 465869533));
 	}
 
 	@ObfuscatedName("ak")
@@ -248,13 +236,13 @@ public class cd extends dr {
 	void ak(int var1) {
 		try {
 			if (this.ak_fld != null) {
-				oe var2 = this.ak_fld.ax((byte)95);
+				oe var2 = oe.bm(this.ak_fld, (byte)95);
 				if (var2 == null) {
 					this.ax_fld = true;
 				} else {
-					int var3 = this.ar_fld.ag_fld * 1077344343;
-					dr.xf(this, var2.am(314528291), var2.ad((byte)-50), -1937441824);
-					if (1077344343 * this.ar_fld.ag_fld != var3) {
+					int var3 = this.ar_fld.az_fld * 1077344343;
+					this.ab(var2.am(314528291), var2.ad((byte)-50), -1937441824);
+					if (1077344343 * this.ar_fld.az_fld != var3) {
 						this.ax_fld = true;
 					}
 				}
@@ -298,6 +286,16 @@ public class cd extends dr {
 	@Override
 	int az(int var1) {
 		return this.av_fld;
+	}
+
+	@ObfuscatedName("ma")
+	@ObfuscatedSignature(
+		descriptor = "(Lpw;)V"
+	)
+	public static void ma(pw var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("aa")

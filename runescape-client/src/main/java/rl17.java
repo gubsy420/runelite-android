@@ -5,71 +5,64 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("rl17")
 class rl17 {
-	@ObfuscatedName("pn")
+	@ObfuscatedName("nu")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int nu_fld;
+	@ObfuscatedName("zb")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int zb_fld;
+	@ObfuscatedName("ol")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/List;"
 	)
-	public List pn_fld;
-	@ObfuscatedName("qf")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int qf_fld = 1024;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int el_fld = 1024;
-	@ObfuscatedName("yh")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int yh_fld;
-	@ObfuscatedName("ky")
+	public List ol_fld;
+	@ObfuscatedName("of")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean ky_fld;
-	@ObfuscatedName("go")
+	public boolean of_fld;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int go_fld;
-	@ObfuscatedName("kq")
+	public int af_fld;
+	@ObfuscatedName("pu")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int kq_fld;
-	@ObfuscatedName("wu")
+	public int pu_fld;
+	@ObfuscatedName("xi")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/List;"
 	)
-	public List wu_fld = new ArrayList();
-	@ObfuscatedName("su")
+	public List xi_fld;
+	@ObfuscatedName("nl")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int su_fld;
-	@ObfuscatedName("ac")
+	public int nl_fld = 1024;
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ac_fld;
-	@ObfuscatedName("lp")
+	public int bj_fld;
+	@ObfuscatedName("yv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int lp_fld;
-
-	@ObfuscatedName("yb")
+	public int yv_fld = 1024;
+	@ObfuscatedName("im")
 	@ObfuscatedSignature(
-		descriptor = "(Lgn;III)V"
+		descriptor = "I"
 	)
-	public static void yb(gn var0, int var1, int var2, int var3) {
-		var0.bp_fld[var1][var2] = var0.bp_fld[var1][var2] | var3;
-	}
+	public int im_fld;
 
 	public rl17() {
-		this.pn_fld = new ArrayList();
+		this.ol_fld = new ArrayList();
+		this.xi_fld = new ArrayList();
 	}
 }

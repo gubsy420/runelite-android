@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.InputStream;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -14,6 +16,14 @@ public interface yn {
 		descriptor = "(Ljava/lang/Object;Lxi;)V"
 	)
 	void as(Object var1, xi var2);
+
+	@ObfuscatedName("tv")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;)Ljava/io/InputStream;"
+	)
+	static InputStream tv(qf var0) throws IOException {
+		return var0.val$tlsClientProtocol.getInputStream();
+	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
@@ -32,18 +42,6 @@ public interface yn {
 		descriptor = "(Ljava/lang/Object;Lxi;)V"
 	)
 	void ay(Object var1, xi var2);
-
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;Ljava/lang/Object;)Z"
-	)
-	static boolean cn(no var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.al((vw)var1);
-	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(

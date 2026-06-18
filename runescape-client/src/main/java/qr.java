@@ -72,7 +72,7 @@ public class qr {
 		}
 
 		if (var1.by_fld == -1) {
-			pk var7 = (pk)var3.ai_fld.ak(var1.bf_fld);
+			pk var7 = (pk)xz.tw(var3.an_fld, var1.bf_fld);
 			if (null != var7) {
 				int var8 = var7.ak_fld;
 				if (var3.az(var8)) {
@@ -129,7 +129,7 @@ public class qr {
 		}
 
 		if (var1.by_fld == -1) {
-			pk var7 = (pk)var3.ai_fld.ak(var1.bf_fld);
+			pk var7 = (pk)xz.tw(var3.an_fld, var1.bf_fld);
 			if (null != var7) {
 				int var8 = var7.ak_fld;
 				if (var3.az(var8)) {
@@ -152,7 +152,7 @@ public class qr {
 		}
 
 		if (var1.by_fld == -1) {
-			pk var7 = (pk)var3.ai_fld.ak(var1.bf_fld);
+			pk var7 = (pk)xz.tw(var3.an_fld, var1.bf_fld);
 			if (null != var7) {
 				int var8 = var7.ak_fld;
 				if (var3.az(var8)) {
@@ -160,20 +160,6 @@ public class qr {
 				}
 			}
 		}
-	}
-
-	@ObfuscatedName("fx")
-	@ObfuscatedSignature(
-		descriptor = "(Lbh;[BI)V"
-	)
-	public static void fx(bh var0, byte[] var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.az_fld = var1;
-		var0.ag_fld = var2;
-		var0.ak_fld = 0;
 	}
 
 	@ObfuscatedName("aa")
@@ -212,11 +198,11 @@ public class qr {
 		}
 
 		if (var0.bx_fld == 12) {
-			lu.bv(var0, -1911815095).aw(var0.bb_fld, var0.cd_fld);
+			lu.ax(var0, -1911815095).aw(var0.bb_fld, var0.cd_fld);
 		}
 
 		if (var3 && var0.gr_fld != null && (var0.bb_fld != var6 || var7 != var0.cd_fld)) {
-			yz var8 = tu.ak(var0).av((Object[])var0.gr_fld, 1256071564).ax(-598333574);
+			yz var8 = yb.vn(tu.ak(var0).av((Object[])var0.gr_fld, 1256071564), -598333574);
 			var5.ak(var8);
 		}
 	}
@@ -347,11 +333,11 @@ public class qr {
 		}
 
 		if (var0.bx_fld == 12) {
-			lu.bv(var0, -1266528949).aw(var0.bb_fld, var0.cd_fld);
+			lu.ax(var0, -1266528949).aw(var0.bb_fld, var0.cd_fld);
 		}
 
 		if (var3 && var0.gr_fld != null && (var0.bb_fld != var6 || var7 != var0.cd_fld)) {
-			yz var8 = tu.ak(var0).av((Object[])var0.gr_fld, 1493953966).ax(-747015613);
+			yz var8 = yb.vn(tu.ak(var0).av((Object[])var0.gr_fld, 1493953966), -747015613);
 			var5.ak(var8);
 		}
 	}
@@ -392,11 +378,11 @@ public class qr {
 		}
 
 		if (var0.bx_fld == 12) {
-			lu.bv(var0, -1335809912).aw(var0.bb_fld, var0.cd_fld);
+			lu.ax(var0, -1335809912).aw(var0.bb_fld, var0.cd_fld);
 		}
 
 		if (var3 && var0.gr_fld != null && (var0.bb_fld != var6 || var7 != var0.cd_fld)) {
-			yz var8 = tu.ak(var0).av((Object[])var0.gr_fld, 1377063349).ax(-69424334);
+			yz var8 = yb.vn(tu.ak(var0).av((Object[])var0.gr_fld, 1377063349), -69424334);
 			var5.ak(var8);
 		}
 	}
@@ -406,7 +392,7 @@ public class qr {
 		descriptor = "(Llu;IILuo;Lqg;)V"
 	)
 	public static void am(lu var0, int var1, int var2, uo var3, qg var4) throws EOFException {
-		lu var7 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld, -1179752533);
+		lu var7 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld);
 		int var5;
 		int var6;
 		if (null == var7) {
@@ -426,7 +412,7 @@ public class qr {
 		descriptor = "(Llu;IILuo;Lqg;)V"
 	)
 	public static void ad(lu var0, int var1, int var2, uo var3, qg var4) throws EOFException {
-		lu var7 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld, -1355572053);
+		lu var7 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld);
 		int var5;
 		int var6;
 		if (null == var7) {

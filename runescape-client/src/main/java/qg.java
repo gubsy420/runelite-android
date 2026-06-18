@@ -34,39 +34,12 @@ public class qg {
 	)
 	no ag_fld = new no();
 
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(Lqg;B)V"
-	)
-	public static void ai(qg var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			for (yz var2 = (yz)var0.ak_fld.ah(); var2 != null; var2 = (yz)var0.ak_fld.ay()) {
-				if (var2.an((byte)127)) {
-					var2.gy_void();
-					var2.av((short)13605).gw_fld = false;
-				}
-			}
-
-			var0.ar();
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
+		descriptor = "(Lyz;I)V"
 	)
 	public void ak(yz var1) {
-		this.ak_fld.az(var1);
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "()Lyz;"
-	)
-	yz bz() {
-		return (yz)(yz)this.az_fld.ae();
+		no.dx(this.ak_fld, var1);
 	}
 
 	@ObfuscatedName("bx")
@@ -75,58 +48,65 @@ public class qg {
 	)
 	void bx() {
 		for (yz var1 = (yz)this.ak_fld.ah(); var1 != null; var1 = (yz)this.ak_fld.ay()) {
-			if (var1.an((byte)30) && yz.hw(var1, 1697120891) == var1.av((short)9079).fq_fld) {
-				var1.gy_void();
+			if (yz.sx(var1, (byte)30) && var1.az(1697120891) == var1.av((short)9079).fq_fld) {
+				var1.gy();
 			}
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
+		descriptor = "(Lyz;I)V"
 	)
-	void az(yz var1) {
-		this.az_fld.az(var1);
+	void ag(yz var1) {
+		no.dx(this.az_fld, var1);
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;)V"
+		descriptor = "(Lfr;S)V"
 	)
 	void av(fr var1) {
-		this.av_fld.az(var1);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "()Lyz;"
-	)
-	yz ae() {
-		return (yz)(yz)this.ak_fld.ae();
+		no.dx(this.av_fld, var1);
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "()Lyz;"
+		descriptor = "(B)Lyz;"
 	)
 	yz ah() {
-		return (yz)(yz)this.ag_fld.ae();
+		return (yz)(yz)this.ak_fld.ae();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()Lyz;"
+		descriptor = "(B)Lyz;"
 	)
-	yz aw() {
+	yz ae() {
 		return (yz)(yz)this.az_fld.ae();
 	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Lfr;"
+		descriptor = "(I)Lfr;"
 	)
 	fr ay() {
 		return (fr)(fr)this.av_fld.ae();
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	void as() {
+		for (yz var2 = (yz)this.ak_fld.ah(); var2 != null; var2 = (yz)this.ak_fld.ay()) {
+			if (yz.sx(var2, (byte)127)) {
+				var2.gy();
+				var2.av((short)13605).gw_fld = false;
+			}
+		}
+
+		up(this, -205837677);
 	}
 
 	@ObfuscatedName("ad")
@@ -134,7 +114,29 @@ public class qg {
 		descriptor = "(Lyz;)V"
 	)
 	void ad(yz var1) {
-		this.az_fld.az(var1);
+		no.dx(this.az_fld, var1);
+	}
+
+	@ObfuscatedName("gw")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;Lyz;)V"
+	)
+	public static void gw(qg var0, yz var1) {
+		no.dx(var0.ak_fld, var1);
+	}
+
+	@ObfuscatedName("up")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;I)V"
+	)
+	public static void up(qg var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (fr var2 = (fr)var0.av_fld.ah(); var2 != null; var2 = (fr)var0.av_fld.ay()) {
+			var2.gy();
+		}
 	}
 
 	@ObfuscatedName("aq")
@@ -142,23 +144,15 @@ public class qg {
 		descriptor = "(Lyz;)V"
 	)
 	void aq(yz var1) {
-		this.ag_fld.az(var1);
+		no.dx(this.ag_fld, var1);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
+		descriptor = "(Lfr;)V"
 	)
-	public void ax(yz var1) {
-		this.ak_fld.az(var1);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
-	)
-	public void au(yz var1) {
-		this.ak_fld.az(var1);
+	void ao(fr var1) {
+		no.dx(this.av_fld, var1);
 	}
 
 	@ObfuscatedName("an")
@@ -166,7 +160,7 @@ public class qg {
 		descriptor = "(Lyz;)V"
 	)
 	public void an(yz var1) {
-		this.ak_fld.az(var1);
+		no.dx(this.ak_fld, var1);
 	}
 
 	@ObfuscatedName("aa")
@@ -174,7 +168,15 @@ public class qg {
 		descriptor = "(Lyz;)V"
 	)
 	void aa(yz var1) {
-		this.ag_fld.az(var1);
+		no.dx(this.ag_fld, var1);
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)V"
+	)
+	void ai(yz var1) {
+		no.dx(this.ag_fld, var1);
 	}
 
 	@ObfuscatedName("bf")
@@ -183,29 +185,29 @@ public class qg {
 	)
 	void bf() {
 		for (yz var1 = (yz)this.ak_fld.ah(); var1 != null; var1 = (yz)this.ak_fld.ay()) {
-			if (var1.an((byte)82)) {
-				var1.gy_void();
+			if (yz.sx(var1, (byte)82)) {
+				var1.gy();
 				var1.av((short)-16736).gw_fld = false;
 			}
 		}
 
-		this.ar();
+		up(this, -205837677);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(Lyz;)V"
 	)
-	void ag(yz var1) {
-		this.ag_fld.az(var1);
+	void am(yz var1) {
+		no.dx(this.az_fld, var1);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
+		descriptor = "(Lyz;I)V"
 	)
-	public void al(yz var1) {
-		this.ak_fld.az(var1);
+	void az(yz var1) {
+		no.dx(this.ag_fld, var1);
 	}
 
 	@ObfuscatedName("ab")
@@ -214,14 +216,6 @@ public class qg {
 	)
 	yz ab() {
 		return (yz)(yz)this.ak_fld.ae();
-	}
-
-	@ObfuscatedName("pn")
-	@ObfuscatedSignature(
-		descriptor = "(Lqg;)Lyz;"
-	)
-	public static yz pn(qg var0) {
-		return (yz)(yz)var0.az_fld.ae();
 	}
 
 	@ObfuscatedName("ap")
@@ -264,14 +258,12 @@ public class qg {
 		return (yz)(yz)this.ag_fld.ae();
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "()Lyz;"
 	)
-	void ar() {
-		for (fr var2 = (fr)this.av_fld.ah(); var2 != null; var2 = (fr)this.av_fld.ay()) {
-			var2.gy_void();
-		}
+	yz bd() {
+		return (yz)(yz)this.az_fld.ae();
 	}
 
 	@ObfuscatedName("be")
@@ -279,6 +271,26 @@ public class qg {
 		descriptor = "()Lyz;"
 	)
 	yz be() {
+		return (yz)(yz)this.az_fld.ae();
+	}
+
+	@ObfuscatedName("uf")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;B)Lyz;"
+	)
+	public static yz uf(qg var0, byte var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return (yz)(yz)var0.ag_fld.ae();
+		}
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "()Lyz;"
+	)
+	yz bs() {
 		return (yz)(yz)this.az_fld.ae();
 	}
 
@@ -290,35 +302,9 @@ public class qg {
 		return (fr)(fr)this.av_fld.ae();
 	}
 
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "()Lfr;"
-	)
-	fr bk() {
-		return (fr)(fr)this.av_fld.ae();
-	}
-
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "()Lfr;"
-	)
-	fr bj() {
-		return (fr)(fr)this.av_fld.ae();
-	}
-
 	public qg() {
 		this.az_fld = new no();
 		this.av_fld = new no();
-	}
-
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void by() {
-		for (fr var1 = (fr)this.av_fld.ah(); var1 != null; var1 = (fr)this.av_fld.ay()) {
-			var1.gy_void();
-		}
 	}
 
 	@ObfuscatedName("bl")
@@ -327,7 +313,49 @@ public class qg {
 	)
 	void bl() {
 		for (fr var1 = (fr)this.av_fld.ah(); var1 != null; var1 = (fr)this.av_fld.ay()) {
-			var1.gy_void();
+			var1.gy();
+		}
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void ar(int var1) {
+		for (yz var2 = (yz)this.ak_fld.ah(); var2 != null; var2 = (yz)this.ak_fld.ay()) {
+			if (yz.sx(var2, (byte)112) && var2.az(1697120891) == var2.av((short)-12018).fq_fld) {
+				if (var1 != 900130878) {
+					return;
+				}
+
+				var2.gy();
+			}
+		}
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lyz;"
+	)
+	yz aw(byte var1) {
+		return (yz)(yz)this.av_fld.be();
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)V"
+	)
+	public void au(yz var1) {
+		no.dx(this.az_fld, var1);
+	}
+
+	@ObfuscatedName("mr")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;)V"
+	)
+	public static void mr(qg var0) {
+		for (fr var1 = (fr)var0.av_fld.ah(); var1 != null; var1 = (fr)var0.av_fld.ay()) {
+			var1.gy();
 		}
 	}
 
@@ -336,29 +364,14 @@ public class qg {
 		descriptor = "(I)V"
 	)
 	void af(int var1) {
-		for (yz var2 = (yz)this.ak_fld.ah(); var2 != null; var2 = (yz)this.ak_fld.ay()) {
-			if (var2.an((byte)112) && yz.hw(var2, 1697120891) == var2.av((short)-12018).fq_fld) {
+		for (yz var2 = (yz)this.ag_fld.ad(); var2 != null; var2 = (yz)this.ak_fld.ah()) {
+			if (yz.sx(var2, (byte)112) && var2.az(1697120891) == var2.av((short)-12018).fo_fld) {
 				if (var1 != 900130878) {
 					return;
 				}
 
-				var2.gy_void();
+				var2.gz();
 			}
 		}
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)V"
-	)
-	void as(byte var1) {
-		for (yz var2 = (yz)this.az_fld.at(); var2 != null; var2 = (yz)this.ak_fld.of()) {
-			if (var2.an((byte)127)) {
-				var2.gx();
-				var2.av((short)13605).dt_fld = false;
-			}
-		}
-
-		this.af(-205837677);
 	}
 }

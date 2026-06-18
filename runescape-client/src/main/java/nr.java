@@ -543,6 +543,40 @@ public class nr {
 		return var1;
 	}
 
+	@ObfuscatedName("vi")
+	@ObfuscatedSignature(
+		descriptor = "(Lwz;II)Z"
+	)
+	public static boolean vi(wz var0, int var1, int var2) {
+		if (var0.ai_fld != -1 && var0.af_fld[var0.ai_fld] != null && var0.af_fld[var0.ai_fld].aw(var1, var2, (byte)-10)) {
+			return true;
+		} else if (var1 >= var0.au_fld - 10 && var1 <= 10 + var0.an_fld + var0.au_fld && var2 >= var0.ax_fld - 10 && var2 <= var0.aa_fld + var0.ax_fld + 10) {
+			int var3 = var0.ae(var1, var2, (byte)-119);
+			if (-1 != var3 && var3 != var0.ai_fld) {
+				if (var3 != var0.aq_fld) {
+					var0.aq_fld = var3;
+					var0.am_fld = lz.ak();
+					if (var0.ai_fld != -1) {
+						var0.am_fld += 300L;
+					}
+				}
+
+				if (var0.am_fld <= lz.ak()) {
+					var0.aq_fld = 1715384015;
+					var0.af((short)1453);
+					if (null != var0.af_fld[var3]) {
+						var0.ai_fld = var3;
+						wz.cf(var0.af_fld[var3], var0, (byte)49);
+					}
+				}
+			}
+
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/CharSequence;)J"
@@ -912,6 +946,18 @@ public class nr {
 		return new String(var2);
 	}
 
+	@ObfuscatedName("qd")
+	@ObfuscatedSignature(
+		descriptor = "(Lms;)V"
+	)
+	public static void qd(ms var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ar_fld = null;
+	}
+
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;II)Ljava/lang/String;"
@@ -1087,7 +1133,7 @@ public class nr {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void av() {
 		Arrays.fill(lb.ak_fld, 0);

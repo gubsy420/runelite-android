@@ -67,16 +67,6 @@ public class um {
 		return (float)(var0 / 2048.0F * (Math.PI * 2));
 	}
 
-	@ObfuscatedName("ty")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	public static void ty(xi var0, int var1) {
-		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 >> 16);
-		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)var1;
-		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 >> 8);
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)F"
@@ -235,7 +225,7 @@ public class um {
 
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
-		descriptor = "(Lyq;)Ljava/lang/Object;"
+		descriptor = "(Lyq;I)Ljava/lang/Object;"
 	)
 	static Object ca(yq var0) {
 		if (null == var0) {

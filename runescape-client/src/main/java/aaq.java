@@ -1,3 +1,4 @@
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -9,12 +10,12 @@ public class aaq {
 		descriptor = "Ljava/lang/Object;"
 	)
 	public Object ag_fld;
-	@ObfuscatedGetter(
-		intValue = -1044988307
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1044988307
 	)
 	public int ak_fld;
 	@ObfuscatedName("ah")
@@ -28,11 +29,11 @@ public class aaq {
 	)
 	static String ay_fld;
 
-	@ObfuscatedName("jm")
+	@ObfuscatedName("jt")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean jm(Object var1) {
+	public boolean jt(Object var1) {
 		if (!(var1 instanceof aaq)) {
 			return false;
 		} else {
@@ -53,27 +54,17 @@ public class aaq {
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("hashCode")
 	@Override
 	public int hashCode() {
 		return super.hashCode();
-	}
-
-	@ObfuscatedName("sv")
-	@ObfuscatedSignature(
-		descriptor = "(Laaq;)I"
-	)
-	public static int sv(aaq var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.hashCode();
-		}
 	}
 
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		if (!(var1 instanceof aaq)) {
@@ -88,11 +79,11 @@ public class aaq {
 		}
 	}
 
-	@ObfuscatedName("jt")
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean jt(Object var1) {
+	public boolean jg(Object var1) {
 		if (!(var1 instanceof aaq)) {
 			return false;
 		} else {
@@ -103,6 +94,43 @@ public class aaq {
 				return this.ag_fld == null && null != var2.ag_fld ? false : var2.ak_fld == this.ak_fld && var2.ag_fld.equals(this.ag_fld);
 			}
 		}
+	}
+
+	@ObfuscatedName("zf")
+	@ObfuscatedSignature(
+		descriptor = "(Laaq;)I"
+	)
+	public static int zf(aaq var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.hashCode();
+	}
+
+	@ObfuscatedName("jm")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jm(Object var1) {
+		if (!(var1 instanceof aaq)) {
+			return false;
+		} else {
+			aaq var2 = (aaq)var1;
+			if (null == var2.ag_fld && null != this.ag_fld) {
+				return false;
+			} else {
+				return this.ag_fld == null && null != var2.ag_fld ? false : var2.ak_fld == this.ak_fld && var2.ag_fld.equals(this.ag_fld);
+			}
+		}
+	}
+
+	@ObfuscatedName("lx")
+	@ObfuscatedSignature(
+		descriptor = "(Lws;)Z"
+	)
+	public static boolean lx(ws var0) {
+		return var0.ay_fld;
 	}
 
 	public aaq(int var1, Object var2) {
@@ -116,27 +144,6 @@ public class aaq {
 	)
 	public int afm() {
 		return super.hashCode();
-	}
-
-	@ObfuscatedName("wk")
-	@ObfuscatedSignature(
-		descriptor = "(Laaq;Ljava/lang/Object;)Z"
-	)
-	public static boolean wk(aaq var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (!(var1 instanceof aaq)) {
-			return false;
-		} else {
-			aaq var2 = (aaq)var1;
-			if (null == var2.ag_fld && null != var0.ag_fld) {
-				return false;
-			} else {
-				return var0.ag_fld == null && null != var2.ag_fld ? false : var2.ak_fld == var0.ak_fld && var2.ag_fld.equals(var0.ag_fld);
-			}
-		}
 	}
 
 	@ObfuscatedName("afa")

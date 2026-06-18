@@ -27,17 +27,17 @@ public interface ts {
 	)
 	boolean ao(char var1);
 
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ad(int var1);
-
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean aq(int var1);
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean am(int var1);
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -45,11 +45,11 @@ public interface ts {
 	)
 	boolean av(int var1, int var2);
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
-	boolean am(int var1);
+	boolean ad(int var1);
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(

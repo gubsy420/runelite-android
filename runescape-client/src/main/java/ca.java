@@ -41,12 +41,12 @@ public class ca implements xm {
 		descriptor = "Lca;"
 	)
 	static ca ak_fld = new ca(0);
-	@ObfuscatedGetter(
-		intValue = 1249352911
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1249352911
 	)
 	int ah_fld;
 	@ObfuscatedName("al")
@@ -59,12 +59,12 @@ public class ca implements xm {
 		descriptor = "I"
 	)
 	public static int aq_fld;
-	@ObfuscatedGetter(
-		intValue = 1338931103
-	)
 	@ObfuscatedName("ot")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1338931103
 	)
 	static int ot_fld;
 	@ObfuscatedName("ac")
@@ -100,25 +100,6 @@ public class ca implements xm {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "(Los;Lxi;)V"
-	)
-	public static void jd(os var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		while (true) {
-			int var2 = var1.cg();
-			if (0 == var2) {
-				return;
-			}
-
-			os.ww(var0, var1, var2, (short)-24539);
-		}
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -142,12 +123,12 @@ public class ca implements xm {
 		while (var1.hasNext()) {
 			dx var2 = (dx)(dx)var1.next();
 
-			for (int var3 = 0; var3 < var2.am_fld.az(); var3++) {
+			for (int var3 = 0; var3 < var2.ad_fld.az(); var3++) {
 				if (var0 == -1) {
 					return;
 				}
 
-				int var4 = var2.am_fld.ag(var3);
+				int var4 = yw.wk(var2.ad_fld, var3, (byte)104);
 				rg var5 = (rg)var2.an_fld.ak(var4);
 				if (null != var5) {
 					if (var0 == -1) {
@@ -158,39 +139,39 @@ public class ca implements xm {
 				}
 
 				jm.kr_fld.av(var2, var5.dp(527100376), var5.dj(189745805), false);
-				if (var5.aa_fld.ae() != null) {
+				if (qa.kw(var5.aa_fld, -1894763174) != null) {
 					if (var0 == -1) {
 						return;
 					}
 
-					if (var5.aa_fld.ae().ad(466080322) != -1) {
+					if (qa.kw(var5.aa_fld, 1663193010).ad(466080322) != -1) {
 						if (var5.ai_fld > 0) {
 							var5.ai_fld--;
 						} else {
 							int var6 = cf.ak(var5.aa_fld, 1, jm.kr_fld);
 							if (0 != (var6 & 2)) {
-								var5.aa_fld.ag();
+								qa.gr(var5.aa_fld, -94627265);
 								var5.an_fld.ar(461909079);
 							}
 						}
 					}
 				}
 
-				if (var5.an_fld.ae() != null && var5.an_fld.ae().ad(-554248240) != -1) {
+				if (qa.kw(var5.an_fld, 1314145926) != null && qa.kw(var5.an_fld, 1519812108).ad(-554248240) != -1) {
 					int var7 = cf.ak(var5.an_fld, 1, jm.kr_fld);
 					if (0 != (var7 & 2)) {
 						var5.an_fld.ar(461909079);
 					}
 				}
 
-				jm.kr_fld.ae(2084058832);
+				jm.kr_fld.ae();
 			}
 		}
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lpp;"
+		descriptor = "(IB)Lpp;"
 	)
 	public static pp az(int var0) throws EOFException {
 		pp var2 = (pp)pp.cn_fld.ak(var0);
@@ -204,7 +185,7 @@ public class ca implements xm {
 				var2.ae(new xi(var3), (byte)51);
 			}
 
-			var2.av((byte)12);
+			pp.mu(var2, (byte)12);
 			pp.cn_fld.az(var2, var0);
 			return var2;
 		}
@@ -212,7 +193,7 @@ public class ca implements xm {
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "()Lmf;"
+		descriptor = "(B)Lmf;"
 	)
 	public static mf ar() {
 		try {

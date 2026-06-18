@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.ColorTextureOverride;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("oo")
 @Implements({"ColorTextureOverride"})
 public class oo implements ColorTextureOverride {
-	@ObfuscatedGetter(
-		intValue = 568647913
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 568647913
 	)
 	public int af_fld;
 	@ObfuscatedName("ag")
@@ -26,53 +27,53 @@ public class oo implements ColorTextureOverride {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "[S"
-	)
-	public short[] ah_fld;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lfn;"
-	)
-	public fn al_fld;
-	@ObfuscatedGetter(
-		intValue = 1365461779
-	)
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int aw_fld = -734148379;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "[S"
 	)
 	public short[] ae_fld;
-	@ObfuscatedGetter(
-		intValue = -862349947
-	)
-	@ObfuscatedName("as")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "I"
+		descriptor = "Lfn;"
 	)
-	int as_fld;
-	@ObfuscatedGetter(
-		intValue = -442703081
-	)
+	public fn al_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = -1271217717
+		intValue = 1365461779
 	)
+	int ar_fld = -734148379;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "[S"
+	)
+	public short[] ah_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld = -1521048547;
+	@ObfuscatedGetter(
+		intValue = -862349947
+	)
+	int ay_fld;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -442703081
+	)
+	int as_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1271217717
+	)
+	int aw_fld = -1521048547;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -84,36 +85,46 @@ public class oo implements ColorTextureOverride {
 	)
 	static int ba_fld;
 
-	@ObfuscatedName("oh")
+	@ObfuscatedName("oq")
 	@ObfuscatedSignature(
-		descriptor = "(Loo;I)Z"
+		descriptor = "(Loo;IB)I"
 	)
-	public static boolean oh(oo var0, int var1) {
+	public static int oq(oo var0, int var1, byte var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return 0 == var1 && -1 != var0.aw_fld || 1 == var1 && var0.ay_fld != -1;
+		return var1 == 0 ? var0.ay_fld : var0.as_fld;
 	}
 
-	@ObfuscatedName("uo")
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int ap(int var1) {
+		return var1 == 0 ? this.ay_fld : this.as_fld;
+	}
+
+	@ObfuscatedName("getColorToReplaceWith")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	@Export("getColorToReplaceWith")
+	@Override
+	public short[] getColorToReplaceWith() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("mj")
 	@ObfuscatedSignature(
 		descriptor = "(Loo;I)Z"
 	)
-	public static boolean uo(oo var0, int var1) {
+	public static boolean mj(oo var0, int var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return 0 == var1 && -1 != var0.aw_fld || 1 == var1 && var0.ay_fld != -1;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z"
-	)
-	public boolean ag(byte var1) {
-		return null != this.ah_fld;
+		return 0 == var1 && -1 != var0.ar_fld || 1 == var1 && var0.aw_fld != -1;
 	}
 
 	@ObfuscatedName("ao")
@@ -121,7 +132,15 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(I)I"
 	)
 	int ao(int var1) {
-		return var1 == 0 ? this.as_fld : this.ar_fld;
+		return var1 == 0 ? this.ay_fld : this.as_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z"
+	)
+	boolean ae(int var1, int var2) {
+		return 0 == var1 && this.ay_fld != -1 || var1 == 1 && this.as_fld != -1;
 	}
 
 	@ObfuscatedName("ah")
@@ -129,7 +148,19 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(II)I"
 	)
 	int ah(int var1, int var2) {
-		return var1 == 0 ? this.aw_fld : this.ay_fld;
+		return var1 == 0 ? this.ar_fld : this.aw_fld;
+	}
+
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "(Lma;)Lmx;"
+	)
+	public static mx cc(ma var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ar_fld;
 	}
 
 	@ObfuscatedName("am")
@@ -137,7 +168,7 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(I)I"
 	)
 	int am(int var1) {
-		return var1 == 0 ? -1568841165 * this.aw_fld : this.ay_fld;
+		return var1 == 0 ? -1568841165 * this.ar_fld : this.aw_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -155,13 +186,13 @@ public class oo implements ColorTextureOverride {
 			if (var3) {
 				int var8 = var1.cg();
 				int[] var9 = new int[]{var8 & 15, var8 >> 4 & 15};
-				boolean var10 = null != var7.ah_fld && var9.length == var7.ah_fld.length;
+				boolean var10 = null != var7.ae_fld && var9.length == var7.ae_fld.length;
 
 				for (int var11 = 0; var11 < 2; var11++) {
 					if (15 != var9[var11]) {
-						short var12 = (short)xi.tx(var1, 344519930);
+						short var12 = (short)var1.cm();
 						if (var10) {
-							var7.ah_fld[var9[var11]] = var12;
+							var7.ae_fld[var9[var11]] = var12;
 						}
 					}
 				}
@@ -170,26 +201,26 @@ public class oo implements ColorTextureOverride {
 			if (var4) {
 				int var15 = var1.cg();
 				int[] var16 = new int[]{var15 & 15, var15 >> 4 & 15};
-				boolean var17 = null != var7.ae_fld && var7.ae_fld.length == var16.length;
+				boolean var17 = null != var7.ah_fld && var7.ah_fld.length == var16.length;
 
 				for (int var18 = 0; var18 < 2; var18++) {
 					if (var16[var18] != 15) {
-						short var19 = (short)xi.tx(var1, 944030807);
+						short var19 = (short)var1.cm();
 						if (var17) {
-							var7.ae_fld[var16[var18]] = var19;
+							var7.ah_fld[var16[var18]] = var19;
 						}
 					}
 				}
 			}
 
 			if (var5) {
-				var7.aw_fld = var1.dl(wa.ak_fld.az_fld);
-				var7.ay_fld = var1.dl(wa.ak_fld.az_fld) * -869240285;
+				var7.ar_fld = var1.dl(wa.ak_fld.az_fld);
+				var7.aw_fld = var1.dl(wa.ak_fld.az_fld) * -869240285;
 			}
 
 			if (var6) {
-				var7.as_fld = var1.dl(wa.ak_fld.az_fld) * 123859253;
-				var7.ar_fld = var1.dl(wa.ak_fld.az_fld);
+				var7.ay_fld = var1.dl(wa.ak_fld.az_fld) * 123859253;
+				var7.as_fld = var1.dl(wa.ak_fld.az_fld);
 			}
 
 			return var7;
@@ -198,59 +229,37 @@ public class oo implements ColorTextureOverride {
 		}
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z"
+	)
+	public boolean ag(byte var1) {
+		return this.ah_fld != null;
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	public boolean ar() {
-		return this.ae_fld != null;
-	}
-
-	@ObfuscatedName("vr")
-	@ObfuscatedSignature(
-		descriptor = "(Loo;B)Z"
-	)
-	public static boolean vr(oo var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ae_fld != null;
-		}
-	}
-
-	@ObfuscatedName("getTextureToReplaceWith")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getTextureToReplaceWith() {
-		return this.ae_fld;
+		return this.ah_fld != null;
 	}
 
 	public oo(int var1) throws EOFException {
-		this.as_fld = -481631053;
-		this.ar_fld = -1961919655;
+		this.ay_fld = -481631053;
+		this.as_fld = -1961919655;
 		og var2 = kb.ag(var1, -1752383175);
 		if (var2.ac(-2117899641)) {
-			this.ah_fld = new short[var2.dg_fld.length];
-			System.arraycopy(var2.dg_fld, 0, this.ah_fld, 0, this.ah_fld.length);
-		}
-
-		if (var2.at(14159562)) {
 			this.ae_fld = new short[var2.db_fld.length];
 			System.arraycopy(var2.db_fld, 0, this.ae_fld, 0, this.ae_fld.length);
 		}
 
-		this.af_fld = 285100393 * var2.dk_fld;
-	}
+		if (var2.at(14159562)) {
+			this.ah_fld = new short[var2.dw_fld.length];
+			System.arraycopy(var2.dw_fld, 0, this.ah_fld, 0, this.ah_fld.length);
+		}
 
-	@ObfuscatedName("getColorToReplaceWith")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getColorToReplaceWith() {
-		return this.ah_fld;
+		this.af_fld = 285100393 * var2.dk_fld;
 	}
 
 	@ObfuscatedName("al")
@@ -258,31 +267,7 @@ public class oo implements ColorTextureOverride {
 		descriptor = "()Z"
 	)
 	public boolean al() {
-		return this.ae_fld != null;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ax(int var1) {
-		return 0 == var1 && -1 != this.aw_fld || 1 == var1 && this.ay_fld != -1;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean aa(int var1) {
-		return 0 == var1 && -1 != this.aw_fld || 1 == var1 && this.ay_fld != -1;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ai(int var1) {
-		return 0 == var1 && -1 != this.aw_fld || 1 == var1 && this.ay_fld != -1;
+		return this.ah_fld != null;
 	}
 
 	@ObfuscatedName("au")
@@ -290,35 +275,43 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(I)Z"
 	)
 	boolean au(int var1) {
-		return 0 == var1 && this.as_fld != -1 || var1 == 1 && this.ar_fld != -1;
+		return 0 == var1 && -1 != this.ar_fld || 1 == var1 && this.aw_fld != -1;
 	}
 
-	@ObfuscatedName("rg")
+	@ObfuscatedName("tz")
 	@ObfuscatedSignature(
-		descriptor = "(Loo;IB)I"
+		descriptor = "(Loo;B)Z"
 	)
-	public static int rg(oo var0, int var1, byte var2) {
+	public static boolean tz(oo var0, byte var1) {
 		if (var0 == null) {
 			throw new NullPointerException();
 		} else {
-			return var1 == 0 ? var0.as_fld : var0.ar_fld;
+			return null != var0.ae_fld;
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
-	public boolean af() {
-		return this.ae_fld != null;
+	boolean an(int var1) {
+		return 0 == var1 && -1 != this.ar_fld || 1 == var1 && this.aw_fld != -1;
 	}
 
-	@ObfuscatedName("nk")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Loo;)Z"
+		descriptor = "(I)Z"
 	)
-	public static boolean nk(oo var0) {
-		return null != var0.ah_fld;
+	boolean aa(int var1) {
+		return 0 == var1 && -1 != this.ar_fld || 1 == var1 && this.aw_fld != -1;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean ai(int var1) {
+		return 0 == var1 && this.ay_fld != -1 || var1 == 1 && this.as_fld != -1;
 	}
 
 	@ObfuscatedName("ad")
@@ -326,19 +319,15 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(I)I"
 	)
 	int ad(int var1) {
-		return var1 == 0 ? this.as_fld : this.ar_fld;
+		return var1 == 0 ? this.ay_fld : this.as_fld;
 	}
 
-	@ObfuscatedName("no")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Loo;I)Z"
+		descriptor = "()Z"
 	)
-	public static boolean no(oo var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return 0 == var1 && var0.as_fld != -1 || var1 == 1 && var0.ar_fld != -1;
-		}
+	public boolean as() {
+		return null != this.ae_fld;
 	}
 
 	@ObfuscatedName("ab")
@@ -346,23 +335,15 @@ public class oo implements ColorTextureOverride {
 		descriptor = "(I)I"
 	)
 	int ab(int var1) {
-		return var1 == 0 ? this.as_fld : this.ar_fld;
+		return var1 == 0 ? this.ay_fld : this.as_fld;
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I"
-	)
-	int aw(int var1, byte var2) {
-		return var1 == 0 ? this.ar_fld : this.ay_fld * -442703081;
-	}
-
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z"
 	)
-	boolean ae(int var1, int var2) {
-		return 0 == var1 && this.aw_fld != -1 || var1 == 1 && this.ay_fld != -1;
+	boolean av(int var1, int var2) {
+		return 0 == var1 && -1 != this.ar_fld || 1 == var1 && this.aw_fld != -1;
 	}
 
 	@ObfuscatedName("az")
@@ -373,23 +354,21 @@ public class oo implements ColorTextureOverride {
 		return this.ah_fld != null;
 	}
 
-	@ObfuscatedName("uh")
+	@ObfuscatedName("getTextureToReplaceWith")
 	@ObfuscatedSignature(
-		descriptor = "(Loo;I)I"
+		descriptor = "()[S"
 	)
-	public static int uh(oo var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1 == 0 ? 2026738091 * var0.aw_fld : var0.ay_fld;
+	@Export("getTextureToReplaceWith")
+	@Override
+	public short[] getTextureToReplaceWith() {
+		return this.ah_fld;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z"
+		descriptor = "(IB)I"
 	)
-	boolean av(int var1, int var2) {
-		return 0 == var1 && -1 != this.ar_fld || 1 == var1 && this.ay_fld != -1;
+	int aw(int var1, byte var2) {
+		return var1 == 0 ? this.aw_fld : this.ar_fld * -442703081;
 	}
 }

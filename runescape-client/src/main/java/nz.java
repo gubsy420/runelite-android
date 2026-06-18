@@ -39,22 +39,6 @@ public class nz {
 	)
 	static int ak_fld;
 
-	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-		descriptor = "(Luu;II)V"
-	)
-	public static void co(uu var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		long var3 = var2 + (var1 << 16);
-		ut var5 = (ut)var0.ai_fld.ak(var3);
-		if (null != var5) {
-			var0.aa_fld.ag(var5);
-		}
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/CharSequence;)[B"

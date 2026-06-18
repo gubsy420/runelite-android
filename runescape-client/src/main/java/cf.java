@@ -67,7 +67,7 @@ public class cf {
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static final int am(int var0, int var1) {
 		int var3 = var0 + var1 * 57;
@@ -96,14 +96,14 @@ public class cf {
 			}
 		} else if (client.hd_fld == cy.av_fld) {
 			byte var51 = 0;
-			int var52 = var51 + uv.sl(do_.ha_fld, -860704360) * 53 / 100;
-			var52 += uv.sl(eo.hx_fld, -129365693) * 5 / 100;
-			var52 += uv.sl(gz.hy_fld, -717491472) * 36 / 100;
-			var52 += uv.sl(by.ho_fld, 252774397) * 1 / 100;
-			var52 += uv.sl(ow.ie_fld, 1052548274) * 1 / 100;
-			var52 += uv.sl(gl.iv_fld, 365158655) * 2 / 100;
-			var52 += uv.sl(pe.im_fld, -1748926177) * 1 / 100;
-			var52 += pn.ia_fld.bc() && pn.ia_fld.cy((byte)1) ? 1 : 0;
+			int var52 = var51 + do_.ha_fld.ag() * 53 / 100;
+			var52 += eo.hx_fld.ag() * 5 / 100;
+			var52 += gz.hy_fld.ag() * 36 / 100;
+			var52 += by.ho_fld.ag() * 1 / 100;
+			var52 += ow.ie_fld.ag() * 1 / 100;
+			var52 += gl.iv_fld.ag() * 2 / 100;
+			var52 += pe.im_fld.ag() * 1 / 100;
+			var52 += uv.ar(pn.ia_fld, 129058843) && pn.ia_fld.cy((byte)1) ? 1 : 0;
 			if (var52 != 100) {
 				if (var52 != 0) {
 					ea.bm(30, kh.bk_fld + var52 + "%");
@@ -175,19 +175,19 @@ public class cf {
 
 						var64 = var77;
 					} catch (Throwable var26) {
-						client.qz(var26);
+						client.mu(var26);
 						var64 = new ao();
 					}
 
 					dx.on_fld = var64;
 					ny.km_fld = new ar();
 					ar var78 = new ar();
-					var78.ax(ny.km_fld);
+					var78.ak(ny.km_fld);
 
 					for (int var80 = 0; var80 < 3; var80++) {
 						ml var83 = new ml(dx.on_fld);
 						var83.aa(9, 128);
-						var78.ax(var83);
+						var78.ak(var83);
 						var50.add(var83);
 					}
 
@@ -199,7 +199,7 @@ public class cf {
 					mb.ah_fld = var84;
 					mb.aw_fld = var85;
 					mb.ag_fld = var50;
-					ru.kz(client.kd_fld, do_.ha_fld, ny.km_fld, 479116823);
+					client.kd_fld.ak(do_.ha_fld, ny.km_fld);
 					ea.bm(60, kh.bf_fld);
 					ao.aq(cy.aw_fld);
 				}
@@ -221,8 +221,8 @@ public class cf {
 					ej.do_fld = (zf)(zf)client.dr_fld.get(xy.ak_fld);
 					ls.dd_fld = (zf)(zf)client.dr_fld.get(xy.ag_fld);
 					cu.dl_fld = (zf)(zf)client.dr_fld.get(xy.az_fld);
-					kg.ps_fld = client.pb_fld.ak(1466214623);
-					vu.en();
+					kg.fingerprint = client.pb_fld.ak(1466214623);
+					vu.bu();
 					ea.bm(80, kh.bl_fld);
 					ao.aq(cy.ay_fld);
 				}
@@ -273,21 +273,21 @@ public class cf {
 		} else if (client.hd_fld == cy.ae_fld) {
 			if (var0 > 251) {
 				byte var31 = 0;
-				int var32 = var31 + uv.sl(hi.hl_fld, 1616464225) * 4 / 100;
-				var32 += uv.sl(client.hc_fld, -1698966247) * 1 / 100;
-				var32 += uv.sl(zs.hw_fld, 825155048) * 2 / 100;
-				var32 += uv.sl(client.hg_fld, 1413387642) * 1 / 100;
-				var32 += uv.sl(bu.hv_fld, 204263638) * 1 / 100;
-				var32 += uv.sl(ga.ht_fld, 258666849) * 10 / 100;
-				var32 += uv.sl(ab.hu_fld, 157590714) * 65 / 100;
-				var32 += uv.sl(me.hz_fld, -1168701055) * 1 / 100;
-				var32 += uv.sl(ih.hm_fld, 78562366) * 1 / 100;
-				var32 += uv.sl(bj.ib_fld, -1012968334) * 6 / 100;
-				var32 += uv.sl(bq.if_fld, 171427581) * 1 / 100;
-				var32 += uv.sl(in.ip_fld, 856160257) * 2 / 100;
-				var32 += uv.sl(py.il_fld, 2083205964) * 2 / 100;
-				var32 += uv.sl(wo.iq_fld, -1239914623) * 1 / 100;
-				var32 += uv.sl(dm.is_fld, -256471795) * 2 / 100;
+				int var32 = var31 + hi.hl_fld.ag() * 4 / 100;
+				var32 += client.hc_fld.ag() * 1 / 100;
+				var32 += zs.hw_fld.ag() * 2 / 100;
+				var32 += client.hg_fld.ag() * 1 / 100;
+				var32 += bu.hv_fld.ag() * 1 / 100;
+				var32 += ga.ht_fld.ag() * 10 / 100;
+				var32 += ab.hu_fld.ag() * 65 / 100;
+				var32 += me.hz_fld.ag() * 1 / 100;
+				var32 += ih.hm_fld.ag() * 1 / 100;
+				var32 += bj.ib_fld.ag() * 6 / 100;
+				var32 += bq.if_fld.ag() * 1 / 100;
+				var32 += in.ip_fld.ag() * 2 / 100;
+				var32 += py.il_fld.ag() * 2 / 100;
+				var32 += wo.iq_fld.ag() * 1 / 100;
+				var32 += dm.is_fld.ag() * 2 / 100;
 				if (var32 != 100) {
 					if (var0 > 251) {
 						if (var32 != 0) {
@@ -309,17 +309,17 @@ public class cf {
 				}
 			}
 		} else if (client.hd_fld == cy.ak_fld) {
-			bw.dk_fld = client.da_fld.ak(104, 104, cn.ka(cx.kq_fld, (byte)1), 1802951577);
+			bw.dk_fld = client.da_fld.ak(104, 104, cx.kq_fld.ax((byte)1), 1802951577);
 			hk.mt_fld = bw.dk_fld;
 			bx.aw_fld = new yv(512, 512);
 			ea.bm(30, kh.bs_fld);
 			ao.aq(cy.as_fld);
 		} else if (client.hd_fld == cy.as_fld) {
 			if (!client.hg_fld.cy((byte)1)) {
-				ea.bm(40, kh.bp_fld + client.hg_fld.ag() + "%");
+				ea.bm(40, kh.bp_fld + client.hg_fld.au() + "%");
 			} else if (!wo.iq_fld.cy((byte)1)) {
 				if (var0 > 251) {
-					ea.bm(40, kh.bp_fld + (80 + bj.ib_fld.ag() / 6) + "%");
+					ea.bm(40, kh.bp_fld + (80 + bj.ib_fld.au() / 6) + "%");
 				}
 			} else {
 				tu.ak(client.hg_fld);
@@ -329,7 +329,7 @@ public class cf {
 				uv var66 = ab.hu_fld;
 				nz.ad_fld = var60;
 				cl.ao_fld = var66;
-				fi.am_fld = rl1.ei(nz.ad_fld, 3);
+				fi.am_fld = nz.ad_fld.ce(3, -438313678);
 				bb.ag(client.hg_fld, ab.hu_fld, client.gk_fld);
 				wt.ag(client.hg_fld, ab.hu_fld);
 				uv var73 = client.hg_fld;
@@ -341,7 +341,7 @@ public class cf {
 				ce.dt_fld = var76;
 				bl.dm_fld = var79;
 				ux.dq_fld = var82;
-				ob.dz_fld = rl1.ei(ce.dt_fld, 10);
+				ob.dz_fld = ce.dt_fld.ce(10, 1531943251);
 				mk.dr_fld = var8;
 				uv var9 = client.hg_fld;
 				uv var10 = hi.hl_fld;
@@ -379,16 +379,16 @@ public class cf {
 				ex.ah_fld = var19;
 				od.aw_fld = var20;
 				ap.ay_fld = var21;
-				vu var10000 = kg.ps_fld;
-				kg.ps_fld.cd_fld = (Arrays.hashCode((Object[])og.ci_fld.lz_fld.getClass().getSigners()) >> 2) * 1725617152
+				vu var10000 = kg.fingerprint;
+				kg.fingerprint.classSigHash = (Arrays.hashCode((Object[])og.ci_fld.vv_net_runelite_api_hooks_Callbacks.getClass().getSigners()) >> 2) * 1725617152
 					+ 38967296
-					+ ((lu.im_fld ? 1 : 0) - 1) * -604588640;
-				var10000.cg_fld = client.zw();
+					+ ((sp.zu_fld ? 1 : 0) - 1) * -604588640;
+				var10000.cg_fld = client.wq();
 				cm.ak(client.hg_fld, gz.hy_fld);
 				uv var22 = client.hg_fld;
 				uv var23 = gz.hy_fld;
 				nz.av_fld = var23;
-				pc.ag_fld = rl1.ei(var22, 35);
+				pc.ag_fld = var22.ce(35, 1329141145);
 				lq.ae_fld = new pc[pc.ag_fld];
 
 				for (int var24 = 0; var24 < pc.ag_fld; var24++) {
@@ -396,7 +396,7 @@ public class cf {
 					lq.ae_fld[var24] = new pc(var24);
 					if (var25 != null) {
 						lq.ae_fld[var24].ag(new xi(var25), -1350612840);
-						lq.ae_fld[var24].av(24957735);
+						pc.sq(lq.ae_fld[var24], 24957735);
 					}
 				}
 
@@ -501,7 +501,7 @@ public class cf {
 								return;
 							}
 
-							cb.mz_fld = dn.ki(var70);
+							cb.mz_fld = var70.bo();
 						}
 						break label494;
 					}
@@ -517,7 +517,7 @@ public class cf {
 						return;
 					}
 
-					by.mg_fld = dn.ki(var71);
+					by.mg_fld = var71.bo();
 				}
 			} else {
 				var29++;
@@ -529,7 +529,7 @@ public class cf {
 				}
 			} else {
 				zv.ag_fld = dv.ja_fld;
-				yv.ec(ld.au_fld);
+				ld.au_fld.an();
 				int var72 = (int)(Math.random() * 21.0) - 10;
 				int var5 = (int)(Math.random() * 21.0) - 10;
 				int var6 = (int)(Math.random() * 21.0) - 10;
@@ -544,9 +544,9 @@ public class cf {
 					ea.bm(70, kh.bu_fld + "0%");
 				}
 			} else {
-				hi.ni_fld = new eu(me.hz_fld, gz.hy_fld, 20, cn.db(cx.kq_fld, -1633526702), 128);
+				hi.ni_fld = new eu(me.hz_fld, gz.hy_fld, 20, cn.zp(cx.kq_fld, -1633526702), 128);
 				fc.ag(hi.ni_fld);
-				fc.az(cn.db(cx.kq_fld, -2033870425));
+				fc.az(cn.zp(cx.kq_fld, -2033870425));
 				ao.aq(cy.al_fld);
 			}
 		} else if (cy.al_fld == client.hd_fld) {
@@ -561,7 +561,7 @@ public class cf {
 			}
 		} else if (client.hd_fld == cy.au_fld) {
 			gz.gb_fld = new dd();
-			la.kg(fw.qz_fld, gz.gb_fld, 10, (byte)-128);
+			fw.qz_fld.ay(gz.gb_fld, 10, (byte)-128);
 			ea.bm(92, kh.bc_fld);
 			ao.aq(cy.ax_fld);
 		} else if (cy.ax_fld == client.hd_fld) {
@@ -575,36 +575,36 @@ public class cf {
 			}
 		} else if (cy.an_fld == client.hd_fld) {
 			if (!bu.hv_fld.cy((byte)1)) {
-				ea.bm(96, kh.bq_fld + bu.hv_fld.ag() * 4 / 5 + "%");
+				ea.bm(96, kh.bq_fld + bu.hv_fld.au() * 4 / 5 + "%");
 			} else if (!dm.is_fld.cy((byte)1)) {
-				ea.bm(96, kh.bq_fld + dm.is_fld.ag() * 4 / 5 + "%");
+				ea.bm(96, kh.bq_fld + dm.is_fld.au() * 4 / 5 + "%");
 			} else if (!bj.ib_fld.cy((byte)1)) {
-				ea.bm(96, kh.bq_fld + (80 + bj.ib_fld.ag() / 6) + "%");
+				ea.bm(96, kh.bq_fld + (80 + bj.ib_fld.au() / 6) + "%");
 			} else if (!ow.ie_fld.cy((byte)1)) {
-				ea.bm(96, kh.bq_fld + (96 + ow.ie_fld.ag() / 50) + "%");
+				ea.bm(96, kh.bq_fld + (96 + ow.ie_fld.au() / 50) + "%");
 			} else {
 				ea.bm(98, kh.bg_fld);
-				if (ub.mo(bj.ib_fld, "version.dat", "", (byte)-85)) {
+				if (bj.ib_fld.ck("version.dat", "", (byte)-85)) {
 					xi var1 = new xi(bj.ib_fld.cb("version.dat", "", (byte)34));
-					xi.tx(var1, 856683651);
+					var1.cm();
 				}
 
 				ao.aq(cy.aa_fld);
 			}
 		} else if (client.hd_fld == cy.aa_fld) {
 			if (aac.ak_fld < 238) {
-				if (ub.sn(bq.if_fld, (byte)109) > 0 && !ub.zx(bq.if_fld, hc.ak_fld.ah_fld, (byte)-29)) {
-					ea.bm(100, kh.bb_fld + bq.if_fld.ci(hc.ak_fld.ah_fld, 1653275309) / 10 + "%");
+				if (bq.if_fld.cn((byte)109) > 0 && !bq.if_fld.cu(hc.ak_fld.ah_fld, (byte)-29)) {
+					ea.bm(100, kh.bb_fld + ub.wk(bq.if_fld, hc.ak_fld.ah_fld, 1653275309) / 10 + "%");
 					return;
 				}
-			} else if (ub.sn(bq.if_fld, (byte)112) > 0 && !bq.if_fld.cv(hc.ak_fld.aw_fld, -1472281419)) {
+			} else if (bq.if_fld.cn((byte)112) > 0 && !bq.if_fld.dz(hc.ak_fld.aw_fld, -1472281419)) {
 				ea.bm(100, kh.bb_fld + bq.if_fld.ar(hc.ak_fld.aw_fld, -8656200) / 10 + "%");
 				return;
 			}
 
 			if (ca.px_fld == null) {
 				ca.px_fld = new wl();
-				wl.dt(ca.px_fld, bq.if_fld, in.ip_fld, py.il_fld, cu.dl_fld, client.dr_fld, pf.ax_fld, 1382466332);
+				ca.px_fld.ak(bq.if_fld, in.ip_fld, py.il_fld, cu.dl_fld, client.dr_fld, pf.ax_fld, 1382466332);
 			}
 
 			ea.bm(100, kh.cd_fld);
@@ -657,11 +657,11 @@ public class cf {
 						int var12;
 						int var13;
 						if (var3[var11] == 2) {
-							var12 = -2112375145 * var0[var7].ai_fld;
-							var13 = var9.ai_fld;
+							var12 = -2112375145 * var0[var7].al_fld;
+							var13 = var9.al_fld;
 						} else if (1 == var3[var11]) {
-							var12 = var0[var7].au_fld * 2045182223;
-							var13 = var9.au_fld;
+							var12 = var0[var7].af_fld * 2045182223;
+							var13 = var9.af_fld;
 							if (var12 == -1 && var4[var11] == 1) {
 								var12 = 2001;
 							}
@@ -677,8 +677,8 @@ public class cf {
 							var12 = var0[var7].as((short)2048) ? 1 : 0;
 							var13 = var9.as((short)2048) ? 1 : 0;
 						} else {
-							var12 = -407267201 * var0[var7].af_fld;
-							var13 = var9.af_fld;
+							var12 = -407267201 * var0[var7].aa_fld;
+							var13 = var9.aa_fld;
 						}
 
 						if (var13 != var12) {
@@ -722,15 +722,15 @@ public class cf {
 						int var17;
 						int var18;
 						if (2 == var3[var15]) {
-							var17 = -2112375145 * var0[var6].ai_fld;
-							var18 = var9.ai_fld;
+							var17 = -2112375145 * var0[var6].al_fld;
+							var18 = var9.al_fld;
 						} else if (var3[var15] == 1) {
 							if (var5 >= 1955653013) {
 								return;
 							}
 
-							var17 = var0[var6].au_fld * 2045182223;
-							var18 = var9.au_fld;
+							var17 = var0[var6].af_fld * 2045182223;
+							var18 = var9.af_fld;
 							if (var17 == -1 && var4[var15] == 1) {
 								var17 = 2001;
 							}
@@ -753,8 +753,8 @@ public class cf {
 
 							var18 = var10000;
 						} else {
-							var17 = var0[var6].af_fld * -407267201;
-							var18 = var9.af_fld;
+							var17 = var0[var6].aa_fld * -407267201;
+							var18 = var9.aa_fld;
 						}
 
 						if (var18 != var17) {
@@ -784,23 +784,23 @@ public class cf {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lqa;ILqy;)I"
+		descriptor = "(Lqa;ILqy;I)I"
 	)
 	public static int ak(qa var0, int var1, qy var2) throws EOFException {
 		byte var4 = 0;
-		if (!var0.av()) {
-			var0.au(0);
+		if (!qa.jv(var0, 1195145881)) {
+			qa.uh(var0, 0, (short)256);
 			return var4;
 		} else {
-			ol var5 = var0.ae();
+			ol var5 = qa.kw(var0, -1691274337);
 			if (-1 == var5.bl_fld) {
 				var4 |= 8;
 			}
 
 			if (var5.ao((byte)-6)) {
-				var0.au(0);
+				qa.uh(var0, 0, (short)256);
 			} else {
-				var0.au(var0.al() + var1);
+				qa.uh(var0, var0.al() + var1, (short)256);
 			}
 
 			int var6;
@@ -819,21 +819,21 @@ public class cf {
 		descriptor = "(Ljt;I)V"
 	)
 	static final void dx(jt var0, int var1) throws EOFException {
-		xj var2 = client.aq_fld.ae_fld;
+		xj var2 = client.appletStub.ae_fld;
 		if (jt.aw_fld != var0) {
 			if (jt.al_fld == var0) {
-				int var32 = xi.tx(var2, 1722404358);
-				int var44 = var2.dp();
-				int var56 = xi.uk(var2, 1898450231);
+				int var32 = var2.cm();
+				int var44 = xi.iu(var2, -1961177059);
+				int var56 = var2.de();
 				int var68 = pg.ma_fld + (var56 >> 4 & 7);
 				int var81 = (var56 & 7) + ly.mv_fld;
-				int var94 = xi.oh(var2, (byte)122);
+				int var94 = var2.ex();
 				if (hk.mt_fld.ae(var68, var81, 261879087)) {
 					var68 = kj.as(var68);
 					var81 = kj.as(var81);
 					int var104 = -1 == client.mh_fld ? hk.mt_fld.ae_fld : client.mh_fld;
 					bt var112 = new bt(hk.mt_fld, var32, var104, var68, var81, jf.dv(hk.mt_fld, var68, var81, var104) - var44, var94, client.dv_fld);
-					hk.mt_fld.aq_fld.av(var112);
+					hk.mt_fld.aq_fld.az(var112);
 				}
 			} else if (var0 == jt.az_fld) {
 				if (var1 > -552440474) {
@@ -841,7 +841,7 @@ public class cf {
 					int var43 = pg.ma_fld + (var31 >> 4 & 7);
 					int var55 = ly.mv_fld + (var31 & 7);
 					int var67 = var2.eo();
-					int var80 = xi.ki(var2, 1381263331);
+					int var80 = xi.gz(var2, 1381263331);
 					int var93 = hk.mt_fld.ae_fld;
 					if (hk.mt_fld.ae(var43, var55, 170541658)) {
 						int var103 = client.mh_fld == -1 ? var93 : client.mh_fld;
@@ -849,14 +849,14 @@ public class cf {
 					}
 				}
 			} else if (var0 == jt.ag_fld) {
-				int var30 = xi.oh(var2, (byte)63);
+				int var30 = var2.ex();
 				int var42 = var2.eo();
 				int var54 = var2.cz();
 				short var66 = (short)var2.cz();
 				short var79 = (short)var2.cz();
-				int var92 = var2.ec();
-				int var102 = var2.co();
-				int var111 = var2.dp();
+				int var92 = xi.fm(var2, (byte)-45);
+				int var102 = var2.co((byte)-123);
+				int var111 = xi.iu(var2, 1887920503);
 				int var118 = (var111 >> 4 & 7) + pg.ma_fld;
 				int var124 = (var111 & 7) + ly.mv_fld;
 				if (hk.mt_fld.ae(var118, var124, 1611247677)) {
@@ -865,22 +865,22 @@ public class cf {
 				}
 			} else {
 				if (var0 == jt.af_fld) {
-					byte var21 = xi.wc(var2, -1857088296);
-					int var33 = var2.ew();
-					byte var45 = xi.rx(var2, -1134409442);
-					int var57 = xi.uk(var2, 1898450231);
+					byte var21 = xi.pb(var2, -1857088296);
+					int var33 = xi.tl(var2, (byte)1);
+					byte var45 = var2.dj();
+					int var57 = var2.de();
 					int var70 = pg.ma_fld + (var57 >> 4 & 7);
 					int var83 = ly.mv_fld + (var57 & 7);
-					int var95 = var2.ew();
-					byte var105 = xi.rp(var2, -1119107767);
-					int var114 = var2.ew();
+					int var95 = xi.tl(var2, (byte)1);
+					byte var105 = var2.cw();
+					int var114 = xi.tl(var2, (byte)1);
 					int var120 = var2.eo();
 					int var126 = var2.df();
 					int var132 = var126 >> 2;
 					int var15 = var126 & 3;
 					int var16 = client.cq_fld[var132];
-					byte var17 = xi.wc(var2, -1990888444);
-					cv var18 = (cv)hk.mt_fld.au_fld.ak(var95);
+					byte var17 = xi.pb(var2, -1990888444);
+					cv var18 = (cv)hk.mt_fld.au_fld.ae(var95);
 					if (null != var18) {
 						int var19 = -1 == client.mh_fld ? hk.mt_fld.ae_fld : client.mh_fld;
 						wj.df(var19, var70, var83, var132, var15, var16, var114, var33, var120, var17, var21, var105, var45, var18);
@@ -889,11 +889,11 @@ public class cf {
 
 				if (var0 == jt.ah_fld) {
 					if (var1 > -552440474) {
-						int var29 = var2.dp();
+						int var29 = xi.iu(var2, 703448292);
 						int var41 = var29 >> 2;
 						int var53 = var29 & 3;
 						int var65 = client.cq_fld[var41];
-						int var78 = var2.dp();
+						int var78 = xi.iu(var2, 125278627);
 						int var91 = pg.ma_fld + (var78 >> 4 & 7);
 						int var101 = ly.mv_fld + (var78 & 7);
 						if (hk.mt_fld.ae(var91, var101, 709612188)) {
@@ -913,16 +913,16 @@ public class cf {
 						}
 					}
 				} else if (var0 == jt.au_fld) {
-					int var28 = xi.oh(var2, (byte)18);
+					int var28 = var2.ex();
 					int var40 = var2.df();
-					int var52 = xi.tx(var2, 801179513);
+					int var52 = var2.cm();
 					boolean var64 = var2.cg() == 1;
-					int var77 = xi.tx(var2, 805040912);
-					int var90 = xi.ki(var2, 2038665642);
+					int var77 = var2.cm();
+					int var90 = xi.gz(var2, 2038665642);
 					int var100 = var2.df();
 					int var109 = (var100 >> 4 & 7) + pg.ma_fld;
 					int var117 = ly.mv_fld + (var100 & 7);
-					int var123 = xi.uk(var2, 1898450231);
+					int var123 = var2.de();
 					if (hk.mt_fld.ae(var109, var117, -748946191)) {
 						int var10000;
 						if (client.mh_fld == -1) {
@@ -939,9 +939,9 @@ public class cf {
 						jf.dj(var130, var109, var117, var52, var90, var40, var77, var28, var123, var64);
 					}
 				} else if (var0 == jt.ae_fld) {
-					int var27 = var2.ew();
-					int var39 = xi.uk(var2, 1898450231);
-					int var51 = xi.uk(var2, 1898450231);
+					int var27 = xi.tl(var2, (byte)1);
+					int var39 = var2.de();
+					int var51 = var2.de();
 					int var63 = (var51 >> 4 & 7) + pg.ma_fld;
 					int var76 = (var51 & 7) + ly.mv_fld;
 					if (hk.mt_fld.ae(var63, var76, -449513971)) {
@@ -958,17 +958,17 @@ public class cf {
 					int var50 = (var26 & 7) + ly.mv_fld;
 					int var62 = var2.em();
 					int var75 = var2.em();
-					int var88 = var2.ew();
+					int var88 = xi.tl(var2, (byte)1);
 					if (hk.mt_fld.ae(var38, var50, -22622780)) {
 						int var99 = client.mh_fld == -1 ? hk.mt_fld.ae_fld : client.mh_fld;
 						jb.db(var99, var38, var50, var88, var75, var62);
 					}
 				} else if (var0 == jt.ak_fld) {
-					int var25 = xi.uk(var2, 1898450231);
+					int var25 = var2.de();
 					int var37 = (var25 >> 4 & 7) + pg.ma_fld;
 					int var49 = ly.mv_fld + (var25 & 7);
-					int var61 = xi.tx(var2, 783917879);
-					int var74 = var2.dp();
+					int var61 = var2.cm();
+					int var74 = xi.iu(var2, -420117110);
 					int var87 = var74 >> 2;
 					int var98 = var74 & 3;
 					int var108 = client.cq_fld[var87];
@@ -1011,44 +1011,44 @@ public class cf {
 					int var24 = var2.ei();
 					int var36 = var2.df();
 					int var48 = hk.mt_fld.ae_fld;
-					int var60 = hk.mt_fld.ay_fld + pg.ma_fld + (var36 >> 4 & 7);
-					int var73 = hk.mt_fld.as_fld + (var36 & 7) + ly.mv_fld;
-					int var86 = var2.ef(-404582138);
+					int var60 = hk.mt_fld.as_fld + pg.ma_fld + (var36 >> 4 & 7);
+					int var73 = hk.mt_fld.ay_fld + (var36 & 7) + ly.mv_fld;
+					int var86 = var2.ef();
 					int var97 = var2.em();
 					int var107 = kj.ag(var97);
 					int var115 = kj.az(var97);
 					int var121 = kj.av(var97);
-					int var127 = var2.ew();
-					int var133 = var2.ew();
+					int var127 = xi.tl(var2, (byte)1);
+					int var133 = xi.tl(var2, (byte)1);
 					int var134 = var2.df();
-					int var135 = xi.oh(var2, (byte)53);
+					int var135 = var2.ex();
 					int var136 = var2.eo();
-					int var137 = xi.tx(var2, 1582170718);
-					int var138 = xi.oh(var2, (byte)101);
+					int var137 = var2.cm();
+					int var138 = var2.ex();
 					if (var137 != 65535) {
 						bc var20 = new bc(
 							var48, var60, var73, var133, var86, var107, var115, var121, var135, var24, var137, var127 + client.dv_fld, client.dv_fld + var136, var134, var138
 						);
-						client.ds_fld.av(var20);
+						client.ds_fld.az(var20);
 					}
 				} else if (var0 == jt.as_fld) {
-					int var23 = var2.dp();
+					int var23 = xi.iu(var2, 366055358);
 					int var35 = pg.ma_fld + (var23 >> 4 & 7);
 					int var47 = ly.mv_fld + (var23 & 7);
-					int var59 = xi.oh(var2, (byte)22);
-					int var72 = xi.uk(var2, 1898450231);
+					int var59 = var2.ex();
+					int var72 = var2.de();
 					int var85 = var2.df() & 31;
 					int var96 = var2.df();
-					int var106 = xi.uk(var2, 1898450231);
+					int var106 = var2.de();
 					if (hk.mt_fld.ae(var35, var47, 970130535)) {
-						ah.kw_fld.ag(hk.mt_fld.ag_fld, var59, var35, var47, var85, var106, var72, var96, 688777510);
+						rs.bg(ah.kw_fld, hk.mt_fld.ag_fld, var59, var35, var47, var85, var106, var72, var96, 688777510);
 					}
 				} else if (var0 == jt.ar_fld) {
 					if (var1 > -552440474) {
-						int var22 = xi.uk(var2, 1898450231);
+						int var22 = var2.de();
 						int var34 = pg.ma_fld + (var22 >> 4 & 7);
 						int var46 = ly.mv_fld + (var22 & 7);
-						int var58 = var2.co();
+						int var58 = var2.co((byte)-93);
 						int var71 = var2.eo();
 						if (hk.mt_fld.ae(var34, var46, 2104724162)) {
 							int var84 = client.mh_fld == -1 ? hk.mt_fld.ae_fld : client.mh_fld;
@@ -1063,7 +1063,7 @@ public class cf {
 			int var5 = var3 & 3;
 			int var6 = client.cq_fld[var4];
 			int var7 = var2.df();
-			int var8 = xi.oh(var2, (byte)107);
+			int var8 = var2.ex();
 			int var9 = var2.df();
 			String[] var10 = null;
 			if (var9 > 0) {
@@ -1075,7 +1075,7 @@ public class cf {
 					}
 
 					int var12 = var2.df();
-					String var13 = xi.kc(var2, -725890175);
+					String var13 = xi.at(var2, -725890175);
 					if (var12 >= 0 && var12 < 5) {
 						if (var1 <= -552440474) {
 							return;
@@ -1098,7 +1098,7 @@ public class cf {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Lmx;"
+		descriptor = "(B)Lmx;"
 	)
 	public static mx ak() {
 		return mx.ae_fld;

@@ -27,7 +27,7 @@ public class jk {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(IB)Z"
 	)
 	public static boolean az(int var0) {
 		return var0 >= kn.ao_fld.at_fld && var0 <= kn.ab_fld.at_fld;
@@ -39,14 +39,14 @@ public class jk {
 
 	@ObfuscatedName("gw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;I)V"
 	)
 	static final void gw(String var0) {
 		if (!var0.equals("")) {
-			jm var2 = gi.ak(jb.cm_fld, client.aq_fld.av_fld);
-			var2.ay_fld.bc(iq.bu(var0));
-			var2.ay_fld.cc(var0, 2069175604);
-			client.aq_fld.az(var2);
+			jm var2 = gi.ak(jb.cm_fld, client.appletStub.av_fld);
+			var2.ay_fld.ea(iq.bu(var0));
+			xi.ph(var2.ay_fld, var0, 2069175604);
+			client.appletStub.az(var2);
 		}
 	}
 
@@ -61,11 +61,11 @@ public class jk {
 			}
 		} else {
 			if (client.cl_fld == 30) {
-				fu.xp(client.fy_fld, -1652016426);
+				client.fy_fld.az(-1652016426);
 			}
 
 			if (0 == client.cl_fld) {
-				tf.er(og.ci_fld, -968541318);
+				tf.du(og.ci_fld, -968541318);
 			}
 
 			label129: {
@@ -82,7 +82,7 @@ public class jk {
 				ot.hw(cj.ak_fld);
 				client.ic_fld = 0;
 				client.in_fld = 0;
-				lj.az(client.ls_fld, var0);
+				lj.gt(client.ls_fld, var0);
 				if (20 != var0) {
 					ik.bz(false, -937431811);
 				}
@@ -131,27 +131,27 @@ public class jk {
 				hk.dl_fld = null;
 				gx.dr_fld = null;
 				hc.da_fld = null;
-				ce.kz(do_.bp_fld, 241117523);
+				do_.bp_fld.av();
 				sx.av(0, 100);
 				ll.hy().ag(true);
 				lr.bx_fld = false;
-				client.hw();
+				client.px(-1);
 			}
 
 			client.cl_fld = var0;
-			client.fr();
+			client.nd();
 		}
 	}
 
 	@ObfuscatedName("agp")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	protected static final void agp() {
 		bl.rf_fld.ak((byte)0);
 
 		for (int var1 = 0; var1 < 32; var1++) {
-			tf.ro_fld[var1] = 0L;
+			tf.ro_Arrlong[var1] = 0L;
 		}
 
 		for (int var2 = 0; var2 < 32; var2++) {

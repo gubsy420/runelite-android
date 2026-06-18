@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.Nameable;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -19,14 +20,22 @@ public class rl implements Nameable {
 		descriptor = "Laax;"
 	)
 	aax az_fld;
-	@ObfuscatedGetter(
-		intValue = -2048553853
-	)
 	@ObfuscatedName("pe")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -2048553853
+	)
 	static int pe_fld;
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String bk() {
+		return this.av_fld == null ? "" : this.av_fld.ak(1794767247);
+	}
 
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
@@ -36,33 +45,12 @@ public class rl implements Nameable {
 		return this.av_fld == null ? "" : this.av_fld.ak(1069230467);
 	}
 
-	@ObfuscatedName("mo")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void mo(int var1) {
-		NameableNameChanged var2 = new NameableNameChanged(this);
-		og.ci_fld.getCallbacks().post(var2);
-	}
-
-	@ObfuscatedName("xz")
-	@ObfuscatedSignature(
-		descriptor = "(Lzg;I)I"
-	)
-	public static int xz(zg var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.aq(var1, var1 + 1, 1368701901);
-	}
-
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;"
 	)
 	public String at(byte var1) {
-		return this.av_fld == null ? "" : this.av_fld.ak(-184799862);
+		return this.az_fld == null ? "" : this.az_fld.ak(-731976535);
 	}
 
 	@ObfuscatedName("ae")
@@ -73,47 +61,12 @@ public class rl implements Nameable {
 		return this.ad((rl)var1, -618401172);
 	}
 
-	@ObfuscatedName("tq")
-	@ObfuscatedSignature(
-		descriptor = "()Laax;"
-	)
-	public aax tq() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getPrevName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getPrevName() {
-		aax var1 = this.if_();
-		return var1 == null ? null : var1.ah();
-	}
-
-	@ObfuscatedName("vz")
-	@ObfuscatedSignature(
-		descriptor = "(Lrl;)Ljava/lang/String;"
-	)
-	public static String vz(rl var0) {
-		return var0.av_fld == null ? "" : var0.av_fld.ak(1794767247);
-	}
-
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(Lrl;I)I"
 	)
 	public int ad(rl var1, int var2) {
 		return this.az_fld.av(var1.az_fld, -1063100849);
-	}
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		return this.tq().ah();
 	}
 
 	@ObfuscatedName("ap")
@@ -126,18 +79,10 @@ public class rl implements Nameable {
 
 	@ObfuscatedName("compareTo")
 	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/Nameable;)I"
+		descriptor = "(Ljava/lang/Object;)I"
 	)
 	public int compareTo(Nameable var1) {
 		return this.ad((rl)var1, -1740762231);
-	}
-
-	@ObfuscatedName("if")
-	@ObfuscatedSignature(
-		descriptor = "()Laax;"
-	)
-	public aax if_() {
-		return this.av_fld;
 	}
 
 	@ObfuscatedName("ao")
@@ -146,6 +91,65 @@ public class rl implements Nameable {
 	)
 	public int ao(rl var1) {
 		return this.az_fld.av(var1.az_fld, -943028671);
+	}
+
+	@ObfuscatedName("dx")
+	@ObfuscatedSignature(
+		descriptor = "(Lrl;B)Ljava/lang/String;"
+	)
+	public static String dx(rl var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.av_fld == null ? "" : var0.av_fld.ak(-184799862);
+	}
+
+	@ObfuscatedName("vx")
+	@ObfuscatedSignature(
+		descriptor = "()Laax;"
+	)
+	public aax vx() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		return this.gc().cl();
+	}
+
+	@ObfuscatedName("pl")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;I)V"
+	)
+	public static void pl(qa var0, int var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var1 >= 0) {
+				if (var0.ag_fld != var1) {
+					var0.ag_fld = var1 * -1457597965;
+					var0.az_fld = hm.ak(var1);
+					var0.aw_fld = 0;
+					if (-1 == var0.ae_fld) {
+						var0.ae_fld = 0;
+					}
+				}
+			} else {
+				var0.ag_fld = -991323536;
+				var0.az_fld = null;
+				var0.ae_fld = -1085309643;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
 	}
 
 	@ObfuscatedName("bd")
@@ -182,8 +186,33 @@ public class rl implements Nameable {
 		} else {
 			this.az_fld = var1;
 			this.av_fld = var2;
-			this.mo(-1);
+			this.hh(-1);
 		}
+	}
+
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void hh(int var1) {
+		NameableNameChanged var2 = new NameableNameChanged(this);
+		og.ci_fld.getCallbacks().post(var2);
+	}
+
+	@ObfuscatedName("gc")
+	@ObfuscatedSignature(
+		descriptor = "()Laax;"
+	)
+	public aax gc() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "()Laax;"
+	)
+	public aax br() {
+		return this.az_fld;
 	}
 
 	@ObfuscatedName("bs")
@@ -194,30 +223,34 @@ public class rl implements Nameable {
 		return this.az_fld == null ? "" : this.az_fld.ak(860364259);
 	}
 
-	@ObfuscatedName("ih")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;ILjava/lang/Object;)V"
+		descriptor = "(Leg;)V"
 	)
-	public static void ih(sl var0, int var1, Object var2) {
-		if (var0.ag_fld == yq.ak_fld) {
-			var0.aw_fld[var1] = (Integer)var2;
-		} else if (var0.ag_fld == yq.ag_fld) {
-			var0.ay_fld[var1] = (Long)var2;
-		} else {
-			var0.as_fld[var1] = var2;
+	public static void aj(eg var0) {
+		if (var0 == null) {
+			var0.getClass();
 		}
+
+		for (int var1 = 0; var1 < var0.as_fld; var1++) {
+			var0.wl_fld[var1] = -((int)var0.wl_fld[var1]);
+		}
+
+		for (int var3 = 0; var3 < var0.au_fld; var3++) {
+			int var2 = var0.ax_fld[var3];
+			var0.ax_fld[var3] = var0.aa_fld[var3];
+			var0.aa_fld[var3] = var2;
+		}
+
+		var0.by();
 	}
 
-	@ObfuscatedName("hv")
+	@ObfuscatedName("ix")
 	@ObfuscatedSignature(
-		descriptor = "(Lrl;B)Ljava/lang/String;"
+		descriptor = "(Lgh;)I"
 	)
-	public static String hv(rl var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.az_fld == null ? "" : var0.az_fld.ak(-731976535);
-		}
+	public static int ix(gh var0) {
+		return var0.ar_fld * var0.af_fld;
 	}
 
 	rl() {
@@ -236,17 +269,9 @@ public class rl implements Nameable {
 		}
 	}
 
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "()Laax;"
-	)
-	public aax bz() {
-		return this.az_fld;
-	}
-
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int bd(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -274,9 +299,9 @@ public class rl implements Nameable {
 				if (-1 == var5) {
 					uo var6 = cf.cg_fld;
 
-					for (pk var7 = (pk)var6.ai_fld.aq(); var7 != null; var7 = (pk)xz.aa(var6.ai_fld)) {
+					for (pk var7 = (pk)var6.an_fld.av(); var7 != null; var7 = (pk)var6.an_fld.ae()) {
 						if (var4.bf_fld >> 16 == var7.ak_fld) {
-							var5 = (int)var7.hc_fld;
+							var5 = (int)var7.hc_long;
 							break;
 						}
 					}
@@ -297,6 +322,37 @@ public class rl implements Nameable {
 		descriptor = "(B)Ljava/lang/String;"
 	)
 	public String ac(byte var1) {
-		return this.az_fld == null ? "" : this.av_fld.ak(-731976535);
+		return this.av_fld == null ? "" : this.az_fld.ak(-731976535);
+	}
+
+	@ObfuscatedName("getPrevName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getPrevName")
+	@Override
+	public String getPrevName() {
+		aax var1 = this.vx();
+		return var1 == null ? null : var1.cl();
+	}
+
+	@ObfuscatedName("wr")
+	@ObfuscatedSignature(
+		descriptor = "(Lrl;)Ljava/lang/String;"
+	)
+	public static String wr(rl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.az_fld == null ? "" : var0.az_fld.ak(1188621342);
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String be() {
+		return this.az_fld == null ? "" : this.av_fld.ak(1188621342);
 	}
 }

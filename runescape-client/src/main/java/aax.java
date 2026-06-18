@@ -1,3 +1,5 @@
+import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -24,27 +26,11 @@ public class aax implements Comparable {
 		this.ak_fld = dx.av(var1, var2);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("xq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
+		descriptor = "(Laax;I)Ljava/lang/String;"
 	)
-	public String ag(int var1) {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean ax() {
-		return null != this.ak_fld;
-	}
-
-	@ObfuscatedName("ha")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)Ljava/lang/String;"
-	)
-	public static String ha(aax var0) {
+	public static String xq(aax var0, int var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -52,22 +38,19 @@ public class aax implements Comparable {
 		return var0.ak_fld;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Laax;)I"
+		descriptor = "()Z"
 	)
-	public int ad(aax var1) {
-		if (null == this.ak_fld) {
-			return null == var1.ak_fld ? 0 : 1;
-		} else {
-			return var1.ak_fld == null ? -1 : this.ak_fld.compareTo(var1.ak_fld);
-		}
+	public boolean aa() {
+		return null != this.ak_fld;
 	}
 
 	@ObfuscatedName("hashCode")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("hashCode")
 	@Override
 	public int hashCode() {
 		return this.ak_fld == null ? 0 : this.ak_fld.hashCode();
@@ -77,9 +60,18 @@ public class aax implements Comparable {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		return this.ak(611146485);
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "(Lbt;)Z"
+	)
+	public static boolean fj(bt var0) {
+		return !qa.jv(var0.ay_fld, -100148566);
 	}
 
 	@ObfuscatedName("av")
@@ -94,56 +86,29 @@ public class aax implements Comparable {
 		}
 	}
 
-	@ObfuscatedName("yw")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;IZ)V"
-	)
-	public static void yw(da var0, int var1, boolean var2) {
-		var0.cg_fld.av(var1, var2);
-	}
-
 	@ObfuscatedName("compareTo")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)I"
 	)
+	@Export("compareTo")
 	@Override
 	public int compareTo(Object var1) {
 		return this.av((aax)var1, -52146469);
 	}
 
-	@ObfuscatedName("sl")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)Z"
-	)
-	public static boolean sl(da var0) {
-		return var0.cg_fld.az_fld;
-	}
-
-	@ObfuscatedName("ij")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;Ljava/lang/Object;)I"
-	)
-	public static int ij(aax var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.av((aax)var1, 1735911889);
-	}
-
-	@ObfuscatedName("vq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String vq() {
+	public String ay() {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("gq")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String ar() {
+	public String gq() {
 		return this.ak(-360414466);
 	}
 
@@ -197,20 +162,12 @@ public class aax implements Comparable {
 		}
 	}
 
-	@ObfuscatedName("gq")
+	@ObfuscatedName("vg")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String gq() {
+	public String vg() {
 		return this.ak_fld;
-	}
-
-	@ObfuscatedName("qc")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)Z"
-	)
-	public static boolean qc(aax var0) {
-		return null != var0.ak_fld;
 	}
 
 	@ObfuscatedName("afm")
@@ -221,6 +178,22 @@ public class aax implements Comparable {
 		return this.ak_fld == null ? 0 : this.ak_fld.hashCode();
 	}
 
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(Laax;)Z"
+	)
+	public static boolean jx(aax var0) {
+		return null != var0.ak_fld;
+	}
+
+	@ObfuscatedName("cl")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String cl() {
+		return this.ag_fld;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
@@ -229,28 +202,28 @@ public class aax implements Comparable {
 		return null != this.ak_fld;
 	}
 
-	@ObfuscatedName("yf")
+	@ObfuscatedName("gi")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String yf() {
+	public String gi() {
+		return this.ak(-698622201);
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)I"
+	)
+	public int ae(Object var1) {
+		return this.av((aax)var1, 1735911889);
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String as() {
 		return this.ag_fld;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean au() {
-		return null != this.ak_fld;
-	}
-
-	@ObfuscatedName("ux")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)I"
-	)
-	public static int ux(aax var0) {
-		return var0.ak_fld == null ? 0 : var0.ak_fld.hashCode();
 	}
 
 	@ObfuscatedName("ak")
@@ -261,11 +234,19 @@ public class aax implements Comparable {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String ay() {
+	public String ar() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String al() {
 		return this.ak_fld;
 	}
 
@@ -273,6 +254,7 @@ public class aax implements Comparable {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		if (var1 instanceof aax) {
@@ -289,20 +271,41 @@ public class aax implements Comparable {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("kd")
+	@ObfuscatedSignature(
+		descriptor = "(Laax;)I"
+	)
+	public static int kd(aax var0) {
+		return var0.ak_fld == null ? 0 : var0.ak_fld.hashCode();
+	}
+
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean an() {
+	public boolean ax() {
 		return null != this.ak_fld;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "()Ljava/lang/String;"
 	)
-	public boolean ai() {
-		return null != this.ak_fld;
+	public String af() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(Lxf;)Ljava/util/Iterator;"
+	)
+	public static Iterator bk(xf var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		xr.ls(var0.ak_fld);
+		return var0.ak_fld;
 	}
 
 	public aax(String var1) {
@@ -310,12 +313,12 @@ public class aax implements Comparable {
 		this.ak_fld = dx.av(var1, zo.ak_fld);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()Z"
 	)
-	public String ah() {
-		return this.ag_fld;
+	public boolean aq() {
+		return null != this.ak_fld;
 	}
 
 	@ObfuscatedName("afc")
@@ -324,18 +327,6 @@ public class aax implements Comparable {
 	)
 	public int afc() {
 		return this.ak_fld == null ? 0 : this.ak_fld.hashCode();
-	}
-
-	@ObfuscatedName("gj")
-	@ObfuscatedSignature(
-		descriptor = "(Laax;)Z"
-	)
-	public static boolean gj(aax var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return null != var0.ak_fld;
 	}
 
 	@ObfuscatedName("jm")
@@ -355,5 +346,13 @@ public class aax implements Comparable {
 		} else {
 			return false;
 		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public String ag(int var1) {
+		return this.ag_fld;
 	}
 }

@@ -1,8 +1,10 @@
 import java.io.DataInputStream;
+import java.io.EOFException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -13,11 +15,11 @@ public class la implements Runnable {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Llv;"
 	)
-	lv ah_fld = null;
+	lv aw_fld = null;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -33,11 +35,11 @@ public class la implements Runnable {
 		descriptor = "Z"
 	)
 	boolean as_fld;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Llv;"
 	)
-	lv aw_fld = null;
+	lv ah_fld = null;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -53,6 +55,28 @@ public class la implements Runnable {
 		descriptor = "Lbo;"
 	)
 	public static bo fq_fld;
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(IIILjava/lang/Object;I)Llv;"
+	)
+	final lv ah(int var1, int var2, int var3, Object var4, int var5) {
+		lv var6 = new lv();
+		var6.aw_fld = var1;
+		var6.av_fld = var2;
+		var6.ay_fld = var4;
+		synchronized (this) {
+			if (this.ah_fld != null) {
+				this.ah_fld.ah_fld = var6;
+				this.ah_fld = var6;
+			} else {
+				this.ah_fld = this.aw_fld = var6;
+			}
+
+			this.notify();
+			return var6;
+		}
+	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -70,82 +94,12 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;)Llv;"
+		descriptor = "(Ljava/lang/String;I)Llv;"
 	)
-	final lv al(int var1, int var2, int var3, Object var4) {
-		lv var5 = new lv();
-		var5.aw_fld = 1477615677 * var1;
-		var5.av_fld = var2;
-		var5.ay_fld = var4;
-		synchronized (this) {
-			if (this.aw_fld != null) {
-				this.aw_fld.ah_fld = var5;
-				this.aw_fld = var5;
-			} else {
-				this.aw_fld = this.ah_fld = var5;
-			}
-
-			this.notify();
-			return var5;
-		}
-	}
-
-	@ObfuscatedName("gb")
-	@ObfuscatedSignature(
-		descriptor = "(Lla;)V"
-	)
-	public static void gb(la var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			while (true) {
-				lv var1;
-				synchronized (var0) {
-					while (true) {
-						if (var0.as_fld) {
-							return;
-						}
-
-						if (null != var0.ah_fld) {
-							var1 = var0.ah_fld;
-							var0.ah_fld = var0.ah_fld.ah_fld;
-							if (var0.ah_fld == null) {
-								var0.aw_fld = null;
-							}
-							break;
-						}
-
-						try {
-							var0.wait();
-						} catch (InterruptedException var5) {
-						}
-					}
-				}
-
-				try {
-					int var2 = var1.aw_fld;
-					if (1 == var2) {
-						var1.ae_fld = new Socket(InetAddress.getByName((String)var1.ay_fld), var1.av_fld);
-					} else if (2 == var2) {
-						Thread var3 = new Thread((Runnable)var1.ay_fld);
-						var3.setDaemon(true);
-						var3.start();
-						var3.setPriority(var1.av_fld);
-						var1.ae_fld = var3;
-					} else if (var2 == 4) {
-						var1.ae_fld = new DataInputStream(((URL)var1.ay_fld).openStream());
-					}
-
-					var1.az_fld = 1;
-				} catch (ThreadDeath var6) {
-					throw var6;
-				} catch (Throwable var7) {
-					var1.az_fld = 2;
-				}
-			}
-		}
+	public final lv aa(String var1, int var2) {
+		return this.ah(1, var2, 0, var1, 1327423686);
 	}
 
 	@ObfuscatedName("ak")
@@ -161,11 +115,11 @@ public class la implements Runnable {
 						return;
 					}
 
-					if (null != this.ah_fld) {
-						var1 = this.ah_fld;
-						this.ah_fld = this.ah_fld.ah_fld;
-						if (this.ah_fld == null) {
-							this.aw_fld = null;
+					if (null != this.aw_fld) {
+						var1 = this.aw_fld;
+						this.aw_fld = this.aw_fld.ah_fld;
+						if (this.aw_fld == null) {
+							this.ah_fld = null;
 						}
 						break;
 					}
@@ -200,27 +154,31 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ug")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lla;Ljava/lang/String;I)Llv;"
+		descriptor = "(Ljava/lang/Runnable;I)Llv;"
 	)
-	public static lv ug(la var0, String var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return se(var0, 1, var2, 0, var1);
+	public final lv aq(Runnable var1, int var2) {
+		return this.ah(2, var2, 0, var1, 399864608);
 	}
 
-	@ObfuscatedName("kg")
+	@ObfuscatedName("vv")
 	@ObfuscatedSignature(
-		descriptor = "(Lla;Ljava/lang/Runnable;IB)Llv;"
+		descriptor = "(Lfn;)V"
 	)
-	public static lv kg(la var0, Runnable var1, int var2, byte var3) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return se(var0, 2, var2, 0, var1);
+	public static void vv(fn var0) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			for (int var1 = 0; var1 < var0.ke_fld; var1++) {
+				if (!fn.as_fld[var1]) {
+					var0.bg(var1);
+				}
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
 		}
 	}
 
@@ -242,6 +200,58 @@ public class la implements Runnable {
 		this.ay_fld.start();
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public final void ag() {
+		while (true) {
+			lv var1;
+			synchronized (this) {
+				while (true) {
+					if (this.as_fld) {
+						return;
+					}
+
+					if (null != this.aw_fld) {
+						var1 = this.aw_fld;
+						this.aw_fld = this.aw_fld.ah_fld;
+						if (this.aw_fld == null) {
+							this.ah_fld = null;
+						}
+						break;
+					}
+
+					try {
+						this.wait();
+					} catch (InterruptedException var7) {
+					}
+				}
+			}
+
+			try {
+				int var2 = var1.aw_fld;
+				if (1 == var2) {
+					var1.ae_fld = new Socket(InetAddress.getByName((String)var1.ay_fld), var1.av_fld);
+				} else if (2 == var2) {
+					Thread var3 = new Thread((Runnable)var1.ay_fld);
+					var3.setDaemon(true);
+					var3.start();
+					var3.setPriority(var1.av_fld);
+					var1.ae_fld = var3;
+				} else if (var2 == 4) {
+					var1.ae_fld = new DataInputStream(((URL)var1.ay_fld).openStream());
+				}
+
+				var1.az_fld = 1;
+			} catch (ThreadDeath var5) {
+				throw var5;
+			} catch (Throwable var6) {
+				var1.az_fld = 2;
+			}
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -255,11 +265,11 @@ public class la implements Runnable {
 						return;
 					}
 
-					if (null != this.ah_fld) {
-						var1 = this.ah_fld;
-						this.ah_fld = this.ah_fld.ah_fld;
-						if (this.ah_fld == null) {
-							this.aw_fld = null;
+					if (null != this.aw_fld) {
+						var1 = this.aw_fld;
+						this.aw_fld = this.aw_fld.ah_fld;
+						if (this.aw_fld == null) {
+							this.ah_fld = null;
 						}
 						break;
 					}
@@ -307,11 +317,11 @@ public class la implements Runnable {
 						return;
 					}
 
-					if (null != this.ah_fld) {
-						var1 = this.ah_fld;
-						this.ah_fld = this.ah_fld.ah_fld;
-						if (this.ah_fld == null) {
-							this.aw_fld = null;
+					if (null != this.aw_fld) {
+						var1 = this.aw_fld;
+						this.aw_fld = this.aw_fld.ah_fld;
+						if (this.aw_fld == null) {
+							this.ah_fld = null;
 						}
 						break;
 					}
@@ -346,45 +356,29 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public final void as() {
-		synchronized (this) {
-			this.as_fld = true;
-			this.notifyAll();
-		}
-
-		try {
-			this.ay_fld.join();
-		} catch (InterruptedException var3) {
-		}
-	}
-
-	@ObfuscatedName("se")
+	@ObfuscatedName("ex")
 	@ObfuscatedSignature(
 		descriptor = "(Lla;IIILjava/lang/Object;)Llv;"
 	)
-	public static lv se(la var0, int var1, int var2, int var3, Object var4) {
+	public static lv ex(la var0, int var1, int var2, int var3, Object var4) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		lv var6 = new lv();
-		var6.aw_fld = var1;
-		var6.av_fld = var2;
-		var6.ay_fld = var4;
+		lv var5 = new lv();
+		var5.aw_fld = 1477615677 * var1;
+		var5.av_fld = var2;
+		var5.ay_fld = var4;
 		synchronized (var0) {
-			if (var0.aw_fld != null) {
-				var0.aw_fld.ah_fld = var6;
-				var0.aw_fld = var6;
+			if (var0.ah_fld != null) {
+				var0.ah_fld.ah_fld = var5;
+				var0.ah_fld = var5;
 			} else {
-				var0.aw_fld = var0.ah_fld = var6;
+				var0.ah_fld = var0.aw_fld = var5;
 			}
 
 			var0.notify();
-			return var6;
+			return var5;
 		}
 	}
 
@@ -404,21 +398,21 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(IIILjava/lang/Object;)Llv;"
 	)
-	final lv au(int var1, int var2, int var3, Object var4) {
+	final lv af(int var1, int var2, int var3, Object var4) {
 		lv var5 = new lv();
 		var5.aw_fld = var1;
 		var5.av_fld = var2;
 		var5.ay_fld = var4;
 		synchronized (this) {
-			if (this.aw_fld != null) {
-				this.aw_fld.ah_fld = var5;
-				this.aw_fld = var5;
+			if (this.ah_fld != null) {
+				this.ah_fld.ah_fld = var5;
+				this.ah_fld = var5;
 			} else {
-				this.aw_fld = this.ah_fld = var5;
+				this.ah_fld = this.aw_fld = var5;
 			}
 
 			this.notify();
@@ -426,21 +420,41 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("lc")
+	@ObfuscatedSignature(
+		descriptor = "(Lla;)V"
+	)
+	public static void lc(la var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			synchronized (var0) {
+				var0.as_fld = true;
+				var0.notifyAll();
+			}
+
+			try {
+				var0.ay_fld.join();
+			} catch (InterruptedException var3) {
+			}
+		}
+	}
+
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(IIILjava/lang/Object;)Llv;"
 	)
-	final lv af(int var1, int var2, int var3, Object var4) {
+	final lv al(int var1, int var2, int var3, Object var4) {
 		lv var5 = new lv();
 		var5.aw_fld = -2098081252 * var1;
 		var5.av_fld = var2;
 		var5.ay_fld = var4;
 		synchronized (this) {
-			if (this.aw_fld != null) {
-				this.aw_fld.ah_fld = var5;
-				this.aw_fld = var5;
+			if (this.ah_fld != null) {
+				this.ah_fld.ah_fld = var5;
+				this.ah_fld = var5;
 			} else {
-				this.aw_fld = this.ah_fld = var5;
+				this.ah_fld = this.aw_fld = var5;
 			}
 
 			this.notify();
@@ -450,7 +464,7 @@ public class la implements Runnable {
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	static void ay() {
 		Iterator var1 = cz.ag_fld.iterator();
@@ -461,35 +475,20 @@ public class la implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;II)Llv;"
+	)
+	public final lv aw(String var1, int var2, int var3) {
+		return this.ah(1, var2, 0, var1, 565251711);
+	}
+
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Llv;"
 	)
-	public final lv an(String var1, int var2) {
-		return se(this, 1, var2, 0, var1);
-	}
-
-	@ObfuscatedName("eu")
-	@ObfuscatedSignature(
-		descriptor = "(Leg;)V"
-	)
-	public static void eu(eg var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.be_fld = null;
-		var0.bo_fld = null;
-		var0.br_fld = null;
-		var0.bp_fld = false;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Llv;"
-	)
-	public final lv aa(String var1, int var2) {
-		return se(this, 1, var2, 0, var1);
+	public final lv ax(String var1, int var2) {
+		return this.ah(1, var2, 0, var1, -627303707);
 	}
 
 	@ObfuscatedName("ai")
@@ -497,13 +496,22 @@ public class la implements Runnable {
 		descriptor = "(Ljava/lang/String;I)Llv;"
 	)
 	public final lv ai(String var1, int var2) {
-		return se(this, 1, var2, 0, var1);
+		return this.ah(1, var2, 0, var1, 965641958);
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Llv;"
+	)
+	public final lv an(String var1, int var2) {
+		return this.ah(1, var2, 0, var1, -265996175);
 	}
 
 	@ObfuscatedName("run")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("run")
 	@Override
 	public final void run() {
 		while (true) {
@@ -514,11 +522,11 @@ public class la implements Runnable {
 						return;
 					}
 
-					if (null != this.ah_fld) {
-						var1 = this.ah_fld;
-						this.ah_fld = this.ah_fld.ah_fld;
-						if (this.ah_fld == null) {
-							this.aw_fld = null;
+					if (null != this.aw_fld) {
+						var1 = this.aw_fld;
+						this.aw_fld = this.aw_fld.ah_fld;
+						if (this.aw_fld == null) {
+							this.ah_fld = null;
 						}
 						break;
 					}
@@ -558,37 +566,7 @@ public class la implements Runnable {
 		descriptor = "(I)V"
 	)
 	public static void ak(int var0) {
-		ow.ak_fld.vh();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Llv;"
-	)
-	final lv ah(int var1, int var2, int var3, Object var4, int var5) {
-		lv var6 = new lv();
-		var6.aw_fld = var1;
-		var6.av_fld = var2;
-		var6.ay_fld = var4;
-		synchronized (this) {
-			if (this.aw_fld != null) {
-				this.ah_fld.ah_fld = var6;
-				this.aw_fld = var6;
-			} else {
-				this.aw_fld = this.ah_fld = var6;
-			}
-
-			this.notify();
-			return var6;
-		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Llv;"
-	)
-	public final lv aw(String var1, int var2, int var3) {
-		return se(this, 1, var2, 0, var1);
+		ow.ak_fld.av();
 	}
 
 	@ObfuscatedName("ay")
@@ -596,6 +574,6 @@ public class la implements Runnable {
 		descriptor = "(Ljava/lang/Runnable;IB)Llv;"
 	)
 	public final lv ay(Runnable var1, int var2, byte var3) {
-		return se(this, 2, var2, 0, var1);
+		return this.ah(2, var2, 0, var1, 585526511);
 	}
 }

@@ -9,38 +9,38 @@ public class fr extends vw {
 		descriptor = "I"
 	)
 	static int aa_fld;
-	@ObfuscatedGetter(
-		intValue = -979830545
-	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int av_fld;
-	@ObfuscatedGetter(
-		intValue = 1034708409
-	)
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int az_fld;
-	@ObfuscatedGetter(
-		intValue = 1327381097
-	)
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	static int ao_fld;
-	@ObfuscatedGetter(
-		intValue = 250112973
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -979830545
+	)
 	public int ae_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1034708409
+	)
+	public int av_fld;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1327381097
+	)
+	static int ao_fld;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 250112973
+	)
+	public int az_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Llu;"
@@ -84,30 +84,22 @@ public class fr extends vw {
 
 	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int cq(int var0, ba var1, boolean var2) {
 		return 2;
 	}
 
 	public fr(int var1, int var2, int var3, lu var4) {
-		this.ae_fld = var1;
-		this.az_fld = var2;
-		this.av_fld = var3;
+		this.az_fld = var1;
+		this.av_fld = var2;
+		this.ae_fld = var3;
 		this.ah_fld = var4;
-	}
-
-	@ObfuscatedName("qw")
-	@ObfuscatedSignature(
-		descriptor = "(Lqk;)Lqt;"
-	)
-	public static qt qw(qk var0) {
-		return var0.ag_fld;
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(IB)I"
 	)
 	public static int az(int var0) {
 		return var0 + -512;

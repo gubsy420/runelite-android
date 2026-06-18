@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.util.Iterator;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -37,11 +38,11 @@ public class vf extends ws {
 		while (var2.hasNext()) {
 			me var3 = (me)(me)var2.next();
 			if (var3 != null && -1034371599 * var3.af_fld.aw_fld > 1 && var3.af_fld.an()) {
-				this.al("Attempted to load patches of already loading midiplayer!");
+				ws.dx(this, "Attempted to load patches of already loading midiplayer!", (byte)-94);
 				return true;
 			}
 
-			if (var3 != null && !var3.ej_fld) {
+			if (var3 != null && !var3.aw_fld) {
 				try {
 					if (null != var3.ak_fld && var3.ag_fld != -1 && var3.az_fld != -1) {
 						if (null == var3.au_fld) {
@@ -57,15 +58,15 @@ public class vf extends ws {
 
 						if (var3.af_fld.az(var3.au_fld, this.ak_fld, var3.al_fld)) {
 							var1++;
-							var3.ej_fld = true;
-							var3.af_fld.av((byte)19);
+							var3.aw_fld = true;
+							var3.af_fld.ae((byte)19);
 						}
 					} else {
 						var1++;
 					}
 				} catch (Exception var5) {
 					gl.ak(null, var5);
-					this.al(var5.getMessage());
+					ws.dx(this, var5.getMessage(), (byte)-100);
 					return true;
 				}
 			} else {
@@ -76,12 +77,68 @@ public class vf extends ws {
 		return var1 == mb.av_fld.size();
 	}
 
-	@ObfuscatedName("fl")
+	@ObfuscatedName("gp")
 	@ObfuscatedSignature(
-		descriptor = "(Lzg;)V"
+		descriptor = "(Lyi;Ljava/lang/Long;Lxi;)V"
 	)
-	public static void fl(zg var0) {
-		var0.ap_fld.clear();
+	public static void gp(yi var0, Long var1, xi var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var2.ft(var1);
+	}
+
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;Lfn;I)Lfn;"
+	)
+	public static fn ck(ol var0, fn var1, int var2) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (!var0.aa(1756849141)) {
+			var2 = var0.bk_fld[var2];
+			fe var9 = gz.ag(var2 >> 16);
+			var2 &= -556022227;
+			if (var9 == null) {
+				return var1.as(true);
+			} else {
+				fn var10 = var1.as(!var9.ag(var2));
+				var10.bm(var9, var2);
+				return var10;
+			}
+		} else {
+			int var4 = var0.br_fld * -220635486;
+			sp var6 = (sp)ol.bd_fld.ak(var4);
+			sp var5;
+			if (var6 != null) {
+				var5 = var6;
+			} else {
+				var6 = ld.ak(mc.at_fld, pm.ac_fld, var4);
+				if (var6 != null) {
+					ol.bd_fld.az(var6, var4);
+				}
+
+				var5 = var6;
+			}
+
+			sp var3;
+			if (var5 != null && sp.sp(var5, -2065362513)) {
+				var3 = var5;
+			} else {
+				var3 = null;
+			}
+
+			if (var3 == null) {
+				return var1.as(true);
+			} else {
+				fn var12 = var1.as(!var3.ah());
+				var12.bd(var3, var2);
+				return var12;
+			}
+		}
 	}
 
 	public vf(ws var1, ub var2, ub var3, ub var4) {
@@ -104,11 +161,11 @@ public class vf extends ws {
 		while (var3.hasNext()) {
 			me var4 = (me)(me)var3.next();
 			if (var4 != null && -1034371599 * var4.af_fld.aw_fld > 1 && var4.af_fld.an()) {
-				this.al("Attempted to load patches of already loading midiplayer!");
+				ws.dx(this, "Attempted to load patches of already loading midiplayer!", (byte)-101);
 				return true;
 			}
 
-			if (var4 != null && !var4.ej_fld) {
+			if (var4 != null && !var4.aw_fld) {
 				try {
 					if (null != var4.ak_fld && var4.ag_fld != -1 && var4.az_fld != -1) {
 						if (null == var4.au_fld) {
@@ -124,15 +181,15 @@ public class vf extends ws {
 
 						if (var4.af_fld.az(var4.au_fld, this.ak_fld, var4.al_fld)) {
 							var2++;
-							var4.ej_fld = true;
-							var4.af_fld.av((byte)-105);
+							var4.aw_fld = true;
+							var4.af_fld.ae((byte)-105);
 						}
 					} else {
 						var2++;
 					}
 				} catch (Exception var6) {
 					gl.ak(null, var6);
-					this.al(var6.getMessage());
+					ws.dx(this, var6.getMessage(), (byte)-28);
 					return true;
 				}
 			} else {

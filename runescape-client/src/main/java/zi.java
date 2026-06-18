@@ -11,12 +11,12 @@ public class zi {
 		descriptor = "[[B"
 	)
 	static byte[][] ax_fld = new byte[1000][];
-	@ObfuscatedGetter(
-		intValue = 1245723805
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1245723805
 	)
 	static int aw_fld = 0;
 	@ObfuscatedName("ag")
@@ -24,36 +24,36 @@ public class zi {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedGetter(
-		intValue = 241275359
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int ah_fld = 0;
 	@ObfuscatedGetter(
-		intValue = -204034939
+		intValue = 241275359
 	)
+	static int ah_fld = 0;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int al_fld = -1826308828;
 	@ObfuscatedGetter(
-		intValue = -1700668697
+		intValue = -204034939
 	)
+	static int al_fld = -1826308828;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int ay_fld = 0;
 	@ObfuscatedGetter(
-		intValue = -741356505
+		intValue = -1700668697
 	)
+	static int ay_fld = 0;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -741356505
 	)
 	static int as_fld = 0;
 	@ObfuscatedName("ao")
@@ -61,28 +61,28 @@ public class zi {
 		descriptor = "Ljava/util/ArrayList;"
 	)
 	public static ArrayList ao_fld = new ArrayList();
-	@ObfuscatedGetter(
-		intValue = -918444075
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int af_fld = -1459133422;
 	@ObfuscatedGetter(
-		intValue = -707165575
+		intValue = -918444075
 	)
+	static int af_fld = -1459133422;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int ar_fld = 2072013096;
 	@ObfuscatedGetter(
-		intValue = 497623359
+		intValue = -707165575
 	)
+	static int ar_fld = 2072013096;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 497623359
 	)
 	static int au_fld = -1201577650;
 	@ObfuscatedName("ak")
@@ -132,45 +132,6 @@ public class zi {
 		ao_fld.add(5000);
 		ao_fld.add(10000);
 		ao_fld.add(30000);
-	}
-
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(
-		descriptor = "(Lwj;III)I"
-	)
-	public static int ln(wj var0, int var1, int var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var2 >= var3 ? var1 : (int)((float)var2 / var3 * var1);
-	}
-
-	@ObfuscatedName("is")
-	@ObfuscatedSignature(
-		descriptor = "(Lsl;Lxi;)V"
-	)
-	public static void is(sl var0, xi var1) {
-		var1.bw(var0.av_fld);
-		if (var0.ag_fld == yq.ak_fld) {
-			var1.bc(0);
-
-			for (int var2 = 0; var2 < var0.av_fld; var2++) {
-				xi.ld(var1, var0.aw_fld[var2], (byte)114);
-			}
-		} else if (var0.ag_fld == yq.ag_fld) {
-			var1.bc(1);
-
-			for (int var3 = 0; var3 < var0.av_fld; var3++) {
-				var1.fn(var0.ay_fld[var3]);
-			}
-		} else if (yq.az_fld == var0.ag_fld) {
-			var1.bc(2);
-
-			for (int var4 = 0; var4 < var0.av_fld; var4++) {
-				var1.cc((String)var0.as_fld[var4], 1936208751);
-			}
-		}
 	}
 
 	@ObfuscatedName("aw")
@@ -231,6 +192,14 @@ public class zi {
 		}
 
 		return new byte[var0];
+	}
+
+	@ObfuscatedName("ra")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;)Lyz;"
+	)
+	public static yz ra(qg var0) {
+		return (yz)(yz)var0.az_fld.ae();
 	}
 
 	@ObfuscatedName("ah")
@@ -335,6 +304,24 @@ public class zi {
 		}
 
 		return new byte[var0];
+	}
+
+	@ObfuscatedName("ex")
+	@ObfuscatedSignature(
+		descriptor = "(Lna;)Lvw;"
+	)
+	public static vw ex(na var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		vw var1 = var0.ak_fld.hw_fld;
+		if (var1 == var0.ak_fld) {
+			return null;
+		} else {
+			var1.gy();
+			return var1;
+		}
 	}
 
 	@ObfuscatedName("ay")

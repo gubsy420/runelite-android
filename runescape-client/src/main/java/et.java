@@ -30,12 +30,48 @@ public class et extends rz {
 	)
 	static int bj_fld;
 
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public int ah(Object var1, Object var2) {
+		return this.ak((rr)var1, (rr)var2);
+	}
+
+	@ObfuscatedName("bp")
+	@ObfuscatedSignature(
+		descriptor = "(Let;Lrr;Lrr;)I"
+	)
+	public static int bp(et var0, rr var1, rr var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			if (0 != var1.ae_fld) {
+				if (var2.ae_fld == 0) {
+					return var0.ak_fld ? -1 : 1;
+				}
+			} else if (var2.ae_fld != 0) {
+				return var0.ak_fld ? 1 : -1;
+			}
+
+			return var0.as(var1, var2, -542554571);
+		}
+	}
+
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "(Luv;)Z"
+	)
+	public static boolean cw(uv var0) {
+		return 1 == var0.ax_fld;
+	}
+
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;IIII)Z"
+		descriptor = "(Lfn;IIIIB)Z"
 	)
 	static boolean am(fn var0, int var1, int var2, int var3, int var4) {
-		fm var6 = fn.ff(var0, var1);
+		fm var6 = var0.dq(var1);
 		int var7 = var2 + var6.ag_fld;
 		int var8 = var3 + var6.az_fld;
 		int var9 = var6.av_fld + var4;
@@ -66,7 +102,7 @@ public class et extends rz {
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return vf(this, (rr)var1, (rr)var2, 1050017623);
+		return this.ak((rr)var1, (rr)var2);
 	}
 
 	@ObfuscatedName("ae")
@@ -74,27 +110,7 @@ public class et extends rz {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ae(Object var1, Object var2) {
-		return vf(this, (rr)var1, (rr)var2, 1050017623);
-	}
-
-	@ObfuscatedName("vf")
-	@ObfuscatedSignature(
-		descriptor = "(Let;Lrr;Lrr;I)I"
-	)
-	public static int vf(et var0, rr var1, rr var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (0 != var1.ae_fld) {
-			if (var2.ae_fld == 0) {
-				return var0.ak_fld ? -1 : 1;
-			}
-		} else if (var2.ae_fld != 0) {
-			return var0.ak_fld ? 1 : -1;
-		}
-
-		return var0.as(var1, var2, 37063467);
+		return this.ak((rr)var1, (rr)var2);
 	}
 
 	public et(boolean var1) {
@@ -106,7 +122,19 @@ public class et extends rz {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int aw(Object var1, Object var2) {
-		return vf(this, (rr)var1, (rr)var2, 1050017623);
+		return this.ak((rr)var1, (rr)var2);
+	}
+
+	@ObfuscatedName("cs")
+	@ObfuscatedSignature(
+		descriptor = "(Lgn;IIIIZ)V"
+	)
+	public static void cs(gn var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ax(var1, var2, var3, var4, 0, var5, 729634147);
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -125,25 +153,9 @@ public class et extends rz {
 		return this.as(var1, var2, 32773602);
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
-	)
-	int az(rr var1, rr var2) {
-		if (0 != var1.ae_fld) {
-			if (var2.ae_fld == 0) {
-				return this.ak_fld ? -1 : 1;
-			}
-		} else if (var2.ae_fld != 0) {
-			return this.ak_fld ? 1 : -1;
-		}
-
-		return this.as(var1, var2, -542554571);
-	}
-
 	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void bt() {
 		bc.bv(jq.pa_fld, rl.pe_fld, hr.pr_fld, (byte)47);
@@ -184,10 +196,10 @@ public class et extends rz {
 				Object var2 = null;
 				switch (dn.ed_fld.ae_fld) {
 					case 0:
-						var2 = (xl)var1.au_fld.ak(client.et_fld);
+						var2 = (xl)var1.au_fld.ae(client.et_fld);
 						break;
 					case 1:
-						var2 = (xl)var1.ax_fld.ak(client.et_fld);
+						var2 = (xl)var1.ax_fld.ae(client.et_fld);
 						break;
 					case 2:
 						var2 = (xl)var1.an_fld.ak(client.et_fld);
@@ -196,9 +208,9 @@ public class et extends rz {
 						int var3 = kj.ag(client.et_fld);
 						int var4 = kj.az(client.et_fld);
 						int var5 = kj.av(client.et_fld);
-						int var6 = var4 - var1.ay_fld;
-						int var7 = var5 - var1.as_fld;
-						xp.mh(client.ew_fld, var3, var6, var7, (byte)-26);
+						int var6 = var4 - var1.as_fld;
+						int var7 = var5 - var1.ay_fld;
+						client.ew_fld.ag(var3, var6, var7);
 						var2 = client.ew_fld;
 				}
 
@@ -214,8 +226,8 @@ public class et extends rz {
 					}
 
 					tu var20 = mf.bn(var1, ((xl)var2).dp(-145047274), ((xl)var2).dj(189745805));
-					client.nw_fld = 819335889 * (int)var20.ay_fld;
-					client.nd_fld = -1289807201 * (int)var20.ar_fld;
+					client.nw_fld = 819335889 * (int)var20.ar_fld;
+					client.nd_fld = -1289807201 * (int)var20.as_fld;
 					var20.ah();
 				}
 
@@ -223,18 +235,18 @@ public class et extends rz {
 				if (ga.mr_fld - client.nw_fld >= -500 && ga.mr_fld - client.nw_fld <= 500 && an.mu_fld - client.nd_fld >= -500 && an.mu_fld - client.nd_fld <= 500) {
 					if (client.nw_fld != ga.mr_fld) {
 						ga.mr_fld = ga.mr_fld + 1909255969 * ((client.nw_fld - ga.mr_fld) / 16);
-						client.sr();
+						client.ix();
 					}
 
 					if (an.mu_fld != client.nd_fld) {
 						an.mu_fld = an.mu_fld + (client.nd_fld - an.mu_fld) / 16 * -1167715809;
-						client.vd();
+						client.ft();
 					}
 				} else {
 					ga.mr_fld = 1939999569 * client.nw_fld;
-					client.sr();
+					client.ix();
 					an.mu_fld = client.nd_fld * -1014146943;
-					client.vd();
+					client.ft();
 				}
 
 				int var21 = ga.mr_fld >> 7;
@@ -272,10 +284,10 @@ public class et extends rz {
 
 				if (var32 > client.mc_fld) {
 					client.mc_fld = client.mc_fld + (var32 - client.mc_fld) / 24 * -970994453;
-					client.sy();
+					client.zl_void(-1);
 				} else if (var32 < client.mc_fld) {
 					client.mc_fld = client.mc_fld + (var32 - client.mc_fld) / 80 * -970994453;
-					client.sy();
+					client.zl_void(-1);
 				}
 
 				int var33 = ((xl)var2).dp(328644018);
@@ -289,14 +301,14 @@ public class et extends rz {
 
 				client.nb_fld = var12;
 				xg.mo_fld = client.nb_fld - client.dy_fld;
-				client.rg();
+				client.ly(-1);
 			} else if (1 == client.dg_fld) {
 				int var22;
 				ce.hn((byte)100);
 				short var15 = -1;
-				if (client.ej_fld.ay(33)) {
+				if (client.ej_fld.as(33)) {
 					var15 = 0;
-				} else if (client.ej_fld.ay(49)) {
+				} else if (client.ej_fld.as(49)) {
 					if (var0 >= 1759064092) {
 						return;
 					}
@@ -304,7 +316,7 @@ public class et extends rz {
 					var15 = 1024;
 				}
 
-				if (client.ej_fld.ay(48)) {
+				if (client.ej_fld.as(48)) {
 					if (var15 == 0) {
 						var15 = 1792;
 					} else if (1024 == var15) {
@@ -312,7 +324,7 @@ public class et extends rz {
 					} else {
 						var15 = 1536;
 					}
-				} else if (client.ej_fld.ay(50)) {
+				} else if (client.ej_fld.as(50)) {
 					if (var0 >= 1759064092) {
 						return;
 					}
@@ -331,13 +343,13 @@ public class et extends rz {
 				}
 
 				byte var18 = 0;
-				if (client.ej_fld.ay(35)) {
+				if (client.ej_fld.as(35)) {
 					if (var0 >= 1759064092) {
 						return;
 					}
 
 					var18 = -1;
-				} else if (client.ej_fld.ay(51)) {
+				} else if (client.ej_fld.as(51)) {
 					var18 = 1;
 				}
 
@@ -353,7 +365,7 @@ public class et extends rz {
 						}
 					}
 
-					var22 = client.ej_fld.ay(81) ? client.dn_fld : client.di_fld;
+					var22 = client.ej_fld.as(81) ? client.dn_fld : client.di_fld;
 					var22 *= 16;
 					client.mb_fld = var15;
 					client.ms_fld = var18;
@@ -387,17 +399,17 @@ public class et extends rz {
 						int var28 = fc.ah_fld[var16];
 						int var30 = fc.aw_fld[var16];
 						ga.mr_fld += var25 * var28 / 65536 * 1909255969;
-						client.sr();
+						client.ix();
 						an.mu_fld += -1167715809 * (var30 * var25 / 65536);
-						client.vd();
+						client.ft();
 					}
 
 					if (client.ms_fld != 0) {
 						xg.mo_fld = xg.mo_fld + -1135704151 * client.ms_fld * var25;
-						client.rg();
+						client.ly(-1);
 						if (xg.mo_fld > 0) {
 							xg.mo_fld = 0;
-							client.rg();
+							client.ly(-1);
 						}
 					}
 				} else {
@@ -408,18 +420,18 @@ public class et extends rz {
 				int var26 = ev.aw(client.dw_fld);
 				if (var26 > client.mc_fld) {
 					client.mc_fld = client.mc_fld + (var26 - client.mc_fld) / 24 * -970994453;
-					client.sy();
+					client.zl_void(-1);
 				} else if (var26 < client.mc_fld) {
 					if (var0 >= 1759064092) {
 						return;
 					}
 
 					client.mc_fld = client.mc_fld + (var26 - client.mc_fld) / 80 * -970994453;
-					client.sy();
+					client.zl_void(-1);
 				}
 
-				if (client.ej_fld.ay(13)) {
-					client.aq_fld.az(gi.ak(jb.dq_fld, client.aq_fld.av_fld));
+				if (client.ej_fld.as(13)) {
+					client.appletStub.az(gi.ak(jb.dq_fld, client.appletStub.av_fld));
 					client.dg_fld = 0;
 				}
 			}
@@ -427,29 +439,29 @@ public class et extends rz {
 			if (tj.av_fld == 4 && gu.hh_fld) {
 				int var17 = tj.ah_fld - client.ju_fld;
 				client.jq_fld = var17 * -482602174;
-				client.rn();
+				client.dd();
 				client.ju_fld = -400692885 * (-1 != var17 && var17 != 1 ? (tj.ah_fld + client.ju_fld) / 2 : tj.ah_fld);
 				int var19 = client.jp_fld - tj.ae_fld;
 				client.jh_fld = -1527264990 * var19;
 				client.jp_fld = var19 != -1 && var19 != 1 ? (tj.ae_fld + client.jp_fld) / 2 : tj.ae_fld;
 			} else {
-				if (client.ej_fld.ay(96)) {
+				if (client.ej_fld.as(96)) {
 					client.jh_fld = client.jh_fld + -763632495 * ((-24 - client.jh_fld) / 2);
-				} else if (client.ej_fld.ay(97)) {
+				} else if (client.ej_fld.as(97)) {
 					client.jh_fld = client.jh_fld + (24 - client.jh_fld) / 2 * -763632495;
 				} else {
 					client.jh_fld /= -925320990;
 				}
 
-				if (client.ej_fld.ay(98)) {
+				if (client.ej_fld.as(98)) {
 					client.jq_fld = client.jq_fld + (12 - client.jq_fld) / 2 * 1906182561;
-					client.rn();
-				} else if (client.ej_fld.ay(99)) {
+					client.dd();
+				} else if (client.ej_fld.as(99)) {
 					client.jq_fld = client.jq_fld + 1906182561 * ((-12 - client.jq_fld) / 2);
-					client.rn();
+					client.dd();
 				} else {
 					client.jq_fld = 1906182561 * (client.jq_fld / 2);
-					client.rn();
+					client.dd();
 				}
 
 				client.ju_fld = tj.ah_fld * 1015002685;
@@ -458,9 +470,9 @@ public class et extends rz {
 
 			client.js_fld = 814406037 * (client.jh_fld / 2 + client.js_fld & 2047);
 			client.jf_fld = client.jf_fld + -1814572343 * (client.jq_fld / 2);
-			client.dl();
+			client.bc();
 			client.jf_fld = ji.bo(client.jf_fld);
-			client.dl();
+			client.bc();
 		} catch (Throwable var14) {
 			throw new RuntimeException(var14);
 		}
@@ -485,7 +497,7 @@ public class et extends rz {
 				}
 
 				for (int var15 = var4; var15 < 8 + var4; var15++) {
-					if (var13.af(var14, var15, (byte)2)) {
+					if (gn.ve(var13, var14, var15, (byte)2)) {
 						var13.ar(var14, var15, 1073741824, 1115189408);
 					}
 				}
@@ -535,28 +547,16 @@ public class et extends rz {
 		}
 	}
 
-	@ObfuscatedName("fa")
-	@ObfuscatedSignature(
-		descriptor = "(Let;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int fa(et var0, Object var1, Object var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return vf(var0, (rr)var1, (rr)var2, 1050017623);
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lrr;Lrr;I)I"
 	)
-	int ak(rr var1, rr var2, int var3) {
-		if (0 != var1.aw_fld) {
-			if (1107825689 * var2.ah_fld == 0) {
+	int ak(rr var1, rr var2) {
+		if (0 != var1.ae_fld) {
+			if (var2.ae_fld == 0) {
 				return this.ak_fld ? -1 : 1;
 			}
-		} else if (1107825689 * var2.aw_fld != 0) {
+		} else if (var2.ae_fld != 0) {
 			return this.ak_fld ? 1 : -1;
 		}
 

@@ -10,9 +10,31 @@ public class ne extends vc {
 	)
 	public static iw ak_fld = new iw(64);
 
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "(Lzv;Ljava/lang/String;I)I"
+	)
+	public static int dv(zv var0, String var1, int var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			int var3 = zv.sh(var0, var1, new int[]{var2}, zv.ab_fld);
+			int var4 = 0;
+
+			for (int var5 = 0; var5 < var3; var5++) {
+				int var6 = var0.an(zv.ab_fld[var5]);
+				if (var6 > var4) {
+					var4 = var6;
+				}
+			}
+
+			return var4;
+		}
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int al(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -69,6 +91,48 @@ public class ne extends vc {
 			}
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("us")
+	@ObfuscatedSignature(
+		descriptor = "(Lwt;)I"
+	)
+	public static int us(wt var0) throws EOFException {
+		try {
+			if (var0.ae_fld == null) {
+				var0.aw_fld = 1402900404;
+				var0.ay_fld = true;
+			} else {
+				if (var0.aw_fld < 33) {
+					if (!var0.ah_fld.co(hc.ag_fld.ah_fld, var0.ae_fld.ar(-1532736615), -550674105)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = -267187307;
+				}
+
+				if (var0.aw_fld == 33) {
+					if (var0.ah_fld.ck(hc.az_fld.ah_fld, var0.ae_fld.ar(-1001854581), (byte)-116) && !var0.ah_fld.co(hc.az_fld.ah_fld, var0.ae_fld.ar(517698192), -847456358)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = -534374614;
+				}
+
+				if (66 == var0.aw_fld) {
+					if (!var0.ah_fld.co(var0.ae_fld.ar(-2112439658), hc.ae_fld.ah_fld, -82932198)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = 1402900404;
+					var0.ay_fld = true;
+				}
+			}
+
+			return var0.aw_fld;
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
 		}
 	}
 

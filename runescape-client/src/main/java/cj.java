@@ -141,7 +141,7 @@ public class cj {
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static final int aa(int var0, int var1) {
 		int var3 = ue.ai(var0 + 45365, var1 + 91923, 4) - 128 + (ue.ai(var0 + 10294, var1 + 37821, 2) - 128 >> 1) + (ue.ai(var0, var1, 1) - 128 >> 2);
@@ -155,12 +155,43 @@ public class cj {
 		return var3;
 	}
 
+	@ObfuscatedName("ym")
+	@ObfuscatedSignature(
+		descriptor = "(Lfu;)Llu;"
+	)
+	public static lu ym(fu var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld;
+		}
+	}
+
+	@ObfuscatedName("tm")
+	@ObfuscatedSignature(
+		descriptor = "(Lfz;I)I"
+	)
+	public static int tm(fz var0, int var1) {
+		return var0.av_fld[var1];
+	}
+
+	@ObfuscatedName("ro")
+	@ObfuscatedSignature(
+		descriptor = "(Lpb;)V"
+	)
+	public static void ro(pb var0) {
+		var0.ak_fld.clear();
+		var0.ag_fld.clear();
+		var0.az_fld.clear();
+		var0.av_fld.clear();
+	}
+
 	cj() {
 	}
 
 	@ObfuscatedName("gu")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static final int gu() {
 		return xy.kh_fld.av();
@@ -168,7 +199,7 @@ public class cj {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lkx;"
+		descriptor = "(B)[Lkx;"
 	)
 	public static kx[] ak() {
 		return new kx[]{kx.ag_fld, kx.ak_fld, kx.av_fld, kx.az_fld};

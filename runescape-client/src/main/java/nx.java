@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -19,36 +20,24 @@ class nx implements Comparator {
 		return super.equals(var1);
 	}
 
+	@ObfuscatedName("hy")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;I)I"
+	)
+	public static int hy(zg var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.aq(var1, var1 + 1);
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lnl;Lnl;I)I"
 	)
 	int ak(nl var1, nl var2, int var3) {
 		return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
-	}
-
-	@ObfuscatedName("tq")
-	@ObfuscatedSignature(
-		descriptor = "(Lnx;Lnl;Lnl;)I"
-	)
-	public static int tq(nx var0, nl var1, nl var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
-		}
-	}
-
-	@ObfuscatedName("mp")
-	@ObfuscatedSignature(
-		descriptor = "(Lnx;Lnl;Lnl;)I"
-	)
-	public static int mp(nx var0, nl var1, nl var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
-		}
 	}
 
 	@ObfuscatedName("ae")
@@ -59,16 +48,12 @@ class nx implements Comparator {
 		return this.ak((nl)var1, (nl)var2, 882740727);
 	}
 
-	@ObfuscatedName("yn")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lnx;Ljava/lang/Object;)Z"
+		descriptor = "(Lnl;Lnl;)I"
 	)
-	public static boolean yn(nx var0, Object var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.equals(var1);
-		}
+	int ag(nl var1, nl var2) {
+		return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
 	}
 
 	nx() {
@@ -82,17 +67,33 @@ class nx implements Comparator {
 		return this.ak((nl)var1, (nl)var2, 2045893693);
 	}
 
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public int aw(Object var1, Object var2) {
+		return this.ak((nl)var1, (nl)var2, 1449243547);
+	}
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jt(Object var1) {
+		return super.equals(var1);
+	}
+
 	@ObfuscatedName("gf")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
 	static final void gf(int var0) throws EOFException {
 		try {
-			jm var1 = gi.ak(jb.bd_fld, client.aq_fld.av_fld);
-			client.aq_fld.az(var1);
+			jm var1 = gi.ak(jb.bd_fld, client.appletStub.av_fld);
+			client.appletStub.az(var1);
 			bp.bd_fld = true;
 
-			for (pk var2 = (pk)cf.cg_fld.ai_fld.aq(); var2 != null; var2 = (pk)xz.aa(cf.cg_fld.ai_fld)) {
+			for (pk var2 = (pk)cf.cg_fld.an_fld.av(); var2 != null; var2 = (pk)cf.cg_fld.an_fld.ae()) {
 				if (var0 <= 1885599583) {
 					return;
 				}
@@ -133,9 +134,18 @@ class nx implements Comparator {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lnl;Lnl;)I"
+	)
+	int az(nl var1, nl var2) {
+		return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
 	}
 
 	@ObfuscatedName("compare")
@@ -145,13 +155,5 @@ class nx implements Comparator {
 	@Override
 	public int compare(Object var1, Object var2) {
 		return this.ak((nl)var1, (nl)var2, 1275318847);
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;)I"
-	)
-	int ag(nl var1, nl var2) {
-		return var1.ag_fld < var2.ag_fld ? -1 : (var2.ag_fld == var1.ag_fld ? 0 : 1);
 	}
 }

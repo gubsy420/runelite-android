@@ -1,4 +1,6 @@
+import java.awt.Graphics;
 import net.runelite.api.Hitsplat;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -7,33 +9,33 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("du")
 @Implements({"Hitsplat"})
 public class du implements Hitsplat {
-	@ObfuscatedGetter(
-		intValue = -934135659
+	@ObfuscatedName("xd")
+	@ObfuscatedSignature(
+		descriptor = "Ldu;"
 	)
+	public static du xd_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld = -316330685;
-	@ObfuscatedName("dr")
-	@ObfuscatedSignature(
-		descriptor = "Ldu;"
-	)
-	public static du dr_fld;
 	@ObfuscatedGetter(
-		intValue = -1984447153
+		intValue = -934135659
 	)
+	int ak_fld = -316330685;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -757309927
+		intValue = -1984447153
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -757309927
 	)
 	int az_fld;
 	@ObfuscatedName("bl")
@@ -57,7 +59,59 @@ public class du implements Hitsplat {
 	)
 	static lv lk_fld;
 
+	@ObfuscatedName("getHitsplatType")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHitsplatType")
+	@Override
+	public int getHitsplatType() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("th")
+	@ObfuscatedSignature(
+		descriptor = "(Lte;Ljava/awt/Graphics;II)V"
+	)
+	public static void th(te var0, Graphics var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		try {
+			var1.drawImage(var0.ak_fld, var2, var3, var0.ag_fld);
+		} catch (Exception var5) {
+			var0.ag_fld.repaint();
+		}
+	}
+
 	du() {
+	}
+
+	@ObfuscatedName("getDisappearsOnGameCycle")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getDisappearsOnGameCycle")
+	@Override
+	public int getDisappearsOnGameCycle() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("lj")
+	@ObfuscatedSignature(
+		descriptor = "(Ldu;)I"
+	)
+	public static int lj(du var0) {
+		return var0.ak_fld;
+	}
+
+	@ObfuscatedName("cu")
+	@ObfuscatedSignature(
+		descriptor = "(Lml;)I"
+	)
+	public static int cu(ml var0) {
+		return var0.al_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -65,67 +119,26 @@ public class du implements Hitsplat {
 		descriptor = "(IIII)V"
 	)
 	void ak(int var1, int var2, int var3, int var4) {
-		this.fc(var1, var2, var3);
+		this.yh(var1, var2, var3);
 		this.ak_fld = var1;
 		this.ag_fld = var2;
 		this.az_fld = var3;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(B)I"
-	)
-	int ag(byte var1) {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int ar() {
+	int an() {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("getHitsplatType")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getHitsplatType() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	int az(int var1) {
+	int av(int var1) {
 		return this.ag_fld;
-	}
-
-	@ObfuscatedName("fc")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void fc(int var1, int var2, int var3) {
-		dr_fld = this;
-	}
-
-	@ObfuscatedName("th")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZ)Z"
-	)
-	public static boolean th(sb var0, boolean var1, boolean var2, boolean var3) {
-		return var0.aw(var0.ay_fld, var1, var2, var3);
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int as() {
-		return this.ak_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -138,18 +151,6 @@ public class du implements Hitsplat {
 		this.az_fld = var3;
 	}
 
-	@ObfuscatedName("fy")
-	@ObfuscatedSignature(
-		descriptor = "(Ldu;I)I"
-	)
-	public static int fy(du var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.az_fld;
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(III)V"
@@ -160,62 +161,80 @@ public class du implements Hitsplat {
 		this.az_fld = var3 * -1627157748;
 	}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ay() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("getAmount")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getAmount() {
-		return this.ag_fld;
-	}
-
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	int al() {
-		return this.az_fld;
+		return this.ak_fld;
 	}
 
-	@ObfuscatedName("getDisappearsOnGameCycle")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
-	@Override
-	public int getDisappearsOnGameCycle() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int af() {
+	int az(int var1) {
 		return this.az_fld;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void ak() {
-		oz.ak_fld.vh();
+		oz.ak_fld.av();
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int au() {
+	int ar() {
 		return this.az_fld;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ay() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("zu")
+	@ObfuscatedSignature(
+		descriptor = "(Ldu;B)I"
+	)
+	public static int zu(du var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak_fld;
+	}
+
+	@ObfuscatedName("sq")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public void sq(int var1, int var2, int var3) {
+		this.ak(var1, var2, var3, -1045138312);
+	}
+
+	@ObfuscatedName("yh")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public void yh(int var1, int var2, int var3) {
+		xd_fld = this;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ax() {
+		return this.ag_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -228,11 +247,29 @@ public class du implements Hitsplat {
 		this.az_fld = var3;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("getAmount")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "()I"
 	)
-	int av(int var1) {
+	@Export("getAmount")
+	@Override
+	public int getAmount() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)I"
+	)
+	int ag(byte var1) {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int au() {
 		return this.ag_fld;
 	}
 }

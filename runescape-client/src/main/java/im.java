@@ -9,12 +9,12 @@ public class im extends ht {
 		descriptor = "I"
 	)
 	public static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -1061825399
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1061825399
 	)
 	int ak_fld;
 	// $VF: synthetic field
@@ -23,12 +23,12 @@ public class im extends ht {
 		descriptor = "Lia;"
 	)
 	ia this$0;
-	@ObfuscatedGetter(
-		longValue = 592279294055963025L
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = 592279294055963025L
 	)
 	long ag_fld;
 
@@ -47,8 +47,8 @@ public class im extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = var1.co();
-		this.ag_fld = xi.ob(var1, -142504090);
+		this.ak_fld = var1.co((byte)0);
+		this.ag_fld = var1.cu();
 	}
 
 	@ObfuscatedName("ag")
@@ -66,20 +66,8 @@ public class im extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = var1.co() * 1624354708;
-		this.ag_fld = xi.ob(var1, -645543088);
-	}
-
-	@ObfuscatedName("ox")
-	@ObfuscatedSignature(
-		descriptor = "(Led;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int ox(ed var0, Object var1, Object var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak((rr)var1, (rr)var2);
+		this.ak_fld = var1.co((byte)-127) * 1624354708;
+		this.ag_fld = var1.cu();
 	}
 
 	@ObfuscatedName("av")
@@ -88,8 +76,8 @@ public class im extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = xi.ob(var1, 633949065);
+		this.ak_fld = var1.co((byte)-104);
+		this.ag_fld = var1.cu();
 	}
 
 	@ObfuscatedName("ae")
@@ -98,8 +86,8 @@ public class im extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = var1.co() * -1814677800;
-		this.ag_fld = xi.ob(var1, 695835682);
+		this.ak_fld = var1.co((byte)-110) * -1814677800;
+		this.ag_fld = var1.cu();
 	}
 
 	im(ia var1) {
@@ -126,7 +114,7 @@ public class im extends ht {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;)V"
+		descriptor = "(Lub;I)V"
 	)
 	public static void ak(ub var0) {
 		ou.aw_fld = var0;
@@ -134,7 +122,7 @@ public class im extends ht {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Z)[B"
+		descriptor = "(Ljava/lang/Object;ZI)[B"
 	)
 	public static byte[] ak(Object var0, boolean var1) {
 		if (var0 == null) {
@@ -159,12 +147,12 @@ public class im extends ht {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;B)V"
 	)
 	static final void ae(String var0) {
-		jm var2 = gi.ak(jb.cp_fld, client.aq_fld.av_fld);
-		var2.ay_fld.bc(iq.bu(var0));
-		var2.ay_fld.cc(var0, 1003867405);
-		client.aq_fld.az(var2);
+		jm var2 = gi.ak(jb.cp_fld, client.appletStub.av_fld);
+		var2.ay_fld.ea(iq.bu(var0));
+		xi.ph(var2.ay_fld, var0, 1003867405);
+		client.appletStub.az(var2);
 	}
 }

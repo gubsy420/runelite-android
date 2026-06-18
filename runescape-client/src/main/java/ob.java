@@ -4,28 +4,28 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ob")
 public class ob extends oj {
-	@ObfuscatedGetter(
-		intValue = -1216725961
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 2130536313
+		intValue = -1216725961
 	)
+	int ag_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1384323255
+		intValue = 2130536313
 	)
+	int av_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1384323255
 	)
 	int az_fld;
 	@ObfuscatedName("ek")
@@ -39,38 +39,30 @@ public class ob extends oj {
 		descriptor = "Lpb;"
 	)
 	pb this$0;
-	@ObfuscatedGetter(
-		intValue = -685924557
-	)
 	@ObfuscatedName("dz")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public static int dz_fld;
 	@ObfuscatedGetter(
-		intValue = -403957265
+		intValue = -685924557
 	)
+	public static int dz_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
 	@ObfuscatedGetter(
-		intValue = -1741926049
+		intValue = -403957265
 	)
+	int ak_fld;
 	@ObfuscatedName("oy")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int oy_fld;
-
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "(Ldu;)I"
+	@ObfuscatedGetter(
+		intValue = -1741926049
 	)
-	public static int pw(du var0) {
-		return var0.ag_fld;
-	}
+	static int oy_fld;
 
 	ob(pb var1, String var2, int var3, int var4, int var5, int var6) {
 		super(var1, var2);

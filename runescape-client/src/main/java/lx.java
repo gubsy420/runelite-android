@@ -44,27 +44,6 @@ public class lx {
 	)
 	static int ao_fld;
 
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "(Luf;Luf;Luf;)V"
-	)
-	public static void dw(uf var0, uf var1, uf var2) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.aw(var1, var2);
-			var0.ay(var1, var2);
-		}
-	}
-
-	@ObfuscatedName("vk")
-	@ObfuscatedSignature(
-		descriptor = "(Lqa;)I"
-	)
-	public static int vk(qa var0) {
-		return var0.ah_fld;
-	}
-
 	lx() throws Throwable {
 		throw new Error();
 	}

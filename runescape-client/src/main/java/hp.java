@@ -46,7 +46,7 @@ public class hp {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;)[B"
+		descriptor = "(Ljava/lang/CharSequence;B)[B"
 	)
 	public static byte[] ak(CharSequence var0) {
 		int var2 = var0.length();
@@ -69,7 +69,7 @@ public class hp {
 		descriptor = "(ILpp;IZLds;Ljava/lang/String;IIIII)V"
 	)
 	static void fr(int var0, pp var1, int var2, boolean var3, ds var4, String var5, int var6, int var7, int var8, int var9, int var10) throws EOFException {
-		if (pp.es(var1, (byte)44).as(1022863144)) {
+		if (pp.ij(var1, (byte)44).ak(1022863144)) {
 			for (int var11 = 4; var11 >= 0; var11--) {
 				if (!client.cp_fld) {
 					if (tl.ks_fld) {
@@ -84,7 +84,7 @@ public class hp {
 					}
 				}
 
-				String var12 = pp.es(var1, (byte)52).ae(var11, rt.ag_fld, 1899227782);
+				String var12 = pp.ij(var1, (byte)52).ae(var11, rt.ag_fld, 1899227782);
 				if (var3) {
 					if (null == var12) {
 						continue;
@@ -176,7 +176,7 @@ public class hp {
 					}
 
 					int var14 = ky.fl(var12, var5, var13, var6, var7, var8, -1, false, var9);
-					pg.fs(var14, pp.es(var1, (byte)21), var11, var5, var13, var6, var7, var8, var9, -1355642205);
+					pg.fs(var14, pp.ij(var1, (byte)21), var11, var5, var13, var6, var7, var8, var9, -1355642205);
 				}
 			}
 		}
@@ -184,7 +184,7 @@ public class hp {
 
 	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;"
+		descriptor = "(Ljava/lang/String;II)Ljava/lang/String;"
 	)
 	public static final String be(String var0, int var1) {
 		if (null == var0) {

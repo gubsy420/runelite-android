@@ -1,6 +1,7 @@
 import java.awt.Font;
 import java.io.EOFException;
 import net.runelite.api.WidgetNode;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -14,12 +15,12 @@ public class pk extends vw implements WidgetNode {
 		descriptor = "I"
 	)
 	public static int au_fld;
-	@ObfuscatedGetter(
-		intValue = 1840969525
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1840969525
 	)
 	public int ag_fld;
 	@ObfuscatedName("az")
@@ -32,12 +33,12 @@ public class pk extends vw implements WidgetNode {
 		descriptor = "Ljava/awt/Font;"
 	)
 	static Font rp_fld;
-	@ObfuscatedGetter(
-		intValue = -1786860027
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1786860027
 	)
 	public int ak_fld;
 	@ObfuscatedName("ac")
@@ -46,21 +47,23 @@ public class pk extends vw implements WidgetNode {
 	)
 	static int ac_fld;
 
-	pk() {
-	}
-
-	@ObfuscatedName("wo")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)Llu;"
+		descriptor = "(Lda;)I"
 	)
-	public static lu wo(uk var0) {
-		return var0.ak_fld;
+	public static int cc(da var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.cg_fld.af_fld * 1878866955;
 	}
 
 	@ObfuscatedName("getId")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getId")
 	@Override
 	public int getId() {
 		return this.ak_fld;
@@ -70,22 +73,18 @@ public class pk extends vw implements WidgetNode {
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getModalMode")
 	@Override
 	public int getModalMode() {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ee")
-	@ObfuscatedSignature(
-		descriptor = "(Laq;)I"
-	)
-	public static int ee(aq var0) {
-		return var0.ab_fld;
+	pk() {
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZLuo;Lqg;)V"
+		descriptor = "(IIIZLuo;Lqg;B)V"
 	)
 	public static final void az(int var0, int var1, int var2, boolean var3, uo var4, qg var5) throws EOFException {
 		try {

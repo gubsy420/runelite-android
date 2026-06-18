@@ -8,19 +8,19 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("org/bouncycastle/crypto/tls/TlsClientProtocol")
 public class TlsClientProtocol {
-	@ObfuscatedName("getInputStream")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/io/InputStream;"
-	)
-	public InputStream getInputStream() {
-		return null;
-	}
-
 	@ObfuscatedName("getOutputStream")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/io/OutputStream;"
 	)
 	public OutputStream getOutputStream() {
+		return null;
+	}
+
+	@ObfuscatedName("getInputStream")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/io/InputStream;"
+	)
+	public InputStream getInputStream() {
 		return null;
 	}
 

@@ -35,12 +35,12 @@ public class qx {
 		descriptor = "I"
 	)
 	public static int cu_fld;
-	@ObfuscatedGetter(
-		intValue = 1586408085
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1586408085
 	)
 	int ak_fld;
 	@ObfuscatedName("cd")
@@ -48,6 +48,14 @@ public class qx {
 		descriptor = "I"
 	)
 	static int cd_fld;
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Map;"
+	)
+	public Map af() {
+		return this.az_fld;
+	}
 
 	qx(String var1) {
 		this.ak_fld = -868866224;
@@ -62,6 +70,14 @@ public class qx {
 	)
 	public String as() {
 		return this.ag_fld;
+	}
+
+	@ObfuscatedName("ug")
+	@ObfuscatedSignature(
+		descriptor = "(Lqx;)Ljava/util/Map;"
+	)
+	public static Map ug(qx var0) {
+		return var0.az_fld;
 	}
 
 	qx(HttpURLConnection var1) throws IOException {
@@ -87,18 +103,26 @@ public class qx {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Map;"
+		descriptor = "(I)Ljava/util/Map;"
 	)
 	public Map az() {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)Ljava/lang/String;"
 	)
-	public int ae() {
-		return this.ak_fld;
+	public String av() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("of")
+	@ObfuscatedSignature(
+		descriptor = "(Lqx;)Ljava/lang/String;"
+	)
+	public static String of(qx var0) {
+		return var0.av_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -109,28 +133,20 @@ public class qx {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ak() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String ax() {
-		return this.av_fld;
+	public String aw() {
+		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Map;"
+		descriptor = "(B)I"
 	)
-	public Map ar() {
-		return this.az_fld;
+	public int ak() {
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -149,18 +165,6 @@ public class qx {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("pj")
-	@ObfuscatedSignature(
-		descriptor = "(Lqx;B)Ljava/lang/String;"
-	)
-	public static String pj(qx var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.av_fld;
-		}
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Map;"
@@ -171,17 +175,9 @@ public class qx {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	public String ag() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;"
-	)
-	public String av(byte var1) {
 		return this.ag_fld;
 	}
 }

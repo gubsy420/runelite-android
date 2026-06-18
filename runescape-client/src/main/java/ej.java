@@ -44,12 +44,12 @@ public class ej {
 		descriptor = "I"
 	)
 	static int an_fld;
-	@ObfuscatedGetter(
-		intValue = 1348149579
-	)
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1348149579
 	)
 	public static int bs_fld = 0;
 	@ObfuscatedName("ac")
@@ -72,12 +72,12 @@ public class ej {
 		descriptor = "I"
 	)
 	public static int av_fld;
-	@ObfuscatedGetter(
-		intValue = 1743370615
-	)
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1743370615
 	)
 	public static int bh_fld = 0;
 	@ObfuscatedName("cc")
@@ -85,12 +85,12 @@ public class ej {
 		descriptor = "[J"
 	)
 	public static long[] cc_fld = new long[1000];
-	@ObfuscatedGetter(
-		intValue = 2104290501
-	)
 	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2104290501
 	)
 	public static int cd_fld = 0;
 	@ObfuscatedName("ak")
@@ -223,7 +223,7 @@ public class ej {
 		ki.bq_fld = Math.abs(kl.bc_fld);
 		db.bg_fld = Math.abs(hg.bw_fld);
 		hm.bb_fld = Math.abs(ei.ba_fld);
-		tu.md(br_fld, var3 - var0, var4 - var1, var5 - var2, (byte)5);
+		tu.fh(br_fld, var3 - var0, var4 - var1, var5 - var2, (byte)5);
 		br_fld.al();
 		bk_fld = true;
 	}
@@ -255,14 +255,6 @@ public class ej {
 		}
 
 		return var7;
-	}
-
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "(Lsb;ZZZ)Z"
-	)
-	public static boolean gl(sb var0, boolean var1, boolean var2, boolean var3) {
-		return var0.aw(var0.ah_fld * -786133429, var1, var2, var3);
 	}
 
 	@ObfuscatedName("bu")
@@ -383,7 +375,7 @@ public class ej {
 		ki.bq_fld = Math.abs(kl.bc_fld * 1426603213) * 600840382;
 		db.bg_fld = Math.abs(hg.bw_fld);
 		hm.bb_fld = Math.abs(1155642031 * ei.ba_fld) * -382803323;
-		tu.md(br_fld, var3 - var0, var4 - var1, var5 - var2, (byte)-98);
+		tu.fh(br_fld, var3 - var0, var4 - var1, var5 - var2, (byte)-98);
 		br_fld.al();
 		bk_fld = true;
 	}
@@ -481,17 +473,17 @@ public class ej {
 			int var8 = (bs_fld - var1) * var5 / var3;
 			int var9 = var5 * (bh_fld - var2) / var3;
 			uy var10 = cv.ag(var0);
-			var10.aq();
+			var10.aw();
 			float[] var11 = new float[3];
-			uy.vt(var10, var6, var7, var4, var11, 1812384499);
+			var10.ad(var6, var7, var4, var11);
 			var6 = (int)var11[0];
 			var7 = (int)var11[1];
 			var4 = (int)var11[2];
-			uy.vt(var10, var8, var9, var5, var11, 1093570263);
+			var10.ad(var8, var9, var5, var11);
 			var8 = (int)var11[0];
 			var9 = (int)var11[1];
 			var5 = (int)var11[2];
-			uy.vt(var10, 0.0F, 0.0F, 0.0F, var11, -1899939469);
+			var10.ad(0.0F, 0.0F, 0.0F, var11);
 			gz.bj_fld = -141247257 * (int)var11[0];
 			wk.bf_fld = (int)var11[1] * -254727418;
 			bv.by_fld = (int)var11[2];
@@ -502,7 +494,7 @@ public class ej {
 			var9 -= wk.bf_fld;
 			var5 -= bv.by_fld;
 			lp.aa(var6, var7, var4, var8, var9, var5);
-			var10.az();
+			var10.aq();
 		}
 	}
 
@@ -606,7 +598,7 @@ public class ej {
 		descriptor = "(Lfn;IIII)Z"
 	)
 	static boolean cs(fn var0, int var1, int var2, int var3, int var4) {
-		fm var5 = fn.ff(var0, var1);
+		fm var5 = var0.dq(var1);
 		int var6 = var2 + var5.ag_fld;
 		int var7 = var3 + var5.az_fld;
 		int var8 = var5.av_fld + var4;
@@ -636,7 +628,7 @@ public class ej {
 		descriptor = "(Lfn;IIII)Z"
 	)
 	static boolean cp(fn var0, int var1, int var2, int var3, int var4) {
-		fm var5 = fn.ff(var0, var1);
+		fm var5 = var0.dq(var1);
 		int var6 = var2 + var5.ag_fld;
 		int var7 = var3 + var5.az_fld;
 		int var8 = var5.av_fld + var4;
@@ -677,7 +669,7 @@ public class ej {
 			dc.bp_fld,
 			-244829934 * bu.bt_fld,
 			hg.bv_fld,
-			fn.ff(var0, var1)
+			var0.dq(var1)
 		);
 	}
 
@@ -697,7 +689,7 @@ public class ej {
 			-855547566 * dc.bp_fld,
 			bu.bt_fld,
 			hg.bv_fld,
-			fn.ff(var0, var1)
+			var0.dq(var1)
 		);
 	}
 
@@ -706,7 +698,7 @@ public class ej {
 		descriptor = "(IIIIIIIIILfm;)I"
 	)
 	static int cr(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, fm var9) {
-		int var10 = var0 + fm.lx(var9, 1585665713);
+		int var10 = var0 + var9.ak(1585665713);
 		int var11 = var0 + var9.ag(1604734638);
 		int var12 = var1 + var9.az(-230572589);
 		int var13 = var1 + var9.av((byte)0);
@@ -792,7 +784,7 @@ public class ej {
 		descriptor = "(IIIIIIIIILfm;)I"
 	)
 	static int ca(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, fm var9) {
-		int var10 = var0 + fm.lx(var9, 1585665713);
+		int var10 = var0 + var9.ak(1585665713);
 		int var11 = var0 + var9.ag(-1051411352);
 		int var12 = var1 + var9.az(-230572589);
 		int var13 = var1 + var9.av((byte)0);
@@ -878,7 +870,7 @@ public class ej {
 		descriptor = "(IIIIIIIIILfm;)I"
 	)
 	static int cg(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, fm var9) {
-		int var10 = var0 + fm.lx(var9, 1585665713);
+		int var10 = var0 + var9.ak(1585665713);
 		int var11 = var0 + var9.ag(1934719562);
 		int var12 = var1 + var9.az(-230572589);
 		int var13 = var1 + var9.av((byte)0);
@@ -993,7 +985,7 @@ public class ej {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;)V"
+		descriptor = "(Lub;Lub;B)V"
 	)
 	public static void ak(ub var0, ub var1) {
 		ep.ao_fld = var0;

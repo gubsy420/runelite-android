@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +7,7 @@ import java.lang.reflect.InaccessibleObjectException;
 import java.lang.reflect.Method;
 import java.net.Socket;
 import java.net.SocketImpl;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -47,6 +49,18 @@ public class us extends ua {
 	)
 	static wd ev_fld;
 
+	@ObfuscatedName("uq")
+	@ObfuscatedSignature(
+		descriptor = "(Lub;II)[B"
+	)
+	public static byte[] uq(ub var0, int var1, int var2) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.cd(var1, var2, null, 865173781);
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "([BII)V"
@@ -62,13 +76,14 @@ public class us extends ua {
 	)
 	@Override
 	public boolean ak(int var1, int var2) throws IOException {
-		return this.ag_fld.ae(var1, -1050475096);
+		return up.gg(this.ag_fld, var1);
 	}
 
 	@ObfuscatedName("finalize")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("finalize")
 	@Override
 	protected void finalize() {
 		this.ah((byte)115);
@@ -101,43 +116,11 @@ public class us extends ua {
 		this.az_fld.ah(var1, var2, var3, -1015262460);
 	}
 
-	@ObfuscatedName("acl")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	protected void acl() {
-		this.ah((byte)87);
-	}
-
-	@ObfuscatedName("acx")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	protected void acx() {
-		this.ah((byte)127);
-	}
-
-	@ObfuscatedName("acc")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	protected void acc() {
-		this.ah((byte)123);
-	}
-
-	@ObfuscatedName("acu")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	protected void acu() {
-		this.ah((byte)101);
-	}
-
-	@ObfuscatedName("cg")
+	@ObfuscatedName("so")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/io/FileDescriptor;"
 	)
-	public FileDescriptor cg() {
+	public FileDescriptor so() {
 		if (this.ag_fld.ag_fld instanceof FileInputStream) {
 			FileInputStream var6 = (FileInputStream)this.ag_fld.ag_fld;
 
@@ -160,6 +143,50 @@ public class us extends ua {
 		}
 	}
 
+	@ObfuscatedName("acq")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	protected void acq() {
+		this.ah((byte)54);
+	}
+
+	@ObfuscatedName("acx")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	protected void acx() {
+		this.ah((byte)127);
+	}
+
+	@ObfuscatedName("sd")
+	@ObfuscatedSignature(
+		descriptor = "(Lus;)V"
+	)
+	public static void sd(us var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ah((byte)87);
+	}
+
+	@ObfuscatedName("acc")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	protected void acc() {
+		this.ah((byte)123);
+	}
+
+	@ObfuscatedName("acu")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	protected void acu() {
+		this.ah((byte)101);
+	}
+
 	@ObfuscatedName("acb")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -168,31 +195,22 @@ public class us extends ua {
 		this.ah((byte)85);
 	}
 
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	@Override
+	public boolean aw(int var1) throws IOException {
+		return up.gg(this.ag_fld, var1);
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	@Override
 	public boolean ay(int var1) throws IOException {
-		return this.ag_fld.ae(var1, 848332809);
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	@Override
-	public boolean as(int var1) throws IOException {
-		return this.ag_fld.ae(var1, -1620251545);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int au() throws IOException {
-		return up.ae(this.ag_fld, 2106938245);
+		return up.gg(this.ag_fld, var1);
 	}
 
 	@ObfuscatedName("af")
@@ -201,16 +219,25 @@ public class us extends ua {
 	)
 	@Override
 	public int af() throws IOException {
+		return this.ag_fld.ah(2106938245);
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int al() throws IOException {
 		return this.ag_fld.aw(-1162038614);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	@Override
-	public boolean aw(int var1) throws IOException {
-		return this.ag_fld.ae(var1, -612313293);
+	public boolean as(int var1) throws IOException {
+		return up.gg(this.ag_fld, var1);
 	}
 
 	@ObfuscatedName("ag")
@@ -219,19 +246,7 @@ public class us extends ua {
 	)
 	@Override
 	public int ag(byte var1) throws IOException {
-		return up.ae(this.ag_fld, 716328797);
-	}
-
-	@ObfuscatedName("sq")
-	@ObfuscatedSignature(
-		descriptor = "(Lus;)V"
-	)
-	public static void sq(us var0) throws IOException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ah((byte)54);
+		return this.ag_fld.ah(716328797);
 	}
 
 	@ObfuscatedName("ar")
@@ -240,7 +255,7 @@ public class us extends ua {
 	)
 	@Override
 	public int ar() throws IOException {
-		return up.ae(this.ag_fld, 2048673420);
+		return this.ag_fld.ah(2048673420);
 	}
 
 	@ObfuscatedName("ah")
@@ -337,12 +352,12 @@ public class us extends ua {
 		this.ag_fld.as(1346297877);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	public int al() throws IOException {
-		return up.ae(this.ag_fld, 1662814417);
+	public int au() throws IOException {
+		return this.ag_fld.ah(1662814417);
 	}
 }

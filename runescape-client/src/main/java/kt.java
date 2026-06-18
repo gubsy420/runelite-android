@@ -29,12 +29,12 @@ public class kt implements xm {
 		descriptor = "Lkt;"
 	)
 	public static kt az_fld = new kt(2, 2);
-	@ObfuscatedGetter(
-		intValue = 1448568713
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1448568713
 	)
 	int ah_fld;
 	@ObfuscatedName("ak")
@@ -42,12 +42,12 @@ public class kt implements xm {
 		descriptor = "Lkt;"
 	)
 	public static kt ak_fld = new kt(0, 0);
-	@ObfuscatedGetter(
-		intValue = 1043975269
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1043975269
 	)
 	int ae_fld;
 
@@ -58,18 +58,6 @@ public class kt implements xm {
 	@Override
 	public int av() {
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ra")
-	@ObfuscatedSignature(
-		descriptor = "(Lmw;)V"
-	)
-	public static void ra(mw var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.aw_fld.au_fld = -228932457;
 	}
 
 	@ObfuscatedName("ag")

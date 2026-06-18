@@ -30,12 +30,12 @@ public class ka implements xm {
 		descriptor = "I"
 	)
 	static int ar_fld;
-	@ObfuscatedGetter(
-		intValue = 455123449
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 455123449
 	)
 	public int ae_fld;
 	@ObfuscatedName("av")
@@ -49,14 +49,6 @@ public class ka implements xm {
 	)
 	static int an_fld;
 
-	@ObfuscatedName("rq")
-	@ObfuscatedSignature(
-		descriptor = "(Lqa;)I"
-	)
-	public static int rq(qa var0) {
-		return var0.aw_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -68,16 +60,16 @@ public class ka implements xm {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I[BLun;)V"
+		descriptor = "(I[BLun;B)V"
 	)
 	static void ae(int var0, byte[] var1, un var2) {
 		ur var4 = new ur();
 		var4.ak_fld = 0;
-		var4.hc_fld = var0;
+		var4.hc_long = var0;
 		var4.ag_fld = var1;
 		var4.az_fld = var2;
 		synchronized (uw.ak_fld) {
-			uw.ak_fld.av(var4);
+			uw.ak_fld.az(var4);
 		}
 
 		ku.ay_void(755330953);
@@ -101,18 +93,6 @@ public class ka implements xm {
 		return this.ae_fld;
 	}
 
-	@ObfuscatedName("nq")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)I"
-	)
-	public static int nq(pi var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.as_fld;
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -124,7 +104,7 @@ public class ka implements xm {
 
 	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int bj(int var0, ba var1, boolean var2) throws EOFException {
 		if (3400 == var0) {
@@ -132,10 +112,10 @@ public class ka implements xm {
 			int var10 = bp.au_fld[gz.ax_fld];
 			int var12 = bp.au_fld[1 + gz.ax_fld];
 			os var13 = gx.ak(var10);
-			if (!os.ks(var13, 's', (byte)32)) {
+			if (!var13.af('s', (byte)32)) {
 			}
 
-			bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.dt(var13, var12);
+			bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.uw(var13, var12);
 			return 1;
 		} else if (3408 == var0) {
 			gz.ax_fld -= 4;
@@ -144,11 +124,11 @@ public class ka implements xm {
 			int var6 = bp.au_fld[gz.ax_fld + 2];
 			int var7 = bp.au_fld[gz.ax_fld + 3];
 			os var8 = gx.ak(var6);
-			if (var8.ar(var9, 1040248386) && os.ks(var8, var11, (byte)88)) {
-				if (os.ks(var8, 's', (byte)97)) {
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.dt(var8, var7);
-				} else if (os.ks(var8, 'Ï', (byte)97)) {
-					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = os.zm(var8, var7, (byte)45);
+			if (os.xn(var8, var9, 1040248386) && var8.af(var11, (byte)88)) {
+				if (var8.af('s', (byte)97)) {
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.uw(var8, var7);
+				} else if (var8.af('Ï', (byte)97)) {
+					bp.an_fld[(db.aa_fld += 432101741) * 867932261 - 1] = var8.as(var7, (byte)45);
 				} else {
 					bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var8.ay(var7, 1909759552);
 				}
@@ -181,7 +161,7 @@ public class ka implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Lxm;I)Lxm;"
+		descriptor = "([Lxm;II)Lxm;"
 	)
 	public static xm ak(xm[] var0, int var1) {
 		xm[] var3 = var0;

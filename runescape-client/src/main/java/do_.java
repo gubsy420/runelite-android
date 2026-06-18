@@ -85,22 +85,6 @@ public class do_ {
 		return 7 == var0 || 8 == var0 || var0 >= 9 && var0 <= 13;
 	}
 
-	@ObfuscatedName("ha")
-	@ObfuscatedSignature(
-		descriptor = "(Lws;)Z"
-	)
-	public static boolean ha(ws var0) {
-		return var0.ay_fld;
-	}
-
-	@ObfuscatedName("gi")
-	@ObfuscatedSignature(
-		descriptor = "(Laf;)Lal;"
-	)
-	public static al gi(af var0) {
-		return var0.ag_fld == 0 ? var0.az(false) : var0.az_fld.ae();
-	}
-
 	do_() throws Throwable {
 		throw new Error();
 	}
@@ -115,7 +99,7 @@ public class do_ {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;)V"
+		descriptor = "(Lub;I)V"
 	)
 	public static void ak(ub var0) {
 		pq.ak_fld = var0;

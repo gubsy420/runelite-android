@@ -16,19 +16,6 @@ public class ns {
 	)
 	public static int ae_fld;
 
-	@ObfuscatedName("lq")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;I)V"
-	)
-	public static void lq(cn var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ar_fld = var1;
-		og.ag();
-	}
-
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(C)C"
@@ -237,6 +224,18 @@ public class ns {
 		}
 	}
 
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(Lla;Ljava/lang/Runnable;I)Llv;"
+	)
+	public static lv be(la var0, Runnable var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ah(2, var2, 0, var1, -502920102);
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(CLxh;)I"
@@ -273,18 +272,6 @@ public class ns {
 		}
 	}
 
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "(Lyr;Ljava/lang/String;Lxi;)V"
-	)
-	public static void cv(yr var0, String var1, xi var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var2.cc(var1, -518622557);
-	}
-
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(CLxh;)I"
@@ -301,14 +288,6 @@ public class ns {
 		}
 
 		return var2;
-	}
-
-	@ObfuscatedName("sx")
-	@ObfuscatedSignature(
-		descriptor = "(Ltl;Lts;I)V"
-	)
-	public static void sx(tl var0, ts var1, int var2) {
-		var0.az_fld[var2] = var1;
 	}
 
 	@ObfuscatedName("ae")
@@ -419,11 +398,11 @@ public class ns {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;)V"
+		descriptor = "(Lub;I)V"
 	)
 	public static void ak(ub var0) {
 		oh.av_fld = var0;
-		dt.az_fld = rl1.ei(oh.av_fld, 16);
+		dt.az_fld = oh.av_fld.ce(16, 1179736796);
 	}
 
 	@ObfuscatedName("gk")
@@ -431,7 +410,7 @@ public class ns {
 		descriptor = "(IB)V"
 	)
 	static final void gk(int var0, byte var1) throws EOFException {
-		ev.yt(var0);
+		ev.hw(var0);
 		Iterator var2 = client.da_fld.iterator();
 
 		while (var2.hasNext()) {

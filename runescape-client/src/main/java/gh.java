@@ -25,14 +25,14 @@ public class gh {
 		descriptor = "Lgh;"
 	)
 	static gh av_fld = new gh(5, 48, 48);
-	@ObfuscatedGetter(
-		intValue = 1893069287
-	)
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
+	@ObfuscatedGetter(
+		intValue = 1893069287
+	)
+	int af_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lgh;"
@@ -43,47 +43,39 @@ public class gh {
 		descriptor = "Lgh;"
 	)
 	static gh ak_fld = new gh(1, 8, 8);
-	@ObfuscatedGetter(
-		intValue = -685467397
-	)
-	@ObfuscatedName("af")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int af_fld;
+	@ObfuscatedGetter(
+		intValue = -685467397
+	)
+	int ay_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "[Lgh;"
 	)
 	static gh[] as_fld = cm.ak_Arrgh(1187895499);
-	@ObfuscatedGetter(
-		intValue = 1863655475
-	)
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
+	@ObfuscatedGetter(
+		intValue = 1863655475
+	)
+	int ar_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lgh;"
 	)
 	static gh aw_fld = new gh(6, 128, 128);
 
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int as() {
-		return this.ay_fld * this.ar_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	int ag(int var1) {
-		return this.ay_fld * this.ar_fld;
+		return this.ar_fld * this.af_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -123,21 +115,13 @@ public class gh {
 		descriptor = "()I"
 	)
 	int aw() {
-		return this.ay_fld * this.ar_fld;
+		return this.ar_fld * this.af_fld;
 	}
 
 	gh(int var1, int var2, int var3) {
-		this.af_fld = var1;
-		this.ay_fld = var2;
-		this.ar_fld = var3;
-	}
-
-	@ObfuscatedName("fd")
-	@ObfuscatedSignature(
-		descriptor = "(Lqe;)Z"
-	)
-	public static boolean fd(qe var0) {
-		return var0.as_fld;
+		this.ay_fld = var1;
+		this.ar_fld = var2;
+		this.af_fld = var3;
 	}
 
 	@ObfuscatedName("ay")
@@ -145,7 +129,7 @@ public class gh {
 		descriptor = "()I"
 	)
 	int ay() {
-		return this.ay_fld * this.ar_fld;
+		return this.ar_fld * this.af_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -162,7 +146,7 @@ public class gh {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(ZZ)Lyc;"
+		descriptor = "(ZZI)Lyc;"
 	)
 	static yc av(boolean var0, boolean var1) {
 		return var0 ? (var1 ? ee.cz_fld : ik.cm_fld) : (var1 ? gl.cw_fld : yg.cg_fld);

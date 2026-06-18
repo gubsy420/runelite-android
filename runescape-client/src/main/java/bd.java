@@ -1,24 +1,23 @@
-import java.awt.Component;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("bd")
 public class bd {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] az_fld;
+	int[] ah_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	int ag_fld;
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] av_fld;
+	int[] az_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "[[F"
@@ -29,19 +28,11 @@ public class bd {
 		descriptor = "I"
 	)
 	int ak_fld;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] ah_fld;
-
-	@ObfuscatedName("px")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;)Z"
-	)
-	public static boolean px(uk var0) {
-		return var0.af_fld;
-	}
+	int[] av_fld;
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -82,8 +73,8 @@ public class bd {
 		var1.ak(24, -153385893);
 		this.ak_fld = var1.ak(16, -1676559650);
 		this.ag_fld = var1.ak(24, -581944502);
-		this.av_fld = new int[this.ag_fld];
-		boolean var2 = var1.av() != 0;
+		this.az_fld = new int[this.ag_fld];
+		boolean var2 = var1.ag() != 0;
 		if (var2) {
 			int var3 = 0;
 
@@ -91,28 +82,28 @@ public class bd {
 				int var5 = var1.ak(gb.as(this.ag_fld - var3), 875372779);
 
 				for (int var6 = 0; var6 < var5; var6++) {
-					this.av_fld[var3++] = var4;
+					this.az_fld[var3++] = var4;
 				}
 			}
 		} else {
-			boolean var15 = var1.av() != 0;
+			boolean var15 = var1.ag() != 0;
 
 			for (int var17 = 0; var17 < this.ag_fld; var17++) {
-				if (var15 && var1.av() == 0) {
-					this.av_fld[var17] = 0;
+				if (var15 && var1.ag() == 0) {
+					this.az_fld[var17] = 0;
 				} else {
-					this.av_fld[var17] = var1.ak(5, -144848772) + 1;
+					this.az_fld[var17] = var1.ak(5, -144848772) + 1;
 				}
 			}
 		}
 
-		this.aw();
+		this.ag();
 		int var16 = var1.ak(4, -213185551);
 		if (var16 > 0) {
 			float var18 = bz.ak(var1.ak(32, -1186074355));
 			float var19 = bz.ak(var1.ak(32, -684771319));
 			int var20 = var1.ak(4, 761576003) + 1;
-			boolean var7 = var1.av() != 0;
+			boolean var7 = var1.ag() != 0;
 			int var8;
 			if (var16 == 1) {
 				var8 = ak(this.ag_fld, this.ak_fld);
@@ -120,10 +111,10 @@ public class bd {
 				var8 = this.ag_fld * this.ak_fld;
 			}
 
-			this.ah_fld = new int[var8];
+			this.av_fld = new int[var8];
 
 			for (int var9 = 0; var9 < var8; var9++) {
-				this.ah_fld[var9] = var1.ak(var20, -1871740994);
+				this.av_fld[var9] = var1.ak(var20, -1871740994);
 			}
 
 			this.ae_fld = new float[this.ag_fld][this.ak_fld];
@@ -134,7 +125,7 @@ public class bd {
 
 					for (int var12 = 0; var12 < this.ak_fld; var12++) {
 						int var13 = var21 / var11 % var8;
-						float var14 = this.ah_fld[var13] * var19 + var18 + var10;
+						float var14 = this.av_fld[var13] * var19 + var18 + var10;
 						this.ae_fld[var21][var12] = var14;
 						if (var7) {
 							var10 = var14;
@@ -149,7 +140,7 @@ public class bd {
 					int var24 = var22 * this.ak_fld;
 
 					for (int var25 = 0; var25 < this.ak_fld; var25++) {
-						float var26 = this.ah_fld[var24] * var19 + var18 + var23;
+						float var26 = this.av_fld[var24] * var19 + var18 + var23;
 						this.ae_fld[var22][var25] = var26;
 						if (var7) {
 							var23 = var26;
@@ -162,16 +153,16 @@ public class bd {
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void aw() {
+	void ag() {
 		int[] var1 = new int[this.ag_fld];
 		int[] var2 = new int[33];
 
 		for (int var3 = 0; var3 < this.ag_fld; var3++) {
-			int var4 = this.av_fld[var3];
+			int var4 = this.az_fld[var3];
 			if (var4 != 0) {
 				int var5 = 1 << 32 - var4;
 				int var6 = var2[var4];
@@ -209,11 +200,11 @@ public class bd {
 			}
 		}
 
-		this.az_fld = new int[8];
+		this.ah_fld = new int[8];
 		int var11 = 0;
 
 		for (int var12 = 0; var12 < this.ag_fld; var12++) {
-			int var13 = this.av_fld[var12];
+			int var13 = this.az_fld[var12];
 			if (var13 != 0) {
 				int var14 = var1[var12];
 				int var15 = 0;
@@ -221,29 +212,29 @@ public class bd {
 				for (int var16 = 0; var16 < var13; var16++) {
 					int var18 = Integer.MIN_VALUE >>> var16;
 					if ((var14 & var18) != 0) {
-						if (this.az_fld[var15] == 0) {
-							this.az_fld[var15] = var11;
+						if (this.ah_fld[var15] == 0) {
+							this.ah_fld[var15] = var11;
 						}
 
-						var15 = this.az_fld[var15];
+						var15 = this.ah_fld[var15];
 					} else {
 						var15++;
 					}
 
-					if (var15 >= this.az_fld.length) {
-						int[] var21 = new int[this.az_fld.length * 2];
+					if (var15 >= this.ah_fld.length) {
+						int[] var21 = new int[this.ah_fld.length * 2];
 
-						for (int var22 = 0; var22 < this.az_fld.length; var22++) {
-							var21[var22] = this.az_fld[var22];
+						for (int var22 = 0; var22 < this.ah_fld.length; var22++) {
+							var21[var22] = this.ah_fld[var22];
 						}
 
-						this.az_fld = var21;
+						this.ah_fld = var21;
 					}
 
 					var18 >>>= 1;
 				}
 
-				this.az_fld[var15] = ~var12;
+				this.ah_fld[var15] = ~var12;
 				if (var15 >= var11) {
 					var11 = var15 + 1;
 				}
@@ -251,40 +242,24 @@ public class bd {
 		}
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lbh;)I"
-	)
-	int az(bh var1) {
-		int var2 = 0;
-
-		while (this.az_fld[var2] >= 0) {
-			var2 = var1.av() != 0 ? this.az_fld[var2] : var2 + 1;
-		}
-
-		return ~this.az_fld[var2];
-	}
-
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Lbh;)[F"
 	)
 	float[] as(bh var1) {
-		return this.ae_fld[this.az(var1)];
+		return this.ae_fld[pg.hm(this, var1)];
 	}
 
-	@ObfuscatedName("ij")
+	@ObfuscatedName("dj")
 	@ObfuscatedSignature(
-		descriptor = "(Ltl;Ljava/awt/Component;)V"
+		descriptor = "(Lul;)V"
 	)
-	public static void ij(tl var0, Component var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var1.setFocusTraversalKeysEnabled(false);
-		var1.addKeyListener(var0);
-		var1.addFocusListener(var0);
+	public static void dj(ul var0) {
+		var0.ak_fld.af();
+		var0.ag_fld.as();
+		var0.az_fld.ar_fld = 1.0F;
+		var0.az_fld.ay_fld = 1.0F;
+		var0.az_fld.as_fld = 1.0F;
 	}
 
 	@ObfuscatedName("ae")
@@ -322,16 +297,16 @@ public class bd {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("vl")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lbd;)V"
 	)
-	void ag() {
-		int[] var1 = new int[this.ag_fld];
+	public static void vl(bd var0) {
+		int[] var1 = new int[var0.ag_fld];
 		int[] var2 = new int[33];
 
-		for (int var3 = 0; var3 < this.ag_fld; var3++) {
-			int var4 = this.av_fld[var3];
+		for (int var3 = 0; var3 < var0.ag_fld; var3++) {
+			int var4 = var0.az_fld[var3];
 			if (var4 != 0) {
 				int var5 = 1 << 32 - var4;
 				int var6 = var2[var4];
@@ -369,11 +344,11 @@ public class bd {
 			}
 		}
 
-		this.az_fld = new int[8];
+		var0.ah_fld = new int[8];
 		int var11 = 0;
 
-		for (int var12 = 0; var12 < this.ag_fld; var12++) {
-			int var13 = this.av_fld[var12];
+		for (int var12 = 0; var12 < var0.ag_fld; var12++) {
+			int var13 = var0.az_fld[var12];
 			if (var13 != 0) {
 				int var14 = var1[var12];
 				int var15 = 0;
@@ -381,159 +356,33 @@ public class bd {
 				for (int var16 = 0; var16 < var13; var16++) {
 					int var18 = Integer.MIN_VALUE >>> var16;
 					if ((var14 & var18) != 0) {
-						if (this.az_fld[var15] == 0) {
-							this.az_fld[var15] = var11;
+						if (var0.ah_fld[var15] == 0) {
+							var0.ah_fld[var15] = var11;
 						}
 
-						var15 = this.az_fld[var15];
+						var15 = var0.ah_fld[var15];
 					} else {
 						var15++;
 					}
 
-					if (var15 >= this.az_fld.length) {
-						int[] var21 = new int[this.az_fld.length * 2];
+					if (var15 >= var0.ah_fld.length) {
+						int[] var21 = new int[var0.ah_fld.length * 2];
 
-						for (int var22 = 0; var22 < this.az_fld.length; var22++) {
-							var21[var22] = this.az_fld[var22];
+						for (int var22 = 0; var22 < var0.ah_fld.length; var22++) {
+							var21[var22] = var0.ah_fld[var22];
 						}
 
-						this.az_fld = var21;
+						var0.ah_fld = var21;
 					}
 
 					var18 >>>= 1;
 				}
 
-				this.az_fld[var15] = ~var12;
+				var0.ah_fld[var15] = ~var12;
 				if (var15 >= var11) {
 					var11 = var15 + 1;
 				}
 			}
-		}
-	}
-
-	@ObfuscatedName("yk")
-	@ObfuscatedSignature(
-		descriptor = "(Lde;)V"
-	)
-	public static void yk(de var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ag_fld = true;
-
-		try {
-			synchronized (var0) {
-				var0.notify();
-			}
-
-			var0.ak_fld.join();
-		} catch (InterruptedException var4) {
-		}
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void ah() {
-		int[] var1 = new int[this.ag_fld];
-		int[] var2 = new int[33];
-
-		for (int var3 = 0; var3 < this.ag_fld; var3++) {
-			int var4 = this.av_fld[var3];
-			if (var4 != 0) {
-				int var5 = 1 << 32 - var4;
-				int var6 = var2[var4];
-				var1[var3] = var6;
-				int var7;
-				if ((var6 & var5) != 0) {
-					var7 = var2[var4 - 1];
-				} else {
-					var7 = var6 | var5;
-
-					for (int var8 = var4 - 1; var8 >= 1; var8--) {
-						int var9 = var2[var8];
-						if (var9 != var6) {
-							break;
-						}
-
-						int var10 = 1 << 32 - var8;
-						if ((var9 & var10) != 0) {
-							var2[var8] = var2[var8 - 1];
-							break;
-						}
-
-						var2[var8] = var9 | var10;
-					}
-				}
-
-				var2[var4] = var7;
-
-				for (int var17 = var4 + 1; var17 <= 32; var17++) {
-					int var20 = var2[var17];
-					if (var20 == var6) {
-						var2[var17] = var7;
-					}
-				}
-			}
-		}
-
-		this.az_fld = new int[8];
-		int var11 = 0;
-
-		for (int var12 = 0; var12 < this.ag_fld; var12++) {
-			int var13 = this.av_fld[var12];
-			if (var13 != 0) {
-				int var14 = var1[var12];
-				int var15 = 0;
-
-				for (int var16 = 0; var16 < var13; var16++) {
-					int var18 = Integer.MIN_VALUE >>> var16;
-					if ((var14 & var18) != 0) {
-						if (this.az_fld[var15] == 0) {
-							this.az_fld[var15] = var11;
-						}
-
-						var15 = this.az_fld[var15];
-					} else {
-						var15++;
-					}
-
-					if (var15 >= this.az_fld.length) {
-						int[] var21 = new int[this.az_fld.length * 2];
-
-						for (int var22 = 0; var22 < this.az_fld.length; var22++) {
-							var21[var22] = this.az_fld[var22];
-						}
-
-						this.az_fld = var21;
-					}
-
-					var18 >>>= 1;
-				}
-
-				this.az_fld[var15] = ~var12;
-				if (var15 >= var11) {
-					var11 = var15 + 1;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "(Lwj;IJ)I"
-	)
-	public static int jd(wj var0, int var1, long var2) {
-		if (var0.ah_fld == var1) {
-			return var1;
-		} else if (var1 > var0.ah_fld) {
-			double var6 = 1.0 - nl.az(var2, var0.ae_fld, var0.ag_fld);
-			return (int)(var6 * (var0.av_fld - var0.ah_fld)) + var0.ah_fld;
-		} else {
-			double var4 = nl.az(var2, var0.ae_fld, var0.ag_fld);
-			return (int)(var4 * (var0.ah_fld - var0.av_fld)) + var0.av_fld;
 		}
 	}
 
@@ -542,7 +391,7 @@ public class bd {
 		descriptor = "(Lbh;)[F"
 	)
 	float[] av(bh var1) {
-		return this.ae_fld[this.az(var1)];
+		return this.ae_fld[pg.hm(this, var1)];
 	}
 
 	@ObfuscatedName("ay")
@@ -552,11 +401,11 @@ public class bd {
 	int ay(bh var1) {
 		int var2 = 0;
 
-		while (this.az_fld[var2] >= 0) {
-			var2 = var1.av() != 0 ? this.az_fld[var2] : var2 + 1;
+		while (this.ah_fld[var2] >= 0) {
+			var2 = var1.ag() != 0 ? this.ah_fld[var2] : var2 + 1;
 		}
 
-		return ~this.az_fld[var2];
+		return ~this.ah_fld[var2];
 	}
 
 	@ObfuscatedName("ar")
@@ -564,6 +413,20 @@ public class bd {
 		descriptor = "(Lbh;)[F"
 	)
 	float[] ar(bh var1) {
-		return this.ae_fld[this.az(var1)];
+		return this.ae_fld[pg.hm(this, var1)];
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lbh;)I"
+	)
+	int az(bh var1) {
+		int var2 = 0;
+
+		while (this.av_fld[var2] >= 0) {
+			var2 = var1.av(1861904578) != 0 ? this.az_fld[var2] : var2 + 1;
+		}
+
+		return ~this.av_fld[var2];
 	}
 }

@@ -43,6 +43,18 @@ public abstract class mu {
 		return -1;
 	}
 
+	@ObfuscatedName("wi")
+	@ObfuscatedSignature(
+		descriptor = "(Lmu;B)Ljava/lang/String;"
+	)
+	public static String wi(mu var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.av_fld;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -79,16 +91,16 @@ public abstract class mu {
 		return null;
 	}
 
-	@ObfuscatedName("mw")
+	@ObfuscatedName("tt")
 	@ObfuscatedSignature(
-		descriptor = "(Lmu;B)Ljava/lang/String;"
+		descriptor = "(Lxq;Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	public static String mw(mu var0, byte var1) {
+	public static int tt(xq var0, Object var1, Object var2) {
 		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.av_fld;
+			var0.getClass();
 		}
+
+		return var0.ak((rl)var1, (rl)var2, 1268337538);
 	}
 
 	mu(mj var1, String var2) {
@@ -109,14 +121,6 @@ public abstract class mu {
 		descriptor = "()I"
 	)
 	public abstract int av();
-
-	@ObfuscatedName("gy")
-	@ObfuscatedSignature(
-		descriptor = "(Ltu;)F"
-	)
-	public static float gy(tu var0) {
-		return (float)Math.sqrt(var0.ay_fld * var0.ay_fld + var0.as_fld * var0.as_fld + var0.ar_fld * var0.ar_fld);
-	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(

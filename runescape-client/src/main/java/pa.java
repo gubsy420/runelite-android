@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.HealthBarConfig;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -24,14 +25,14 @@ public class pa extends vc implements HealthBarConfig {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = -934934835
-	)
-	@ObfuscatedName("as")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int as_fld;
+	@ObfuscatedGetter(
+		intValue = -934934835
+	)
+	public int af_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Liw;"
@@ -42,60 +43,60 @@ public class pa extends vc implements HealthBarConfig {
 		descriptor = "Liw;"
 	)
 	public static iw ah_fld = new iw(64);
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = -1712951291
 	)
-	@ObfuscatedName("aw")
+	public int aa_fld;
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int aw_fld;
 	@ObfuscatedGetter(
 		intValue = 1955348211
 	)
-	@ObfuscatedName("ay")
+	public int as_fld = -1205718843;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ay_fld = -1205718843;
 	@ObfuscatedGetter(
 		intValue = 1089243505
 	)
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int ar_fld;
-	@ObfuscatedGetter(
-		intValue = -15245667
-	)
+	public int an_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -15245667
+	)
 	int ax_fld;
-	@ObfuscatedGetter(
-		intValue = 2131395085
-	)
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int af_fld;
-	@ObfuscatedGetter(
-		intValue = -457605973
-	)
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int al_fld;
 	@ObfuscatedGetter(
-		intValue = 2047005697
+		intValue = 2131395085
 	)
+	public int al_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -457605973
+	)
+	public int aw_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2047005697
 	)
 	int au_fld;
 	@ObfuscatedName("av")
@@ -103,44 +104,44 @@ public class pa extends vc implements HealthBarConfig {
 		descriptor = "Lub;"
 	)
 	static ub av_fld;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = 547164955
 	)
-	@ObfuscatedName("an")
+	public int ay_fld;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int an_fld;
 	@ObfuscatedGetter(
 		intValue = 1328338365
 	)
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int aa_fld;
+	public int ar_fld;
 	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	public static int bp_fld;
 
-	@ObfuscatedName("jz")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lpa;)Lyv;"
+		descriptor = "()Lyv;"
 	)
-	public static yv jz(pa var0) throws EOFException {
+	public yv ax() {
 		try {
-			if (var0.ax_fld < 0) {
+			if (this.ax_fld < 0) {
 				return null;
 			} else {
-				yv var1 = (yv)ah_fld.ak(var0.ax_fld * -1216489584);
+				yv var1 = (yv)ah_fld.ak(this.ax_fld * -1216489584);
 				if (null != var1) {
 					return var1;
 				} else {
-					var1 = wf.av(av_fld, var0.ax_fld * 805988221, 0);
+					var1 = wf.av(av_fld, this.ax_fld * 805988221, 0);
 					if (var1 != null) {
-						ah_fld.az(var1, -1507337802 * var0.ax_fld);
+						ah_fld.az(var1, -1507337802 * this.ax_fld);
 					}
 
 					return var1;
@@ -151,16 +152,6 @@ public class pa extends vc implements HealthBarConfig {
 		}
 	}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	public void ax(xi var1) {
-		PostHealthBarConfig var2 = new PostHealthBarConfig();
-		var2.setHealthBarConfig(this);
-		og.ci_fld.getCallbacks().post(var2);
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
@@ -169,12 +160,58 @@ public class pa extends vc implements HealthBarConfig {
 		while (true) {
 			int var3 = var1.cg();
 			if (0 == var3) {
-				this.ax(var1);
+				this.un(var1);
 				return;
 			}
 
 			this.az(var1, var3, (byte)124);
 		}
+	}
+
+	@ObfuscatedName("un")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	public void un(xi var1) {
+		PostHealthBarConfig var2 = new PostHealthBarConfig();
+		var2.setHealthBarConfig(this);
+		og.ci_fld.getCallbacks().post(var2);
+	}
+
+	@ObfuscatedName("kz")
+	@ObfuscatedSignature(
+		descriptor = "(Lpa;)Lyv;"
+	)
+	public static yv kz(pa var0) throws EOFException {
+		try {
+			if (var0.au_fld < 0) {
+				return null;
+			} else {
+				yv var1 = (yv)ah_fld.ak(var0.au_fld);
+				if (var1 != null) {
+					return var1;
+				} else {
+					var1 = wf.av(av_fld, var0.au_fld, 0);
+					if (null != var1) {
+						ah_fld.az(var1, var0.au_fld);
+					}
+
+					return var1;
+				}
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("setPadding")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setPadding")
+	@Override
+	public void setPadding(int var1) {
+		this.ar_fld = var1;
 	}
 
 	@ObfuscatedName("au")
@@ -203,69 +240,11 @@ public class pa extends vc implements HealthBarConfig {
 		}
 	}
 
-	@ObfuscatedName("zl")
-	@ObfuscatedSignature(
-		descriptor = "()Lyv;"
-	)
-	public yv getHealthBarFrontSprite() {
-		try {
-			return this.ae(588330049);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("pc")
-	@ObfuscatedSignature(
-		descriptor = "(Lpa;)Lyv;"
-	)
-	public static yv pc(pa var0) throws EOFException {
-		try {
-			if (var0.ax_fld < 0) {
-				return null;
-			} else {
-				yv var1 = (yv)ah_fld.ak(var0.ax_fld);
-				if (null != var1) {
-					return var1;
-				} else {
-					var1 = wf.av(av_fld, var0.ax_fld, 0);
-					if (var1 != null) {
-						ah_fld.az(var1, var0.ax_fld);
-					}
-
-					return var1;
-				}
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int jd() {
-		return this.an_fld;
-	}
-
-	@ObfuscatedName("ti")
-	@ObfuscatedSignature(
-		descriptor = "()Lyv;"
-	)
-	public yv getHealthBarBackSprite() {
-		try {
-			return this.av(615685914);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyv;"
 	)
-	public yv ae(int var1) {
+	public yv av(int var1) {
 		try {
 			if (this.au_fld < 0) {
 				return null;
@@ -287,11 +266,11 @@ public class pa extends vc implements HealthBarConfig {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyv;"
 	)
-	public yv av(int var1) {
+	public yv ae(int var1) {
 		try {
 			if (this.ax_fld < 0) {
 				return null;
@@ -313,6 +292,52 @@ public class pa extends vc implements HealthBarConfig {
 		}
 	}
 
+	@ObfuscatedName("ve")
+	@ObfuscatedSignature(
+		descriptor = "()Lyv;"
+	)
+	public yv getHealthBarBackSprite() {
+		try {
+			return this.ae(615685914);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("rj")
+	@ObfuscatedSignature(
+		descriptor = "(Lpa;Lxi;I)V"
+	)
+	public static void rj(pa var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (1 == var2) {
+			var1.cm();
+		} else if (2 == var2) {
+			var0.as_fld = var1.cg() * 842421679;
+		} else if (var2 == 3) {
+			var0.af_fld = var1.cg();
+		} else if (var2 == 4) {
+			var0.an_fld = 0;
+		} else if (var2 == 5) {
+			var0.aw_fld = var1.cm();
+		} else if (6 == var2) {
+			var1.cg();
+		} else if (7 == var2) {
+			var0.au_fld = xi.kt(var1, (byte)-67);
+		} else if (8 == var2) {
+			var0.ax_fld = xi.kt(var1, (byte)-111) * -465357928;
+		} else if (11 == var2) {
+			var0.an_fld = var1.cm() * 1037556387;
+		} else if (var2 == 14) {
+			var0.ay_fld = var1.cg();
+		} else if (15 == var2) {
+			var0.ar_fld = var1.cg() * -501210492;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;IB)V"
@@ -323,27 +348,27 @@ public class pa extends vc implements HealthBarConfig {
 				return;
 			}
 
-			xi.tx(var1, 1429537331);
+			var1.cm();
 		} else if (2 == var2) {
-			this.ay_fld = var1.cg();
-		} else if (var2 == 3) {
 			this.as_fld = var1.cg();
+		} else if (var2 == 3) {
+			this.af_fld = var1.cg();
 		} else if (var2 == 4) {
-			this.ar_fld = 0;
+			this.an_fld = 0;
 		} else if (var2 == 5) {
-			this.al_fld = xi.tx(var1, 1727894727);
+			this.aw_fld = var1.cm();
 		} else if (6 == var2) {
 			var1.cg();
 		} else if (7 == var2) {
-			this.au_fld = var1.do_();
+			this.au_fld = xi.kt(var1, (byte)-28);
 		} else if (8 == var2) {
-			this.ax_fld = var1.do_();
+			this.ax_fld = xi.kt(var1, (byte)-52);
 		} else if (11 == var2) {
-			this.ar_fld = xi.tx(var1, 503573983);
+			this.an_fld = var1.cm();
 		} else if (var2 == 14) {
-			this.an_fld = var1.cg();
+			this.ay_fld = var1.cg();
 		} else if (15 == var2) {
-			this.aa_fld = var1.cg();
+			this.ar_fld = var1.cg();
 		}
 	}
 
@@ -356,12 +381,14 @@ public class pa extends vc implements HealthBarConfig {
 		av_fld = var1;
 	}
 
-	@ObfuscatedName("xp")
+	@ObfuscatedName("getHealthBarFrontSpriteId")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;Lbb;)V"
+		descriptor = "()I"
 	)
-	public static void xp(da var0, bb var1) {
-		var0.cg_fld.ag(var1);
+	@Export("getHealthBarFrontSpriteId")
+	@Override
+	public int getHealthBarFrontSpriteId() {
+		return this.au_fld;
 	}
 
 	@ObfuscatedName("aa")
@@ -390,100 +417,64 @@ public class pa extends vc implements HealthBarConfig {
 		}
 	}
 
-	@ObfuscatedName("getHealthBarFrontSpriteId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getHealthBarFrontSpriteId() {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("setPadding")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setPadding(int var1) {
-		this.aa_fld = var1;
-	}
-
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
 	void as(xi var1, int var2) {
 		if (1 == var2) {
-			xi.tx(var1, 617112266);
+			var1.cm();
 		} else if (2 == var2) {
+			this.as_fld = var1.cg();
+		} else if (var2 == 3) {
+			this.af_fld = var1.cg();
+		} else if (var2 == 4) {
+			this.an_fld = 0;
+		} else if (var2 == 5) {
+			this.aw_fld = var1.cm();
+		} else if (6 == var2) {
+			var1.cg();
+		} else if (7 == var2) {
+			this.au_fld = xi.kt(var1, (byte)-22);
+		} else if (8 == var2) {
+			this.ax_fld = xi.kt(var1, (byte)-112);
+		} else if (11 == var2) {
+			this.an_fld = var1.cm();
+		} else if (var2 == 14) {
 			this.ay_fld = var1.cg();
-		} else if (var2 == 3) {
-			this.as_fld = var1.cg();
-		} else if (var2 == 4) {
-			this.ar_fld = 0;
-		} else if (var2 == 5) {
-			this.al_fld = xi.tx(var1, 1956452070);
-		} else if (6 == var2) {
-			var1.cg();
-		} else if (7 == var2) {
-			this.au_fld = var1.do_();
-		} else if (8 == var2) {
-			this.ax_fld = var1.do_();
-		} else if (11 == var2) {
-			this.ar_fld = xi.tx(var1, 641946706);
-		} else if (var2 == 14) {
-			this.an_fld = var1.cg();
 		} else if (15 == var2) {
-			this.aa_fld = var1.cg();
+			this.ar_fld = var1.cg();
 		}
 	}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	void ar(xi var1, int var2) {
-		if (1 == var2) {
-			xi.tx(var1, 1266974086);
-		} else if (2 == var2) {
-			this.ay_fld = var1.cg() * 842421679;
-		} else if (var2 == 3) {
-			this.as_fld = var1.cg();
-		} else if (var2 == 4) {
-			this.ar_fld = 0;
-		} else if (var2 == 5) {
-			this.al_fld = xi.tx(var1, 471435696);
-		} else if (6 == var2) {
-			var1.cg();
-		} else if (7 == var2) {
-			this.au_fld = var1.do_();
-		} else if (8 == var2) {
-			this.ax_fld = var1.do_() * -465357928;
-		} else if (11 == var2) {
-			this.ar_fld = xi.tx(var1, 1684491473) * 1037556387;
-		} else if (var2 == 14) {
-			this.an_fld = var1.cg();
-		} else if (15 == var2) {
-			this.aa_fld = var1.cg() * -501210492;
-		}
-	}
-
-	@ObfuscatedName("af")
+	@ObfuscatedName("vo")
 	@ObfuscatedSignature(
 		descriptor = "()Lyv;"
 	)
-	public yv af() {
+	public yv getHealthBarFrontSprite() {
 		try {
-			if (this.au_fld < 0) {
+			return this.av(588330049);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "(Lpa;)Lyv;"
+	)
+	public static yv fp(pa var0) throws EOFException {
+		try {
+			if (var0.ax_fld < 0) {
 				return null;
 			} else {
-				yv var1 = (yv)ah_fld.ak(this.au_fld);
-				if (var1 != null) {
+				yv var1 = (yv)ah_fld.ak(var0.ax_fld);
+				if (null != var1) {
 					return var1;
 				} else {
-					var1 = wf.av(av_fld, this.au_fld, 0);
-					if (null != var1) {
-						ah_fld.az(var1, this.au_fld);
+					var1 = wf.av(av_fld, var0.ax_fld, 0);
+					if (var1 != null) {
+						ah_fld.az(var1, var0.ax_fld);
 					}
 
 					return var1;
@@ -521,14 +512,14 @@ public class pa extends vc implements HealthBarConfig {
 	}
 
 	public pa() {
-		this.as_fld = 93892347;
-		this.ar_fld = 167962735;
-		this.af_fld = 64134341;
-		this.al_fld = 764359890;
+		this.af_fld = 93892347;
+		this.an_fld = 167962735;
+		this.al_fld = 64134341;
+		this.aw_fld = 764359890;
 		this.au_fld = -1166879745;
 		this.ax_fld = 1195239499;
-		this.an_fld = 1894499386;
-		this.aa_fld = 0;
+		this.ay_fld = 1894499386;
+		this.ar_fld = 0;
 	}
 
 	@ObfuscatedName("ay")
@@ -537,28 +528,36 @@ public class pa extends vc implements HealthBarConfig {
 	)
 	void ay(xi var1, int var2) {
 		if (1 == var2) {
-			xi.tx(var1, 332290131);
+			var1.cm();
 		} else if (2 == var2) {
-			this.ay_fld = var1.cg();
-		} else if (var2 == 3) {
 			this.as_fld = var1.cg();
+		} else if (var2 == 3) {
+			this.af_fld = var1.cg();
 		} else if (var2 == 4) {
-			this.ar_fld = 0;
+			this.an_fld = 0;
 		} else if (var2 == 5) {
-			this.al_fld = xi.tx(var1, 397359865) * -1155218060;
+			this.aw_fld = var1.cm() * -1155218060;
 		} else if (6 == var2) {
 			var1.cg();
 		} else if (7 == var2) {
-			this.au_fld = var1.do_();
+			this.au_fld = xi.kt(var1, (byte)-121);
 		} else if (8 == var2) {
-			this.ax_fld = var1.do_();
+			this.ax_fld = xi.kt(var1, (byte)-50);
 		} else if (11 == var2) {
-			this.ar_fld = xi.tx(var1, 1526568034);
+			this.an_fld = var1.cm();
 		} else if (var2 == 14) {
-			this.an_fld = var1.cg() * 1069440859;
+			this.ay_fld = var1.cg() * 1069440859;
 		} else if (15 == var2) {
-			this.aa_fld = var1.cg();
+			this.ar_fld = var1.cg();
 		}
+	}
+
+	@ObfuscatedName("nl")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int nl() {
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -572,7 +571,7 @@ public class pa extends vc implements HealthBarConfig {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lsb;"
+		descriptor = "(I)[Lsb;"
 	)
 	public static sb[] ak() {
 		return new sb[]{sb.ak_fld, sb.ag_fld, sb.az_fld, sb.av_fld};

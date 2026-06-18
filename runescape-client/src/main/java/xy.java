@@ -1,4 +1,5 @@
 import java.io.EOFException;
+import java.io.IOException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -62,10 +63,46 @@ public class xy {
 
 	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static int cy() {
 		return client.el_fld ? 2 : 1;
+	}
+
+	@ObfuscatedName("wm")
+	@ObfuscatedSignature(
+		descriptor = "(Lcv;)V"
+	)
+	public static void wm(cv var0) {
+		var0.aj_fld = la.fq_fld.ad(var0.az_fld) ? rw.ag_fld : rw.az_fld;
+	}
+
+	@ObfuscatedName("vd")
+	@ObfuscatedSignature(
+		descriptor = "(Lwq;III)I"
+	)
+	public static int vd(wq var0, int var1, int var2, int var3) {
+		return var0.az_fld[var1][var2][var3];
+	}
+
+	@ObfuscatedName("zu")
+	@ObfuscatedSignature(
+		descriptor = "(Loe;)Loq;"
+	)
+	public static oq zu(oe var0) {
+		return var0.dt_fld;
+	}
+
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "(Lzb;)V"
+	)
+	public static void gj(zb var0) throws IOException {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ae(false);
+		}
 	}
 
 	xy(String var1) {
@@ -74,7 +111,7 @@ public class xy {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(III)I"
+		descriptor = "(IIII)I"
 	)
 	static int ag(int var0, int var1, int var2) {
 		int var4 = var0 >> 16 & 0xFF;
@@ -91,7 +128,7 @@ public class xy {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int as(int var0, ba var1, boolean var2) throws EOFException {
 		if (var0 == 100) {
@@ -144,7 +181,7 @@ public class xy {
 			int var54 = bp.au_fld[1 + gz.ax_fld];
 			int var71 = bp.au_fld[gz.ax_fld + 2];
 			lu var84 = cf.cg_fld.ak(var34);
-			lu var96 = cf.cg_fld.ag(var34, var54, -752005764);
+			lu var96 = cf.cg_fld.ag(var34, var54);
 			if (var84 == null) {
 				throw new RuntimeException("");
 			} else if (var54 < 0) {
@@ -156,7 +193,7 @@ public class xy {
 			} else {
 				mg.aw(var84, var71, true, var1, (short)8050);
 				if (-1 != var96.cy_fld) {
-					lu var99 = cf.cg_fld.ag(var34, var96.cy_fld, -980002027);
+					lu var99 = cf.cg_fld.ag(var34, var96.cy_fld);
 					lr.ay(var99, var71, 1828744557);
 				}
 
@@ -219,7 +256,7 @@ public class xy {
 			if (null == var69) {
 				throw new RuntimeException("");
 			} else {
-				lu var82 = cf.cg_fld.ag(var69.cv_fld, var69.cy_fld, 1908846347);
+				lu var82 = cf.cg_fld.ag(var69.cv_fld, var69.cy_fld);
 				lu var94 = cf.cg_fld.ak(var82.cv_fld);
 				if (var82.bx_fld != 0) {
 					throw new RuntimeException("");
@@ -252,7 +289,7 @@ public class xy {
 			gz.ax_fld -= 2;
 			int var31 = bp.au_fld[gz.ax_fld];
 			int var51 = bp.au_fld[1 + gz.ax_fld];
-			lu var68 = var51 != -1 ? cf.cg_fld.ag(var31, var51, 1181831116) : null;
+			lu var68 = var51 != -1 ? cf.cg_fld.ag(var31, var51) : null;
 			ag.af(var68, var2);
 			return 1;
 		} else if (var0 == 201) {
@@ -260,7 +297,7 @@ public class xy {
 			return 1;
 		} else if (var0 == 204) {
 			lu var30 = var2 ? gs.ap_fld : bp.ab_fld;
-			lu var50 = var30 != null ? cf.cg_fld.ag(var30.cv_fld, var30.cy_fld, -449049237) : null;
+			lu var50 = var30 != null ? cf.cg_fld.ag(var30.cv_fld, var30.cy_fld) : null;
 			ag.af(var50, var2);
 			return 1;
 		} else if (var0 == 205) {
@@ -353,11 +390,11 @@ public class xy {
 			Object var90 = he.cg(var45);
 			int var9 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 			px var10 = kb.ag_px(var9, -1412598824);
-			Object var11 = var10.as();
+			Object var11 = px.ug(var10, 744389350);
 			Object var12 = null;
 			if (var78 >= 0) {
 				px var13 = kb.ag_px(var78, -533674787);
-				var12 = var13.as();
+				var12 = px.ug(var13, 2000551494);
 			}
 
 			lu var102 = cf.cg_fld.ak(bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127]);
@@ -365,7 +402,7 @@ public class xy {
 			if (null != var102 && null != var102.ge_fld) {
 				for (int var15 = 0; var15 < var102.ge_fld.length; var15++) {
 					lu var16 = var102.ge_fld[var15];
-					if (var16 != null && (var9 < 0 || var16.ao(var9, var11, -2126113188).equals(var90)) && (var78 < 0 || var16.ao(var78, var12, -1940803331).equals(var64))) {
+					if (var16 != null && (var9 < 0 || lu.go(var16, var9, var11).equals(var90)) && (var78 < 0 || lu.go(var16, var78, var12).equals(var64))) {
 						var14 = var16;
 						break;
 					}
@@ -379,16 +416,16 @@ public class xy {
 			int var23 = bp.au_fld[gz.ax_fld];
 			lu var44 = cf.cg_fld.ak(bp.au_fld[gz.ax_fld + 1]);
 			int var63 = bp.au_fld[2 + gz.ax_fld];
-			bp.at_fld.ak(var23, var44, var63, 1632525604);
+			le.um(bp.at_fld, var23, var44, var63, 1632525604);
 			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = bp.at_fld.av();
 			return 1;
 		} else if (212 == var0) {
 			int var22 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 			lu var43 = var2 ? gs.ap_fld : bp.ab_fld;
 			if (-1 == var43.by_fld) {
-				bp.at_fld.ak(var22, var43, -1, 1922871212);
+				le.um(bp.at_fld, var22, var43, -1, 1922871212);
 			} else {
-				bp.at_fld.ak(var22, cf.cg_fld.ak(var43.cv_fld), var43.by_fld, 1631847615);
+				le.um(bp.at_fld, var22, cf.cg_fld.ak(var43.cv_fld), var43.by_fld, 1631847615);
 			}
 
 			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = bp.at_fld.av();
@@ -400,14 +437,14 @@ public class xy {
 			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = bp.at_fld.ah();
 			return 1;
 		} else if (215 == var0) {
-			bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = ag.al(bp.at_fld.aw());
+			bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = ag.al(le.tf(bp.at_fld, (byte)-15));
 			return 1;
 		} else if (var0 == 216) {
 			int var21 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 			Object var42 = he.cg(var21);
 			int var62 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 			px var77 = kb.ag_px(var62, 224470058);
-			Object var89 = var77.as();
+			Object var89 = px.ug(var77, 767330021);
 			bp.at_fld.ay(var62, var42, var89, -2044640177);
 			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = bp.at_fld.av();
 			return 1;
@@ -551,6 +588,6 @@ public class xy {
 			var1 = 65535L;
 		}
 
-		var0.bw((int)var1);
+		xi.vy(var0, (int)var1);
 	}
 }

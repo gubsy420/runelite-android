@@ -1,6 +1,7 @@
 import java.io.EOFException;
 import net.runelite.api.IterableHashTable;
 import net.runelite.api.StructComposition;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -13,6 +14,11 @@ public class pw extends vc implements StructComposition, rl9 {
 		descriptor = "Lub;"
 	)
 	public static ub ak_fld;
+	@ObfuscatedName("uk")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int uk_fld = -1;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -28,11 +34,6 @@ public class pw extends vc implements StructComposition, rl9 {
 		descriptor = "Liw;"
 	)
 	public static iw ag_fld = new iw(64);
-	@ObfuscatedName("xj")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int xj_fld = -1;
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -43,21 +44,6 @@ public class pw extends vc implements StructComposition, rl9 {
 		descriptor = "I"
 	)
 	static int as_fld;
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)Ljava/lang/String;"
-	)
-	public String ab(int var1, String var2) {
-		return ih.av(this.az_fld, var1, var2);
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void ag(int var1) {
-	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
@@ -75,7 +61,7 @@ public class pw extends vc implements StructComposition, rl9 {
 					var1.az(new xi(var2), 1272609368);
 				}
 
-				var1.ag(-1257754311);
+				fh(var1, -1257754311);
 				ag_fld.az(var1, var0);
 				return var1;
 			}
@@ -102,6 +88,14 @@ public class pw extends vc implements StructComposition, rl9 {
 		return my.ag(this.az_fld, var1, var2);
 	}
 
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(IJ)J"
+	)
+	public long ah(int var1, long var2) {
+		return hq.az(this.az_fld, var1, var2);
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;"
@@ -110,19 +104,39 @@ public class pw extends vc implements StructComposition, rl9 {
 		return ih.av(this.az_fld, var1, var2);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("getParams")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "()Lnet/runelite/api/IterableHashTable;"
 	)
-	void ax(xi var1, int var2) {
-		if (249 == var2) {
-			this.az_fld = nc.ak(var1, this.az_fld);
+	@Export("getParams")
+	@Override
+	public IterableHashTable getParams() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("getId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getId")
+	@Override
+	public int getId() {
+		return this.uk_fld;
+	}
+
+	@ObfuscatedName("fh")
+	@ObfuscatedSignature(
+		descriptor = "(Lpw;I)V"
+	)
+	public static void fh(pw var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
 		}
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)D"
+		descriptor = "(II)D"
 	)
 	public static double az(int var0) {
 		int var2 = um.ai_fld[var0 & 2047];
@@ -135,15 +149,6 @@ public class pw extends vc implements StructComposition, rl9 {
 	)
 	public long ad(int var1, long var2) {
 		return hq.az(this.az_fld, var1, var2);
-	}
-
-	@ObfuscatedName("getId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getId() {
-		return this.xj_fld;
 	}
 
 	@ObfuscatedName("ar")
@@ -162,7 +167,7 @@ public class pw extends vc implements StructComposition, rl9 {
 					var1.az(new xi(var2), 1272609368);
 				}
 
-				var1.ag(-1230288362);
+				fh(var1, -1230288362);
 				ag_fld.az(var1, var0);
 				return var1;
 			}
@@ -186,18 +191,6 @@ public class pw extends vc implements StructComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(Lpw;IJ)J"
-	)
-	public static long bv(pw var0, int var1, long var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return hq.az(var0.az_fld, var1, var2);
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
@@ -208,19 +201,29 @@ public class pw extends vc implements StructComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int ai(int var1, int var2) {
-		return my.ag(this.az_fld, var1, var2);
-	}
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(II)I"
 	)
 	public int aa(int var1, int var2) {
+		return my.ag(this.az_fld, var1, var2);
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	void an(xi var1, int var2) {
+		if (249 == var2) {
+			this.az_fld = nc.ak(var1, this.az_fld);
+		}
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int ai(int var1, int var2) {
 		return my.ag(this.az_fld, var1, var2);
 	}
 
@@ -240,7 +243,7 @@ public class pw extends vc implements StructComposition, rl9 {
 					var1.az(new xi(var2), 1272609368);
 				}
 
-				var1.ag(-1045865846);
+				fh(var1, -1045865846);
 				ag_fld.az(var1, var0);
 				return var1;
 			}
@@ -301,7 +304,7 @@ public class pw extends vc implements StructComposition, rl9 {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	static void ak() {
 		if (la.av_fld.toLowerCase().indexOf("microsoft") != -1) {
@@ -333,29 +336,36 @@ public class pw extends vc implements StructComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("getParams")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/IterableHashTable;"
-	)
-	@Override
-	public IterableHashTable getParams() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("us")
+	@ObfuscatedName("jh")
 	@ObfuscatedSignature(
 		descriptor = "(Lxv;)V"
 	)
 	@Override
-	public void us(xv var1) {
+	public void jh(xv var1) {
 		this.az_fld = var1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IJ)J"
+		descriptor = "(I)V"
 	)
-	public long ah(int var1, long var2) {
-		return hq.az(this.az_fld, var1, var2);
+	void ag_void(int var1) {
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	void ax(xi var1, int var2) {
+		if (249 == var2) {
+			this.az_fld = nc.ak(var1, this.az_fld);
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void af() {
 	}
 }

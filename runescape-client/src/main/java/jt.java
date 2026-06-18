@@ -76,7 +76,7 @@ public class jt {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZ)I"
+		descriptor = "(Ljava/lang/CharSequence;IZI)I"
 	)
 	static int ah(CharSequence var0, int var1, boolean var2) {
 		if (var1 >= 2 && var1 <= 36) {
@@ -141,19 +141,16 @@ public class jt {
 	jt(int var1) {
 	}
 
-	@ObfuscatedName("up")
+	@ObfuscatedName("nf")
 	@ObfuscatedSignature(
-		descriptor = "(Luz;FFFF)V"
+		descriptor = "(Lcn;)F"
 	)
-	public static void up(uz var0, float var1, float var2, float var3, float var4) {
+	public static float nf(cn var0) {
 		if (var0 == null) {
-			var0.getClass();
+			throw new NullPointerException();
+		} else {
+			return var0.am_fld / 100.0F;
 		}
-
-		var0.av_fld = var1;
-		var0.ae_fld = var2;
-		var0.ah_fld = var3;
-		var0.aw_fld = var4;
 	}
 
 	@ObfuscatedName("ag")

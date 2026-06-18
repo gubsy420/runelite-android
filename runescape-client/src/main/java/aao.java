@@ -34,20 +34,20 @@ public class aao implements xm {
 		descriptor = "Laao;"
 	)
 	static aao ah_fld = new aao(1, 8);
-	@ObfuscatedGetter(
-		intValue = 1914100845
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
 	@ObfuscatedGetter(
-		intValue = 824847065
+		intValue = 1914100845
 	)
+	int ay_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 824847065
 	)
 	int aw_fld;
 
@@ -67,7 +67,7 @@ public class aao implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(B)Z"
 	)
 	public boolean ak() {
 		return this == ag_fld;
@@ -91,6 +91,18 @@ public class aao implements xm {
 		return this.aw_fld;
 	}
 
+	@ObfuscatedName("tl")
+	@ObfuscatedSignature(
+		descriptor = "(Laao;)Z"
+	)
+	public static boolean tl(aao var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0 == ag_fld;
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -98,13 +110,5 @@ public class aao implements xm {
 	@Override
 	public int ah() {
 		return this.aw_fld;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean az() {
-		return this == ag_fld;
 	}
 }

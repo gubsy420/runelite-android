@@ -14,12 +14,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("by")
 public class by implements ff {
-	@ObfuscatedGetter(
-		intValue = 1406829559
-	)
 	@ObfuscatedName("eo")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1406829559
 	)
 	static int eo_fld;
 	@ObfuscatedName("mg")
@@ -38,12 +38,12 @@ public class by implements ff {
 	)
 	static int ae_fld;
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn ap(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn bm(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		int var5 = var1.dq_fld;
 		pp var6 = ca.az(var5);
 		if (null != var6.dy_fld) {
@@ -55,12 +55,12 @@ public class by implements ff {
 		return var1.an(cf.cg_fld, var2, var3, var4, var8, var6, null, (byte)-104);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)Lfn;"
 	)
 	@Override
-	public fn ak(lu var1, int var2) throws EOFException {
+	public fn az(lu var1, int var2) throws EOFException {
 		og var3 = kb.ag(var1.ga_fld, -1752383175);
 		if (var3 != null) {
 			var3 = var3.ax(var1.gd_fld, -1781379588);
@@ -70,14 +70,14 @@ public class by implements ff {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)Lfn;"
 	)
 	@Override
-	public fn ag(lu var1, int var2) throws EOFException {
+	public fn ak(lu var1, int var2) throws EOFException {
 		if (var1.dq_fld == 0) {
-			return lp.ph(client.ca_fld, null, -1, null, -1, (byte)-39);
+			return client.ca_fld.ar(null, -1, null, -1, (byte)-39);
 		} else {
 			cv var3 = ot.ef();
 			return var3 != null ? var3.az(-178304394) : null;
@@ -86,7 +86,7 @@ public class by implements ff {
 
 	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int cc(int var0, ba var1, boolean var2) throws EOFException {
 		if (6809 == var0) {
@@ -153,17 +153,17 @@ public class by implements ff {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn ad(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn aj(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		pp var5 = null;
 		pg var6 = null;
 		int var7 = var1.dq_fld;
 		if (var7 >= 0) {
-			ds var8 = (ds)bw.dk_fld.ax_fld.ak(var7);
+			ds var8 = (ds)bw.dk_fld.ax_fld.ae(var7);
 			if (var8 != null && null != var8.ah_fld) {
 				var5 = var8.ah_fld;
 				if (var5.dy_fld != null) {
@@ -191,6 +191,14 @@ public class by implements ff {
 		} else {
 			return null;
 		}
+	}
+
+	@ObfuscatedName("hj")
+	@ObfuscatedSignature(
+		descriptor = "(Lqc;)I"
+	)
+	public static int hj(qc var0) {
+		return var0.ag_fld;
 	}
 
 	@ObfuscatedName("am")
@@ -244,7 +252,7 @@ public class by implements ff {
 	@Override
 	public fn au(lu var1) throws EOFException {
 		if (var1.dq_fld == 0) {
-			return lp.ph(client.ca_fld, null, -1, null, -1, (byte)-71);
+			return client.ca_fld.ar(null, -1, null, -1, (byte)-71);
 		} else {
 			cv var2 = ot.ef();
 			return var2 != null ? var2.az(-789720778) : null;
@@ -258,7 +266,7 @@ public class by implements ff {
 	@Override
 	public fn ax(lu var1) throws EOFException {
 		if (var1.dq_fld == 0) {
-			return lp.ph(client.ca_fld, null, -1, null, -1, (byte)44);
+			return client.ca_fld.ar(null, -1, null, -1, (byte)44);
 		} else {
 			cv var2 = ot.ef();
 			return var2 != null ? var2.az(-1057016613) : null;
@@ -272,7 +280,7 @@ public class by implements ff {
 	@Override
 	public fn an(lu var1) throws EOFException {
 		cv var2 = ot.ef();
-		return var2 != null ? lp.ph(var1.dy_fld, null, -1, hm.ak(var2.bi_fld), qa.do_(var2.cw_fld, -1929419499), (byte)-106) : null;
+		return var2 != null ? var1.dy_fld.ar(null, -1, hm.ak(var2.cr_fld), var2.cw_fld.aw(-1929419499), (byte)-106) : null;
 	}
 
 	@ObfuscatedName("aa")
@@ -282,7 +290,7 @@ public class by implements ff {
 	@Override
 	public fn aa(lu var1) throws EOFException {
 		cv var2 = ot.ef();
-		return var2 != null ? lp.ph(var1.dy_fld, null, -1, hm.ak(var2.bi_fld), qa.do_(var2.cw_fld, -82325529), (byte)63) : null;
+		return var2 != null ? var1.dy_fld.ar(null, -1, hm.ak(var2.cr_fld), var2.cw_fld.aw(-82325529), (byte)63) : null;
 	}
 
 	by() {
@@ -302,22 +310,22 @@ public class by implements ff {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)Lfn;"
 	)
 	@Override
-	public fn az(lu var1, int var2) throws EOFException {
+	public fn ag(lu var1, int var2) throws EOFException {
 		cv var3 = ot.ef();
-		return var3 != null ? lp.ph(var1.dy_fld, null, -1, hm.ak(var3.bi_fld), qa.do_(var3.cw_fld, 670935439), (byte)-44) : null;
+		return var3 != null ? var1.dy_fld.ar(null, -1, hm.ak(var3.cr_fld), var3.cw_fld.aw(670935439), (byte)-44) : null;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn aj(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn ao(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		cv var5 = ot.ef();
 		lp var6 = null == var5 ? null : var5.av_fld;
 		return var1.an(cf.cg_fld, var2, var3, var4, var6, null, null, (byte)-50);
@@ -333,7 +341,7 @@ public class by implements ff {
 		pg var7 = null;
 		int var8 = var1.dq_fld;
 		if (var8 >= 0) {
-			ds var9 = (ds)bw.dk_fld.ax_fld.ak(var8);
+			ds var9 = (ds)bw.dk_fld.ax_fld.ae(var8);
 			if (var9 != null && null != var9.ah_fld) {
 				var6 = var9.ah_fld;
 				if (var6.dy_fld != null) {
@@ -349,17 +357,17 @@ public class by implements ff {
 		return var1.an(cf.cg_fld, var2, var3, var4, var10, var6, var7, (byte)-28);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn ab(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn ad(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		pp var5 = null;
 		pg var6 = null;
 		int var7 = var1.dq_fld;
 		if (var7 >= 0) {
-			ds var8 = (ds)bw.dk_fld.ax_fld.ak(var7);
+			ds var8 = (ds)bw.dk_fld.ax_fld.ae(var7);
 			if (var8 != null && null != var8.ah_fld) {
 				var5 = var8.ah_fld;
 				if (var5.dy_fld != null) {
@@ -390,12 +398,12 @@ public class by implements ff {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn at(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn bd(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		int var5 = var1.dq_fld;
 		pp var6 = ca.az(var5);
 		if (null != var6.dy_fld) {
@@ -407,12 +415,12 @@ public class by implements ff {
 		return var1.an(cf.cg_fld, var2, var3, var4, var8, var6, null, (byte)-28);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn ac(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn ap(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		int var5 = var1.dq_fld;
 		pp var6 = ca.az(var5);
 		if (null != var6.dy_fld) {
@@ -441,39 +449,39 @@ public class by implements ff {
 		return var1.an(cf.cg_fld, var2, var3, var4, var9, var7, null, (byte)-30);
 	}
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn bm(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn ab(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		cv var5 = ot.ef();
 		lp var6 = null == var5 ? null : var5.av_fld;
 		return var1.an(cf.cg_fld, var2, var3, var4, var6, null, null, (byte)-6);
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn bd(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn ac(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		cv var5 = ot.ef();
 		lp var6 = null == var5 ? null : var5.av_fld;
 		return var1.an(cf.cg_fld, var2, var3, var4, var6, null, null, (byte)-8);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	@Override
-	public fn ao(lu var1, ol var2, int var3, boolean var4) throws EOFException {
+	public fn at(lu var1, ol var2, int var3, boolean var4) throws EOFException {
 		pp var5 = null;
 		pg var6 = null;
 		int var7 = var1.dq_fld;
 		if (var7 >= 0) {
-			ds var8 = (ds)bw.dk_fld.ax_fld.ak(var7);
+			ds var8 = (ds)bw.dk_fld.ax_fld.ae(var7);
 			if (var8 != null && null != var8.ah_fld) {
 				var5 = var8.ah_fld;
 				if (var5.dy_fld != null) {
@@ -491,7 +499,7 @@ public class by implements ff {
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(IIB)I"
 	)
 	static int aa(int var0, int var1) {
 		for (int var3 = 0; var3 < 8; var3++) {
@@ -508,7 +516,7 @@ public class by implements ff {
 
 	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIISISII)V"
+		descriptor = "(IIIIISISIII)V"
 	)
 	static void dw(int var0, int var1, int var2, int var3, int var4, short var5, int var6, short var7, int var8, int var9) throws EOFException {
 		di.dy(hk.mt_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, (byte)-113);
@@ -580,19 +588,19 @@ public class by implements ff {
 		ze var2 = (ze)za.ak_fld.ah();
 		if (null != var2) {
 			int var3 = var0.au_fld;
-			xi.ld(var0, var2.ak_fld, (byte)114);
+			var0.eb(var2.ak_fld);
 
 			for (int var4 = 0; var4 < var2.ag_fld; var4++) {
 				if (0 != var2.av_fld[var4]) {
-					var0.bc(var2.av_fld[var4]);
+					var0.ea(var2.av_fld[var4]);
 				} else {
 					try {
 						int var5 = var2.az_fld[var4];
 						if (0 == var5) {
 							Field var6 = var2.ae_fld[var4];
 							int var7 = var6.getInt(null);
-							var0.bc(0);
-							xi.ld(var0, var7, (byte)91);
+							var0.ea(0);
+							var0.eb(var7);
 						} else if (1 == var5) {
 							if (var1 == -183117600) {
 								return;
@@ -600,12 +608,12 @@ public class by implements ff {
 
 							Field var23 = var2.ae_fld[var4];
 							var23.setInt(null, var2.ah_fld[var4]);
-							var0.bc(0);
+							var0.ea(0);
 						} else if (2 == var5) {
 							Field var24 = var2.ae_fld[var4];
 							int var27 = var24.getModifiers();
-							var0.bc(0);
-							xi.ld(var0, var27, (byte)122);
+							var0.ea(0);
+							var0.eb(var27);
 						}
 
 						if (var5 != 3) {
@@ -616,8 +624,8 @@ public class by implements ff {
 
 								Method var26 = var2.aw_fld[var4];
 								int var29 = var26.getModifiers();
-								var0.bc(0);
-								xi.ld(var0, var29, (byte)100);
+								var0.ea(0);
+								var0.eb(var29);
 							}
 						} else {
 							Method var25 = var2.aw_fld[var4];
@@ -635,59 +643,59 @@ public class by implements ff {
 
 							Object var30 = var25.invoke(null, (Object[])var8);
 							if (null == var30) {
-								var0.bc(0);
+								var0.ea(0);
 							} else if (var30 instanceof Number) {
-								var0.bc(1);
-								var0.fn(((Number)var30).longValue());
+								var0.ea(1);
+								var0.ft(((Number)var30).longValue());
 							} else if (var30 instanceof String) {
-								var0.bc(2);
-								var0.cc((String)var30, -564112273);
+								var0.ea(2);
+								xi.ph(var0, (String)var30, -564112273);
 							} else {
-								var0.bc(4);
+								var0.ea(4);
 							}
 						}
 					} catch (ClassNotFoundException var11) {
-						var0.bc(-10);
+						var0.ea(-10);
 					} catch (InvalidClassException var12) {
-						var0.bc(-11);
+						var0.ea(-11);
 					} catch (StreamCorruptedException var13) {
-						var0.bc(-12);
+						var0.ea(-12);
 					} catch (OptionalDataException var14) {
-						var0.bc(-13);
+						var0.ea(-13);
 					} catch (IllegalAccessException var15) {
-						var0.bc(-14);
+						var0.ea(-14);
 					} catch (IllegalArgumentException var16) {
-						var0.bc(-15);
+						var0.ea(-15);
 					} catch (InvocationTargetException var17) {
-						var0.bc(-16);
+						var0.ea(-16);
 					} catch (SecurityException var18) {
-						var0.bc(-17);
+						var0.ea(-17);
 					} catch (IOException var19) {
-						var0.bc(-18);
+						var0.ea(-18);
 					} catch (NullPointerException var20) {
-						var0.bc(-19);
+						var0.ea(-19);
 					} catch (Exception var21) {
-						var0.bc(-20);
+						var0.ea(-20);
 					} catch (Throwable var22) {
-						var0.bc(-21);
+						var0.ea(-21);
 					}
 				}
 			}
 
 			var0.dg(var3);
-			var2.gy_void();
+			var2.gy();
 		}
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;I)V"
 	)
 	public static void ak(String var0) {
 		try {
 			og.ci_fld.getCallbacks().openUrl(var0);
 		} catch (Exception var3) {
-			client.ii_fld.error("unable to open url {}", var0, var3);
+			client.logger.error("unable to open url {}", var0, var3);
 		}
 	}
 }

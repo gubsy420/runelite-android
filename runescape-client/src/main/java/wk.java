@@ -9,12 +9,12 @@ public class wk {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedGetter(
-		intValue = -127556197
-	)
 	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -127556197
 	)
 	static int bf_fld;
 	@ObfuscatedName("ak")
@@ -22,6 +22,18 @@ public class wk {
 		descriptor = "Ljava/lang/String;"
 	)
 	public static String ak_fld;
+
+	@ObfuscatedName("ti")
+	@ObfuscatedSignature(
+		descriptor = "(Lgv;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int ti(gv var0, Object var1, Object var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak((gh)var1, (gh)var2, (byte)0);
+		}
+	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
@@ -48,18 +60,18 @@ public class wk {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void az() {
-		px.ae_fld.vh();
+		px.ae_fld.av();
 	}
 
-	@ObfuscatedName("nu")
+	@ObfuscatedName("vc")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)Z"
+		descriptor = "(Lek;)[Lsi;"
 	)
-	public static boolean nu(uk var0) {
-		return var0.ay_fld;
+	public static si[] vc(ek var0) {
+		return var0.ag_fld;
 	}
 
 	wk() throws Throwable {

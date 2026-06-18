@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -19,34 +20,43 @@ public class xt implements Comparator {
 		this.ak_fld = var1;
 	}
 
+	@ObfuscatedName("jg")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jg(Object var1) {
+		return super.equals(var1);
+	}
+
 	@ObfuscatedName("compare")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return js(this, (rl)var1, (rl)var2, -1882578795);
+		return this.ak((rl)var1, (rl)var2, -1882578795);
+	}
+
+	@ObfuscatedName("ux")
+	@ObfuscatedSignature(
+		descriptor = "(Lxt;Lrl;Lrl;)I"
+	)
+	public static int ux(xt var0, rl var1, rl var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld ? var1.ad(var2, -607953307) : var2.ad(var1, -2061136989);
+		}
 	}
 
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
-	}
-
-	@ObfuscatedName("js")
-	@ObfuscatedSignature(
-		descriptor = "(Lxt;Lrl;Lrl;I)I"
-	)
-	public static int js(xt var0, rl var1, rl var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak_fld ? var1.ad(var2, -2044606762) : var2.ad(var1, -1462759839);
 	}
 
 	@ObfuscatedName("ae")
@@ -54,7 +64,7 @@ public class xt implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ae(Object var1, Object var2) {
-		return js(this, (rl)var1, (rl)var2, -1453352366);
+		return this.ak((rl)var1, (rl)var2, -1453352366);
 	}
 
 	@ObfuscatedName("ah")
@@ -62,19 +72,7 @@ public class xt implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ah(Object var1, Object var2) {
-		return js(this, (rl)var1, (rl)var2, -30598218);
-	}
-
-	@ObfuscatedName("fu")
-	@ObfuscatedSignature(
-		descriptor = "(Lxt;Ljava/lang/Object;)Z"
-	)
-	public static boolean fu(xt var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.equals(var1);
+		return this.ak((rl)var1, (rl)var2, -30598218);
 	}
 
 	@ObfuscatedName("aw")
@@ -82,12 +80,12 @@ public class xt implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int aw(Object var1, Object var2) {
-		return js(this, (rl)var1, (rl)var2, -49878984);
+		return this.ak((rl)var1, (rl)var2, -49878984);
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;)Ljava/lang/String;"
+		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;"
 	)
 	public static String ak(CharSequence var0) {
 		int var2 = var0.length();
@@ -123,28 +121,32 @@ public class xt implements Comparator {
 		return var3.toString();
 	}
 
+	@ObfuscatedName("wk")
+	@ObfuscatedSignature(
+		descriptor = "(Lxt;Lrl;Lrl;)I"
+	)
+	public static int wk(xt var0, rl var1, rl var2) {
+		return var0.ak_fld ? var1.ad(var2, -2094241623) : var2.ad(var1, -1708935379);
+	}
+
+	@ObfuscatedName("nx")
+	@ObfuscatedSignature(
+		descriptor = "(Lxt;Ljava/lang/Object;)Z"
+	)
+	public static boolean nx(xt var0, Object var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.equals(var1);
+	}
+
 	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
 	public boolean jm(Object var1) {
 		return super.equals(var1);
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jt(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lrl;Lrl;)I"
-	)
-	int ag(rl var1, rl var2) {
-		return this.ak_fld ? var1.ad(var2, -2094241623) : var2.ad(var1, -1708935379);
 	}
 
 	@ObfuscatedName("av")
@@ -155,19 +157,19 @@ public class xt implements Comparator {
 		return this.ak_fld ? var1.ad(var2, -1683898188) : var2.ad(var1, -1675073891);
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lrl;Lrl;)I"
-	)
-	int az(rl var1, rl var2) {
-		return this.ak_fld ? var1.ad(var2, -607953307) : var2.ad(var1, -2061136989);
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lrl;Lrl;I)I"
 	)
 	int ak(rl var1, rl var2, int var3) {
 		return this.ak_fld ? var1.ad(var2, -2044606762) : var2.ad(var1, -1462759839);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lrl;Lrl;)I"
+	)
+	int az(rl var1, rl var2) {
+		return this.ak_fld ? var1.ad(var2, -607953307) : var2.ad(var1, -2061136989);
 	}
 }

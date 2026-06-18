@@ -21,6 +21,22 @@ public abstract class br extends vw {
 	)
 	abstract void ak();
 
+	@ObfuscatedName("oo")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;)V"
+	)
+	public static void oo(pi var0) {
+		var0.ai_fld = var0.az_fld;
+	}
+
+	@ObfuscatedName("st")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)I"
+	)
+	public static int st(yz var0) {
+		return var0.ah_fld;
+	}
+
 	br() throws Throwable {
 		throw new Error();
 	}

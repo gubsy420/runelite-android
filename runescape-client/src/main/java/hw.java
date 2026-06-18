@@ -28,14 +28,61 @@ public class hw extends gf {
 	)
 	HashSet af_fld;
 
-	@ObfuscatedName("ci")
+	@ObfuscatedName("ld")
+	@ObfuscatedSignature(
+		descriptor = "(Lhw;Lxi;Lxi;IZ)V"
+	)
+	public static void ld(hw var0, xi var1, xi var2, int var3, boolean var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				var0.ak(var1, var3, (byte)48);
+				int var5 = var2.cm();
+				var0.af_fld = new HashSet(var5);
+
+				for (int var6 = 0; var6 < var5; var6++) {
+					gk var7 = new gk();
+
+					try {
+						gk.de(var7, var2, (byte)90);
+					} catch (IllegalStateException var12) {
+						continue;
+					}
+
+					var0.af_fld.add(var7);
+				}
+
+				int var14 = var2.cm();
+				var0.al_fld = new ArrayList(var14);
+
+				for (int var15 = 0; var15 < var14; var15++) {
+					gy var8 = new gy();
+
+					try {
+						var8.ag(var2);
+					} catch (IllegalStateException var11) {
+						continue;
+					}
+
+					var0.al_fld.add(var8);
+				}
+
+				var0.cj(var2, var4);
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
+	}
+
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;Lxi;IZI)V"
 	)
-	void ci(xi var1, xi var2, int var3, boolean var4, int var5) {
+	void cu(xi var1, xi var2, int var3, boolean var4, int var5) {
 		try {
 			this.ak(var1, var3, (byte)76);
-			int var6 = xi.tx(var2, 384574522);
+			int var6 = var2.cm();
 			this.af_fld = new HashSet(var6);
 
 			for (int var7 = 0; var7 < var6; var7++) {
@@ -50,7 +97,7 @@ public class hw extends gf {
 				this.af_fld.add(var8);
 			}
 
-			int var14 = xi.tx(var2, 574811085);
+			int var14 = var2.cm();
 			this.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -69,27 +116,49 @@ public class hw extends gf {
 				this.al_fld.add(var9);
 			}
 
-			oz(this, var2, var4, 1036594980);
+			this.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("dz")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;IZ)V"
+		descriptor = "(Lxi;Z)V"
 	)
-	void cu(xi var1, xi var2, int var3, boolean var4) {
+	void dz(xi var1, boolean var2) {
+		try {
+			this.au_fld = new LinkedList();
+			int var3 = var1.cm();
+
+			for (int var4 = 0; var4 < var3; var4++) {
+				int var5 = xi.kt(var1, (byte)-44);
+				kj var6 = new kj(var1.co((byte)-104));
+				boolean var7 = var1.cg() == 1;
+				if (var2 || !var7) {
+					this.au_fld.add(new he(null, var6, var5, null));
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("ci")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;Lxi;IZI)V"
+	)
+	void ci(xi var1, xi var2, int var3, boolean var4) {
 		try {
 			this.ak(var1, var3, (byte)48);
-			int var6 = xi.tx(var2, 1923860933);
+			int var6 = var2.cm();
 			this.af_fld = new HashSet(var6);
 
 			for (int var7 = 0; var7 < var6; var7++) {
 				gk var8 = new gk();
 
 				try {
-					var8.ag(var2);
+					gk.de(var8, var2, (byte)39);
 				} catch (IllegalStateException var12) {
 					continue;
 				}
@@ -97,7 +166,7 @@ public class hw extends gf {
 				this.af_fld.add(var8);
 			}
 
-			int var14 = xi.tx(var2, 468331357);
+			int var14 = var2.cm();
 			this.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -112,27 +181,27 @@ public class hw extends gf {
 				this.al_fld.add(var9);
 			}
 
-			oz(this, var2, var4, -1412231285);
+			this.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
 	}
 
-	@ObfuscatedName("ct")
+	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;Lxi;IZ)V"
 	)
-	void ct(xi var1, xi var2, int var3, boolean var4) {
+	void cl(xi var1, xi var2, int var3, boolean var4) {
 		try {
-			this.ak(var1, var3, (byte)48);
-			int var5 = xi.tx(var2, 1586013194);
+			this.ak(var1, var3, (byte)20);
+			int var5 = var2.cm();
 			this.af_fld = new HashSet(var5);
 
 			for (int var6 = 0; var6 < var5; var6++) {
 				gk var7 = new gk();
 
 				try {
-					var7.ag(var2);
+					gk.de(var7, var2, (byte)9);
 				} catch (IllegalStateException var12) {
 					continue;
 				}
@@ -140,7 +209,7 @@ public class hw extends gf {
 				this.af_fld.add(var7);
 			}
 
-			int var14 = xi.tx(var2, 1446761160);
+			int var14 = var2.cm();
 			this.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -155,74 +224,31 @@ public class hw extends gf {
 				this.al_fld.add(var8);
 			}
 
-			oz(this, var2, var4, 736962419);
+			this.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
 	}
 
-	@ObfuscatedName("ch")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;IZ)V"
-	)
-	void ch(xi var1, xi var2, int var3, boolean var4) {
-		try {
-			this.ak(var1, var3, (byte)65);
-			int var5 = xi.tx(var2, 611372020);
-			this.af_fld = new HashSet(var5);
-
-			for (int var6 = 0; var6 < var5; var6++) {
-				gk var7 = new gk();
-
-				try {
-					var7.ak(var2);
-				} catch (IllegalStateException var12) {
-					continue;
-				}
-
-				this.af_fld.add(var7);
-			}
-
-			int var14 = xi.tx(var2, 1366497766);
-			this.al_fld = new ArrayList(var14);
-
-			for (int var15 = 0; var15 < var14; var15++) {
-				gy var8 = new gy();
-
-				try {
-					var8.ak(var2);
-				} catch (IllegalStateException var11) {
-					continue;
-				}
-
-				this.al_fld.add(var8);
-			}
-
-			oz(this, var2, var4, -1645051913);
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("xt")
+	@ObfuscatedName("ir")
 	@ObfuscatedSignature(
 		descriptor = "(Lhw;Lxi;Lxi;IZ)V"
 	)
-	public static void xt(hw var0, xi var1, xi var2, int var3, boolean var4) throws EOFException {
+	public static void ir(hw var0, xi var1, xi var2, int var3, boolean var4) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
 			}
 
-			var0.ak(var1, var3, (byte)78);
-			int var5 = xi.tx(var2, 1482331698);
+			var0.ak(var1, var3, (byte)64);
+			int var5 = var2.cm();
 			var0.af_fld = new HashSet(var5);
 
 			for (int var6 = 0; var6 < var5; var6++) {
 				gk var7 = new gk();
 
 				try {
-					var7.ag(var2);
+					gk.de(var7, var2, (byte)42);
 				} catch (IllegalStateException var12) {
 					continue;
 				}
@@ -230,7 +256,7 @@ public class hw extends gf {
 				var0.af_fld.add(var7);
 			}
 
-			int var14 = xi.tx(var2, 1339773643);
+			int var14 = var2.cm();
 			var0.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -245,27 +271,57 @@ public class hw extends gf {
 				var0.al_fld.add(var8);
 			}
 
-			oz(var0, var2, var4, 1790360288);
+			var0.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
 	}
 
-	@ObfuscatedName("cl")
+	@ObfuscatedName("rp")
+	@ObfuscatedSignature(
+		descriptor = "(Lwh;)I"
+	)
+	public static int rp(wh var0) {
+		return var0.aw_fld;
+	}
+
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;ZI)V"
+	)
+	void cj(xi var1, boolean var2) {
+		try {
+			this.au_fld = new LinkedList();
+			int var4 = var1.cm();
+
+			for (int var5 = 0; var5 < var4; var5++) {
+				int var6 = xi.kt(var1, (byte)-36);
+				kj var7 = new kj(var1.co((byte)-114));
+				boolean var8 = var1.cg() == 1;
+				if (var2 || !var8) {
+					this.au_fld.add(new he(null, var7, var6, null));
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("dh")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;Lxi;IZ)V"
 	)
-	void cl(xi var1, xi var2, int var3, boolean var4) {
+	void dh(xi var1, xi var2, int var3, boolean var4) {
 		try {
-			this.ak(var1, var3, (byte)20);
-			int var5 = xi.tx(var2, 444088796);
+			this.ak(var1, var3, (byte)78);
+			int var5 = var2.cm();
 			this.af_fld = new HashSet(var5);
 
 			for (int var6 = 0; var6 < var5; var6++) {
 				gk var7 = new gk();
 
 				try {
-					var7.ag(var2);
+					gk.de(var7, var2, (byte)19);
 				} catch (IllegalStateException var12) {
 					continue;
 				}
@@ -273,7 +329,7 @@ public class hw extends gf {
 				this.af_fld.add(var7);
 			}
 
-			int var14 = xi.tx(var2, 1565970278);
+			int var14 = var2.cm();
 			this.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -288,81 +344,9 @@ public class hw extends gf {
 				this.al_fld.add(var8);
 			}
 
-			oz(this, var2, var4, 742372269);
+			this.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("dc")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;IZ)V"
-	)
-	void dc(xi var1, xi var2, int var3, boolean var4) {
-		try {
-			this.ak(var1, var3, (byte)64);
-			int var5 = xi.tx(var2, 1735607968);
-			this.af_fld = new HashSet(var5);
-
-			for (int var6 = 0; var6 < var5; var6++) {
-				gk var7 = new gk();
-
-				try {
-					var7.ag(var2);
-				} catch (IllegalStateException var12) {
-					continue;
-				}
-
-				this.af_fld.add(var7);
-			}
-
-			int var14 = xi.tx(var2, 1655980350);
-			this.al_fld = new ArrayList(var14);
-
-			for (int var15 = 0; var15 < var14; var15++) {
-				gy var8 = new gy();
-
-				try {
-					var8.ag(var2);
-				} catch (IllegalStateException var11) {
-					continue;
-				}
-
-				this.al_fld.add(var8);
-			}
-
-			oz(this, var2, var4, -383187334);
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("mw")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;Lek;I)V"
-	)
-	public static void mw(fn var0, ek var1, int var2) {
-		if (var0.ca_fld != null) {
-			for (int var3 = 0; var3 < var0.cz_fld; var3++) {
-				int[] var4 = var0.ca_fld[var3];
-				if (var4 != null && var4.length != 0) {
-					int[] var5 = var0.cg_fld[var3];
-					uy.dc(fn.bk_fld, 776123238);
-
-					for (int var6 = 0; var6 < var4.length; var6++) {
-						int var7 = var4[var6];
-						si var8 = ek.mt(var1, var7, (byte)4);
-						if (var8 != null) {
-							fn.bj_fld.ar(var5[var6] / 255.0F);
-							uy.nf(fn.bf_fld, var8.ay(var2), (byte)-10);
-							fn.bf_fld.al(fn.bj_fld);
-							fn.bk_fld.au(fn.bf_fld);
-						}
-					}
-
-					var0.cq(var3, fn.bk_fld);
-				}
-			}
 		}
 	}
 
@@ -373,14 +357,14 @@ public class hw extends gf {
 	void dv(xi var1, xi var2, int var3, boolean var4) {
 		try {
 			this.ak(var1, var3, (byte)105);
-			int var5 = xi.tx(var2, 633539832);
+			int var5 = var2.cm();
 			this.af_fld = new HashSet(var5);
 
 			for (int var6 = 0; var6 < var5; var6++) {
 				gk var7 = new gk();
 
 				try {
-					var7.ag(var2);
+					gk.de(var7, var2, (byte)107);
 				} catch (IllegalStateException var12) {
 					continue;
 				}
@@ -388,7 +372,7 @@ public class hw extends gf {
 				this.af_fld.add(var7);
 			}
 
-			int var14 = xi.tx(var2, 1678815477);
+			int var14 = var2.cm();
 			this.al_fld = new ArrayList(var14);
 
 			for (int var15 = 0; var15 < var14; var15++) {
@@ -403,7 +387,7 @@ public class hw extends gf {
 				this.al_fld.add(var8);
 			}
 
-			oz(this, var2, var4, -750101030);
+			this.cj(var2, var4);
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
@@ -414,10 +398,57 @@ public class hw extends gf {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ag(int var0) {
 		return var0 >> 14 & 1023;
+	}
+
+	@ObfuscatedName("rw")
+	@ObfuscatedSignature(
+		descriptor = "(Lhw;Lxi;Lxi;IZ)V"
+	)
+	public static void rw(hw var0, xi var1, xi var2, int var3, boolean var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.ak(var1, var3, (byte)65);
+			int var5 = var2.cm();
+			var0.af_fld = new HashSet(var5);
+
+			for (int var6 = 0; var6 < var5; var6++) {
+				gk var7 = new gk();
+
+				try {
+					var7.ak(var2);
+				} catch (IllegalStateException var12) {
+					continue;
+				}
+
+				var0.af_fld.add(var7);
+			}
+
+			int var14 = var2.cm();
+			var0.al_fld = new ArrayList(var14);
+
+			for (int var15 = 0; var15 < var14; var15++) {
+				gy var8 = new gy();
+
+				try {
+					var8.ak(var2);
+				} catch (IllegalStateException var11) {
+					continue;
+				}
+
+				var0.al_fld.add(var8);
+			}
+
+			var0.cj(var2, var4);
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
 	}
 
 	@ObfuscatedName("ak")
@@ -467,10 +498,10 @@ public class hw extends gf {
 			try {
 				if (fp.ax_fld.startsWith("win")) {
 					if (null == uf.aa_fld) {
-						uf.aa_fld = client.kb("USERPROFILE");
+						uf.aa_fld = client.ly("USERPROFILE");
 					}
 				} else if (uf.aa_fld == null) {
-					uf.aa_fld = client.kb("HOME");
+					uf.aa_fld = client.ly("HOME");
 				}
 
 				if (uf.aa_fld != null) {
@@ -506,7 +537,7 @@ public class hw extends gf {
 									return;
 								}
 
-								int var14 = zb.fd(var12, var13.al_fld, var13.au_fld, var13.al_fld.length - var13.au_fld);
+								int var14 = zb.oe(var12, var13.al_fld, var13.au_fld, var13.al_fld.length - var13.au_fld);
 								if (-1 == var14) {
 									if (var5 != 4) {
 										return;
@@ -536,14 +567,14 @@ public class hw extends gf {
 									}
 
 									if (var60 <= 2) {
-										var9 = var13.cl();
+										var9 = var13.ct();
 										if (var15 == 1) {
-											var10 = var13.cl();
+											var10 = var13.ct();
 										}
 									} else {
-										var9 = xi.ag(var13, (byte)-88);
+										var9 = xi.jw(var13, (byte)-88);
 										if (1 == var15) {
-											var10 = xi.ag(var13, (byte)-3);
+											var10 = xi.jw(var13, (byte)-3);
 										}
 									}
 									break label641;
@@ -726,11 +757,11 @@ public class hw extends gf {
 
 	@ObfuscatedName("cn")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZ)V"
+		descriptor = "(IIIIZI)V"
 	)
 	static final void cn(int var0, int var1, int var2, int var3, boolean var4) {
 		if (var4) {
-			rl24.oj(bw.dk_fld);
+			rl24.ky(bw.dk_fld);
 		}
 
 		if (var2 < 1) {
@@ -760,9 +791,9 @@ public class hw extends gf {
 				double var11 = var3 * var7 * 512.0 / (var9 * 334.0);
 				int var13 = (int)((var2 - var11) / 2.0);
 				if (var4) {
-					fh.te();
-					fh.tj(var0, var1, var13, var3, -16777216);
-					fh.tj(var0 + var2 - var13, var1, var13, var3, -16777216);
+					fh.kc();
+					fh.mq(var0, var1, var13, var3, -16777216);
+					fh.mq(var0 + var2 - var13, var1, var13, var3, -16777216);
 				}
 
 				var0 += var13;
@@ -776,9 +807,9 @@ public class hw extends gf {
 				double var16 = var9 * var2 * 334.0 / (var7 * 512.0);
 				int var17 = (int)((var3 - var16) / 2.0);
 				if (var4) {
-					fh.te();
-					fh.tj(var0, var1, var2, var17, -16777216);
-					fh.tj(var0, var3 + var1 - var17, var2, var17, -16777216);
+					fh.kc();
+					fh.mq(var0, var1, var2, var17, -16777216);
+					fh.mq(var0, var3 + var1 - var17, var2, var17, -16777216);
 				}
 
 				var1 += var17;
@@ -788,116 +819,12 @@ public class hw extends gf {
 
 		client.fd_fld = (int)(var3 * var7 / 334.0);
 		if (var2 != client.fn_fld || var3 != client.ft_fld) {
-			client.uu(var2, var3);
+			client.ln(var2, var3);
 		}
 
 		client.fl_fld = var0;
 		client.fg_fld = var1;
 		client.fn_fld = var2;
 		client.ft_fld = var3;
-	}
-
-	@ObfuscatedName("dz")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Z)V"
-	)
-	void dz(xi var1, boolean var2) {
-		try {
-			this.au_fld = new LinkedList();
-			int var3 = xi.tx(var1, 1481842607);
-
-			for (int var4 = 0; var4 < var3; var4++) {
-				int var5 = var1.ew();
-				kj var6 = new kj(var1.cg());
-				boolean var7 = var1.cg() == 1;
-				if (var2 || !var7) {
-					this.au_fld.add(new he(null, var6, var5, null));
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("gf")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)I"
-	)
-	public static int gf(da var0) {
-		return var0.cg_fld.aw_fld * 891348101;
-	}
-
-	@ObfuscatedName("oz")
-	@ObfuscatedSignature(
-		descriptor = "(Lhw;Lxi;ZI)V"
-	)
-	public static void oz(hw var0, xi var1, boolean var2, int var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				var0.au_fld = new LinkedList();
-				int var4 = xi.tx(var1, 1347744753);
-
-				for (int var5 = 0; var5 < var4; var5++) {
-					int var6 = var1.do_();
-					kj var7 = new kj(var1.co());
-					boolean var8 = var1.cg() == 1;
-					if (var2 || !var8) {
-						var0.au_fld.add(new he(null, var7, var6, null));
-					}
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("dp")
-	@ObfuscatedSignature(
-		descriptor = "(Lhw;Lxi;Z)V"
-	)
-	public static void dp(hw var0, xi var1, boolean var2) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			var0.au_fld = new LinkedList();
-			int var3 = xi.tx(var1, 1481842607);
-
-			for (int var4 = 0; var4 < var3; var4++) {
-				int var5 = var1.do_();
-				kj var6 = new kj(var1.co());
-				boolean var7 = var1.cg() == 1;
-				if (var2 || !var7) {
-					var0.au_fld.add(new he(null, var6, var5, null));
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("cj")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;ZI)V"
-	)
-	void cj(xi var1, boolean var2, int var3) {
-		try {
-			this.au_fld = new LinkedList();
-			int var4 = xi.tx(var1, 1347744753);
-
-			for (int var5 = 0; var5 < var4; var5++) {
-				int var6 = var1.do_();
-				kj var7 = new kj(var1.em());
-				boolean var8 = var1.co() == 1;
-				if (var2 || !var8) {
-					this.au_fld.add(new he(null, var7, var6, null));
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
 	}
 }

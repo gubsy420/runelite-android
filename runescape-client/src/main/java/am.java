@@ -8,4 +8,12 @@ public interface am {
 		descriptor = "I"
 	)
 	int ak_fld = 2;
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Lpn;)Lwn;"
+	)
+	static wn jt(pn var0) {
+		return var0.as_fld;
+	}
 }

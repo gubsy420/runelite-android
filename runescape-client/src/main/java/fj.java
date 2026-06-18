@@ -7,6 +7,7 @@ import net.runelite.api.GameObject;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -17,100 +18,100 @@ import net.runelite.api.coords.WorldPoint;
 @ObfuscatedName("fj")
 @Implements({"GameObject", "TileObject"})
 public class fj implements GameObject, TileObject {
-	@ObfuscatedGetter(
-		intValue = 996418047
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int af_fld;
 	@ObfuscatedGetter(
-		intValue = -502866077
+		intValue = 996418047
 	)
+	int af_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		longValue = 2121558925630479837L
+		intValue = -502866077
 	)
+	int aw_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	public long az_fld = 0L;
 	@ObfuscatedGetter(
-		intValue = 888822967
+		longValue = 2121558925630479837L
 	)
+	public long az_fld = 0L;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 1163057641
+		intValue = 888822967
 	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = -564370133
+		intValue = 1163057641
 	)
+	int ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
 	@ObfuscatedGetter(
-		intValue = 1511530387
+		intValue = -564370133
 	)
+	int ah_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
 	@ObfuscatedGetter(
-		intValue = 1952704125
+		intValue = 1511530387
 	)
+	int ay_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int au_fld;
 	@ObfuscatedGetter(
-		intValue = -130507625
+		intValue = 1952704125
 	)
+	int au_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int as_fld;
 	@ObfuscatedGetter(
-		intValue = -462437065
+		intValue = -130507625
 	)
+	int as_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = -1613956585
+		intValue = -462437065
 	)
+	int ar_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ax_fld = 0;
 	@ObfuscatedGetter(
-		intValue = 1534155055
+		intValue = -1613956585
 	)
+	int ax_fld = 0;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1534155055
 	)
 	int al_fld;
 	@ObfuscatedName("ak")
@@ -123,12 +124,12 @@ public class fj implements GameObject, TileObject {
 		descriptor = "I"
 	)
 	static int am_fld;
-	@ObfuscatedGetter(
-		intValue = 1387508507
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1387508507
 	)
 	int ag_fld;
 	@ObfuscatedName("ap")
@@ -137,225 +138,11 @@ public class fj implements GameObject, TileObject {
 	)
 	public static int ap_fld;
 
-	@ObfuscatedName("su")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int su() {
-		long var1 = this.getHash();
-		int var3 = (int)(var1 >> 52 & 4095L);
-		if (var3 == 4095L) {
-			var3 = -1;
-		}
-
-		return var3;
-	}
-
-	@ObfuscatedName("getConfig")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getConfig() {
-		return this.ax_fld;
-	}
-
-	@ObfuscatedName("sizeY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int sizeY() {
-		return this.af_fld - this.ar_fld + 1;
-	}
-
-	@ObfuscatedName("getCanvasTextLocation")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics2D;Ljava/lang/String;I)Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasTextLocation(Graphics2D var1, String var2, int var3) {
-		return Perspective.getCanvasTextLocation(og.ci_fld, var1, this.getLocalLocation(), var2, var3);
-	}
-
-	@ObfuscatedName("getSceneMaxLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getSceneMaxLocation() {
-		return new Point(this.as_fld, this.af_fld);
-	}
-
-	@ObfuscatedName("qs")
-	@ObfuscatedSignature(
-		descriptor = "()Lfn;"
-	)
-	public fn qs() {
-		try {
-			if (this.ak_fld == null) {
-				return null;
-			} else {
-				return this.ak_fld instanceof fn ? (fn)this.ak_fld : this.ak_fld.getModel();
-			}
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ja")
-	@ObfuscatedSignature(
-		descriptor = "()Ldx;"
-	)
-	public dx getWorldView() {
-		return dx.ws(this.su());
-	}
-
-	@ObfuscatedName("di")
-	@ObfuscatedSignature(
-		descriptor = "()Lem;"
-	)
-	public em getRenderable() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("getX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getX() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("yu")
-	@ObfuscatedSignature(
-		descriptor = "(Lws;)Z"
-	)
-	public static boolean yu(ws var0) {
-		return var0.av_fld;
-	}
-
-	@ObfuscatedName("getZ")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getZ() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("getCanvasLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasLocation() {
-		return this.getCanvasLocation(0);
-	}
-
-	@ObfuscatedName("isOpShown")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	@Override
-	public boolean isOpShown(int var1) {
-		cs var2 = this.getWorldView().dg(this.getHash());
-		return var2 == null ? true : var2.ap(var1);
-	}
-
-	@ObfuscatedName("getCanvasLocation")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasLocation(int var1) {
-		return Perspective.localToCanvas(og.ci_fld, this.getLocalLocation(), this.getPlane(), var1);
-	}
-
-	@ObfuscatedName("hg")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void hg(int var1) {
-		this.av_fld = var1;
-	}
-
-	@ObfuscatedName("getClickbox")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Shape;"
-	)
-	@Override
-	public Shape getClickbox() {
-		try {
-			return Perspective.getClickbox(og.ci_fld, this.getWorldView(), this.qs(), this.getModelOrientation(), this.getX(), this.getY(), this.getZ());
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("yg")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void yg(int var1) {
-		this.aw_fld = var1;
-	}
-
-	@ObfuscatedName("getOrientation")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getOrientation() {
-		int var1 = this.getModelOrientation();
-		int var2 = this.getConfig() >> 6 & 3;
-		return var2 * 512 + var1;
-	}
-
-	@ObfuscatedName("getConvexHull")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Shape;"
-	)
-	@Override
-	public Shape getConvexHull() {
-		try {
-			fn var1 = this.qs();
-			return var1 == null ? null : var1.bz(this.getWorldView(), this.getX(), this.getY(), this.getModelOrientation(), this.getZ());
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("de")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void de(int var1) {
-		this.ag_fld = var1;
-	}
-
-	@ObfuscatedName("ug")
-	@ObfuscatedSignature(
-		descriptor = "(J)V"
-	)
-	public void ug(long var1) {
-		this.az_fld = var1;
-	}
-
-	@ObfuscatedName("getPlane")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getPlane() {
-		return this.av_fld;
-	}
-
 	@ObfuscatedName("getCanvasTilePoly")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/awt/Polygon;"
 	)
+	@Export("getCanvasTilePoly")
 	@Override
 	public Polygon getCanvasTilePoly() {
 		int var1 = 1;
@@ -369,112 +156,68 @@ public class fj implements GameObject, TileObject {
 		return Perspective.getCanvasTileAreaPoly(og.ci_fld, this.getLocalLocation(), var1, var2, this.getPlane(), 0);
 	}
 
-	@ObfuscatedName("us")
+	@ObfuscatedName("wv")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void us(int var1) {
-		this.ah_fld = var1;
+	public void wv(int var1) {
+		this.ag_fld = var1;
 	}
 
 	@ObfuscatedName("getMinimapLocation")
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/Point;"
 	)
+	@Export("getMinimapLocation")
 	@Override
 	public Point getMinimapLocation() {
 		return Perspective.localToMinimap(og.ci_fld, this.getLocalLocation());
 	}
 
-	@ObfuscatedName("getY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getY() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("cx")
+	@ObfuscatedName("en")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void cx(int var1) {
+	public void en(int var1) {
 		this.ax_fld = var1;
 	}
 
-	@ObfuscatedName("sizeX")
+	@ObfuscatedName("lx")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()Lem;"
 	)
-	@Override
-	public int sizeX() {
-		return this.as_fld - this.ay_fld + 1;
+	public em getRenderable() {
+		return this.ak_fld;
 	}
 
-	@Nullable
-	@ObfuscatedName("getOpOverride")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
-	)
-	@Override
-	public String getOpOverride(int var1) {
-		cs var2 = this.getWorldView().dg(this.getHash());
-		return var2 == null ? null : var2.ky(var1);
-	}
-
-	@ObfuscatedName("getModelOrientation")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelOrientation() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("getSceneMinLocation")
+	@ObfuscatedName("getCanvasLocation")
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/Point;"
 	)
+	@Export("getCanvasLocation")
 	@Override
-	public Point getSceneMinLocation() {
-		return new Point(this.ay_fld, this.ar_fld);
+	public Point getCanvasLocation() {
+		return this.getCanvasLocation(0);
 	}
 
-	@ObfuscatedName("getId")
+	@ObfuscatedName("getPlane")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getPlane")
 	@Override
-	public int getId() {
-		long var1 = this.getHash();
-		return (int)(var1 >>> 20 & 4294967295L);
-	}
-
-	@ObfuscatedName("nv")
-	@ObfuscatedSignature(
-		descriptor = "(Lem;)V"
-	)
-	public void nv(em var1) {
-		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("getHash")
-	@ObfuscatedSignature(
-		descriptor = "()J"
-	)
-	@Override
-	public long getHash() {
-		return this.az_fld;
+	public int getPlane() {
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("getWorldLocation")
 	@ObfuscatedSignature(
 		descriptor = "()Lnet/runelite/api/coords/WorldPoint;"
 	)
+	@Export("getWorldLocation")
 	@Override
 	public WorldPoint getWorldLocation() {
-		dx var1 = dx.ws(this.su());
+		dx var1 = dx.bu(this.wa());
 		if (var1 == null) {
 			var1 = bw.dk_fld;
 		}
@@ -491,21 +234,164 @@ public class fj implements GameObject, TileObject {
 		}
 	}
 
-	@ObfuscatedName("kr")
+	@ObfuscatedName("pc")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void kr(int var1) {
-		this.ae_fld = var1;
+	public void pc(int var1) {
+		this.av_fld = var1;
 	}
 
-	@ObfuscatedName("getLocalLocation")
+	@ObfuscatedName("getConfig")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
+		descriptor = "()I"
 	)
+	@Export("getConfig")
 	@Override
-	public LocalPoint getLocalLocation() {
-		return new LocalPoint(this.getX(), this.getY(), this.su());
+	public int getConfig() {
+		return this.ax_fld;
+	}
+
+	@ObfuscatedName("getConvexHull")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Shape;"
+	)
+	@Export("getConvexHull")
+	@Override
+	public Shape getConvexHull() {
+		try {
+			fn var1 = this.ai();
+			return var1 == null ? null : var1.kw(this.getWorldView(), this.getX(), this.getY(), this.getModelOrientation(), this.getZ());
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("getZ")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getZ")
+	@Override
+	public int getZ() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("tf")
+	@ObfuscatedSignature(
+		descriptor = "(J)V"
+	)
+	public void tf(long var1) {
+		this.az_fld = var1;
+	}
+
+	@ObfuscatedName("sy")
+	@ObfuscatedSignature(
+		descriptor = "(Lem;)V"
+	)
+	public void sy(em var1) {
+		this.ak_fld = var1;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "()Lfn;"
+	)
+	public fn ai() {
+		try {
+			if (this.ak_fld == null) {
+				return null;
+			} else {
+				return this.ak_fld instanceof fn ? (fn)this.ak_fld : this.ak_fld.getModel();
+			}
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("getX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getX")
+	@Override
+	public int getX() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("getOrientation")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOrientation")
+	@Override
+	public int getOrientation() {
+		int var1 = this.getModelOrientation();
+		int var2 = this.getConfig() >> 6 & 3;
+		return var2 * 512 + var1;
+	}
+
+	@ObfuscatedName("getSceneMaxLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getSceneMaxLocation")
+	@Override
+	public Point getSceneMaxLocation() {
+		return new Point(this.as_fld, this.af_fld);
+	}
+
+	@ObfuscatedName("eq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void eq(int var1) {
+		this.ah_fld = var1;
+	}
+
+	@ObfuscatedName("getCanvasLocation")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasLocation")
+	@Override
+	public Point getCanvasLocation(int var1) {
+		return Perspective.localToCanvas(og.ci_fld, this.getLocalLocation(), this.getPlane(), var1);
+	}
+
+	@ObfuscatedName("getId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getId")
+	@Override
+	public int getId() {
+		long var1 = this.getHash();
+		return (int)(var1 >>> 20 & 4294967295L);
+	}
+
+	@ObfuscatedName("sizeX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("sizeX")
+	@Override
+	public int sizeX() {
+		return this.as_fld - this.ay_fld + 1;
+	}
+
+	@ObfuscatedName("wa")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int wa() {
+		long var1 = this.getHash();
+		int var3 = (int)(var1 >> 52 & 4095L);
+		if (var3 == 4095L) {
+			var3 = -1;
+		}
+
+		return var3;
 	}
 
 	@ObfuscatedName("av")
@@ -517,8 +403,8 @@ public class fj implements GameObject, TileObject {
 			ch.af_fld = 0;
 			aq.ae(var0, var1, var2, var3, var4, var5, 1533980679);
 
-			for (int var7 = 0; var7 < var0.am_fld.az(); var7++) {
-				rg var8 = (rg)var0.an_fld.ak(var0.am_fld.ag(var7));
+			for (int var7 = 0; var7 < var0.ad_fld.az(); var7++) {
+				rg var8 = (rg)var0.an_fld.ak(yw.wk(var0.ad_fld, var7, (byte)113));
 				if (null != var8) {
 					if (var6 != 1982321925) {
 						return;
@@ -670,11 +556,11 @@ public class fj implements GameObject, TileObject {
 					}
 
 					if (0 == ch.aq_fld[var10]) {
-						var9.ha(var25, ch.at_fld + var1, var2 + ch.ac_fld, var17, 0, ch.am_fld[var10]);
+						var9.ht(var25, ch.at_fld + var1, var2 + ch.ac_fld, var17, 0, ch.am_fld[var10]);
 					}
 
 					if (ch.aq_fld[var10] == 1) {
-						var9.bm(var25, var1 + ch.at_fld, var2 + ch.ac_fld, var17, 0, var5, ch.am_fld[var10]);
+						zv.tk(var9, var25, var1 + ch.at_fld, var2 + ch.ac_fld, var17, 0, var5, ch.am_fld[var10]);
 					}
 
 					if (2 == ch.aq_fld[var10]) {
@@ -688,7 +574,7 @@ public class fj implements GameObject, TileObject {
 					if (ch.aq_fld[var10] == 4) {
 						int var29 = (150 - ch.ad_fld[var10]) * (var9.an(var25) + 100) / 150;
 						yu.dw(ch.at_fld + var1 - 50, var2, ch.at_fld + var1 + 50, var4 + var2);
-						var9.br(var25, 50 + ch.at_fld + var1 - var29, ch.ac_fld + var2, var17, 0, ch.am_fld[var10]);
+						dz.zq(var9, var25, 50 + ch.at_fld + var1 - var29, ch.ac_fld + var2, var17, 0, ch.am_fld[var10]);
 						yu.dg(var1, var2, var1 + var3, var2 + var4);
 					}
 
@@ -710,7 +596,7 @@ public class fj implements GameObject, TileObject {
 						}
 
 						yu.dw(var1, ch.ac_fld + var2 - var9.ap_fld - 1, var3 + var1, ch.ac_fld + var2 + 5);
-						var9.ha(var25, ch.at_fld + var1, ch.ac_fld + var2 + var31, var17, 0, ch.am_fld[var10]);
+						var9.ht(var25, ch.at_fld + var1, ch.ac_fld + var2 + var31, var17, 0, ch.am_fld[var10]);
 						yu.dg(var1, var2, var3 + var1, var2 + var4);
 					}
 				} else {
@@ -720,6 +606,165 @@ public class fj implements GameObject, TileObject {
 		} catch (Throwable var22) {
 			throw new RuntimeException(var22);
 		}
+	}
+
+	@ObfuscatedName("pb")
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)I"
+	)
+	public static int pb(uk var0) {
+		return var0.au_fld;
+	}
+
+	@ObfuscatedName("nz")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void nz(int var1) {
+		this.aw_fld = var1;
+	}
+
+	@ObfuscatedName("getSceneMinLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getSceneMinLocation")
+	@Override
+	public Point getSceneMinLocation() {
+		return new Point(this.ay_fld, this.ar_fld);
+	}
+
+	@ObfuscatedName("mk")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void mk(int var1) {
+		this.ae_fld = var1;
+	}
+
+	@ObfuscatedName("getY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getY")
+	@Override
+	public int getY() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("gm")
+	@ObfuscatedSignature(
+		descriptor = "()Ldx;"
+	)
+	public dx getWorldView() {
+		return dx.bu(this.wa());
+	}
+
+	@ObfuscatedName("isOpShown")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	@Export("isOpShown")
+	@Override
+	public boolean isOpShown(int var1) {
+		cs var2 = this.getWorldView().tt(this.getHash());
+		return var2 == null ? true : var2.fz(var1);
+	}
+
+	@ObfuscatedName("getClickbox")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Shape;"
+	)
+	@Export("getClickbox")
+	@Override
+	public Shape getClickbox() {
+		try {
+			return Perspective.getClickbox(og.ci_fld, this.getWorldView(), this.ai(), this.getModelOrientation(), this.getX(), this.getY(), this.getZ());
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("getHash")
+	@ObfuscatedSignature(
+		descriptor = "()J"
+	)
+	@Export("getHash")
+	@Override
+	public long getHash() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("getCanvasTextLocation")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Graphics2D;Ljava/lang/String;I)Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasTextLocation")
+	@Override
+	public Point getCanvasTextLocation(Graphics2D var1, String var2, int var3) {
+		return Perspective.getCanvasTextLocation(og.ci_fld, var1, this.getLocalLocation(), var2, var3);
+	}
+
+	@ObfuscatedName("wb")
+	@ObfuscatedSignature(
+		descriptor = "(Lyw;)I"
+	)
+	public static int wb(yw var0) {
+		return var0.ag_fld;
+	}
+
+	@ObfuscatedName("sizeY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("sizeY")
+	@Override
+	public int sizeY() {
+		return this.af_fld - this.ar_fld + 1;
+	}
+
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;)V"
+	)
+	public static void ih(ku var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ax_fld = 0;
+	}
+
+	@ObfuscatedName("getModelOrientation")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getModelOrientation")
+	@Override
+	public int getModelOrientation() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("getLocalLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
+	)
+	@Export("getLocalLocation")
+	@Override
+	public LocalPoint getLocalLocation() {
+		return new LocalPoint(this.getX(), this.getY(), this.wa());
+	}
+
+	@Nullable
+	@ObfuscatedName("getOpOverride")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	@Export("getOpOverride")
+	@Override
+	public String getOpOverride(int var1) {
+		cs var2 = this.getWorldView().tt(this.getHash());
+		return var2 == null ? null : var2.qf(var1);
 	}
 
 	fj() {

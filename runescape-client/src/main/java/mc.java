@@ -10,12 +10,12 @@ public class mc extends vw {
 		descriptor = "Lub;"
 	)
 	public static ub at_fld;
-	@ObfuscatedGetter(
-		intValue = 1029185117
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1029185117
 	)
 	int ag_fld;
 	@ObfuscatedName("aq")
@@ -29,9 +29,17 @@ public class mc extends vw {
 	)
 	BitSet ak_fld;
 
+	@ObfuscatedName("xz")
+	@ObfuscatedSignature(
+		descriptor = "(Lyq;Lxi;)Ljava/lang/Object;"
+	)
+	public static Object xz(yq var0, xi var1) {
+		return var0.ay_fld.ag(var1, 283227155);
+	}
+
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(III)I"
+		descriptor = "(IIIB)I"
 	)
 	static final int ab(int var0, int var1, int var2) {
 		if (var2 > 179) {
@@ -53,17 +61,9 @@ public class mc extends vw {
 		return var2 / 2 + (var1 / 32 << 7) + (var0 / 4 << 10);
 	}
 
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "(Lek;)[Lsi;"
-	)
-	public static si[] kt(ek var0) {
-		return var0.ag_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)[I"
+		descriptor = "(IIIIIB)[I"
 	)
 	static int[] ak(int var0, int var1, int var2, int var3, int var4) {
 		int[] var6 = new int[256];

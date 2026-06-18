@@ -52,19 +52,27 @@ public class bf implements jo {
 
 	@ObfuscatedName("hq")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	static void hq() {
 		if (null != fs.gh_fld) {
 			client.gr_fld = client.dv_fld * 71286477;
-			fs.gh_fld.av();
+			zt.bc(fs.gh_fld, 1297363397);
 			Iterator var1 = bw.dk_fld.au_fld.iterator();
 
 			while (var1.hasNext()) {
 				cv var2 = (cv)(cv)var1.next();
-				fs.gh_fld.az((var2.bo_fld >> 7) + bw.dk_fld.ay_fld, bw.dk_fld.as_fld + (var2.bp_fld >> 7), 323851189);
+				zt.tw(fs.gh_fld, (var2.bi_fld >> 7) + bw.dk_fld.as_fld, bw.dk_fld.ay_fld + (var2.dm_fld >> 7), 323851189);
 			}
 		}
+	}
+
+	@ObfuscatedName("fl")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;)V"
+	)
+	public static void fl(zg var0) {
+		var0.ap_fld.clear();
 	}
 
 	@ObfuscatedName("ag")
@@ -83,14 +91,6 @@ public class bf implements jo {
 	@Override
 	public zf av(xy var1) {
 		return (zf)(zf)client.dr_fld.get(var1);
-	}
-
-	@ObfuscatedName("xu")
-	@ObfuscatedSignature(
-		descriptor = "(Lvx;)D"
-	)
-	public static double xu(vx var0) {
-		return var0.af_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -113,19 +113,19 @@ public class bf implements jo {
 
 	@ObfuscatedName("dr")
 	@ObfuscatedSignature(
-		descriptor = "(Z)V"
+		descriptor = "(ZS)V"
 	)
 	static final void dr(boolean var0) {
 		up.br();
-		client.aq_fld.ag_fld++;
-		if (client.aq_fld.ag_fld >= 50 || var0) {
-			client.aq_fld.ag_fld = 0;
-			if (!client.lc_fld && df.xl(client.aq_fld, -1032714655) != null) {
-				jm var2 = gi.ak(jb.ci_fld, client.aq_fld.av_fld);
-				client.aq_fld.az(var2);
+		client.appletStub.ar_fld++;
+		if (client.appletStub.ar_fld >= 50 || var0) {
+			client.appletStub.ar_fld = 0;
+			if (!client.lc_fld && client.appletStub.ah() != null) {
+				jm var2 = gi.ak(jb.ci_fld, client.appletStub.av_fld);
+				client.appletStub.az(var2);
 
 				try {
-					df.yf(client.aq_fld, (byte)29);
+					client.appletStub.ag((byte)29);
 				} catch (IOException var4) {
 					client.lc_fld = true;
 				}
@@ -135,7 +135,7 @@ public class bf implements jo {
 
 	@ObfuscatedName("gc")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	static boolean gc() {
 		return client.nu_fld;
@@ -373,7 +373,7 @@ public class bf implements jo {
 													var42.av(new xi(var43), var128);
 												}
 
-												ov.mt(var42, (byte)-31);
+												var42.az((byte)-31);
 												ov.ay_fld.az(var42, var128);
 												var125 = var42;
 											}
@@ -516,7 +516,7 @@ public class bf implements jo {
 						var97 = var49;
 					}
 
-					ev.ux(var6, var49, var70, var66, var97);
+					var6.aj(var49, var70, var66, var97);
 				}
 			}
 
@@ -527,12 +527,12 @@ public class bf implements jo {
 			fp.an_fld[var49] = (byte[][])null;
 		}
 
-		var6.cs(-50, -10, -50);
+		ev.zn(var6, -50, -10, -50);
 
 		for (int var50 = 0; var50 < var2; var50++) {
 			for (int var53 = 0; var53 < var3; var53++) {
 				if ((var5[1][var50][var53] & 2) == 2) {
-					var6.at(var50, var53);
+					ev.no(var6, var50, var53);
 				}
 			}
 		}
@@ -599,7 +599,7 @@ public class bf implements jo {
 									short var108 = 240;
 									int var112 = var56[var92][var71][var74] - var108;
 									int var116 = var56[var86][var71][var74];
-									ev.my(var58, var62, 1, var71 * 128, var71 * 128, 128 * var74, 128 + 128 * var80, var112, var116);
+									var58.ac(var62, 1, var71 * 128, var71 * 128, 128 * var74, 128 + 128 * var80, var112, var116);
 
 									for (int var118 = var86; var118 <= var92; var118++) {
 										for (int var120 = var74; var120 <= var80; var120++) {
@@ -662,7 +662,7 @@ public class bf implements jo {
 									short var109 = 240;
 									int var113 = var56[var93][var75][var67] - var109;
 									int var117 = var56[var87][var75][var67];
-									ev.my(var58, var62, 2, var75 * 128, 128 * var81 + 128, var67 * 128, var67 * 128, var113, var117);
+									var58.ac(var62, 2, var75 * 128, 128 * var81 + 128, var67 * 128, var67 * 128, var113, var117);
 
 									for (int var119 = var87; var119 <= var93; var119++) {
 										for (int var121 = var75; var121 <= var81; var121++) {
@@ -728,7 +728,7 @@ public class bf implements jo {
 									}
 
 									int var106 = var56[var63][var76][var88];
-									ev.my(var58, var62, 4, var76 * 128, 128 * var82 + 128, var88 * 128, var94 * 128 + 128, var106, var106);
+									var58.ac(var62, 4, var76 * 128, 128 * var82 + 128, var88 * 128, var94 * 128 + 128, var106, var106);
 
 									for (int var110 = var76; var110 <= var82; var110++) {
 										for (int var114 = var88; var114 <= var94; var114++) {
@@ -750,6 +750,6 @@ public class bf implements jo {
 	)
 	public static void az(int var0, int var1) {
 		tj.au_fld = var0;
-		client.rw();
+		client.vq();
 	}
 }

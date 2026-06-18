@@ -25,12 +25,12 @@ public class ea extends vw {
 		descriptor = "I"
 	)
 	public static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -1233104955
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1233104955
 	)
 	int ah_fld;
 	@ObfuscatedName("ak")
@@ -54,44 +54,52 @@ public class ea extends vw {
 	)
 	static int bz_fld;
 
+	@ObfuscatedName("ss")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)I"
+	)
+	public static int ss(yz var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.aw_fld;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;BI)I"
+		descriptor = "(Lxi;BIB)I"
 	)
 	public static int ag(xi var0, byte var1, int var2) {
 		int var4 = var1 >> var2 & 3;
 		if (3 == var4) {
-			return var0.co();
+			return var0.co((byte)-6);
 		} else if (2 == var4) {
 			return var0.cz();
 		} else {
-			return 1 == var4 ? xi.rp(var0, 141001800) : 0;
+			return 1 == var4 ? var0.cw() : 0;
 		}
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ak() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()Lek;"
-	)
-	public ek ag() {
-		return this.as_fld;
 	}
 
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)V"
+		descriptor = "(ILjava/lang/String;I)V"
 	)
 	static void bm(int var0, String var1) {
 		bn.bv_fld = var1;
 		bn.bt_fld = var0;
+	}
+
+	@ObfuscatedName("ql")
+	@ObfuscatedSignature(
+		descriptor = "(Lea;B)Lek;"
+	)
+	public static ek ql(ea var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.as_fld;
 	}
 
 	public ea(int var1, byte[] var2) {
@@ -115,39 +123,51 @@ public class ea extends vw {
 		}
 
 		if (var3.au_fld < var3.al_fld.length) {
-			int var8 = xi.tx(var3, 1046303609);
+			int var8 = var3.cm();
 			if (var8 > 0) {
 				this.as_fld = new ek(var3, var8);
 			}
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int av() {
+	public int az() {
 		return this.ah_fld;
 	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static final void as() {
 		ej.be_fld = false;
 		ej.cd_fld = 0;
 	}
 
+	@ObfuscatedName("mc")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)V"
+	)
+	public static void mc(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		ga.ae_fld.aw();
+	}
+
 	@ObfuscatedName("dh")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;)Z"
+		descriptor = "(Lcv;I)Z"
 	)
 	static boolean dh(cv var0) {
 		if (client.ez_fld == 0) {
 			return false;
 		} else {
-			return var0.bx_fld == client.dj_fld ? (client.ez_fld & 8) != 0 : rn.ct() || kn.cl() && var0.as((byte)0) || ex.dc() && var0.ah((byte)68);
+			return var0.bq_fld == client.dj_fld ? (client.ez_fld & 8) != 0 : rn.ct() || kn.cl() && var0.ah((byte)0) || ex.dc() && cv.rp(var0, (byte)68);
 		}
 	}
 
@@ -170,7 +190,7 @@ public class ea extends vw {
 						var4[var1] = var4[var2];
 						var4[var2] = var5;
 					} else if (var0.ag_fld == yq.ag_fld) {
-						long[] var7 = var0.ag();
+						long[] var7 = sl.ob(var0, 1919853438);
 						long var9 = var7[var1];
 						var7[var1] = var7[var2];
 						var7[var2] = var9;
@@ -193,22 +213,58 @@ public class ea extends vw {
 		throw new RuntimeException();
 	}
 
+	@ObfuscatedName("mb")
+	@ObfuscatedSignature(
+		descriptor = "(Lea;I)I"
+	)
+	public static int mb(ea var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ah_fld;
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int av() {
+		return this.ah_fld;
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V"
+		descriptor = "(IIIIIII)V"
 	)
 	static void ah(int var0, int var1, int var2, int var3, int var4, int var5) throws EOFException {
 		try {
 			if (var0 >= 0) {
 				dx var7 = kx.ak(var0, client.da_fld);
-				cv var8 = dx.ii(var7, var0);
+				cv var8 = dx.pe(var7, var0);
 				if (null != var8) {
-					int var9 = client.db_fld.aa(var0);
+					int var9 = di.kh(client.db_fld, var0);
 					ds.aw(var7, var8, var9, var1, var2, var3, var4, var5, (byte)23);
 				}
 			}
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
 		}
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int ak(int var1) {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lek;"
+	)
+	public ek ag(byte var1) {
+		return this.as_fld;
 	}
 }

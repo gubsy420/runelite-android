@@ -4,33 +4,6 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("vz")
 public class vz extends ws {
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()Lml;"
-	)
-	ml az() {
-		ml var2 = null;
-		Iterator var3 = mb.ag_fld.iterator();
-
-		while (var3.hasNext()) {
-			ml var4 = (ml)(ml)var3.next();
-			if (null != var4 && (var2 == null || var2.aw_fld > var4.aw_fld || ml.xy(var4, -1865882903) == 0 && var4.ax())) {
-				var2 = var4;
-			}
-		}
-
-		if (var2 != null) {
-			var2.aw_fld++;
-			if (ml.xy(var2, -303568642) == 0 && var2.ax()) {
-				var2.au();
-				var2.ar();
-				var2.ak(0);
-			}
-		}
-
-		return var2;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(S)Z"
@@ -42,7 +15,7 @@ public class vz extends ws {
 			if (null == var2) {
 				mb.az_fld.pop();
 			} else {
-				var2.af_fld = this.az();
+				var2.af_fld = hb(this, -690644250);
 				mb.av_fld.add(var2);
 				mb.az_fld.pop();
 			}
@@ -51,79 +24,29 @@ public class vz extends ws {
 		return true;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("wj")
 	@ObfuscatedSignature(
-		descriptor = "()Lml;"
+		descriptor = "(Lvz;)Lml;"
 	)
-	ml ah() {
+	public static ml wj(vz var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		ml var1 = null;
 		Iterator var2 = mb.ag_fld.iterator();
 
 		while (var2.hasNext()) {
 			ml var3 = (ml)(ml)var2.next();
-			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || ml.xy(var3, 164111613) == 0 && var3.ax())) {
+			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || var3.ag() == 0 && ml.dc(var3, -594661717))) {
 				var1 = var3;
 			}
 		}
 
 		if (var1 != null) {
 			var1.aw_fld++;
-			if (ml.xy(var1, -1351741125) == 0 && var1.ax()) {
-				var1.au();
-				var1.ar();
-				var1.ak(0);
-			}
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()Lml;"
-	)
-	ml av() {
-		ml var1 = null;
-		Iterator var2 = mb.ag_fld.iterator();
-
-		while (var2.hasNext()) {
-			ml var3 = (ml)(ml)var2.next();
-			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || ml.xy(var3, 580117055) == 0 && var3.ax())) {
-				var1 = var3;
-			}
-		}
-
-		if (var1 != null) {
-			var1.aw_fld++;
-			if (ml.xy(var1, 562751336) == 0 && var1.ax()) {
-				var1.au();
-				var1.ar();
-				var1.ak(0);
-			}
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "()Lml;"
-	)
-	ml aw() {
-		ml var1 = null;
-		Iterator var2 = mb.ag_fld.iterator();
-
-		while (var2.hasNext()) {
-			ml var3 = (ml)(ml)var2.next();
-			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || ml.xy(var3, -976017819) == 0 && var3.ax())) {
-				var1 = var3;
-			}
-		}
-
-		if (var1 != null) {
-			var1.aw_fld++;
-			if (ml.xy(var1, -1563120789) == 0 && var1.ax()) {
-				var1.au();
+			if (var1.ag() == 0 && ml.dc(var1, 661021983)) {
+				var1.av();
 				var1.ar();
 				var1.ak(0);
 			}
@@ -142,21 +65,110 @@ public class vz extends ws {
 
 		while (var2.hasNext()) {
 			ml var3 = (ml)(ml)var2.next();
-			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || ml.xy(var3, -1576242336) == 0 && var3.ax())) {
+			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || var3.ag() == 0 && ml.dc(var3, -1563663))) {
 				var1 = var3;
 			}
 		}
 
 		if (var1 != null) {
 			var1.aw_fld++;
-			if (ml.xy(var1, 79737841) == 0 && var1.ax()) {
-				var1.au();
+			if (var1.ag() == 0 && ml.dc(var1, -704866554)) {
+				var1.av();
 				var1.ar();
 				var1.ak(0);
 			}
 		}
 
 		return var1;
+	}
+
+	@ObfuscatedName("oa")
+	@ObfuscatedSignature(
+		descriptor = "(Lvz;)Lml;"
+	)
+	public static ml oa(vz var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			ml var1 = null;
+			Iterator var2 = mb.ag_fld.iterator();
+
+			while (var2.hasNext()) {
+				ml var3 = (ml)(ml)var2.next();
+				if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || var3.ag() == 0 && ml.dc(var3, -2134143975))) {
+					var1 = var3;
+				}
+			}
+
+			if (var1 != null) {
+				var1.aw_fld++;
+				if (var1.ag() == 0 && ml.dc(var1, -45355261)) {
+					var1.av();
+					var1.ar();
+					var1.ak(0);
+				}
+			}
+
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()Lml;"
+	)
+	ml aw() {
+		ml var1 = null;
+		Iterator var2 = mb.ag_fld.iterator();
+
+		while (var2.hasNext()) {
+			ml var3 = (ml)(ml)var2.next();
+			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || var3.ag() == 0 && ml.dc(var3, -374716366))) {
+				var1 = var3;
+			}
+		}
+
+		if (var1 != null) {
+			var1.aw_fld++;
+			if (var1.ag() == 0 && ml.dc(var1, -1157780993)) {
+				var1.av();
+				var1.ar();
+				var1.ak(0);
+			}
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("hb")
+	@ObfuscatedSignature(
+		descriptor = "(Lvz;I)Lml;"
+	)
+	public static ml hb(vz var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			ml var2 = null;
+			Iterator var3 = mb.ag_fld.iterator();
+
+			while (var3.hasNext()) {
+				ml var4 = (ml)(ml)var3.next();
+				if (null != var4 && (var2 == null || var2.aw_fld > var4.aw_fld || var4.ag() == 0 && ml.dc(var4, -540157437))) {
+					var2 = var4;
+				}
+			}
+
+			if (var2 != null) {
+				var2.aw_fld++;
+				if (var2.ag() == 0 && ml.dc(var2, -656207979)) {
+					var2.av();
+					var2.ar();
+					var2.ak(0);
+				}
+			}
+
+			return var2;
+		}
 	}
 
 	public vz(ws var1) {
@@ -175,12 +187,66 @@ public class vz extends ws {
 			if (null == var1) {
 				mb.az_fld.pop();
 			} else {
-				var1.af_fld = this.az();
+				var1.af_fld = hb(this, -690644250);
 				mb.av_fld.add(var1);
 				mb.az_fld.pop();
 			}
 		}
 
 		return true;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lml;"
+	)
+	ml az(int var1) {
+		ml var2 = null;
+		Iterator var3 = mb.av_fld.iterator();
+
+		while (var3.hasNext()) {
+			ml var4 = (ml)(ml)var3.next();
+			if (null != var4 && (var2 == null || var2.aw_fld > var4.aw_fld || var4.ag() == 0 && ml.dc(var4, -540157437))) {
+				var2 = var4;
+			}
+		}
+
+		if (var2 != null) {
+			var2.aw_fld++;
+			if (var2.ag() == 0 && ml.dc(var2, -656207979)) {
+				var2.au();
+				var2.bb(-488474872);
+				var2.ak(0);
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "()Lml;"
+	)
+	ml ah() {
+		ml var1 = null;
+		Iterator var2 = mb.av_fld.iterator();
+
+		while (var2.hasNext()) {
+			ml var3 = (ml)(ml)var2.next();
+			if (null != var3 && (var1 == null || var1.aw_fld > var3.aw_fld || var3.ag() == 0 && ml.dc(var3, -374716366))) {
+				var1 = var3;
+			}
+		}
+
+		if (var1 != null) {
+			var1.aw_fld++;
+			if (var1.ag() == 0 && ml.dc(var1, -1157780993)) {
+				var1.ae((byte)-115);
+				var1.bq(-488474872);
+				var1.ak(0);
+			}
+		}
+
+		return var1;
 	}
 }

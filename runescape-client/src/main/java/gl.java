@@ -52,7 +52,7 @@ public class gl {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;)V"
+		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V"
 	)
 	public static void ak(String var0, Throwable var1) {
 		Throwable var3 = var1;
@@ -61,9 +61,9 @@ public class gl {
 		}
 
 		if (var0 == null) {
-			client.ii_fld.error("Client error", var3);
+			client.logger.error("Client error", var3);
 		} else {
-			client.ii_fld.error("Client error: {}", var0, var3);
+			client.logger.error("Client error: {}", var0, var3);
 		}
 
 		og.ci_fld.getCallbacks().error(var0, var3);
@@ -146,15 +146,15 @@ public class gl {
 
 	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Z)V"
+		descriptor = "(Ljava/lang/String;ZI)V"
 	)
 	static final void cx(String var0, boolean var1) {
 		if (client.dp_fld) {
 			byte var3 = 4;
 			int var4 = var3 + 6;
 			int var5 = 6 + var3;
-			int var6 = zv.cf(ls.dd_fld, var0, 250);
-			int var7 = ls.dd_fld.aq(var0, 250) * 13;
+			int var6 = ls.dd_fld.ai(var0, 250);
+			int var7 = zv.xc(ls.dd_fld, var0, 250) * 13;
 			yu.dj(var4 - var3, var5 - var3, var6 + var3 + var3, var7 + var3 + var3, 0);
 			yu.ed(var4 - var3, var5 - var3, var3 + var6 + var3, var3 + var7 + var3, 16777215);
 			ls.dd_fld.at(var0, var4, var5, var6, var7, 16777215, -1, 1, 1, 0);
@@ -217,7 +217,7 @@ public class gl {
 
 	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;IIII)I"
+		descriptor = "(Ldx;IIIIB)I"
 	)
 	static int dt(dx var0, int var1, int var2, int var3, int var4) throws EOFException {
 		if (0 == var4) {
@@ -325,7 +325,7 @@ public class gl {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(IIZ)Ljava/lang/String;"
+		descriptor = "(IIZB)Ljava/lang/String;"
 	)
 	static String as(int var0, int var1, boolean var2) {
 		if (var1 >= 2 && var1 <= 36) {

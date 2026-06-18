@@ -1,5 +1,7 @@
 import java.io.EOFException;
 import java.util.ArrayList;
+import java.util.Map.Entry;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -26,12 +28,12 @@ public class yq implements xm {
 		descriptor = "I"
 	)
 	static int bk_fld;
-	@ObfuscatedGetter(
-		intValue = 1203613633
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1203613633
 	)
 	public int ae_fld;
 	@ObfuscatedName("av")
@@ -39,12 +41,12 @@ public class yq implements xm {
 		descriptor = "Lyq;"
 	)
 	static yq av_fld = new yq(2, 5, sl.class, new yf());
-	@ObfuscatedGetter(
-		intValue = -1347456803
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1347456803
 	)
 	public int ah_fld;
 	@ObfuscatedName("ay")
@@ -99,7 +101,7 @@ public class yq implements xm {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Class;)Lyq;"
+		descriptor = "(Ljava/lang/Class;B)Lyq;"
 	)
 	public static yq az(Class var0) {
 		yq[] var2 = ak();
@@ -116,7 +118,7 @@ public class yq implements xm {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lxi;)V"
+		descriptor = "(Ljava/lang/Object;Lxi;B)V"
 	)
 	public static void aw(Object var0, xi var1) {
 		yn var3 = ay(var0.getClass());
@@ -125,10 +127,18 @@ public class yq implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lyq;"
+		descriptor = "(I)[Lyq;"
 	)
 	public static yq[] ak() {
 		return new yq[]{ag_fld, ak_fld, az_fld, av_fld};
+	}
+
+	@ObfuscatedName("nm")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lyq;"
+	)
+	public static yq nm(int var0) {
+		return eu.ag(var0, -1779856707);
 	}
 
 	@ObfuscatedName("ag")
@@ -155,7 +165,7 @@ public class yq implements xm {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)Ljava/lang/Object;"
+		descriptor = "(Lxi;B)Ljava/lang/Object;"
 	)
 	public Object as(xi var1) {
 		return this.ay_fld.ag(var1, -356751225);
@@ -237,29 +247,6 @@ public class yq implements xm {
 		return null;
 	}
 
-	@ObfuscatedName("toString")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String toString() {
-		if (this == ak_fld) {
-			return "int";
-		} else if (this == ag_fld) {
-			return "long";
-		} else {
-			return this == az_fld ? "string" : "unknown";
-		}
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)Ljava/lang/Object;"
-	)
-	public Object ao(xi var1) {
-		return this.ay_fld.ag(var1, 283227155);
-	}
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Class;)Lyq;"
@@ -295,6 +282,22 @@ public class yq implements xm {
 		var2.az(var0, var1, (byte)2);
 	}
 
+	@ObfuscatedName("toString")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("toString")
+	@Override
+	public String toString() {
+		if (this == ak_fld) {
+			return "int";
+		} else if (this == ag_fld) {
+			return "long";
+		} else {
+			return this == az_fld ? "string" : "unknown";
+		}
+	}
+
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Class;)Lyn;"
@@ -308,25 +311,9 @@ public class yq implements xm {
 		}
 	}
 
-	@ObfuscatedName("jw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyq;"
-	)
-	public static yq jw(int var0) {
-		return eu.ag(var0, -1779856707);
-	}
-
-	@ObfuscatedName("uk")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
-	)
-	public static void uk(pi var0) {
-		var0.ai_fld = var0.az_fld;
-	}
-
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Class;)Lyn;"
+		descriptor = "(Ljava/lang/Class;I)Lyn;"
 	)
 	static yn ay(Class var0) {
 		yq var2 = az(var0);
@@ -337,41 +324,25 @@ public class yq implements xm {
 		}
 	}
 
-	@ObfuscatedName("mi")
+	@ObfuscatedName("pr")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;Lsp;I)V"
+		descriptor = "(Lbw;)V"
 	)
-	public static void mi(fn var0, sp var1, int var2) {
+	public static void pr(bw var0) {
+		var0.ak_fld.shutdown();
+		var0.ak_fld = null;
+	}
+
+	@ObfuscatedName("dh")
+	@ObfuscatedSignature(
+		descriptor = "(Lqs;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int dh(qs var0, Object var1, Object var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		ea var3 = var1.ah_fld;
-
-		for (int var4 = 0; var4 < var3.ah_fld; var4++) {
-			int var5 = var3.aw_fld[var4];
-			if (var5 == 5 && var1.av_fld != null && var1.av_fld[var4] != null && var1.av_fld[var4][0] != null && var0.ci_fld != null && var0.cv_fld != null) {
-				sn var6 = var1.av_fld[var4][0];
-
-				for (int var10 : var3.ay_fld[var4]) {
-					if (var10 < var0.ci_fld.length) {
-						int[] var11 = var0.ci_fld[var10];
-
-						for (int var12 = 0; var12 < var11.length; var12++) {
-							int var13 = var11[var12];
-							int var14 = (int)((var0.cv_fld[var13] & 255) + sn.ys(var6, var2) * 255.0F);
-							if (var14 < 0) {
-								var14 = 0;
-							} else if (var14 > 255) {
-								var14 = 255;
-							}
-
-							var0.cv_fld[var13] = (byte)var14;
-						}
-					}
-				}
-			}
-		}
+		return var0.ak((Entry)var1, (Entry)var2, -1007341672);
 	}
 
 	@ObfuscatedName("ab")
@@ -384,7 +355,7 @@ public class yq implements xm {
 
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(III)V"
 	)
 	static void bs(int var0, int var1) {
 		if (cj.gu() != 0 && var0 != -1) {
@@ -401,14 +372,14 @@ public class yq implements xm {
 	)
 	static void fb(int var0) throws EOFException {
 		if (client.nk_fld) {
-			lu var1 = cf.cg_fld.ag(av.nj_fld, client.ny_fld, -1681198134);
+			lu var1 = cf.cg_fld.ag(av.nj_fld, client.ny_fld);
 			if (var1 != null) {
 				if (var0 <= -348081132) {
 					return;
 				}
 
 				if (null != var1.fc_fld) {
-					yz var2 = tu.ak(var1).av((Object[])var1.fc_fld, 1252941561).ax(390781777);
+					yz var2 = yb.vn(tu.ak(var1).av((Object[])var1.fc_fld, 1252941561), 390781777);
 					va.ak(var2);
 				}
 			}

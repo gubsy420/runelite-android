@@ -15,7 +15,7 @@ public class ae implements aw {
 	@ObfuscatedSignature(
 		descriptor = "Ljava/security/MessageDigest;"
 	)
-	MessageDigest ag_fld = xw.ak(this);
+	MessageDigest ag_fld = this.ae();
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
@@ -57,6 +57,28 @@ public class ae implements aw {
 		return var1;
 	}
 
+	@ObfuscatedName("jn")
+	@ObfuscatedSignature(
+		descriptor = "(Lae;Ljava/lang/String;J)[B"
+	)
+	public static byte[] jn(ae var0, String var1, long var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		StringBuilder var4 = new StringBuilder();
+		var4.append(var1).append(Long.toHexString(var2));
+		var0.ag_fld.reset();
+
+		try {
+			var0.ag_fld.update(var4.toString().getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException var6) {
+			var6.printStackTrace();
+		}
+
+		return var0.ag_fld.digest();
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(B)I"
@@ -79,7 +101,7 @@ public class ae implements aw {
 		descriptor = "(ILjava/lang/String;J)Z"
 	)
 	boolean az(int var1, String var2, long var3) {
-		byte[] var5 = zu(this, var2, var3);
+		byte[] var5 = jn(this, var2, var3);
 		return ak(var5) >= var1;
 	}
 
@@ -103,15 +125,6 @@ public class ae implements aw {
 		return var1;
 	}
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;J)Z"
-	)
-	boolean au(int var1, String var2, long var3) {
-		byte[] var5 = zu(this, var2, var3);
-		return ak(var5) >= var1;
-	}
-
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(B)I"
@@ -127,19 +140,6 @@ public class ae implements aw {
 		}
 
 		return var1;
-	}
-
-	@ObfuscatedName("zc")
-	@ObfuscatedSignature(
-		descriptor = "(Lae;ILjava/lang/String;J)Z"
-	)
-	public static boolean zc(ae var0, int var1, String var2, long var3) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			byte[] var5 = zu(var0, var2, var3);
-			return ak(var5) >= var1;
-		}
 	}
 
 	@ObfuscatedName("ay")
@@ -219,6 +219,46 @@ public class ae implements aw {
 		return var1;
 	}
 
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/security/MessageDigest;"
+	)
+	MessageDigest ao() {
+		try {
+			return MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException var2) {
+			var2.printStackTrace();
+			return null;
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;J)Z"
+	)
+	boolean ax(int var1, String var2, long var3) {
+		byte[] var5 = jn(this, var2, var3);
+		return ak(var5) >= var1;
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;J)[B"
+	)
+	byte[] aa(String var1, long var2) {
+		StringBuilder var4 = new StringBuilder();
+		var4.append(var1).append(Long.toHexString(var2));
+		this.ag_fld.reset();
+
+		try {
+			this.ag_fld.update(var4.toString().getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException var6) {
+			var6.printStackTrace();
+		}
+
+		return this.ag_fld.digest();
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;J)[B"
@@ -237,11 +277,67 @@ public class ae implements aw {
 		return this.ag_fld.digest();
 	}
 
-	@ObfuscatedName("ao")
+	ae(as var1) {
+	}
+
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/MessageDigest;"
+		descriptor = "(Lae;Ljava/lang/String;J)[B"
 	)
-	MessageDigest ao() {
+	public static byte[] bf(ae var0, String var1, long var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		StringBuilder var4 = new StringBuilder();
+		var4.append(var1).append(Long.toHexString(var2));
+		var0.ag_fld.reset();
+
+		try {
+			var0.ag_fld.update(var4.toString().getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException var6) {
+			var6.printStackTrace();
+		}
+
+		return var0.ag_fld.digest();
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;J)[B"
+	)
+	byte[] am(String var1, long var2) {
+		StringBuilder var4 = new StringBuilder();
+		var4.append(var1).append(Long.toHexString(var2));
+		this.ag_fld.reset();
+
+		try {
+			this.ag_fld.update(var4.toString().getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException var6) {
+			var6.printStackTrace();
+		}
+
+		return this.ag_fld.digest();
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;J)Z"
+	)
+	boolean an(int var1, String var2, long var3) {
+		byte[] var5 = jn(this, var2, var3);
+		return ak(var5) >= var1;
+	}
+
+	@ObfuscatedName("kr")
+	@ObfuscatedSignature(
+		descriptor = "(Lae;)Ljava/security/MessageDigest;"
+	)
+	public static MessageDigest kr(ae var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		try {
 			return MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException var2) {
@@ -250,11 +346,11 @@ public class ae implements aw {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/security/MessageDigest;"
 	)
-	MessageDigest ad() {
+	MessageDigest ae() {
 		try {
 			return MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException var2) {
@@ -279,115 +375,5 @@ public class ae implements aw {
 		}
 
 		return this.ag_fld.digest();
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;J)[B"
-	)
-	byte[] am(String var1, long var2) {
-		StringBuilder var4 = new StringBuilder();
-		var4.append(var1).append(Long.toHexString(var2));
-		this.ag_fld.reset();
-
-		try {
-			this.ag_fld.update(var4.toString().getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException var6) {
-			var6.printStackTrace();
-		}
-
-		return this.ag_fld.digest();
-	}
-
-	@ObfuscatedName("zu")
-	@ObfuscatedSignature(
-		descriptor = "(Lae;Ljava/lang/String;J)[B"
-	)
-	public static byte[] zu(ae var0, String var1, long var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		StringBuilder var4 = new StringBuilder();
-		var4.append(var1).append(Long.toHexString(var2));
-		var0.ag_fld.reset();
-
-		try {
-			var0.ag_fld.update(var4.toString().getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException var6) {
-			var6.printStackTrace();
-		}
-
-		return var0.ag_fld.digest();
-	}
-
-	ae(as var1) {
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;J)[B"
-	)
-	byte[] aa(String var1, long var2) {
-		StringBuilder var4 = new StringBuilder();
-		var4.append(var1).append(Long.toHexString(var2));
-		this.ag_fld.reset();
-
-		try {
-			this.ag_fld.update(var4.toString().getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException var6) {
-			var6.printStackTrace();
-		}
-
-		return this.ag_fld.digest();
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;J)Z"
-	)
-	boolean an(int var1, String var2, long var3) {
-		byte[] var5 = zu(this, var2, var3);
-		return ak(var5) >= var1;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;J)[B"
-	)
-	byte[] ai(String var1, long var2) {
-		StringBuilder var4 = new StringBuilder();
-		var4.append(var1).append(Long.toHexString(var2));
-		this.ag_fld.reset();
-
-		try {
-			this.ag_fld.update(var4.toString().getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException var6) {
-			var6.printStackTrace();
-		}
-
-		return this.ag_fld.digest();
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;J)Z"
-	)
-	boolean ax(int var1, String var2, long var3) {
-		byte[] var5 = zu(this, var2, var3);
-		return ar(var5) >= var1;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/MessageDigest;"
-	)
-	MessageDigest ae() {
-		try {
-			return MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException var2) {
-			var2.printStackTrace();
-			return null;
-		}
 	}
 }

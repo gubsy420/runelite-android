@@ -14,18 +14,6 @@ public class xu {
 	)
 	int[] ak_fld = new int[8];
 
-	@ObfuscatedName("it")
-	@ObfuscatedSignature(
-		descriptor = "(Lxu;I)[I"
-	)
-	public static int[] it(xu var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ak_fld;
-		}
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()[I"
@@ -34,64 +22,43 @@ public class xu {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("dp")
 	@ObfuscatedSignature(
-		descriptor = "(Lxu;[I[S)V"
+		descriptor = "(Lxu;B)[S"
 	)
-	public static void cu(xu var0, int[] var1, short[] var2) {
+	public static short[] dp(xu var0, byte var1) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			var0.ak_fld = var1;
-			var0.ag_fld = var2;
 		}
+
+		return var0.ag_fld;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "([I[S)V"
 	)
-	public void ar(int[] var1, short[] var2) {
+	public void as(int[] var1, short[] var2) {
 		this.ak_fld = var1;
 		this.ag_fld = var2;
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)V"
+		descriptor = "(IISS)V"
 	)
 	public void az(int var1, int var2, short var3) {
 		this.ak_fld[var1] = var2;
 		this.ag_fld[var1] = var3;
 	}
 
-	@ObfuscatedName("el")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lao;Laj;I)V"
+		descriptor = "([I[S)V"
 	)
-	public static void el(ao var0, aj var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var2 >> 5;
-		aj var4 = var0.bs_fld[var3];
-		if (null == var4) {
-			var0.be_fld[var3] = var1;
-		} else {
-			var4.aq_fld = var1;
-		}
-
-		var0.bs_fld[var3] = var1;
-		var1.am_fld = var2;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	public short[] ag() {
-		return this.ag_fld;
+	public void af(int[] var1, short[] var2) {
+		this.ak_fld = var1;
+		this.ag_fld = var2;
 	}
 
 	@ObfuscatedName("ah")
@@ -112,6 +79,30 @@ public class xu {
 		this.ag_fld[var1] = var3;
 	}
 
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;)Z"
+	)
+	public static boolean ah(qf var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return false;
+	}
+
+	@ObfuscatedName("zg")
+	@ObfuscatedSignature(
+		descriptor = "(Lxu;I)[I"
+	)
+	public static int[] zg(xu var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld;
+		}
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(IIS)V"
@@ -121,18 +112,18 @@ public class xu {
 		this.ag_fld[var1] = var3;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "([I[S)V"
 	)
-	public void as(int[] var1, short[] var2) {
+	public void ar(int[] var1, short[] var2) {
 		this.ak_fld = var1;
 		this.ag_fld = var2;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "([I[S)V"
+		descriptor = "([I[SI)V"
 	)
 	public void av(int[] var1, short[] var2) {
 		this.ak_fld = var1;
@@ -143,8 +134,8 @@ public class xu {
 		this.ag_fld = new short[8];
 		int var2 = 0;
 		if (var1.ap(2069660196)) {
-			var2 = var1.aa(1810183661).length;
-			System.arraycopy(var1.aa(1259406936), 0, this.ak_fld, 0, var2);
+			var2 = pp.mm(var1, 1810183661).length;
+			System.arraycopy(pp.mm(var1, 1259406936), 0, this.ak_fld, 0, var2);
 			System.arraycopy(var1.aq(-1910412766), 0, this.ag_fld, 0, var2);
 		}
 
@@ -160,5 +151,13 @@ public class xu {
 	)
 	public int[] ak(int var1) {
 		return this.ak_fld;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)[S"
+	)
+	public short[] ag(byte var1) {
+		return this.ag_fld;
 	}
 }

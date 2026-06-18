@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.NpcOverrides;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("pg")
 @Implements({"NpcOverrides"})
 public class pg implements NpcOverrides {
-	@ObfuscatedGetter(
-		longValue = 8538303662630040619L
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = 8538303662630040619L
 	)
 	public long ak_fld;
 	@ObfuscatedName("ag")
@@ -21,16 +22,16 @@ public class pg implements NpcOverrides {
 		descriptor = "[I"
 	)
 	int[] ag_fld;
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "[S"
-	)
-	short[] av_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "[S"
 	)
 	short[] az_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "[S"
+	)
+	short[] av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Z"
@@ -41,70 +42,14 @@ public class pg implements NpcOverrides {
 		descriptor = "I"
 	)
 	static int ay_fld;
-	@ObfuscatedGetter(
-		intValue = -250949181
-	)
 	@ObfuscatedName("ma")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -250949181
+	)
 	static int ma_fld;
-
-	@ObfuscatedName("getTextureToReplaceWith")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getTextureToReplaceWith() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getModelIds")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getModelIds() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ks")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;)Ljava/lang/String;"
-	)
-	public static String ks(yz var0) {
-		return var0.af_fld;
-	}
-
-	@ObfuscatedName("dp")
-	@ObfuscatedSignature(
-		descriptor = "(Lnw;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int dp(nw var0, Object var1, Object var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ak((nl)var1, (nl)var2, -1371272090);
-		}
-	}
-
-	@ObfuscatedName("useLocalPlayer")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean useLocalPlayer() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("getColorToReplaceWith")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getColorToReplaceWith() {
-		return this.av_fld;
-	}
 
 	@ObfuscatedName("fs")
 	@ObfuscatedSignature(
@@ -141,11 +86,69 @@ public class pg implements NpcOverrides {
 		}
 	}
 
+	@ObfuscatedName("getModelIds")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getModelIds")
+	@Override
+	public int[] getModelIds() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("getTextureToReplaceWith")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	@Export("getTextureToReplaceWith")
+	@Override
+	public short[] getTextureToReplaceWith() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getColorToReplaceWith")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	@Export("getColorToReplaceWith")
+	@Override
+	public short[] getColorToReplaceWith() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("useLocalPlayer")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("useLocalPlayer")
+	@Override
+	public boolean useLocalPlayer() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("hm")
+	@ObfuscatedSignature(
+		descriptor = "(Lbd;Lbh;)I"
+	)
+	public static int hm(bd var0, bh var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var2 = 0;
+
+		while (var0.ah_fld[var2] >= 0) {
+			var2 = var1.ag() != 0 ? var0.ah_fld[var2] : var2 + 1;
+		}
+
+		return ~var0.ah_fld[var2];
+	}
+
 	public pg(long var1, int[] var3, short[] var4, short[] var5, boolean var6) {
 		this.ak_fld = var1;
 		this.ag_fld = var3;
-		this.av_fld = var4;
-		this.az_fld = var5;
+		this.az_fld = var4;
+		this.av_fld = var5;
 		this.ae_fld = var6;
 	}
 }

@@ -4,6 +4,7 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 import javax.security.cert.X509Certificate;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -16,22 +17,19 @@ class ql implements SSLSession {
 	)
 	qf this$1;
 
-	@ObfuscatedName("tu")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;IILhi;Lhs;)I"
+		descriptor = "()[Ljava/security/cert/Certificate;"
 	)
-	public static int tu(ga var0, int var1, int var2, hi var3, hs var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return 0 == var3.ae_fld[0][var1][var2] ? var0.al_fld : var4.ak(var1, var2);
+	public Certificate[] ai() throws SSLPeerUnverifiedException {
+		return this.this$1.ak_fld;
 	}
 
 	@ObfuscatedName("getApplicationBufferSize")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getApplicationBufferSize")
 	@Override
 	public int getApplicationBufferSize() {
 		return 0;
@@ -41,6 +39,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getCipherSuite")
 	@Override
 	public String getCipherSuite() {
 		throw new UnsupportedOperationException();
@@ -50,6 +49,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()J"
 	)
+	@Export("getCreationTime")
 	@Override
 	public long getCreationTime() {
 		throw new UnsupportedOperationException();
@@ -59,8 +59,21 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()[B"
 	)
+	@Export("getId")
 	@Override
 	public byte[] getId() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("hi")
+	@ObfuscatedSignature(
+		descriptor = "(Lql;)Ljava/lang/String;"
+	)
+	public static String hi(ql var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -80,38 +93,11 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("xd")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;Ljava/lang/String;)V"
-	)
-	public static void xd(ql var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)Ljava/lang/String;"
-	)
-	public static String kn(ql var0) throws SSLPeerUnverifiedException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			throw new UnsupportedOperationException();
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
 	@ObfuscatedName("getSessionContext")
 	@ObfuscatedSignature(
 		descriptor = "()Ljavax/net/ssl/SSLSessionContext;"
 	)
+	@Export("getSessionContext")
 	@Override
 	public SSLSessionContext getSessionContext() {
 		throw new UnsupportedOperationException();
@@ -121,16 +107,17 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getPacketBufferSize")
 	@Override
 	public int getPacketBufferSize() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("oz")
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
-		descriptor = "(Lql;)Ljava/security/Principal;"
+		descriptor = "(Lql;)Ljava/lang/String;"
 	)
-	public static Principal oz(ql var0) {
+	public static String er(ql var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -142,21 +129,10 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljavax/security/cert/X509Certificate;"
 	)
+	@Export("getPeerCertificateChain")
 	@Override
 	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
 		return null;
-	}
-
-	@ObfuscatedName("py")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)V"
-	)
-	public static void py(ql var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new UnsupportedOperationException();
 	}
 
 	@ObfuscatedName("bx")
@@ -171,6 +147,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getPeerHost")
 	@Override
 	public String getPeerHost() {
 		throw new UnsupportedOperationException();
@@ -188,16 +165,17 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getPeerPort")
 	@Override
 	public int getPeerPort() {
 		return 0;
 	}
 
-	@ObfuscatedName("ds")
+	@ObfuscatedName("nr")
 	@ObfuscatedSignature(
 		descriptor = "(Lql;Ljava/lang/String;)Ljava/lang/Object;"
 	)
-	public static Object ds(ql var0, String var1) {
+	public static Object nr(ql var0, String var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -209,6 +187,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getProtocol")
 	@Override
 	public String getProtocol() {
 		throw new UnsupportedOperationException();
@@ -218,42 +197,36 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/security/Principal;"
 	)
+	@Export("getPeerPrincipal")
 	@Override
 	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
 		return null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int ag() {
+	public int ab() {
 		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("rn")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)Ljava/lang/String;"
-	)
-	public static String rn(ql var0) throws SSLPeerUnverifiedException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			throw new UnsupportedOperationException();
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
 	}
 
 	@ObfuscatedName("getValueNames")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getValueNames")
 	@Override
 	public String[] getValueNames() {
 		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int az() {
+		return 0;
 	}
 
 	@ObfuscatedName("bk")
@@ -276,29 +249,26 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)V"
 	)
+	@Export("removeValue")
 	@Override
 	public void removeValue(String var1) {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int ap() {
+	public int ak() {
 		return 0;
 	}
 
-	@ObfuscatedName("do")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lql;Ljava/lang/String;)Ljava/lang/Object;"
+		descriptor = "()I"
 	)
-	public static Object do_(ql var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new UnsupportedOperationException();
+	public int ag() {
+		return 0;
 	}
 
 	@ObfuscatedName("bw")
@@ -309,39 +279,15 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("uz")
+	@ObfuscatedName("yo")
 	@ObfuscatedSignature(
 		descriptor = "(Lql;)I"
 	)
-	public static int uz(ql var0) {
+	public static int yo(ql var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int bs() {
-		return 0;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String ae() {
-		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String ah() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -350,7 +296,7 @@ class ql implements SSLSession {
 		descriptor = "()I"
 	)
 	public int av() {
-		throw new UnsupportedOperationException();
+		return 0;
 	}
 
 	@ObfuscatedName("aw")
@@ -361,11 +307,23 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("fs")
 	@ObfuscatedSignature(
-		descriptor = "()J"
+		descriptor = "(Lql;)J"
 	)
-	public long as() {
+	public static long fs(ql var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "()[B"
+	)
+	public byte[] ar() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -385,19 +343,27 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("nd")
 	@ObfuscatedSignature(
-		descriptor = "()[B"
+		descriptor = "(Lqc;)I"
 	)
-	public byte[] ar() {
-		throw new UnsupportedOperationException();
+	public static int nd(qc var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ag_fld;
+		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("kx")
 	@ObfuscatedSignature(
-		descriptor = "()J"
+		descriptor = "(Lql;)Ljava/security/Principal;"
 	)
-	public long au() {
+	public static Principal kx(ql var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -405,6 +371,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)Ljava/lang/Object;"
 	)
+	@Export("getValue")
 	@Override
 	public Object getValue(String var1) {
 		throw new UnsupportedOperationException();
@@ -418,69 +385,62 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
+	@ObfuscatedName("zo")
+	@ObfuscatedSignature(
+		descriptor = "(Lql;)[Ljava/security/cert/Certificate;"
+	)
+	public static Certificate[] zo(ql var0) throws SSLPeerUnverifiedException {
+		return var0.this$1.ak_fld;
+	}
+
 	@ObfuscatedName("putValue")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Ljava/lang/Object;)V"
 	)
+	@Export("putValue")
 	@Override
 	public void putValue(String var1, Object var2) {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/Principal;"
-	)
-	public Principal ad() {
-		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("bm")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/security/cert/Certificate;"
 	)
-	public Certificate[] bm() {
+	public Certificate[] bz() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("dl")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lql;)Ljava/lang/String;"
+		descriptor = "()Ljava/security/Principal;"
 	)
-	public static String dl(ql var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	public Principal aq() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/security/Principal;"
+	)
+	public Principal am() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int ab() {
-		return 0;
-	}
-
-	@ObfuscatedName("il")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)[Ljava/security/cert/Certificate;"
-	)
-	public static Certificate[] il(ql var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	public int ao() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljavax/security/cert/X509Certificate;"
+		descriptor = "()[Ljava/security/cert/Certificate;"
 	)
-	public X509Certificate[] at() throws SSLPeerUnverifiedException {
-		return null;
+	public Certificate[] bd() {
+		throw new UnsupportedOperationException();
 	}
 
 	@ObfuscatedName("ac")
@@ -491,18 +451,11 @@ class ql implements SSLSession {
 		return null;
 	}
 
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/security/cert/Certificate;"
-	)
-	public Certificate[] bz() throws SSLPeerUnverifiedException {
-		return this.this$1.ak_fld;
-	}
-
 	@ObfuscatedName("isValid")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("isValid")
 	@Override
 	public boolean isValid() {
 		throw new UnsupportedOperationException();
@@ -512,8 +465,17 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()J"
 	)
+	@Export("getLastAccessedTime")
 	@Override
 	public long getLastAccessedTime() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String br() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -529,16 +491,24 @@ class ql implements SSLSession {
 		return this.this$1.ak_fld;
 	}
 
-	@ObfuscatedName("cb")
+	@ObfuscatedName("ty")
 	@ObfuscatedSignature(
-		descriptor = "(Lql;)Ljava/security/Principal;"
+		descriptor = "(Lql;)J"
 	)
-	public static Principal cb(ql var0) {
+	public static long ty(ql var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
 		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int bh() {
+		return 0;
 	}
 
 	@ObfuscatedName("invalidate")
@@ -550,37 +520,38 @@ class ql implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/Principal;"
+		descriptor = "()Ljava/lang/String;"
 	)
-	public Principal bj() throws SSLPeerUnverifiedException {
-		return null;
+	public String bf() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String by() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void bi() {
+		throw new UnsupportedOperationException();
 	}
 
 	@ObfuscatedName("getLocalCertificates")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/security/cert/Certificate;"
 	)
+	@Export("getLocalCertificates")
 	@Override
 	public Certificate[] getLocalCertificates() {
 		throw new UnsupportedOperationException();
-	}
-
-	@ObfuscatedName("xy")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)V"
-	)
-	public static void xy(ql var0) throws SSLPeerUnverifiedException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			throw new UnsupportedOperationException();
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
 	}
 
 	@ObfuscatedName("bp")
@@ -588,6 +559,34 @@ class ql implements SSLSession {
 		descriptor = "(Ljava/lang/String;)Ljava/lang/Object;"
 	)
 	public Object bp(String var1) {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Ljava/lang/Object;"
+	)
+	public Object bt(String var1) {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "(Lql;)I"
+	)
+	public static int dv(ql var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return 0;
+	}
+
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void bv() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -603,6 +602,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/security/Principal;"
 	)
+	@Export("getLocalPrincipal")
 	@Override
 	public Principal getLocalPrincipal() {
 		throw new UnsupportedOperationException();
@@ -628,6 +628,7 @@ class ql implements SSLSession {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/security/cert/Certificate;"
 	)
+	@Export("getPeerCertificates")
 	@Override
 	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
 		return this.this$1.ak_fld;
@@ -638,6 +639,14 @@ class ql implements SSLSession {
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	public void ba(String var1) {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	public void bq(String var1) {
 		throw new UnsupportedOperationException();
 	}
 

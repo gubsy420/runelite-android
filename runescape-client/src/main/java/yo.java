@@ -39,9 +39,17 @@ public class yo extends vc {
 	)
 	public static byte[][] as_fld;
 
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z"
+	)
+	public boolean ak() {
+		return null != this.av_fld;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;I)Ljava/util/List;"
+		descriptor = "(Ljava/lang/Object;IB)Ljava/util/List;"
 	)
 	public List az(Object var1, int var2) {
 		if (var2 < 0) {
@@ -50,6 +58,35 @@ public class yo extends vc {
 
 		Map var4 = (Map)(Map)this.ae_fld.get(var2);
 		return (List)(List)var4.get(var1);
+	}
+
+	@ObfuscatedName("qf")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lyo;"
+	)
+	public static yo qf(int var0) throws EOFException {
+		try {
+			return me.ha(var0);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "(Lyo;Ljava/lang/Object;I)Ljava/util/List;"
+	)
+	public static List fj(yo var0, Object var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var2 < 0) {
+			var2 = 0;
+		}
+
+		Map var3 = (Map)(Map)var0.ae_fld.get(var2);
+		return (List)(List)var3.get(var1);
 	}
 
 	@ObfuscatedName("ah")
@@ -111,30 +148,6 @@ public class yo extends vc {
 		return null != this.av_fld;
 	}
 
-	@ObfuscatedName("zb")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyo;"
-	)
-	public static yo zb(int var0) throws EOFException {
-		try {
-			return bu.hv(var0);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ms")
-	@ObfuscatedSignature(
-		descriptor = "(Lyo;S)Z"
-	)
-	public static boolean ms(yo var0, short var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return null != var0.av_fld;
-	}
-
 	public yo(ub var1, int var2) throws EOFException {
 		byte[] var3 = var1.bb(var2, 0, 584982574);
 		if (var3 != null) {
@@ -142,13 +155,13 @@ public class yo extends vc {
 		}
 	}
 
-	@ObfuscatedName("ql")
+	@ObfuscatedName("re")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lyo;"
 	)
-	public static yo ql(int var0) throws EOFException {
+	public static yo re(int var0) throws EOFException {
 		try {
-			return me.ha(var0);
+			return bu.hv(var0);
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
@@ -158,37 +171,6 @@ public class yo extends vc {
 		byte[] var4 = var1.bb(var2, 1 + var3, 584982574);
 		if (var4 != null) {
 			this.ag(new xi(var4), 1612726368);
-		}
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	void ay(xi var1) {
-		int var2 = var1.dr();
-		this.av_fld = new yq[var2];
-		this.ae_fld = new ArrayList(var2);
-
-		for (int var3 = 0; var3 < var2; var3++) {
-			this.av_fld[var3] = (yq)ka.ak(yq.ak(), var1.cg());
-			int var4 = var1.dr();
-			HashMap var5 = new HashMap(var4);
-
-			while (var4-- > 0) {
-				Object var6 = this.av_fld[var3].as(var1);
-				int var7 = var1.dr();
-				ArrayList var8 = new ArrayList();
-
-				while (var7-- > 0) {
-					int var9 = var1.dr();
-					var8.add(var9);
-				}
-
-				var5.put(var6, var8);
-			}
-
-			this.ae_fld.add(var3, var5);
 		}
 	}
 
@@ -223,45 +205,42 @@ public class yo extends vc {
 		}
 	}
 
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	void ay(xi var1) {
+		int var2 = var1.dr();
+		this.av_fld = new yq[var2];
+		this.ae_fld = new ArrayList(var2);
+
+		for (int var3 = 0; var3 < var2; var3++) {
+			this.av_fld[var3] = (yq)ka.ak(yq.ak(), var1.cg());
+			int var4 = var1.dr();
+			HashMap var5 = new HashMap(var4);
+
+			while (var4-- > 0) {
+				Object var6 = this.av_fld[var3].as(var1);
+				int var7 = var1.dr();
+				ArrayList var8 = new ArrayList();
+
+				while (var7-- > 0) {
+					int var9 = var1.dr();
+					var8.add(var9);
+				}
+
+				var5.put(var6, var8);
+			}
+
+			this.ae_fld.add(var3, var5);
+		}
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;I)Ljava/util/List;"
 	)
 	public List as(Object var1, int var2) {
-		if (var2 < 0) {
-			var2 = 0;
-		}
-
-		Map var3 = (Map)(Map)this.ae_fld.get(var2);
-		return (List)(List)var3.get(var1);
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;I)Ljava/util/List;"
-	)
-	public List ar(Object var1, int var2) {
-		if (var2 < 0) {
-			var2 = 0;
-		}
-
-		Map var3 = (Map)(Map)this.ae_fld.get(var2);
-		return (List)(List)var3.get(var1);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(S)Z"
-	)
-	public boolean ak(short var1) {
-		return null != this.av_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;I)Ljava/util/List;"
-	)
-	public List af(Object var1, int var2) {
 		if (var2 < 0) {
 			var2 = 0;
 		}

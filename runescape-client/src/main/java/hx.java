@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.Nameable;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -15,12 +16,12 @@ public class hx implements ClanChannelMember {
 		descriptor = "I"
 	)
 	public static int ae_fld;
-	@ObfuscatedGetter(
-		intValue = 1878330377
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 126140545
 	)
 	public int ag_fld;
 	@ObfuscatedName("az")
@@ -49,92 +50,96 @@ public class hx implements ClanChannelMember {
 	)
 	static String bp_fld;
 
-	@ObfuscatedName("hn")
-	@ObfuscatedSignature(
-		descriptor = "()Laax;"
-	)
-	public aax hn() {
-		return this.az_fld;
-	}
-
 	hx() {
 	}
 
-	@ObfuscatedName("getRank")
+	// $VF: synthetic method
+	// $VF: bridge method
+	@ObfuscatedName("compareTo")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/clan/ClanRank;"
+		descriptor = "(Ljava/lang/Object;)I"
 	)
-	@Override
-	public ClanRank getRank() {
-		return client.os(this.cb());
-	}
-
-	@ObfuscatedName("bi")
-	@ObfuscatedSignature(
-		descriptor = "(Ltl;)I"
-	)
-	public static int bi(tl var0) {
-		return var0.ah_fld;
-	}
-
-	@ObfuscatedName("ua")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/Nameable;)I"
-	)
-	public int ua(Nameable var1) {
-		return this.getName().compareTo(var1.getName());
-	}
-
-	@ObfuscatedName("cb")
-	@ObfuscatedSignature(
-		descriptor = "()B"
-	)
-	public byte cb() {
-		return this.ak_fld;
+	public int compareTo(Nameable var1) {
+		return this.rq(var1);
 	}
 
 	@ObfuscatedName("getName")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getName")
 	@Override
 	public String getName() {
-		aax var1 = this.hn();
+		aax var1 = this.pf();
 		if (var1 == null) {
 			return null;
 		} else {
-			String var2 = var1.ah();
+			String var2 = var1.cl();
 			return var2 == null ? null : var2.replace(' ', ' ');
 		}
 	}
 
-	@ObfuscatedName("getPrevName")
+	@ObfuscatedName("pf")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()Laax;"
 	)
-	@Override
-	public String getPrevName() {
-		return null;
+	public aax pf() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("wq")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;III)V"
+	)
+	public static void wq(fn var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.nh(var1, var2, var3);
+			var0.fn_Arrfloat = new float[var1];
+			var0.rl_fld = new float[var1];
+			var0.kp_fld = new float[var1];
+			var0.ba_fld = new int[var2];
+			var0.bq_fld = new int[var2];
+			var0.bg_fld = new int[var2];
+			var0.bb_fld = new int[var2];
+			var0.cd_fld = new int[var2];
+			var0.cc_fld = new int[var2];
+			if (var3 > 0) {
+				var0.ce_fld = new int[var3];
+				var0.cn_fld = new int[var3];
+				var0.cr_fld = new int[var3];
+			}
+		}
 	}
 
 	@ObfuscatedName("getWorld")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getWorld")
 	@Override
 	public int getWorld() {
 		return this.ag_fld;
 	}
 
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "()B"
+	)
+	public byte bw() {
+		return this.ak_fld;
+	}
+
 	@ObfuscatedName("fm")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(III)V"
 	)
 	static void fm(int var0, int var1) throws EOFException {
 		try {
 			if (bp.na_fld == null || og.ci_fld.jj(bp.na_fld.az_fld, bp.na_fld.as_fld, -676770198)) {
-				client.lf(og.ci_fld, var0, var1);
-			} else if (client.nr_fld.ag_fld > 0) {
+				og.ci_fld.jk(var0, var1, 2021900374);
+			} else if (client.nr_fld.ot_fld > 0) {
 				cg.fd(var0, var1);
 			}
 		} catch (Throwable var2) {
@@ -142,27 +147,37 @@ public class hx implements ClanChannelMember {
 		}
 	}
 
-	// $VF: synthetic method
-	// $VF: bridge method
-	@ObfuscatedName("compareTo")
+	@ObfuscatedName("getPrevName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getPrevName")
+	@Override
+	public String getPrevName() {
+		return null;
+	}
+
+	@ObfuscatedName("getRank")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/clan/ClanRank;"
+	)
+	@Export("getRank")
+	@Override
+	public ClanRank getRank() {
+		return client.sk(this.bw());
+	}
+
+	@ObfuscatedName("rq")
 	@ObfuscatedSignature(
 		descriptor = "(Lnet/runelite/api/Nameable;)I"
 	)
-	public int compareTo(Nameable var1) {
-		return this.ua(var1);
-	}
-
-	@ObfuscatedName("ju")
-	@ObfuscatedSignature(
-		descriptor = "(Lui;Llu;)Z"
-	)
-	public static boolean ju(ui var0, lu var1) {
-		return var1 == var0.ag_fld && 50 == var0.az_fld;
+	public int rq(Nameable var1) {
+		return this.getName().compareTo(var1.getName());
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(I)D"
+		descriptor = "(IB)D"
 	)
 	public static double av(int var0) {
 		return pd.ag(var0) / 65536.0;

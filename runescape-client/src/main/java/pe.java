@@ -1,4 +1,3 @@
-import java.util.Map.Entry;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -20,12 +19,12 @@ public class pe {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = -1176458971
-	)
 	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1176458971
 	)
 	static int cc_fld;
 	@ObfuscatedName("ae")
@@ -62,14 +61,14 @@ public class pe {
 
 		for (int var7 = 0; var7 < var2; var7++) {
 			int var4 = var0.cg();
-			int var5 = var0.ck();
+			int var5 = xi.lx(var0, 1818538191);
 			Object var6;
 			if (var4 == 1) {
-				var6 = new uj(xi.kc(var0, 428267987));
+				var6 = new uj(xi.at(var0, 428267987));
 			} else if (2 == var4) {
-				var6 = new vk(xi.ob(var0, 1154902797));
+				var6 = new vk(var0.cu());
 			} else {
-				var6 = new vl(var0.co());
+				var6 = new vl(var0.co((byte)-45));
 			}
 
 			var1.ag((vw)var6, var5);
@@ -91,14 +90,14 @@ public class pe {
 
 		for (int var7 = 0; var7 < var2; var7++) {
 			int var4 = var0.cg();
-			int var5 = var0.ck();
+			int var5 = xi.lx(var0, 455589998);
 			Object var6;
 			if (var4 == 1) {
-				var6 = new uj(xi.kc(var0, -882955153));
+				var6 = new uj(xi.at(var0, -882955153));
 			} else if (2 == var4) {
-				var6 = new vk(xi.ob(var0, 848172952));
+				var6 = new vk(var0.cu());
 			} else {
-				var6 = new vl(var0.co());
+				var6 = new vl(var0.co((byte)-27));
 			}
 
 			var1.ag((vw)var6, var5);
@@ -120,14 +119,14 @@ public class pe {
 
 		for (int var7 = 0; var7 < var2; var7++) {
 			int var4 = var0.cg();
-			int var5 = var0.ck();
+			int var5 = xi.lx(var0, -1171599565);
 			Object var6;
 			if (var4 == 1) {
-				var6 = new uj(xi.kc(var0, 919611212));
+				var6 = new uj(xi.at(var0, 919611212));
 			} else if (2 == var4) {
-				var6 = new vk(xi.ob(var0, 21073002));
+				var6 = new vk(var0.cu());
 			} else {
-				var6 = new vl(var0.co());
+				var6 = new vl(var0.co((byte)-48));
 			}
 
 			var1.ag((vw)var6, var5);
@@ -153,28 +152,16 @@ public class pe {
 		}
 	}
 
-	@ObfuscatedName("co")
+	@ObfuscatedName("hr")
 	@ObfuscatedSignature(
-		descriptor = "(Lnx;Ljava/lang/Object;Ljava/lang/Object;)I"
+		descriptor = "(Lgn;III)V"
 	)
-	public static int co(nx var0, Object var1, Object var2) {
+	public static void hr(gn var0, int var1, int var2, int var3) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return var0.ak((nl)var1, (nl)var2, 1449243547);
-	}
-
-	@ObfuscatedName("ze")
-	@ObfuscatedSignature(
-		descriptor = "(Lqs;Ljava/util/Map$Entry;Ljava/util/Map$Entry;)I"
-	)
-	public static int ze(qs var0, Entry var1, Entry var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
-		}
+		var0.bp_fld[var1][var2] = var0.bp_fld[var1][var2] | var3;
 	}
 
 	@ObfuscatedName("as")

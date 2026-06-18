@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -20,12 +21,12 @@ public class aak extends RuntimeException {
 		descriptor = "Ljava/lang/String;"
 	)
 	public static String ag_fld;
-	@ObfuscatedGetter(
-		intValue = -1324909115
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1324909115
 	)
 	public static int az_fld;
 	@ObfuscatedName("ah")
@@ -38,14 +39,6 @@ public class aak extends RuntimeException {
 		descriptor = "Ljava/lang/Throwable;"
 	)
 	Throwable aw_fld;
-
-	@ObfuscatedName("of")
-	@ObfuscatedSignature(
-		descriptor = "(Lqw;)Ljava/lang/String;"
-	)
-	public static String of(qw var0) {
-		return var0.ag_fld;
-	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -260,22 +253,24 @@ public class aak extends RuntimeException {
 		return var2;
 	}
 
-	@ObfuscatedName("getCause")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/Throwable;"
-	)
-	@Override
-	public Throwable getCause() {
-		return this.aw_fld;
-	}
-
 	@ObfuscatedName("getMessage")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getMessage")
 	@Override
 	public String getMessage() {
 		return this.ah_fld;
+	}
+
+	@ObfuscatedName("getCause")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/Throwable;"
+	)
+	@Export("getCause")
+	@Override
+	public Throwable getCause() {
+		return this.aw_fld;
 	}
 
 	@ObfuscatedName("ah")

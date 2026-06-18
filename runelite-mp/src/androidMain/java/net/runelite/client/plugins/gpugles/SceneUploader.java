@@ -24,6 +24,8 @@
  */
 package net.runelite.client.plugins.gpugles;
 
+import android.util.Log;
+
 import java.nio.IntBuffer;
 import java.util.HashSet;
 import java.util.Set;
@@ -584,6 +586,17 @@ class SceneUploader
 	{
 		final int vertexCount = model.getVerticesCount();
 		final int triangleCount = model.getFaceCount();
+
+		// Static-zone uploads have no surrounding try/catch (this runs inside the GL
+		// thread's rebuild() loop on swapScene). An oversized model on that path AIOOBE'd
+		// out of uploadStaticModel and killed the GL thread mid-rebuild, dropping all
+		// remaining zones — observed as "crash on region reload" when the new region
+		// happens to contain a high-poly object. Bail with a single WARN instead.
+		if (vertexCount > FacePrioritySorter.MAX_VERTEX_COUNT)
+		{
+			Log.w("SceneUploader", "skipping static model: vertices=" + vertexCount + " > MAX_VERTEX_COUNT=" + FacePrioritySorter.MAX_VERTEX_COUNT);
+			return 0;
+		}
 
 		final float[] vertexX = model.getVerticesX();
 		final float[] vertexY = model.getVerticesY();

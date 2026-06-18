@@ -9,46 +9,65 @@ public class oc {
 		descriptor = "I"
 	)
 	static int cw_fld;
-	@ObfuscatedGetter(
-		intValue = 1469185155
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -31617437
+		intValue = 1469185155
 	)
+	public int ag_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 1135463733
+		intValue = -31617437
 	)
+	public int ae_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
 	@ObfuscatedGetter(
-		intValue = 742539995
+		intValue = 1135463733
 	)
+	public int av_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int az_fld;
 	@ObfuscatedGetter(
-		intValue = 690071119
+		intValue = 742539995
 	)
+	public int az_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 690071119
+	)
 	public int ak_fld = 0;
+
+	@ObfuscatedName("gu")
+	@ObfuscatedSignature(
+		descriptor = "(Lyl;Lxi;)V"
+	)
+	public static void gu(yl var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		while (true) {
+			int var2 = var1.cg();
+			if (var2 == 0) {
+				return;
+			}
+
+			var0.av(var1, var2, -107580810);
+		}
+	}
 
 	oc(int var1, int var2, int var3, int var4, int var5) {
 		this.ag_fld = 1977823787;

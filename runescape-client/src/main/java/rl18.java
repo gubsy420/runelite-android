@@ -5,11 +5,33 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("rl18")
 class rl18 implements Comparator {
 	// $VF: synthetic field
-	@ObfuscatedName("mw")
+	@ObfuscatedName("fb")
 	@ObfuscatedSignature(
 		descriptor = "Lev;"
 	)
-	public ev mw_fld;
+	public ev fb_fld;
+
+	@ObfuscatedName("ra")
+	@ObfuscatedSignature(
+		descriptor = "(Lsn;)I"
+	)
+	public static int ra(sn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ao_fld;
+	}
+
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(Lrl17;)I"
+	)
+	public int my(rl17 var1) {
+		int var2 = var1.zb_fld * 8 + 4 - this.fb_fld.qr_fld << 7;
+		int var3 = var1.bj_fld * 8 + 4 - this.fb_fld.qr_fld << 7;
+		return (var2 - this.fb_fld.du_fld) * (var2 - this.fb_fld.du_fld) + (var3 - this.fb_fld.co_fld) * (var3 - this.fb_fld.co_fld);
+	}
 
 	// $VF: synthetic method
 	// $VF: bridge method
@@ -19,28 +41,18 @@ class rl18 implements Comparator {
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return this.oc((rl17)var1, (rl17)var2);
+		return this.um((rl17)var1, (rl17)var2);
 	}
 
-	@ObfuscatedName("mm")
-	@ObfuscatedSignature(
-		descriptor = "(Lrl18;Lrl17;)I"
-	)
-	public static int mm(rl18 var0, rl17 var1) {
-		int var2 = var1.go_fld * 8 + 4 - var0.mw_fld.jh_fld << 7;
-		int var3 = var1.kq_fld * 8 + 4 - var0.mw_fld.jh_fld << 7;
-		return (var2 - var0.mw_fld.cw_fld) * (var2 - var0.mw_fld.cw_fld) + (var3 - var0.mw_fld.cy_fld) * (var3 - var0.mw_fld.cy_fld);
-	}
-
-	@ObfuscatedName("oc")
+	@ObfuscatedName("um")
 	@ObfuscatedSignature(
 		descriptor = "(Lrl17;Lrl17;)I"
 	)
-	public int oc(rl17 var1, rl17 var2) {
-		return Integer.compare(mm(this, var1), mm(this, var2));
+	public int um(rl17 var1, rl17 var2) {
+		return Integer.compare(this.my(var1), this.my(var2));
 	}
 
 	public rl18(ev var1) {
-		this.mw_fld = var1;
+		this.fb_fld = var1;
 	}
 }

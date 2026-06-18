@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -17,6 +18,11 @@ import net.runelite.api.widgets.WidgetUtil;
 @ObfuscatedName("lu")
 @Implements({"Widget"})
 public class lu extends vw implements Widget {
+	@ObfuscatedName("wh")
+	@ObfuscatedSignature(
+		descriptor = "S"
+	)
+	public short wh_fld;
 	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -27,12 +33,12 @@ public class lu extends vw implements Widget {
 		descriptor = "Ljava/lang/String;"
 	)
 	String bl_fld;
-	@ObfuscatedGetter(
-		intValue = 323515003
-	)
 	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 323515003
 	)
 	public int cl_fld;
 	@ObfuscatedName("fd")
@@ -60,41 +66,39 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean bj_fld;
-	@ObfuscatedGetter(
-		intValue = 1461045985
-	)
 	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bf_fld;
 	@ObfuscatedGetter(
-		intValue = -2140649577
+		intValue = 1461045985
 	)
+	public int bf_fld;
 	@ObfuscatedName("by")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int by_fld;
 	@ObfuscatedGetter(
-		intValue = -1223437005
+		intValue = -2140649577
 	)
-	@ObfuscatedName("pv")
+	public int by_fld;
+	// $VF: synthetic field
+	@ObfuscatedName("yr")
 	@ObfuscatedSignature(
-		descriptor = "I"
+		descriptor = "Z"
 	)
-	public int pv_fld;
+	public static boolean yr_fld = !lu.class.desiredAssertionStatus();
 	@ObfuscatedName("eu")
 	@ObfuscatedSignature(
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] eu_fld;
-	@ObfuscatedGetter(
-		intValue = 1404198381
-	)
 	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1404198381
 	)
 	public int bx_fld;
 	@ObfuscatedName("gr")
@@ -102,12 +106,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] gr_fld;
-	@ObfuscatedGetter(
-		intValue = -1748990469
-	)
 	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1748990469
 	)
 	public int bp_fld;
 	@ObfuscatedName("gv")
@@ -115,126 +119,105 @@ public class lu extends vw implements Widget {
 		descriptor = "[I"
 	)
 	public int[] gv_fld;
-	@ObfuscatedGetter(
-		intValue = -1223437005
-	)
-	@ObfuscatedName("wj")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int wj_fld;
-	@ObfuscatedGetter(
-		intValue = -111792431
-	)
 	@ObfuscatedName("co")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int co_fld;
-	@ObfuscatedName("wk")
-	@ObfuscatedSignature(
-		descriptor = "S"
+	@ObfuscatedGetter(
+		intValue = -111792431
 	)
-	public short wk_fld;
+	public int co_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	public static int ag_fld;
-	@ObfuscatedGetter(
-		intValue = 138006387
-	)
 	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bu_fld;
 	@ObfuscatedGetter(
-		intValue = -570803331
+		intValue = 138006387
 	)
+	public int bu_fld;
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bn_fld;
 	@ObfuscatedGetter(
-		intValue = 1715505881
+		intValue = -570803331
 	)
+	public int bn_fld;
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bc_fld;
 	@ObfuscatedGetter(
-		intValue = -1413997313
+		intValue = 1715505881
 	)
+	public int bc_fld;
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bw_fld;
 	@ObfuscatedGetter(
-		intValue = 831395483
+		intValue = -1413997313
 	)
+	public int bw_fld;
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 831395483
+	)
 	public int ba_fld;
-	@ObfuscatedGetter(
-		intValue = -1443261961
-	)
-	@ObfuscatedName("nn")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int nn_fld = -1;
-	@ObfuscatedGetter(
-		intValue = -450643537
-	)
 	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bq_fld;
 	@ObfuscatedGetter(
-		intValue = 545998793
+		intValue = -450643537
 	)
+	public int bq_fld;
 	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cx_fld;
 	@ObfuscatedGetter(
-		intValue = -324157087
+		intValue = 545998793
 	)
+	public int cx_fld;
 	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cs_fld;
 	@ObfuscatedGetter(
-		intValue = -1857652109
+		intValue = -324157087
 	)
+	public int cs_fld;
 	@ObfuscatedName("eb")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int eb_fld;
 	@ObfuscatedGetter(
-		intValue = 124430729
+		intValue = -1857652109
 	)
+	public int eb_fld;
 	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cd_fld;
 	@ObfuscatedGetter(
-		intValue = -2132344331
+		intValue = 124430729
 	)
+	public int cd_fld;
 	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2132344331
 	)
 	public int cq_fld;
 	@ObfuscatedName("dy")
@@ -242,12 +225,12 @@ public class lu extends vw implements Widget {
 		descriptor = "Llp;"
 	)
 	public lp dy_fld;
-	@ObfuscatedGetter(
-		intValue = -1661012943
-	)
 	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1661012943
 	)
 	public int cy_fld;
 	@ObfuscatedName("cf")
@@ -255,12 +238,12 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean cf_fld;
-	@ObfuscatedGetter(
-		intValue = -1223437005
-	)
 	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1223437005
 	)
 	public int bb_fld;
 	@ObfuscatedName("dt")
@@ -268,25 +251,20 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean dt_fld;
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public static int kn_fld;
-	@ObfuscatedGetter(
-		intValue = 590540907
-	)
 	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cp_fld;
 	@ObfuscatedGetter(
-		intValue = 9463393
+		intValue = 590540907
 	)
+	public int cp_fld;
 	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 9463393
 	)
 	public int ce_fld;
 	@ObfuscatedName("fe")
@@ -294,36 +272,44 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] fe_fld;
-	@ObfuscatedGetter(
-		intValue = 694320263
+	@ObfuscatedName("ss")
+	@ObfuscatedSignature(
+		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1223437005
+	)
+	public int ss_fld = -1;
 	@ObfuscatedName("cv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cv_fld;
 	@ObfuscatedGetter(
-		intValue = 681955997
+		intValue = 694320263
 	)
+	public int cv_fld;
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ca_fld;
 	@ObfuscatedGetter(
-		intValue = 239766897
+		intValue = 681955997
 	)
+	public int ca_fld;
 	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cg_fld;
 	@ObfuscatedGetter(
-		intValue = 802525691
+		intValue = 239766897
 	)
+	public int cg_fld;
 	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 802525691
 	)
 	public int cw_fld;
 	@ObfuscatedName("fj")
@@ -341,12 +327,12 @@ public class lu extends vw implements Widget {
 		descriptor = "Lym;"
 	)
 	public ym ck_fld;
-	@ObfuscatedGetter(
-		intValue = 1577740823
-	)
 	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1577740823
 	)
 	public int cb_fld;
 	@ObfuscatedName("as")
@@ -354,12 +340,12 @@ public class lu extends vw implements Widget {
 		descriptor = "I"
 	)
 	public static int as_fld;
-	@ObfuscatedGetter(
-		intValue = 1412403275
-	)
 	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1412403275
 	)
 	public int cu_fld;
 	@ObfuscatedName("ci")
@@ -367,20 +353,20 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean ci_fld;
-	@ObfuscatedGetter(
-		intValue = -228305239
-	)
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bo_fld;
 	@ObfuscatedGetter(
-		intValue = 2103578503
+		intValue = -228305239
 	)
+	public int bo_fld;
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2103578503
 	)
 	public int ch_fld;
 	@ObfuscatedName("fq")
@@ -403,12 +389,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[I"
 	)
 	public int[] fm_fld;
-	@ObfuscatedGetter(
-		intValue = 1891222921
-	)
 	@ObfuscatedName("dv")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1891222921
 	)
 	public int dv_fld;
 	@ObfuscatedName("dz")
@@ -416,20 +402,20 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean dz_fld;
-	@ObfuscatedGetter(
-		intValue = 879314393
-	)
 	@ObfuscatedName("cn")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cn_fld;
 	@ObfuscatedGetter(
-		intValue = -1233078613
+		intValue = 879314393
 	)
+	public int cn_fld;
 	@ObfuscatedName("dm")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1233078613
 	)
 	public int dm_fld;
 	@ObfuscatedName("em")
@@ -437,84 +423,89 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean em_fld;
-	@ObfuscatedGetter(
-		intValue = 1986711867
-	)
 	@ObfuscatedName("do")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int do_fld;
 	@ObfuscatedGetter(
-		intValue = 1301730821
+		intValue = 1986711867
 	)
+	int do_fld;
 	@ObfuscatedName("dd")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int dd_fld;
 	@ObfuscatedGetter(
-		intValue = -1754977669
+		intValue = 1301730821
 	)
+	int dd_fld;
 	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dl_fld;
 	@ObfuscatedGetter(
-		intValue = 137820669
+		intValue = -1754977669
 	)
+	public int dl_fld;
 	@ObfuscatedName("dr")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dr_fld;
 	@ObfuscatedGetter(
-		intValue = -253349227
+		intValue = 137820669
 	)
+	public int dr_fld;
 	@ObfuscatedName("da")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int da_fld;
 	@ObfuscatedGetter(
-		intValue = -1003471525
+		intValue = -253349227
 	)
+	public int da_fld;
 	@ObfuscatedName("dk")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dk_fld;
 	@ObfuscatedGetter(
-		intValue = -519645809
+		intValue = -1003471525
 	)
+	public int dk_fld;
+	@ObfuscatedName("yp")
+	@ObfuscatedSignature(
+		descriptor = "S"
+	)
+	public short yp_fld;
 	@ObfuscatedName("dx")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dx_fld;
 	@ObfuscatedGetter(
-		intValue = -590379409
+		intValue = -519645809
 	)
+	public int dx_fld;
 	@ObfuscatedName("ds")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ds_fld;
 	@ObfuscatedGetter(
-		intValue = 1680595947
+		intValue = -590379409
 	)
+	public int ds_fld;
 	@ObfuscatedName("hn")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int hn_fld;
 	@ObfuscatedGetter(
-		intValue = -70630065
+		intValue = 1680595947
 	)
+	int hn_fld;
 	@ObfuscatedName("db")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -70630065
 	)
 	public int db_fld;
 	@ObfuscatedName("ak")
@@ -522,12 +513,12 @@ public class lu extends vw implements Widget {
 		descriptor = "I"
 	)
 	public static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = -405011595
-	)
 	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -405011595
 	)
 	public int dw_fld;
 	@ObfuscatedName("ae")
@@ -545,28 +536,28 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean dn_fld;
-	@ObfuscatedGetter(
-		intValue = -43374303
-	)
 	@ObfuscatedName("df")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int df_fld;
 	@ObfuscatedGetter(
-		intValue = 159419309
+		intValue = -43374303
 	)
+	public int df_fld;
 	@ObfuscatedName("de")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int de_fld;
 	@ObfuscatedGetter(
-		intValue = -1198739519
+		intValue = 159419309
 	)
+	public int de_fld;
 	@ObfuscatedName("es")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1198739519
 	)
 	public int es_fld;
 	@ObfuscatedName("dj")
@@ -574,28 +565,28 @@ public class lu extends vw implements Widget {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String dj_fld;
-	@ObfuscatedGetter(
-		intValue = -233337277
-	)
 	@ObfuscatedName("dq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dq_fld;
 	@ObfuscatedGetter(
-		intValue = 2082962145
+		intValue = -233337277
 	)
+	public int dq_fld;
 	@ObfuscatedName("ep")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ep_fld;
 	@ObfuscatedGetter(
-		intValue = 854556803
+		intValue = 2082962145
 	)
+	public int ep_fld;
 	@ObfuscatedName("nf")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 854556803
 	)
 	static int nf_fld;
 	@ObfuscatedName("ed")
@@ -603,12 +594,6 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean ed_fld;
-	// $VF: synthetic field
-	@ObfuscatedName("im")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public static boolean im_fld = !lu.class.desiredAssertionStatus();
 	@ObfuscatedName("et")
 	@ObfuscatedSignature(
 		descriptor = "[I"
@@ -629,12 +614,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/String;"
 	)
 	String[] eo_fld;
-	@ObfuscatedGetter(
-		intValue = 1627369
-	)
 	@ObfuscatedName("ec")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1627369
 	)
 	public int ec_fld;
 	@ObfuscatedName("ez")
@@ -647,12 +632,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[[B"
 	)
 	public byte[][] er_fld;
-	@ObfuscatedGetter(
-		intValue = 1723920971
-	)
 	@ObfuscatedName("cm")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1723920971
 	)
 	public int cm_fld;
 	@ObfuscatedName("eg")
@@ -665,6 +650,11 @@ public class lu extends vw implements Widget {
 		descriptor = "[I"
 	)
 	public int[] ef_fld;
+	@ObfuscatedName("np")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public static int np_fld;
 	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -680,12 +670,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/String;"
 	)
 	public String[] ei_fld;
-	@ObfuscatedGetter(
-		intValue = -2137298625
-	)
 	@ObfuscatedName("ek")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2137298625
 	)
 	public int ek_fld;
 	@ObfuscatedName("ea")
@@ -693,20 +683,20 @@ public class lu extends vw implements Widget {
 		descriptor = "Llu;"
 	)
 	public lu ea_fld;
-	@ObfuscatedGetter(
-		intValue = -763835689
-	)
 	@ObfuscatedName("ev")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ev_fld;
 	@ObfuscatedGetter(
-		intValue = 117891801
+		intValue = -763835689
 	)
+	public int ev_fld;
 	@ObfuscatedName("hj")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 117891801
 	)
 	public int hj_fld;
 	@ObfuscatedName("an")
@@ -724,12 +714,12 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean eh_fld;
-	@ObfuscatedGetter(
-		intValue = 1238591925
-	)
 	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1238591925
 	)
 	public int cc_fld;
 	@ObfuscatedName("ej")
@@ -737,12 +727,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] ej_fld;
-	@ObfuscatedGetter(
-		intValue = 1151170383
-	)
 	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1151170383
 	)
 	public int bt_fld;
 	@ObfuscatedName("fa")
@@ -755,20 +745,20 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] fo_fld;
-	@ObfuscatedGetter(
-		intValue = 582360795
-	)
 	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int bv_fld;
 	@ObfuscatedGetter(
-		intValue = 214412161
+		intValue = 582360795
 	)
+	public int bv_fld;
 	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 214412161
 	)
 	public int bg_fld;
 	@ObfuscatedName("fv")
@@ -786,12 +776,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] fb_fld;
-	@ObfuscatedGetter(
-		intValue = -150852659
-	)
 	@ObfuscatedName("gy")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -150852659
 	)
 	public int gy_fld;
 	@ObfuscatedName("fc")
@@ -804,20 +794,20 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean hh_fld;
-	@ObfuscatedGetter(
-		intValue = 101145729
-	)
 	@ObfuscatedName("gb")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int gb_fld;
 	@ObfuscatedGetter(
-		intValue = -1443261961
+		intValue = 101145729
 	)
+	public int gb_fld;
 	@ObfuscatedName("dh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1443261961
 	)
 	public int dh_fld;
 	@ObfuscatedName("fw")
@@ -845,12 +835,12 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] ft_fld;
-	@ObfuscatedGetter(
-		intValue = -377192225
-	)
 	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -377192225
 	)
 	public int cj_fld;
 	@ObfuscatedName("fu")
@@ -888,6 +878,14 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	public Object[] ff_fld;
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -590379409
+	)
+	public int mv_fld = -1;
 	@ObfuscatedName("gg")
 	@ObfuscatedSignature(
 		descriptor = "[Ljava/lang/Object;"
@@ -933,6 +931,14 @@ public class lu extends vw implements Widget {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String gi_fld;
+	@ObfuscatedName("vi")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1223437005
+	)
+	public int vi_fld = -1;
 	@ObfuscatedName("gu")
 	@ObfuscatedSignature(
 		descriptor = "[[I"
@@ -943,25 +949,25 @@ public class lu extends vw implements Widget {
 		descriptor = "[I"
 	)
 	public int[] gp_fld;
-	@ObfuscatedName("he")
+	@ObfuscatedName("hd")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/HashMap;"
 	)
-	HashMap he_fld;
-	@ObfuscatedGetter(
-		intValue = 2139590355
-	)
+	HashMap hd_fld;
 	@ObfuscatedName("gk")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int gk_fld;
 	@ObfuscatedGetter(
-		intValue = 1050344583
+		intValue = 2139590355
 	)
+	public int gk_fld;
 	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1050344583
 	)
 	public int bi_fld;
 	@ObfuscatedName("gq")
@@ -979,36 +985,36 @@ public class lu extends vw implements Widget {
 		descriptor = "[I"
 	)
 	public int[] gm_fld;
-	@ObfuscatedGetter(
-		intValue = 1243874365
-	)
 	@ObfuscatedName("ga")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ga_fld;
 	@ObfuscatedGetter(
-		intValue = -1632782049
+		intValue = 1243874365
 	)
+	public int ga_fld;
 	@ObfuscatedName("gd")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int gd_fld;
 	@ObfuscatedGetter(
-		intValue = -1389783319
+		intValue = -1632782049
 	)
+	public int gd_fld;
 	@ObfuscatedName("gl")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int gl_fld;
 	@ObfuscatedGetter(
-		intValue = 668367529
+		intValue = -1389783319
 	)
+	public int gl_fld;
 	@ObfuscatedName("gz")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 668367529
 	)
 	public int gz_fld;
 	@ObfuscatedName("ge")
@@ -1031,20 +1037,20 @@ public class lu extends vw implements Widget {
 		descriptor = "[[B"
 	)
 	public byte[][] en_fld;
-	@ObfuscatedGetter(
-		intValue = 1471705067
-	)
 	@ObfuscatedName("du")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int du_fld;
 	@ObfuscatedGetter(
-		intValue = 1477055471
+		intValue = 1471705067
 	)
+	public int du_fld;
 	@ObfuscatedName("hr")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1477055471
 	)
 	public int hr_fld;
 	@ObfuscatedName("ee")
@@ -1067,32 +1073,27 @@ public class lu extends vw implements Widget {
 		descriptor = "Z"
 	)
 	public boolean hf_fld;
-	@ObfuscatedGetter(
-		intValue = 235919357
-	)
 	@ObfuscatedName("cr")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cr_fld;
 	@ObfuscatedGetter(
-		intValue = -2054244789
+		intValue = 235919357
 	)
+	public int cr_fld;
 	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -2054244789
+	)
 	public int dg_fld;
-	@ObfuscatedName("hd")
+	@ObfuscatedName("he")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/HashMap;"
 	)
-	HashMap hd_fld;
-	@ObfuscatedName("sw")
-	@ObfuscatedSignature(
-		descriptor = "S"
-	)
-	public short sw_fld;
+	HashMap he_fld;
 	@ObfuscatedName("hk")
 	@ObfuscatedSignature(
 		descriptor = "Lld;"
@@ -1118,20 +1119,20 @@ public class lu extends vw implements Widget {
 		descriptor = "[Ljava/lang/Object;"
 	)
 	Object[] hq_fld;
-	@ObfuscatedGetter(
-		intValue = 1189206755
-	)
 	@ObfuscatedName("hl")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int hl_fld;
 	@ObfuscatedGetter(
-		intValue = -1721404151
+		intValue = 1189206755
 	)
+	int hl_fld;
 	@ObfuscatedName("ey")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1721404151
 	)
 	public int ey_fld;
 
@@ -1145,7 +1146,7 @@ public class lu extends vw implements Widget {
 			if (!this.hi_fld.ag(var1, var3, var6)) {
 				this.hi_fld = null;
 			} else {
-				if (null == this.he_fld || null == this.hd_fld) {
+				if (null == this.hd_fld || null == this.he_fld) {
 					this.bd(-64371462);
 				}
 
@@ -1156,11 +1157,28 @@ public class lu extends vw implements Widget {
 		}
 	}
 
+	@ObfuscatedName("getModelId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getModelId")
+	@Override
+	public int getModelId() {
+		return this.dq_fld;
+	}
+
+	@ObfuscatedName("qc")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setXTextAlignment(int var1) {
+		this.ep_fld = var1;
+		return this;
+	}
+
 	public lu(lu var1) throws EOFException {
-		this.wj_fld = -1;
-		this.pv_fld = -1;
-		this.sw_fld = -1;
-		this.wk_fld = -1;
+		this.wh_fld = -1;
+		this.yp_fld = -1;
 		this.bj_fld = false;
 		this.bf_fld = -190642465;
 		this.by_fld = -2083432487;
@@ -1175,9 +1193,9 @@ public class lu extends vw implements Widget {
 		this.bw_fld = 0;
 		this.ba_fld = 0;
 		this.bq_fld = 0;
-		this.vl(-1);
+		this.ik(-1);
 		this.bg_fld = 0;
-		this.zd(-1);
+		this.qz(-1);
 		this.bb_fld = 0;
 		this.cd_fld = 0;
 		this.cc_fld = 1315110045;
@@ -1274,9 +1292,9 @@ public class lu extends vw implements Widget {
 		this.bw_fld = 1 * var1.bw_fld;
 		this.ba_fld = 1 * var1.ba_fld;
 		this.bq_fld = 1 * var1.bq_fld;
-		this.vl(-1);
+		this.ik(-1);
 		this.bg_fld = var1.bg_fld * 214412161;
-		this.zd(-1);
+		this.qz(-1);
 		this.bb_fld = 1 * var1.bb_fld;
 		this.cd_fld = 1 * var1.cd_fld;
 		this.cc_fld = 1 * var1.cc_fld;
@@ -1337,19 +1355,19 @@ public class lu extends vw implements Widget {
 		this.ep_fld = 1 * var1.ep_fld;
 		this.eb_fld = 1 * var1.eb_fld;
 		this.ed_fld = var1.ed_fld;
-		this.et_fld = this.az(var1.et_fld, (short)7947);
-		this.ew_fld = this.az(var1.ew_fld, (short)6293);
-		this.ex_fld = this.az(var1.ex_fld, (short)31682);
+		this.et_fld = pz(this, var1.et_fld, (short)7947);
+		this.ew_fld = pz(this, var1.ew_fld, (short)6293);
+		this.ex_fld = pz(this, var1.ex_fld, (short)31682);
 		this.eo_fld = (String[])(String[])this.ag(var1.eo_fld, 655679703);
 		if (null != var1.hi_fld) {
 			this.hi_fld = new ma(var1.hi_fld);
 		}
 
 		this.hn_fld = 1 * var1.hn_fld;
-		this.he_fld = var1.he_fld;
-		if (null != var1.hd_fld) {
-			this.hd_fld = new HashMap();
-			this.hd_fld.putAll(var1.hd_fld);
+		this.hd_fld = var1.hd_fld;
+		if (null != var1.he_fld) {
+			this.he_fld = new HashMap();
+			this.he_fld.putAll(var1.he_fld);
 		}
 
 		this.hk_fld = null;
@@ -1373,8 +1391,8 @@ public class lu extends vw implements Widget {
 			}
 		}
 
-		this.eg_fld = this.az(var1.eg_fld, (short)18051);
-		this.ef_fld = this.az(var1.ef_fld, (short)3464);
+		this.eg_fld = pz(this, var1.eg_fld, (short)18051);
+		this.ef_fld = pz(this, var1.ef_fld, (short)3464);
 		this.eq_fld = var1.eq_fld;
 		this.ei_fld = (String[])(String[])this.ag(var1.ei_fld, 1244799445);
 		if (null != var1.ee_fld) {
@@ -1431,13 +1449,13 @@ public class lu extends vw implements Widget {
 		this.gt_fld = (Object[])var1.gt_fld;
 		this.gs_fld = (Object[])var1.gs_fld;
 		this.gu_fld = var1.gu_fld;
-		this.gp_fld = this.az(var1.gp_fld, (short)10641);
-		this.gv_fld = this.az(var1.gv_fld, (short)6917);
+		this.gp_fld = pz(this, var1.gp_fld, (short)10641);
+		this.gv_fld = pz(this, var1.gv_fld, (short)6917);
 		this.gk_fld = var1.gk_fld * 2139590355;
 		this.gi_fld = var1.gi_fld;
 		this.gq_fld = var1.gq_fld;
-		this.gf_fld = this.az(var1.gf_fld, (short)18200);
-		this.gm_fld = this.az(var1.gm_fld, (short)29131);
+		this.gf_fld = pz(this, var1.gf_fld, (short)18200);
+		this.gm_fld = pz(this, var1.gm_fld, (short)29131);
 		this.ga_fld = 1 * var1.ga_fld;
 		this.gd_fld = 1 * var1.gd_fld;
 		this.gy_fld = var1.gy_fld * -150852659;
@@ -1456,14 +1474,43 @@ public class lu extends vw implements Widget {
 		this.gl_fld = 1 * var1.gl_fld;
 		this.hr_fld = var1.hr_fld * 1477055471;
 		this.hj_fld = 1 * var1.hj_fld;
-		this.hp_fld = this.az(var1.hp_fld, (short)9406);
+		this.hp_fld = pz(this, var1.hp_fld, (short)9406);
 		this.hb_fld = var1.hb_fld;
 		this.hf_fld = var1.hf_fld;
 		this.hh_fld = var1.hh_fld;
 		if (var1.hl_fld > 0) {
-			this.hs_fld = this.az(var1.hs_fld, (short)9020);
+			this.hs_fld = pz(this, var1.hs_fld, (short)9020);
 			this.hq_fld = (Object[])this.ag((Object[])var1.hq_fld, 596001012);
 			this.hl_fld = var1.hl_fld * 1189206755;
+		}
+	}
+
+	@ObfuscatedName("rg")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)Ljava/lang/String;"
+	)
+	public static String rg(lu var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (11 == var0.bx_fld && null != var0.hi_fld) {
+			String var1 = var0.hi_fld.al();
+			Iterator var2 = var0.hi_fld.af().iterator();
+
+			while (var2.hasNext()) {
+				mu var3 = (mu)(mu)var2.next();
+				String var4 = String.format("%%%S%%", (Object[])(new Object[]{mu.wi(var3, (byte)1)}));
+				if (var3.ak((byte)39) == 0) {
+					var1.replaceAll(var4, Integer.toString(var3.ag((byte)-108)));
+				} else {
+					var1.replaceAll(var4, var3.ah(-1876249062));
+				}
+			}
+
+			return var1;
+		} else {
+			return null;
 		}
 	}
 
@@ -1475,72 +1522,109 @@ public class lu extends vw implements Widget {
 		return (Object[])(null != var1 ? Arrays.copyOf((Object[])var1, var1.length) : null);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("getStaticChildren")
 	@ObfuscatedSignature(
-		descriptor = "([IS)[I"
+		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
 	)
-	int[] az(int[] var1, short var2) {
-		return null != var1 ? Arrays.copyOf(var1, var1.length) : null;
-	}
-
-	@ObfuscatedName("ek")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean ek() {
-		return this.hn_fld == 2;
-	}
-
-	@ObfuscatedName("setRelativeY")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
+	@Export("getStaticChildren")
 	@Override
-	public void setRelativeY(int var1) {
-		this.bg_fld = var1;
-	}
-
-	@ObfuscatedName("yv")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setOriginalY(int var1) {
-		this.bc_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("setChildren")
-	@ObfuscatedSignature(
-		descriptor = "([Lnet/runelite/api/widgets/Widget;)V"
-	)
-	@Override
-	public void setChildren(Widget[] var1) {
-		if (this.getType() != 0) {
-			throw new UnsupportedOperationException("children can only be set on type layer widgets");
-		} else if (this.by_fld != -1) {
-			throw new UnsupportedOperationException("only static widgets may have children");
+	public Widget[] getStaticChildren() {
+		if (this.by_fld > -1) {
+			return new Widget[0];
 		} else {
-			this.ge_fld = (lu[])var1;
+			ArrayList var1 = new ArrayList();
+
+			for (lu var5 : og.ci_fld.al(WidgetUtil.componentToInterface(this.bf_fld))) {
+				if (var5 != null && var5.cv_fld == this.bf_fld) {
+					var1.add(var5);
+				}
+			}
+
+			return (Widget[])(Widget[])var1.toArray(new lu[0]);
 		}
 	}
 
-	@ObfuscatedName("zd")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void zd(int var1) {
-		if (this.wk_fld > -1) {
-			this.setRelativeY(this.wk_fld);
-		}
-	}
-
-	@ObfuscatedName("getOriginalY")
+	@ObfuscatedName("getModelType")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getModelType")
 	@Override
-	public int getOriginalY() {
-		return this.bc_fld;
+	public int getModelType() {
+		return this.dm_fld;
+	}
+
+	@ObfuscatedName("rg")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lxi;)[I"
+	)
+	public static int[] rg(lu var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var2 = var1.cg();
+		if (0 == var2) {
+			return null;
+		} else {
+			int[] var3 = new int[var2];
+
+			for (int var4 = 0; var4 < var2; var4++) {
+				var3[var4] = var1.co((byte)-32);
+			}
+
+			return var3;
+		}
+	}
+
+	@ObfuscatedName("dr")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean dr() {
+		return this.hn_fld == 2;
+	}
+
+	@ObfuscatedName("getNoScrollThrough")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("getNoScrollThrough")
+	@Override
+	public boolean getNoScrollThrough() {
+		return this.hf_fld;
+	}
+
+	@ObfuscatedName("getTextColor")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getTextColor")
+	@Override
+	public int getTextColor() {
+		return this.ca_fld;
+	}
+
+	@ObfuscatedName("getOnInvTransmitListener")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/Object;"
+	)
+	@Export("getOnInvTransmitListener")
+	@Override
+	public Object[] getOnInvTransmitListener() {
+		return (Object[])this.fe_fld;
+	}
+
+	@ObfuscatedName("deleteAllChildren")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	@Export("deleteAllChildren")
+	@Override
+	public void deleteAllChildren() {
+		if (this.getChildren() != null) {
+			Arrays.fill(this.getChildren(), null);
+		}
 	}
 
 	@ObfuscatedName("ae")
@@ -1551,10 +1635,10 @@ public class lu extends vw implements Widget {
 		var1.cg();
 		this.bj_fld = true;
 		this.bx_fld = var1.cg();
-		this.bp_fld = xi.tx(var1, 1258617606);
+		this.bp_fld = var1.cm();
 		this.bn_fld = var1.cz();
 		this.bc_fld = var1.cz();
-		this.bw_fld = xi.tx(var1, 562783079);
+		this.bw_fld = var1.cm();
 		if (9 == this.bx_fld) {
 			if (var2 <= -1412529775) {
 				return;
@@ -1562,14 +1646,14 @@ public class lu extends vw implements Widget {
 
 			this.ba_fld = var1.cz();
 		} else {
-			this.ba_fld = xi.tx(var1, 1634335006);
+			this.ba_fld = var1.cm();
 		}
 
-		this.bi_fld = xi.rp(var1, 924842300);
-		this.bu_fld = xi.rp(var1, -216454189);
-		this.bt_fld = xi.rp(var1, 467473714);
-		this.bv_fld = xi.rp(var1, 311843818);
-		this.cv_fld = xi.tx(var1, 1781699110);
+		this.bi_fld = var1.cw();
+		this.bu_fld = var1.cw();
+		this.bt_fld = var1.cw();
+		this.bv_fld = var1.cw();
+		this.cv_fld = var1.cm();
 		if (65535 == this.cv_fld) {
 			this.cv_fld = -1995802935;
 		} else {
@@ -1578,18 +1662,18 @@ public class lu extends vw implements Widget {
 
 		this.cf_fld = var1.cg() == 1;
 		if (0 == this.bx_fld) {
-			this.cn_fld = xi.tx(var1, 1772749158);
-			this.cr_fld = xi.tx(var1, 1596784492);
+			this.cn_fld = var1.cm();
+			this.cr_fld = var1.cm();
 			this.hb_fld = var1.cg() == 1;
 		}
 
 		if (this.bx_fld == 5) {
-			this.cj_fld = var1.co();
-			this.cl_fld = xi.tx(var1, 697276098);
+			this.cj_fld = var1.co((byte)-15);
+			this.cl_fld = var1.cm();
 			this.dc_fld = var1.cg() == 1;
 			this.cb_fld = var1.cg();
 			this.dh_fld = var1.cg();
-			this.dv_fld = var1.co();
+			this.dv_fld = var1.co((byte)-100);
 			this.dz_fld = var1.cg() == 1;
 			this.dt_fld = var1.cg() == 1;
 		}
@@ -1599,42 +1683,42 @@ public class lu extends vw implements Widget {
 			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
 			this.da_fld = var1.cz();
 			this.dk_fld = var1.cz();
-			this.dx_fld = xi.tx(var1, 397502377);
-			this.ds_fld = xi.tx(var1, 1264371183);
-			this.du_fld = xi.tx(var1, 1451012031);
-			this.db_fld = xi.tx(var1, 877354979);
-			this.dl_fld = xi.tx(var1, 1710312316);
+			this.dx_fld = var1.cm();
+			this.ds_fld = var1.cm();
+			this.du_fld = var1.cm();
+			this.db_fld = var1.cm();
+			this.dl_fld = var1.cm();
 			if (65535 == this.dl_fld) {
 				this.dl_fld = -968762547;
 			}
 
 			this.di_fld = var1.cg() == 1;
-			xi.tx(var1, 449424927);
+			var1.cm();
 			if (0 != this.bi_fld) {
-				this.dg_fld = xi.tx(var1, 1677267603);
+				this.dg_fld = var1.cm();
 			}
 
 			if (this.bu_fld != 0) {
-				xi.tx(var1, 1510892922);
+				var1.cm();
 			}
 		}
 
 		if (4 == this.bx_fld) {
-			this.de_fld = xi.tx(var1, 1251839341);
+			this.de_fld = var1.cm();
 			if (65535 == this.de_fld) {
 				this.de_fld = 57339867;
 			}
 
-			this.dp_fld = xi.kc(var1, 1695725812);
+			this.dp_fld = xi.at(var1, 1695725812);
 			this.es_fld = var1.cg();
 			this.ep_fld = var1.cg();
 			this.eb_fld = var1.cg();
 			this.ed_fld = var1.cg() == 1;
-			this.ca_fld = var1.co();
+			this.ca_fld = var1.co((byte)-44);
 		}
 
 		if (this.bx_fld == 3) {
-			this.ca_fld = var1.co();
+			this.ca_fld = var1.co((byte)-71);
 			boolean var10001;
 			if (var1.cg() == 1) {
 				if (var2 <= -1412529775) {
@@ -1652,7 +1736,7 @@ public class lu extends vw implements Widget {
 
 		if (this.bx_fld == 9) {
 			this.cu_fld = var1.cg();
-			this.ca_fld = var1.co();
+			this.ca_fld = var1.co((byte)-38);
 			boolean var5;
 			if (var1.cg() == 1) {
 				if (var2 <= -1412529775) {
@@ -1667,14 +1751,14 @@ public class lu extends vw implements Widget {
 			this.ci_fld = var5;
 		}
 
-		this.ec_fld = var1.ck();
-		this.eq_fld = xi.kc(var1, -896948065);
+		this.ec_fld = xi.lx(var1, 2032903346);
+		this.eq_fld = xi.at(var1, -896948065);
 		int var3 = var1.cg();
 		if (var3 > 0) {
 			this.ei_fld = new String[var3];
 
 			for (int var4 = 0; var4 < var3; var4++) {
-				this.ei_fld[var4] = xi.kc(var1, 1770363920);
+				this.ei_fld[var4] = xi.at(var1, 1770363920);
 			}
 		}
 
@@ -1692,7 +1776,7 @@ public class lu extends vw implements Widget {
 		}
 
 		this.em_fld = var6;
-		this.el_fld = xi.kc(var1, -1481826524);
+		this.el_fld = xi.at(var1, -1481826524);
 		this.eu_fld = (Object[])this.aw(var1, 1006055606);
 		this.fp_fld = (Object[])this.aw(var1, 1006055606);
 		this.fv_fld = (Object[])this.aw(var1, 1006055606);
@@ -1716,37 +1800,64 @@ public class lu extends vw implements Widget {
 		this.fg_fld = this.ay(var1, 110272351);
 	}
 
-	@ObfuscatedName("sm")
+	@ObfuscatedName("xd")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Llu;"
+		descriptor = "(II)Llu;"
 	)
-	public lu setPos(int var1, int var2, int var3, int var4) {
-		return this.setOriginalX(var1).setOriginalY(var2).setXPositionMode(var3).setYPositionMode(var4);
+	public lu setPos(int var1, int var2) {
+		return this.setOriginalX(var1).setOriginalY(var2);
 	}
 
-	@ObfuscatedName("qo")
+	@ObfuscatedName("getOnOpListener")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
+		descriptor = "()[Ljava/lang/Object;"
 	)
-	public static void qo(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
+	@Export("getOnOpListener")
+	@Override
+	public Object[] getOnOpListener() {
+		return (Object[])this.ft_fld;
+	}
 
-			var0.hi_fld = new ma();
-			if (!var0.hi_fld.ag(var1, var3, var6)) {
-				var0.hi_fld = null;
+	@ObfuscatedName("getNestedChildren")
+	@ObfuscatedSignature(
+		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
+	)
+	@Export("getNestedChildren")
+	@Override
+	public Widget[] getNestedChildren() {
+		if (!og.ci_fld.isClientThread()) {
+			if (!tf.$assertionsDisabled) {
+				throw new AssertionError("must be called on client thread");
 			} else {
-				if (null == var0.he_fld || null == var0.hd_fld) {
-					var0.bd(-1292691591);
+				throw new IllegalStateException("must be called on client thread");
+			}
+		} else if (this.by_fld > -1) {
+			return new Widget[0];
+		} else {
+			pk var1 = (pk)ib.iu(cf.cg_fld.an_fld, this.bf_fld);
+			if (var1 == null) {
+				return new lu[0];
+			} else {
+				int var2 = var1.getId();
+				ArrayList var3 = new ArrayList();
+
+				for (lu var7 : og.ci_fld.al(var2)) {
+					if (var7 != null && var7.cv_fld == -1) {
+						var3.add(var7);
+					}
 				}
 
-				var0.hi_fld.az(var2, var4, var5);
+				return (Widget[])(Widget[])var3.toArray(new lu[0]);
 			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
 		}
+	}
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void jt(boolean var1) {
+		this.bj_fld = var1;
 	}
 
 	@ObfuscatedName("br")
@@ -1759,109 +1870,12 @@ public class lu extends vw implements Widget {
 				;
 			}
 		} else {
-			if (null == this.hd_fld) {
+			if (null == this.he_fld) {
 				this.bd(-1584056311);
 			}
 
-			this.hd_fld.put(var1, var2);
+			this.he_fld.put(var1, var2);
 		}
-	}
-
-	@ObfuscatedName("ef")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;ZLde;I)Lyv;"
-	)
-	public static yv ef(lu var0, lw var1, boolean var2, de var3, int var4) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (var0.getSpriteId() != -1) {
-				SpritePixels var5 = (SpritePixels)(SpritePixels)client.ah_java_util_Map.get(var0.getId());
-				if (var5 != null) {
-					return (yv)var5;
-				}
-			}
-
-			int var10 = -423043034;
-			if (null != var0.ct_fld) {
-				yv var11 = var0.ar(var1, var3, 521764807);
-				if (var11 != null) {
-					return var11;
-				}
-			}
-
-			int var17;
-			if (var2) {
-				var17 = var0.ch_fld;
-			} else {
-				var17 = var0.cj_fld;
-			}
-
-			yv var10000;
-			if (var17 == -1) {
-				Object var6 = null;
-				var10000 = (yv)var6;
-			} else {
-				long var12 = ((var0.dz_fld ? 1L : 0L) << 38) + ((long)var0.dh_fld << 36) + var17 + ((var0.dt_fld ? 1L : 0L) << 39) + ((long)var0.dv_fld << 40);
-				yv var14 = (yv)var1.as_fld.ak(var12);
-				if (var14 != null) {
-					var10000 = var14;
-				} else {
-					var14 = wf.av(var1.av_fld, var17, 0);
-					if (null == var14) {
-						Object var16 = null;
-						var10000 = (yv)var16;
-					} else {
-						pr(var0, var14, -1404429990);
-						var1.as_fld.az(var14, var12);
-						var10000 = var14;
-					}
-				}
-			}
-
-			return var10000;
-		} catch (Throwable var15) {
-			throw new RuntimeException(var15);
-		}
-	}
-
-	@ObfuscatedName("contains")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/Point;)Z"
-	)
-	@Override
-	public boolean contains(Point var1) {
-		Rectangle var2 = this.getBounds();
-		return var2 != null && var2.contains(new java.awt.Point(var1.getX(), var1.getY()));
-	}
-
-	@ObfuscatedName("gq")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;IIII)Z"
-	)
-	public static boolean gq(lu var0, int var1, int var2, int var3, int var4) {
-		if (var0.bx_fld == 11 && var0.hi_fld != null && qz(var0, 303927453)) {
-			var1 -= var3;
-			var2 -= var4;
-			int var5 = (int)(ma.ao(var0.hi_fld, (short)19354)[0] * (2068289896 * var0.bb_fld));
-			int var6 = (int)(ma.ao(var0.hi_fld, (short)22991)[1] * var0.cd_fld);
-			int var7 = var5 + (int)(ma.ao(var0.hi_fld, (short)26502)[2] * (1220209890 * var0.bb_fld));
-			int var8 = var6 + (int)(ma.ao(var0.hi_fld, (short)29858)[3] * var0.cd_fld);
-			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
-		} else {
-			return false;
-		}
-	}
-
-	@ObfuscatedName("getXTextAlignment")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getXTextAlignment() {
-		return this.ep_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -1878,9 +1892,9 @@ public class lu extends vw implements Widget {
 			for (int var5 = 0; var5 < var3; var5++) {
 				int var6 = var1.cg();
 				if (0 == var6) {
-					var4[var5] = new Integer(var1.co());
+					var4[var5] = new Integer(var1.co((byte)-58));
 				} else if (var6 == 1) {
-					var4[var5] = xi.kc(var1, -216972048);
+					var4[var5] = xi.at(var1, -216972048);
 				}
 			}
 
@@ -1889,30 +1903,49 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("setOnMouseOverListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnMouseOverListener(Object[] var1) {
-		this.fp_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("getYPositionMode")
+	@ObfuscatedName("getScrollHeight")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getScrollHeight")
 	@Override
-	public int getYPositionMode() {
-		return this.bv_fld;
+	public int getScrollHeight() {
+		return this.cr_fld;
 	}
 
-	@ObfuscatedName("tr")
+	@ObfuscatedName("xs")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llw;Lde;)Lyv;"
+	)
+	public static yv xs(lu var0, lw var1, de var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (!var0.al(320097083)) {
+			return var0.af(var1, var2, (byte)0);
+		} else {
+			String var3 = var0.ct_fld + (var0.dz_fld ? 1 : 0) + (var0.dt_fld ? 1 : 0) + -1186621155 * var0.dh_fld + 1236978456 * var0.dv_fld;
+			yv var4 = (yv)(yv)var1.ax_fld.ag(var3);
+			if (null == var4) {
+				yv var5 = var0.af(var1, var2, (byte)0);
+				if (var5 != null) {
+					var4 = var5.al();
+					mg(var0, var4, -268730796);
+					var1.ax_fld.az(var3, var4);
+				}
+			}
+
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("vo")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setFontId(int var1) {
-		this.de_fld = var1;
+	public lu setScrollX(int var1) {
+		this.cp_fld = var1;
 		return this;
 	}
 
@@ -1928,10 +1961,66 @@ public class lu extends vw implements Widget {
 			int[] var4 = new int[var3];
 
 			for (int var5 = 0; var5 < var3; var5++) {
-				var4[var5] = var1.co();
+				var4[var5] = var1.co((byte)-48);
 			}
 
 			return var4;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;ZLde;I)Lyv;"
+	)
+	public yv as(lw var1, boolean var2, de var3, int var4) {
+		try {
+			if (this.getSpriteId() != -1) {
+				SpritePixels var5 = (SpritePixels)(SpritePixels)client.vl_java_util_Map.get(this.getId());
+				if (var5 != null) {
+					return (yv)var5;
+				}
+			}
+
+			int var10 = -423043034;
+			if (null != this.ct_fld) {
+				yv var11 = aa(this, var1, var3, 521764807);
+				if (var11 != null) {
+					return var11;
+				}
+			}
+
+			int var17;
+			if (var2) {
+				var17 = this.ch_fld;
+			} else {
+				var17 = this.cj_fld;
+			}
+
+			yv var10000;
+			if (var17 == -1) {
+				Object var6 = null;
+				var10000 = (yv)var6;
+			} else {
+				long var12 = ((this.dz_fld ? 1L : 0L) << 38) + ((long)this.dh_fld << 36) + var17 + ((this.dt_fld ? 1L : 0L) << 39) + ((long)this.dv_fld << 40);
+				yv var14 = (yv)var1.as_fld.ak(var12);
+				if (var14 != null) {
+					var10000 = var14;
+				} else {
+					var14 = wf.av(var1.ae_fld, var17, 0);
+					if (null == var14) {
+						Object var16 = null;
+						var10000 = (yv)var16;
+					} else {
+						mg(this, var14, -1404429990);
+						var1.as_fld.az(var14, var12);
+						var10000 = var14;
+					}
+				}
+			}
+
+			return var10000;
+		} catch (Throwable var15) {
+			throw new RuntimeException(var15);
 		}
 	}
 
@@ -1939,38 +2028,8 @@ public class lu extends vw implements Widget {
 	@ObfuscatedSignature(
 		descriptor = "(I)Lma;"
 	)
-	public ma bx_ma(int var1) {
+	public ma bx(int var1) {
 		return this.hi_fld;
-	}
-
-	@ObfuscatedName("wo")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llp;ZI)V"
-	)
-	public static void wo(lu var0, lp var1, boolean var2, int var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			var0.dm_fld = 279120917;
-			var0.dy_fld = new lp(var1);
-			if (!var2) {
-				var0.dy_fld.af_fld = Arrays.copyOf(var0.dy_fld.ar_fld, var0.dy_fld.ar_fld.length);
-				var0.dy_fld.au((short)3193);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("clearActions")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	@Override
-	public void clearActions() {
-		this.ei_fld = null;
 	}
 
 	@ObfuscatedName("af")
@@ -1991,30 +2050,12 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("setTargetVerb")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	@Override
-	public void setTargetVerb(String var1) {
-		this.el_fld = var1;
-	}
-
-	@ObfuscatedName("jo")
+	@ObfuscatedName("gh")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setRotationX(int var1) {
-		this.dx_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("kq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setRotationY(int var1) {
-		this.du_fld = var1;
+	public lu setOpacity(int var1) {
+		this.cb_fld = var1;
 		return this;
 	}
 
@@ -2026,121 +2067,30 @@ public class lu extends vw implements Widget {
 		return this.dz_fld || this.dt_fld || 0 != this.dh_fld || this.dv_fld != 0;
 	}
 
-	@ObfuscatedName("jj")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;II)I"
+		descriptor = "(Llw;B)Lzf;"
 	)
-	public static int jj(lu var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var4 = 0; var4 < var0.hl_fld; var4++) {
-			if (var0.hs_fld[var4] == var1) {
-				return (Integer)var0.hq_fld[var4];
-			}
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("getRotationZ")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRotationZ() {
-		return this.ds_fld;
-	}
-
-	@ObfuscatedName("ex")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
-	)
-	public void ex(String var1, String var2, String var3, String var4, String var5, de var6) {
+	public zf ax(lw var1, byte var2) {
 		try {
-			this.hi_fld = new ma();
-			if (!this.hi_fld.ag(var1, var3, var6)) {
-				this.hi_fld = null;
-			} else {
-				if (null == this.he_fld || null == this.hd_fld) {
-					this.bd(1830428324);
-				}
-
-				this.hi_fld.az(var2, var4, var5);
-			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
-		}
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;ZI)Lkp;"
-	)
-	public kp aa(lw var1, boolean var2, int var3) {
-		try {
-			if (this.ch_fld == -1) {
-				var2 = false;
-			}
-
-			int var4 = var2 ? this.ch_fld : this.cj_fld;
-			if (-1 == var4) {
+			if (this.de_fld == -1) {
 				return null;
 			} else {
-				long var5 = ((long)this.dv_fld << 40) + ((this.dt_fld ? 1L : 0L) << 39) + ((this.dz_fld ? 1L : 0L) << 38) + var4 + ((long)this.dh_fld << 36);
-				kp var7 = (kp)var1.al_fld.ak(var5);
-				if (var7 != null) {
-					return var7;
+				zf var3 = (zf)var1.af_fld.ak(this.de_fld);
+				if (null != var3) {
+					return var3;
 				} else {
-					yv var8 = ef(this, var1, var2, null, -423043034);
-					if (var8 == null) {
-						return null;
-					} else {
-						yv var9 = yv.wo(var8);
-						int[] var10 = new int[var9.ay_fld];
-						int[] var11 = new int[var9.ay_fld];
-
-						for (int var12 = 0; var12 < var9.ay_fld; var12++) {
-							int var13 = 0;
-							int var14 = var9.aw_fld;
-
-							for (int var15 = 0; var15 < var9.aw_fld; var15++) {
-								if (0 == var9.ah_fld[var12 * var9.aw_fld + var15]) {
-									var13 = var15;
-									break;
-								}
-							}
-
-							for (int var18 = var9.aw_fld - 1; var18 >= var13; var18--) {
-								if (0 == var9.ah_fld[var18 + var12 * var9.aw_fld]) {
-									var14 = var18 + 1;
-									break;
-								}
-							}
-
-							var10[var12] = var13;
-							var11[var12] = var14 - var13;
-						}
-
-						var7 = new kp(var9.aw_fld, var9.ay_fld, var11, var10, var4);
-						var1.al_fld.az(var7, var5);
-						return var7;
+					var3 = dv.ae(var1.ae_fld, var1.ah_fld, this.de_fld, 0);
+					if (null != var3) {
+						var1.af_fld.az(var3, this.de_fld);
 					}
+
+					return var3;
 				}
 			}
-		} catch (Throwable var16) {
-			throw new RuntimeException(var16);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
-	}
-
-	@ObfuscatedName("getWidthMode")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getWidthMode() {
-		return this.bi_fld;
 	}
 
 	@ObfuscatedName("ai")
@@ -2176,77 +2126,78 @@ public class lu extends vw implements Widget {
 		this.ei_fld[var1] = var2;
 	}
 
-	@ObfuscatedName("wn")
+	@ObfuscatedName("jn")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "()[Llu;"
 	)
-	public lu setItemQuantity(int var1) {
-		this.gd_fld = var1;
-		return this;
+	public lu[] getChildren() {
+		return this.ge_fld;
 	}
 
-	@ObfuscatedName("getHeight")
+	@ObfuscatedName("getSpriteId")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getSpriteId")
 	@Override
-	public int getHeight() {
-		return this.cd_fld;
+	public int getSpriteId() {
+		return this.cj_fld;
 	}
 
-	@ObfuscatedName("wc")
+	@ObfuscatedName("dm")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)I"
+		descriptor = "(Z)Llu;"
 	)
-	public static int wc(lu var0) {
-		if (11 == var0.bx_fld && var0.hi_fld != null && null != var0.hd_fld && !var0.hd_fld.isEmpty()) {
-			String var1 = var0.hi_fld.al();
-			return null != var1 && var0.hd_fld.containsKey(var0.hi_fld.al()) ? (Integer)var0.hd_fld.get(var1) : -1;
-		} else {
-			return -1;
-		}
+	public lu setTextShadowed(boolean var1) {
+		this.ed_fld = var1;
+		return this;
 	}
 
-	@ObfuscatedName("pr")
+	@ObfuscatedName("getTextShadowed")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Lyv;I)V"
+		descriptor = "()Z"
 	)
-	public static void pr(lu var0, yv var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	@Export("getTextShadowed")
+	@Override
+	public boolean getTextShadowed() {
+		return this.ed_fld;
+	}
 
-		if (var0.dz_fld) {
-			yv.zb(var1);
-		}
+	@ObfuscatedName("os")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setOriginalY(int var1) {
+		this.bc_fld = var1;
+		return this;
+	}
 
-		if (var0.dt_fld) {
-			var1.ai();
-		}
+	@ObfuscatedName("zc")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setClickMask(int var1) {
+		this.ec_fld = var1;
+		return this;
+	}
 
-		if (var0.dh_fld > 0) {
-			var1.aa(var0.dh_fld);
-		}
+	@ObfuscatedName("getItemQuantity")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getItemQuantity")
+	@Override
+	public int getItemQuantity() {
+		return this.gd_fld;
+	}
 
-		if (var0.dh_fld >= 1) {
-			if (var2 >= 185271048) {
-				return;
-			}
-
-			var1.am(1);
-		}
-
-		if (var0.dh_fld >= 2) {
-			if (var2 >= 185271048) {
-				return;
-			}
-
-			var1.am(16777215);
-		}
-
-		if (0 != var0.dv_fld) {
-			var1.ad(var0.dv_fld);
-		}
+	@ObfuscatedName("ti")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setModelId(int var1) {
+		this.dq_fld = var1;
+		return this;
 	}
 
 	@ObfuscatedName("aq")
@@ -2289,37 +2240,174 @@ public class lu extends vw implements Widget {
 		this.ee_fld[var1][var2] = var3;
 	}
 
-	@ObfuscatedName("isFilled")
+	@ObfuscatedName("setOnDragCompleteListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnDragCompleteListener")
+	@Override
+	public void setOnDragCompleteListener(Object[] var1) {
+		this.fb_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	public boolean am(int var1) {
+		return !this.bj_fld || 0 == this.bx_fld || this.bx_fld == 11 || this.eh_fld || 1338 == this.bp_fld || this.bx_fld == 12;
+	}
+
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;)Lzv;"
+	)
+	public zv ck(lw var1) {
+		try {
+			return this.ax(var1, (byte)-81);
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("getOnLoadListener")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/Object;"
+	)
+	@Export("getOnLoadListener")
+	@Override
+	public Object[] getOnLoadListener() {
+		return (Object[])this.eu_fld;
+	}
+
+	@ObfuscatedName("contains")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/Point;)Z"
+	)
+	@Override
+	public boolean contains(Point var1) {
+		Rectangle var2 = this.getBounds();
+		return var2 != null && var2.contains(new java.awt.Point(var1.getX(), var1.getY()));
+	}
+
+	@ObfuscatedName("isSelfHidden")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("isSelfHidden")
 	@Override
-	public boolean isFilled() {
-		return this.cz_fld;
+	public boolean isSelfHidden() {
+		return this.cf_fld;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("getLineHeight")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/Object;I)Ljava/lang/Object;"
+		descriptor = "()I"
 	)
-	public Object ao(int var1, Object var2, int var3) {
-		for (int var4 = 0; var4 < this.hl_fld; var4++) {
-			if (var1 == this.hs_fld[var4]) {
-				return this.hq_fld[var4];
+	@Export("getLineHeight")
+	@Override
+	public int getLineHeight() {
+		return this.es_fld;
+	}
+
+	@ObfuscatedName("rf")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;ILjava/lang/Object;)V"
+	)
+	public static void rf(lu var0, int var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (int var3 = 0; var3 < var0.hl_fld; var3++) {
+			if (var0.hs_fld[var3] == var1) {
+				var0.hq_fld[var3] = var2;
+				return;
 			}
 		}
 
-		return var2;
+		if (null == var0.hq_fld) {
+			var0.hs_fld = new int[4];
+			var0.hq_fld = (Object[])(new Object[4]);
+		} else if (var0.hq_fld.length == var0.hl_fld) {
+			var0.hs_fld = Arrays.copyOf(var0.hs_fld, 2 * var0.hs_fld.length);
+			var0.hq_fld = (Object[])Arrays.copyOf((Object[])var0.hq_fld, var0.hq_fld.length * 2);
+		}
+
+		var0.hs_fld[var0.hl_fld] = var1;
+		var0.hq_fld[var0.hl_fld] = var2;
+		var0.hl_fld++;
 	}
 
-	@ObfuscatedName("getParent")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/widgets/Widget;"
+		descriptor = "(I)Z"
 	)
+	public boolean ad(int var1) {
+		return 11 == this.bx_fld || 12 == this.bx_fld;
+	}
+
+	@ObfuscatedName("jw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setFontId(int var1) {
+		this.de_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("fe")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;)V"
+	)
+	void fe(lw var1) {
+		this.hb_fld = true;
+		ArrayList var2 = this.hi_fld.as();
+		ArrayList var3 = this.hi_fld.ar();
+		int var4 = var2.size() + var3.size();
+		this.ge_fld = new lu[var4];
+		int var5 = 0;
+		Iterator var6 = var2.iterator();
+
+		while (var6.hasNext()) {
+			lq var7 = (lq)(lq)var6.next();
+			lu var8 = is.ak(5, this, var5, 0, 0, 0, 0, var7.ag_fld);
+			var8.ct_fld = var7.ak_fld.az();
+			kb var9 = new kb(var7.ak_fld);
+			var1.au_fld.az(var8.ct_fld, var9);
+			this.ge_fld[var5++] = var8;
+		}
+
+		var6 = var3.iterator();
+
+		while (var6.hasNext()) {
+			mr var11 = (mr)(mr)var6.next();
+			lu var12 = is.ak(4, this, var5, 0, 0, 0, 0, var11.ae_fld);
+			var12.dp_fld = var11.av_fld;
+			var12.de_fld = (Integer)this.hd_fld.get(var11.ay_fld);
+			var12.ep_fld = var11.ah_fld * 224036757;
+			var12.eb_fld = 992230371 * var11.aw_fld;
+			this.ge_fld[var5++] = var12;
+		}
+	}
+
+	@ObfuscatedName("isIf3")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isIf3")
 	@Override
-	public Widget getParent() {
-		int var1 = this.getParentId();
-		return var1 == -1 ? null : og.ci_fld.getWidget(var1);
+	public boolean isIf3() {
+		return this.bj_fld;
+	}
+
+	@ObfuscatedName("pb")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/widgets/Widget;)Llu;"
+	)
+	public lu setDragParent(Widget var1) {
+		this.ea_fld = (lu)var1;
+		return this;
 	}
 
 	@ObfuscatedName("an")
@@ -2367,31 +2455,31 @@ public class lu extends vw implements Widget {
 					int var16 = 768;
 					switch (var9) {
 						case 1:
-							var14 = eg.ak(var1.az_fld, var10, 0);
+							var14 = eg.ak(var1.av_fld, var10, 0);
 							break;
 						case 2:
-							var14 = var6.ay(null, -1381387792);
+							var14 = pp.tv(var6, null, -1381387792);
 							break;
 						case 3:
 							var14 = null != var5 ? var5.af((byte)59) : null;
 							break;
 						case 4:
 							og var17 = kb.ag(var10, -1752383175);
-							var14 = var17.af(10, -735297366);
+							var14 = og.fn(var17, 10);
 							var15 += var17.ee_fld;
 							var16 += var17.ek_fld;
 						case 5:
 						default:
 							break;
 						case 6:
-							var14 = var6.ay(var7, -1845400614);
+							var14 = pp.tv(var6, var7, -1845400614);
 					}
 
 					if (null == var14) {
 						return null;
 					}
 
-					var13 = var14.bx(var15, var16, -50, -10, -50);
+					var13 = eg.et(var14, var15, var16, -50, -10, -50);
 					var1.ar_fld.az(var13, var11);
 				}
 
@@ -2406,22 +2494,34 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("vp")
+	@ObfuscatedName("getClickMask")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Llu;"
+		descriptor = "()I"
 	)
-	public lu setText(String var1) {
-		this.dp_fld = var1;
-		return this;
+	@Export("getClickMask")
+	@Override
+	public int getClickMask() {
+		return this.ec_fld;
 	}
 
-	@ObfuscatedName("getTextShadowed")
+	@ObfuscatedName("getSpriteTiling")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("getSpriteTiling")
 	@Override
-	public boolean getTextShadowed() {
-		return this.ed_fld;
+	public boolean getSpriteTiling() {
+		return this.dc_fld;
+	}
+
+	@ObfuscatedName("clearActions")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	@Export("clearActions")
+	@Override
+	public void clearActions() {
+		this.ei_fld = null;
 	}
 
 	@ObfuscatedName("at")
@@ -2453,51 +2553,6 @@ public class lu extends vw implements Widget {
 		this.hl_fld++;
 	}
 
-	@ObfuscatedName("setAction")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)V"
-	)
-	@Override
-	public void setAction(int var1, String var2) {
-		this.ai(var1, var2, 1385349242);
-	}
-
-	@ObfuscatedName("getTargetVerb")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getTargetVerb() {
-		return this.el_fld;
-	}
-
-	@ObfuscatedName("setDragDeadTime")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setDragDeadTime(int var1) {
-		this.ey_fld = var1;
-	}
-
-	@ObfuscatedName("getOnKeyListener")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
-	)
-	@Override
-	public Object[] getOnKeyListener() {
-		return (Object[])this.fu_fld;
-	}
-
-	@ObfuscatedName("setOnScrollWheelListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnScrollWheelListener(Object[] var1) {
-		this.fq_fld = (Object[])var1;
-	}
-
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;Lde;J)V"
@@ -2509,11 +2564,41 @@ public class lu extends vw implements Widget {
 			if (!this.hi_fld.ag(var1, var2, var3)) {
 				this.hi_fld = null;
 			} else {
-				if (this.he_fld == null || null == this.hd_fld) {
+				if (this.hd_fld == null || null == this.he_fld) {
 					this.bd(-2094735428);
 				}
 			}
 		}
+	}
+
+	@ObfuscatedName("setOnScrollWheelListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnScrollWheelListener")
+	@Override
+	public void setOnScrollWheelListener(Object[] var1) {
+		this.fq_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("getBorderType")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getBorderType")
+	@Override
+	public int getBorderType() {
+		return this.dh_fld;
+	}
+
+	@ObfuscatedName("getItemQuantityMode")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getItemQuantityMode")
+	@Override
+	public int getItemQuantityMode() {
+		return this.df_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -2524,13 +2609,13 @@ public class lu extends vw implements Widget {
 		this.bj_fld = false;
 		this.bx_fld = var1.cg();
 		this.bo_fld = var1.cg();
-		this.bp_fld = xi.tx(var1, 662491251);
+		this.bp_fld = var1.cm();
 		this.bn_fld = var1.cz();
 		this.bc_fld = var1.cz();
-		this.bw_fld = xi.tx(var1, 1761251052);
-		this.ba_fld = xi.tx(var1, 1919252035);
+		this.bw_fld = var1.cm();
+		this.ba_fld = var1.cm();
 		this.cb_fld = var1.cg();
-		this.cv_fld = xi.tx(var1, 1116234712);
+		this.cv_fld = var1.cm();
 		if (this.cv_fld == 65535) {
 			if (var2 != -1894614222) {
 				return;
@@ -2541,7 +2626,7 @@ public class lu extends vw implements Widget {
 			this.cv_fld = (this.bf_fld & -65536) + this.cv_fld;
 		}
 
-		this.gk_fld = xi.tx(var1, 756350859);
+		this.gk_fld = var1.cm();
 		if (this.gk_fld == 65535) {
 			this.gk_fld = 26740389;
 		}
@@ -2557,7 +2642,7 @@ public class lu extends vw implements Widget {
 
 			for (int var4 = 0; var4 < var3; var4++) {
 				this.gp_fld[var4] = var1.cg();
-				this.gv_fld[var4] = xi.tx(var1, 1362292260);
+				this.gv_fld[var4] = var1.cm();
 			}
 		}
 
@@ -2566,11 +2651,11 @@ public class lu extends vw implements Widget {
 			this.gu_fld = new int[var8][];
 
 			for (int var5 = 0; var5 < var8; var5++) {
-				int var6 = xi.tx(var1, 1785127357);
+				int var6 = var1.cm();
 				this.gu_fld[var5] = new int[var6];
 
 				for (int var7 = 0; var7 < var6; var7++) {
-					this.gu_fld[var5][var7] = xi.tx(var1, 1935579796);
+					this.gu_fld[var5][var7] = var1.cm();
 					if (this.gu_fld[var5][var7] == 65535) {
 						this.gu_fld[var5][var7] = -1;
 					}
@@ -2579,7 +2664,7 @@ public class lu extends vw implements Widget {
 		}
 
 		if (0 == this.bx_fld) {
-			this.cr_fld = xi.tx(var1, 540878274);
+			this.cr_fld = var1.cm();
 			this.cf_fld = var1.cg() == 1;
 		}
 
@@ -2588,7 +2673,7 @@ public class lu extends vw implements Widget {
 				return;
 			}
 
-			xi.tx(var1, 1475382319);
+			var1.cm();
 			var1.cg();
 		}
 
@@ -2600,7 +2685,7 @@ public class lu extends vw implements Widget {
 			this.ep_fld = var1.cg();
 			this.eb_fld = var1.cg();
 			this.es_fld = var1.cg();
-			this.de_fld = xi.tx(var1, 2018138342);
+			this.de_fld = var1.cm();
 			if (65535 == this.de_fld) {
 				this.de_fld = 57339867;
 			}
@@ -2609,23 +2694,23 @@ public class lu extends vw implements Widget {
 		}
 
 		if (this.bx_fld == 4) {
-			this.dp_fld = xi.kc(var1, -1609285527);
-			this.dj_fld = xi.kc(var1, 1530678426);
+			this.dp_fld = xi.at(var1, -1609285527);
+			this.dj_fld = xi.at(var1, 1530678426);
 		}
 
 		if (this.bx_fld == 1 || 3 == this.bx_fld || this.bx_fld == 4) {
-			this.ca_fld = var1.co();
+			this.ca_fld = var1.co((byte)-89);
 		}
 
 		if (3 == this.bx_fld || 4 == this.bx_fld) {
-			this.cg_fld = var1.co();
-			this.cw_fld = var1.co();
-			this.cm_fld = var1.co();
+			this.cg_fld = var1.co((byte)-73);
+			this.cw_fld = var1.co((byte)-65);
+			this.cm_fld = var1.co((byte)-35);
 		}
 
 		if (5 == this.bx_fld) {
-			this.cj_fld = var1.co();
-			this.ch_fld = var1.co();
+			this.cj_fld = var1.co((byte)-29);
+			this.ch_fld = var1.co((byte)-102);
 		}
 
 		if (this.bx_fld == 6) {
@@ -2633,12 +2718,12 @@ public class lu extends vw implements Widget {
 			this.do_fld = -1082400781;
 			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
 			this.dd_fld = var1.dl(wa.ak_fld.az_fld);
-			this.dl_fld = xi.tx(var1, 600156895);
+			this.dl_fld = var1.cm();
 			if (65535 == this.dl_fld) {
 				this.dl_fld = -968762547;
 			}
 
-			this.dr_fld = xi.tx(var1, 1154196434);
+			this.dr_fld = var1.cm();
 			if (this.dr_fld == 65535) {
 				if (var2 != -1894614222) {
 					return;
@@ -2647,9 +2732,9 @@ public class lu extends vw implements Widget {
 				this.dr_fld = 37770411;
 			}
 
-			this.db_fld = xi.tx(var1, 719571157);
-			this.dx_fld = xi.tx(var1, 1061996217);
-			this.ds_fld = xi.tx(var1, 1080822707);
+			this.db_fld = var1.cm();
+			this.dx_fld = var1.cm();
+			this.ds_fld = var1.cm();
 		}
 
 		if (this.bx_fld == 8) {
@@ -2657,13 +2742,13 @@ public class lu extends vw implements Widget {
 				return;
 			}
 
-			this.dp_fld = xi.kc(var1, -1354455776);
+			this.dp_fld = xi.at(var1, -1354455776);
 		}
 
 		if (2 == this.bo_fld) {
-			this.el_fld = xi.kc(var1, -161719043);
-			this.gi_fld = xi.kc(var1, 1009453986);
-			int var9 = xi.tx(var1, 1752941212) & 63;
+			this.el_fld = xi.at(var1, -161719043);
+			this.gi_fld = xi.at(var1, 1009453986);
+			int var9 = var1.cm() & 63;
 			this.ec_fld = -950189223 * (this.ec_fld | var9 << 11);
 		}
 
@@ -2678,7 +2763,7 @@ public class lu extends vw implements Widget {
 				}
 			}
 
-			this.gq_fld = xi.kc(var1, -1370423885);
+			this.gq_fld = xi.at(var1, -1370423885);
 			if (this.gq_fld.isEmpty()) {
 				if (1 == this.bo_fld) {
 					this.gq_fld = kh.ab_fld;
@@ -2717,76 +2802,6 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("qg")
-	@ObfuscatedSignature(
-		descriptor = "(II)Llu;"
-	)
-	public lu qg(int var1, int var2) {
-		if (!og.ci_fld.isClientThread()) {
-			if (!tf.$assertionsDisabled) {
-				throw new AssertionError("must be called on client thread");
-			} else {
-				throw new IllegalStateException("must be called on client thread");
-			}
-		} else if (this.getType() != 0) {
-			throw new UnsupportedOperationException("children can only be created on type layer widgets");
-		} else {
-			lu var3 = new lu();
-			var3.setType(var2);
-			var3.cv_fld = var3.bf_fld = this.bf_fld;
-			var3.cy_fld = this.by_fld;
-			var3.pf(true);
-			lu var4 = og.ci_fld.getWidget(this.bf_fld);
-			if (!im_fld && var4 != this && this.by_fld == -1) {
-				throw new AssertionError();
-			} else {
-				lu[] var5 = var4.ge_fld;
-				if (var1 < 0) {
-					if (var5 == null) {
-						var1 = 0;
-					} else {
-						var1 = 0;
-
-						for (int var6 = var5.length - 1; var6 >= 0; var6--) {
-							if (var5[var6] != null) {
-								var1 = var6 + 1;
-								break;
-							}
-						}
-					}
-				}
-
-				if (var5 == null) {
-					var5 = new lu[var1 + 1];
-					var4.ge_fld = var5;
-				} else if (var5.length <= var1) {
-					lu[] var7 = new lu[var1 + 1];
-					System.arraycopy(var5, 0, var7, 0, var5.length);
-					var5 = var7;
-					var4.ge_fld = var7;
-				}
-
-				var5[var1] = var3;
-				var3.by_fld = var1;
-				if (this.by_fld > -1) {
-					if (!im_fld && this.getType() != 0) {
-						throw new AssertionError();
-					}
-
-					if (var1 > this.cs_fld) {
-						this.cs_fld = var1;
-					}
-
-					if (var1 < this.cx_fld) {
-						this.cx_fld = var1;
-					}
-				}
-
-				return var3;
-			}
-		}
-	}
-
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Lde;B)V"
@@ -2798,102 +2813,48 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("revalidateScroll")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	@Override
-	public void revalidateScroll() {
-		try {
-			if (!og.ci_fld.isClientThread()) {
-				if (!tf.$assertionsDisabled) {
-					throw new AssertionError("must be called on client thread");
-				} else {
-					throw new IllegalStateException("must be called on client thread");
-				}
-			} else {
-				this.revalidate();
-				client.aq(cf.cg_fld.aw_fld[WidgetUtil.componentToInterface(this.getId())], this, false, cf.cg_fld, client.cz_fld);
-			}
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ek")
-	@ObfuscatedSignature(
-		descriptor = "(Lub;II[I)[B"
-	)
-	public static byte[] ek(ub var0, int var1, int var2, int[] var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				throw new NullPointerException();
-			} else if (var1 >= 0 && var1 < var0.bc_fld.length && null != var0.bc_fld[var1] && var2 >= 0 && var2 < var0.bc_fld[var1].length) {
-				if (var0.bc_fld[var1][var2] == null) {
-					boolean var4 = var0.cw(var1, var3, (byte)8);
-					if (!var4) {
-						var0.av(var1, 901265219);
-						var4 = var0.cw(var1, var3, (byte)8);
-						if (!var4) {
-							return null;
-						}
-					}
-				}
-
-				byte[] var8 = im.ak(var0.bc_fld[var1][var2], false);
-				if (var0.bs_fld) {
-					var0.bc_fld[var1][var2] = null;
-				}
-
-				return var8;
-			} else {
-				return null;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setOriginalX(int var1) {
-		this.bn_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("td")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	public void td(String var1) {
-		this.eq_fld = var1;
-	}
-
-	@ObfuscatedName("qz")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String qz() {
-		return this.eq_fld;
-	}
-
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
 	void bd(int var1) {
-		this.he_fld = new HashMap();
 		this.hd_fld = new HashMap();
+		this.he_fld = new HashMap();
 	}
 
-	@ObfuscatedName("gu")
+	@ObfuscatedName("getId")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()I"
 	)
-	public String gu() {
-		return this.dp_fld;
+	@Export("getId")
+	@Override
+	public int getId() {
+		return this.bf_fld;
+	}
+
+	@ObfuscatedName("jv")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
+	)
+	public static void jv(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.hi_fld = new ma();
+			if (!var0.hi_fld.ag(var1, var3, var6)) {
+				var0.hi_fld = null;
+			} else {
+				if (null == var0.hd_fld || null == var0.he_fld) {
+					var0.bd(1005534549);
+				}
+
+				var0.hi_fld.az(var2, var4, var5);
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
+		}
 	}
 
 	@ObfuscatedName("dn")
@@ -2910,55 +2871,13 @@ public class lu extends vw implements Widget {
 		return var2;
 	}
 
-	@ObfuscatedName("getOriginalHeight")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)Llu;"
 	)
-	@Override
-	public int getOriginalHeight() {
-		return this.ba_fld;
-	}
-
-	@ObfuscatedName("getSpriteTiling")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean getSpriteTiling() {
-		return this.dc_fld;
-	}
-
-	@ObfuscatedName("getNestedChildren")
-	@ObfuscatedSignature(
-		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
-	)
-	@Override
-	public Widget[] getNestedChildren() {
-		if (!og.ci_fld.isClientThread()) {
-			if (!tf.$assertionsDisabled) {
-				throw new AssertionError("must be called on client thread");
-			} else {
-				throw new IllegalStateException("must be called on client thread");
-			}
-		} else if (this.by_fld > -1) {
-			return new Widget[0];
-		} else {
-			pk var1 = (pk)cf.cg_fld.ai_fld.get(this.bf_fld);
-			if (var1 == null) {
-				return new lu[0];
-			} else {
-				int var2 = var1.getId();
-				ArrayList var3 = new ArrayList();
-
-				for (lu var7 : og.ci_fld.tg(var2)) {
-					if (var7 != null && var7.cv_fld == -1) {
-						var3.add(var7);
-					}
-				}
-
-				return (Widget[])(Widget[])var3.toArray(new lu[0]);
-			}
-		}
+	public lu setRotationZ(int var1) {
+		this.ds_fld = var1;
+		return this;
 	}
 
 	@ObfuscatedName("cl")
@@ -3006,31 +2925,31 @@ public class lu extends vw implements Widget {
 					int var15 = 1045855816;
 					switch (var8) {
 						case 1:
-							var13 = eg.ak(var1.az_fld, var9, 0);
+							var13 = eg.ak(var1.av_fld, var9, 0);
 							break;
 						case 2:
-							var13 = var6.ay(null, -1268541705);
+							var13 = pp.tv(var6, null, -1268541705);
 							break;
 						case 3:
 							var13 = null != var5 ? var5.af((byte)3) : null;
 							break;
 						case 4:
 							og var16 = kb.ag(var9, -1752383175);
-							var13 = var16.af(10, 686120708);
+							var13 = og.fn(var16, 10);
 							var14 += var16.ee_fld;
 							var15 += var16.ek_fld;
 						case 5:
 						default:
 							break;
 						case 6:
-							var13 = var6.ay(var7, -1499907116);
+							var13 = pp.tv(var6, var7, -1499907116);
 					}
 
 					if (null == var13) {
 						return null;
 					}
 
-					var12 = var13.bx(var14, var15, -50, -10, -50);
+					var12 = eg.et(var13, var14, var15, -50, -10, -50);
 					var1.ar_fld.az(var12, var10);
 				}
 
@@ -3045,30 +2964,40 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("lg")
+	@ObfuscatedName("setTargetPriority")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;II)V"
+		descriptor = "(I)V"
 	)
-	public static void lg(lu var0, int var1, int var2) {
-		if (11 == var0.bx_fld) {
-			if (var0.he_fld == null) {
-				var0.bd(-487250190);
-			}
+	@Export("setTargetPriority")
+	@Override
+	public void setTargetPriority(int var1) {
+		this.ek_fld = var1;
+	}
 
-			var0.he_fld.put(var1, var2);
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Z"
+	)
+	public boolean eg(int var1, int var2, int var3, int var4) {
+		if (this.bx_fld == 11 && this.hi_fld != null && this.bs_boolean(303927453)) {
+			var1 -= var3;
+			var2 -= var4;
+			int var5 = (int)(this.hi_fld.au()[0] * (2068289896 * this.bb_fld));
+			int var6 = (int)(this.hi_fld.au()[1] * this.cd_fld);
+			int var7 = var5 + (int)(this.hi_fld.au()[2] * (1220209890 * this.bb_fld));
+			int var8 = var6 + (int)(this.hi_fld.au()[3] * this.cd_fld);
+			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
+		} else {
+			return false;
 		}
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Lli;"
+		descriptor = "(I)Z"
 	)
-	public static li bv(lu var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.hk_fld != null ? var0.hk_fld.ak_fld : null;
-		}
+	public boolean bs_boolean(int var1) {
+		return this.hn_fld == 2;
 	}
 
 	@ObfuscatedName("fg")
@@ -3079,66 +3008,6 @@ public class lu extends vw implements Widget {
 		return this.hk_fld != null ? this.hk_fld.ak_fld : null;
 	}
 
-	@ObfuscatedName("getOnOpListener")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
-	)
-	@Override
-	public Object[] getOnOpListener() {
-		return (Object[])this.ft_fld;
-	}
-
-	@ObfuscatedName("setOnVarTransmitListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnVarTransmitListener(Object[] var1) {
-		this.fh_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("xg")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;)Lzv;"
-	)
-	public zv xg(lw var1) {
-		try {
-			return dg(this, var1, (byte)-81);
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("dg")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;B)Lzf;"
-	)
-	public static zf dg(lu var0, lw var1, byte var2) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (var0.de_fld == -1) {
-				return null;
-			} else {
-				zf var3 = (zf)var1.af_fld.ak(var0.de_fld);
-				if (null != var3) {
-					return var3;
-				} else {
-					var3 = dv.ae(var1.av_fld, var1.ae_fld, var0.de_fld, 0);
-					if (null != var3) {
-						var1.af_fld.az(var3, var0.de_fld);
-					}
-
-					return var3;
-				}
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
 	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;)[Ljava/lang/Object;"
@@ -3147,119 +3016,163 @@ public class lu extends vw implements Widget {
 		return (Object[])(null != var1 ? Arrays.copyOf((Object[])var1, var1.length) : null);
 	}
 
-	@ObfuscatedName("zz")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setOriginalHeight(int var1) {
-		this.ba_fld = var1;
-		return this;
-	}
-
 	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	public int bj(int var1) {
-		return this.hd_fld != null && !this.hd_fld.isEmpty() ? 1 : 0;
+		return this.he_fld != null && !this.he_fld.isEmpty() ? 1 : 0;
 	}
 
-	@ObfuscatedName("getItemQuantity")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getItemQuantity() {
-		return this.gd_fld;
-	}
-
-	@ObfuscatedName("dd")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
-	)
-	public static void dd(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			var0.hi_fld = new ma();
-			if (!var0.hi_fld.ag(var1, var3, var6)) {
-				var0.hi_fld = null;
-			} else {
-				if (null == var0.he_fld || null == var0.hd_fld) {
-					var0.bd(-1885406961);
-				}
-
-				var0.hi_fld.az(var2, var4, var5);
-			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
-		}
-	}
-
-	@ObfuscatedName("setOnTargetEnterListener")
+	@ObfuscatedName("setOnDragListener")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;)V"
 	)
+	@Export("setOnDragListener")
 	@Override
-	public void setOnTargetEnterListener(Object[] var1) {
-		this.fk_fld = (Object[])var1;
+	public void setOnDragListener(Object[] var1) {
+		this.fj_fld = (Object[])var1;
 	}
 
-	@ObfuscatedName("cb")
+	@ObfuscatedName("kd")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Ljava/lang/String;)I"
+	)
+	public static int kd(lu var0, String var1) {
+		return 11 == var0.bx_fld && var0.hi_fld != null && var0.bs_boolean(1403256113) ? ma.rs(var0.hi_fld, var1, -1943798141) : -1;
+	}
+
+	@ObfuscatedName("vz")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setModelType(int var1) {
+		this.dm_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("ok")
+	@ObfuscatedSignature(
+		descriptor = "(II)Llu;"
+	)
+	public lu setSize(int var1, int var2) {
+		return this.setOriginalWidth(var1).setOriginalHeight(var2);
+	}
+
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;III)I"
+	)
+	public static int hg(lu var0, int var1, int var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			for (int var4 = 0; var4 < var0.hl_fld; var4++) {
+				if (var0.hs_fld[var4] == var1) {
+					return (Integer)var0.hq_fld[var4];
+				}
+			}
+
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("yj")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String yj() {
+		return this.dp_fld;
+	}
+
+	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean cb() {
+	boolean cz() {
 		return this.dz_fld || this.dt_fld || 0 != this.dh_fld || this.dv_fld != 0;
 	}
 
-	@ObfuscatedName("setType")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setType(int var1) {
-		this.bx_fld = var1;
-	}
-
-	@ObfuscatedName("getOriginalWidth")
+	@ObfuscatedName("getRotationX")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getRotationX")
 	@Override
-	public int getOriginalWidth() {
-		return this.bw_fld;
+	public int getRotationX() {
+		return this.dx_fld;
 	}
 
-	@ObfuscatedName("wm")
+	@ObfuscatedName("pz")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Z"
+		descriptor = "(Llu;[IS)[I"
 	)
-	public static boolean wm(lu var0, int var1) {
+	public static int[] pz(lu var0, int[] var1, short var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return 11 == var0.bx_fld || 12 == var0.bx_fld;
+		return null != var1 ? Arrays.copyOf(var1, var1.length) : null;
 	}
 
-	@ObfuscatedName("xs")
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public String by(int var1) {
+		if (11 == this.bx_fld && null != this.hi_fld) {
+			String var2 = this.hi_fld.al();
+			Iterator var3 = this.hi_fld.af().iterator();
+
+			while (var3.hasNext()) {
+				mu var4 = (mu)(mu)var3.next();
+				String var5 = String.format("%%%S%%", (Object[])(new Object[]{mu.wi(var4, (byte)1)}));
+				if (var4.ak((byte)-17) == 0) {
+					var2.replaceAll(var5, Integer.toString(var4.ag((byte)-29)));
+				} else {
+					var2.replaceAll(var5, var4.ah(1263192160));
+				}
+			}
+
+			return var2;
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("pp")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setAnimationId(int var1) {
-		this.dl_fld = var1;
+	public lu setHeightMode(int var1) {
+		this.bu_fld = var1;
 		return this;
 	}
 
-	@ObfuscatedName("cd")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
 		descriptor = "([I)[I"
 	)
-	int[] cd(int[] var1) {
+	int[] cc(int[] var1) {
 		return null != var1 ? Arrays.copyOf(var1, var1.length) : null;
+	}
+
+	@ObfuscatedName("hasListener")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("hasListener")
+	@Override
+	public boolean hasListener() {
+		return this.eh_fld;
+	}
+
+	@ObfuscatedName("fk")
+	@ObfuscatedSignature(
+		descriptor = "()Lma;"
+	)
+	public ma fk() {
+		return this.hi_fld;
 	}
 
 	@ObfuscatedName("fw")
@@ -3269,7 +3182,7 @@ public class lu extends vw implements Widget {
 	void fw(lw var1) {
 		this.hb_fld = true;
 		ArrayList var2 = this.hi_fld.as();
-		ArrayList var3 = ma.ck(this.hi_fld, -2120439258);
+		ArrayList var3 = this.hi_fld.ar();
 		int var4 = var2.size() + var3.size();
 		this.ge_fld = new lu[var4];
 		int var5 = 0;
@@ -3290,35 +3203,98 @@ public class lu extends vw implements Widget {
 			mr var11 = (mr)(mr)var6.next();
 			lu var12 = is.ak(4, this, var5, 0, 0, 0, 0, var11.ae_fld);
 			var12.dp_fld = var11.av_fld;
-			var12.de_fld = (Integer)this.he_fld.get(var11.ay_fld) * -82239663;
+			var12.de_fld = (Integer)this.hd_fld.get(var11.ay_fld) * -82239663;
 			var12.ep_fld = var11.ah_fld * 1375656682;
 			var12.eb_fld = 992230371 * var11.aw_fld;
 			this.ge_fld[var5++] = var12;
 		}
 	}
 
-	@ObfuscatedName("of")
+	@ObfuscatedName("ru")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
+		descriptor = "(Llu;Llw;Lol;IZLlp;Lpp;Lpg;)Lfn;"
 	)
-	public static void of(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
+	public static fn ru(lu var0, lw var1, ol var2, int var3, boolean var4, lp var5, pp var6, pg var7) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
+			}
+
+			int var8;
+			int var9;
+			if (var4) {
+				var8 = var0.do_fld;
+				var9 = var0.dd_fld * 1942414419;
 			} else {
-				var0.hi_fld = new ma();
-				if (!var0.hi_fld.ag(var1, var3, var6)) {
-					var0.hi_fld = null;
-				} else {
-					if (null == var0.he_fld || null == var0.hd_fld) {
-						var0.bd(1005534549);
+				var8 = var0.dm_fld;
+				var9 = var0.dq_fld;
+			}
+
+			if (0 == var8) {
+				return null;
+			} else if (1 == var8 && var9 == -1) {
+				return null;
+			} else {
+				if (var7 != null && var7.ae_fld && 6 == var8) {
+					var8 = 3;
+				}
+
+				long var10 = (var8 << 16) + var9;
+				if (2 == var8 || 6 == var8) {
+					if (var6 == null) {
+						return null;
 					}
 
-					var0.hi_fld.az(var2, var4, var5);
+					var10 = (var8 << 16) + var6.ca_fld;
 				}
+
+				if (null != var7) {
+					var10 |= var7.ak_fld << 20;
+				}
+
+				fn var12 = (fn)var1.ar_fld.ak(var10);
+				if (null == var12) {
+					eg var13 = null;
+					int var14 = 64;
+					int var15 = 768;
+					switch (var8) {
+						case 1:
+							var13 = eg.ak(var1.av_fld, var9, 0);
+							break;
+						case 2:
+							var13 = pp.tv(var6, null, -1376378467);
+							break;
+						case 3:
+							var13 = null != var5 ? var5.af((byte)58) : null;
+							break;
+						case 4:
+							og var16 = kb.ag(var9, -1752383175);
+							var13 = og.fn(var16, 10);
+							var14 += var16.ee_fld;
+							var15 += var16.ek_fld;
+						case 5:
+						default:
+							break;
+						case 6:
+							var13 = pp.tv(var6, var7, -1742166923);
+					}
+
+					if (null == var13) {
+						return null;
+					}
+
+					var12 = eg.et(var13, var14, var15, -50, -10, -50);
+					var1.ar_fld.az(var12, var10);
+				}
+
+				if (null != var2) {
+					var12 = var2.an(var12, var3, 1374814161);
+				}
+
+				return var12;
 			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
+		} catch (Throwable var18) {
+			throw new RuntimeException(var18);
 		}
 	}
 
@@ -3343,103 +3319,20 @@ public class lu extends vw implements Widget {
 		this.hk_fld.az_fld.ak(86, 2);
 	}
 
-	@ObfuscatedName("getFontId")
+	@ObfuscatedName("qz")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Llu;Ljava/lang/String;)Ljava/lang/String;"
 	)
-	@Override
-	public int getFontId() {
-		return this.de_fld;
+	public static String qz(lu var0, String var1) {
+		return var0.bx_fld == 11 && null != var0.hi_fld && var0.bs_boolean(1465243715) ? var0.hi_fld.ay(var1) : null;
 	}
 
-	@ObfuscatedName("ef")
+	@ObfuscatedName("fb")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "()Lma;"
 	)
-	public lu setClickMask(int var1) {
-		this.ec_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("ut")
-	@ObfuscatedSignature(
-		descriptor = "(II)Llu;"
-	)
-	public lu setSize(int var1, int var2) {
-		return this.setOriginalWidth(var1).setOriginalHeight(var2);
-	}
-
-	@ObfuscatedName("mw")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;Z)Lkp;"
-	)
-	public static kp mw(lu var0, lw var1, boolean var2) throws EOFException {
-		try {
-			if (var0.ch_fld == -1) {
-				var2 = false;
-			}
-
-			int var3 = var2 ? var0.ch_fld * -397786198 : var0.cj_fld;
-			if (-1 == var3) {
-				return null;
-			} else {
-				long var4 = ((long)var0.dv_fld << 735178423)
-					+ ((var0.dt_fld ? 1L : 0L) << 384065631)
-					+ ((var0.dz_fld ? 1L : 0L) << 38)
-					+ var3
-					+ ((long)(1261731204 * var0.dh_fld) << 36);
-				kp var6 = (kp)var1.al_fld.ak(var4);
-				if (var6 != null) {
-					return var6;
-				} else {
-					yv var7 = ef(var0, var1, var2, null, -423043034);
-					if (var7 == null) {
-						return null;
-					} else {
-						yv var8 = yv.wo(var7);
-						int[] var9 = new int[var8.ay_fld];
-						int[] var10 = new int[var8.ay_fld];
-
-						for (int var11 = 0; var11 < var8.ay_fld; var11++) {
-							int var12 = 0;
-							int var13 = var8.aw_fld;
-
-							for (int var14 = 0; var14 < var8.aw_fld; var14++) {
-								if (0 == var8.ah_fld[var11 * var8.aw_fld + var14]) {
-									var12 = var14;
-									break;
-								}
-							}
-
-							for (int var18 = var8.aw_fld - 1; var18 >= var12; var18--) {
-								if (0 == var8.ah_fld[var18 + var11 * var8.aw_fld]) {
-									var13 = var18 + 1;
-									break;
-								}
-							}
-
-							var9[var11] = var12;
-							var10[var11] = var13 - var12;
-						}
-
-						var6 = new kp(var8.aw_fld, var8.ay_fld, var10, var9, var3);
-						var1.al_fld.az(var6, var4);
-						return var6;
-					}
-				}
-			}
-		} catch (Throwable var16) {
-			throw new RuntimeException(var16);
-		}
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setXPositionMode(int var1) {
-		this.bt_fld = var1;
-		return this;
+	public ma fb() {
+		return this.hi_fld;
 	}
 
 	@ObfuscatedName("du")
@@ -3464,13 +3357,22 @@ public class lu extends vw implements Widget {
 		return this.hk_fld != null ? this.hk_fld.az_fld : null;
 	}
 
-	@ObfuscatedName("getScrollX")
+	@ObfuscatedName("getBounds")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()Ljava/awt/Rectangle;"
 	)
+	@Export("getBounds")
 	@Override
-	public int getScrollX() {
-		return this.cp_fld;
+	public Rectangle getBounds() {
+		return new Rectangle(this.mv_fld, this.vi_fld, this.getWidth(), this.getHeight());
+	}
+
+	@ObfuscatedName("ny")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ny(int var1) {
+		this.mv_fld = var1;
 	}
 
 	@ObfuscatedName("bn")
@@ -3481,34 +3383,29 @@ public class lu extends vw implements Widget {
 		return this.hk_fld;
 	}
 
-	@ObfuscatedName("mc")
+	@ObfuscatedName("gg")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
 	)
-	public void mc(int var1) {
-		this.nn_fld = var1;
-	}
-
-	@ObfuscatedName("rp")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;IJ)J"
-	)
-	public static long rp(lu var0, int var1, long var2) {
-		for (int var4 = 0; var4 < var0.hl_fld; var4++) {
-			if (var1 == var0.hs_fld[var4]) {
-				return (Long)var0.hq_fld[var4];
+	public static void gg(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
 			}
+
+			var0.hi_fld = new ma();
+			if (!var0.hi_fld.ag(var1, var3, var6)) {
+				var0.hi_fld = null;
+			} else {
+				if (null == var0.hd_fld || null == var0.he_fld) {
+					var0.bd(1830428324);
+				}
+
+				var0.hi_fld.az(var2, var4, var5);
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
 		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	public int[] cp() {
-		return this.gf_fld;
 	}
 
 	@ObfuscatedName("bc")
@@ -3518,7 +3415,7 @@ public class lu extends vw implements Widget {
 	boolean bc(li var1, int var2) {
 		boolean var3 = false;
 		if (null != this.dp_fld && !this.dp_fld.isEmpty()) {
-			var3 |= li.sc(var1, bw.ax(this.dp_fld), 269455100);
+			var3 |= var1.av(bw.ax(this.dp_fld));
 			this.dp_fld = "";
 		}
 
@@ -3553,163 +3450,26 @@ public class lu extends vw implements Widget {
 			}
 
 			String var6 = var8.toString();
-			var3 |= var1.ae(var6);
+			var3 |= li.wh(var1, var6, (short)-21259);
 			this.dj_fld = "";
 		}
 
 		return var3;
 	}
 
-	@ObfuscatedName("setOnMouseRepeatListener")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
+		descriptor = "(Llu;Ljava/lang/String;)Ljava/lang/String;"
 	)
-	@Override
-	public void setOnMouseRepeatListener(Object[] var1) {
-		this.fx_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("getDragDeadTime")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getDragDeadTime() {
-		return this.ey_fld;
-	}
-
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;I)Z"
-	)
-	public boolean bw(lw var1, int var2) {
-		try {
-			li var3 = bv(this, -712274036);
-			if (var3 == null) {
-				return false;
-			} else {
-				boolean var4 = false;
-				if (!var3.cq() && this.de_fld != -1) {
-					int var5 = var3.cv();
-					int var6 = var3.cy();
-					int var7 = var3.cc();
-					int var8 = li.dg(var3, (byte)-43);
-					zf var9 = dg(this, var1, (byte)12);
-					if (null != var9) {
-						var4 |= var3.ah(var9);
-						var4 |= this.bc(var3, 55221958);
-						var4 |= var3.al(var5, var6);
-						var4 |= li.ik(var3, var7, var8, (byte)-44);
-					}
-				} else if (var3.cq()) {
-					var4 |= this.bc(var3, 55221958);
-				}
-
-				li.jd(var3, 261216131);
-				return var4;
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
+	public static String at(lu var0, String var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.bx_fld == 11 && null != var0.hi_fld && var0.bs_boolean(1249132947) ? var0.hi_fld.ay(var1) : null;
 		}
 	}
 
-	@ObfuscatedName("qi")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;Z)Lkp;"
-	)
-	public static kp qi(lu var0, lw var1, boolean var2) throws EOFException {
-		try {
-			if (var0.ch_fld == -1) {
-				var2 = false;
-			}
-
-			int var3 = var2 ? var0.ch_fld * -1633846296 : var0.cj_fld * -423108784;
-			if (-1 == var3) {
-				return null;
-			} else {
-				long var4 = ((long)(1687104053 * var0.dv_fld) << 1119072921)
-					+ ((var0.dt_fld ? 1L : 0L) << 39)
-					+ ((var0.dz_fld ? 1L : 0L) << 42621897)
-					+ var3
-					+ ((long)(-1358680044 * var0.dh_fld) << -1215926208);
-				kp var6 = (kp)var1.al_fld.ak(var4);
-				if (var6 != null) {
-					return var6;
-				} else {
-					yv var7 = ef(var0, var1, var2, null, -423043034);
-					if (var7 == null) {
-						return null;
-					} else {
-						yv var8 = yv.wo(var7);
-						int[] var9 = new int[var8.ay_fld];
-						int[] var10 = new int[var8.ay_fld];
-
-						for (int var11 = 0; var11 < var8.ay_fld; var11++) {
-							int var12 = 0;
-							int var13 = var8.aw_fld;
-
-							for (int var14 = 0; var14 < var8.aw_fld; var14++) {
-								if (0 == var8.ah_fld[var11 * var8.aw_fld + var14]) {
-									var12 = var14;
-									break;
-								}
-							}
-
-							for (int var18 = var8.aw_fld - 1; var18 >= var12; var18--) {
-								if (0 == var8.ah_fld[var18 + var11 * var8.aw_fld]) {
-									var13 = var18 + 1;
-									break;
-								}
-							}
-
-							var9[var11] = var12;
-							var10[var11] = var13 - var12;
-						}
-
-						var6 = new kp(var8.aw_fld, var8.ay_fld, var10, var9, var3);
-						var1.al_fld.az(var6, var4);
-						return var6;
-					}
-				}
-			}
-		} catch (Throwable var16) {
-			throw new RuntimeException(var16);
-		}
-	}
-
-	@ObfuscatedName("mm")
-	@ObfuscatedSignature(
-		descriptor = "()[Llu;"
-	)
-	public lu[] getChildren() {
-		return this.ge_fld;
-	}
-
-	@ObfuscatedName("vl")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void vl(int var1) {
-		if (this.sw_fld > -1) {
-			this.setRelativeX(this.sw_fld);
-		}
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void bz(int var1, int var2, int var3) {
-		if (11 == this.bx_fld) {
-			if (this.he_fld == null) {
-				this.bd(1230390981);
-			}
-
-			this.he_fld.put(var1, var2);
-		}
-	}
-
-	@ObfuscatedName("ci")
+	@ObfuscatedName("ek")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
@@ -3718,12 +3478,368 @@ public class lu extends vw implements Widget {
 		return this;
 	}
 
-	@ObfuscatedName("wr")
+	@ObfuscatedName("getOnKeyListener")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/Object;"
+	)
+	@Export("getOnKeyListener")
+	@Override
+	public Object[] getOnKeyListener() {
+		return (Object[])this.fu_fld;
+	}
+
+	@ObfuscatedName("getYTextAlignment")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getYTextAlignment")
+	@Override
+	public int getYTextAlignment() {
+		return this.eb_fld;
+	}
+
+	@ObfuscatedName("getParentId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getParentId")
+	@Override
+	public int getParentId() {
+		if (!og.ci_fld.isClientThread()) {
+			if (!tf.$assertionsDisabled) {
+				throw new AssertionError("must be called on client thread");
+			} else {
+				throw new IllegalStateException("must be called on client thread");
+			}
+		} else {
+			int var1 = this.cv_fld;
+			if (var1 != -1) {
+				return var1;
+			} else {
+				int var2 = this.getId();
+				if (WidgetUtil.componentToInterface(var2) == og.ci_fld.getTopLevelInterfaceId()) {
+					return -1;
+				} else {
+					int var3 = this.ss_fld;
+					if (var3 != -1) {
+						pk var4 = (pk)ib.iu(cf.cg_fld.an_fld, var3);
+						if (var4 != null && var4.getId() == WidgetUtil.componentToInterface(var2)) {
+							return var3;
+						}
+
+						this.ss_fld = -1;
+					}
+
+					int var8 = WidgetUtil.componentToInterface(this.getId());
+					xz var5 = og.ci_fld.getComponentTable();
+					Iterator var6 = var5.iterator();
+
+					while (var6.hasNext()) {
+						pk var7 = (pk)(pk)var6.next();
+						if (var8 == var7.getId()) {
+							return (int)var7.getHash();
+						}
+					}
+
+					return -1;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("ws")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llw;Lde;B)Z"
+	)
+	public static boolean ws(lu var0, lw var1, de var2, byte var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (11 == var0.bx_fld && null != var0.hi_fld) {
+			ma.dh(var0.hi_fld, var2, 2099032597);
+			if (var0.hi_fld.ae() != var0.hn_fld) {
+				var0.hn_fld = var0.hi_fld.ae();
+				if (var0.hn_fld >= 3) {
+					return true;
+				}
+
+				if (2 == var0.hn_fld) {
+					var0.bp(var1, -511255598);
+					return true;
+				}
+			}
+
+			return false;
+		} else {
+			return false;
+		}
+	}
+
+	@ObfuscatedName("et")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;ILjava/lang/String;)V"
+	)
+	public static void et(lu var0, int var1, String var2) {
+		if (null == var0.ei_fld || var0.ei_fld.length <= var1) {
+			String[] var3 = new String[var1 + 1];
+			if (var0.ei_fld != null) {
+				for (int var4 = 0; var4 < var0.ei_fld.length; var4++) {
+					var3[var4] = var0.ei_fld[var4];
+				}
+			}
+
+			var0.ei_fld = var3;
+		}
+
+		var0.ei_fld[var1] = var2;
+	}
+
+	@ObfuscatedName("getYPositionMode")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getYPositionMode")
+	@Override
+	public int getYPositionMode() {
+		return this.bv_fld;
+	}
+
+	@ObfuscatedName("getNoClickThrough")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("getNoClickThrough")
+	@Override
+	public boolean getNoClickThrough() {
+		return this.hb_fld;
+	}
+
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;I)Z"
+	)
+	public boolean bw(lw var1, int var2) {
+		try {
+			li var3 = ax(this, -712274036);
+			if (var3 == null) {
+				return false;
+			} else {
+				boolean var4 = false;
+				if (!var3.cq() && this.de_fld != -1) {
+					int var5 = li.nf(var3, -2123246946);
+					int var6 = var3.cy();
+					int var7 = var3.cc();
+					int var8 = li.em(var3, (byte)-43);
+					zf var9 = this.ax(var1, (byte)12);
+					if (null != var9) {
+						var4 |= li.kw(var3, var9, 1709100418);
+						var4 |= this.bc(var3, 55221958);
+						var4 |= var3.al(var5, var6);
+						var4 |= var3.ap(var7, var8);
+					}
+				} else if (var3.cq()) {
+					var4 |= this.bc(var3, 55221958);
+				}
+
+				var3.ak();
+				return var4;
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "(Llp;ZI)V"
+	)
+	public void ba(lp var1, boolean var2, int var3) {
+		try {
+			this.dm_fld = 279120917;
+			this.dy_fld = new lp(var1);
+			if (!var2) {
+				this.dy_fld.af_fld = Arrays.copyOf(this.dy_fld.ar_fld, this.dy_fld.ar_fld.length);
+				this.dy_fld.au((short)3193);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("getOriginalHeight")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalHeight")
+	@Override
+	public int getOriginalHeight() {
+		return this.ba_fld;
+	}
+
+	@ObfuscatedName("getParent")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/widgets/Widget;"
+	)
+	@Export("getParent")
+	@Override
+	public Widget getParent() {
+		int var1 = this.getParentId();
+		return var1 == -1 ? null : og.ci_fld.getWidget(var1);
+	}
+
+	@ObfuscatedName("uv")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setScrollHeight(int var1) {
-		this.cr_fld = var1;
+	public lu setRotationX(int var1) {
+		this.dx_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("getDragDeadTime")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getDragDeadTime")
+	@Override
+	public int getDragDeadTime() {
+		return this.ey_fld;
+	}
+
+	@ObfuscatedName("getDragParent")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/widgets/Widget;"
+	)
+	@Export("getDragParent")
+	@Override
+	public Widget getDragParent() {
+		return this.ea_fld;
+	}
+
+	@ObfuscatedName("vl")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setScrollY(int var1) {
+		this.ce_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("ut")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Llu;"
+	)
+	public lu setText(String var1) {
+		this.dp_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	public void bz(int var1, int var2, int var3) {
+		if (11 == this.bx_fld) {
+			if (this.hd_fld == null) {
+				this.bd(1230390981);
+			}
+
+			this.hd_fld.put(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "([I)[I"
+	)
+	int[] cd(int[] var1) {
+		return null != var1 ? Arrays.copyOf(var1, var1.length) : null;
+	}
+
+	@ObfuscatedName("setType")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setType")
+	@Override
+	public void setType(int var1) {
+		this.bx_fld = var1;
+	}
+
+	@ObfuscatedName("mg")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lyv;I)V"
+	)
+	public static void mg(lu var0, yv var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var0.dz_fld) {
+				var1.aq();
+			}
+
+			if (var0.dt_fld) {
+				var1.ai();
+			}
+
+			if (var0.dh_fld > 0) {
+				var1.aa(var0.dh_fld);
+			}
+
+			if (var0.dh_fld >= 1) {
+				if (var2 >= 185271048) {
+					return;
+				}
+
+				var1.am(1);
+			}
+
+			if (var0.dh_fld >= 2) {
+				if (var2 >= 185271048) {
+					return;
+				}
+
+				var1.am(16777215);
+			}
+
+			if (0 != var0.dv_fld) {
+				var1.ad(var0.dv_fld);
+			}
+		}
+	}
+
+	@ObfuscatedName("qs")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llw;Lde;)Z"
+	)
+	public static boolean qs(lu var0, lw var1, de var2) {
+		if (11 == var0.bx_fld && null != var0.hi_fld) {
+			ma.dh(var0.hi_fld, var2, 2113344988);
+			if (var0.hi_fld.ae() != var0.hn_fld) {
+				var0.hn_fld = var0.hi_fld.ae();
+				if (var0.hn_fld >= 3) {
+					return true;
+				}
+
+				if (2 == var0.hn_fld) {
+					var0.bp(var1, 41796530);
+					return true;
+				}
+			}
+
+			return false;
+		} else {
+			return false;
+		}
+	}
+
+	@ObfuscatedName("is")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setYTextAlignment(int var1) {
+		this.eb_fld = var1;
 		return this;
 	}
 
@@ -3735,20 +3851,79 @@ public class lu extends vw implements Widget {
 		return (Object[])(null != var1 ? Arrays.copyOf((Object[])var1, var1.length) : null);
 	}
 
-	@ObfuscatedName("hasListener")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Llu;"
 	)
+	public lu setYPositionMode(int var1) {
+		this.bv_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("getWidth")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getWidth")
 	@Override
-	public boolean hasListener() {
-		return this.eh_fld;
+	public int getWidth() {
+		return this.bb_fld;
+	}
+
+	@ObfuscatedName("tq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void tq(int var1) {
+		this.ss_fld = var1;
+	}
+
+	@ObfuscatedName("dm")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Z)Lkp;"
+	)
+	public kp dm(lw var1, boolean var2) {
+		try {
+			return qv(this, var1, var2, 15790320);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("getWidthMode")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getWidthMode")
+	@Override
+	public int getWidthMode() {
+		return this.bi_fld;
+	}
+
+	@ObfuscatedName("setDragDeadZone")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setDragDeadZone")
+	@Override
+	public void setDragDeadZone(int var1) {
+		this.ev_fld = var1;
+	}
+
+	@ObfuscatedName("ff")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Llu;"
+	)
+	public lu setSpriteTiling(boolean var1) {
+		this.dc_fld = var1;
+		return this;
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lph;"
+		descriptor = "(II)Lph;"
 	)
-	public static ph ag(int var0) throws EOFException {
+	public static ph ag(int var0, int var1) throws EOFException {
 		try {
 			ph var2 = (ph)ph.az_fld.ak(var0);
 			if (var2 != null) {
@@ -3768,20 +3943,296 @@ public class lu extends vw implements Widget {
 		}
 	}
 
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)I"
+	)
+	public int bh(String var1, int var2) {
+		return 11 == this.bx_fld && this.hi_fld != null && this.bs_boolean(297822854) ? ma.rs(this.hi_fld, var1, -835587419) : -1;
+	}
+
+	@ObfuscatedName("getText")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getText")
+	@Override
+	public String getText() {
+		return this.yj().replace(' ', ' ');
+	}
+
+	@ObfuscatedName("getVarTransmitTrigger")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getVarTransmitTrigger")
+	@Override
+	public int[] getVarTransmitTrigger() {
+		return this.fm_fld;
+	}
+
+	@ObfuscatedName("zc")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String zc() {
+		return this.eq_fld;
+	}
+
+	@ObfuscatedName("getScrollX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getScrollX")
+	@Override
+	public int getScrollX() {
+		return this.cp_fld;
+	}
+
+	@ObfuscatedName("zp")
+	@ObfuscatedSignature(
+		descriptor = "()Lzv;"
+	)
+	public zv getFont() {
+		try {
+			return this.ck(cf.cg_fld);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("revalidate")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	@Override
+	public void revalidate() {
+		try {
+			if (!og.ci_fld.isClientThread()) {
+				if (!tf.$assertionsDisabled) {
+					throw new AssertionError("must be called on client thread");
+				} else {
+					throw new IllegalStateException("must be called on client thread");
+				}
+			} else {
+				client.us(this, pf.qw_fld, bc.qx_fld, cf.cg_fld, client.cz_fld);
+			}
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("getIndex")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getIndex")
+	@Override
+	public int getIndex() {
+		return this.by_fld;
+	}
+
+	@ObfuscatedName("oi")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setOriginalWidth(int var1) {
+		this.bw_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("getScrollWidth")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getScrollWidth")
+	@Override
+	public int getScrollWidth() {
+		return this.cn_fld;
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	public int[] fj() {
+		if (this.bx_fld == 11 && this.hi_fld != null) {
+			int[] var1 = new int[3];
+			int var2 = 0;
+			Iterator var3 = this.hi_fld.af().iterator();
+
+			while (var3.hasNext()) {
+				mu var4 = (mu)(mu)var3.next();
+				if (!mu.wi(var4, (byte)1).equals("user_id")) {
+					if (var4.ak((byte)-42) != 0) {
+						return null;
+					}
+
+					var1[var2++] = var4.ag((byte)-80);
+					if (var2 > 3) {
+						return null;
+					}
+				}
+			}
+
+			return var1;
+		} else {
+			return null;
+		}
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
 	void ah(xi var1, int var2) {
-		this.bl_fld = xi.kc(var1, 409262132);
+		this.bl_fld = xi.at(var1, 409262132);
 	}
 
-	@ObfuscatedName("bc")
+	@ObfuscatedName("setHeight")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(I)V"
 	)
-	public int[] bc() {
-		return this.gm_fld;
+	@Export("setHeight")
+	@Override
+	public void setHeight(int var1) {
+		this.cd_fld = var1;
+	}
+
+	@ObfuscatedName("cy")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	void cy(xi var1) {
+		var1.cg();
+		this.bj_fld = true;
+		this.bx_fld = var1.cg();
+		this.bp_fld = var1.cm();
+		this.bn_fld = var1.cz();
+		this.bc_fld = var1.cz();
+		this.bw_fld = var1.cm();
+		if (9 == this.bx_fld) {
+			this.ba_fld = var1.cz();
+		} else {
+			this.ba_fld = var1.cm();
+		}
+
+		this.bi_fld = var1.cw();
+		this.bu_fld = var1.cw();
+		this.bt_fld = var1.cw();
+		this.bv_fld = var1.cw();
+		this.cv_fld = var1.cm();
+		if (65535 == this.cv_fld) {
+			this.cv_fld = -1995802935;
+		} else {
+			this.cv_fld = 1995802935 * ((this.bf_fld & -65536) + this.cv_fld);
+		}
+
+		this.cf_fld = var1.cg() == 1;
+		if (0 == this.bx_fld) {
+			this.cn_fld = var1.cm();
+			this.cr_fld = var1.cm();
+			this.hb_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 5) {
+			this.cj_fld = var1.co((byte)-104);
+			this.cl_fld = var1.cm();
+			this.dc_fld = var1.cg() == 1;
+			this.cb_fld = var1.cg();
+			this.dh_fld = var1.cg();
+			this.dv_fld = var1.co((byte)-118);
+			this.dz_fld = var1.cg() == 1;
+			this.dt_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 6) {
+			this.dm_fld = -1800825853;
+			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
+			this.da_fld = var1.cz();
+			this.dk_fld = var1.cz();
+			this.dx_fld = var1.cm();
+			this.ds_fld = var1.cm();
+			this.du_fld = var1.cm();
+			this.db_fld = var1.cm();
+			this.dl_fld = var1.cm();
+			if (65535 == this.dl_fld) {
+				this.dl_fld = -968762547;
+			}
+
+			this.di_fld = var1.cg() == 1;
+			var1.cm();
+			if (0 != this.bi_fld) {
+				this.dg_fld = var1.cm();
+			}
+
+			if (this.bu_fld != 0) {
+				var1.cm();
+			}
+		}
+
+		if (4 == this.bx_fld) {
+			this.de_fld = var1.cm();
+			if (65535 == this.de_fld) {
+				this.de_fld = 57339867;
+			}
+
+			this.dp_fld = xi.at(var1, -1686072473);
+			this.es_fld = var1.cg();
+			this.ep_fld = var1.cg();
+			this.eb_fld = var1.cg();
+			this.ed_fld = var1.cg() == 1;
+			this.ca_fld = var1.co((byte)-92);
+		}
+
+		if (this.bx_fld == 3) {
+			this.ca_fld = var1.co((byte)-84);
+			this.cz_fld = var1.cg() == 1;
+			this.cb_fld = var1.cg();
+		}
+
+		if (this.bx_fld == 9) {
+			this.cu_fld = var1.cg();
+			this.ca_fld = var1.co((byte)-74);
+			this.ci_fld = var1.cg() == 1;
+		}
+
+		this.ec_fld = xi.lx(var1, 1601184486);
+		this.eq_fld = xi.at(var1, -1071947454);
+		int var2 = var1.cg();
+		if (var2 > 0) {
+			this.ei_fld = new String[var2];
+
+			for (int var3 = 0; var3 < var2; var3++) {
+				this.ei_fld[var3] = xi.at(var1, -199356415);
+			}
+		}
+
+		this.ev_fld = var1.cg();
+		this.ey_fld = var1.cg();
+		this.em_fld = var1.cg() == 1;
+		this.el_fld = xi.at(var1, 989045272);
+		this.eu_fld = (Object[])this.aw(var1, 1006055606);
+		this.fp_fld = (Object[])this.aw(var1, 1006055606);
+		this.fv_fld = (Object[])this.aw(var1, 1006055606);
+		this.fc_fld = (Object[])this.aw(var1, 1006055606);
+		this.fk_fld = (Object[])this.aw(var1, 1006055606);
+		this.fh_fld = (Object[])this.aw(var1, 1006055606);
+		this.fe_fld = (Object[])this.aw(var1, 1006055606);
+		this.fl_fld = (Object[])this.aw(var1, 1006055606);
+		this.fn_fld = (Object[])this.aw(var1, 1006055606);
+		this.ft_fld = (Object[])this.aw(var1, 1006055606);
+		this.fx_fld = (Object[])this.aw(var1, 1006055606);
+		this.ej_fld = (Object[])this.aw(var1, 1006055606);
+		this.fy_fld = (Object[])this.aw(var1, 1006055606);
+		this.fa_fld = (Object[])this.aw(var1, 1006055606);
+		this.fo_fld = (Object[])this.aw(var1, 1006055606);
+		this.fj_fld = (Object[])this.aw(var1, 1006055606);
+		this.fb_fld = (Object[])this.aw(var1, 1006055606);
+		this.fq_fld = (Object[])this.aw(var1, 1006055606);
+		this.fm_fld = this.ay(var1, 1984799128);
+		this.fw_fld = this.ay(var1, 358102990);
+		this.fg_fld = this.ay(var1, 1660277231);
 	}
 
 	@ObfuscatedName("cf")
@@ -3792,21 +4243,21 @@ public class lu extends vw implements Widget {
 		var1.cg();
 		this.bj_fld = true;
 		this.bx_fld = var1.cg();
-		this.bp_fld = xi.tx(var1, 1038598345) * -868651010;
+		this.bp_fld = var1.cm() * -868651010;
 		this.bn_fld = var1.cz();
 		this.bc_fld = var1.cz();
-		this.bw_fld = xi.tx(var1, 1471823473) * -1701357480;
+		this.bw_fld = var1.cm() * -1701357480;
 		if (9 == this.bx_fld) {
 			this.ba_fld = var1.cz() * -1644924798;
 		} else {
-			this.ba_fld = xi.tx(var1, 1688678816);
+			this.ba_fld = var1.cm();
 		}
 
-		this.bi_fld = xi.rp(var1, -258363569) * 1320325300;
-		this.bu_fld = xi.rp(var1, -325863210);
-		this.bt_fld = xi.rp(var1, -1290427005) * -1977540311;
-		this.bv_fld = xi.rp(var1, -377959748) * -1615104396;
-		this.cv_fld = xi.tx(var1, 1617868275) * 1696815699;
+		this.bi_fld = var1.cw() * 1320325300;
+		this.bu_fld = var1.cw();
+		this.bt_fld = var1.cw() * -1977540311;
+		this.bv_fld = var1.cw() * -1615104396;
+		this.cv_fld = var1.cm() * 1696815699;
 		if (65535 == this.cv_fld) {
 			this.cv_fld = -1995802935;
 		} else {
@@ -3815,18 +4266,18 @@ public class lu extends vw implements Widget {
 
 		this.cf_fld = var1.cg() == 1;
 		if (0 == this.bx_fld) {
-			this.cn_fld = xi.tx(var1, 2127649290);
-			this.cr_fld = xi.tx(var1, 803075335);
+			this.cn_fld = var1.cm();
+			this.cr_fld = var1.cm();
 			this.hb_fld = var1.cg() == 1;
 		}
 
 		if (this.bx_fld == 5) {
-			this.cj_fld = var1.co();
-			this.cl_fld = xi.tx(var1, 332924564);
+			this.cj_fld = var1.co((byte)-123);
+			this.cl_fld = var1.cm();
 			this.dc_fld = var1.cg() == 1;
 			this.cb_fld = var1.cg() * 1213948940;
 			this.dh_fld = var1.cg();
-			this.dv_fld = var1.co();
+			this.dv_fld = var1.co((byte)-115);
 			this.dz_fld = var1.cg() == 1;
 			this.dt_fld = var1.cg() == 1;
 		}
@@ -3836,67 +4287,67 @@ public class lu extends vw implements Widget {
 			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
 			this.da_fld = var1.cz() * 2060613333;
 			this.dk_fld = var1.cz() * 2070216514;
-			this.dx_fld = xi.tx(var1, 1409175669) * -1983433456;
-			this.ds_fld = xi.tx(var1, 862155018);
-			this.du_fld = xi.tx(var1, 951429237);
-			this.db_fld = xi.tx(var1, 1539669789);
-			this.dl_fld = xi.tx(var1, 1035557031);
+			this.dx_fld = var1.cm() * -1983433456;
+			this.ds_fld = var1.cm();
+			this.du_fld = var1.cm();
+			this.db_fld = var1.cm();
+			this.dl_fld = var1.cm();
 			if (1975696353 == this.dl_fld) {
 				this.dl_fld = 997960001;
 			}
 
 			this.di_fld = var1.cg() == 1;
-			xi.tx(var1, 1085714870);
+			var1.cm();
 			if (0 != this.bi_fld) {
-				this.dg_fld = xi.tx(var1, 865914328);
+				this.dg_fld = var1.cm();
 			}
 
 			if (this.bu_fld * 1483089828 != 0) {
-				xi.tx(var1, 1497758069);
+				var1.cm();
 			}
 		}
 
 		if (4 == this.bx_fld) {
-			this.de_fld = xi.tx(var1, 744669164);
+			this.de_fld = var1.cm();
 			if (1886587611 == this.de_fld) {
 				this.de_fld = -529272795;
 			}
 
-			this.dp_fld = xi.kc(var1, -104639611);
+			this.dp_fld = xi.at(var1, -104639611);
 			this.es_fld = var1.cg();
 			this.ep_fld = var1.cg() * 1579793947;
 			this.eb_fld = var1.cg() * 1503082921;
 			this.ed_fld = var1.cg() == 1;
-			this.ca_fld = var1.co() * -1758080874;
+			this.ca_fld = var1.co((byte)-85) * -1758080874;
 		}
 
 		if (this.bx_fld == 3) {
-			this.ca_fld = var1.co();
+			this.ca_fld = var1.co((byte)-55);
 			this.cz_fld = var1.cg() == 1;
 			this.cb_fld = var1.cg() * 343872093;
 		}
 
 		if (this.bx_fld == 9) {
 			this.cu_fld = var1.cg();
-			this.ca_fld = var1.co() * -1170168797;
+			this.ca_fld = var1.co((byte)-27) * -1170168797;
 			this.ci_fld = var1.cg() == 1;
 		}
 
-		this.ec_fld = var1.ck();
-		this.eq_fld = xi.kc(var1, 1124431347);
+		this.ec_fld = xi.lx(var1, -335086292);
+		this.eq_fld = xi.at(var1, 1124431347);
 		int var2 = var1.cg();
 		if (var2 > 0) {
 			this.ei_fld = new String[var2];
 
 			for (int var3 = 0; var3 < var2; var3++) {
-				this.ei_fld[var3] = xi.kc(var1, 224067346);
+				this.ei_fld[var3] = xi.at(var1, 224067346);
 			}
 		}
 
 		this.ev_fld = var1.cg();
 		this.ey_fld = var1.cg() * 131304914;
 		this.em_fld = var1.cg() == 1;
-		this.el_fld = xi.kc(var1, -415877578);
+		this.el_fld = xi.at(var1, -415877578);
 		this.eu_fld = (Object[])this.aw(var1, 1006055606);
 		this.fp_fld = (Object[])this.aw(var1, 1006055606);
 		this.fv_fld = (Object[])this.aw(var1, 1006055606);
@@ -3920,122 +4371,6 @@ public class lu extends vw implements Widget {
 		this.fg_fld = this.ay(var1, 955192697);
 	}
 
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)Z"
-	)
-	public static boolean kv(lu var0) {
-		return 11 == var0.bx_fld || 12 == var0.bx_fld;
-	}
-
-	@ObfuscatedName("getOpacity")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getOpacity() {
-		return this.cb_fld;
-	}
-
-	@ObfuscatedName("setNoClickThrough")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	@Override
-	public void setNoClickThrough(boolean var1) {
-		this.hb_fld = var1;
-	}
-
-	@ObfuscatedName("vu")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setScrollY(int var1) {
-		this.ce_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)[Ljava/lang/Object;"
-	)
-	Object[] cx(xi var1) {
-		int var2 = var1.cg();
-		if (var2 == 0) {
-			return null;
-		} else {
-			Object[] var3 = (Object[])(new Object[var2]);
-
-			for (int var4 = 0; var4 < var2; var4++) {
-				int var5 = var1.cg();
-				if (0 == var5) {
-					var3[var4] = new Integer(var1.co());
-				} else if (var5 == 1) {
-					var3[var4] = xi.kc(var1, -687701122);
-				}
-			}
-
-			this.eh_fld = true;
-			return (Object[])var3;
-		}
-	}
-
-	// $VF: synthetic method
-	// $VF: bridge method
-	@ObfuscatedName("createChild")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lnet/runelite/api/widgets/Widget;"
-	)
-	@Override
-	public Widget createChild(int var1, int var2) {
-		if (!og.ci_fld.isClientThread()) {
-			if (!tf.$assertionsDisabled) {
-				throw new AssertionError("must be called on client thread");
-			} else {
-				throw new IllegalStateException("must be called on client thread");
-			}
-		} else {
-			return this.qg(var1, var2);
-		}
-	}
-
-	@ObfuscatedName("ss")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Llu;"
-	)
-	public lu setTextShadowed(boolean var1) {
-		this.ed_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("cs")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)[I"
-	)
-	int[] cs(xi var1) {
-		int var2 = var1.cg();
-		if (0 == var2) {
-			return null;
-		} else {
-			int[] var3 = new int[var2];
-
-			for (int var4 = 0; var4 < var2; var4++) {
-				var3[var4] = var1.co();
-			}
-
-			return var3;
-		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setModelZoom(int var1) {
-		this.db_fld = var1;
-		return this;
-	}
-
 	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)[I"
@@ -4048,20 +4383,101 @@ public class lu extends vw implements Widget {
 			int[] var3 = new int[var2];
 
 			for (int var4 = 0; var4 < var2; var4++) {
-				var3[var4] = var1.co();
+				var3[var4] = var1.co((byte)-101);
 			}
 
 			return var3;
 		}
 	}
 
-	@ObfuscatedName("mi")
+	@ObfuscatedName("qr")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setYPositionMode(int var1) {
-		this.bv_fld = var1;
-		return this;
+	public lu createChild(int var1) {
+		return this.qs(-1, var1);
+	}
+
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;ZLde;)Lyv;"
+	)
+	public yv ce(lw var1, boolean var2, de var3) {
+		try {
+			if (null != this.ct_fld) {
+				yv var4 = aa(this, var1, var3, 521764807);
+				if (var4 != null) {
+					return var4;
+				}
+			}
+
+			int var10;
+			if (var2) {
+				var10 = this.ch_fld;
+			} else {
+				var10 = this.cj_fld;
+			}
+
+			if (var10 == -1) {
+				return null;
+			} else {
+				long var5 = ((this.dz_fld ? 1L : 0L) << 38) + ((long)this.dh_fld << 36) + var10 + ((this.dt_fld ? 1L : 0L) << 39) + ((long)this.dv_fld << 40);
+				yv var7 = (yv)var1.as_fld.ak(var5);
+				if (var7 != null) {
+					return var7;
+				} else {
+					var7 = wf.av(var1.ae_fld, var10, 0);
+					if (null == var7) {
+						return null;
+					} else {
+						mg(this, var7, -1856571655);
+						var1.as_fld.az(var7, var5);
+						return var7;
+					}
+				}
+			}
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("nx")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lxi;)[Ljava/lang/Object;"
+	)
+	public static Object[] nx(lu var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var2 = var1.cg();
+		if (var2 == 0) {
+			return null;
+		} else {
+			Object[] var3 = (Object[])(new Object[var2]);
+
+			for (int var4 = 0; var4 < var2; var4++) {
+				int var5 = var1.cg();
+				if (0 == var5) {
+					var3[var4] = new Integer(var1.co((byte)-119));
+				} else if (var5 == 1) {
+					var3[var4] = xi.at(var1, -687701122);
+				}
+			}
+
+			var0.eh_fld = true;
+			return (Object[])var3;
+		}
+	}
+
+	@ObfuscatedName("setRelativeX")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setRelativeX")
+	@Override
+	public void setRelativeX(int var1) {
+		this.bq_fld = var1;
 	}
 
 	@ObfuscatedName("cn")
@@ -4071,7 +4487,7 @@ public class lu extends vw implements Widget {
 	public yv cn(lw var1, boolean var2, de var3) {
 		try {
 			if (null != this.ct_fld) {
-				yv var4 = this.ar(var1, var3, 521764807);
+				yv var4 = aa(this, var1, var3, 521764807);
 				if (var4 != null) {
 					return var4;
 				}
@@ -4096,11 +4512,11 @@ public class lu extends vw implements Widget {
 				if (var7 != null) {
 					return var7;
 				} else {
-					var7 = wf.av(var1.av_fld, var10, 0);
+					var7 = wf.av(var1.ae_fld, var10, 0);
 					if (null == var7) {
 						return null;
 					} else {
-						pr(this, var7, -1944439442);
+						mg(this, var7, -1944439442);
 						var1.as_fld.az(var7, var5);
 						return var7;
 					}
@@ -4111,11 +4527,11 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("cw")
+	@ObfuscatedName("cr")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;Lde;)Lyv;"
 	)
-	yv cw(lw var1, de var2) {
+	yv cr(lw var1, de var2) {
 		if (!this.al(598842371)) {
 			return this.af(var1, var2, (byte)0);
 		} else {
@@ -4125,7 +4541,7 @@ public class lu extends vw implements Widget {
 				yv var5 = this.af(var1, var2, (byte)0);
 				if (var5 != null) {
 					var4 = var5.al();
-					pr(this, var4, -1154549880);
+					mg(this, var4, -1154549880);
 					var1.ax_fld.az(var3, var4);
 				}
 			}
@@ -4134,49 +4550,283 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("cg")
+	@ObfuscatedName("getActions")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;)Lyv;"
+		descriptor = "()[Ljava/lang/String;"
 	)
-	yv cg(lw var1, de var2) {
-		if (null != this.ct_fld && var2 != null) {
-			kb var3 = (kb)(kb)var1.au_fld.ag(this.ct_fld);
-			if (var3 == null) {
-				var3 = new kb(this.ct_fld, var2);
-				var1.au_fld.az(this.ct_fld, var3);
+	@Export("getActions")
+	@Override
+	public String[] getActions() {
+		return this.ei_fld;
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llw;Lde;I)Lyv;"
+	)
+	public static yv aa(lu var0, lw var1, de var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (!var0.al(-978031646)) {
+			return var0.af(var1, var2, (byte)0);
+		} else {
+			String var4 = var0.ct_fld + (var0.dz_fld ? 1 : 0) + (var0.dt_fld ? 1 : 0) + var0.dh_fld + var0.dv_fld;
+			yv var5 = (yv)(yv)var1.ax_fld.ag(var4);
+			if (null == var5) {
+				yv var6 = var0.af(var1, var2, (byte)0);
+				if (var6 != null) {
+					var5 = var6.al();
+					mg(var0, var5, -144005898);
+					var1.ax_fld.az(var4, var5);
+				}
 			}
 
-			return var3.ak();
-		} else {
-			return null;
+			return var5;
 		}
 	}
 
-	@ObfuscatedName("ca")
+	// $VF: synthetic method
+	// $VF: bridge method
+	@ObfuscatedName("createChild")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;)Lyv;"
+		descriptor = "(II)Lnet/runelite/api/widgets/Widget;"
 	)
-	yv ca(lw var1, de var2) {
-		if (null != this.ct_fld && var2 != null) {
-			kb var3 = (kb)(kb)var1.au_fld.ag(this.ct_fld);
-			if (var3 == null) {
-				var3 = new kb(this.ct_fld, var2);
-				var1.au_fld.az(this.ct_fld, var3);
+	@Export("createChild")
+	@Override
+	public Widget createChild(int var1, int var2) {
+		if (!og.ci_fld.isClientThread()) {
+			if (!tf.$assertionsDisabled) {
+				throw new AssertionError("must be called on client thread");
+			} else {
+				throw new IllegalStateException("must be called on client thread");
 			}
-
-			return var3.ak();
 		} else {
-			return null;
+			return this.qs(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("cd")
+	@ObfuscatedName("wd")
 	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/widgets/Widget;)Llu;"
+		descriptor = "(Llu;)Z"
 	)
-	public lu setDragParent(Widget var1) {
-		this.ea_fld = (lu)var1;
+	public static boolean wd(lu var0) {
+		return 11 == var0.bx_fld || 12 == var0.bx_fld;
+	}
+
+	@ObfuscatedName("setChildren")
+	@ObfuscatedSignature(
+		descriptor = "([Lnet/runelite/api/widgets/Widget;)V"
+	)
+	@Export("setChildren")
+	@Override
+	public void setChildren(Widget[] var1) {
+		if (this.getType() != 0) {
+			throw new UnsupportedOperationException("children can only be set on type layer widgets");
+		} else if (this.by_fld != -1) {
+			throw new UnsupportedOperationException("only static widgets may have children");
+		} else {
+			this.ge_fld = (lu[])var1;
+		}
+	}
+
+	@ObfuscatedName("hf")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Llu;"
+	)
+	public lu setHidden(boolean var1) {
+		this.cf_fld = var1;
 		return this;
+	}
+
+	@ObfuscatedName("en")
+	@ObfuscatedSignature(
+		descriptor = "(II)V"
+	)
+	public void en(int var1, int var2) {
+		if (11 == this.bx_fld) {
+			if (this.hd_fld == null) {
+				this.bd(-487250190);
+			}
+
+			this.hd_fld.put(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("lh")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Llu;"
+	)
+	public lu setName(String var1) {
+		this.jo(var1.replace(' ', ' '));
+		return this;
+	}
+
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setOriginalHeight(int var1) {
+		this.ba_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("ym")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setContentType(int var1) {
+		this.bp_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("setForcedPosition")
+	@ObfuscatedSignature(
+		descriptor = "(II)V"
+	)
+	@Export("setForcedPosition")
+	@Override
+	public void setForcedPosition(int var1, int var2) {
+		this.wh_fld = (short)var1;
+		this.yp_fld = (short)var2;
+		this.setRelativeX(var1);
+		this.setRelativeY(var2);
+	}
+
+	@ObfuscatedName("nw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setSpriteId(int var1) {
+		this.cj_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(S)I"
+	)
+	public int bf(short var1) {
+		if (11 == this.bx_fld && this.hi_fld != null && null != this.he_fld && !this.he_fld.isEmpty()) {
+			String var2 = this.hi_fld.al();
+			return null != var2 && this.he_fld.containsKey(this.hi_fld.al()) ? (Integer)this.he_fld.get(var2) : -1;
+		} else {
+			return -1;
+		}
+	}
+
+	@ObfuscatedName("setOnKeyListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnKeyListener")
+	@Override
+	public void setOnKeyListener(Object[] var1) {
+		this.fu_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("setAction")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;)V"
+	)
+	@Export("setAction")
+	@Override
+	public void setAction(int var1, String var2) {
+		this.ai(var1, var2, 1385349242);
+	}
+
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Lde;)Lyv;"
+	)
+	yv cw(lw var1, de var2) {
+		if (null != this.ct_fld && var2 != null) {
+			kb var3 = (kb)(kb)var1.au_fld.ag(this.ct_fld);
+			if (var3 == null) {
+				var3 = new kb(this.ct_fld, var2);
+				var1.au_fld.az(this.ct_fld, var3);
+			}
+
+			return var3.ak();
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("ya")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setWidthMode(int var1) {
+		this.bi_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("setNoClickThrough")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	@Export("setNoClickThrough")
+	@Override
+	public void setNoClickThrough(boolean var1) {
+		this.hb_fld = var1;
+	}
+
+	@ObfuscatedName("getOriginalWidth")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalWidth")
+	@Override
+	public int getOriginalWidth() {
+		return this.bw_fld;
+	}
+
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Lde;)Lyv;"
+	)
+	yv cm(lw var1, de var2) {
+		if (null != this.ct_fld && var2 != null) {
+			kb var3 = (kb)(kb)var1.au_fld.ag(this.ct_fld);
+			if (var3 == null) {
+				var3 = new kb(this.ct_fld, var2);
+				var1.au_fld.az(this.ct_fld, var3);
+			}
+
+			return var3.ak();
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("setDragDeadTime")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setDragDeadTime")
+	@Override
+	public void setDragDeadTime(int var1) {
+		this.ey_fld = var1;
+	}
+
+	@ObfuscatedName("setFlippedHorizontally")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	@Export("setFlippedHorizontally")
+	@Override
+	public void setFlippedHorizontally(boolean var1) {
+		this.dt_fld = var1;
+	}
+
+	@ObfuscatedName("cb")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean cb() {
+		return this.dz_fld || this.dt_fld || 0 != this.dh_fld || this.dv_fld != 0;
 	}
 
 	@ObfuscatedName("ap")
@@ -4193,39 +4843,12 @@ public class lu extends vw implements Widget {
 		return var2;
 	}
 
-	@ObfuscatedName("getIndex")
+	@ObfuscatedName("lg")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Llu;)Z"
 	)
-	@Override
-	public int getIndex() {
-		return this.by_fld;
-	}
-
-	@ObfuscatedName("yy")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setOpacity(int var1) {
-		this.cb_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("ul")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu createChild(int var1) {
-		return this.qg(-1, var1);
-	}
-
-	@ObfuscatedName("setOnClickListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnClickListener(Object[] var1) {
-		this.ej_fld = (Object[])var1;
+	public static boolean lg(lu var0) {
+		return 11 == var0.bx_fld || 12 == var0.bx_fld;
 	}
 
 	@ObfuscatedName("ck")
@@ -4236,31 +4859,13 @@ public class lu extends vw implements Widget {
 		return this.dz_fld || this.dt_fld || 0 != this.dh_fld || -679869938 * this.dv_fld != 0;
 	}
 
-	@ObfuscatedName("getScrollY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getScrollY() {
-		return this.ce_fld;
-	}
-
-	@ObfuscatedName("getScrollHeight")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getScrollHeight() {
-		return this.cr_fld;
-	}
-
 	@ObfuscatedName("co")
 	@ObfuscatedSignature(
 		descriptor = "(Lyv;)V"
 	)
 	void co(yv var1) {
 		if (this.dz_fld) {
-			yv.zb(var1);
+			var1.aq();
 		}
 
 		if (this.dt_fld) {
@@ -4284,22 +4889,13 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("setOnTargetLeaveListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnTargetLeaveListener(Object[] var1) {
-		this.fc_fld = (Object[])var1;
-	}
-
 	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
 		descriptor = "(Lyv;)V"
 	)
 	void cu(yv var1) {
 		if (this.dz_fld) {
-			yv.zb(var1);
+			var1.aq();
 		}
 
 		if (this.dt_fld) {
@@ -4323,15 +4919,6 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("tu")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Llu;"
-	)
-	public lu setName(String var1) {
-		this.td(var1.replace(' ', ' '));
-		return this;
-	}
-
 	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;)Lzf;"
@@ -4345,7 +4932,43 @@ public class lu extends vw implements Widget {
 				if (null != var2) {
 					return var2;
 				} else {
-					var2 = dv.ae(var1.av_fld, var1.ae_fld, this.de_fld, 0);
+					var2 = dv.ae(var1.ae_fld, var1.ah_fld, this.de_fld, 0);
+					if (null != var2) {
+						var1.af_fld.az(var2, this.de_fld);
+					}
+
+					return var2;
+				}
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("setOnDialogAbortListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnDialogAbortListener")
+	@Override
+	public void setOnDialogAbortListener(Object[] var1) {
+		this.gn_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;)Lzf;"
+	)
+	public zf cj(lw var1) {
+		try {
+			if (this.de_fld == -1) {
+				return null;
+			} else {
+				zf var2 = (zf)var1.af_fld.ak(this.de_fld);
+				if (null != var2) {
+					return var2;
+				} else {
+					var2 = dv.ae(var1.ae_fld, var1.ah_fld, this.de_fld, 0);
 					if (null != var2) {
 						var1.af_fld.az(var2, this.de_fld);
 					}
@@ -4362,148 +4985,19 @@ public class lu extends vw implements Widget {
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getAnimationId")
 	@Override
 	public int getAnimationId() {
 		return this.dl_fld;
 	}
 
-	@ObfuscatedName("cj")
+	@ObfuscatedName("qz")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;)Lzf;"
+		descriptor = "(I)V"
 	)
-	public zf cj(lw var1) {
-		try {
-			if (this.de_fld == -1) {
-				return null;
-			} else {
-				zf var2 = (zf)var1.af_fld.ak(this.de_fld);
-				if (null != var2) {
-					return var2;
-				} else {
-					var2 = dv.ae(var1.av_fld, var1.ae_fld, this.de_fld, 0);
-					if (null != var2) {
-						var1.af_fld.az(var2, this.de_fld);
-					}
-
-					return var2;
-				}
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("ch")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;Lol;IZLlp;Lpp;Lpg;)Lfn;"
-	)
-	public fn ch(lw var1, ol var2, int var3, boolean var4, lp var5, pp var6, pg var7) {
-		try {
-			int var8;
-			int var9;
-			if (var4) {
-				var8 = this.do_fld;
-				var9 = this.dd_fld * 1942414419;
-			} else {
-				var8 = this.dm_fld;
-				var9 = this.dq_fld;
-			}
-
-			if (0 == var8) {
-				return null;
-			} else if (1 == var8 && var9 == -1) {
-				return null;
-			} else {
-				if (var7 != null && var7.ae_fld && 6 == var8) {
-					var8 = 3;
-				}
-
-				long var10 = (var8 << 16) + var9;
-				if (2 == var8 || 6 == var8) {
-					if (var6 == null) {
-						return null;
-					}
-
-					var10 = (var8 << 16) + var6.ca_fld;
-				}
-
-				if (null != var7) {
-					var10 |= var7.ak_fld << 20;
-				}
-
-				fn var12 = (fn)var1.ar_fld.ak(var10);
-				if (null == var12) {
-					eg var13 = null;
-					int var14 = 64;
-					int var15 = 768;
-					switch (var8) {
-						case 1:
-							var13 = eg.ak(var1.az_fld, var9, 0);
-							break;
-						case 2:
-							var13 = var6.ay(null, -1376378467);
-							break;
-						case 3:
-							var13 = null != var5 ? var5.af((byte)58) : null;
-							break;
-						case 4:
-							og var16 = kb.ag(var9, -1752383175);
-							var13 = var16.af(10, -1724242918);
-							var14 += var16.ee_fld;
-							var15 += var16.ek_fld;
-						case 5:
-						default:
-							break;
-						case 6:
-							var13 = var6.ay(var7, -1742166923);
-					}
-
-					if (null == var13) {
-						return null;
-					}
-
-					var12 = var13.bx(var14, var15, -50, -10, -50);
-					var1.ar_fld.az(var12, var10);
-				}
-
-				if (null != var2) {
-					var12 = var2.an(var12, var3, 1374814161);
-				}
-
-				return var12;
-			}
-		} catch (Throwable var18) {
-			throw new RuntimeException(var18);
-		}
-	}
-
-	@ObfuscatedName("getItemId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getItemId() {
-		return this.ga_fld;
-	}
-
-	@ObfuscatedName("getItemQuantityMode")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getItemQuantityMode() {
-		return this.df_fld;
-	}
-
-	@ObfuscatedName("fk")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Ljava/lang/String;I)I"
-	)
-	public static int fk(lu var0, String var1, int var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return 11 == var0.bx_fld && var0.hi_fld != null && qz(var0, 297822854) ? var0.hi_fld.aw(var1) : -1;
+	public void qz(int var1) {
+		if (this.yp_fld > -1) {
+			this.setRelativeY(this.yp_fld);
 		}
 	}
 
@@ -4552,31 +5046,31 @@ public class lu extends vw implements Widget {
 					int var15 = 768;
 					switch (var8) {
 						case 1:
-							var13 = eg.ak(var1.az_fld, var9, 0);
+							var13 = eg.ak(var1.av_fld, var9, 0);
 							break;
 						case 2:
-							var13 = var6.ay(null, -1225350609);
+							var13 = pp.tv(var6, null, -1225350609);
 							break;
 						case 3:
 							var13 = null != var5 ? var5.af((byte)39) : null;
 							break;
 						case 4:
 							og var16 = kb.ag(var9, -1752383175);
-							var13 = var16.af(10, 1965776228);
+							var13 = og.fn(var16, 10);
 							var14 += var16.ee_fld;
 							var15 += var16.ek_fld;
 						case 5:
 						default:
 							break;
 						case 6:
-							var13 = var6.ay(var7, -1460889653);
+							var13 = pp.tv(var6, var7, -1460889653);
 					}
 
 					if (null == var13) {
 						return null;
 					}
 
-					var12 = var13.bx(var14, var15, -50, -10, -50);
+					var12 = eg.et(var13, var14, var15, -50, -10, -50);
 					var1.ar_fld.az(var12, var10);
 				}
 
@@ -4600,6 +5094,80 @@ public class lu extends vw implements Widget {
 			this.hi_fld = new ma();
 			this.hi_fld.aq(var1, var2);
 		}
+	}
+
+	@ObfuscatedName("qv")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llw;ZI)Lkp;"
+	)
+	public static kp qv(lu var0, lw var1, boolean var2, int var3) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var0.ch_fld == -1) {
+				var2 = false;
+			}
+
+			int var4 = var2 ? var0.ch_fld : var0.cj_fld;
+			if (-1 == var4) {
+				return null;
+			} else {
+				long var5 = ((long)var0.dv_fld << 40) + ((var0.dt_fld ? 1L : 0L) << 39) + ((var0.dz_fld ? 1L : 0L) << 38) + var4 + ((long)var0.dh_fld << 36);
+				kp var7 = (kp)var1.al_fld.ak(var5);
+				if (var7 != null) {
+					return var7;
+				} else {
+					yv var8 = var0.as(var1, var2, null, -423043034);
+					if (var8 == null) {
+						return null;
+					} else {
+						yv var9 = yv.vo(var8);
+						int[] var10 = new int[var9.ay_fld];
+						int[] var11 = new int[var9.ay_fld];
+
+						for (int var12 = 0; var12 < var9.ay_fld; var12++) {
+							int var13 = 0;
+							int var14 = var9.aw_fld;
+
+							for (int var15 = 0; var15 < var9.aw_fld; var15++) {
+								if (0 == var9.ah_fld[var12 * var9.aw_fld + var15]) {
+									var13 = var15;
+									break;
+								}
+							}
+
+							for (int var18 = var9.aw_fld - 1; var18 >= var13; var18--) {
+								if (0 == var9.ah_fld[var18 + var12 * var9.aw_fld]) {
+									var14 = var18 + 1;
+									break;
+								}
+							}
+
+							var10[var12] = var13;
+							var11[var12] = var14 - var13;
+						}
+
+						var7 = new kp(var9.aw_fld, var9.ay_fld, var11, var10, var4);
+						var1.al_fld.az(var7, var5);
+						return var7;
+					}
+				}
+			}
+		} catch (Throwable var16) {
+			throw new RuntimeException(var16);
+		}
+	}
+
+	@ObfuscatedName("setTargetVerb")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	@Export("setTargetVerb")
+	@Override
+	public void setTargetVerb(String var1) {
+		this.el_fld = var1;
 	}
 
 	@ObfuscatedName("dc")
@@ -4647,31 +5215,31 @@ public class lu extends vw implements Widget {
 					int var15 = 768;
 					switch (var8) {
 						case 1:
-							var13 = eg.ak(var1.az_fld, var9, 0);
+							var13 = eg.ak(var1.av_fld, var9, 0);
 							break;
 						case 2:
-							var13 = var6.ay(null, -1368018730);
+							var13 = pp.tv(var6, null, -1368018730);
 							break;
 						case 3:
 							var13 = null != var5 ? var5.af((byte)118) : null;
 							break;
 						case 4:
 							og var16 = kb.ag(var9, -1752383175);
-							var13 = var16.af(10, 1970719006);
+							var13 = og.fn(var16, 10);
 							var14 += var16.ee_fld;
 							var15 += var16.ek_fld;
 						case 5:
 						default:
 							break;
 						case 6:
-							var13 = var6.ay(var7, -2094152470);
+							var13 = pp.tv(var6, var7, -2094152470);
 					}
 
 					if (null == var13) {
 						return null;
 					}
 
-					var12 = var13.bx(var14, var15, -1350575517, -10, -50);
+					var12 = eg.et(var13, var14, var15, -1350575517, -10, -50);
 					var1.ar_fld.az(var12, var10);
 				}
 
@@ -4686,69 +5254,21 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("cr")
+	@ObfuscatedName("getRotationY")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;)Lyv;"
+		descriptor = "()I"
 	)
-	yv cr(lw var1, de var2) {
-		if (!this.al(320097083)) {
-			return this.af(var1, var2, (byte)0);
-		} else {
-			String var3 = this.ct_fld + (this.dz_fld ? 1 : 0) + (this.dt_fld ? 1 : 0) + -1186621155 * this.dh_fld + 1236978456 * this.dv_fld;
-			yv var4 = (yv)(yv)var1.ax_fld.ag(var3);
-			if (null == var4) {
-				yv var5 = this.af(var1, var2, (byte)0);
-				if (var5 != null) {
-					var4 = var5.al();
-					pr(this, var4, -268730796);
-					var1.ax_fld.az(var3, var4);
-				}
-			}
-
-			return var4;
-		}
-	}
-
-	@ObfuscatedName("jj")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Llu;"
-	)
-	public lu setHasListener(boolean var1) {
-		this.eh_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("getOnInvTransmitListener")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
-	)
+	@Export("getRotationY")
 	@Override
-	public Object[] getOnInvTransmitListener() {
-		return (Object[])this.fe_fld;
+	public int getRotationY() {
+		return this.du_fld;
 	}
 
-	@ObfuscatedName("gz")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Llu;"
-	)
-	public lu setFilled(boolean var1) {
-		this.cz_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("is")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void is(int var1) {
-		this.wj_fld = var1;
-	}
-
-	@ObfuscatedName("dv")
+	@ObfuscatedName("dz")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;Z)Lkp;"
 	)
-	public kp dv(lw var1, boolean var2) {
+	public kp dz(lw var1, boolean var2) {
 		try {
 			if (this.ch_fld == -1) {
 				var2 = false;
@@ -4763,11 +5283,11 @@ public class lu extends vw implements Widget {
 				if (var6 != null) {
 					return var6;
 				} else {
-					yv var7 = ef(this, var1, var2, null, -423043034);
+					yv var7 = this.as(var1, var2, null, -423043034);
 					if (var7 == null) {
 						return null;
 					} else {
-						yv var8 = yv.wo(var7);
+						yv var8 = yv.vo(var7);
 						int[] var9 = new int[var8.ay_fld];
 						int[] var10 = new int[var8.ay_fld];
 
@@ -4804,241 +5324,45 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("setOnDragListener")
+	@ObfuscatedName("getItemId")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
+		descriptor = "()I"
 	)
+	@Export("getItemId")
 	@Override
-	public void setOnDragListener(Object[] var1) {
-		this.fj_fld = (Object[])var1;
+	public int getItemId() {
+		return this.ga_fld;
 	}
 
-	@ObfuscatedName("jv")
+	@ObfuscatedName("revalidateScroll")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;Lxi;)V"
+		descriptor = "()V"
 	)
-	public static void jv(lu var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.bj_fld = false;
-		var0.bx_fld = var1.cg();
-		var0.bo_fld = var1.cg();
-		var0.bp_fld = xi.tx(var1, 994766852) * 1974271862;
-		var0.bn_fld = var1.cz();
-		var0.bc_fld = var1.cz() * 2026791513;
-		var0.bw_fld = xi.tx(var1, 740736679);
-		var0.ba_fld = xi.tx(var1, 1468309955) * -227866188;
-		var0.cb_fld = var1.cg() * 1231864795;
-		var0.cv_fld = xi.tx(var1, 2073648740) * 1288719269;
-		if (var0.cv_fld == 65535) {
-			var0.cv_fld = -1995802935;
-		} else {
-			var0.cv_fld = ((var0.bf_fld & -1997328292) + var0.cv_fld) * 1336580762;
-		}
-
-		var0.gk_fld = xi.tx(var1, 1583808459) * -1318914841;
-		if (var0.gk_fld == 2027538977) {
-			var0.gk_fld = 26740389;
-		}
-
-		int var2 = var1.cg();
-		if (var2 > 0) {
-			var0.gp_fld = new int[var2];
-			var0.gv_fld = new int[var2];
-
-			for (int var3 = 0; var3 < var2; var3++) {
-				var0.gp_fld[var3] = var1.cg();
-				var0.gv_fld[var3] = xi.tx(var1, 1696137390);
-			}
-		}
-
-		int var7 = var1.cg();
-		if (var7 > 0) {
-			var0.gu_fld = new int[var7][];
-
-			for (int var4 = 0; var4 < var7; var4++) {
-				int var5 = xi.tx(var1, 730117317);
-				var0.gu_fld[var4] = new int[var5];
-
-				for (int var6 = 0; var6 < var5; var6++) {
-					var0.gu_fld[var4][var6] = xi.tx(var1, 506032836);
-					if (var0.gu_fld[var4][var6] == 1201234438) {
-						var0.gu_fld[var4][var6] = -1;
-					}
-				}
-			}
-		}
-
-		if (0 == var0.bx_fld) {
-			var0.cr_fld = xi.tx(var1, 1951737005);
-			var0.cf_fld = var1.cg() == 1;
-		}
-
-		if (1 == var0.bx_fld) {
-			xi.tx(var1, 1009689863);
-			var1.cg();
-		}
-
-		if (3 == var0.bx_fld) {
-			var0.cz_fld = var1.cg() == 1;
-		}
-
-		if (var0.bx_fld == 4 || 1 == var0.bx_fld) {
-			var0.ep_fld = var1.cg() * 962627214;
-			var0.eb_fld = var1.cg() * 72253439;
-			var0.es_fld = var1.cg() * 1094656221;
-			var0.de_fld = xi.tx(var1, 1783227053);
-			if (65535 == var0.de_fld) {
-				var0.de_fld = 1883807713;
-			}
-
-			var0.ed_fld = var1.cg() == 1;
-		}
-
-		if (var0.bx_fld == 4) {
-			var0.dp_fld = xi.kc(var1, -851276072);
-			var0.dj_fld = xi.kc(var1, -362622819);
-		}
-
-		if (var0.bx_fld == 1 || 3 == var0.bx_fld || var0.bx_fld == 4) {
-			var0.ca_fld = var1.co();
-		}
-
-		if (3 == var0.bx_fld || 4 == var0.bx_fld) {
-			var0.cg_fld = var1.co() * -1431161919;
-			var0.cw_fld = var1.co() * -278183800;
-			var0.cm_fld = var1.co();
-		}
-
-		if (5 == var0.bx_fld) {
-			var0.cj_fld = var1.co();
-			var0.ch_fld = var1.co() * -395997907;
-		}
-
-		if (var0.bx_fld == 6) {
-			var0.dm_fld = -1800825853;
-			var0.do_fld = 571206572;
-			var0.dq_fld = var1.dl(wa.ak_fld.az_fld) * -1727287075;
-			var0.dd_fld = var1.dl(wa.ak_fld.az_fld) * 1259669067;
-			var0.dl_fld = xi.tx(var1, 412706458) * -2035712846;
-			if (65535 == var0.dl_fld) {
-				var0.dl_fld = -229266474;
-			}
-
-			var0.dr_fld = xi.tx(var1, 1450336648);
-			if (var0.dr_fld == 744709241) {
-				var0.dr_fld = 37770411;
-			}
-
-			var0.db_fld = xi.tx(var1, 547005988);
-			var0.dx_fld = xi.tx(var1, 1799140741);
-			var0.ds_fld = xi.tx(var1, 1725359588);
-		}
-
-		if (var0.bx_fld == 8) {
-			var0.dp_fld = xi.kc(var1, 430089749);
-		}
-
-		if (2 == var0.bo_fld) {
-			var0.el_fld = xi.kc(var1, 1371489653);
-			var0.gi_fld = xi.kc(var1, -749163782);
-			int var8 = xi.tx(var1, 1555794515) & 178765744;
-			var0.ec_fld = -394576144 * (var0.ec_fld | var8 << 11);
-		}
-
-		if (var0.bo_fld == 1 || 4 == var0.bo_fld || var0.bo_fld == 5 || var0.bo_fld == 6) {
-			var0.gq_fld = xi.kc(var1, -1442016386);
-			if (var0.gq_fld.isEmpty()) {
-				if (1 == var0.bo_fld) {
-					var0.gq_fld = kh.ab_fld;
-				}
-
-				if (4 == var0.bo_fld) {
-					var0.gq_fld = kh.ap_fld;
-				}
-
-				if (5 == var0.bo_fld) {
-					var0.gq_fld = kh.ap_fld;
-				}
-
-				if (6 == var0.bo_fld) {
-					var0.gq_fld = kh.at_fld;
-				}
-			}
-		}
-
-		if (1 == var0.bo_fld || var0.bo_fld == 4 || 5 == var0.bo_fld) {
-			var0.ec_fld = -950189223 * (var0.ec_fld | -331491562);
-		}
-
-		if (6 == var0.bo_fld) {
-			var0.ec_fld = -427477287 * (var0.ec_fld | 1);
-		}
-	}
-
-	@ObfuscatedName("em")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;S)I"
-	)
-	public static int em(lu var0, short var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (11 == var0.bx_fld && var0.hi_fld != null && null != var0.hd_fld && !var0.hd_fld.isEmpty()) {
-			String var2 = var0.hi_fld.al();
-			return null != var2 && var0.hd_fld.containsKey(var0.hi_fld.al()) ? (Integer)var0.hd_fld.get(var2) : -1;
-		} else {
-			return -1;
-		}
-	}
-
-	@ObfuscatedName("gf")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)[I"
-	)
-	public static int[] gf(lu var0) {
-		if (var0.bx_fld == 11 && var0.hi_fld != null) {
-			int[] var1 = new int[3];
-			int var2 = 0;
-			Iterator var3 = var0.hi_fld.ar().iterator();
-
-			while (var3.hasNext()) {
-				mu var4 = (mu)(mu)var3.next();
-				if (!mu.mw(var4, (byte)1).equals("user_id")) {
-					if (var4.ak((byte)-42) != 0) {
-						return null;
-					}
-
-					var1[var2++] = var4.ag((byte)-80);
-					if (var2 > 3) {
-						return null;
-					}
-				}
-			}
-
-			return var1;
-		} else {
-			return null;
-		}
-	}
-
-	@ObfuscatedName("getOnVarTransmitListener")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
-	)
+	@Export("revalidateScroll")
 	@Override
-	public Object[] getOnVarTransmitListener() {
-		return (Object[])this.fh_fld;
+	public void revalidateScroll() {
+		try {
+			if (!og.ci_fld.isClientThread()) {
+				if (!tf.$assertionsDisabled) {
+					throw new AssertionError("must be called on client thread");
+				} else {
+					throw new IllegalStateException("must be called on client thread");
+				}
+			} else {
+				this.revalidate();
+				client.jm(cf.cg_fld.aw_fld[WidgetUtil.componentToInterface(this.getId())], this, false, cf.cg_fld, client.cz_fld);
+			}
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
 	}
 
-	@ObfuscatedName("qx")
+	@ObfuscatedName("ud")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "()[I"
 	)
-	public lu setLineHeight(int var1) {
-		this.es_fld = var1;
-		return this;
+	public int[] ud() {
+		return this.gf_fld;
 	}
 
 	@ObfuscatedName("de")
@@ -5066,11 +5390,11 @@ public class lu extends vw implements Widget {
 		this.hl_fld++;
 	}
 
-	@ObfuscatedName("dt")
+	@ObfuscatedName("cr")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;Z)Lkp;"
 	)
-	public kp dt(lw var1, boolean var2) {
+	public kp cr(lw var1, boolean var2) {
 		try {
 			if (this.ch_fld == -1) {
 				var2 = false;
@@ -5085,11 +5409,11 @@ public class lu extends vw implements Widget {
 				if (var6 != null) {
 					return var6;
 				} else {
-					yv var7 = ef(this, var1, var2, null, -423043034);
+					yv var7 = this.as(var1, var2, null, -423043034);
 					if (var7 == null) {
 						return null;
 					} else {
-						yv var8 = yv.wo(var7);
+						yv var8 = yv.vo(var7);
 						int[] var9 = new int[var8.ay_fld];
 						int[] var10 = new int[var8.ay_fld];
 
@@ -5126,70 +5450,42 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("fp")
+	@ObfuscatedName("getTargetVerb")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "()Ljava/lang/String;"
 	)
-	public int[] fp() {
-		if (this.bx_fld == 11 && this.hi_fld != null) {
-			int[] var1 = new int[3];
-			int var2 = 0;
-			Iterator var3 = this.hi_fld.ar().iterator();
-
-			while (var3.hasNext()) {
-				mu var4 = (mu)(mu)var3.next();
-				if (!mu.mw(var4, (byte)1).equals("user_id")) {
-					if (var4.ak((byte)9) != 0) {
-						return null;
-					}
-
-					var1[var2++] = var4.ag((byte)-20);
-					if (var2 > 3) {
-						return null;
-					}
-				}
-			}
-
-			return var1;
-		} else {
-			return null;
-		}
-	}
-
-	@ObfuscatedName("dq")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)V"
-	)
-	public void dq(int var1, String var2) {
-		if (null == this.ei_fld || this.ei_fld.length <= var1) {
-			String[] var3 = new String[var1 + 1];
-			if (this.ei_fld != null) {
-				for (int var4 = 0; var4 < this.ei_fld.length; var4++) {
-					var3[var4] = this.ei_fld[var4];
-				}
-			}
-
-			this.ei_fld = var3;
-		}
-
-		this.ei_fld[var1] = var2;
-	}
-
-	@ObfuscatedName("setFlippedHorizontally")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
+	@Export("getTargetVerb")
 	@Override
-	public void setFlippedHorizontally(boolean var1) {
-		this.dt_fld = var1;
+	public String getTargetVerb() {
+		return this.el_fld;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("getRelativeX")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)Z"
+		descriptor = "()I"
 	)
-	public static boolean am(lu var0) {
-		return var0.dz_fld || var0.dt_fld || 0 != var0.dh_fld || var0.dv_fld != 0;
+	@Export("getRelativeX")
+	@Override
+	public int getRelativeX() {
+		return this.bq_fld;
+	}
+
+	@ObfuscatedName("lu")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setScrollHeight(int var1) {
+		this.cr_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("lp")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Llu;"
+	)
+	public lu setFilled(boolean var1) {
+		this.cz_fld = var1;
+		return this;
 	}
 
 	@ObfuscatedName("do")
@@ -5211,22 +5507,41 @@ public class lu extends vw implements Widget {
 		this.ei_fld[var1] = var2;
 	}
 
-	@ObfuscatedName("getXPositionMode")
+	@ObfuscatedName("setRelativeY")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)V"
 	)
+	@Export("setRelativeY")
 	@Override
-	public int getXPositionMode() {
-		return this.bt_fld;
+	public void setRelativeY(int var1) {
+		this.bg_fld = var1;
 	}
 
-	@ObfuscatedName("no")
+	@ObfuscatedName("dq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "(ILjava/lang/String;)V"
 	)
-	public lu setYTextAlignment(int var1) {
-		this.eb_fld = var1;
-		return this;
+	public void dq(int var1, String var2) {
+		if (null == this.ei_fld || this.ei_fld.length <= var1) {
+			String[] var3 = new String[var1 + 1];
+			if (this.ei_fld != null) {
+				for (int var4 = 0; var4 < this.ei_fld.length; var4++) {
+					var3[var4] = this.ei_fld[var4];
+				}
+			}
+
+			this.ei_fld = var3;
+		}
+
+		this.ei_fld[var1] = var2;
+	}
+
+	@ObfuscatedName("ea")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean ea() {
+		return !this.bj_fld || 0 == this.bx_fld || this.bx_fld == 11 || this.eh_fld || -1182342613 == this.bp_fld || this.bx_fld == 12;
 	}
 
 	@ObfuscatedName("dl")
@@ -5234,31 +5549,89 @@ public class lu extends vw implements Widget {
 		descriptor = "()Z"
 	)
 	public boolean dl() {
-		return !this.bj_fld || 0 == this.bx_fld || this.bx_fld == 11 || this.eh_fld || -1182342613 == this.bp_fld || this.bx_fld == 12;
-	}
-
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean ei() {
 		return this.hn_fld == 2;
 	}
 
-	@ObfuscatedName("dk")
+	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Llw;Z)Lkp;"
 	)
-	public boolean dk() {
-		return 11 == this.bx_fld || 12 == this.bx_fld;
+	public kp dt(lw var1, boolean var2) {
+		try {
+			if (this.ch_fld == -1) {
+				var2 = false;
+			}
+
+			int var3 = var2 ? this.ch_fld * -397786198 : this.cj_fld;
+			if (-1 == var3) {
+				return null;
+			} else {
+				long var4 = ((long)this.dv_fld << 735178423)
+					+ ((this.dt_fld ? 1L : 0L) << 384065631)
+					+ ((this.dz_fld ? 1L : 0L) << 38)
+					+ var3
+					+ ((long)(1261731204 * this.dh_fld) << 36);
+				kp var6 = (kp)var1.al_fld.ak(var4);
+				if (var6 != null) {
+					return var6;
+				} else {
+					yv var7 = this.as(var1, var2, null, -423043034);
+					if (var7 == null) {
+						return null;
+					} else {
+						yv var8 = yv.vo(var7);
+						int[] var9 = new int[var8.ay_fld];
+						int[] var10 = new int[var8.ay_fld];
+
+						for (int var11 = 0; var11 < var8.ay_fld; var11++) {
+							int var12 = 0;
+							int var13 = var8.aw_fld;
+
+							for (int var14 = 0; var14 < var8.aw_fld; var14++) {
+								if (0 == var8.ah_fld[var11 * var8.aw_fld + var14]) {
+									var12 = var14;
+									break;
+								}
+							}
+
+							for (int var18 = var8.aw_fld - 1; var18 >= var12; var18--) {
+								if (0 == var8.ah_fld[var18 + var11 * var8.aw_fld]) {
+									var13 = var18 + 1;
+									break;
+								}
+							}
+
+							var9[var11] = var12;
+							var10[var11] = var13 - var12;
+						}
+
+						var6 = new kp(var8.aw_fld, var8.ay_fld, var10, var9, var3);
+						var1.al_fld.az(var6, var4);
+						return var6;
+					}
+				}
+			}
+		} catch (Throwable var16) {
+			throw new RuntimeException(var16);
+		}
 	}
 
-	@ObfuscatedName("ns")
+	@ObfuscatedName("setOnMouseOverListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnMouseOverListener")
+	@Override
+	public void setOnMouseOverListener(Object[] var1) {
+		this.fp_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("tm")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setModelId(int var1) {
-		this.dq_fld = var1;
+	public lu setOriginalX(int var1) {
+		this.bn_fld = var1;
 		return this;
 	}
 
@@ -5276,84 +5649,59 @@ public class lu extends vw implements Widget {
 		return var2;
 	}
 
-	@ObfuscatedName("getTargetPriority")
+	@ObfuscatedName("getHeight")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getHeight")
 	@Override
-	public int getTargetPriority() {
-		return this.ek_fld;
+	public int getHeight() {
+		return this.cd_fld;
 	}
 
-	@ObfuscatedName("getContentType")
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setModelZoom(int var1) {
+		this.db_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("getOpacity")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getOpacity")
 	@Override
-	public int getContentType() {
-		return this.bp_fld;
+	public int getOpacity() {
+		return this.cb_fld;
 	}
 
-	@ObfuscatedName("db")
+	@ObfuscatedName("isFlippedHorizontally")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "()Z"
 	)
-	public int db(int var1, int var2) {
-		for (int var3 = 0; var3 < this.hl_fld; var3++) {
-			if (this.hs_fld[var3] == var1) {
-				return (Integer)this.hq_fld[var3];
-			}
-		}
-
-		return var2;
+	@Export("isFlippedHorizontally")
+	@Override
+	public boolean isFlippedHorizontally() {
+		return this.dt_fld;
 	}
 
-	@ObfuscatedName("dg")
+	@ObfuscatedName("dh")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(Llw;Lol;IZLlp;Lpp;Lpg;)Lfn;"
 	)
-	public int dg(int var1, int var2) {
-		for (int var3 = 0; var3 < this.hl_fld; var3++) {
-			if (this.hs_fld[var3] == var1) {
-				return (Integer)this.hq_fld[var3];
-			}
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int dw(int var1, int var2) {
-		for (int var3 = 0; var3 < this.hl_fld; var3++) {
-			if (this.hs_fld[var3] == var1) {
-				return (Integer)this.hq_fld[var3];
-			}
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("vw")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;Lol;IZLlp;Lpp;Lpg;)Lfn;"
-	)
-	public static fn vw(lu var0, lw var1, ol var2, int var3, boolean var4, lp var5, pp var6, pg var7) throws EOFException {
+	public fn dh(lw var1, ol var2, int var3, boolean var4, lp var5, pp var6, pg var7) {
 		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
 			int var8;
 			int var9;
 			if (var4) {
-				var8 = var0.do_fld;
-				var9 = var0.dd_fld;
+				var8 = this.do_fld;
+				var9 = this.dd_fld;
 			} else {
-				var8 = -1327120964 * var0.dm_fld;
-				var9 = var0.dq_fld;
+				var8 = -1327120964 * this.dm_fld;
+				var9 = this.dq_fld;
 			}
 
 			if (0 == var8) {
@@ -5385,31 +5733,31 @@ public class lu extends vw implements Widget {
 					int var15 = 768;
 					switch (var8) {
 						case 1:
-							var13 = eg.ak(var1.az_fld, var9, 0);
+							var13 = eg.ak(var1.av_fld, var9, 0);
 							break;
 						case 2:
-							var13 = var6.ay(null, -1182492629);
+							var13 = pp.tv(var6, null, -1182492629);
 							break;
 						case 3:
 							var13 = null != var5 ? var5.af((byte)68) : null;
 							break;
 						case 4:
 							og var16 = kb.ag(var9, -1752383175);
-							var13 = var16.af(10, -1685036559);
+							var13 = og.fn(var16, 10);
 							var14 += var16.ee_fld;
 							var15 += var16.ek_fld;
 						case 5:
 						default:
 							break;
 						case 6:
-							var13 = var6.ay(var7, -1786042404);
+							var13 = pp.tv(var6, var7, -1786042404);
 					}
 
 					if (null == var13) {
 						return null;
 					}
 
-					var12 = var13.bx(var14, var15, 1082413838, -1810226375, -2111060588);
+					var12 = eg.et(var13, var14, var15, 1082413838, -1810226375, -2111060588);
 					var1.ar_fld.az(var12, var10);
 				}
 
@@ -5424,11 +5772,173 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("cm")
+	@ObfuscatedName("setOnTargetLeaveListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnTargetLeaveListener")
+	@Override
+	public void setOnTargetLeaveListener(Object[] var1) {
+		this.fc_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("setWidth")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setWidth")
+	@Override
+	public void setWidth(int var1) {
+		this.bb_fld = var1;
+	}
+
+	@ObfuscatedName("db")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int db(int var1, int var2) {
+		for (int var3 = 0; var3 < this.hl_fld; var3++) {
+			if (this.hs_fld[var3] == var1) {
+				return (Integer)this.hq_fld[var3];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("setOnMouseLeaveListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnMouseLeaveListener")
+	@Override
+	public void setOnMouseLeaveListener(Object[] var1) {
+		this.fv_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("setOnMouseRepeatListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnMouseRepeatListener")
+	@Override
+	public void setOnMouseRepeatListener(Object[] var1) {
+		this.fx_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("qs")
+	@ObfuscatedSignature(
+		descriptor = "(II)Llu;"
+	)
+	public lu qs(int var1, int var2) {
+		if (!og.ci_fld.isClientThread()) {
+			if (!tf.$assertionsDisabled) {
+				throw new AssertionError("must be called on client thread");
+			} else {
+				throw new IllegalStateException("must be called on client thread");
+			}
+		} else if (this.getType() != 0) {
+			throw new UnsupportedOperationException("children can only be created on type layer widgets");
+		} else {
+			lu var3 = new lu();
+			var3.setType(var2);
+			var3.cv_fld = var3.bf_fld = this.bf_fld;
+			var3.cy_fld = this.by_fld;
+			var3.jt(true);
+			lu var4 = og.ci_fld.getWidget(this.bf_fld);
+			if (!yr_fld && var4 != this && this.by_fld == -1) {
+				throw new AssertionError();
+			} else {
+				lu[] var5 = var4.ge_fld;
+				if (var1 < 0) {
+					if (var5 == null) {
+						var1 = 0;
+					} else {
+						var1 = 0;
+
+						for (int var6 = var5.length - 1; var6 >= 0; var6--) {
+							if (var5[var6] != null) {
+								var1 = var6 + 1;
+								break;
+							}
+						}
+					}
+				}
+
+				if (var5 == null) {
+					var5 = new lu[var1 + 1];
+					var4.ge_fld = var5;
+				} else if (var5.length <= var1) {
+					lu[] var7 = new lu[var1 + 1];
+					System.arraycopy(var5, 0, var7, 0, var5.length);
+					var5 = var7;
+					var4.ge_fld = var7;
+				}
+
+				var5[var1] = var3;
+				var3.by_fld = var1;
+				if (this.by_fld > -1) {
+					if (!yr_fld && this.getType() != 0) {
+						throw new AssertionError();
+					}
+
+					if (var1 > this.cs_fld) {
+						this.cs_fld = var1;
+					}
+
+					if (var1 < this.cx_fld) {
+						this.cx_fld = var1;
+					}
+				}
+
+				return var3;
+			}
+		}
+	}
+
+	@ObfuscatedName("dg")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int dg(int var1, int var2) {
+		for (int var3 = 0; var3 < this.hl_fld; var3++) {
+			if (this.hs_fld[var3] == var1) {
+				return (Integer)this.hq_fld[var3];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("getOriginalX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalX")
+	@Override
+	public int getOriginalX() {
+		return this.bn_fld;
+	}
+
+	@ObfuscatedName("dw")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int dw(int var1, int var2) {
+		for (int var3 = 0; var3 < this.hl_fld; var3++) {
+			if (this.hs_fld[var3] == var1) {
+				return (Integer)this.hq_fld[var3];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;Lde;)Lyv;"
 	)
-	yv cm(lw var1, de var2) {
+	yv cg(lw var1, de var2) {
 		if (!this.al(1198270595)) {
 			return this.af(var1, var2, (byte)0);
 		} else {
@@ -5438,7 +5948,7 @@ public class lu extends vw implements Widget {
 				yv var5 = this.af(var1, var2, (byte)0);
 				if (var5 != null) {
 					var4 = var5.al();
-					pr(this, var4, -135145051);
+					mg(this, var4, -135145051);
 					var1.ax_fld.az(var3, var4);
 				}
 			}
@@ -5447,46 +5957,19 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("qw")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void qw(int var1) {
-		this.pv_fld = var1;
-	}
-
-	@ObfuscatedName("getWidth")
+	@ObfuscatedName("getDragDeadZone")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getDragDeadZone")
 	@Override
-	public int getWidth() {
-		return this.bb_fld;
-	}
-
-	@ObfuscatedName("getId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getId() {
-		return this.bf_fld;
-	}
-
-	@ObfuscatedName("setRelativeX")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setRelativeX(int var1) {
-		this.bq_fld = var1;
+	public int getDragDeadZone() {
+		return this.ev_fld;
 	}
 
 	public lu() {
-		this.wj_fld = -1;
-		this.pv_fld = -1;
-		this.sw_fld = -1;
-		this.wk_fld = -1;
+		this.wh_fld = -1;
+		this.yp_fld = -1;
 		this.bj_fld = false;
 		this.bf_fld = -190642465;
 		this.by_fld = -2083432487;
@@ -5501,9 +5984,9 @@ public class lu extends vw implements Widget {
 		this.bw_fld = 0;
 		this.ba_fld = 0;
 		this.bq_fld = 0;
-		this.vl(-1);
+		this.ik(-1);
 		this.bg_fld = 0;
-		this.zd(-1);
+		this.qz(-1);
 		this.bb_fld = 0;
 		this.cd_fld = 0;
 		this.cc_fld = 1315110045;
@@ -5586,34 +6069,13 @@ public class lu extends vw implements Widget {
 		this.hn_fld = 510430013;
 	}
 
-	@ObfuscatedName("getStaticChildren")
+	@ObfuscatedName("zn")
 	@ObfuscatedSignature(
-		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
+		descriptor = "(I)Llu;"
 	)
-	@Override
-	public Widget[] getStaticChildren() {
-		if (this.by_fld > -1) {
-			return new Widget[0];
-		} else {
-			ArrayList var1 = new ArrayList();
-
-			for (lu var5 : og.ci_fld.tg(WidgetUtil.componentToInterface(this.bf_fld))) {
-				if (var5 != null && var5.cv_fld == this.bf_fld) {
-					var1.add(var5);
-				}
-			}
-
-			return (Widget[])(Widget[])var1.toArray(new lu[0]);
-		}
-	}
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		return this.qz().replace(' ', ' ');
+	public lu setItemQuantity(int var1) {
+		this.gd_fld = var1;
+		return this;
 	}
 
 	@ObfuscatedName("bp")
@@ -5623,7 +6085,7 @@ public class lu extends vw implements Widget {
 	void bp(lw var1, int var2) {
 		this.hb_fld = true;
 		ArrayList var3 = this.hi_fld.as();
-		ArrayList var4 = ma.ck(this.hi_fld, 1083306836);
+		ArrayList var4 = this.hi_fld.ar();
 		int var5 = var3.size() + var4.size();
 		this.ge_fld = new lu[var5];
 		int var6 = 0;
@@ -5644,58 +6106,10 @@ public class lu extends vw implements Widget {
 			mr var12 = (mr)(mr)var7.next();
 			lu var13 = is.ak(4, this, var6, 0, 0, 0, 0, var12.ae_fld);
 			var13.dp_fld = var12.av_fld;
-			var13.de_fld = (Integer)this.he_fld.get(var12.ay_fld);
+			var13.de_fld = (Integer)this.hd_fld.get(var12.ay_fld);
 			var13.ep_fld = var12.ah_fld * 224036757;
 			var13.eb_fld = 992230371 * var12.aw_fld;
 			this.ge_fld[var6++] = var13;
-		}
-	}
-
-	@ObfuscatedName("getCanvasLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getCanvasLocation() {
-		return new Point(this.wj_fld, this.pv_fld);
-	}
-
-	@ObfuscatedName("getRotationX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRotationX() {
-		return this.dx_fld;
-	}
-
-	@ObfuscatedName("mk")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)[I"
-	)
-	public static int[] mk(lu var0) {
-		if (var0.bx_fld == 11 && var0.hi_fld != null) {
-			int[] var1 = new int[3];
-			int var2 = 0;
-			Iterator var3 = var0.hi_fld.ar().iterator();
-
-			while (var3.hasNext()) {
-				mu var4 = (mu)(mu)var3.next();
-				if (!mu.mw(var4, (byte)1).equals("user_id")) {
-					if (var4.ak((byte)50) != 0) {
-						return null;
-					}
-
-					var1[var2++] = var4.ag((byte)-97);
-					if (var2 > 3) {
-						return null;
-					}
-				}
-			}
-
-			return var1;
-		} else {
-			return null;
 		}
 	}
 
@@ -5724,55 +6138,22 @@ public class lu extends vw implements Widget {
 		this.hl_fld++;
 	}
 
-	@ObfuscatedName("dr")
+	@ObfuscatedName("ei")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean dr() {
+	public boolean ei() {
 		return !this.bj_fld || 0 == this.bx_fld || this.bx_fld == 11 || this.eh_fld || 691281195 == this.bp_fld || this.bx_fld == 12;
 	}
 
-	@ObfuscatedName("getText")
+	@ObfuscatedName("isFilled")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()Z"
 	)
+	@Export("isFilled")
 	@Override
-	public String getText() {
-		return this.gu().replace(' ', ' ');
-	}
-
-	@ObfuscatedName("dp")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/Object;)V"
-	)
-	public void dp(int var1, Object var2) {
-		for (int var3 = 0; var3 < this.hl_fld; var3++) {
-			if (this.hs_fld[var3] == var1) {
-				this.hq_fld[var3] = var2;
-				return;
-			}
-		}
-
-		if (null == this.hq_fld) {
-			this.hs_fld = new int[4];
-			this.hq_fld = (Object[])(new Object[4]);
-		} else if (this.hq_fld.length == this.hl_fld) {
-			this.hs_fld = Arrays.copyOf(this.hs_fld, 2 * this.hs_fld.length);
-			this.hq_fld = (Object[])Arrays.copyOf((Object[])this.hq_fld, this.hq_fld.length * 2);
-		}
-
-		this.hs_fld[this.hl_fld] = var1;
-		this.hq_fld[this.hl_fld] = var2;
-		this.hl_fld++;
-	}
-
-	@ObfuscatedName("getModelType")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelType() {
-		return this.dm_fld;
+	public boolean isFilled() {
+		return this.cz_fld;
 	}
 
 	@ObfuscatedName("dj")
@@ -5800,51 +6181,268 @@ public class lu extends vw implements Widget {
 		this.hl_fld++;
 	}
 
-	@ObfuscatedName("getNoClickThrough")
+	@ObfuscatedName("es")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(ILjava/lang/Object;)V"
 	)
-	@Override
-	public boolean getNoClickThrough() {
-		return this.hb_fld;
+	public void es(int var1, Object var2) {
+		for (int var3 = 0; var3 < this.hl_fld; var3++) {
+			if (this.hs_fld[var3] == var1) {
+				this.hq_fld[var3] = var2;
+				return;
+			}
+		}
+
+		if (null == this.hq_fld) {
+			this.hs_fld = new int[4];
+			this.hq_fld = (Object[])(new Object[4]);
+		} else if (this.hq_fld.length == this.hl_fld) {
+			this.hs_fld = Arrays.copyOf(this.hs_fld, 2 * this.hs_fld.length);
+			this.hq_fld = (Object[])Arrays.copyOf((Object[])this.hq_fld, this.hq_fld.length * 2);
+		}
+
+		this.hs_fld[this.hl_fld * -379722129] = var1;
+		this.hq_fld[this.hl_fld] = var2;
+		this.hl_fld += 344559068;
 	}
 
-	@ObfuscatedName("getType")
+	@ObfuscatedName("ey")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)Llu;"
 	)
-	@Override
-	public int getType() {
-		return this.bx_fld;
+	public lu setItemQuantityMode(int var1) {
+		this.df_fld = var1;
+		return this;
 	}
 
-	@ObfuscatedName("setOnDragCompleteListener")
+	@ObfuscatedName("setOnReleaseListener")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;)V"
 	)
+	@Export("setOnReleaseListener")
 	@Override
-	public void setOnDragCompleteListener(Object[] var1) {
-		this.fb_fld = (Object[])var1;
+	public void setOnReleaseListener(Object[] var1) {
+		this.fa_fld = (Object[])var1;
 	}
 
-	@ObfuscatedName("eo")
+	@ObfuscatedName("setOnTimerListener")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lde;)V"
+		descriptor = "([Ljava/lang/Object;)V"
 	)
-	public void eo(String var1, de var2) {
-		if (this.bx_fld == 11 && null != var1) {
+	@Export("setOnTimerListener")
+	@Override
+	public void setOnTimerListener(Object[] var1) {
+		this.fn_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("dy")
+	@ObfuscatedSignature(
+		descriptor = "(IJ)J"
+	)
+	public long dy(int var1, long var2) {
+		for (int var4 = 0; var4 < this.hl_fld; var4++) {
+			if (var1 == this.hs_fld[var4]) {
+				return (Long)this.hq_fld[var4];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("setOnTargetEnterListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnTargetEnterListener")
+	@Override
+	public void setOnTargetEnterListener(Object[] var1) {
+		this.fk_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("getContentType")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getContentType")
+	@Override
+	public int getContentType() {
+		return this.bp_fld;
+	}
+
+	@ObfuscatedName("getXPositionMode")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getXPositionMode")
+	@Override
+	public int getXPositionMode() {
+		return this.bt_fld;
+	}
+
+	@ObfuscatedName("eb")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Lde;J)V"
+	)
+	public void eb(String var1, String var2, de var3, long var4) {
+		if (this.bx_fld == 11 && -1L != var4) {
+			var1 = var1.replaceAll("%userid%", Long.toString(var4));
 			this.hi_fld = new ma();
-			this.hi_fld.aq(var1, var2);
+			if (!this.hi_fld.ag(var1, var2, var3)) {
+				this.hi_fld = null;
+			} else {
+				if (this.hd_fld == null || null == this.he_fld) {
+					this.bd(-1190035852);
+				}
+			}
 		}
 	}
 
-	@ObfuscatedName("isFlippedHorizontally")
+	@ObfuscatedName("ed")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
 	)
+	public void ed(String var1, String var2, String var3, String var4, String var5, de var6) {
+		try {
+			this.hi_fld = new ma();
+			if (!this.hi_fld.ag(var1, var3, var6)) {
+				this.hi_fld = null;
+			} else {
+				if (null == this.hd_fld || null == this.he_fld) {
+					this.bd(-1292691591);
+				}
+
+				this.hi_fld.az(var2, var4, var5);
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
+		}
+	}
+
+	@ObfuscatedName("oo")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void oo(int var1) {
+		this.vi_fld = var1;
+	}
+
+	@ObfuscatedName("di")
+	@ObfuscatedSignature(
+		descriptor = "(IJ)J"
+	)
+	public long di(int var1, long var2) {
+		for (int var4 = 0; var4 < this.hl_fld; var4++) {
+			if (var1 == this.hs_fld[var4]) {
+				return (Long)this.hq_fld[var4];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Z)Lkp;"
+	)
+	public kp dv(lw var1, boolean var2) {
+		try {
+			if (this.ch_fld == -1) {
+				var2 = false;
+			}
+
+			int var3 = var2 ? this.ch_fld * -1633846296 : this.cj_fld * -423108784;
+			if (-1 == var3) {
+				return null;
+			} else {
+				long var4 = ((long)(1687104053 * this.dv_fld) << 1119072921)
+					+ ((this.dt_fld ? 1L : 0L) << 39)
+					+ ((this.dz_fld ? 1L : 0L) << 42621897)
+					+ var3
+					+ ((long)(-1358680044 * this.dh_fld) << -1215926208);
+				kp var6 = (kp)var1.al_fld.ak(var4);
+				if (var6 != null) {
+					return var6;
+				} else {
+					yv var7 = this.as(var1, var2, null, -423043034);
+					if (var7 == null) {
+						return null;
+					} else {
+						yv var8 = yv.vo(var7);
+						int[] var9 = new int[var8.ay_fld];
+						int[] var10 = new int[var8.ay_fld];
+
+						for (int var11 = 0; var11 < var8.ay_fld; var11++) {
+							int var12 = 0;
+							int var13 = var8.aw_fld;
+
+							for (int var14 = 0; var14 < var8.aw_fld; var14++) {
+								if (0 == var8.ah_fld[var11 * var8.aw_fld + var14]) {
+									var12 = var14;
+									break;
+								}
+							}
+
+							for (int var18 = var8.aw_fld - 1; var18 >= var12; var18--) {
+								if (0 == var8.ah_fld[var18 + var11 * var8.aw_fld]) {
+									var13 = var18 + 1;
+									break;
+								}
+							}
+
+							var9[var11] = var12;
+							var10[var11] = var13 - var12;
+						}
+
+						var6 = new kp(var8.aw_fld, var8.ay_fld, var10, var9, var3);
+						var1.al_fld.az(var6, var4);
+						return var6;
+					}
+				}
+			}
+		} catch (Throwable var16) {
+			throw new RuntimeException(var16);
+		}
+	}
+
+	@ObfuscatedName("getRelativeY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getRelativeY")
 	@Override
-	public boolean isFlippedHorizontally() {
-		return this.dt_fld;
+	public int getRelativeY() {
+		return this.bg_fld;
+	}
+
+	@ObfuscatedName("getXTextAlignment")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getXTextAlignment")
+	@Override
+	public int getXTextAlignment() {
+		return this.ep_fld;
+	}
+
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Llp;Z)V"
+	)
+	public static void jf(lu var0, lp var1, boolean var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.dm_fld = 279120917;
+			var0.dy_fld = new lp(var1);
+			if (!var2) {
+				var0.dy_fld.af_fld = Arrays.copyOf(var0.dy_fld.ar_fld, var0.dy_fld.ar_fld.length);
+				var0.dy_fld.au((short)24638);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
 	}
 
 	@ObfuscatedName("be")
@@ -5852,34 +6450,50 @@ public class lu extends vw implements Widget {
 		descriptor = "(IIIII)Z"
 	)
 	public boolean be(int var1, int var2, int var3, int var4, int var5) {
-		if (this.bx_fld == 11 && this.hi_fld != null && qz(this, 993637541)) {
+		if (this.bx_fld == 11 && this.hi_fld != null && this.bs_boolean(993637541)) {
 			var1 -= var3;
 			var2 -= var4;
-			int var6 = (int)(ma.ao(this.hi_fld, (short)22093)[0] * this.bb_fld);
-			int var7 = (int)(ma.ao(this.hi_fld, (short)10739)[1] * this.cd_fld);
-			int var8 = var6 + (int)(ma.ao(this.hi_fld, (short)23579)[2] * this.bb_fld);
-			int var9 = var7 + (int)(ma.ao(this.hi_fld, (short)13148)[3] * this.cd_fld);
+			int var6 = (int)(this.hi_fld.au()[0] * this.bb_fld);
+			int var7 = (int)(this.hi_fld.au()[1] * this.cd_fld);
+			int var8 = var6 + (int)(this.hi_fld.au()[2] * this.bb_fld);
+			int var9 = var7 + (int)(this.hi_fld.au()[3] * this.cd_fld);
 			return var1 >= var6 && var2 >= var7 && var1 < var8 && var2 < var9;
 		} else {
 			return false;
 		}
 	}
 
-	@ObfuscatedName("setHeight")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "()Lym;"
 	)
-	@Override
-	public void setHeight(int var1) {
-		this.cd_fld = var1;
+	public ym hv() {
+		return this.ck_fld;
 	}
 
-	@ObfuscatedName("vx")
+	@ObfuscatedName("uk")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Ljava/lang/String;)I"
+	)
+	public static int uk(lu var0, String var1) {
+		return 11 == var0.bx_fld && var0.hi_fld != null && var0.bs_boolean(2080050142) ? ma.rs(var0.hi_fld, var1, -1231403784) : -1;
+	}
+
+	@ObfuscatedName("er")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void er() {
+		this.hd_fld = new HashMap();
+		this.he_fld = new HashMap();
+	}
+
+	@ObfuscatedName("gu")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setScrollX(int var1) {
-		this.cp_fld = var1;
+	public lu setRotationY(int var1) {
+		this.du_fld = var1;
 		return this;
 	}
 
@@ -5888,70 +6502,28 @@ public class lu extends vw implements Widget {
 		descriptor = "()V"
 	)
 	void ez() {
-		this.he_fld = new HashMap();
 		this.hd_fld = new HashMap();
-	}
-
-	@ObfuscatedName("vc")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;ILjava/lang/String;)V"
-	)
-	public static void vc(lu var0, int var1, String var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (null == var0.ei_fld || var0.ei_fld.length <= var1) {
-			String[] var3 = new String[var1 + 1];
-			if (var0.ei_fld != null) {
-				for (int var4 = 0; var4 < var0.ei_fld.length; var4++) {
-					var3[var4] = var0.ei_fld[var4];
-				}
-			}
-
-			var0.ei_fld = var3;
-		}
-
-		var0.ei_fld[var1] = var2;
-	}
-
-	@ObfuscatedName("getOnLoadListener")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
-	)
-	@Override
-	public Object[] getOnLoadListener() {
-		return (Object[])this.eu_fld;
-	}
-
-	@ObfuscatedName("isIf3")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isIf3() {
-		return this.bj_fld;
-	}
-
-	@ObfuscatedName("zu")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;Z)Lkp;"
-	)
-	public kp zu(lw var1, boolean var2) {
-		try {
-			return this.aa(var1, var2, 15790320);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("er")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void er() {
 		this.he_fld = new HashMap();
-		this.hd_fld = new HashMap();
+	}
+
+	@ObfuscatedName("getCanvasLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getCanvasLocation")
+	@Override
+	public Point getCanvasLocation() {
+		return new Point(this.mv_fld, this.vi_fld);
+	}
+
+	@ObfuscatedName("getHeightMode")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHeightMode")
+	@Override
+	public int getHeightMode() {
+		return this.bu_fld;
 	}
 
 	@ObfuscatedName("gc")
@@ -5960,52 +6532,32 @@ public class lu extends vw implements Widget {
 	)
 	public boolean gc(lw var1) {
 		try {
-			li var2 = bv(this, -1147767225);
+			li var2 = ax(this, -1147767225);
 			if (var2 == null) {
 				return false;
 			} else {
 				boolean var3 = false;
 				if (!var2.cq() && this.de_fld != -1) {
-					int var4 = var2.cv();
+					int var4 = li.nf(var2, -2134230596);
 					int var5 = var2.cy();
 					int var6 = var2.cc();
-					int var7 = li.dg(var2, (byte)6);
-					zf var8 = dg(this, var1, (byte)11);
+					int var7 = li.em(var2, (byte)6);
+					zf var8 = this.ax(var1, (byte)11);
 					if (null != var8) {
-						var3 |= var2.ah(var8);
+						var3 |= li.kw(var2, var8, 858118665);
 						var3 |= this.bc(var2, 55221958);
 						var3 |= var2.al(var4, var5);
-						var3 |= li.ik(var2, var6, var7, (byte)-107);
+						var3 |= var2.ap(var6, var7);
 					}
 				} else if (var2.cq()) {
 					var3 |= this.bc(var2, 55221958);
 				}
 
-				li.jd(var2, 261216131);
+				var2.ak();
 				return var3;
 			}
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("eh")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/lang/String;"
-	)
-	public String eh(String var1) {
-		return this.bx_fld == 11 && null != this.hi_fld && qz(this, 1249132947) ? this.hi_fld.ay(var1) : null;
-	}
-
-	@ObfuscatedName("qz")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Z"
-	)
-	public static boolean qz(lu var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.hn_fld == 2;
 		}
 	}
 
@@ -6017,11 +6569,11 @@ public class lu extends vw implements Widget {
 		if (this.bx_fld == 11 && this.hi_fld != null) {
 			int[] var2 = new int[3];
 			int var3 = 0;
-			Iterator var4 = this.hi_fld.ar().iterator();
+			Iterator var4 = this.hi_fld.af().iterator();
 
 			while (var4.hasNext()) {
 				mu var5 = (mu)(mu)var4.next();
-				if (!mu.mw(var5, (byte)1).equals("user_id")) {
+				if (!mu.wi(var5, (byte)1).equals("user_id")) {
 					if (var5.ak((byte)-61) != 0) {
 						return null;
 					}
@@ -6039,243 +6591,37 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("ef")
+	@ObfuscatedName("wb")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Z"
+		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lde;)V"
 	)
-	public boolean ef(int var1, int var2, int var3, int var4) {
-		if (this.bx_fld == 11 && this.hi_fld != null && qz(this, 409790418)) {
-			var1 -= var3;
-			var2 -= var4;
-			int var5 = (int)(ma.ao(this.hi_fld, (short)10802)[0] * this.bb_fld);
-			int var6 = (int)(ma.ao(this.hi_fld, (short)21841)[1] * this.cd_fld);
-			int var7 = var5 + (int)(ma.ao(this.hi_fld, (short)21634)[2] * this.bb_fld);
-			int var8 = var6 + (int)(ma.ao(this.hi_fld, (short)14129)[3] * this.cd_fld);
-			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
-		} else {
-			return false;
-		}
-	}
-
-	@ObfuscatedName("getOriginalX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getOriginalX() {
-		return this.bn_fld;
-	}
-
-	@ObfuscatedName("getYTextAlignment")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getYTextAlignment() {
-		return this.eb_fld;
-	}
-
-	@ObfuscatedName("le")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setRotationZ(int var1) {
-		this.ds_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("getLineHeight")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getLineHeight() {
-		return this.es_fld;
-	}
-
-	@ObfuscatedName("ib")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Llu;"
-	)
-	public lu setHidden(boolean var1) {
-		this.cf_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("ns")
-	@ObfuscatedSignature(
-		descriptor = "()Lzv;"
-	)
-	public zv getFont() {
+	public static void wb(lu var0, String var1, String var2, String var3, String var4, String var5, de var6) throws UnsupportedEncodingException {
 		try {
-			return this.xg(cf.cg_fld);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
+			if (var0 == null) {
+				var0.getClass();
+			}
 
-	@ObfuscatedName("ee")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean ee() {
-		return this.hn_fld == 2;
-	}
-
-	@ObfuscatedName("isHidden")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isHidden() {
-		if (!og.ci_fld.isClientThread()) {
-			if (!tf.$assertionsDisabled) {
-				throw new AssertionError("must be called on client thread");
+			var0.hi_fld = new ma();
+			if (!var0.hi_fld.ag(var1, var3, var6)) {
+				var0.hi_fld = null;
 			} else {
-				throw new IllegalStateException("must be called on client thread");
-			}
-		} else if (this.isSelfHidden()) {
-			return true;
-		} else {
-			Widget var1 = this.getParent();
-			if (var1 == null) {
-				if (WidgetUtil.componentToInterface(this.getId()) != og.ci_fld.getTopLevelInterfaceId()) {
-					return true;
+				if (null == var0.hd_fld || null == var0.he_fld) {
+					var0.bd(-1885406961);
 				}
-			} else if (var1.isHidden()) {
-				return true;
-			}
 
-			return false;
+				var0.hi_fld.az(var2, var4, var5);
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
 		}
 	}
 
-	@ObfuscatedName("fy")
+	@ObfuscatedName("jo")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Ljava/lang/String;)V"
 	)
-	public int fy() {
-		return this.hd_fld != null && !this.hd_fld.isEmpty() ? 1 : 0;
-	}
-
-	@ObfuscatedName("getSpriteId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getSpriteId() {
-		return this.cj_fld;
-	}
-
-	@ObfuscatedName("getBounds")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Rectangle;"
-	)
-	@Override
-	public Rectangle getBounds() {
-		return new Rectangle(this.wj_fld, this.pv_fld, this.getWidth(), this.getHeight());
-	}
-
-	@ObfuscatedName("ea")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean ea() {
-		return this.hn_fld == 2;
-	}
-
-	@ObfuscatedName("getTextColor")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getTextColor() {
-		return this.ca_fld;
-	}
-
-	@ObfuscatedName("setTargetPriority")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setTargetPriority(int var1) {
-		this.ek_fld = var1;
-	}
-
-	@ObfuscatedName("ev")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)I"
-	)
-	public int ev(String var1) {
-		return 11 == this.bx_fld && this.hi_fld != null && qz(this, 1548761245) ? this.hi_fld.aw(var1) : -1;
-	}
-
-	@ObfuscatedName("ey")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)I"
-	)
-	public int ey(String var1) {
-		return 11 == this.bx_fld && this.hi_fld != null && qz(this, 1403256113) ? this.hi_fld.aw(var1) : -1;
-	}
-
-	@ObfuscatedName("setDragDeadZone")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setDragDeadZone(int var1) {
-		this.ev_fld = var1;
-	}
-
-	@ObfuscatedName("pf")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	public void pf(boolean var1) {
-		this.bj_fld = var1;
-	}
-
-	@ObfuscatedName("kd")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setItemId(int var1) {
-		this.ga_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("em")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)I"
-	)
-	public int em(String var1) {
-		return 11 == this.bx_fld && this.hi_fld != null && qz(this, 2080050142) ? this.hi_fld.aw(var1) : -1;
-	}
-
-	@ObfuscatedName("rw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setHeightMode(int var1) {
-		this.bu_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/lang/String;"
-	)
-	public String el(String var1) {
-		return this.bx_fld == 11 && null != this.hi_fld && qz(this, 1465243715) ? this.hi_fld.ay(var1) : null;
-	}
-
-	@ObfuscatedName("getClickMask")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getClickMask() {
-		return this.ec_fld;
+	public void jo(String var1) {
+		this.eq_fld = var1;
 	}
 
 	@ObfuscatedName("eq")
@@ -6283,26 +6629,77 @@ public class lu extends vw implements Widget {
 		descriptor = "(IIII)Z"
 	)
 	public boolean eq(int var1, int var2, int var3, int var4) {
-		if (this.bx_fld == 11 && this.hi_fld != null && qz(this, 1700161566)) {
+		if (this.bx_fld == 11 && this.hi_fld != null && this.bs_boolean(409790418)) {
 			var1 -= var3;
 			var2 -= var4;
-			int var5 = (int)(ma.ao(this.hi_fld, (short)31660)[0] * this.bb_fld);
-			int var6 = (int)(ma.ao(this.hi_fld, (short)16704)[1] * this.cd_fld);
-			int var7 = var5 + (int)(ma.ao(this.hi_fld, (short)28705)[2] * this.bb_fld);
-			int var8 = var6 + (int)(ma.ao(this.hi_fld, (short)28073)[3] * this.cd_fld);
+			int var5 = (int)(this.hi_fld.au()[0] * this.bb_fld);
+			int var6 = (int)(this.hi_fld.au()[1] * this.cd_fld);
+			int var7 = var5 + (int)(this.hi_fld.au()[2] * this.bb_fld);
+			int var8 = var6 + (int)(this.hi_fld.au()[3] * this.cd_fld);
 			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
 		} else {
 			return false;
 		}
 	}
 
-	@ObfuscatedName("getRelativeY")
+	@ObfuscatedName("fd")
+	@ObfuscatedSignature(
+		descriptor = "()Lln;"
+	)
+	public ln fd() {
+		return this.hk_fld != null ? this.hk_fld.ag_fld : null;
+	}
+
+	@ObfuscatedName("fy")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	public int fy() {
+		return this.he_fld != null && !this.he_fld.isEmpty() ? 1 : 0;
+	}
+
+	@ObfuscatedName("ek")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean ek() {
+		return this.hn_fld == 2;
+	}
+
+	@ObfuscatedName("ev")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)I"
+	)
+	public int ev(String var1) {
+		return 11 == this.bx_fld && this.hi_fld != null && this.bs_boolean(1548761245) ? ma.rs(this.hi_fld, var1, 838849613) : -1;
+	}
+
+	@ObfuscatedName("getOriginalY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalY")
 	@Override
-	public int getRelativeY() {
-		return this.bg_fld;
+	public int getOriginalY() {
+		return this.bc_fld;
+	}
+
+	@ObfuscatedName("ef")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Z"
+	)
+	public boolean ef(int var1, int var2, int var3, int var4) {
+		if (this.bx_fld == 11 && this.hi_fld != null && this.bs_boolean(1700161566)) {
+			var1 -= var3;
+			var2 -= var4;
+			int var5 = (int)(this.hi_fld.au()[0] * this.bb_fld);
+			int var6 = (int)(this.hi_fld.au()[1] * this.cd_fld);
+			int var7 = var5 + (int)(this.hi_fld.au()[2] * this.bb_fld);
+			int var8 = var6 + (int)(this.hi_fld.au()[3] * this.cd_fld);
+			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
+		} else {
+			return false;
+		}
 	}
 
 	@ObfuscatedName("eu")
@@ -6310,16 +6707,15 @@ public class lu extends vw implements Widget {
 		descriptor = "()I"
 	)
 	public int eu() {
-		return this.hd_fld != null && !this.hd_fld.isEmpty() ? 1 : 0;
+		return this.he_fld != null && !this.he_fld.isEmpty() ? 1 : 0;
 	}
 
-	@ObfuscatedName("getDragParent")
+	@ObfuscatedName("ej")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/widgets/Widget;"
+		descriptor = "()I"
 	)
-	@Override
-	public Widget getDragParent() {
-		return this.ea_fld;
+	public int ej() {
+		return this.he_fld != null && !this.he_fld.isEmpty() ? 1 : 0;
 	}
 
 	@ObfuscatedName("ff")
@@ -6328,28 +6724,28 @@ public class lu extends vw implements Widget {
 	)
 	public boolean ff(lw var1) {
 		try {
-			li var2 = bv(this, -1205306763);
+			li var2 = ax(this, -1205306763);
 			if (var2 == null) {
 				return false;
 			} else {
 				boolean var3 = false;
 				if (!var2.cq() && this.de_fld != -1) {
-					int var4 = var2.cv();
+					int var4 = li.nf(var2, -2139917579);
 					int var5 = var2.cy();
 					int var6 = var2.cc();
-					int var7 = li.dg(var2, (byte)-64);
-					zf var8 = dg(this, var1, (byte)-2);
+					int var7 = li.em(var2, (byte)-64);
+					zf var8 = this.ax(var1, (byte)-2);
 					if (null != var8) {
-						var3 |= var2.ah(var8);
+						var3 |= li.kw(var2, var8, -420224509);
 						var3 |= this.bc(var2, 55221958);
 						var3 |= var2.al(var4, var5);
-						var3 |= li.ik(var2, var6, var7, (byte)-118);
+						var3 |= var2.ap(var6, var7);
 					}
 				} else if (var2.cq()) {
 					var3 |= this.bc(var2, 55221958);
 				}
 
-				li.jd(var2, 261216131);
+				var2.ak();
 				return var3;
 			}
 		} catch (Throwable var10) {
@@ -6357,38 +6753,27 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("mf")
+	@ObfuscatedName("fa")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "()I"
 	)
-	public lu setOriginalWidth(int var1) {
-		this.bw_fld = var1;
-		return this;
+	public int fa() {
+		if (11 == this.bx_fld && this.hi_fld != null && null != this.he_fld && !this.he_fld.isEmpty()) {
+			String var1 = this.hi_fld.al();
+			return null != var1 && this.he_fld.containsKey(this.hi_fld.al()) ? (Integer)this.he_fld.get(var1) : -1;
+		} else {
+			return -1;
+		}
 	}
 
-	@ObfuscatedName("fo")
+	@ObfuscatedName("getRotationZ")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()I"
 	)
-	public String fo() {
-		if (11 == this.bx_fld && null != this.hi_fld) {
-			String var1 = this.hi_fld.al();
-			Iterator var2 = this.hi_fld.ar().iterator();
-
-			while (var2.hasNext()) {
-				mu var3 = (mu)(mu)var2.next();
-				String var4 = String.format("%%%S%%", (Object[])(new Object[]{mu.mw(var3, (byte)1)}));
-				if (var3.ak((byte)39) == 0) {
-					var1.replaceAll(var4, Integer.toString(var3.ag((byte)-108)));
-				} else {
-					var1.replaceAll(var4, var3.ah(-1876249062));
-				}
-			}
-
-			return var1;
-		} else {
-			return null;
-		}
+	@Export("getRotationZ")
+	@Override
+	public int getRotationZ() {
+		return this.ds_fld;
 	}
 
 	@ObfuscatedName("ep")
@@ -6402,54 +6787,11 @@ public class lu extends vw implements Widget {
 			if (!this.hi_fld.ag(var1, var2, var3)) {
 				this.hi_fld = null;
 			} else {
-				if (this.he_fld == null || null == this.hd_fld) {
+				if (this.hd_fld == null || null == this.he_fld) {
 					this.bd(-1435034261);
 				}
 			}
 		}
-	}
-
-	@ObfuscatedName("vc")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Ljava/lang/String;Ljava/lang/String;Lde;J)V"
-	)
-	public static void vc(lu var0, String var1, String var2, de var3, long var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var0.bx_fld == 11 && -1L != var4) {
-			var1 = var1.replaceAll("%userid%", Long.toString(var4));
-			var0.hi_fld = new ma();
-			if (!var0.hi_fld.ag(var1, var2, var3)) {
-				var0.hi_fld = null;
-			} else {
-				if (var0.he_fld == null || null == var0.hd_fld) {
-					var0.bd(-1190035852);
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("setForcedPosition")
-	@ObfuscatedSignature(
-		descriptor = "(II)V"
-	)
-	@Override
-	public void setForcedPosition(int var1, int var2) {
-		this.sw_fld = (short)var1;
-		this.wk_fld = (short)var2;
-		this.setRelativeX(var1);
-		this.setRelativeY(var2);
-	}
-
-	@ObfuscatedName("wh")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setSpriteId(int var1) {
-		this.cj_fld = var1;
-		return this;
 	}
 
 	@ObfuscatedName("fx")
@@ -6460,11 +6802,11 @@ public class lu extends vw implements Widget {
 		if (this.bx_fld == 11 && this.hi_fld != null) {
 			int[] var1 = new int[3];
 			int var2 = 0;
-			Iterator var3 = this.hi_fld.ar().iterator();
+			Iterator var3 = this.hi_fld.af().iterator();
 
 			while (var3.hasNext()) {
 				mu var4 = (mu)(mu)var3.next();
-				if (!mu.mw(var4, (byte)1).equals("user_id")) {
+				if (!mu.wi(var4, (byte)1).equals("user_id")) {
 					if (var4.ak((byte)-71) != 0) {
 						return null;
 					}
@@ -6482,38 +6824,43 @@ public class lu extends vw implements Widget {
 		}
 	}
 
-	@ObfuscatedName("getHeightMode")
+	@ObfuscatedName("setOnOpListener")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "([Ljava/lang/Object;)V"
 	)
+	@Export("setOnOpListener")
 	@Override
-	public int getHeightMode() {
-		return this.bu_fld;
+	public void setOnOpListener(Object[] var1) {
+		this.ft_fld = (Object[])var1;
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("rz")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;B)Z"
+		descriptor = "(I)Llu;"
 	)
-	public boolean bo(lw var1, de var2, byte var3) {
-		if (11 == this.bx_fld && null != this.hi_fld) {
-			this.hi_fld.av(var2);
-			if (ma.wj(this.hi_fld, (byte)-30) != this.hn_fld) {
-				this.hn_fld = ma.wj(this.hi_fld, (byte)-30);
-				if (this.hn_fld >= 3) {
-					return true;
-				}
+	public lu setItemId(int var1) {
+		this.ga_fld = var1;
+		return this;
+	}
 
-				if (2 == this.hn_fld) {
-					this.bp(var1, -511255598);
-					return true;
-				}
-			}
+	@ObfuscatedName("setNoScrollThrough")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	@Export("setNoScrollThrough")
+	@Override
+	public void setNoScrollThrough(boolean var1) {
+		this.hf_fld = var1;
+	}
 
-			return false;
-		} else {
-			return false;
-		}
+	@ObfuscatedName("setOnClickListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnClickListener")
+	@Override
+	public void setOnClickListener(Object[] var1) {
+		this.ej_fld = (Object[])var1;
 	}
 
 	@ObfuscatedName("fs")
@@ -6524,111 +6871,21 @@ public class lu extends vw implements Widget {
 		return this.hk_fld != null ? this.hk_fld.az_fld : null;
 	}
 
-	@ObfuscatedName("getDragDeadZone")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getDragDeadZone() {
-		return this.ev_fld;
-	}
-
-	@ObfuscatedName("ed")
-	@ObfuscatedSignature(
-		descriptor = "(II)Llu;"
-	)
-	public lu setPos(int var1, int var2) {
-		return this.setOriginalX(var1).setOriginalY(var2);
-	}
-
-	@ObfuscatedName("qh")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Z"
-	)
-	public static boolean qh(lu var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return !var0.bj_fld || 0 == var0.bx_fld || var0.bx_fld == 11 || var0.eh_fld || 1338 == var0.bp_fld || var0.bx_fld == 12;
-	}
-
-	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setXTextAlignment(int var1) {
-		this.ep_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("getNoScrollThrough")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean getNoScrollThrough() {
-		return this.hf_fld;
-	}
-
 	@ObfuscatedName("fc")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;Lde;)Z"
 	)
 	public boolean fc(lw var1, de var2) {
 		if (11 == this.bx_fld && null != this.hi_fld) {
-			this.hi_fld.av(var2);
-			if (ma.wj(this.hi_fld, (byte)-30) != this.hn_fld) {
-				this.hn_fld = ma.wj(this.hi_fld, (byte)-30);
+			ma.dh(this.hi_fld, var2, 2104391350);
+			if (this.hi_fld.ae() != this.hn_fld) {
+				this.hn_fld = this.hi_fld.ae();
 				if (this.hn_fld >= 3) {
 					return true;
 				}
 
 				if (2 == this.hn_fld) {
 					this.bp(var1, -2123632286);
-					return true;
-				}
-			}
-
-			return false;
-		} else {
-			return false;
-		}
-	}
-
-	@ObfuscatedName("setOnHoldListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnHoldListener(Object[] var1) {
-		this.fo_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("setOnOpListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnOpListener(Object[] var1) {
-		this.ft_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("fh")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;)Z"
-	)
-	public boolean fh(lw var1, de var2) {
-		if (11 == this.bx_fld && null != this.hi_fld) {
-			this.hi_fld.av(var2);
-			if (ma.wj(this.hi_fld, (byte)-30) != this.hn_fld) {
-				this.hn_fld = ma.wj(this.hi_fld, (byte)-30);
-				if (this.hn_fld >= 3) {
-					return true;
-				}
-
-				if (2 == this.hn_fld) {
-					this.bp(var1, 41796530);
 					return true;
 				}
 			}
@@ -6646,7 +6903,7 @@ public class lu extends vw implements Widget {
 	void fm(lw var1) {
 		this.hb_fld = true;
 		ArrayList var2 = this.hi_fld.as();
-		ArrayList var3 = ma.ck(this.hi_fld, -314008139);
+		ArrayList var3 = this.hi_fld.ar();
 		int var4 = var2.size() + var3.size();
 		this.ge_fld = new lu[var4];
 		int var5 = 0;
@@ -6667,16 +6924,24 @@ public class lu extends vw implements Widget {
 			mr var11 = (mr)(mr)var6.next();
 			lu var12 = is.ak(4, this, var5, 0, 0, 0, 0, var11.ae_fld);
 			var12.dp_fld = var11.av_fld;
-			var12.de_fld = (Integer)this.he_fld.get(var11.ay_fld);
+			var12.de_fld = (Integer)this.hd_fld.get(var11.ay_fld);
 			var12.ep_fld = var11.ah_fld * 224036757;
 			var12.eb_fld = 992230371 * var11.aw_fld;
 			this.ge_fld[var5++] = var12;
 		}
 	}
 
+	@ObfuscatedName("tq")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Llu;"
+	)
+	public lu setPos(int var1, int var2, int var3, int var4) {
+		return this.setOriginalX(var1).setOriginalY(var2).setXPositionMode(var3).setYPositionMode(var4);
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
+		descriptor = "(II)Ljava/lang/String;"
 	)
 	static String as(int var0) {
 		String var2 = Integer.toString(var0);
@@ -6715,141 +6980,12 @@ public class lu extends vw implements Widget {
 		this.hk_fld.az_fld.ak(86, 2);
 	}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;Lde;I)Lyv;"
-	)
-	yv ar(lw var1, de var2, int var3) {
-		if (!this.al(-978031646)) {
-			return this.af(var1, var2, (byte)0);
-		} else {
-			String var4 = this.ct_fld + (this.dz_fld ? 1 : 0) + (this.dt_fld ? 1 : 0) + this.dh_fld + this.dv_fld;
-			yv var5 = (yv)(yv)var1.ax_fld.ag(var4);
-			if (null == var5) {
-				yv var6 = this.af(var1, var2, (byte)0);
-				if (var6 != null) {
-					var5 = var6.al();
-					pr(this, var5, -144005898);
-					var1.ax_fld.az(var4, var5);
-				}
-			}
-
-			return var5;
-		}
-	}
-
-	@ObfuscatedName("getVarTransmitTrigger")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getVarTransmitTrigger() {
-		return this.fm_fld;
-	}
-
-	@ObfuscatedName("isSelfHidden")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isSelfHidden() {
-		return this.cf_fld;
-	}
-
 	@ObfuscatedName("fn")
 	@ObfuscatedSignature(
 		descriptor = "()Lli;"
 	)
 	public li fn() {
 		return this.hk_fld != null ? this.hk_fld.ak_fld : null;
-	}
-
-	@ObfuscatedName("isFlippedVertically")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isFlippedVertically() {
-		return this.dz_fld;
-	}
-
-	@ObfuscatedName("sh")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;)V"
-	)
-	public static void sh(lu var0, lw var1) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				var0.hb_fld = true;
-				ArrayList var2 = var0.hi_fld.as();
-				ArrayList var3 = ma.ck(var0.hi_fld, 1531828534);
-				int var4 = var2.size() + var3.size();
-				var0.ge_fld = new lu[var4];
-				int var5 = 0;
-				Iterator var6 = var2.iterator();
-
-				while (var6.hasNext()) {
-					lq var7 = (lq)(lq)var6.next();
-					lu var8 = is.ak(5, var0, var5, 0, 0, 0, 0, var7.ag_fld);
-					var8.ct_fld = var7.ak_fld.az();
-					kb var9 = new kb(var7.ak_fld);
-					var1.au_fld.az(var8.ct_fld, var9);
-					var0.ge_fld[var5++] = var8;
-				}
-
-				var6 = var3.iterator();
-
-				while (var6.hasNext()) {
-					mr var13 = (mr)(mr)var6.next();
-					lu var14 = is.ak(4, var0, var5, 0, 0, 0, 0, var13.ae_fld);
-					var14.dp_fld = var13.av_fld;
-					var14.de_fld = (Integer)var0.he_fld.get(var13.ay_fld);
-					var14.ep_fld = var13.ah_fld * 224036757;
-					var14.eb_fld = 992230371 * var13.aw_fld;
-					var0.ge_fld[var5++] = var14;
-				}
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("nz")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)Lma;"
-	)
-	public static ma nz(lu var0) {
-		return var0.hi_fld;
-	}
-
-	@ObfuscatedName("getChild")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lnet/runelite/api/widgets/Widget;"
-	)
-	@Override
-	public Widget getChild(int var1) {
-		lu[] var2 = this.getChildren();
-		return var2 != null && var1 >= 0 && var1 < var2.length ? var2[var1] : null;
-	}
-
-	@ObfuscatedName("setOnMouseLeaveListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnMouseLeaveListener(Object[] var1) {
-		this.fv_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("getBorderType")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getBorderType() {
-		return this.dh_fld;
 	}
 
 	@ObfuscatedName("ft")
@@ -6865,64 +7001,105 @@ public class lu extends vw implements Widget {
 		descriptor = "(Ljava/lang/String;S)Ljava/lang/String;"
 	)
 	public String bk(String var1, short var2) {
-		return this.bx_fld == 11 && null != this.hi_fld && qz(this, 1000795609) ? this.hi_fld.ay(var1) : null;
+		return this.bx_fld == 11 && null != this.hi_fld && this.bs_boolean(1000795609) ? this.hi_fld.ay(var1) : null;
 	}
 
-	@ObfuscatedName("getParentId")
+	@ObfuscatedName("setFlippedVertically")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	@Export("setFlippedVertically")
+	@Override
+	public void setFlippedVertically(boolean var1) {
+		this.dz_fld = var1;
+	}
+
+	@ObfuscatedName("getFontId")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getFontId")
 	@Override
-	public int getParentId() {
-		if (!og.ci_fld.isClientThread()) {
-			if (!tf.$assertionsDisabled) {
-				throw new AssertionError("must be called on client thread");
-			} else {
-				throw new IllegalStateException("must be called on client thread");
-			}
+	public int getFontId() {
+		return this.de_fld;
+	}
+
+	@ObfuscatedName("go")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;ILjava/lang/Object;I)Ljava/lang/Object;"
+	)
+	public static Object go(lu var0, int var1, Object var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
 		} else {
-			int var1 = this.cv_fld;
-			if (var1 != -1) {
-				return var1;
-			} else {
-				int var2 = this.getId();
-				if (WidgetUtil.componentToInterface(var2) == og.ci_fld.getTopLevelInterfaceId()) {
-					return -1;
-				} else {
-					int var3 = this.nn_fld;
-					if (var3 != -1) {
-						pk var4 = (pk)cf.cg_fld.ai_fld.get(var3);
-						if (var4 != null && var4.getId() == WidgetUtil.componentToInterface(var2)) {
-							return var3;
-						}
-
-						this.nn_fld = -1;
-					}
-
-					int var8 = WidgetUtil.componentToInterface(this.getId());
-					xz var5 = og.ci_fld.getComponentTable();
-					Iterator var6 = var5.iterator();
-
-					while (var6.hasNext()) {
-						pk var7 = (pk)(pk)var6.next();
-						if (var8 == var7.getId()) {
-							return (int)var7.getHash();
-						}
-					}
-
-					return -1;
+			for (int var4 = 0; var4 < var0.hl_fld; var4++) {
+				if (var1 == var0.hs_fld[var4]) {
+					return var0.hq_fld[var4];
 				}
 			}
+
+			return var2;
 		}
 	}
 
-	@ObfuscatedName("en")
+	@ObfuscatedName("getOnVarTransmitListener")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "()[Ljava/lang/Object;"
 	)
-	public lu setModelType(int var1) {
-		this.dm_fld = var1;
-		return this;
+	@Export("getOnVarTransmitListener")
+	@Override
+	public Object[] getOnVarTransmitListener() {
+		return (Object[])this.fh_fld;
+	}
+
+	@ObfuscatedName("setVarTransmitTrigger")
+	@ObfuscatedSignature(
+		descriptor = "([I)V"
+	)
+	@Export("setVarTransmitTrigger")
+	@Override
+	public void setVarTransmitTrigger(int[] var1) {
+		this.fm_fld = var1;
+	}
+
+	@ObfuscatedName("setOnHoldListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnHoldListener")
+	@Override
+	public void setOnHoldListener(Object[] var1) {
+		this.fo_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("isFlippedVertically")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isFlippedVertically")
+	@Override
+	public boolean isFlippedVertically() {
+		return this.dz_fld;
+	}
+
+	@ObfuscatedName("setOnVarTransmitListener")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/Object;)V"
+	)
+	@Export("setOnVarTransmitListener")
+	@Override
+	public void setOnVarTransmitListener(Object[] var1) {
+		this.fh_fld = (Object[])var1;
+	}
+
+	@ObfuscatedName("getType")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getType")
+	@Override
+	public int getType() {
+		return this.bx_fld;
 	}
 
 	@ObfuscatedName("fq")
@@ -6933,20 +7110,79 @@ public class lu extends vw implements Widget {
 		return this.hk_fld != null ? this.hk_fld.ag_fld : null;
 	}
 
-	@ObfuscatedName("fu")
-	@ObfuscatedSignature(
-		descriptor = "()Lsc;"
-	)
-	public sc fu() {
-		return this.hk_fld != null ? this.hk_fld.az_fld : null;
-	}
-
 	@ObfuscatedName("fr")
 	@ObfuscatedSignature(
 		descriptor = "()Lsc;"
 	)
 	public sc fr() {
 		return this.hk_fld != null ? this.hk_fld.az_fld : null;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Ljava/lang/String;Lde;)V"
+	)
+	public static void bz(lu var0, String var1, de var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var0.bx_fld == 11 && null != var1) {
+			var0.hi_fld = new ma();
+			var0.hi_fld.aq(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Llu;"
+	)
+	public lu setHasListener(boolean var1) {
+		this.eh_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("ge")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setAnimationId(int var1) {
+		this.dl_fld = var1;
+		return this;
+	}
+
+	@ObfuscatedName("getDynamicChildren")
+	@ObfuscatedSignature(
+		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
+	)
+	@Export("getDynamicChildren")
+	@Override
+	public Widget[] getDynamicChildren() {
+		lu var1 = og.ci_fld.getWidget(this.bf_fld);
+		if (var1 == null) {
+			return new Widget[0];
+		} else {
+			lu[] var2 = var1.ge_fld;
+			if (var2 == null) {
+				return new Widget[0];
+			} else {
+				ArrayList var3 = new ArrayList();
+
+				for (lu var7 : var2) {
+					if (var7 != null) {
+						if (!yr_fld && var7.cv_fld != this.bf_fld) {
+							throw new AssertionError();
+						}
+
+						if (var7.cy_fld == this.by_fld) {
+							var3.add(var7);
+						}
+					}
+				}
+
+				return (Widget[])(Widget[])var3.toArray(new lu[0]);
+			}
+		}
 	}
 
 	@ObfuscatedName("fi")
@@ -6957,600 +7193,19 @@ public class lu extends vw implements Widget {
 		return this.hk_fld;
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("fz")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lli;)Z"
 	)
-	void cq(xi var1) {
-		this.bj_fld = false;
-		this.bx_fld = var1.cg();
-		this.bo_fld = var1.cg() * -353273877;
-		this.bp_fld = xi.tx(var1, 453733182) * -373959816;
-		this.bn_fld = var1.cz();
-		this.bc_fld = var1.cz();
-		this.bw_fld = xi.tx(var1, 482347163) * -803187643;
-		this.ba_fld = xi.tx(var1, 890079319) * -1723821249;
-		this.cb_fld = var1.cg();
-		this.cv_fld = xi.tx(var1, 359947017);
-		if (this.cv_fld == 65535) {
-			this.cv_fld = -429499679;
-		} else {
-			this.cv_fld = ((this.bf_fld & -336334651) + this.cv_fld) * 450079110;
-		}
-
-		this.gk_fld = xi.tx(var1, 1771581780);
-		if (this.gk_fld == -274481432) {
-			this.gk_fld = 1643570708;
-		}
-
-		int var2 = var1.cg();
-		if (var2 > 0) {
-			this.gp_fld = new int[var2];
-			this.gv_fld = new int[var2];
-
-			for (int var3 = 0; var3 < var2; var3++) {
-				this.gp_fld[var3] = var1.cg();
-				this.gv_fld[var3] = xi.tx(var1, 1188750021);
-			}
-		}
-
-		int var7 = var1.cg();
-		if (var7 > 0) {
-			this.gu_fld = new int[var7][];
-
-			for (int var4 = 0; var4 < var7; var4++) {
-				int var5 = xi.tx(var1, 1918276345);
-				this.gu_fld[var4] = new int[var5];
-
-				for (int var6 = 0; var6 < var5; var6++) {
-					this.gu_fld[var4][var6] = xi.tx(var1, 1490562364);
-					if (this.gu_fld[var4][var6] == 65535) {
-						this.gu_fld[var4][var6] = -1;
-					}
-				}
-			}
-		}
-
-		if (0 == this.bx_fld) {
-			this.cr_fld = xi.tx(var1, 1772732351) * -1842719791;
-			this.cf_fld = var1.cg() == 1;
-		}
-
-		if (1 == this.bx_fld) {
-			xi.tx(var1, 1368320939);
-			var1.cg();
-		}
-
-		if (3 == this.bx_fld) {
-			this.cz_fld = var1.cg() == 1;
-		}
-
-		if (this.bx_fld == 4 || 1 == this.bx_fld) {
-			this.ep_fld = var1.cg();
-			this.eb_fld = var1.cg() * -567204055;
-			this.es_fld = var1.cg() * 103930364;
-			this.de_fld = xi.tx(var1, 636216451) * 1133677321;
-			if (1719725822 == this.de_fld) {
-				this.de_fld = 57339867;
-			}
-
-			this.ed_fld = var1.cg() == 1;
-		}
-
-		if (this.bx_fld == 4) {
-			this.dp_fld = xi.kc(var1, 815637553);
-			this.dj_fld = xi.kc(var1, 1671682000);
-		}
-
-		if (this.bx_fld == 1 || 3 == this.bx_fld || this.bx_fld == 4) {
-			this.ca_fld = var1.co() * -1943764605;
-		}
-
-		if (3 == this.bx_fld || 4 == this.bx_fld) {
-			this.cg_fld = var1.co() * 966531967;
-			this.cw_fld = var1.co();
-			this.cm_fld = var1.co();
-		}
-
-		if (5 == this.bx_fld) {
-			this.cj_fld = var1.co() * -1730676206;
-			this.ch_fld = var1.co();
-		}
-
-		if (this.bx_fld == 6) {
-			this.dm_fld = 1445345206;
-			this.do_fld = -1082400781;
-			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
-			this.dd_fld = var1.dl(wa.ak_fld.az_fld) * 1629857022;
-			this.dl_fld = xi.tx(var1, 1119443570);
-			if (862202823 == this.dl_fld) {
-				this.dl_fld = -968762547;
-			}
-
-			this.dr_fld = xi.tx(var1, 1954801653);
-			if (this.dr_fld == 65535) {
-				this.dr_fld = -1475529628;
-			}
-
-			this.db_fld = xi.tx(var1, 1968539659);
-			this.dx_fld = xi.tx(var1, 1324032206) * -1407212792;
-			this.ds_fld = xi.tx(var1, 1200923458);
-		}
-
-		if (this.bx_fld == 8) {
-			this.dp_fld = xi.kc(var1, 2110443202);
-		}
-
-		if (2 == this.bo_fld) {
-			this.el_fld = xi.kc(var1, -1521167236);
-			this.gi_fld = xi.kc(var1, -1664600108);
-			int var8 = xi.tx(var1, 1082820609) & 1030340648;
-			this.ec_fld = -150017922 * (this.ec_fld | var8 << 11);
-		}
-
-		if (this.bo_fld == 1 || 4 == this.bo_fld || this.bo_fld == 5 || this.bo_fld == 6) {
-			this.gq_fld = xi.kc(var1, 2052085867);
-			if (this.gq_fld.isEmpty()) {
-				if (1 == this.bo_fld) {
-					this.gq_fld = kh.ab_fld;
-				}
-
-				if (4 == this.bo_fld) {
-					this.gq_fld = kh.ap_fld;
-				}
-
-				if (5 == this.bo_fld) {
-					this.gq_fld = kh.ap_fld;
-				}
-
-				if (6 == this.bo_fld) {
-					this.gq_fld = kh.at_fld;
-				}
-			}
-		}
-
-		if (1 == this.bo_fld || this.bo_fld == 4 || 5 == this.bo_fld) {
-			this.ec_fld = 1577281889 * (this.ec_fld | 4194304);
-		}
-
-		if (6 == this.bo_fld) {
-			this.ec_fld = 981510457 * (this.ec_fld | 1);
-		}
-	}
-
-	@ObfuscatedName("revalidate")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	@Override
-	public void revalidate() {
-		try {
-			if (!og.ci_fld.isClientThread()) {
-				if (!tf.$assertionsDisabled) {
-					throw new AssertionError("must be called on client thread");
-				} else {
-					throw new IllegalStateException("must be called on client thread");
-				}
-			} else {
-				client.wo(this, pf.qw_fld, bc.qx_fld, cf.cg_fld, client.cz_fld);
-			}
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("getScrollWidth")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getScrollWidth() {
-		return this.cn_fld;
-	}
-
-	@ObfuscatedName("gg")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;)Z"
-	)
-	public boolean gg(lw var1) {
-		try {
-			li var2 = bv(this, -1810286143);
-			if (var2 == null) {
-				return false;
-			} else {
-				boolean var3 = false;
-				if (!var2.cq() && this.de_fld != -1) {
-					int var4 = var2.cv();
-					int var5 = var2.cy();
-					int var6 = var2.cc();
-					int var7 = li.dg(var2, (byte)-28);
-					zf var8 = dg(this, var1, (byte)-18);
-					if (null != var8) {
-						var3 |= var2.ah(var8);
-						var3 |= this.bc(var2, 55221958);
-						var3 |= var2.al(var4, var5);
-						var3 |= li.ik(var2, var6, var7, (byte)-94);
-					}
-				} else if (var2.cq()) {
-					var3 |= this.bc(var2, 55221958);
-				}
-
-				li.jd(var2, 261216131);
-				return var3;
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setItemQuantityMode(int var1) {
-		this.df_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("setOnTimerListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnTimerListener(Object[] var1) {
-		this.fn_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("dx")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean dx() {
-		return 11 == this.bx_fld || 12 == this.bx_fld;
-	}
-
-	@ObfuscatedName("getActions")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/String;"
-	)
-	@Override
-	public String[] getActions() {
-		return this.ei_fld;
-	}
-
-	@ObfuscatedName("getRelativeX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRelativeX() {
-		return this.bq_fld;
-	}
-
-	@ObfuscatedName("go")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;)Z"
-	)
-	public boolean go(lw var1) {
-		try {
-			li var2 = bv(this, -678495960);
-			if (var2 == null) {
-				return false;
-			} else {
-				boolean var3 = false;
-				if (!var2.cq() && this.de_fld != -1) {
-					int var4 = var2.cv();
-					int var5 = var2.cy();
-					int var6 = var2.cc();
-					int var7 = li.dg(var2, (byte)-33);
-					zf var8 = dg(this, var1, (byte)-30);
-					if (null != var8) {
-						var3 |= var2.ah(var8);
-						var3 |= this.bc(var2, 55221958);
-						var3 |= var2.al(var4, var5);
-						var3 |= li.ik(var2, var6, var7, (byte)-13);
-					}
-				} else if (var2.cq()) {
-					var3 |= this.bc(var2, 55221958);
-				}
-
-				li.jd(var2, 261216131);
-				return var3;
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("sq")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)Llu;"
-	)
-	public lu setSize(int var1, int var2, int var3, int var4) {
-		return this.setOriginalWidth(var1).setOriginalHeight(var2).setWidthMode(var3).setHeightMode(var4);
-	}
-
-	@ObfuscatedName("dm")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Llw;ZLde;)Lyv;"
-	)
-	public static yv dm(lu var0, lw var1, boolean var2, de var3) throws EOFException {
-		try {
-			if (null != var0.ct_fld) {
-				yv var4 = var0.ar(var1, var3, 521764807);
-				if (var4 != null) {
-					return var4;
-				}
-			}
-
-			int var10;
-			if (var2) {
-				var10 = var0.ch_fld;
-			} else {
-				var10 = var0.cj_fld;
-			}
-
-			if (var10 == -1) {
-				return null;
-			} else {
-				long var5 = ((var0.dz_fld ? 1L : 0L) << 38) + ((long)var0.dh_fld << 36) + var10 + ((var0.dt_fld ? 1L : 0L) << 39) + ((long)var0.dv_fld << 40);
-				yv var7 = (yv)var1.as_fld.ak(var5);
-				if (var7 != null) {
-					return var7;
-				} else {
-					var7 = wf.av(var1.av_fld, var10, 0);
-					if (null == var7) {
-						return null;
-					} else {
-						pr(var0, var7, -1856571655);
-						var1.as_fld.az(var7, var5);
-						return var7;
-					}
-				}
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("setVarTransmitTrigger")
-	@ObfuscatedSignature(
-		descriptor = "([I)V"
-	)
-	@Override
-	public void setVarTransmitTrigger(int[] var1) {
-		this.fm_fld = var1;
-	}
-
-	@ObfuscatedName("getModelZoom")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelZoom() {
-		return this.db_fld;
-	}
-
-	@ObfuscatedName("gn")
-	@ObfuscatedSignature(
-		descriptor = "(Llp;Z)V"
-	)
-	public void gn(lp var1, boolean var2) {
-		try {
-			this.dm_fld = 279120917;
-			this.dy_fld = new lp(var1);
-			if (!var2) {
-				this.dy_fld.af_fld = Arrays.copyOf(this.dy_fld.ar_fld, this.dy_fld.ar_fld.length);
-				this.dy_fld.au((short)-9684);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("it")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;ILjava/lang/Object;)V"
-	)
-	public static void it(lu var0, int var1, Object var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var3 = 0; var3 < var0.hl_fld; var3++) {
-			if (var0.hs_fld[var3] == var1) {
-				var0.hq_fld[var3] = var2;
-				return;
-			}
-		}
-
-		if (null == var0.hq_fld) {
-			var0.hs_fld = new int[4];
-			var0.hq_fld = (Object[])(new Object[4]);
-		} else if (var0.hq_fld.length == var0.hl_fld) {
-			var0.hs_fld = Arrays.copyOf(var0.hs_fld, 2 * var0.hs_fld.length);
-			var0.hq_fld = (Object[])Arrays.copyOf((Object[])var0.hq_fld, var0.hq_fld.length * 2);
-		}
-
-		var0.hs_fld[var0.hl_fld * -379722129] = var1;
-		var0.hq_fld[var0.hl_fld] = var2;
-		var0.hl_fld += 344559068;
-	}
-
-	@ObfuscatedName("gh")
-	@ObfuscatedSignature(
-		descriptor = "(Llp;Z)V"
-	)
-	public void gh(lp var1, boolean var2) {
-		try {
-			this.dm_fld = 279120917;
-			this.dy_fld = new lp(var1);
-			if (!var2) {
-				this.dy_fld.af_fld = Arrays.copyOf(this.dy_fld.ar_fld, this.dy_fld.ar_fld.length);
-				this.dy_fld.au((short)24638);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("rr")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lxi;)V"
-	)
-	public static void rr(lu var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var1.cg();
-		var0.bj_fld = true;
-		var0.bx_fld = var1.cg();
-		var0.bp_fld = xi.tx(var1, 943999986);
-		var0.bn_fld = var1.cz();
-		var0.bc_fld = var1.cz();
-		var0.bw_fld = xi.tx(var1, 1741125963);
-		if (9 == var0.bx_fld) {
-			var0.ba_fld = var1.cz();
-		} else {
-			var0.ba_fld = xi.tx(var1, 2116358042);
-		}
-
-		var0.bi_fld = xi.rp(var1, -866058878);
-		var0.bu_fld = xi.rp(var1, 1364772989);
-		var0.bt_fld = xi.rp(var1, -1356506371);
-		var0.bv_fld = xi.rp(var1, 1393110752);
-		var0.cv_fld = xi.tx(var1, 1504087432);
-		if (65535 == var0.cv_fld) {
-			var0.cv_fld = -1995802935;
-		} else {
-			var0.cv_fld = 1995802935 * ((var0.bf_fld & -65536) + var0.cv_fld);
-		}
-
-		var0.cf_fld = var1.cg() == 1;
-		if (0 == var0.bx_fld) {
-			var0.cn_fld = xi.tx(var1, 1776954037);
-			var0.cr_fld = xi.tx(var1, 640678326);
-			var0.hb_fld = var1.cg() == 1;
-		}
-
-		if (var0.bx_fld == 5) {
-			var0.cj_fld = var1.co();
-			var0.cl_fld = xi.tx(var1, 783719692);
-			var0.dc_fld = var1.cg() == 1;
-			var0.cb_fld = var1.cg();
-			var0.dh_fld = var1.cg();
-			var0.dv_fld = var1.co();
-			var0.dz_fld = var1.cg() == 1;
-			var0.dt_fld = var1.cg() == 1;
-		}
-
-		if (var0.bx_fld == 6) {
-			var0.dm_fld = -1800825853;
-			var0.dq_fld = var1.dl(wa.ak_fld.az_fld);
-			var0.da_fld = var1.cz();
-			var0.dk_fld = var1.cz();
-			var0.dx_fld = xi.tx(var1, 1724570004);
-			var0.ds_fld = xi.tx(var1, 1689626002);
-			var0.du_fld = xi.tx(var1, 1025808563);
-			var0.db_fld = xi.tx(var1, 1450251555);
-			var0.dl_fld = xi.tx(var1, 1432726652);
-			if (65535 == var0.dl_fld) {
-				var0.dl_fld = -968762547;
-			}
-
-			var0.di_fld = var1.cg() == 1;
-			xi.tx(var1, 2082763476);
-			if (0 != var0.bi_fld) {
-				var0.dg_fld = xi.tx(var1, 1930574649);
-			}
-
-			if (var0.bu_fld != 0) {
-				xi.tx(var1, 917806952);
-			}
-		}
-
-		if (4 == var0.bx_fld) {
-			var0.de_fld = xi.tx(var1, 763323572);
-			if (65535 == var0.de_fld) {
-				var0.de_fld = 57339867;
-			}
-
-			var0.dp_fld = xi.kc(var1, -1686072473);
-			var0.es_fld = var1.cg();
-			var0.ep_fld = var1.cg();
-			var0.eb_fld = var1.cg();
-			var0.ed_fld = var1.cg() == 1;
-			var0.ca_fld = var1.co();
-		}
-
-		if (var0.bx_fld == 3) {
-			var0.ca_fld = var1.co();
-			var0.cz_fld = var1.cg() == 1;
-			var0.cb_fld = var1.cg();
-		}
-
-		if (var0.bx_fld == 9) {
-			var0.cu_fld = var1.cg();
-			var0.ca_fld = var1.co();
-			var0.ci_fld = var1.cg() == 1;
-		}
-
-		var0.ec_fld = var1.ck();
-		var0.eq_fld = xi.kc(var1, -1071947454);
-		int var2 = var1.cg();
-		if (var2 > 0) {
-			var0.ei_fld = new String[var2];
-
-			for (int var3 = 0; var3 < var2; var3++) {
-				var0.ei_fld[var3] = xi.kc(var1, -199356415);
-			}
-		}
-
-		var0.ev_fld = var1.cg();
-		var0.ey_fld = var1.cg();
-		var0.em_fld = var1.cg() == 1;
-		var0.el_fld = xi.kc(var1, 989045272);
-		var0.eu_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fp_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fv_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fc_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fk_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fh_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fe_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fl_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fn_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.ft_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fx_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.ej_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fy_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fa_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fo_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fj_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fb_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fq_fld = (Object[])var0.aw(var1, 1006055606);
-		var0.fm_fld = var0.ay(var1, 1984799128);
-		var0.fw_fld = var0.ay(var1, 358102990);
-		var0.fg_fld = var0.ay(var1, 1660277231);
-	}
-
-	@ObfuscatedName("wm")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lli;)Z"
-	)
-	public static boolean wm(lu var0, li var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	boolean fz(li var1) {
 		boolean var2 = false;
-		if (null != var0.dp_fld && !var0.dp_fld.isEmpty()) {
-			var2 |= li.sc(var1, bw.ax(var0.dp_fld), 43812545);
-			var0.dp_fld = "";
+		if (null != this.dp_fld && !this.dp_fld.isEmpty()) {
+			var2 |= var1.av(bw.ax(this.dp_fld));
+			this.dp_fld = "";
 		}
 
-		if (var0.dj_fld != null && !var0.dj_fld.isEmpty()) {
-			String var6 = var0.dj_fld;
+		if (this.dj_fld != null && !this.dj_fld.isEmpty()) {
+			String var6 = this.dj_fld;
 			StringBuilder var7 = new StringBuilder(var6.length());
 			int var8 = 0;
 			int var9 = -1;
@@ -7580,20 +7235,298 @@ public class lu extends vw implements Widget {
 			}
 
 			String var5 = var7.toString();
-			var2 |= var1.ae(var5);
-			var0.dj_fld = "";
+			var2 |= li.wh(var1, var5, (short)-14060);
+			this.dj_fld = "";
 		}
 
 		return var2;
 	}
 
-	@ObfuscatedName("setOnReleaseListener")
+	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
+		descriptor = "(Lxi;)V"
 	)
+	void cq(xi var1) {
+		this.bj_fld = false;
+		this.bx_fld = var1.cg();
+		this.bo_fld = var1.cg() * -353273877;
+		this.bp_fld = var1.cm() * -373959816;
+		this.bn_fld = var1.cz();
+		this.bc_fld = var1.cz();
+		this.bw_fld = var1.cm() * -803187643;
+		this.ba_fld = var1.cm() * -1723821249;
+		this.cb_fld = var1.cg();
+		this.cv_fld = var1.cm();
+		if (this.cv_fld == 65535) {
+			this.cv_fld = -429499679;
+		} else {
+			this.cv_fld = ((this.bf_fld & -336334651) + this.cv_fld) * 450079110;
+		}
+
+		this.gk_fld = var1.cm();
+		if (this.gk_fld == -274481432) {
+			this.gk_fld = 1643570708;
+		}
+
+		int var2 = var1.cg();
+		if (var2 > 0) {
+			this.gp_fld = new int[var2];
+			this.gv_fld = new int[var2];
+
+			for (int var3 = 0; var3 < var2; var3++) {
+				this.gp_fld[var3] = var1.cg();
+				this.gv_fld[var3] = var1.cm();
+			}
+		}
+
+		int var7 = var1.cg();
+		if (var7 > 0) {
+			this.gu_fld = new int[var7][];
+
+			for (int var4 = 0; var4 < var7; var4++) {
+				int var5 = var1.cm();
+				this.gu_fld[var4] = new int[var5];
+
+				for (int var6 = 0; var6 < var5; var6++) {
+					this.gu_fld[var4][var6] = var1.cm();
+					if (this.gu_fld[var4][var6] == 65535) {
+						this.gu_fld[var4][var6] = -1;
+					}
+				}
+			}
+		}
+
+		if (0 == this.bx_fld) {
+			this.cr_fld = var1.cm() * -1842719791;
+			this.cf_fld = var1.cg() == 1;
+		}
+
+		if (1 == this.bx_fld) {
+			var1.cm();
+			var1.cg();
+		}
+
+		if (3 == this.bx_fld) {
+			this.cz_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 4 || 1 == this.bx_fld) {
+			this.ep_fld = var1.cg();
+			this.eb_fld = var1.cg() * -567204055;
+			this.es_fld = var1.cg() * 103930364;
+			this.de_fld = var1.cm() * 1133677321;
+			if (1719725822 == this.de_fld) {
+				this.de_fld = 57339867;
+			}
+
+			this.ed_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 4) {
+			this.dp_fld = xi.at(var1, 815637553);
+			this.dj_fld = xi.at(var1, 1671682000);
+		}
+
+		if (this.bx_fld == 1 || 3 == this.bx_fld || this.bx_fld == 4) {
+			this.ca_fld = var1.co((byte)-128) * -1943764605;
+		}
+
+		if (3 == this.bx_fld || 4 == this.bx_fld) {
+			this.cg_fld = var1.co((byte)-128) * 966531967;
+			this.cw_fld = var1.co((byte)-76);
+			this.cm_fld = var1.co((byte)-86);
+		}
+
+		if (5 == this.bx_fld) {
+			this.cj_fld = var1.co((byte)-2) * -1730676206;
+			this.ch_fld = var1.co((byte)-55);
+		}
+
+		if (this.bx_fld == 6) {
+			this.dm_fld = 1445345206;
+			this.do_fld = -1082400781;
+			this.dq_fld = var1.dl(wa.ak_fld.az_fld);
+			this.dd_fld = var1.dl(wa.ak_fld.az_fld) * 1629857022;
+			this.dl_fld = var1.cm();
+			if (862202823 == this.dl_fld) {
+				this.dl_fld = -968762547;
+			}
+
+			this.dr_fld = var1.cm();
+			if (this.dr_fld == 65535) {
+				this.dr_fld = -1475529628;
+			}
+
+			this.db_fld = var1.cm();
+			this.dx_fld = var1.cm() * -1407212792;
+			this.ds_fld = var1.cm();
+		}
+
+		if (this.bx_fld == 8) {
+			this.dp_fld = xi.at(var1, 2110443202);
+		}
+
+		if (2 == this.bo_fld) {
+			this.el_fld = xi.at(var1, -1521167236);
+			this.gi_fld = xi.at(var1, -1664600108);
+			int var8 = var1.cm() & 1030340648;
+			this.ec_fld = -150017922 * (this.ec_fld | var8 << 11);
+		}
+
+		if (this.bo_fld == 1 || 4 == this.bo_fld || this.bo_fld == 5 || this.bo_fld == 6) {
+			this.gq_fld = xi.at(var1, 2052085867);
+			if (this.gq_fld.isEmpty()) {
+				if (1 == this.bo_fld) {
+					this.gq_fld = kh.ab_fld;
+				}
+
+				if (4 == this.bo_fld) {
+					this.gq_fld = kh.ap_fld;
+				}
+
+				if (5 == this.bo_fld) {
+					this.gq_fld = kh.ap_fld;
+				}
+
+				if (6 == this.bo_fld) {
+					this.gq_fld = kh.at_fld;
+				}
+			}
+		}
+
+		if (1 == this.bo_fld || this.bo_fld == 4 || 5 == this.bo_fld) {
+			this.ec_fld = 1577281889 * (this.ec_fld | 4194304);
+		}
+
+		if (6 == this.bo_fld) {
+			this.ec_fld = 981510457 * (this.ec_fld | 1);
+		}
+	}
+
+	@ObfuscatedName("isHidden")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isHidden")
 	@Override
-	public void setOnReleaseListener(Object[] var1) {
-		this.fa_fld = (Object[])var1;
+	public boolean isHidden() {
+		if (!og.ci_fld.isClientThread()) {
+			if (!tf.$assertionsDisabled) {
+				throw new AssertionError("must be called on client thread");
+			} else {
+				throw new IllegalStateException("must be called on client thread");
+			}
+		} else if (this.isSelfHidden()) {
+			return true;
+		} else {
+			Widget var1 = this.getParent();
+			if (var1 == null) {
+				if (WidgetUtil.componentToInterface(this.getId()) != og.ci_fld.getTopLevelInterfaceId()) {
+					return true;
+				}
+			} else if (var1.isHidden()) {
+				return true;
+			}
+
+			return false;
+		}
+	}
+
+	@ObfuscatedName("gg")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;)Z"
+	)
+	public boolean gg(lw var1) {
+		try {
+			li var2 = ax(this, -1810286143);
+			if (var2 == null) {
+				return false;
+			} else {
+				boolean var3 = false;
+				if (!var2.cq() && this.de_fld != -1) {
+					int var4 = li.nf(var2, -2137260516);
+					int var5 = var2.cy();
+					int var6 = var2.cc();
+					int var7 = li.em(var2, (byte)-28);
+					zf var8 = this.ax(var1, (byte)-18);
+					if (null != var8) {
+						var3 |= li.kw(var2, var8, -1566108131);
+						var3 |= this.bc(var2, 55221958);
+						var3 |= var2.al(var4, var5);
+						var3 |= var2.ap(var6, var7);
+					}
+				} else if (var2.cq()) {
+					var3 |= this.bc(var2, 55221958);
+				}
+
+				var2.ak();
+				return var3;
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
+	}
+
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		return this.zc().replace(' ', ' ');
+	}
+
+	@ObfuscatedName("go")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;)Z"
+	)
+	public boolean go(lw var1) {
+		try {
+			li var2 = ax(this, -678495960);
+			if (var2 == null) {
+				return false;
+			} else {
+				boolean var3 = false;
+				if (!var2.cq() && this.de_fld != -1) {
+					int var4 = li.nf(var2, -2142353832);
+					int var5 = var2.cy();
+					int var6 = var2.cc();
+					int var7 = li.em(var2, (byte)-33);
+					zf var8 = this.ax(var1, (byte)-30);
+					if (null != var8) {
+						var3 |= li.kw(var2, var8, -1262338624);
+						var3 |= this.bc(var2, 55221958);
+						var3 |= var2.al(var4, var5);
+						var3 |= var2.ap(var6, var7);
+					}
+				} else if (var2.cq()) {
+					var3 |= this.bc(var2, 55221958);
+				}
+
+				var2.ak();
+				return var3;
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
+	}
+
+	@ObfuscatedName("gn")
+	@ObfuscatedSignature(
+		descriptor = "(Llp;Z)V"
+	)
+	public void gn(lp var1, boolean var2) {
+		try {
+			this.dm_fld = 279120917;
+			this.dy_fld = new lp(var1);
+			if (!var2) {
+				this.dy_fld.af_fld = Arrays.copyOf(this.dy_fld.ar_fld, this.dy_fld.ar_fld.length);
+				this.dy_fld.au((short)-9684);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
 	}
 
 	@ObfuscatedName("ai")
@@ -7601,7 +7534,7 @@ public class lu extends vw implements Widget {
 		descriptor = "(ZB)V"
 	)
 	static void ai(boolean var0, byte var1) {
-		if (!og.ci_fld.ib((byte)9)) {
+		if (!client.de(og.ci_fld, (byte)9)) {
 			if (var1 == 18) {
 				return;
 			}
@@ -7611,7 +7544,7 @@ public class lu extends vw implements Widget {
 					return;
 				}
 
-				if (!client.ga(og.ci_fld, -988962053)) {
+				if (!og.ci_fld.iz(-988962053)) {
 					bn.ci_fld = kh.it_fld;
 					bn.cj_fld = kh.ii_fld;
 					bn.ch_fld = kh.iw_fld;
@@ -7639,6 +7572,257 @@ public class lu extends vw implements Widget {
 		jz.ac(10);
 	}
 
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)Lli;"
+	)
+	public static li ax(lu var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.hk_fld != null ? var0.hk_fld.ak_fld : null;
+		}
+	}
+
+	@ObfuscatedName("ik")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ik(int var1) {
+		if (this.wh_fld > -1) {
+			this.setRelativeX(this.wh_fld);
+		}
+	}
+
+	@ObfuscatedName("setBorderType")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setBorderType")
+	@Override
+	public void setBorderType(int var1) {
+		this.dh_fld = var1;
+	}
+
+	@ObfuscatedName("nd")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)[I"
+	)
+	public static int[] nd(lu var0) {
+		if (var0.bx_fld == 11 && var0.hi_fld != null) {
+			int[] var1 = new int[3];
+			int var2 = 0;
+			Iterator var3 = var0.hi_fld.af().iterator();
+
+			while (var3.hasNext()) {
+				mu var4 = (mu)(mu)var3.next();
+				if (!mu.wi(var4, (byte)1).equals("user_id")) {
+					if (var4.ak((byte)50) != 0) {
+						return null;
+					}
+
+					var1[var2++] = var4.ag((byte)-97);
+					if (var2 > 3) {
+						return null;
+					}
+				}
+			}
+
+			return var1;
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("getChild")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lnet/runelite/api/widgets/Widget;"
+	)
+	@Export("getChild")
+	@Override
+	public Widget getChild(int var1) {
+		lu[] var2 = this.getChildren();
+		return var2 != null && var1 >= 0 && var1 < var2.length ? var2[var1] : null;
+	}
+
+	@ObfuscatedName("cv")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	void cv(xi var1) {
+		this.bj_fld = false;
+		this.bx_fld = var1.cg();
+		this.bo_fld = var1.cg();
+		this.bp_fld = var1.cm() * 1974271862;
+		this.bn_fld = var1.cz();
+		this.bc_fld = var1.cz() * 2026791513;
+		this.bw_fld = var1.cm();
+		this.ba_fld = var1.cm() * -227866188;
+		this.cb_fld = var1.cg() * 1231864795;
+		this.cv_fld = var1.cm() * 1288719269;
+		if (this.cv_fld == 65535) {
+			this.cv_fld = -1995802935;
+		} else {
+			this.cv_fld = ((this.bf_fld & -1997328292) + this.cv_fld) * 1336580762;
+		}
+
+		this.gk_fld = var1.cm() * -1318914841;
+		if (this.gk_fld == 2027538977) {
+			this.gk_fld = 26740389;
+		}
+
+		int var2 = var1.cg();
+		if (var2 > 0) {
+			this.gp_fld = new int[var2];
+			this.gv_fld = new int[var2];
+
+			for (int var3 = 0; var3 < var2; var3++) {
+				this.gp_fld[var3] = var1.cg();
+				this.gv_fld[var3] = var1.cm();
+			}
+		}
+
+		int var7 = var1.cg();
+		if (var7 > 0) {
+			this.gu_fld = new int[var7][];
+
+			for (int var4 = 0; var4 < var7; var4++) {
+				int var5 = var1.cm();
+				this.gu_fld[var4] = new int[var5];
+
+				for (int var6 = 0; var6 < var5; var6++) {
+					this.gu_fld[var4][var6] = var1.cm();
+					if (this.gu_fld[var4][var6] == 1201234438) {
+						this.gu_fld[var4][var6] = -1;
+					}
+				}
+			}
+		}
+
+		if (0 == this.bx_fld) {
+			this.cr_fld = var1.cm();
+			this.cf_fld = var1.cg() == 1;
+		}
+
+		if (1 == this.bx_fld) {
+			var1.cm();
+			var1.cg();
+		}
+
+		if (3 == this.bx_fld) {
+			this.cz_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 4 || 1 == this.bx_fld) {
+			this.ep_fld = var1.cg() * 962627214;
+			this.eb_fld = var1.cg() * 72253439;
+			this.es_fld = var1.cg() * 1094656221;
+			this.de_fld = var1.cm();
+			if (65535 == this.de_fld) {
+				this.de_fld = 1883807713;
+			}
+
+			this.ed_fld = var1.cg() == 1;
+		}
+
+		if (this.bx_fld == 4) {
+			this.dp_fld = xi.at(var1, -851276072);
+			this.dj_fld = xi.at(var1, -362622819);
+		}
+
+		if (this.bx_fld == 1 || 3 == this.bx_fld || this.bx_fld == 4) {
+			this.ca_fld = var1.co((byte)-120);
+		}
+
+		if (3 == this.bx_fld || 4 == this.bx_fld) {
+			this.cg_fld = var1.co((byte)-84) * -1431161919;
+			this.cw_fld = var1.co((byte)-75) * -278183800;
+			this.cm_fld = var1.co((byte)-121);
+		}
+
+		if (5 == this.bx_fld) {
+			this.cj_fld = var1.co((byte)-6);
+			this.ch_fld = var1.co((byte)-127) * -395997907;
+		}
+
+		if (this.bx_fld == 6) {
+			this.dm_fld = -1800825853;
+			this.do_fld = 571206572;
+			this.dq_fld = var1.dl(wa.ak_fld.az_fld) * -1727287075;
+			this.dd_fld = var1.dl(wa.ak_fld.az_fld) * 1259669067;
+			this.dl_fld = var1.cm() * -2035712846;
+			if (65535 == this.dl_fld) {
+				this.dl_fld = -229266474;
+			}
+
+			this.dr_fld = var1.cm();
+			if (this.dr_fld == 744709241) {
+				this.dr_fld = 37770411;
+			}
+
+			this.db_fld = var1.cm();
+			this.dx_fld = var1.cm();
+			this.ds_fld = var1.cm();
+		}
+
+		if (this.bx_fld == 8) {
+			this.dp_fld = xi.at(var1, 430089749);
+		}
+
+		if (2 == this.bo_fld) {
+			this.el_fld = xi.at(var1, 1371489653);
+			this.gi_fld = xi.at(var1, -749163782);
+			int var8 = var1.cm() & 178765744;
+			this.ec_fld = -394576144 * (this.ec_fld | var8 << 11);
+		}
+
+		if (this.bo_fld == 1 || 4 == this.bo_fld || this.bo_fld == 5 || this.bo_fld == 6) {
+			this.gq_fld = xi.at(var1, -1442016386);
+			if (this.gq_fld.isEmpty()) {
+				if (1 == this.bo_fld) {
+					this.gq_fld = kh.ab_fld;
+				}
+
+				if (4 == this.bo_fld) {
+					this.gq_fld = kh.ap_fld;
+				}
+
+				if (5 == this.bo_fld) {
+					this.gq_fld = kh.ap_fld;
+				}
+
+				if (6 == this.bo_fld) {
+					this.gq_fld = kh.at_fld;
+				}
+			}
+		}
+
+		if (1 == this.bo_fld || this.bo_fld == 4 || 5 == this.bo_fld) {
+			this.ec_fld = -950189223 * (this.ec_fld | -331491562);
+		}
+
+		if (6 == this.bo_fld) {
+			this.ec_fld = -427477287 * (this.ec_fld | 1);
+		}
+	}
+
+	@ObfuscatedName("jo")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	public int[] jo() {
+		return this.gm_fld;
+	}
+
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu setXPositionMode(int var1) {
+		this.bt_fld = var1;
+		return this;
+	}
+
 	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lln;"
@@ -7647,257 +7831,17 @@ public class lu extends vw implements Widget {
 		return this.hk_fld != null ? this.hk_fld.ag_fld : null;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("getTargetPriority")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;ZLde;I)Lyv;"
+		descriptor = "()I"
 	)
-	public yv as(lw var1, boolean var2, de var3, int var4) {
-		try {
-			if (this.fy() != -1) {
-				SpritePixels var5 = (SpritePixels)(SpritePixels)client.ah_java_util_Map.get(this.getOriginalX());
-				if (var5 != null) {
-					return (yv)var5;
-				}
-			}
-
-			int var10 = -423043034;
-			if (null != this.gi_fld) {
-				yv var11 = this.ar(var1, var3, 521764807);
-				if (var11 != null) {
-					return var11;
-				}
-			}
-
-			int var17;
-			if (var2) {
-				var17 = this.dm_fld * 2103578503;
-			} else {
-				var17 = this.bg_fld * -377192225;
-			}
-
-			yv var10000;
-			if (var17 == -1) {
-				Object var6 = null;
-				var10000 = (yv)var6;
-			} else {
-				long var12 = ((this.dt_fld ? 1L : 0L) << 38)
-					+ ((long)this.nn_fld << 36)
-					+ var17
-					+ ((this.di_fld ? 1L : 0L) << 39)
-					+ ((long)(1891222921 * this.dh_fld) << 40);
-				yv var14 = (yv)var1.as_fld.ae(var12);
-				if (var14 != null) {
-					var10000 = var14;
-				} else {
-					var14 = wf.av(var1.ae_fld, var17, 0);
-					if (null == var14) {
-						Object var16 = null;
-						var10000 = (yv)var16;
-					} else {
-						pr(this, var14, -1404429990);
-						var1.as_fld.al(var14, var12);
-						var10000 = var14;
-					}
-				}
-			}
-
-			return var10000;
-		} catch (Throwable var15) {
-			throw new RuntimeException(var15);
-		}
-	}
-
-	@ObfuscatedName("setWidth")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
+	@Export("getTargetPriority")
 	@Override
-	public void setWidth(int var1) {
-		this.bb_fld = var1;
+	public int getTargetPriority() {
+		return this.ek_fld;
 	}
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(Lyv;I)V"
-	)
-	void au(yv var1, int var2) {
-		if (this.gw_fld) {
-			yv.zb(var1);
-		}
-
-		if (this.gw_fld) {
-			var1.ax();
-		}
-
-		if (this.bv_fld * -1443261961 > 0) {
-			var1.aa(-1443261961 * this.db_fld);
-		}
-
-		if (this.nn_fld >= 1) {
-			if (var2 >= 185271048) {
-				return;
-			}
-
-			var1.setMaxWidth(1);
-		}
-
-		if (this.ev_fld >= 2) {
-			if (var2 >= 185271048) {
-				return;
-			}
-
-			var1.setMaxHeight(16777215);
-		}
-
-		if (0 != this.bt_fld) {
-			var1.dh(this.by_fld * 1891222921);
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;B)Lzf;"
-	)
-	public zf ax(lw var1, byte var2) {
-		try {
-			if (this.cx_fld == -1) {
-				return null;
-			} else {
-				zf var3 = (zf)var1.ar_fld.aw(159419309 * this.gz_fld);
-				if (null != var3) {
-					return var3;
-				} else {
-					var3 = dv.ae(var1.ah_fld, var1.az_fld, 159419309 * this.bv_fld, 0);
-					if (null != var3) {
-						var1.al_fld.nk(var3, 159419309 * this.ch_fld);
-					}
-
-					return var3;
-				}
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("setOnDialogAbortListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnDialogAbortListener(Object[] var1) {
-		this.gn_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("hu")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu setContentType(int var1) {
-		this.bp_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;IJ)J"
-	)
-	public static long pw(lu var0, int var1, long var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var4 = 0; var4 < var0.hl_fld; var4++) {
-			if (var1 == var0.hs_fld[var4]) {
-				return (Long)var0.hq_fld[var4];
-			}
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean am(int var1) {
-		return 11 == this.ch_fld || 12 == this.cu_fld;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean ad(int var1) {
-		return 11 == this.bp_fld || 12 == this.dw_fld;
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean bs(int var1) {
-		return this.dd_fld == 2;
-	}
-
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
-	)
-	public String by(int var1) {
-		if (11 == this.de_fld && null != this.hi_fld) {
-			String var2 = this.hi_fld.al();
-			Iterator var3 = this.hi_fld.ar().iterator();
-
-			while (var3.hasNext()) {
-				mu var4 = (mu)(mu)var3.next();
-				String var5 = String.format("%%%S%%", (Object[])(new Object[]{mu.mw(var4, (byte)1)}));
-				if (var4.ak((byte)-17) == 0) {
-					var2.replaceAll(var5, Integer.toString(var4.ag((byte)-29)));
-				} else {
-					var2.replaceAll(var5, var4.ah(1263192160));
-				}
-			}
-
-			return var2;
-		} else {
-			return null;
-		}
-	}
-
-	@ObfuscatedName("setBorderType")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setBorderType(int var1) {
-		this.dh_fld = var1;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(III)I"
-	)
-	public int ab(int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < this.do_fld; var4++) {
-			if (this.ew_fld[var4] == var1) {
-				return (Integer)this.hq_fld[var4];
-			}
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("ti")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Llu;"
-	)
-	public lu setSpriteTiling(boolean var1) {
-		this.dc_fld = var1;
-		return this;
-	}
-
-	@ObfuscatedName("nz")
+	@ObfuscatedName("ud")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
@@ -7906,175 +7850,212 @@ public class lu extends vw implements Widget {
 		return this;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Ljava/lang/String;"
+		descriptor = "([IS)[I"
 	)
-	public static String ar(lu var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (11 == var0.bx_fld && null != var0.hi_fld) {
-			String var2 = var0.hi_fld.al();
-			Iterator var3 = var0.hi_fld.ar().iterator();
+	int[] az(int[] var1, short var2) {
+		return null != var1 ? Arrays.copyOf(var1, var1.length) : null;
+	}
 
-			while (var3.hasNext()) {
-				mu var4 = (mu)(mu)var3.next();
-				String var5 = String.format("%%%S%%", (Object[])(new Object[]{mu.mw(var4, (byte)1)}));
-				if (var4.ak((byte)-17) == 0) {
-					var2.replaceAll(var5, Integer.toString(var4.ag((byte)-29)));
-				} else {
-					var2.replaceAll(var5, var4.ah(1263192160));
-				}
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lyv;I)V"
+	)
+	void au(yv var1, int var2) {
+		if (this.eh_fld) {
+			var1.ch();
+		}
+
+		if (this.hb_fld) {
+			var1.cw();
+		}
+
+		if (this.ga_fld * -1443261961 > 0) {
+			var1.dv(-1443261961 * this.dk_fld);
+		}
+
+		if (this.bo_fld >= 1) {
+			if (var2 >= 185271048) {
+				return;
 			}
 
-			return var2;
-		} else {
-			return null;
+			var1.dv(1);
+		}
+
+		if (this.bf_fld >= 2) {
+			if (var2 >= 185271048) {
+				return;
+			}
+
+			var1.ad(16777215);
+		}
+
+		if (0 != this.ca_fld) {
+			var1.setMaxHeight(this.gd_fld * 1891222921);
 		}
 	}
 
-	@ObfuscatedName("ba")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Llp;ZI)V"
+		descriptor = "(Llw;ZI)Lkp;"
 	)
-	public void ba(lp var1, boolean var2, int var3) {
+	public kp aa(lw var1, boolean var2, int var3) {
 		try {
-			this.cn_fld = 279120917;
-			this.dy_fld = new lp(var1);
-			if (!var2) {
-				this.dy_fld.af_fld = Arrays.copyOf(this.dy_fld.al_fld, this.dy_fld.al_fld.length);
-				this.dy_fld.au((short)3193);
+			if (this.cj_fld == -1) {
+				var2 = false;
 			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
 
-	@ObfuscatedName("setOnKeyListener")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;)V"
-	)
-	@Override
-	public void setOnKeyListener(Object[] var1) {
-		this.fu_fld = (Object[])var1;
-	}
-
-	@ObfuscatedName("setFlippedVertically")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	@Override
-	public void setFlippedVertically(boolean var1) {
-		this.dz_fld = var1;
-	}
-
-	@ObfuscatedName("getRotationY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRotationY() {
-		return this.du_fld;
-	}
-
-	@ObfuscatedName("setNoScrollThrough")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	@Override
-	public void setNoScrollThrough(boolean var1) {
-		this.hf_fld = var1;
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I"
-	)
-	public int bh(String var1, int var2) {
-		return 11 == this.dm_fld && this.hi_fld != null && qz(this, 297822854) ? this.hi_fld.aw(var1) : -1;
-	}
-
-	@ObfuscatedName("getDynamicChildren")
-	@ObfuscatedSignature(
-		descriptor = "()[Lnet/runelite/api/widgets/Widget;"
-	)
-	@Override
-	public Widget[] getDynamicChildren() {
-		lu var1 = og.ci_fld.getWidget(this.bf_fld);
-		if (var1 == null) {
-			return new Widget[0];
-		} else {
-			lu[] var2 = var1.ge_fld;
-			if (var2 == null) {
-				return new Widget[0];
+			int var4 = var2 ? this.dx_fld * 2103578503 : this.cl_fld * -377192225;
+			if (-1 == var4) {
+				return null;
 			} else {
-				ArrayList var3 = new ArrayList();
+				long var5 = ((long)(1891222921 * this.ca_fld) << 40)
+					+ ((this.dt_fld ? 1L : 0L) << 39)
+					+ ((this.bj_fld ? 1L : 0L) << 38)
+					+ var4
+					+ ((long)(-1443261961 * this.bf_fld) << 36);
+				kp var7 = (kp)var1.ar_fld.bs(var5);
+				if (var7 != null) {
+					return var7;
+				} else {
+					yv var8 = this.as(var1, var2, null, -423043034);
+					if (var8 == null) {
+						return null;
+					} else {
+						yv var9 = yv.vo(var8);
+						int[] var10 = new int[var9.ay_fld];
+						int[] var11 = new int[var9.as_fld];
 
-				for (lu var7 : var2) {
-					if (var7 != null) {
-						if (!im_fld && var7.cv_fld != this.bf_fld) {
-							throw new AssertionError();
+						for (int var12 = 0; var12 < var9.ay_fld; var12++) {
+							int var13 = 0;
+							int var14 = var9.aw_fld;
+
+							for (int var15 = 0; var15 < var9.ay_fld; var15++) {
+								if (0 == var9.ah_fld[var12 * var9.as_fld + var15]) {
+									var13 = var15;
+									break;
+								}
+							}
+
+							for (int var18 = var9.ad_fld - 1; var18 >= var13; var18--) {
+								if (0 == var9.ah_fld[var18 + var12 * var9.ad_fld]) {
+									var14 = var18 + 1;
+									break;
+								}
+							}
+
+							var10[var12] = var13;
+							var11[var12] = var14 - var13;
 						}
 
-						if (var7.cy_fld == this.by_fld) {
-							var3.add(var7);
-						}
+						var7 = new kp(var9.as_fld, var9.ay_fld, var11, var10, var4);
+						var1.af_fld.at(var7, var5);
+						return var7;
 					}
 				}
+			}
+		} catch (Throwable var16) {
+			throw new RuntimeException(var16);
+		}
+	}
 
-				return (Widget[])(Widget[])var3.toArray(new lu[0]);
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/Object;I)Ljava/lang/Object;"
+	)
+	public Object ao(int var1, Object var2, int var3) {
+		for (int var4 = 0; var4 < this.dd_fld; var4++) {
+			if (var1 == this.hs_fld[var4]) {
+				return this.hq_fld[var4];
 			}
 		}
+
+		return var2;
 	}
 
-	@ObfuscatedName("ji")
-	@ObfuscatedSignature(
-		descriptor = "()Lym;"
-	)
-	public ym ji() {
-		return this.ck_fld;
-	}
-
-	@ObfuscatedName("getModelId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelId() {
-		return this.dq_fld;
-	}
-
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "(S)I"
-	)
-	public int bf(short var1) {
-		if (11 == this.bg_fld && this.hi_fld != null && null != this.he_fld && !this.hd_fld.isEmpty()) {
-			String var2 = this.hi_fld.al();
-			return null != var2 && this.hd_fld.containsKey(this.hi_fld.al()) ? (Integer)this.he_fld.get(var2) : -1;
-		} else {
-			return -1;
-		}
-	}
-
-	@ObfuscatedName("deleteAllChildren")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	@Override
-	public void deleteAllChildren() {
-		if (this.getChildren() != null) {
-			Arrays.fill(this.getChildren(), null);
-		}
-	}
-
-	@ObfuscatedName("rt")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "(I)Llu;"
 	)
-	public lu setWidthMode(int var1) {
-		this.bi_fld = var1;
+	public lu setLineHeight(int var1) {
+		this.es_fld = var1;
 		return this;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(III)I"
+	)
+	public int ab(int var1, int var2, int var3) {
+		for (int var4 = 0; var4 < this.dd_fld; var4++) {
+			if (this.et_fld[var4] == var1) {
+				return (Integer)this.hq_fld[var4];
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("dm")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Llu;"
+	)
+	public lu setSize(int var1, int var2, int var3, int var4) {
+		return this.setOriginalWidth(var1).setOriginalHeight(var2).setWidthMode(var3).setHeightMode(var4);
+	}
+
+	@ObfuscatedName("getModelZoom")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getModelZoom")
+	@Override
+	public int getModelZoom() {
+		return this.db_fld;
+	}
+
+	@ObfuscatedName("getScrollY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getScrollY")
+	@Override
+	public int getScrollY() {
+		return this.ce_fld;
+	}
+
+	@ObfuscatedName("eh")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Ljava/lang/String;"
+	)
+	public String eh(String var1) {
+		return this.ey_fld == 11 && null != this.hi_fld && this.am(1465243715) ? this.hi_fld.ay(var1) : null;
+	}
+
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Lde;B)Z"
+	)
+	public boolean bo(lw var1, de var2, byte var3) {
+		if (11 == this.ev_fld && null != this.hi_fld) {
+			ma.dh(this.hi_fld, var2, 2099032597);
+			if (this.hi_fld.ae() != this.hn_fld) {
+				this.dd_fld = this.hi_fld.ae() * -510430013;
+				if (this.do_fld >= 3) {
+					return true;
+				}
+
+				if (2 == this.dd_fld) {
+					this.bp(var1, -511255598);
+					return true;
+				}
+			}
+
+			return false;
+		} else {
+			return false;
+		}
 	}
 
 	@ObfuscatedName("bv")
@@ -8083,5 +8064,28 @@ public class lu extends vw implements Widget {
 	)
 	public li bv(int var1) {
 		return this.hk_fld != null ? this.hk_fld.ak_fld : null;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Lde;I)Lyv;"
+	)
+	yv ar(lw var1, de var2, int var3) {
+		if (!this.al(-978031646)) {
+			return this.af(var1, var2, (byte)0);
+		} else {
+			String var4 = this.dp_fld + (this.ez_fld ? 1 : 0) + (this.ed_fld ? 1 : 0) + -1443261961 * this.ds_fld + 1891222921 * this.ce_fld;
+			yv var5 = (yv)(yv)var1.ax_fld.ag(var4);
+			if (null == var5) {
+				yv var6 = this.af(var1, var2, (byte)0);
+				if (var6 != null) {
+					var5 = var6.af();
+					mg(this, var5, -144005898);
+					var1.au_fld.az(var4, var5);
+				}
+			}
+
+			return var5;
+		}
 	}
 }

@@ -46,10 +46,10 @@ public class lb {
 		descriptor = "(II)V"
 	)
 	public static void ar(int var0, int var1) throws EOFException {
-		ph var2 = lu.ag(var0);
-		int var3 = var2.ae_fld;
-		int var4 = var2.ah_fld;
-		int var5 = var2.av_fld;
+		ph var2 = lu.ag(var0, 1425659899);
+		int var3 = var2.av_fld;
+		int var4 = var2.ae_fld;
+		int var5 = var2.ah_fld;
 		int var6 = az_fld[var5 - var4];
 		if (var1 < 0 || var1 > var6) {
 			var1 = 0;
@@ -66,18 +66,6 @@ public class lb {
 			az_fld[var1] = var0 - 1;
 			var0 += var0;
 		}
-	}
-
-	@ObfuscatedName("tm")
-	@ObfuscatedSignature(
-		descriptor = "(Lwz;I)V"
-	)
-	public static void tm(wz var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ed(null);
 	}
 
 	@ObfuscatedName("ah")
@@ -107,10 +95,10 @@ public class lb {
 		descriptor = "(I)I"
 	)
 	public static int ay(int var0) throws EOFException {
-		ph var1 = lu.ag(var0);
-		int var2 = var1.ae_fld;
-		int var3 = var1.ah_fld;
-		int var4 = var1.av_fld;
+		ph var1 = lu.ag(var0, 1425659899);
+		int var2 = var1.av_fld;
+		int var3 = var1.ae_fld;
+		int var4 = var1.ah_fld;
 		int var5 = az_fld[var4 - var3];
 		return rt.ag_fld[var2] >> var3 & var5;
 	}
@@ -129,10 +117,10 @@ public class lb {
 		descriptor = "(I)I"
 	)
 	public static int as(int var0) throws EOFException {
-		ph var1 = lu.ag(var0);
-		int var2 = -1864207509 * var1.ae_fld;
-		int var3 = var1.ah_fld * -1996916781;
-		int var4 = -1375663719 * var1.av_fld;
+		ph var1 = lu.ag(var0, 1425659899);
+		int var2 = -1864207509 * var1.av_fld;
+		int var3 = var1.ae_fld * -1996916781;
+		int var4 = -1375663719 * var1.ah_fld;
 		int var5 = az_fld[var4 - var3];
 		return rt.ag_fld[var2] >> var3 & var5;
 	}
@@ -142,10 +130,10 @@ public class lb {
 		descriptor = "(II)V"
 	)
 	public static void af(int var0, int var1) throws EOFException {
-		ph var2 = lu.ag(var0);
-		int var3 = var2.ae_fld;
-		int var4 = var2.ah_fld * -1099093513;
-		int var5 = 367913193 * var2.av_fld;
+		ph var2 = lu.ag(var0, 1425659899);
+		int var3 = var2.av_fld;
+		int var4 = var2.ae_fld * -1099093513;
+		int var5 = 367913193 * var2.ah_fld;
 		int var6 = az_fld[var5 - var4];
 		if (var1 < 0 || var1 > var6) {
 			var1 = 0;
@@ -160,10 +148,10 @@ public class lb {
 		descriptor = "(II)V"
 	)
 	public static void al(int var0, int var1) throws EOFException {
-		ph var2 = lu.ag(var0);
-		int var3 = var2.ae_fld;
-		int var4 = var2.ah_fld * 74236713;
-		int var5 = 910376880 * var2.av_fld;
+		ph var2 = lu.ag(var0, 1425659899);
+		int var3 = var2.av_fld;
+		int var4 = var2.ae_fld * 74236713;
+		int var5 = 910376880 * var2.ah_fld;
 		int var6 = az_fld[var5 - var4];
 		if (var1 < 0 || var1 > var6) {
 			var1 = 0;
@@ -205,10 +193,10 @@ public class lb {
 		descriptor = "(I)I"
 	)
 	public static int aw(int var0) throws EOFException {
-		ph var1 = lu.ag(var0);
-		int var2 = var1.ae_fld;
-		int var3 = var1.ah_fld * -447398872;
-		int var4 = 979761732 * var1.av_fld;
+		ph var1 = lu.ag(var0, 1425659899);
+		int var2 = var1.av_fld;
+		int var3 = var1.ae_fld * -447398872;
+		int var4 = 979761732 * var1.ah_fld;
 		int var5 = az_fld[var4 - var3];
 		return rt.ag_fld[var2] >> var3 & var5;
 	}

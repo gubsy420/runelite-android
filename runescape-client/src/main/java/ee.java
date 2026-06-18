@@ -1,4 +1,5 @@
 import net.runelite.api.IntProjection;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -7,92 +8,72 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("ee")
 @Implements({"IntProjection"})
 public class ee extends fw implements IntProjection {
-	@ObfuscatedName("yx")
-	@ObfuscatedSignature(
-		descriptor = "Lee;"
-	)
-	public static ee yx_fld;
-	@ObfuscatedName("wk")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float wk_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
 	float ah_fld;
-	@ObfuscatedGetter(
-		intValue = -1512941391
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
-	@ObfuscatedName("hz")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float hz_fld;
-	@ObfuscatedName("if")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float if_fld;
-	@ObfuscatedName("kw")
-	@ObfuscatedSignature(
-		descriptor = "[F"
-	)
-	public float[] kw_Arrfloat = new float[3];
 	@ObfuscatedGetter(
-		intValue = 93778481
+		intValue = -1512941391
 	)
+	int ag_fld;
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "F"
+	)
+	public float ie_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -318643991
+		intValue = 93778481
 	)
+	int az_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = 758407385
+		intValue = -318643991
 	)
+	int av_fld;
+	@ObfuscatedName("mo")
+	@ObfuscatedSignature(
+		descriptor = "F"
+	)
+	public float mo_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
-	@ObfuscatedName("ht")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float ht_fld;
-	@ObfuscatedName("dc")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float dc_fld;
 	@ObfuscatedGetter(
-		intValue = -1506382237
+		intValue = 758407385
 	)
+	int ae_fld;
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int bo_fld;
 	@ObfuscatedGetter(
-		intValue = 1440256733
+		intValue = -1506382237
 	)
+	static int bo_fld;
+	@ObfuscatedName("ya")
+	@ObfuscatedSignature(
+		descriptor = "F"
+	)
+	public float ya_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1440256733
 	)
 	int ar_fld;
 	@ObfuscatedName("ay")
@@ -100,42 +81,57 @@ public class ee extends fw implements IntProjection {
 		descriptor = "F"
 	)
 	float ay_fld;
-	@ObfuscatedName("jz")
+	@ObfuscatedName("zp")
+	@ObfuscatedSignature(
+		descriptor = "Lee;"
+	)
+	public static ee zp_fld;
+	@ObfuscatedName("mw")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
-	public float jz_fld;
-	@ObfuscatedName("tv")
+	public float mw_fld;
+	@ObfuscatedName("tg")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
-	public float tv_fld;
+	public float tg_fld;
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "F"
+	)
+	public float bf_float;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
 	float as_fld;
+	@ObfuscatedName("hm")
+	@ObfuscatedSignature(
+		descriptor = "F"
+	)
+	public float hm_fld;
+	@ObfuscatedName("rm")
+	@ObfuscatedSignature(
+		descriptor = "[F"
+	)
+	public float[] rm_fld = new float[3];
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
 	float aw_fld;
-	@ObfuscatedName("zv")
+	@ObfuscatedName("rz")
 	@ObfuscatedSignature(
 		descriptor = "F"
 	)
-	public float zv_fld;
-	@ObfuscatedName("kw")
-	@ObfuscatedSignature(
-		descriptor = "F"
-	)
-	public float kw_float;
-	@ObfuscatedGetter(
-		intValue = -1597762623
-	)
+	public float rz_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1597762623
 	)
 	int ak_fld;
 	@ObfuscatedName("cz")
@@ -143,14 +139,39 @@ public class ee extends fw implements IntProjection {
 		descriptor = "Lyc;"
 	)
 	static yc cz_fld;
-	@ObfuscatedGetter(
-		intValue = 62106817
+	@ObfuscatedName("oh")
+	@ObfuscatedSignature(
+		descriptor = "F"
 	)
+	public float oh_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 62106817
+	)
 	int af_fld;
+
+	@ObfuscatedName("getCameraZ")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCameraZ")
+	@Override
+	public int getCameraZ() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("getYawSin")
+	@ObfuscatedSignature(
+		descriptor = "()F"
+	)
+	@Export("getYawSin")
+	@Override
+	public float getYawSin() {
+		return this.ay_fld;
+	}
 
 	ee(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
 		this.ak_fld = var1;
@@ -173,10 +194,10 @@ public class ee extends fw implements IntProjection {
 	@Override
 	void ak(em var1, int var2, int var3, int var4, int var5, long var6) {
 		try {
-			if ((client.jb_fld & 17) == 1) {
-				client.fa_fld.draw(this, null, var1, var2, var3, var4 - var1.getAnimationHeightOffset(), var5, var6);
+			if ((client.ly_fld & 17) == 1) {
+				client.bt_fld.draw(this, null, var1, var2, var3, var4 - var1.getAnimationHeightOffset(), var5, var6);
 			} else {
-				var1.dz(var2, this.av_fld, this.ae_fld, var3, var4, var5, this.ak_fld, this.ag_fld, this.az_fld, var6, this.ar_fld, this.af_fld, false);
+				var1.ak(var2, this.av_fld, this.ae_fld, var3, var4, var5, this.ak_fld, this.ag_fld, this.az_fld, var6, this.ar_fld, this.af_fld, false);
 			}
 		} catch (Throwable var9) {
 			throw new RuntimeException(var9);
@@ -185,7 +206,7 @@ public class ee extends fw implements IntProjection {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lxh;)I"
+		descriptor = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lxh;I)I"
 	)
 	public static int ak(CharSequence var0, CharSequence var1, xh var2) {
 		int var4 = var0.length();
@@ -271,13 +292,23 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
+	@ObfuscatedName("getYawCos")
+	@ObfuscatedSignature(
+		descriptor = "()F"
+	)
+	@Export("getYawCos")
+	@Override
+	public float getYawCos() {
+		return this.as_fld;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lev;Lfl;IIB)V"
 	)
 	@Override
 	void az(ev var1, fl var2, int var3, int var4, byte var5) {
-		if (1 != fc.ar_fld.aa_fld) {
+		if (1 != fc.ar_fld.al_fld) {
 			int var6 = var2.as_fld.length;
 
 			for (int var7 = 0; var7 < var6; var7++) {
@@ -307,63 +338,8 @@ public class ee extends fw implements IntProjection {
 				fl.ae_fld[var7] = ap.av(var10);
 			}
 
-			lg.fl(this, var1, var2, var3, var4);
+			this.au(var1, var2, var3, var4, 606711793);
 		}
-	}
-
-	@ObfuscatedName("getYawSin")
-	@ObfuscatedSignature(
-		descriptor = "()F"
-	)
-	@Override
-	public float getYawSin() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("project")
-	@ObfuscatedSignature(
-		descriptor = "(FFF[F)[F"
-	)
-	@Override
-	public float[] project(float var1, float var2, float var3, float[] var4) {
-		var1 -= this.tv_fld;
-		var2 -= this.jz_fld;
-		var3 -= this.ht_fld;
-		float var5 = var1 * this.kw_float + var3 * this.wk_fld;
-		float var6 = var3 * this.kw_float - var1 * this.wk_fld;
-		float var7 = var2 * this.hz_fld - var6 * this.dc_fld;
-		float var8 = var6 * this.hz_fld + var2 * this.dc_fld;
-		var4[0] = var5;
-		var4[1] = var7;
-		var4[2] = var8;
-		return var4;
-	}
-
-	@ObfuscatedName("getPitchSin")
-	@ObfuscatedSignature(
-		descriptor = "()F"
-	)
-	@Override
-	public float getPitchSin() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("getYawCos")
-	@ObfuscatedSignature(
-		descriptor = "()F"
-	)
-	@Override
-	public float getYawCos() {
-		return this.as_fld;
-	}
-
-	@ObfuscatedName("getPitchCos")
-	@ObfuscatedSignature(
-		descriptor = "()F"
-	)
-	@Override
-	public float getPitchCos() {
-		return this.aw_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -373,28 +349,19 @@ public class ee extends fw implements IntProjection {
 	@Override
 	void av(em var1, int var2, int var3, int var4, int var5, long var6) {
 		try {
-			var1.lp(var2, this.av_fld, this.ae_fld, var3, var4, var5, this.ak_fld, this.ag_fld, this.az_fld, var6, this.ar_fld, this.af_fld, false);
+			var1.mm(var2, this.av_fld, this.ae_fld, var3, var4, var5, this.ak_fld, this.ag_fld, this.az_fld, var6, this.ar_fld, this.af_fld, false);
 		} catch (Throwable var9) {
 			throw new RuntimeException(var9);
 		}
 	}
 
-	@ObfuscatedName("getCameraX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getCameraX() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Lev;Lfl;II)V"
 	)
 	@Override
-	void aw(ev var1, fl var2, int var3, int var4) {
-		if (1 != fc.ar_fld.aa_fld) {
+	void ay(ev var1, fl var2, int var3, int var4) {
+		if (1 != fc.ar_fld.al_fld) {
 			int var5 = var2.as_fld.length;
 
 			for (int var6 = 0; var6 < var5; var6++) {
@@ -420,26 +387,17 @@ public class ee extends fw implements IntProjection {
 				fl.ae_fld[var6] = ap.av(var9);
 			}
 
-			lg.fl(this, var1, var2, var3, var4);
+			this.au(var1, var2, var3, var4, 1355892477);
 		}
 	}
 
-	@ObfuscatedName("op")
+	@ObfuscatedName("project")
 	@ObfuscatedSignature(
-		descriptor = "(Lry;)V"
+		descriptor = "(FFF)[F"
 	)
-	public static void op(ry var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			synchronized (var0) {
-				var0.ag_fld.clear();
-				var0.az_fld.clear();
-				if (var0.ak()) {
-					var0.av_fld.clear();
-				}
-			}
-		}
+	@Override
+	public float[] project(float var1, float var2, float var3) {
+		return this.project(var1, var2, var3, this.rm_fld);
 	}
 
 	@ObfuscatedName("ah")
@@ -448,7 +406,7 @@ public class ee extends fw implements IntProjection {
 	)
 	@Override
 	void ah(ev var1, fa var2, int var3, int var4, int var5) {
-		if (fc.ar_fld.aa_fld != 1) {
+		if (fc.ar_fld.al_fld != 1) {
 			float var6;
 			float var7 = var6 = (var4 << 7) - this.ak_fld;
 			float var8;
@@ -457,10 +415,10 @@ public class ee extends fw implements IntProjection {
 			float var11 = var10 = 128.0F + var7;
 			float var12;
 			float var13 = var12 = var9 + 128.0F;
-			float var14 = var1.cs_fld[var3][var4][var5] - this.ag_fld;
-			float var15 = var1.cs_fld[var3][1 + var4][var5] - this.ag_fld;
-			float var16 = var1.cs_fld[var3][var4 + 1][var5 + 1] - this.ag_fld;
-			float var17 = var1.cs_fld[var3][var4][1 + var5] - this.ag_fld;
+			float var14 = var1.cv_fld[var3][var4][var5] - this.ag_fld;
+			float var15 = var1.cv_fld[var3][1 + var4][var5] - this.ag_fld;
+			float var16 = var1.cv_fld[var3][var4 + 1][var5 + 1] - this.ag_fld;
+			float var17 = var1.cv_fld[var3][var4][1 + var5] - this.ag_fld;
 			float var18 = var7 * this.as_fld + this.ay_fld * var9;
 			var9 = this.as_fld * var9 - this.ay_fld * var7;
 			var18 = var14 * this.aw_fld - this.ah_fld * var9;
@@ -481,7 +439,7 @@ public class ee extends fw implements IntProjection {
 						var18 = this.aw_fld * var17 - this.ah_fld * var12;
 						var12 = this.aw_fld * var12 + this.ah_fld * var17;
 						if (!(var12 < 50.0F)) {
-							this.al(var1, var2, var4, var5, var18, var18, var18, var18, var18, var18, var18, var18, var9, var8, var13, var12, -1482843702);
+							fw.us(this, var1, var2, var4, var5, var18, var18, var18, var18, var18, var18, var18, var18, var9, var8, var13, var12);
 						}
 					}
 				}
@@ -489,13 +447,14 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
-	@ObfuscatedName("getCameraZ")
+	@ObfuscatedName("getPitchSin")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()F"
 	)
+	@Export("getPitchSin")
 	@Override
-	public int getCameraZ() {
-		return this.az_fld;
+	public float getPitchSin() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -505,7 +464,7 @@ public class ee extends fw implements IntProjection {
 	@Override
 	void ae(em var1, int var2, int var3, int var4, int var5, long var6) {
 		try {
-			var1.lp(
+			var1.mm(
 				var2,
 				this.av_fld,
 				this.ae_fld * -1823321502,
@@ -525,13 +484,13 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lev;Lfl;II)V"
 	)
 	@Override
-	void ay(ev var1, fl var2, int var3, int var4) {
-		if (1 != fc.ar_fld.aa_fld) {
+	void aw(ev var1, fl var2, int var3, int var4) {
+		if (1 != fc.ar_fld.al_fld) {
 			int var5 = var2.as_fld.length;
 
 			for (int var6 = 0; var6 < var5; var6++) {
@@ -557,13 +516,60 @@ public class ee extends fw implements IntProjection {
 				fl.ae_fld[var6] = ap.av(var9);
 			}
 
-			lg.fl(this, var1, var2, var3, var4);
+			this.au(var1, var2, var3, var4, 491397701);
 		}
+	}
+
+	@ObfuscatedName("getCameraY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCameraY")
+	@Override
+	public int getCameraY() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("getPitchCos")
+	@ObfuscatedSignature(
+		descriptor = "()F"
+	)
+	@Export("getPitchCos")
+	@Override
+	public float getPitchCos() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("project")
+	@ObfuscatedSignature(
+		descriptor = "(FFF[F)[F"
+	)
+	@Override
+	public float[] project(float var1, float var2, float var3, float[] var4) {
+		var1 -= this.mw_fld;
+		var2 -= this.hm_fld;
+		var3 -= this.oh_fld;
+		float var5 = var1 * this.mo_fld + var3 * this.rz_fld;
+		float var6 = var3 * this.mo_fld - var1 * this.rz_fld;
+		float var7 = var2 * this.ya_fld - var6 * this.bf_float;
+		float var8 = var6 * this.ya_fld + var2 * this.bf_float;
+		var4[0] = var5;
+		var4[1] = var7;
+		var4[2] = var8;
+		return var4;
+	}
+
+	@ObfuscatedName("eu")
+	@ObfuscatedSignature(
+		descriptor = "(Lxh;)Ljava/lang/String;"
+	)
+	public static String eu(xh var0) {
+		return var0.af_fld;
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;IIIILuy;III)Z"
+		descriptor = "(Lfn;IIIILuy;IIII)Z"
 	)
 	static final boolean aq(fn var0, int var1, int var2, int var3, int var4, uy var5, int var6, int var7, int var8) {
 		if (!rt.af()) {
@@ -574,13 +580,14 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
-	@ObfuscatedName("getCameraY")
+	@ObfuscatedName("getCameraX")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getCameraX")
 	@Override
-	public int getCameraY() {
-		return this.ag_fld;
+	public int getCameraX() {
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -589,7 +596,7 @@ public class ee extends fw implements IntProjection {
 	)
 	@Override
 	void ag(ev var1, fa var2, int var3, int var4, int var5, int var6) {
-		if (fc.ar_fld.aa_fld == 1) {
+		if (fc.ar_fld.al_fld == 1) {
 			if (var6 != 871974497) {
 				;
 			}
@@ -602,10 +609,10 @@ public class ee extends fw implements IntProjection {
 			float var12 = var11 = 128.0F + var8;
 			float var13;
 			float var14 = var13 = var10 + 128.0F;
-			float var15 = var1.cs_fld[var3][var4][var5] - this.ag_fld;
-			float var16 = var1.cs_fld[var3][1 + var4][var5] - this.ag_fld;
-			float var17 = var1.cs_fld[var3][var4 + 1][var5 + 1] - this.ag_fld;
-			float var18 = var1.cs_fld[var3][var4][1 + var5] - this.ag_fld;
+			float var15 = var1.cv_fld[var3][var4][var5] - this.ag_fld;
+			float var16 = var1.cv_fld[var3][1 + var4][var5] - this.ag_fld;
+			float var17 = var1.cv_fld[var3][var4 + 1][var5 + 1] - this.ag_fld;
+			float var18 = var1.cv_fld[var3][var4][1 + var5] - this.ag_fld;
 			float var19 = var8 * this.as_fld + this.ay_fld * var10;
 			var10 = this.as_fld * var10 - this.ay_fld * var8;
 			var19 = var15 * this.aw_fld - this.ah_fld * var10;
@@ -630,7 +637,7 @@ public class ee extends fw implements IntProjection {
 						var19 = this.aw_fld * var18 - this.ah_fld * var13;
 						var13 = this.aw_fld * var13 + this.ah_fld * var18;
 						if (!(var13 < 50.0F)) {
-							this.al(var1, var2, var4, var5, var19, var19, var19, var19, var19, var19, var19, var19, var10, var9, var14, var13, -1547734757);
+							fw.us(this, var1, var2, var4, var5, var19, var19, var19, var19, var19, var19, var19, var19, var10, var9, var14, var13);
 						}
 					}
 				}
@@ -638,24 +645,15 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
-	@ObfuscatedName("project")
-	@ObfuscatedSignature(
-		descriptor = "(FFF)[F"
-	)
-	@Override
-	public float[] project(float var1, float var2, float var3) {
-		return this.project(var1, var2, var3, this.kw_Arrfloat);
-	}
-
-	@ObfuscatedName("yu")
+	@ObfuscatedName("em")
 	@ObfuscatedSignature(
 		descriptor = "(Lev;Lfa;III)V"
 	)
 	@Override
-	public void yu(ev var1, fa var2, int var3, int var4, int var5) {
-		if (fc.ar_fld.aa_fld != 1) {
-			int var6 = var4 + var1.jh_fld;
-			int var7 = var5 + var1.jh_fld;
+	public void em(ev var1, fa var2, int var3, int var4, int var5) {
+		if (fc.ar_fld.al_fld != 1) {
+			int var6 = var4 + var1.qr_fld;
+			int var7 = var5 + var1.qr_fld;
 			float var8;
 			float var9 = var8 = (var4 << 7) - this.ak_fld;
 			float var10;
@@ -664,10 +662,10 @@ public class ee extends fw implements IntProjection {
 			float var13 = var12 = var9 + 128.0F;
 			float var14;
 			float var15 = var14 = var11 + 128.0F;
-			float var16 = var1.cs_fld[var3][var6][var7] - this.ag_fld;
-			float var17 = var1.cs_fld[var3][var6 + 1][var7] - this.ag_fld;
-			float var18 = var1.cs_fld[var3][var6 + 1][var7 + 1] - this.ag_fld;
-			float var19 = var1.cs_fld[var3][var6][var7 + 1] - this.ag_fld;
+			float var16 = var1.cv_fld[var3][var6][var7] - this.ag_fld;
+			float var17 = var1.cv_fld[var3][var6 + 1][var7] - this.ag_fld;
+			float var18 = var1.cv_fld[var3][var6 + 1][var7 + 1] - this.ag_fld;
+			float var19 = var1.cv_fld[var3][var6][var7 + 1] - this.ag_fld;
 			float var20 = var9 * this.as_fld + var11 * this.ay_fld;
 			var11 = var11 * this.as_fld - var9 * this.ay_fld;
 			var20 = var16 * this.aw_fld - var11 * this.ah_fld;
@@ -688,11 +686,11 @@ public class ee extends fw implements IntProjection {
 						var20 = var19 * this.aw_fld - var14 * this.ah_fld;
 						var14 = var19 * this.ah_fld + var14 * this.aw_fld;
 						if (var14 >= 50.0F) {
-							if (client.fa_fld != null) {
-								client.fa_fld.drawScenePaint(var1, var2, var3, var4, var5);
+							if (client.bt_fld != null) {
+								client.bt_fld.drawScenePaint(var1, var2, var3, var4, var5);
 							}
 
-							this.zl(var1, var2, var4, var5, var20, var20, var20, var20, var20, var20, var20, var20, var11, var10, var15, var14);
+							this.yw(var1, var2, var4, var5, var20, var20, var20, var20, var20, var20, var20, var20, var11, var10, var15, var14);
 						}
 					}
 				}
@@ -700,12 +698,12 @@ public class ee extends fw implements IntProjection {
 		}
 	}
 
-	@ObfuscatedName("qd")
+	@ObfuscatedName("et")
 	@ObfuscatedSignature(
 		descriptor = "(Lev;Lfl;II)V"
 	)
 	@Override
-	public void qd(ev var1, fl var2, int var3, int var4) {
+	public void et(ev var1, fl var2, int var3, int var4) {
 		this.az(var1, var2, var3, var4, (byte)-120);
 	}
 }

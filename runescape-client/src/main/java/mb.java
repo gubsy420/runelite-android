@@ -9,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("mb")
 public class mb {
-	@ObfuscatedGetter(
-		intValue = -2062391689
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2062391689
 	)
 	public static int ar_fld = 0;
 	@ObfuscatedName("ag")
@@ -57,28 +57,28 @@ public class mb {
 		descriptor = "Ljava/util/List;"
 	)
 	public static List ak_fld = new ArrayList();
-	@ObfuscatedGetter(
-		intValue = 1555461303
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public static int af_fld = 0;
 	@ObfuscatedGetter(
-		intValue = 1244459339
+		intValue = 1555461303
 	)
+	public static int af_fld = 0;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public static int al_fld = 0;
 	@ObfuscatedGetter(
-		intValue = -163004517
+		intValue = 1244459339
 	)
+	public static int al_fld = 0;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -163004517
 	)
 	public static int au_fld = 0;
 	@ObfuscatedName("am")
@@ -86,6 +86,26 @@ public class mb {
 		descriptor = "I"
 	)
 	public static int am_fld;
+
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;I)V"
+	)
+	public static void ie(rg var0, int var1) {
+		if (var0.as_fld == 0) {
+			var0.ad(var0.ay_fld[0].ak_fld, (byte)5);
+		} else {
+			if (!var0.ax_fld) {
+				var0.au_fld.ak(var0.av_fld, var0.ay_fld[0], var1, 30099946);
+				var0.ax_fld = true;
+			}
+
+			if (var0.au_fld.ag(var0.av_fld, var1, var0.as_fld, -1331411623)) {
+				var0.as_fld--;
+				var0.ax_fld = false;
+			}
+		}
+	}
 
 	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
@@ -100,7 +120,7 @@ public class mb {
 				as_fld.remove(0);
 			} else if (var2.ak((short)793)) {
 				if (var2.ay()) {
-					System.out.println("Error in midimanager.service: " + var2.ar());
+					System.out.println("Error in midimanager.service: " + ws.hs(var2, 1959324819));
 					var0 = true;
 				} else {
 					if (var2.af() != null) {
@@ -123,7 +143,7 @@ public class mb {
 			while (var4.hasNext()) {
 				me var3 = (me)(me)var4.next();
 				if (var3 != null) {
-					var3.af_fld.au();
+					var3.af_fld.av();
 					var3.af_fld.ar();
 					var3.af_fld.ak(0);
 					var3.af_fld.aw_fld = 0;
@@ -217,7 +237,7 @@ public class mb {
 				while (var6.hasNext()) {
 					me var7 = (me)(me)var6.next();
 					if (var7 != null) {
-						var7.af_fld.au();
+						var7.af_fld.av();
 						var7.af_fld.ar();
 						var7.af_fld.ak(0);
 						var7.af_fld.aw_fld = 0;
@@ -232,18 +252,18 @@ public class mb {
 					if (var11 == null) {
 						av_fld.remove(var9);
 						var9--;
-					} else if (var11.ay_fld) {
+					} else if (var11.ar_fld) {
 						if (-1034371599 * var11.af_fld.aw_fld > 0) {
 							var11.af_fld.aw_fld--;
 						}
 
-						var11.af_fld.au();
+						var11.af_fld.av();
 						var11.af_fld.ar();
 						var11.af_fld.ak(0);
 						av_fld.remove(var9);
 						var9--;
 					} else {
-						var11.ay_fld = true;
+						var11.ar_fld = true;
 					}
 				}
 			}
@@ -283,7 +303,7 @@ public class mb {
 				while (var6.hasNext()) {
 					me var7 = (me)(me)var6.next();
 					if (var7 != null) {
-						var7.af_fld.au();
+						var7.af_fld.av();
 						var7.af_fld.ar();
 						var7.af_fld.ak(0);
 						var7.af_fld.aw_fld = 0;
@@ -298,18 +318,18 @@ public class mb {
 					if (var11 == null) {
 						av_fld.remove(var9);
 						var9--;
-					} else if (var11.ay_fld) {
+					} else if (var11.ar_fld) {
 						if (-1034371599 * var11.af_fld.aw_fld > 0) {
 							var11.af_fld.aw_fld--;
 						}
 
-						var11.af_fld.au();
+						var11.af_fld.av();
 						var11.af_fld.ar();
 						var11.af_fld.ak(0);
 						av_fld.remove(var9);
 						var9--;
 					} else {
-						var11.ay_fld = true;
+						var11.ar_fld = true;
 					}
 				}
 			}
@@ -349,7 +369,7 @@ public class mb {
 			while (var4.hasNext()) {
 				me var3 = (me)(me)var4.next();
 				if (var3 != null) {
-					var3.af_fld.au();
+					var3.af_fld.av();
 					var3.af_fld.ar();
 					var3.af_fld.ak(0);
 					var3.af_fld.aw_fld = 0;
@@ -402,7 +422,7 @@ public class mb {
 				as_fld.remove(0);
 			} else if (var2.ak((short)914)) {
 				if (var2.ay()) {
-					System.out.println("Error in midimanager.service: " + var2.ar());
+					System.out.println("Error in midimanager.service: " + ws.hs(var2, 1708958581));
 					var0 = true;
 				} else {
 					if (var2.af() != null) {
@@ -425,7 +445,7 @@ public class mb {
 			while (var4.hasNext()) {
 				me var3 = (me)(me)var4.next();
 				if (var3 != null) {
-					var3.af_fld.au();
+					var3.af_fld.av();
 					var3.af_fld.ar();
 					var3.af_fld.ak(0);
 					var3.af_fld.aw_fld = 0;
@@ -452,7 +472,7 @@ public class mb {
 				as_fld.remove(0);
 			} else if (var2.ak((short)18385)) {
 				if (var2.ay()) {
-					System.out.println("Error in midimanager.service: " + var2.ar());
+					System.out.println("Error in midimanager.service: " + ws.hs(var2, 2036267411));
 					var0 = true;
 				} else {
 					if (var2.af() != null) {
@@ -475,7 +495,7 @@ public class mb {
 			while (var4.hasNext()) {
 				me var3 = (me)(me)var4.next();
 				if (var3 != null) {
-					var3.af_fld.au();
+					var3.af_fld.av();
 					var3.af_fld.ar();
 					var3.af_fld.ak(0);
 					var3.af_fld.aw_fld = 0;
@@ -497,26 +517,16 @@ public class mb {
 		return !ay_fld.isEmpty();
 	}
 
-	@ObfuscatedName("vd")
-	@ObfuscatedSignature(
-		descriptor = "(Lcl;IIIII)V"
-	)
-	public static void vd(cl var0, int var1, int var2, int var3, int var4, int var5) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var6 = 0; var6 < var0.ak_fld.size(); var6++) {
-			((da)var0.ak_fld.get(var6)).ds(var1, 692533189 * client.dv_fld, var2, var3, var4, var5, -417197841);
-		}
-	}
-
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)V"
 	)
 	public static void ap(int var0, int var1, int var2, int var3) {
-		if (av_fld.size() > 1 && av_fld.get(0) != null && ((me)av_fld.get(0)).af_fld.ax() && av_fld.get(1) != null && ((me)av_fld.get(1)).af_fld.ax()) {
+		if (av_fld.size() > 1
+			&& av_fld.get(0) != null
+			&& ml.dc(((me)av_fld.get(0)).af_fld, -295912033)
+			&& av_fld.get(1) != null
+			&& ml.dc(((me)av_fld.get(1)).af_fld, 219314109)) {
 			cw.af(var0, var1, var2, var3);
 			as_fld.add(new vs(null));
 			ArrayList var4 = new ArrayList();
@@ -587,7 +597,7 @@ public class mb {
 				as_fld.remove(0);
 			} else if (var2.ak((short)-7822)) {
 				if (var2.ay()) {
-					System.out.println("Error in midimanager.service: " + var2.ar());
+					System.out.println("Error in midimanager.service: " + ws.hs(var2, 1679813136));
 					var0 = true;
 				} else {
 					if (var2.af() != null) {
@@ -610,7 +620,7 @@ public class mb {
 			while (var4.hasNext()) {
 				me var3 = (me)(me)var4.next();
 				if (var3 != null) {
-					var3.af_fld.au();
+					var3.af_fld.av();
 					var3.af_fld.ar();
 					var3.af_fld.ak(0);
 					var3.af_fld.aw_fld = 0;
@@ -629,7 +639,11 @@ public class mb {
 		descriptor = "(IIII)V"
 	)
 	public static void ac(int var0, int var1, int var2, int var3) {
-		if (av_fld.size() > 1 && av_fld.get(0) != null && ((me)av_fld.get(0)).af_fld.ax() && av_fld.get(1) != null && ((me)av_fld.get(1)).af_fld.ax()) {
+		if (av_fld.size() > 1
+			&& av_fld.get(0) != null
+			&& ml.dc(((me)av_fld.get(0)).af_fld, -99821228)
+			&& av_fld.get(1) != null
+			&& ml.dc(((me)av_fld.get(1)).af_fld, 699672606)) {
 			cw.af(var0, var1, var2, var3);
 			as_fld.add(new vs(null));
 			ArrayList var4 = new ArrayList();
@@ -649,7 +663,11 @@ public class mb {
 		descriptor = "(IIII)V"
 	)
 	public static void at(int var0, int var1, int var2, int var3) {
-		if (av_fld.size() > 1 && av_fld.get(0) != null && ((me)av_fld.get(0)).af_fld.ax() && av_fld.get(1) != null && ((me)av_fld.get(1)).af_fld.ax()) {
+		if (av_fld.size() > 1
+			&& av_fld.get(0) != null
+			&& ml.dc(((me)av_fld.get(0)).af_fld, -1674074918)
+			&& av_fld.get(1) != null
+			&& ml.dc(((me)av_fld.get(1)).af_fld, 1380122283)) {
 			cw.af(var0, var1, var2, var3);
 			as_fld.add(new vs(null));
 			ArrayList var4 = new ArrayList();
@@ -790,7 +808,7 @@ public class mb {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lsp;"
+		descriptor = "(II)Lsp;"
 	)
 	static sp av(int var0) throws EOFException {
 		sp var3 = (sp)ol.bd_fld.ak(var0);
@@ -806,6 +824,6 @@ public class mb {
 			var2 = var3;
 		}
 
-		return var2 != null && var2.av() ? var2 : null;
+		return var2 != null && sp.sp(var2, 209029215) ? var2 : null;
 	}
 }

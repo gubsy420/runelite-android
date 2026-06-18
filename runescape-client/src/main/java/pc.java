@@ -1,4 +1,5 @@
 import java.io.EOFException;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -28,20 +29,20 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "I"
 	)
 	static int ak_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = 335071679
 	)
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int ac_fld = -1160521279;
-	@ObfuscatedGetter(
-		intValue = 172118773
-	)
+	public int aw_fld = -1160521279;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 172118773
 	)
 	int ay_fld = 1019197091;
 	@ObfuscatedName("as")
@@ -49,22 +50,22 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String as_fld;
-	@ObfuscatedGetter(
-		intValue = -2065753697
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ah_fld;
 	@ObfuscatedGetter(
-		intValue = 2075360011
+		intValue = -2065753697
 	)
-	@ObfuscatedName("aw")
+	public int ah_fld;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int aw_fld = 0;
+	@ObfuscatedGetter(
+		intValue = 2075360011
+	)
+	public int af_fld = 0;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "Z"
@@ -85,41 +86,41 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String an_fld;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] ap_fld;
-	@ObfuscatedGetter(
-		intValue = 1862642651
-	)
+	int[] aa_fld;
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ai_fld;
 	@ObfuscatedGetter(
-		intValue = 1722644261
+		intValue = 1862642651
 	)
+	int ai_fld;
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aq_fld;
 	@ObfuscatedGetter(
-		intValue = -539785713
+		intValue = 1722644261
 	)
+	int aq_fld;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int am_fld;
 	@ObfuscatedGetter(
-		intValue = 732333643
+		intValue = -539785713
 	)
+	int am_fld;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 732333643
 	)
 	int ad_fld;
 	@ObfuscatedName("ao")
@@ -127,58 +128,75 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "Lpv;"
 	)
 	public pv ao_fld;
-	@ObfuscatedGetter(
-		intValue = -2040139307
-	)
-	@ObfuscatedName("af")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int af_fld;
-	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -2040139307
+	)
+	public int ar_fld;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] aa_fld;
+	int[] ap_fld;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "[B"
 	)
 	byte[] at_fld;
-	@ObfuscatedGetter(
-		intValue = 1507825799
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public static int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -1108351195
+		intValue = 1507825799
 	)
-	@ObfuscatedName("ar")
+	public static int ag_fld;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ar_fld;
+	@ObfuscatedGetter(
+		intValue = -1108351195
+	)
+	public int ac_fld;
+
+	@ObfuscatedName("wb")
+	@ObfuscatedSignature(
+		descriptor = "(Lpc;Z)Lyv;"
+	)
+	public static yv wb(pc var0, boolean var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			int var2 = var1 ? var0.ay_fld * 52134598 : var0.aw_fld * -774851068;
+			return var0.ah(var2, -1042571783);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
 
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	public void ai() {
-		if (this.ap_fld != null) {
-			for (byte var1 = 0; var1 < this.ap_fld.length; var1 += 2) {
-				if (this.ap_fld[var1] < this.ai_fld) {
-					this.ai_fld = this.ap_fld[var1];
-				} else if (this.ap_fld[var1] > this.am_fld) {
-					this.am_fld = -1716213521 * this.ap_fld[var1];
+		if (this.aa_fld != null) {
+			for (byte var1 = 0; var1 < this.aa_fld.length; var1 += 2) {
+				if (this.aa_fld[var1] < this.ai_fld) {
+					this.ai_fld = this.aa_fld[var1];
+				} else if (this.aa_fld[var1] > this.am_fld) {
+					this.am_fld = -1716213521 * this.aa_fld[var1];
 				}
 
-				if (this.ap_fld[1 + var1] < this.aq_fld) {
-					this.aq_fld = this.ap_fld[1 + var1];
-				} else if (this.ap_fld[var1 + 1] > this.ad_fld) {
-					this.ad_fld = this.ap_fld[1 + var1];
+				if (this.aa_fld[1 + var1] < this.aq_fld) {
+					this.aq_fld = this.aa_fld[1 + var1];
+				} else if (this.aa_fld[var1 + 1] > this.ad_fld) {
+					this.ad_fld = this.aa_fld[1 + var1];
 				}
 			}
 		}
@@ -190,145 +208,10 @@ public class pc extends vc implements MapElementConfig {
 	)
 	public yv ae(boolean var1, int var2) {
 		try {
-			int var3 = var1 ? this.ay_fld : this.ac_fld;
+			int var3 = var1 ? this.ay_fld : this.aw_fld;
 			return this.ah(var3, -1042571783);
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lyv;"
-	)
-	yv ac(int var1) {
-		try {
-			if (var1 < 0) {
-				return null;
-			} else {
-				yv var2 = (yv)az_fld.ak(var1);
-				if (var2 != null) {
-					return var2;
-				} else {
-					var2 = wf.av(nz.av_fld, var1, 0);
-					if (var2 != null) {
-						az_fld.az(var2, var1);
-					}
-
-					return var2;
-				}
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void av(int var1) {
-		if (this.ap_fld != null) {
-			if (var1 != 24957735) {
-				return;
-			}
-
-			for (byte var2 = 0; var2 < this.ap_fld.length; var2 += 2) {
-				if (this.ap_fld[var2] < this.ai_fld) {
-					this.ai_fld = this.ap_fld[var2];
-				} else if (this.ap_fld[var2] > this.am_fld) {
-					this.am_fld = -1716213521 * this.ap_fld[var2];
-				}
-
-				if (this.ap_fld[1 + var2] < this.aq_fld) {
-					this.aq_fld = this.ap_fld[1 + var2];
-				} else if (this.ap_fld[var2 + 1] > this.ad_fld) {
-					this.ad_fld = this.ap_fld[1 + var2];
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	void ax(xi var1, int var2) {
-		if (var2 == 1) {
-			this.ac_fld = var1.do_();
-		} else if (var2 == 2) {
-			this.ay_fld = var1.do_();
-		} else if (var2 == 3) {
-			this.as_fld = xi.kc(var1, 1665732844);
-		} else if (var2 == 4) {
-			this.af_fld = var1.ck();
-		} else if (5 == var2) {
-			var1.ck();
-		} else if (var2 == 6) {
-			this.aw_fld = var1.cg();
-		} else if (7 == var2) {
-			int var3 = var1.cg();
-			if (0 == (var3 & 1)) {
-				this.al_fld = false;
-			}
-
-			if (2 == (var3 & 2)) {
-				this.au_fld = true;
-			}
-		} else if (var2 == 8) {
-			var1.cg();
-		} else if (var2 >= 10 && var2 <= 14) {
-			this.ax_fld[var2 - 10] = xi.kc(var1, 1397619242);
-		} else if (var2 == 15) {
-			int var6 = var1.cg();
-			this.ap_fld = new int[2 * var6];
-
-			for (int var4 = 0; var4 < var6 * 2; var4++) {
-				this.ap_fld[var4] = var1.cz();
-			}
-
-			var1.co();
-			int var9 = var1.cg();
-			this.aa_fld = new int[var9];
-
-			for (int var5 = 0; var5 < this.aa_fld.length; var5++) {
-				this.aa_fld[var5] = var1.co();
-			}
-
-			this.at_fld = new byte[var6];
-
-			for (int var10 = 0; var10 < var6; var10++) {
-				this.at_fld[var10] = xi.rp(var1, -274419677);
-			}
-		} else if (16 != var2) {
-			if (17 == var2) {
-				this.an_fld = xi.kc(var1, 680345209);
-			} else if (var2 == 18) {
-				var1.do_();
-			} else if (var2 == 19) {
-				this.ar_fld = xi.tx(var1, 1471936409);
-			} else if (21 == var2) {
-				var1.co();
-			} else if (22 == var2) {
-				var1.co();
-			} else if (var2 == 23) {
-				var1.cg();
-				var1.cg();
-				var1.cg();
-			} else if (24 == var2) {
-				var1.cz();
-				var1.cz();
-			} else if (25 == var2) {
-				var1.do_();
-			} else if (28 == var2) {
-				var1.cg();
-			} else if (29 == var2) {
-				pv[] var7 = new pv[]{pv.ag_fld, pv.az_fld, pv.ak_fld};
-				this.ao_fld = (pv)ka.ak(var7, var1.cg());
-			} else if (30 == var2) {
-				op[] var8 = new op[]{op.az_fld, op.ag_fld, op.ak_fld};
-				this.ab_fld = (op)ka.ak(var8, var1.cg());
-			}
 		}
 	}
 
@@ -358,12 +241,52 @@ public class pc extends vc implements MapElementConfig {
 		}
 	}
 
+	@ObfuscatedName("getCategory")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCategory")
+	@Override
+	public int getCategory() {
+		return this.ac_fld;
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	public int aw(int var1) {
 		return this.ah_fld;
+	}
+
+	@ObfuscatedName("sq")
+	@ObfuscatedSignature(
+		descriptor = "(Lpc;I)V"
+	)
+	public static void sq(pc var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var0.aa_fld != null) {
+				if (var1 != 24957735) {
+					return;
+				}
+
+				for (byte var2 = 0; var2 < var0.aa_fld.length; var2 += 2) {
+					if (var0.aa_fld[var2] < var0.ai_fld) {
+						var0.ai_fld = var0.aa_fld[var2];
+					} else if (var0.aa_fld[var2] > var0.am_fld) {
+						var0.am_fld = -1716213521 * var0.aa_fld[var2];
+					}
+
+					if (var0.aa_fld[1 + var2] < var0.aq_fld) {
+						var0.aq_fld = var0.aa_fld[1 + var2];
+					} else if (var0.aa_fld[var2 + 1] > var0.ad_fld) {
+						var0.ad_fld = var0.aa_fld[1 + var2];
+					}
+				}
+			}
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -397,6 +320,26 @@ public class pc extends vc implements MapElementConfig {
 		return var0 >= 0 && var0 < lq.ae_fld.length && lq.ae_fld[var0] != null ? lq.ae_fld[var0] : new pc(var0);
 	}
 
+	@ObfuscatedName("gk")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;)I"
+	)
+	public static int gk(ku var0) {
+		return var0.ad_fld;
+	}
+
+	@ObfuscatedName("ne")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Lyv;"
+	)
+	public yv getMapIcon(boolean var1) {
+		try {
+			return this.ae(var1, -1928354355);
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
@@ -412,141 +355,12 @@ public class pc extends vc implements MapElementConfig {
 		}
 	}
 
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
-	)
-	void aa(xi var1, int var2) {
-		if (var2 == 1) {
-			this.ac_fld = var1.do_() * 1708454919;
-		} else if (var2 == 2) {
-			this.ay_fld = var1.do_() * -647196930;
-		} else if (var2 == 3) {
-			this.as_fld = xi.kc(var1, -1583560597);
-		} else if (var2 == 4) {
-			this.af_fld = var1.ck() * -1020340517;
-		} else if (5 == var2) {
-			var1.ck();
-		} else if (var2 == 6) {
-			this.aw_fld = var1.cg() * 1461577841;
-		} else if (7 == var2) {
-			int var3 = var1.cg();
-			if (0 == (var3 & 1)) {
-				this.al_fld = false;
-			}
-
-			if (2 == (var3 & 2)) {
-				this.au_fld = true;
-			}
-		} else if (var2 == 8) {
-			var1.cg();
-		} else if (var2 >= 10 && var2 <= 14) {
-			this.ax_fld[var2 - 10] = xi.kc(var1, -552910182);
-		} else if (var2 == 15) {
-			int var6 = var1.cg();
-			this.ap_fld = new int[2 * var6];
-
-			for (int var4 = 0; var4 < var6 * 2; var4++) {
-				this.ap_fld[var4] = var1.cz();
-			}
-
-			var1.co();
-			int var9 = var1.cg();
-			this.aa_fld = new int[var9];
-
-			for (int var5 = 0; var5 < this.aa_fld.length; var5++) {
-				this.aa_fld[var5] = var1.co();
-			}
-
-			this.at_fld = new byte[var6];
-
-			for (int var10 = 0; var10 < var6; var10++) {
-				this.at_fld[var10] = xi.rp(var1, 65668008);
-			}
-		} else if (16 != var2) {
-			if (17 == var2) {
-				this.an_fld = xi.kc(var1, -1257740553);
-			} else if (var2 == 18) {
-				var1.do_();
-			} else if (var2 == 19) {
-				this.ar_fld = xi.tx(var1, 534280769) * -1585832024;
-			} else if (21 == var2) {
-				var1.co();
-			} else if (22 == var2) {
-				var1.co();
-			} else if (var2 == 23) {
-				var1.cg();
-				var1.cg();
-				var1.cg();
-			} else if (24 == var2) {
-				var1.cz();
-				var1.cz();
-			} else if (25 == var2) {
-				var1.do_();
-			} else if (28 == var2) {
-				var1.cg();
-			} else if (29 == var2) {
-				pv[] var7 = new pv[]{pv.ag_fld, pv.az_fld, pv.ak_fld};
-				this.ao_fld = (pv)ka.ak(var7, var1.cg());
-			} else if (30 == var2) {
-				op[] var8 = new op[]{op.az_fld, op.ag_fld, op.ak_fld};
-				this.ab_fld = (op)ka.ak(var8, var1.cg());
-			}
-		}
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Lpc;Z)Lyv;"
-	)
-	public static yv jg(pc var0, boolean var1) throws EOFException {
-		try {
-			if (var0 == null) {
-				throw new NullPointerException();
-			} else {
-				int var2 = var1 ? var0.ay_fld : var0.ac_fld;
-				return var0.ah(var2, -1042571783);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("ye")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;)I"
-	)
-	public static int ye(gf var0) {
-		return var0.aw_fld.az_fld * 1479124089;
-	}
-
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	public int aj() {
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("cl")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Lyv;"
-	)
-	public yv getMapIcon(boolean var1) {
-		try {
-			return this.ae(var1, -1928354355);
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("getCategory")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getCategory() {
-		return this.ar_fld;
 	}
 
 	public pc(int var1) {
@@ -558,7 +372,7 @@ public class pc extends vc implements MapElementConfig {
 		this.ad_fld = Integer.MIN_VALUE;
 		this.ao_fld = pv.ag_fld;
 		this.ab_fld = op.ag_fld;
-		this.ar_fld = -121232557;
+		this.ac_fld = -121232557;
 		this.ah_fld = var1;
 	}
 
@@ -568,25 +382,25 @@ public class pc extends vc implements MapElementConfig {
 	)
 	void az(xi var1, int var2, int var3) {
 		if (var2 == 1) {
-			this.ac_fld = var1.do_();
+			this.aw_fld = xi.kt(var1, (byte)-29);
 		} else if (var2 == 2) {
 			if (var3 <= 1846813669) {
 				return;
 			}
 
-			this.ay_fld = var1.do_();
+			this.ay_fld = xi.kt(var1, (byte)-122);
 		} else if (var2 == 3) {
 			if (var3 <= 1846813669) {
 				return;
 			}
 
-			this.as_fld = xi.kc(var1, 512629655);
+			this.as_fld = xi.at(var1, 512629655);
 		} else if (var2 == 4) {
-			this.af_fld = var1.ck();
+			this.ar_fld = xi.lx(var1, -1753691091);
 		} else if (5 == var2) {
-			var1.ck();
+			xi.lx(var1, -1462840799);
 		} else if (var2 == 6) {
-			this.aw_fld = var1.cg();
+			this.af_fld = var1.cg();
 		} else if (7 == var2) {
 			if (var3 <= 1846813669) {
 				return;
@@ -611,21 +425,21 @@ public class pc extends vc implements MapElementConfig {
 		} else if (var2 == 8) {
 			var1.cg();
 		} else if (var2 >= 10 && var2 <= 14) {
-			this.ax_fld[var2 - 10] = xi.kc(var1, 1331943736);
+			this.ax_fld[var2 - 10] = xi.at(var1, 1331943736);
 		} else if (var2 == 15) {
 			int var7 = var1.cg();
-			this.ap_fld = new int[2 * var7];
+			this.aa_fld = new int[2 * var7];
 
 			for (int var5 = 0; var5 < var7 * 2; var5++) {
-				this.ap_fld[var5] = var1.cz();
+				this.aa_fld[var5] = var1.cz();
 			}
 
-			var1.co();
+			var1.co((byte)-86);
 			int var10 = var1.cg();
-			this.aa_fld = new int[var10];
+			this.ap_fld = new int[var10];
 
-			for (int var6 = 0; var6 < this.aa_fld.length; var6++) {
-				this.aa_fld[var6] = var1.co();
+			for (int var6 = 0; var6 < this.ap_fld.length; var6++) {
+				this.ap_fld[var6] = var1.co((byte)-112);
 			}
 
 			this.at_fld = new byte[var7];
@@ -635,19 +449,19 @@ public class pc extends vc implements MapElementConfig {
 					return;
 				}
 
-				this.at_fld[var11] = xi.rp(var1, -506125783);
+				this.at_fld[var11] = var1.cw();
 			}
 		} else if (16 != var2) {
 			if (17 == var2) {
-				this.an_fld = xi.kc(var1, -1188549321);
+				this.an_fld = xi.at(var1, -1188549321);
 			} else if (var2 == 18) {
-				var1.do_();
+				xi.kt(var1, (byte)-107);
 			} else if (var2 == 19) {
-				this.ar_fld = xi.tx(var1, 333047198);
+				this.ac_fld = var1.cm();
 			} else if (21 == var2) {
-				var1.co();
+				var1.co((byte)-69);
 			} else if (22 == var2) {
-				var1.co();
+				var1.co((byte)-54);
 			} else if (var2 == 23) {
 				var1.cg();
 				var1.cg();
@@ -656,7 +470,7 @@ public class pc extends vc implements MapElementConfig {
 				var1.cz();
 				var1.cz();
 			} else if (25 == var2) {
-				var1.do_();
+				xi.kt(var1, (byte)-118);
 			} else if (28 == var2) {
 				var1.cg();
 			} else if (29 == var2) {
@@ -673,22 +487,33 @@ public class pc extends vc implements MapElementConfig {
 		}
 	}
 
-	@ObfuscatedName("jk")
+	@ObfuscatedName("si")
 	@ObfuscatedSignature(
-		descriptor = "(Lpc;Lxi;)V"
+		descriptor = "(Lpc;I)Lyv;"
 	)
-	public static void jk(pc var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		while (true) {
-			int var2 = var1.cg();
-			if (0 == var2) {
-				return;
+	public static yv si(pc var0, int var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
 			}
 
-			var0.az(var1, var2, 1919121481);
+			if (var1 < 0) {
+				return null;
+			} else {
+				yv var2 = (yv)az_fld.ak(var1);
+				if (var2 != null) {
+					return var2;
+				} else {
+					var2 = wf.av(nz.av_fld, var1, 0);
+					if (var2 != null) {
+						az_fld.az(var2, var1);
+					}
+
+					return var2;
+				}
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
 	}
 
@@ -712,18 +537,18 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "()V"
 	)
 	public void aq() {
-		if (this.ap_fld != null) {
-			for (byte var1 = 0; var1 < this.ap_fld.length; var1 += 2) {
-				if (this.ap_fld[var1] < this.ai_fld) {
-					this.ai_fld = this.ap_fld[var1];
-				} else if (this.ap_fld[var1] > this.am_fld) {
-					this.am_fld = -1865123320 * this.ap_fld[var1];
+		if (this.aa_fld != null) {
+			for (byte var1 = 0; var1 < this.aa_fld.length; var1 += 2) {
+				if (this.aa_fld[var1] < this.ai_fld) {
+					this.ai_fld = this.aa_fld[var1];
+				} else if (this.aa_fld[var1] > this.am_fld) {
+					this.am_fld = -1865123320 * this.aa_fld[var1];
 				}
 
-				if (this.ap_fld[1 + var1] < this.aq_fld) {
-					this.aq_fld = this.ap_fld[1 + var1] * -1879080060;
-				} else if (this.ap_fld[var1 + 1] > this.ad_fld) {
-					this.ad_fld = this.ap_fld[1 + var1] * -924404712;
+				if (this.aa_fld[1 + var1] < this.aq_fld) {
+					this.aq_fld = this.aa_fld[1 + var1] * -1879080060;
+				} else if (this.aa_fld[var1 + 1] > this.ad_fld) {
+					this.ad_fld = this.aa_fld[1 + var1] * -924404712;
 				}
 			}
 		}
@@ -734,18 +559,18 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "()V"
 	)
 	public void am() {
-		if (this.ap_fld != null) {
-			for (byte var1 = 0; var1 < this.ap_fld.length; var1 += 2) {
-				if (this.ap_fld[var1] < this.ai_fld) {
-					this.ai_fld = this.ap_fld[var1];
-				} else if (this.ap_fld[var1] > this.am_fld) {
-					this.am_fld = -1716213521 * this.ap_fld[var1];
+		if (this.aa_fld != null) {
+			for (byte var1 = 0; var1 < this.aa_fld.length; var1 += 2) {
+				if (this.aa_fld[var1] < this.ai_fld) {
+					this.ai_fld = this.aa_fld[var1];
+				} else if (this.aa_fld[var1] > this.am_fld) {
+					this.am_fld = -1716213521 * this.aa_fld[var1];
 				}
 
-				if (this.ap_fld[1 + var1] < this.aq_fld) {
-					this.aq_fld = this.ap_fld[1 + var1];
-				} else if (this.ap_fld[var1 + 1] > this.ad_fld) {
-					this.ad_fld = this.ap_fld[1 + var1];
+				if (this.aa_fld[1 + var1] < this.aq_fld) {
+					this.aq_fld = this.aa_fld[1 + var1];
+				} else if (this.aa_fld[var1 + 1] > this.ad_fld) {
+					this.ad_fld = this.aa_fld[1 + var1];
 				}
 			}
 		}
@@ -756,33 +581,20 @@ public class pc extends vc implements MapElementConfig {
 		descriptor = "()V"
 	)
 	public void ad() {
-		if (this.ap_fld != null) {
-			for (byte var1 = 0; var1 < this.ap_fld.length; var1 += 2) {
-				if (this.ap_fld[var1] < this.ai_fld) {
-					this.ai_fld = this.ap_fld[var1];
-				} else if (this.ap_fld[var1] > this.am_fld) {
-					this.am_fld = -1716213521 * this.ap_fld[var1];
+		if (this.aa_fld != null) {
+			for (byte var1 = 0; var1 < this.aa_fld.length; var1 += 2) {
+				if (this.aa_fld[var1] < this.ai_fld) {
+					this.ai_fld = this.aa_fld[var1];
+				} else if (this.aa_fld[var1] > this.am_fld) {
+					this.am_fld = -1716213521 * this.aa_fld[var1];
 				}
 
-				if (this.ap_fld[1 + var1] < this.aq_fld) {
-					this.aq_fld = this.ap_fld[1 + var1];
-				} else if (this.ap_fld[var1 + 1] > this.ad_fld) {
-					this.ad_fld = this.ap_fld[1 + var1];
+				if (this.aa_fld[1 + var1] < this.aq_fld) {
+					this.aq_fld = this.aa_fld[1 + var1];
+				} else if (this.aa_fld[var1 + 1] > this.ad_fld) {
+					this.ad_fld = this.aa_fld[1 + var1];
 				}
 			}
-		}
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Z)Lyv;"
-	)
-	public yv ao(boolean var1) {
-		try {
-			int var2 = var1 ? this.ay_fld : this.ac_fld * 915394219;
-			return this.ah(var2, -1042571783);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
 		}
 	}
 
@@ -792,17 +604,17 @@ public class pc extends vc implements MapElementConfig {
 	)
 	void an(xi var1, int var2) {
 		if (var2 == 1) {
-			this.ac_fld = var1.do_();
+			this.aw_fld = xi.kt(var1, (byte)-6);
 		} else if (var2 == 2) {
-			this.ay_fld = var1.do_();
+			this.ay_fld = xi.kt(var1, (byte)-58);
 		} else if (var2 == 3) {
-			this.as_fld = xi.kc(var1, -22939073);
+			this.as_fld = xi.at(var1, -22939073);
 		} else if (var2 == 4) {
-			this.af_fld = var1.ck() * -368452089;
+			this.ar_fld = xi.lx(var1, -384658375) * -368452089;
 		} else if (5 == var2) {
-			var1.ck();
+			xi.lx(var1, 1726418999);
 		} else if (var2 == 6) {
-			this.aw_fld = var1.cg();
+			this.af_fld = var1.cg();
 		} else if (7 == var2) {
 			int var3 = var1.cg();
 			if (0 == (var3 & 1)) {
@@ -815,39 +627,39 @@ public class pc extends vc implements MapElementConfig {
 		} else if (var2 == 8) {
 			var1.cg();
 		} else if (var2 >= 10 && var2 <= 14) {
-			this.ax_fld[var2 - 10] = xi.kc(var1, -444621049);
+			this.ax_fld[var2 - 10] = xi.at(var1, -444621049);
 		} else if (var2 == 15) {
 			int var6 = var1.cg();
-			this.ap_fld = new int[2 * var6];
+			this.aa_fld = new int[2 * var6];
 
 			for (int var4 = 0; var4 < var6 * 2; var4++) {
-				this.ap_fld[var4] = var1.cz();
+				this.aa_fld[var4] = var1.cz();
 			}
 
-			var1.co();
+			var1.co((byte)-18);
 			int var9 = var1.cg();
-			this.aa_fld = new int[var9];
+			this.ap_fld = new int[var9];
 
-			for (int var5 = 0; var5 < this.aa_fld.length; var5++) {
-				this.aa_fld[var5] = var1.co();
+			for (int var5 = 0; var5 < this.ap_fld.length; var5++) {
+				this.ap_fld[var5] = var1.co((byte)-57);
 			}
 
 			this.at_fld = new byte[var6];
 
 			for (int var10 = 0; var10 < var6; var10++) {
-				this.at_fld[var10] = xi.rp(var1, 1116975392);
+				this.at_fld[var10] = var1.cw();
 			}
 		} else if (16 != var2) {
 			if (17 == var2) {
-				this.an_fld = xi.kc(var1, -1758080787);
+				this.an_fld = xi.at(var1, -1758080787);
 			} else if (var2 == 18) {
-				var1.do_();
+				xi.kt(var1, (byte)-6);
 			} else if (var2 == 19) {
-				this.ar_fld = xi.tx(var1, 1694613017);
+				this.ac_fld = var1.cm();
 			} else if (21 == var2) {
-				var1.co();
+				var1.co((byte)-110);
 			} else if (22 == var2) {
-				var1.co();
+				var1.co((byte)-82);
 			} else if (var2 == 23) {
 				var1.cg();
 				var1.cg();
@@ -856,7 +668,7 @@ public class pc extends vc implements MapElementConfig {
 				var1.cz();
 				var1.cz();
 			} else if (25 == var2) {
-				var1.do_();
+				xi.kt(var1, (byte)-91);
 			} else if (28 == var2) {
 				var1.cg();
 			} else if (29 == var2) {
@@ -869,13 +681,13 @@ public class pc extends vc implements MapElementConfig {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Z)Lyv;"
 	)
-	public yv at(boolean var1) {
+	public yv ap(boolean var1) {
 		try {
-			int var2 = var1 ? this.ay_fld * 52134598 : this.ac_fld * -774851068;
+			int var2 = var1 ? this.ay_fld : this.aw_fld;
 			return this.ah(var2, -1042571783);
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
@@ -896,8 +708,44 @@ public class pc extends vc implements MapElementConfig {
 	)
 	public yv ab(boolean var1) {
 		try {
-			int var2 = var1 ? this.ay_fld * -508437599 : this.ac_fld;
+			int var2 = var1 ? this.ay_fld * -508437599 : this.aw_fld;
 			return this.ah(var2, -1042571783);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("yl")
+	@ObfuscatedSignature(
+		descriptor = "(Lpc;Lxi;)V"
+	)
+	public static void yl(pc var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			while (true) {
+				int var2 = var1.cg();
+				if (0 == var2) {
+					return;
+				}
+
+				var0.az(var1, var2, 1919121481);
+			}
+		}
+	}
+
+	@ObfuscatedName("pg")
+	@ObfuscatedSignature(
+		descriptor = "(Lpc;Z)Lyv;"
+	)
+	public static yv pg(pc var0, boolean var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			int var2 = var1 ? var0.ay_fld : var0.aw_fld * 915394219;
+			return var0.ah(var2, -1042571783);
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
@@ -905,7 +753,7 @@ public class pc extends vc implements MapElementConfig {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "([BII)Ljava/lang/String;"
+		descriptor = "([BIII)Ljava/lang/String;"
 	)
 	public static String ae(byte[] var0, int var1, int var2) {
 		char[] var4 = new char[var2];
@@ -928,5 +776,44 @@ public class pc extends vc implements MapElementConfig {
 		}
 
 		return new String(var4, 0, var5);
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void av(int var1) {
+		if (this.aa_fld != null) {
+			if (var1 != 24957735) {
+				return;
+			}
+
+			for (byte var2 = 0; var2 < this.ap_fld.length; var2 += 2) {
+				if (this.aa_fld[var2] < this.aq_fld) {
+					this.ai_fld = this.aa_fld[var2];
+				} else if (this.ap_fld[var2] > this.ai_fld) {
+					this.aq_fld = -1716213521 * this.ap_fld[var2];
+				}
+
+				if (this.aa_fld[1 + var2] < this.aq_fld) {
+					this.aq_fld = this.aa_fld[1 + var2];
+				} else if (this.aa_fld[var2 + 1] > this.ai_fld) {
+					this.am_fld = this.ap_fld[1 + var2] * 341283683;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Z)Lyv;"
+	)
+	public yv ao(boolean var1) {
+		try {
+			int var2 = var1 ? this.aq_fld * 172118773 : this.ar_fld * 915394219;
+			return this.ah(var2, -1042571783);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
 	}
 }

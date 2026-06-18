@@ -20,12 +20,12 @@ public class zz {
 		descriptor = "I"
 	)
 	int az_fld;
-	@ObfuscatedGetter(
-		intValue = 585223773
-	)
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 585223773
 	)
 	public int ai_fld;
 	@ObfuscatedName("aw")
@@ -38,68 +38,68 @@ public class zz {
 		descriptor = "I"
 	)
 	int ah_fld;
-	@ObfuscatedGetter(
-		intValue = -1892669113
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int af_fld;
 	@ObfuscatedGetter(
-		intValue = -1407073461
+		intValue = -1892669113
 	)
+	public int af_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ay_fld;
 	@ObfuscatedGetter(
-		intValue = 1547135523
+		intValue = -1407073461
 	)
+	public int ay_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int as_fld;
 	@ObfuscatedGetter(
-		intValue = 198187891
+		intValue = 1547135523
 	)
+	public int as_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ar_fld;
 	@ObfuscatedGetter(
-		intValue = 196986063
+		intValue = 198187891
 	)
+	public int ar_fld;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int an_fld;
 	@ObfuscatedGetter(
-		intValue = 574376007
+		intValue = 196986063
 	)
+	public int an_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int al_fld;
 	@ObfuscatedGetter(
-		intValue = 114680997
+		intValue = 574376007
 	)
+	public int al_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int au_fld;
 	@ObfuscatedGetter(
-		intValue = 325845711
+		intValue = 114680997
 	)
+	public int au_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 325845711
 	)
 	public int ax_fld;
 	@ObfuscatedName("ae")
@@ -107,12 +107,12 @@ public class zz {
 		descriptor = "I"
 	)
 	int ae_fld;
-	@ObfuscatedGetter(
-		intValue = -1514035641
-	)
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1514035641
 	)
 	public int aa_fld;
 	@ObfuscatedName("ak")
@@ -120,28 +120,28 @@ public class zz {
 		descriptor = "I"
 	)
 	int ak_fld = 1;
-	@ObfuscatedGetter(
-		intValue = -1860857235
-	)
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int aq_fld;
 	@ObfuscatedGetter(
-		intValue = -892482021
+		intValue = -1860857235
 	)
+	public int aq_fld;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int am_fld;
 	@ObfuscatedGetter(
-		intValue = -1101524817
+		intValue = -892482021
 	)
+	public int am_fld;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1101524817
 	)
 	public int ad_fld;
 
@@ -150,7 +150,7 @@ public class zz {
 		descriptor = "(Lub;)V"
 	)
 	public void av(ub var1) throws EOFException {
-		byte[] var2 = ub.ae(var1, zp.ag_fld.az_fld, (byte)67);
+		byte[] var2 = ub.xk(var1, zp.ag_fld.az_fld, (byte)67);
 		xi var3 = new xi(var2);
 
 		while (true) {
@@ -161,25 +161,25 @@ public class zz {
 
 			switch (var4) {
 				case 1:
-					var3.ck();
+					xi.lx(var3, -661045955);
 					break;
 				case 2:
-					this.ay_fld = var3.do_();
-					this.as_fld = var3.do_();
-					this.ar_fld = var3.do_();
-					this.af_fld = var3.do_();
-					this.al_fld = var3.do_();
-					this.au_fld = var3.do_();
-					this.ax_fld = var3.do_();
-					this.an_fld = var3.do_();
-					this.aa_fld = var3.do_();
-					this.ai_fld = var3.do_();
-					this.aq_fld = var3.do_();
+					this.ay_fld = xi.kt(var3, (byte)-124);
+					this.as_fld = xi.kt(var3, (byte)-38);
+					this.ar_fld = xi.kt(var3, (byte)-39);
+					this.af_fld = xi.kt(var3, (byte)-65);
+					this.al_fld = xi.kt(var3, (byte)-60);
+					this.au_fld = xi.kt(var3, (byte)-12);
+					this.ax_fld = xi.kt(var3, (byte)-48);
+					this.an_fld = xi.kt(var3, (byte)-109);
+					this.aa_fld = xi.kt(var3, (byte)-57);
+					this.ai_fld = xi.kt(var3, (byte)-16);
+					this.aq_fld = xi.kt(var3, (byte)-99);
 					break;
 				case 3:
 					for (int var5 = 0; var5 < this.aw_fld.length; var5++) {
 						for (int var6 = 0; var6 < this.aw_fld[var5].length; var6++) {
-							this.aw_fld[var5][var6] = var3.ck();
+							this.aw_fld[var5][var6] = xi.lx(var3, -351187357);
 						}
 					}
 				case 4:
@@ -194,10 +194,10 @@ public class zz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;)V"
+		descriptor = "(Lub;I)V"
 	)
 	public void ak(ub var1) throws EOFException {
-		byte[] var3 = ub.ae(var1, zp.ag_fld.az_fld, (byte)121);
+		byte[] var3 = ub.xk(var1, zp.ag_fld.az_fld, (byte)121);
 		xi var4 = new xi(var3);
 
 		while (true) {
@@ -208,25 +208,25 @@ public class zz {
 
 			switch (var5) {
 				case 1:
-					var4.ck();
+					xi.lx(var4, 23883679);
 					break;
 				case 2:
-					this.ay_fld = var4.do_();
-					this.as_fld = var4.do_();
-					this.ar_fld = var4.do_();
-					this.af_fld = var4.do_();
-					this.al_fld = var4.do_();
-					this.au_fld = var4.do_();
-					this.ax_fld = var4.do_();
-					this.an_fld = var4.do_();
-					this.aa_fld = var4.do_();
-					this.ai_fld = var4.do_();
-					this.aq_fld = var4.do_();
+					this.ay_fld = xi.kt(var4, (byte)-55);
+					this.as_fld = xi.kt(var4, (byte)-29);
+					this.ar_fld = xi.kt(var4, (byte)-104);
+					this.af_fld = xi.kt(var4, (byte)-108);
+					this.al_fld = xi.kt(var4, (byte)-18);
+					this.au_fld = xi.kt(var4, (byte)-72);
+					this.ax_fld = xi.kt(var4, (byte)-100);
+					this.an_fld = xi.kt(var4, (byte)-86);
+					this.aa_fld = xi.kt(var4, (byte)-15);
+					this.ai_fld = xi.kt(var4, (byte)-81);
+					this.aq_fld = xi.kt(var4, (byte)-43);
 					break;
 				case 3:
 					for (int var6 = 0; var6 < this.aw_fld.length; var6++) {
 						for (int var7 = 0; var7 < this.aw_fld[var6].length; var7++) {
-							this.aw_fld[var6][var7] = var4.ck();
+							this.aw_fld[var6][var7] = xi.lx(var4, 980663986);
 						}
 					}
 				case 4:
@@ -239,16 +239,12 @@ public class zz {
 		}
 	}
 
-	@ObfuscatedName("vt")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lzz;Lub;)V"
+		descriptor = "(Lub;)V"
 	)
-	public static void vt(zz var0, ub var1) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		byte[] var2 = ub.ae(var1, zp.ag_fld.az_fld, (byte)104);
+	public void az(ub var1) throws EOFException {
+		byte[] var2 = ub.xk(var1, zp.ag_fld.az_fld, (byte)104);
 		xi var3 = new xi(var2);
 
 		while (true) {
@@ -259,33 +255,33 @@ public class zz {
 
 			switch (var4) {
 				case 1:
-					var3.ck();
+					xi.lx(var3, -1106161697);
 					break;
 				case 2:
-					var0.ay_fld = var3.do_();
-					var0.as_fld = var3.do_();
-					var0.ar_fld = var3.do_();
-					var0.af_fld = var3.do_();
-					var0.al_fld = var3.do_();
-					var0.au_fld = var3.do_();
-					var0.ax_fld = var3.do_();
-					var0.an_fld = var3.do_();
-					var0.aa_fld = var3.do_();
-					var0.ai_fld = var3.do_();
-					var0.aq_fld = var3.do_();
+					this.ay_fld = xi.kt(var3, (byte)-127);
+					this.as_fld = xi.kt(var3, (byte)-18);
+					this.ar_fld = xi.kt(var3, (byte)-74);
+					this.af_fld = xi.kt(var3, (byte)-13);
+					this.al_fld = xi.kt(var3, (byte)-46);
+					this.au_fld = xi.kt(var3, (byte)-5);
+					this.ax_fld = xi.kt(var3, (byte)-22);
+					this.an_fld = xi.kt(var3, (byte)-97);
+					this.aa_fld = xi.kt(var3, (byte)-6);
+					this.ai_fld = xi.kt(var3, (byte)-115);
+					this.aq_fld = xi.kt(var3, (byte)-53);
 					break;
 				case 3:
-					for (int var5 = 0; var5 < var0.aw_fld.length; var5++) {
-						for (int var6 = 0; var6 < var0.aw_fld[var5].length; var6++) {
-							var0.aw_fld[var5][var6] = var3.ck();
+					for (int var5 = 0; var5 < this.aw_fld.length; var5++) {
+						for (int var6 = 0; var6 < this.aw_fld[var5].length; var6++) {
+							this.aw_fld[var5][var6] = xi.lx(var3, -438181181);
 						}
 					}
 				case 4:
 				default:
 					break;
 				case 5:
-					var0.am_fld = var3.dl(wa.ak_fld.az_fld);
-					var0.ad_fld = var3.dl(wa.ak_fld.az_fld);
+					this.am_fld = var3.dl(wa.ak_fld.az_fld);
+					this.ad_fld = var3.dl(wa.ak_fld.az_fld);
 			}
 		}
 	}
@@ -312,12 +308,12 @@ public class zz {
 		this.ad_fld = 1733474737;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lub;)V"
 	)
-	public void az(ub var1) throws EOFException {
-		byte[] var2 = ub.ae(var1, zp.ag_fld.az_fld * -1788876099, (byte)84);
+	public void ag(ub var1) throws EOFException {
+		byte[] var2 = ub.xk(var1, zp.ag_fld.az_fld * -1788876099, (byte)84);
 		xi var3 = new xi(var2);
 
 		while (true) {
@@ -328,25 +324,25 @@ public class zz {
 
 			switch (var4) {
 				case 1:
-					var3.ck();
+					xi.lx(var3, -1140865554);
 					break;
 				case 2:
-					this.ay_fld = var3.do_() * 1688330470;
-					this.as_fld = var3.do_();
-					this.ar_fld = var3.do_() * -1429725138;
-					this.af_fld = var3.do_() * 1356332446;
-					this.al_fld = var3.do_();
-					this.au_fld = var3.do_();
-					this.ax_fld = var3.do_() * -335029230;
-					this.an_fld = var3.do_();
-					this.aa_fld = var3.do_();
-					this.ai_fld = var3.do_() * 703692185;
-					this.aq_fld = var3.do_() * 1094157255;
+					this.ay_fld = xi.kt(var3, (byte)-34) * 1688330470;
+					this.as_fld = xi.kt(var3, (byte)-8);
+					this.ar_fld = xi.kt(var3, (byte)-69) * -1429725138;
+					this.af_fld = xi.kt(var3, (byte)-56) * 1356332446;
+					this.al_fld = xi.kt(var3, (byte)1);
+					this.au_fld = xi.kt(var3, (byte)1);
+					this.ax_fld = xi.kt(var3, (byte)-55) * -335029230;
+					this.an_fld = xi.kt(var3, (byte)-109);
+					this.aa_fld = xi.kt(var3, (byte)-53);
+					this.ai_fld = xi.kt(var3, (byte)-123) * 703692185;
+					this.aq_fld = xi.kt(var3, (byte)-75) * 1094157255;
 					break;
 				case 3:
 					for (int var5 = 0; var5 < this.aw_fld.length; var5++) {
 						for (int var6 = 0; var6 < this.aw_fld[var5].length; var6++) {
-							this.aw_fld[var5][var6] = var3.ck();
+							this.aw_fld[var5][var6] = xi.lx(var3, -825656298);
 						}
 					}
 				case 4:

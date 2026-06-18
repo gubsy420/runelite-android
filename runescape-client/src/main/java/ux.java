@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.OutputStream;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -16,35 +17,35 @@ public class ux implements Runnable {
 		descriptor = "Ljava/io/IOException;"
 	)
 	IOException aw_fld;
-	@ObfuscatedGetter(
-		intValue = 652968479
-	)
-	@ObfuscatedName("ae")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
+	@ObfuscatedGetter(
+		intValue = 652968479
+	)
+	int az_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[B"
 	)
 	byte[] av_fld;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = 821086877
 	)
+	int ae_fld = 0;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld = 0;
 	@ObfuscatedGetter(
 		intValue = -931248557
 	)
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int az_fld = 0;
+	int ah_fld = 0;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/Thread;"
@@ -61,10 +62,34 @@ public class ux implements Runnable {
 	)
 	OutputStream ag_fld;
 
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean ae(int var1) {
+		if (this.ay_fld) {
+			try {
+				this.ag_fld.close();
+				if (this.aw_fld == null) {
+					this.aw_fld = new IOException("");
+				}
+			} catch (IOException var3) {
+				if (this.aw_fld == null) {
+					this.aw_fld = new IOException(var3);
+				}
+			}
+
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	@ObfuscatedName("run")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("run")
 	@Override
 	public void run() {
 		do {
@@ -75,10 +100,10 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (this.ah_fld <= this.az_fld) {
-						var1 = this.az_fld - this.ah_fld;
+					if (this.ae_fld <= this.ah_fld) {
+						var1 = this.ah_fld - this.ae_fld;
 					} else {
-						var1 = this.az_fld + (this.ae_fld - this.ah_fld);
+						var1 = this.ah_fld + (this.az_fld - this.ae_fld);
 					}
 
 					if (var1 > 0) {
@@ -92,7 +117,7 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (kf(this, 1352544648)) {
+					if (this.ae(1352544648)) {
 						return;
 					}
 
@@ -104,11 +129,11 @@ public class ux implements Runnable {
 			}
 
 			try {
-				if (var1 + this.ah_fld <= this.ae_fld) {
-					this.ag_fld.write(this.av_fld, this.ah_fld, var1);
+				if (var1 + this.ae_fld <= this.az_fld) {
+					this.ag_fld.write(this.av_fld, this.ae_fld, var1);
 				} else {
-					int var13 = this.ae_fld - this.ah_fld;
-					this.ag_fld.write(this.av_fld, this.ah_fld, var13);
+					int var13 = this.az_fld - this.ae_fld;
+					this.ag_fld.write(this.av_fld, this.ae_fld, var13);
 					this.ag_fld.write(this.av_fld, 0, var1 - var13);
 				}
 			} catch (IOException var9) {
@@ -120,9 +145,9 @@ public class ux implements Runnable {
 			}
 
 			synchronized (this) {
-				this.ah_fld = -1115944011 * ((this.ah_fld + var1) % this.ae_fld);
+				this.ae_fld = -1115944011 * ((this.ae_fld + var1) % this.az_fld);
 			}
-		} while (!kf(this, 1352544648));
+		} while (!this.ae(1352544648));
 	}
 
 	@ObfuscatedName("ah")
@@ -147,10 +172,10 @@ public class ux implements Runnable {
 						}
 
 						int var6;
-						if (this.ah_fld <= this.az_fld) {
-							var6 = this.ah_fld + (this.ae_fld - this.az_fld) - 1;
+						if (this.ae_fld <= this.ah_fld) {
+							var6 = this.ae_fld + (this.az_fld - this.ah_fld) - 1;
 						} else {
-							var6 = this.ah_fld - this.az_fld - 1;
+							var6 = this.ae_fld - this.ah_fld - 1;
 						}
 
 						if (var6 < var3) {
@@ -161,15 +186,15 @@ public class ux implements Runnable {
 							throw new IOException("");
 						}
 
-						if (this.az_fld + var3 <= this.ae_fld) {
-							System.arraycopy(var1, var2, this.av_fld, this.az_fld, var3);
+						if (this.ah_fld + var3 <= this.az_fld) {
+							System.arraycopy(var1, var2, this.av_fld, this.ah_fld, var3);
 						} else {
-							int var7 = this.ae_fld - this.az_fld;
-							System.arraycopy(var1, var2, this.av_fld, this.az_fld, var7);
+							int var7 = this.az_fld - this.ah_fld;
+							System.arraycopy(var1, var2, this.av_fld, this.ah_fld, var7);
 							System.arraycopy(var1, var2 + var7, this.av_fld, 0, var3 - var7);
 						}
 
-						this.az_fld = (var3 + this.az_fld) % this.ae_fld;
+						this.ah_fld = (var3 + this.ah_fld) % this.az_fld;
 						this.notifyAll();
 						return;
 					}
@@ -178,29 +203,6 @@ public class ux implements Runnable {
 		}
 
 		throw new IOException();
-	}
-
-	@ObfuscatedName("mm")
-	@ObfuscatedSignature(
-		descriptor = "(Lux;)Z"
-	)
-	public static boolean mm(ux var0) {
-		if (var0.ay_fld) {
-			try {
-				var0.ag_fld.close();
-				if (var0.aw_fld == null) {
-					var0.aw_fld = new IOException("");
-				}
-			} catch (IOException var2) {
-				if (var0.aw_fld == null) {
-					var0.aw_fld = new IOException(var2);
-				}
-			}
-
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	@ObfuscatedName("ar")
@@ -226,11 +228,11 @@ public class ux implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void ag() {
+	public void ak() {
 		do {
 			int var1;
 			synchronized (this) {
@@ -239,10 +241,10 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (this.ah_fld <= this.az_fld) {
-						var1 = this.az_fld - this.ah_fld;
+					if (this.ae_fld <= this.ah_fld) {
+						var1 = this.ah_fld - this.ae_fld;
 					} else {
-						var1 = this.az_fld + (this.ae_fld - this.ah_fld);
+						var1 = this.ah_fld + (this.az_fld - this.ae_fld);
 					}
 
 					if (var1 > 0) {
@@ -256,7 +258,7 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (kf(this, 1352544648)) {
+					if (this.ae(1352544648)) {
 						return;
 					}
 
@@ -268,11 +270,11 @@ public class ux implements Runnable {
 			}
 
 			try {
-				if (var1 + this.ah_fld <= this.ae_fld) {
-					this.ag_fld.write(this.av_fld, this.ah_fld, var1);
+				if (var1 + this.ae_fld <= this.az_fld) {
+					this.ag_fld.write(this.av_fld, this.ae_fld, var1);
 				} else {
-					int var13 = this.ae_fld - this.ah_fld;
-					this.ag_fld.write(this.av_fld, this.ah_fld, var13);
+					int var13 = this.az_fld - this.ae_fld;
+					this.ag_fld.write(this.av_fld, this.ae_fld, var13);
 					this.ag_fld.write(this.av_fld, 0, var1 - var13);
 				}
 			} catch (IOException var9) {
@@ -284,27 +286,111 @@ public class ux implements Runnable {
 			}
 
 			synchronized (this) {
-				this.ah_fld = -1115944011 * ((this.ah_fld + var1) % this.ae_fld);
+				this.ae_fld = -1115944011 * ((this.ae_fld + var1) % this.az_fld);
 			}
-		} while (!kf(this, 1352544648));
+		} while (!this.ae(1352544648));
 	}
 
-	@ObfuscatedName("kf")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lux;I)Z"
+		descriptor = "()V"
 	)
-	public static boolean kf(ux var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (var0.ay_fld) {
+	public void ag() {
+		do {
+			int var1;
+			synchronized (this) {
+				while (true) {
+					if (this.aw_fld != null) {
+						return;
+					}
+
+					if (this.ae_fld <= this.ah_fld) {
+						var1 = this.ah_fld - this.ae_fld;
+					} else {
+						var1 = this.ah_fld + (this.az_fld - this.ae_fld);
+					}
+
+					if (var1 > 0) {
+						break;
+					}
+
+					try {
+						this.ag_fld.flush();
+					} catch (IOException var10) {
+						this.aw_fld = var10;
+						return;
+					}
+
+					if (this.ae(1352544648)) {
+						return;
+					}
+
+					try {
+						this.wait();
+					} catch (InterruptedException var11) {
+					}
+				}
+			}
+
+			try {
+				if (var1 + this.ae_fld <= this.az_fld) {
+					this.ag_fld.write(this.av_fld, this.ae_fld, var1);
+				} else {
+					int var13 = this.az_fld - this.ae_fld;
+					this.ag_fld.write(this.av_fld, this.ae_fld * 1839609243, var13);
+					this.ag_fld.write(this.av_fld, 0, var1 - var13);
+				}
+			} catch (IOException var9) {
+				IOException var2 = var9;
+				synchronized (this) {
+					this.aw_fld = var2;
+					return;
+				}
+			}
+
+			synchronized (this) {
+				this.ae_fld = 956316055 * ((this.ae_fld + var1) % this.az_fld);
+			}
+		} while (!this.ae(1352544648));
+	}
+
+	@ObfuscatedName("pp")
+	@ObfuscatedSignature(
+		descriptor = "(Lux;)Z"
+	)
+	public static boolean pp(ux var0) {
+		if (var0.ay_fld) {
 			try {
 				var0.ag_fld.close();
 				if (var0.aw_fld == null) {
 					var0.aw_fld = new IOException("");
 				}
-			} catch (IOException var3) {
+			} catch (IOException var2) {
 				if (var0.aw_fld == null) {
-					var0.aw_fld = new IOException(var3);
+					var0.aw_fld = new IOException(var2);
+				}
+			}
+
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@ObfuscatedName("es")
+	@ObfuscatedSignature(
+		descriptor = "(Lux;)Z"
+	)
+	public static boolean es(ux var0) {
+		if (var0.ay_fld) {
+			try {
+				var0.ag_fld.close();
+				if (var0.aw_fld == null) {
+					var0.aw_fld = new IOException("");
+				}
+			} catch (IOException var2) {
+				if (var0.aw_fld == null) {
+					var0.aw_fld = new IOException(var2);
 				}
 			}
 
@@ -327,10 +413,10 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (this.ah_fld <= this.az_fld) {
-						var1 = this.az_fld - this.ah_fld;
+					if (this.ae_fld <= this.ah_fld) {
+						var1 = this.ah_fld - this.ae_fld;
 					} else {
-						var1 = this.az_fld + (this.ae_fld - this.ah_fld);
+						var1 = this.ah_fld + (this.az_fld - this.ae_fld);
 					}
 
 					if (var1 > 0) {
@@ -344,7 +430,7 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (kf(this, 1352544648)) {
+					if (this.ae(1352544648)) {
 						return;
 					}
 
@@ -356,11 +442,11 @@ public class ux implements Runnable {
 			}
 
 			try {
-				if (var1 + this.ah_fld <= this.ae_fld) {
-					this.ag_fld.write(this.av_fld, this.ah_fld, var1);
+				if (var1 + this.ae_fld <= this.az_fld) {
+					this.ag_fld.write(this.av_fld, this.ae_fld, var1);
 				} else {
-					int var13 = this.ae_fld - this.ah_fld;
-					this.ag_fld.write(this.av_fld, this.ah_fld * 1839609243, var13);
+					int var13 = this.az_fld - this.ae_fld;
+					this.ag_fld.write(this.av_fld, this.ae_fld, var13);
 					this.ag_fld.write(this.av_fld, 0, var1 - var13);
 				}
 			} catch (IOException var9) {
@@ -372,9 +458,18 @@ public class ux implements Runnable {
 			}
 
 			synchronized (this) {
-				this.ah_fld = 956316055 * ((this.ah_fld + var1) % this.ae_fld);
+				this.ae_fld = -1115944011 * ((this.ae_fld + var1) % this.az_fld);
 			}
-		} while (!kf(this, 1352544648));
+		} while (!this.ae(1352544648));
+	}
+
+	ux(OutputStream var1, int var2) {
+		this.ag_fld = var1;
+		this.az_fld = 1 + var2;
+		this.av_fld = new byte[this.az_fld];
+		this.ak_fld = new Thread(this);
+		this.ak_fld.setDaemon(true);
+		this.ak_fld.start();
 	}
 
 	@ObfuscatedName("av")
@@ -390,10 +485,10 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (this.ah_fld <= this.az_fld) {
-						var1 = this.az_fld - this.ah_fld;
+					if (this.ae_fld <= this.ah_fld) {
+						var1 = this.ah_fld - this.ae_fld;
 					} else {
-						var1 = this.az_fld + (this.ae_fld - this.ah_fld);
+						var1 = this.ah_fld + (this.az_fld - this.ae_fld);
 					}
 
 					if (var1 > 0) {
@@ -407,7 +502,7 @@ public class ux implements Runnable {
 						return;
 					}
 
-					if (kf(this, 1352544648)) {
+					if (this.ae(1352544648)) {
 						return;
 					}
 
@@ -419,11 +514,11 @@ public class ux implements Runnable {
 			}
 
 			try {
-				if (var1 + this.ah_fld <= this.ae_fld) {
-					this.ag_fld.write(this.av_fld, this.ah_fld, var1);
+				if (var1 + this.ae_fld <= this.az_fld) {
+					this.ag_fld.write(this.av_fld, 405330933 * this.ae_fld, var1);
 				} else {
-					int var13 = this.ae_fld - this.ah_fld;
-					this.ag_fld.write(this.av_fld, this.ah_fld, var13);
+					int var13 = this.az_fld - this.ae_fld;
+					this.ag_fld.write(this.av_fld, this.ae_fld, var13);
 					this.ag_fld.write(this.av_fld, 0, var1 - var13);
 				}
 			} catch (IOException var9) {
@@ -435,81 +530,9 @@ public class ux implements Runnable {
 			}
 
 			synchronized (this) {
-				this.ah_fld = -1115944011 * ((this.ah_fld + var1) % this.ae_fld);
+				this.ae_fld = -1115944011 * ((this.ae_fld + var1) % this.az_fld);
 			}
-		} while (!kf(this, 1352544648));
-	}
-
-	ux(OutputStream var1, int var2) {
-		this.ag_fld = var1;
-		this.ae_fld = 1 + var2;
-		this.av_fld = new byte[this.ae_fld];
-		this.ak_fld = new Thread(this);
-		this.ak_fld.setDaemon(true);
-		this.ak_fld.start();
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void ak() {
-		do {
-			int var1;
-			synchronized (this) {
-				while (true) {
-					if (this.aw_fld != null) {
-						return;
-					}
-
-					if (this.ah_fld <= this.az_fld) {
-						var1 = this.az_fld - this.ah_fld;
-					} else {
-						var1 = this.az_fld + (this.ae_fld - this.ah_fld);
-					}
-
-					if (var1 > 0) {
-						break;
-					}
-
-					try {
-						this.ag_fld.flush();
-					} catch (IOException var10) {
-						this.aw_fld = var10;
-						return;
-					}
-
-					if (kf(this, 1352544648)) {
-						return;
-					}
-
-					try {
-						this.wait();
-					} catch (InterruptedException var11) {
-					}
-				}
-			}
-
-			try {
-				if (var1 + this.ah_fld <= this.ae_fld) {
-					this.ag_fld.write(this.av_fld, 405330933 * this.ah_fld, var1);
-				} else {
-					int var13 = this.ae_fld - this.ah_fld;
-					this.ag_fld.write(this.av_fld, this.ah_fld, var13);
-					this.ag_fld.write(this.av_fld, 0, var1 - var13);
-				}
-			} catch (IOException var9) {
-				IOException var2 = var9;
-				synchronized (this) {
-					this.aw_fld = var2;
-					return;
-				}
-			}
-
-			synchronized (this) {
-				this.ah_fld = -1115944011 * ((this.ah_fld + var1) % this.ae_fld);
-			}
-		} while (!kf(this, 1352544648));
+		} while (!this.ae(1352544648));
 	}
 
 	@ObfuscatedName("as")
@@ -562,24 +585,24 @@ public class ux implements Runnable {
 					throw new IOException(this.aw_fld.toString());
 				} else {
 					int var5;
-					if (this.ah_fld <= this.az_fld) {
-						var5 = this.ah_fld + (this.ae_fld - this.az_fld) - 1;
+					if (this.ae_fld <= this.ah_fld) {
+						var5 = this.ae_fld + (this.az_fld - this.ah_fld) - 1;
 					} else {
-						var5 = this.ah_fld - this.az_fld - 1;
+						var5 = this.ae_fld - this.ah_fld - 1;
 					}
 
 					if (var5 < var3) {
 						throw new IOException("");
 					} else {
-						if (this.az_fld + var3 <= this.ae_fld) {
-							System.arraycopy(var1, var2, this.av_fld, this.az_fld, var3);
+						if (this.ah_fld + var3 <= this.az_fld) {
+							System.arraycopy(var1, var2, this.av_fld, this.ah_fld, var3);
 						} else {
-							int var6 = this.ae_fld - this.az_fld;
-							System.arraycopy(var1, var2, this.av_fld, this.az_fld, var6);
+							int var6 = this.az_fld - this.ah_fld;
+							System.arraycopy(var1, var2, this.av_fld, this.ah_fld, var6);
 							System.arraycopy(var1, var2 + var6, this.av_fld, 0, var3 - var6);
 						}
 
-						this.az_fld = (var3 + this.az_fld) % this.ae_fld * 454431018;
+						this.ah_fld = (var3 + this.ah_fld) % this.az_fld * 454431018;
 						this.notifyAll();
 					}
 				}
@@ -600,24 +623,24 @@ public class ux implements Runnable {
 					throw new IOException(this.aw_fld.toString());
 				} else {
 					int var5;
-					if (this.ah_fld <= this.az_fld) {
-						var5 = this.ah_fld + (this.ae_fld - this.az_fld) - 1;
+					if (this.ae_fld <= this.ah_fld) {
+						var5 = this.ae_fld + (this.az_fld - this.ah_fld) - 1;
 					} else {
-						var5 = this.ah_fld - this.az_fld - 1;
+						var5 = this.ae_fld - this.ah_fld - 1;
 					}
 
 					if (var5 < var3) {
 						throw new IOException("");
 					} else {
-						if (this.az_fld + var3 <= this.ae_fld) {
-							System.arraycopy(var1, var2, this.av_fld, 1965833888 * this.az_fld, var3);
+						if (this.ah_fld + var3 <= this.az_fld) {
+							System.arraycopy(var1, var2, this.av_fld, 1965833888 * this.ah_fld, var3);
 						} else {
-							int var6 = this.ae_fld - this.az_fld;
-							System.arraycopy(var1, var2, this.av_fld, this.az_fld, var6);
+							int var6 = this.az_fld - this.ah_fld;
+							System.arraycopy(var1, var2, this.av_fld, this.ah_fld, var6);
 							System.arraycopy(var1, var2 + var6, this.av_fld, 0, var3 - var6);
 						}
 
-						this.az_fld = (var3 + this.az_fld) % this.ae_fld;
+						this.ah_fld = (var3 + this.ah_fld) % this.az_fld;
 						this.notifyAll();
 					}
 				}
@@ -643,77 +666,27 @@ public class ux implements Runnable {
 		}
 	}
 
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void an() {
+		synchronized (this) {
+			this.ay_fld = true;
+			this.notifyAll();
+		}
+
+		try {
+			this.ak_fld.join();
+		} catch (InterruptedException var3) {
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	static boolean ak(int var0) {
 		return var0 > 0;
-	}
-
-	@ObfuscatedName("so")
-	@ObfuscatedSignature(
-		descriptor = "(Lux;)Z"
-	)
-	public static boolean so(ux var0) {
-		if (var0.ay_fld) {
-			try {
-				var0.ag_fld.close();
-				if (var0.aw_fld == null) {
-					var0.aw_fld = new IOException("");
-				}
-			} catch (IOException var2) {
-				if (var0.aw_fld == null) {
-					var0.aw_fld = new IOException(var2);
-				}
-			}
-
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@ObfuscatedName("hp")
-	@ObfuscatedSignature(
-		descriptor = "(Lux;)V"
-	)
-	public static void hp(ux var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			synchronized (var0) {
-				var0.ay_fld = true;
-				var0.notifyAll();
-			}
-
-			try {
-				var0.ak_fld.join();
-			} catch (InterruptedException var3) {
-			}
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ae(int var1) {
-		if (this.ay_fld) {
-			try {
-				this.ag_fld.close();
-				if (this.aw_fld == null) {
-					this.aw_fld = new IOException("");
-				}
-			} catch (IOException var3) {
-				if (this.aw_fld == null) {
-					this.aw_fld = new IOException(var3);
-				}
-			}
-
-			return true;
-		} else {
-			return false;
-		}
 	}
 }

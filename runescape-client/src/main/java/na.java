@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import net.runelite.api.Deque;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -18,53 +19,19 @@ public class na implements Deque {
 	)
 	vw ag_fld;
 
-	@ObfuscatedName("iv")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;Lvw;)V"
-	)
-	public static void iv(na var0, vw var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1.hw_fld != null) {
-			var1.gy_void();
-		}
-
-		var1.hw_fld = var0.ak_fld.hw_fld;
-		var1.hg_vw = var0.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw bz() {
-		vw var1 = this.ak_fld.hg_vw;
-		if (var1 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lvw;Lvw;)V"
 	)
 	public static void ak(vw var0, vw var1) {
-		if (var0.hw_fld != null) {
-			var0.gy_void();
+		if (var0.hg_fld != null) {
+			var0.gy();
 		}
 
-		var0.hw_fld = var1.hw_fld;
-		var0.hg_vw = var1;
-		var0.hw_fld.hg_vw = var0;
-		var0.hg_vw.hw_fld = var0;
+		var0.hg_fld = var1.hg_fld;
+		var0.hw_fld = var1;
+		var0.hg_fld.hw_fld = var0;
+		var0.hw_fld.hg_fld = var0;
 	}
 
 	@ObfuscatedName("an")
@@ -73,44 +40,37 @@ public class na implements Deque {
 	)
 	public void an() {
 		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
+			vw var1 = this.ak_fld.hw_fld;
 			if (var1 == this.ak_fld) {
 				this.ag_fld = null;
 				return;
 			}
 
-			var1.gy_void();
+			var1.gy();
 		}
 	}
 
-	@ObfuscatedName("gu")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
+		descriptor = "(Lvw;)V"
 	)
-	public vw gu() {
-		return this.ae();
-	}
-
-	@ObfuscatedName("ia")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;)Lvw;"
-	)
-	public static vw ia(na var0) {
-		vw var1 = var0.ak_fld.hw_fld;
-		if (var1 == var0.ak_fld) {
-			return null;
-		} else {
-			var1.gy_void();
-			return var1;
+	public void az(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
+
+		var1.hg_fld = this.ak_fld.hg_fld;
+		var1.hw_fld = this.ak_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("ui")
+	@ObfuscatedName("dj")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
-	public vw ui() {
-		return this.aw();
+	public vw dj() {
+		return zi.ex(this);
 	}
 
 	@ObfuscatedName("av")
@@ -118,43 +78,88 @@ public class na implements Deque {
 		descriptor = "(Lvw;)V"
 	)
 	public void av(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
+		var1.hg_fld = this.ak_fld;
 		var1.hw_fld = this.ak_fld.hw_fld;
-		var1.hg_vw = this.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("id")
 	@ObfuscatedSignature(
-		descriptor = "(Lvw;)V"
+		descriptor = "(Lna;Lvw;)V"
 	)
-	public void ai(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+	public static void id(na var0, vw var1) {
+		if (var0 == null) {
+			var0.getClass();
 		}
 
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		if (var1.hg_fld != null) {
+			var1.gy();
+		}
+
+		var1.hg_fld = var0.ak_fld.hg_fld;
+		var1.hw_fld = var0.ak_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ut")
+	@ObfuscatedSignature(
+		descriptor = "(Lna;)Lvw;"
+	)
+	public static vw ut(na var0) {
+		vw var1 = var0.ak_fld.hg_fld;
+		if (var1 == var0.ak_fld) {
+			return null;
+		} else {
+			var1.gy();
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
-	public vw ae() {
-		vw var1 = this.ak_fld.hg_vw;
+	public vw ah() {
+		vw var1 = this.ak_fld.hg_fld;
 		if (var1 == this.ak_fld) {
 			return null;
 		} else {
-			var1.gy_void();
+			var1.gy();
 			return var1;
 		}
+	}
+
+	@ObfuscatedName("iy")
+	@ObfuscatedSignature(
+		descriptor = "(Lna;)Lvw;"
+	)
+	public static vw iy(na var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		vw var1 = var0.ag_fld;
+		if (var1 == var0.ak_fld) {
+			var0.ag_fld = null;
+			return null;
+		} else {
+			var0.ag_fld = var1.hw_fld;
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)V"
+	)
+	public void eg(vw var1) {
+		this.az(var1);
 	}
 
 	@ObfuscatedName("aw")
@@ -162,21 +167,6 @@ public class na implements Deque {
 		descriptor = "()Lvw;"
 	)
 	public vw aw() {
-		vw var1 = this.ak_fld.hg_vw;
-		if (var1 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw ay() {
 		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			this.ag_fld = null;
@@ -187,127 +177,40 @@ public class na implements Deque {
 		}
 	}
 
-	@ObfuscatedName("ft")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;Lvw;)V"
-	)
-	public static void ft(na var0, vw var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1.hw_fld != null) {
-			var1.gy_void();
-		}
-
-		var1.hw_fld = var0.ak_fld.hw_fld;
-		var1.hg_vw = var0.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
-	}
-
-	// $VF: synthetic method
-	// $VF: bridge method
-	@ObfuscatedName("addLast")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)V"
-	)
-	@Override
-	public void addLast(Object var1) {
-		this.az((vw)var1);
-	}
-
-	@ObfuscatedName("fc")
+	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
-	public vw fc() {
-		return this.as();
+	public vw dg() {
+		return iy(this);
 	}
 
-	@ObfuscatedName("xb")
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw ay() {
+		vw var1 = this.ak_fld.hg_fld;
+		if (var1 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var1.hg_fld;
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ic")
 	@ObfuscatedSignature(
 		descriptor = "(Lna;)V"
 	)
-	public void xb(na var1) {
+	public void ic(na var1) {
 		vw var2 = this.ak_fld;
 		vw var3 = this.ag_fld;
 		this.ak_fld = var1.ak_fld;
 		this.ag_fld = var1.ag_fld;
 		var1.ak_fld = var2;
 		var1.ag_fld = var3;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)V"
-	)
-	public void az(vw var1) {
-		this.av(var1);
-	}
-
-	@ObfuscatedName("nz")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;)Lvw;"
-	)
-	public static vw nz(na var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			vw var1 = var0.ak_fld.hw_fld;
-			if (var1 == var0.ak_fld) {
-				return null;
-			} else {
-				var1.gy_void();
-				return var1;
-			}
-		}
-	}
-
-	@ObfuscatedName("clear")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	@Override
-	public void clear() {
-		this.ag();
-	}
-
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw by() {
-		return this.ay();
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw as() {
-		vw var1 = this.ag_fld;
-		if (var1 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;)Lvw;"
-	)
-	public static vw eg(na var0) {
-		vw var1 = var0.ak_fld.hw_fld;
-		if (var1 == var0.ak_fld) {
-			return null;
-		} else {
-			var1.gy_void();
-			return var1;
-		}
 	}
 
 	@ObfuscatedName("ar")
@@ -320,40 +223,52 @@ public class na implements Deque {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hw_fld;
+			this.ag_fld = var1.hg_fld;
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Lvw;)V"
 	)
-	public void am(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+	public void ao(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("mh")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lna;)V"
 	)
-	public void al() {
-		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
-			if (var1 == this.ak_fld) {
-				this.ag_fld = null;
-				return;
-			}
+	public static void mh(na var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			while (true) {
+				vw var1 = var0.ak_fld.hw_fld;
+				if (var1 == var0.ak_fld) {
+					var0.ag_fld = null;
+					return;
+				}
 
-			var1.gy_void();
+				var1.gy();
+			}
 		}
+	}
+
+	@ObfuscatedName("yr")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw yr() {
+		return this.aw();
 	}
 
 	@ObfuscatedName("au")
@@ -362,13 +277,28 @@ public class na implements Deque {
 	)
 	public void au() {
 		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
+			vw var1 = this.ak_fld.hw_fld;
 			if (var1 == this.ak_fld) {
 				this.ag_fld = null;
 				return;
 			}
 
-			var1.gy_void();
+			var1.gy();
+		}
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw bm() {
+		vw var1 = this.ak_fld.hw_fld;
+		if (var1 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var1.hw_fld;
+			return var1;
 		}
 	}
 
@@ -377,11 +307,11 @@ public class na implements Deque {
 		descriptor = "()Lvw;"
 	)
 	public vw ap() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			return null;
 		} else {
-			var1.gy_void();
+			var1.gy();
 			return var1;
 		}
 	}
@@ -392,92 +322,146 @@ public class na implements Deque {
 	)
 	public void aa() {
 		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
+			vw var1 = this.ak_fld.hw_fld;
 			if (var1 == this.ak_fld) {
 				this.ag_fld = null;
 				return;
 			}
 
-			var1.gy_void();
+			var1.gy();
 		}
 	}
 
-	@ObfuscatedName("ao")
+	// $VF: synthetic method
+	// $VF: bridge method
+	@ObfuscatedName("addLast")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)V"
+	)
+	@Export("addLast")
+	@Override
+	public void addLast(Object var1) {
+		this.eg((vw)var1);
+	}
+
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Lvw;)V"
 	)
-	public void ao(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.gy_void();
+	public void aq(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
 
-		var1.hw_fld = this.ak_fld.hw_fld;
-		var1.hg_vw = this.ak_fld;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+		var1.hg_fld = this.ak_fld.hg_fld;
+		var1.hw_fld = this.ak_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("pa")
 	@ObfuscatedSignature(
-		descriptor = "(Lna;Lvw;)V"
+		descriptor = "(Lna;)Lvw;"
 	)
-	public static void bn(na var0, vw var1) {
+	public static vw pa(na var0) {
 		if (var0 == null) {
-			var0.getClass();
+			throw new NullPointerException();
+		} else {
+			vw var1 = var0.ak_fld.hw_fld;
+			if (var1 == var0.ak_fld) {
+				var0.ag_fld = null;
+				return null;
+			} else {
+				var0.ag_fld = var1.hw_fld;
+				return var1;
+			}
 		}
-
-		if (var1.hw_fld != null) {
-			var1.gy_void();
-		}
-
-		var1.hw_fld = var0.ak_fld;
-		var1.hg_vw = var0.ak_fld.hg_vw;
-		var1.hw_fld.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
 	}
 
-	@ObfuscatedName("be")
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)V"
+	)
+	public void am(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
+		}
+
+		var1.hg_fld = this.ak_fld.hg_fld;
+		var1.hw_fld = this.ak_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lvw;)V"
+	)
+	public void ad(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
+		}
+
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
+	}
+
+	@ObfuscatedName("ma")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
-	public vw be() {
-		vw var1 = this.ak_fld.hg_vw;
-		if (var1 == this.ak_fld) {
-			this.ag_fld = null;
-			return null;
-		} else {
-			this.ag_fld = var1.hg_vw;
-			return var1;
-		}
+	public vw ma() {
+		return this.ay();
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
+		descriptor = "(Lvw;)V"
 	)
-	public vw at() {
-		vw var1 = this.ak_fld.hg_vw;
-		if (var1 == this.ak_fld) {
-			return null;
-		} else {
-			var1.gy_void();
-			return var1;
+	public void ab(vw var1) {
+		if (var1.hg_fld != null) {
+			var1.gy();
 		}
+
+		var1.hg_fld = this.ak_fld;
+		var1.hw_fld = this.ak_fld.hw_fld;
+		var1.hg_fld.hw_fld = var1;
+		var1.hw_fld.hg_fld = var1;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("clear")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void ag() {
-		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
-			if (var1 == this.ak_fld) {
-				this.ag_fld = null;
-				return;
-			}
+	@Export("clear")
+	@Override
+	public void clear() {
+		mh(this);
+	}
 
-			var1.gy_void();
+	@ObfuscatedName("iterator")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Iterator;"
+	)
+	@Export("iterator")
+	@Override
+	public Iterator iterator() {
+		return new rl11(this);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw ac() {
+		vw var1 = this.ak_fld.hg_fld;
+		if (var1 == this.ak_fld) {
+			return null;
+		} else {
+			var1.gy();
+			return var1;
 		}
 	}
 
@@ -487,13 +471,13 @@ public class na implements Deque {
 	)
 	public void ax() {
 		while (true) {
-			vw var1 = this.ak_fld.hg_vw;
+			vw var1 = this.ak_fld.hw_fld;
 			if (var1 == this.ak_fld) {
 				this.ag_fld = null;
 				return;
 			}
 
-			var1.gy_void();
+			var1.gy();
 		}
 	}
 
@@ -502,53 +486,19 @@ public class na implements Deque {
 		descriptor = "()Lvw;"
 	)
 	public vw bd() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("mx")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;Lvw;)V"
-	)
-	public static void mx(na var0, vw var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var1.hw_fld != null) {
-				var1.gy_void();
-			}
-
-			var1.hw_fld = var0.ak_fld;
-			var1.hg_vw = var0.ak_fld.hg_vw;
-			var1.hw_fld.hg_vw = var1;
-			var1.hg_vw.hw_fld = var1;
-		}
-	}
-
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;)Lvw;"
-	)
-	public static vw us(na var0) {
-		vw var1 = var0.ag_fld;
-		if (var1 == var0.ak_fld) {
-			var0.ag_fld = null;
-			return null;
-		} else {
-			var0.ag_fld = var1.hw_fld;
+			this.ag_fld = var1.hw_fld;
 			return var1;
 		}
 	}
 
 	public na() {
-		this.ak_fld.hg_vw = this.ak_fld;
 		this.ak_fld.hw_fld = this.ak_fld;
+		this.ak_fld.hg_fld = this.ak_fld;
 	}
 
 	@ObfuscatedName("br")
@@ -556,12 +506,47 @@ public class na implements Deque {
 		descriptor = "()Lvw;"
 	)
 	public vw br() {
-		vw var1 = this.ak_fld.hg_vw;
+		vw var1 = this.ak_fld.hw_fld;
 		if (var1 == this.ak_fld) {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hg_vw;
+			this.ag_fld = var1.hw_fld;
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("hi")
+	@ObfuscatedSignature(
+		descriptor = "(Lna;)V"
+	)
+	public static void hi(na var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		while (true) {
+			vw var1 = var0.ak_fld.hw_fld;
+			if (var1 == var0.ak_fld) {
+				var0.ag_fld = null;
+				return;
+			}
+
+			var1.gy();
+		}
+	}
+
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw bh() {
+		vw var1 = this.ag_fld;
+		if (var1 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var1.hg_fld;
 			return var1;
 		}
 	}
@@ -576,7 +561,7 @@ public class na implements Deque {
 			this.ag_fld = null;
 			return null;
 		} else {
-			this.ag_fld = var1.hw_fld;
+			this.ag_fld = var1.hg_fld;
 			return var1;
 		}
 	}
@@ -586,67 +571,88 @@ public class na implements Deque {
 		descriptor = "(Lvw;Lvw;)V"
 	)
 	public static void af(vw var0, vw var1) {
-		if (var0.hw_fld != null) {
-			var0.gy_void();
+		if (var0.hg_fld != null) {
+			var0.gy();
 		}
 
-		var0.hw_fld = var1.hw_fld;
-		var0.hg_vw = var1;
-		var0.hw_fld.hg_vw = var0;
-		var0.hg_vw.hw_fld = var0;
+		var0.hg_fld = var1.hg_fld;
+		var0.hw_fld = var1;
+		var0.hg_fld.hw_fld = var0;
+		var0.hw_fld.hg_fld = var0;
 	}
 
-	@ObfuscatedName("es")
+	@ObfuscatedName("li")
 	@ObfuscatedSignature(
-		descriptor = "(Luf;)I"
+		descriptor = "(Lna;)Lvw;"
 	)
-	public static int es(uf var0) {
-		return var0.ae_fld;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()Lvw;"
-	)
-	public vw ah() {
-		vw var1 = this.ak_fld.hg_vw;
-		if (var1 == this.ak_fld) {
+	public static vw li(na var0) {
+		vw var1 = var0.ak_fld.hw_fld;
+		if (var1 == var0.ak_fld) {
+			var0.ag_fld = null;
 			return null;
 		} else {
-			var1.gy_void();
+			var0.ag_fld = var1.hw_fld;
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
-	public vw bm() {
-		return this.bd();
-	}
-
-	@ObfuscatedName("iterator")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Iterator;"
-	)
-	@Override
-	public Iterator iterator() {
-		return new rl11(this);
-	}
-
-	@ObfuscatedName("dv")
-	@ObfuscatedSignature(
-		descriptor = "(Lvw;)V"
-	)
-	public void dv(vw var1) {
-		if (var1.hw_fld != null) {
-			var1.xp_void();
+	public vw bz() {
+		vw var1 = this.ak_fld.hw_fld;
+		if (var1 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var1.hw_fld;
+			return var1;
 		}
+	}
 
-		var1.hg_vw = this.ak_fld.hg_vw;
-		var1.hw_fld = this.ak_fld;
-		var1.hg_vw.hg_vw = var1;
-		var1.hg_vw.hw_fld = var1;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw ae() {
+		vw var1 = this.ak_fld.hg_fld;
+		if (var1 == this.ak_fld) {
+			return null;
+		} else {
+			var1.gz();
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()Lvw;"
+	)
+	public vw as() {
+		vw var1 = this.ag_fld;
+		if (var1 == this.ak_fld) {
+			this.ag_fld = null;
+			return null;
+		} else {
+			this.ag_fld = var1.hg_fld;
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ag() {
+		while (true) {
+			vw var1 = this.ak_fld.hw_fld;
+			if (var1 == this.ak_fld) {
+				this.ag_fld = null;
+				return;
+			}
+
+			var1.gx();
+		}
 	}
 }

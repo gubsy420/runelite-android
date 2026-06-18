@@ -1,15 +1,16 @@
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ul")
 public class ul {
-	@ObfuscatedGetter(
-		intValue = -1130352875
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1130352875
 	)
 	static int ah_fld = 0;
 	@ObfuscatedName("ag")
@@ -32,20 +33,20 @@ public class ul {
 		descriptor = "Luz;"
 	)
 	public uz ak_fld = new uz();
-	@ObfuscatedGetter(
-		intValue = 398936965
-	)
 	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int cs_fld;
 	@ObfuscatedGetter(
 		intValue = 398936965
 	)
+	static int cs_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 398936965
 	)
 	static int ae_fld = -762358576;
 
@@ -54,55 +55,53 @@ public class ul {
 		this.az_fld = new tu(1.0F, 1.0F, 1.0F);
 	}
 
+	@ObfuscatedName("ta")
+	@ObfuscatedSignature(
+		descriptor = "()Lul;"
+	)
+	public static ul ta() {
+		return uv.ak();
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	void az() {
 		this.ak_fld.af();
 		this.ag_fld.as();
+		this.az_fld.ar_fld = 1.0F;
 		this.az_fld.ay_fld = 1.0F;
 		this.az_fld.as_fld = 1.0F;
-		this.az_fld.ar_fld = 1.0F;
-	}
-
-	@ObfuscatedName("ih")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void ih() {
-		ln(this, (byte)-120);
 	}
 
 	@ObfuscatedName("toString")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		return "[" + this.ak_fld.toString() + "|" + this.ag_fld.toString() + "|" + this.az_fld.toString() + "]";
 	}
 
-	@ObfuscatedName("mn")
+	@ObfuscatedName("pk")
 	@ObfuscatedSignature(
 		descriptor = "(Lul;)I"
 	)
-	public static int mn(ul var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		byte var1 = 31;
+	public static int pk(ul var0) {
+		int var1 = -1919214807;
 		byte var2 = 1;
-		int var3 = -251458497 * var2 + var0.ak_fld.hashCode();
-		var3 = 297594300 * var3 + var0.ag_fld.hashCode();
-		return 1476114331 * var3 + var0.az_fld.hashCode();
+		int var3 = 31 * var2 + var0.ak_fld.hashCode();
+		var3 = 31 * var3 + var0.ag_fld.hashCode();
+		return 31 * var3 + var0.az_fld.hashCode();
 	}
 
 	@ObfuscatedName("hashCode")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("hashCode")
 	@Override
 	public int hashCode() {
 		byte var1 = 31;
@@ -110,6 +109,14 @@ public class ul {
 		int var3 = 31 * var2 + this.ak_fld.hashCode();
 		var3 = 31 * var3 + this.ag_fld.hashCode();
 		return 31 * var3 + this.az_fld.hashCode();
+	}
+
+	@ObfuscatedName("tz")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void tz() {
+		hd(this, (byte)-120);
 	}
 
 	@ObfuscatedName("gi")
@@ -124,6 +131,7 @@ public class ul {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		if (null == var1) {
@@ -138,11 +146,11 @@ public class ul {
 		}
 	}
 
-	@ObfuscatedName("vj")
+	@ObfuscatedName("jp")
 	@ObfuscatedSignature(
 		descriptor = "(Lul;Ljava/lang/Object;)Z"
 	)
-	public static boolean vj(ul var0, Object var1) {
+	public static boolean jp(ul var0, Object var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -166,21 +174,26 @@ public class ul {
 	void as() {
 		this.ak_fld.af();
 		this.ag_fld.as();
+		this.az_fld.ar_fld = 1.0F;
 		this.az_fld.ay_fld = 1.0F;
 		this.az_fld.as_fld = 1.0F;
-		this.az_fld.ar_fld = 1.0F;
 	}
 
-	@ObfuscatedName("afm")
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public int afm() {
-		int var1 = -1919214807;
-		byte var2 = 1;
-		int var3 = 31 * var2 + this.ak_fld.hashCode();
-		var3 = 31 * var3 + this.ag_fld.hashCode();
-		return 31 * var3 + this.az_fld.hashCode();
+	public boolean jg(Object var1) {
+		if (null == var1) {
+			return false;
+		} else if (this == var1) {
+			return true;
+		} else if (!(var1 instanceof ul)) {
+			return false;
+		} else {
+			ul var2 = (ul)var1;
+			return this.ak_fld.equals(var2.ak_fld) && this.ag_fld.ar(var2.ag_fld) && this.az_fld.ar(var2.az_fld);
+		}
 	}
 
 	@ObfuscatedName("jt")
@@ -242,6 +255,22 @@ public class ul {
 		}
 	}
 
+	@ObfuscatedName("hd")
+	@ObfuscatedSignature(
+		descriptor = "(Lul;B)V"
+	)
+	public static void hd(ul var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			synchronized (av_fld) {
+				if (ah_fld < ae_fld) {
+					av_fld[(ah_fld += -957110211) * -1130352875 - 1] = var0;
+				}
+			}
+		}
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -254,20 +283,20 @@ public class ul {
 		}
 	}
 
-	@ObfuscatedName("ln")
+	@ObfuscatedName("ft")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;B)V"
+		descriptor = "(Lul;)I"
 	)
-	public static void ln(ul var0, byte var1) {
+	public static int ft(ul var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		synchronized (av_fld) {
-			if (ah_fld < ae_fld) {
-				av_fld[(ah_fld += -957110211) * -1130352875 - 1] = var0;
-			}
-		}
+		byte var1 = 31;
+		byte var2 = 1;
+		int var3 = -251458497 * var2 + var0.ak_fld.hashCode();
+		var3 = 297594300 * var3 + var0.ag_fld.hashCode();
+		return 1476114331 * var3 + var0.az_fld.hashCode();
 	}
 
 	@ObfuscatedName("aw")
@@ -282,17 +311,21 @@ public class ul {
 		}
 	}
 
-	@ObfuscatedName("sw")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Lul;"
+		descriptor = "()V"
 	)
-	public static ul sw() {
-		return uv.ak();
+	public void ay() {
+		synchronized (av_fld) {
+			if (ah_fld < ae_fld) {
+				av_fld[(ah_fld += -957110211) * -1130352875 - 1] = this;
+			}
+		}
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;Ljava/lang/String;)Ljava/lang/String;"
+		descriptor = "(Lsl;Ljava/lang/String;I)Ljava/lang/String;"
 	)
 	public static String aq(sl var0, String var1) {
 		yq var3 = yq.az_fld;
@@ -328,59 +361,12 @@ public class ul {
 		}
 	}
 
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;)V"
-	)
-	public static void bj(ul var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			synchronized (av_fld) {
-				if (ah_fld < ae_fld) {
-					av_fld[(ah_fld += -957110211) * -1130352875 - 1] = var0;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void ar() {
-		this.ak_fld.af();
-		this.ag_fld.as();
-		this.az_fld.ay_fld = 1.0F;
-		this.az_fld.as_fld = 1.0F;
-		this.az_fld.ar_fld = 1.0F;
-	}
-
 	@ObfuscatedName("gq")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
 	public String gq() {
 		return "[" + this.ak_fld.toString() + "|" + this.ag_fld.toString() + "|" + this.az_fld.toString() + "]";
-	}
-
-	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;Ljava/lang/Object;)Z"
-	)
-	public static boolean co(ul var0, Object var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (null == var1) {
-			return false;
-		} else if (var0 == var1) {
-			return true;
-		} else if (!(var1 instanceof ul)) {
-			return false;
-		} else {
-			ul var2 = (ul)var1;
-			return var0.ak_fld.equals(var2.ak_fld) && var0.ag_fld.ar(var2.ag_fld) && var0.az_fld.ar(var2.az_fld);
-		}
 	}
 
 	@ObfuscatedName("ag")

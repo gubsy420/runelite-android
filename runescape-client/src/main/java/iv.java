@@ -9,11 +9,11 @@ public class iv extends ho {
 		descriptor = "I"
 	)
 	public static int bc_fld;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "B"
 	)
-	byte ag_fld;
+	byte az_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -30,11 +30,11 @@ public class iv extends ho {
 		descriptor = "I"
 	)
 	public static int am_fld;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "B"
 	)
-	byte az_fld;
+	byte ag_fld;
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -57,16 +57,30 @@ public class iv extends ho {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = var1.ch();
+		this.ak_fld = var1.cl();
 		if (null != this.ak_fld) {
 			var1.cg();
-			this.ag_fld = xi.rp(var1, 699243610);
-			this.az_fld = xi.rp(var1, 1194818027);
+			this.az_fld = var1.cw();
+			this.ag_fld = var1.cw();
 		}
 	}
 
 	iv(hm var1) {
 		this.this$0 = var1;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	@Override
+	void av(xi var1) {
+		this.ak_fld = var1.cl();
+		if (null != this.ak_fld) {
+			var1.cg();
+			this.az_fld = var1.cw();
+			this.ag_fld = var1.cw();
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -75,25 +89,11 @@ public class iv extends ho {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = var1.ch();
+		this.ak_fld = var1.cl();
 		if (null != this.ak_fld) {
 			var1.cg();
-			this.ag_fld = xi.rp(var1, -2000012381);
-			this.az_fld = xi.rp(var1, 207975166);
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	@Override
-	void ae(xi var1) {
-		this.ak_fld = var1.ch();
-		if (null != this.ak_fld) {
-			var1.cg();
-			this.ag_fld = xi.rp(var1, -829839535);
-			this.az_fld = xi.rp(var1, -1908284796);
+			this.az_fld = var1.cw();
+			this.ag_fld = var1.cw();
 		}
 	}
 
@@ -105,22 +105,22 @@ public class iv extends ho {
 	void ag(ib var1, byte var2) {
 		var1.az_fld = this.ak_fld;
 		if (null != this.ak_fld) {
-			var1.av_fld = this.ag_fld;
-			var1.ae_fld = this.az_fld;
+			var1.av_fld = this.az_fld;
+			var1.ae_fld = this.ag_fld;
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void av(xi var1) {
-		this.ak_fld = var1.ch();
+	void ae(xi var1) {
+		this.ak_fld = var1.cl();
 		if (null != this.ak_fld) {
 			var1.cg();
-			this.ag_fld = xi.rp(var1, 312589474);
-			this.az_fld = xi.rp(var1, 80861255);
+			this.az_fld = var1.cw();
+			this.ag_fld = var1.cw();
 		}
 	}
 
@@ -132,8 +132,8 @@ public class iv extends ho {
 	void ah(ib var1) {
 		var1.az_fld = this.ak_fld;
 		if (null != this.ak_fld) {
-			var1.av_fld = this.ag_fld;
-			var1.ae_fld = this.az_fld;
+			var1.av_fld = this.az_fld;
+			var1.ae_fld = this.ag_fld;
 		}
 	}
 
@@ -145,8 +145,8 @@ public class iv extends ho {
 	void aw(ib var1) {
 		var1.az_fld = this.ak_fld;
 		if (null != this.ak_fld) {
-			var1.av_fld = this.ag_fld;
-			var1.ae_fld = this.az_fld;
+			var1.av_fld = this.az_fld;
+			var1.ae_fld = this.ag_fld;
 		}
 	}
 
@@ -158,8 +158,8 @@ public class iv extends ho {
 	void ay(ib var1) {
 		var1.az_fld = this.ak_fld;
 		if (null != this.ak_fld) {
-			var1.av_fld = this.ag_fld;
-			var1.ae_fld = this.az_fld;
+			var1.av_fld = this.az_fld;
+			var1.ae_fld = this.ag_fld;
 		}
 	}
 

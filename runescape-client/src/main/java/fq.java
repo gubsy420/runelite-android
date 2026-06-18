@@ -19,16 +19,16 @@ public class fq extends fh {
 		return Float.floatToRawIntBits(var0 - var1) >> 31;
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIIF)V"
 	)
-	final void cu(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+	final void cd(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
 		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
 		var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
 		int var10 = var1[var4];
 		var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 0xFF00) * var5 & 0xFF0000) >> 8;
-		int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+		int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 		var1[var4] = (var11 & var9) + (~var11 & var10);
 	}
 
@@ -80,7 +80,7 @@ public class fq extends fh {
 			}
 
 			int[] var33 = this.ar_fld.bm_fld;
-			int var34 = this.ar_fld.at_fld;
+			int var34 = this.ar_fld.ab_fld;
 			if (var14 <= var15 && var14 <= var16) {
 				if (!(var14 >= var34)) {
 					if (var15 > var34) {
@@ -91,7 +91,7 @@ public class fq extends fh {
 						var16 = var34;
 					}
 
-					var7 = this.do_(var4, var1, var7, var28, var29);
+					var7 = this.cf(var4, var1, var7, var28, var29);
 					if (var15 < var16) {
 						var13 = var11;
 						if (var14 < 0.0F) {
@@ -216,7 +216,7 @@ public class fq extends fh {
 						var14 = var34;
 					}
 
-					var8 = this.do_(var5, var2, var8, var28, var29);
+					var8 = this.cf(var5, var2, var8, var28, var29);
 					if (var16 < var14) {
 						var11 = var12;
 						if (var15 < 0.0F) {
@@ -335,7 +335,7 @@ public class fq extends fh {
 					var15 = var34;
 				}
 
-				var9 = this.do_(var6, var3, var9, var28, var29);
+				var9 = this.cf(var6, var3, var9, var28, var29);
 				if (var14 < var15) {
 					var12 = var13;
 					if (var16 < 0.0F) {
@@ -443,47 +443,47 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("co")
+	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIF)V"
 	)
-	final void co(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+	final void cb(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
 		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
 		if (var8 != 0) {
 			var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			yp(this, var1, var2, var4, var8, var7, bw(var2[var4], var7));
+			this.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
 		}
 	}
 
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[F[IIIIF)V"
-	)
-	public static void cv(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
-			if (var8 != 0) {
-				var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-				yp(var0, var1, var2, var4, var8, var7, bw(var2[var4], var7));
-			}
-		}
-	}
-
-	@ObfuscatedName("cj")
+	@ObfuscatedName("ck")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIIF)V"
 	)
-	final void cj(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+	final void ck(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
 		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
 		if (var9 != 0) {
 			var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
 			int var10 = var1[var4];
 			var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+			int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 			var1[var4] = (var11 & var9) + (~var11 & var10);
 		}
+	}
+
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "([I[FIIF)V"
+	)
+	final void cc(int[] var1, float[] var2, int var3, int var4, float var5) {
+		this.ba(var1, var2, var3, var4, var5, bw(var2[var3], var5));
+	}
+
+	@ObfuscatedName("cq")
+	@ObfuscatedSignature(
+		descriptor = "([I[FIIF)V"
+	)
+	final void cq(int[] var1, float[] var2, int var3, int var4, float var5) {
+		this.ba(var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
 	}
 
 	@ObfuscatedName("cv")
@@ -493,15 +493,15 @@ public class fq extends fh {
 	final void cv(int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
 		int var7 = var1[var3];
 		var4 = var4 + ((var7 & 16711935) * var5 >> 8 & 16711935) + ((var7 & 0xFF00) * var5 >> 8 & 0xFF00);
-		int var8 = this.ar_fld.ap_fld & bw(var2[var3], var6);
+		int var8 = this.ar_fld.br_fld & bw(var2[var3], var6);
 		var1[var3] = (var8 & var4) + (~var8 & var7);
 	}
 
-	@ObfuscatedName("cp")
+	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
 		descriptor = "([I[IIIIIIIIFFIIIIII)V"
 	)
-	final void cp(
+	final void ce(
 		int[] var1,
 		int[] var2,
 		int var3,
@@ -521,8 +521,8 @@ public class fq extends fh {
 		int var17
 	) {
 		if (this.ar_fld.ax_fld) {
-			if (var7 > this.ar_fld.ac_fld) {
-				var7 = this.ar_fld.ac_fld;
+			if (var7 > this.ar_fld.ao_fld) {
+				var7 = this.ar_fld.ao_fld;
 			}
 
 			if (var6 < 0) {
@@ -535,7 +535,7 @@ public class fq extends fh {
 			var8 += var9 * var6;
 			var10 += var11 * var6;
 			int var20 = var7 - var6;
-			int var26 = var6 - this.ar_fld.ao_fld;
+			int var26 = var6 - this.ar_fld.am_fld;
 			var12 += var15 * var26;
 			var13 += var16 * var26;
 			var14 += var17 * var26;
@@ -571,35 +571,35 @@ public class fq extends fh {
 			int var18 = var8 >> 8;
 			if (this.ay_fld) {
 				while (var20-- > 0) {
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -608,41 +608,41 @@ public class fq extends fh {
 				}
 
 				for (int var82 = var7 - var6 & 7; var82-- > 0; var10 += var11) {
-					cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 				}
 			} else {
 				while (var20-- > 0) {
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -651,7 +651,7 @@ public class fq extends fh {
 				}
 
 				for (int var81 = var7 - var6 & 7; var81-- > 0; var10 += var11) {
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 				}
@@ -668,11 +668,11 @@ public class fq extends fh {
 		return true;
 	}
 
-	@ObfuscatedName("do")
+	@ObfuscatedName("cf")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFF)F"
 	)
-	float do_(float var1, float var2, float var3, float var4, float var5) {
+	float cf(float var1, float var2, float var3, float var4, float var5) {
 		var3 = var3 - var4 * var1 + var4;
 		if (var2 < 0.0F) {
 			var3 -= var5 * (int)var2;
@@ -681,21 +681,458 @@ public class fq extends fh {
 		return var3 - var5 * (var2 - (int)(var2 + 0.5F));
 	}
 
-	@ObfuscatedName("yp")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[FIIFI)V"
+		descriptor = "(FFFFFFFFFIII)V"
 	)
-	public static void yp(fq var0, int[] var1, float[] var2, int var3, int var4, float var5, int var6) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	@Override
+	void bl(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+		float var13 = (int)(var4 + 0.5F);
+		float var14 = (int)(var5 + 0.5F);
+		float var15 = (int)(var6 + 0.5F);
+		float var16 = (int)(var1 + 0.5F);
+		float var17 = (int)(var2 + 0.5F);
+		float var18 = (int)(var3 + 0.5F);
+		float var19 = var14 - var13;
+		float var20 = var17 - var16;
+		float var21 = var15 - var13;
+		float var22 = var18 - var16;
+		float var23 = var19 * var22 - var21 * var20;
+		if (var23 != 0.0F) {
+			float var24 = var10;
+			float var25 = var11;
+			float var26 = var12;
+			float var27 = var25 - var24;
+			float var28 = var26 - var24;
+			float var29 = (var27 * var22 - var28 * var20) / var23;
+			float var30 = (var28 * var19 - var27 * var21) / var23;
+			float var31 = var5 - var4;
+			float var32 = var2 - var1;
+			float var33 = var6 - var4;
+			float var34 = var3 - var1;
+			float var35 = var31 * var34 - var33 * var32;
+			if (var35 != 0.0F) {
+				float var36 = var8 - var7;
+				float var37 = var9 - var7;
+				float var38 = (var36 * var34 - var37 * var32) / var35;
+				float var39 = (var37 * var31 - var36 * var33) / var35;
+				float var40;
+				if (var18 != var17) {
+					var40 = (var15 - var14) / (var18 - var17);
+				} else {
+					var40 = 0.0F;
+				}
 
-		int var7 = var0.ar_fld.ap_fld & var6;
-		int var8 = var0.ar_fld.ad_fld & var6;
-		var1[var3] = var7 & var4 | ~var7 & var1[var3];
-		int var9 = var8 & Float.floatToRawIntBits(var5);
-		int var10 = ~var8 & Float.floatToRawIntBits(var2[var3]);
-		var2[var3] = Float.intBitsToFloat(var9 | var10);
+				float var41;
+				if (var17 != var16) {
+					var41 = var19 / var20;
+				} else {
+					var41 = 0.0F;
+				}
+
+				float var42;
+				if (var18 != var16) {
+					var42 = var21 / var22;
+				} else {
+					var42 = 0.0F;
+				}
+
+				int[] var43 = this.ar_fld.bm_fld;
+				int var44 = this.ar_fld.ab_fld;
+				if (var16 <= var17 && var16 <= var18) {
+					if (!(var16 >= var44)) {
+						if (var17 > var44) {
+							var17 = var44;
+						}
+
+						if (var18 > var44) {
+							var18 = var44;
+						}
+
+						var24 = var24 - var29 * var13 + var29;
+						var7 = this.cf(var4, var1, var7, var38, var39);
+						if (var17 < var18) {
+							var15 = var13;
+							if (var16 < 0.0F) {
+								var15 = var13 - var42 * var16;
+								var13 -= var41 * var16;
+								var24 -= var30 * var16;
+								var16 = 0.0F;
+							}
+
+							if (var17 < 0.0F) {
+								var14 -= var40 * var17;
+								var17 = 0.0F;
+							}
+
+							if ((var16 == var17 || !(var42 < var41)) && (var16 != var17 || !(var42 > var40))) {
+								var16 = (int)(var16 + 0.5F);
+								var17 = (int)(var17 + 0.5F);
+								var18 = (int)(var18 + 0.5F) - var17;
+								var17 -= var16;
+
+								int var101;
+								for (var101 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
+									xp(this, al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									var15 += var42;
+									var13 += var41;
+									var24 += var30;
+									var101 += au_fld;
+								}
+
+								while (--var18 >= 0.0F) {
+									xp(this, al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
+									var15 += var42;
+									var14 += var40;
+									var24 += var30;
+									var101 += au_fld;
+									var7 += var39;
+								}
+							} else {
+								var16 = (int)(var16 + 0.5F);
+								var17 = (int)(var17 + 0.5F);
+								var18 = (int)(var18 + 0.5F) - var17;
+								var17 -= var16;
+
+								int var100;
+								for (var100 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									var15 += var42;
+									var13 += var41;
+									var24 += var30;
+									var100 += au_fld;
+								}
+
+								while (--var18 >= 0.0F) {
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
+									var15 += var42;
+									var14 += var40;
+									var24 += var30;
+									var100 += au_fld;
+									var7 += var39;
+								}
+							}
+						} else {
+							var14 = var13;
+							if (var16 < 0.0F) {
+								var14 = var13 - var42 * var16;
+								var13 -= var41 * var16;
+								var24 -= var30 * var16;
+								var16 = 0.0F;
+							}
+
+							if (var18 < 0.0F) {
+								var15 -= var40 * var18;
+								var18 = 0.0F;
+							}
+
+							if ((var16 == var18 || !(var42 < var41)) && (var16 != var18 || !(var40 > var41))) {
+								var16 = (int)(var16 + 0.5F);
+								var18 = (int)(var18 + 0.5F);
+								var17 = (int)(var17 + 0.5F) - var18;
+								var18 -= var16;
+
+								int var99;
+								for (var99 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
+									var14 += var42;
+									var13 += var41;
+									var24 += var30;
+									var99 += au_fld;
+								}
+
+								while (--var17 >= 0.0F) {
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									var15 += var40;
+									var13 += var41;
+									var24 += var30;
+									var99 += au_fld;
+									var7 += var39;
+								}
+							} else {
+								var16 = (int)(var16 + 0.5F);
+								var18 = (int)(var18 + 0.5F);
+								var17 = (int)(var17 + 0.5F) - var18;
+								var18 -= var16;
+
+								int var98;
+								for (var98 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
+									xp(this, al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
+									var14 += var42;
+									var13 += var41;
+									var24 += var30;
+									var98 += au_fld;
+								}
+
+								while (--var17 >= 0.0F) {
+									xp(this, al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									var15 += var40;
+									var13 += var41;
+									var24 += var30;
+									var98 += au_fld;
+									var7 += var39;
+								}
+							}
+						}
+					}
+				} else if (var17 <= var18) {
+					if (!(var17 >= var44)) {
+						if (var18 > var44) {
+							var18 = var44;
+						}
+
+						if (var16 > var44) {
+							var16 = var44;
+						}
+
+						var25 = var25 - var29 * var14 + var29;
+						var8 = this.cf(var5, var2, var8, var38, var39);
+						if (var18 < var16) {
+							var13 = var14;
+							if (var17 < 0.0F) {
+								var13 = var14 - var41 * var17;
+								var14 -= var40 * var17;
+								var25 -= var30 * var17;
+								var17 = 0.0F;
+							}
+
+							if (var18 < 0.0F) {
+								var15 -= var42 * var18;
+								var18 = 0.0F;
+							}
+
+							if ((var17 == var18 || !(var41 < var40)) && (var17 != var18 || !(var41 > var42))) {
+								var17 = (int)(var17 + 0.5F);
+								var18 = (int)(var18 + 0.5F);
+								var16 = (int)(var16 + 0.5F) - var18;
+								var18 -= var17;
+
+								int var97;
+								for (var97 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
+									xp(this, al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									var13 += var41;
+									var14 += var40;
+									var25 += var30;
+									var97 += au_fld;
+								}
+
+								while (--var16 >= 0.0F) {
+									xp(this, al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
+									var13 += var41;
+									var15 += var42;
+									var25 += var30;
+									var97 += au_fld;
+									var8 += var39;
+								}
+							} else {
+								var17 = (int)(var17 + 0.5F);
+								var18 = (int)(var18 + 0.5F);
+								var16 = (int)(var16 + 0.5F) - var18;
+								var18 -= var17;
+
+								int var96;
+								for (var96 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									var13 += var41;
+									var14 += var40;
+									var25 += var30;
+									var96 += au_fld;
+								}
+
+								while (--var16 >= 0.0F) {
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
+									var13 += var41;
+									var15 += var42;
+									var25 += var30;
+									var96 += au_fld;
+									var8 += var39;
+								}
+							}
+						} else {
+							var15 = var14;
+							if (var17 < 0.0F) {
+								var15 = var14 - var41 * var17;
+								var14 -= var40 * var17;
+								var25 -= var30 * var17;
+								var17 = 0.0F;
+							}
+
+							if (var16 < 0.0F) {
+								var13 -= var42 * var16;
+								var16 = 0.0F;
+							}
+
+							var17 = (int)(var17 + 0.5F);
+							var16 = (int)(var16 + 0.5F);
+							var18 = (int)(var18 + 0.5F) - var16;
+							var16 -= var17;
+							int var95 = var43[(int)var17];
+							if (var41 < var40) {
+								while (--var16 >= 0.0F) {
+									xp(this, al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
+									var15 += var41;
+									var14 += var40;
+									var25 += var30;
+									var95 += au_fld;
+									var8 += var39;
+								}
+
+								while (--var18 >= 0.0F) {
+									xp(this, al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									var13 += var42;
+									var14 += var40;
+									var25 += var30;
+									var95 += au_fld;
+									var8 += var39;
+								}
+							} else {
+								while (--var16 >= 0.0F) {
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
+									var15 += var41;
+									var14 += var40;
+									var25 += var30;
+									var95 += au_fld;
+									var8 += var39;
+								}
+
+								while (--var18 >= 0.0F) {
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									var13 += var42;
+									var14 += var40;
+									var25 += var30;
+									var95 += au_fld;
+									var8 += var39;
+								}
+							}
+						}
+					}
+				} else if (!(var18 >= var44)) {
+					if (var16 > var44) {
+						var16 = var44;
+					}
+
+					if (var17 > var44) {
+						var17 = var44;
+					}
+
+					var26 = var26 - var29 * var15 + var29;
+					var9 = this.cf(var6, var3, var9, var38, var39);
+					if (var16 < var17) {
+						var14 = var15;
+						if (var18 < 0.0F) {
+							var14 = var15 - var40 * var18;
+							var15 -= var42 * var18;
+							var26 -= var30 * var18;
+							var18 = 0.0F;
+						}
+
+						if (var16 < 0.0F) {
+							var13 -= var41 * var16;
+							var16 = 0.0F;
+						}
+
+						var18 = (int)(var18 + 0.5F);
+						var16 = (int)(var16 + 0.5F);
+						var17 = (int)(var17 + 0.5F) - var16;
+						var16 -= var18;
+						int var94 = var43[(int)var18];
+						if (var40 < var42) {
+							while (--var16 >= 0.0F) {
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								var14 += var40;
+								var15 += var42;
+								var26 += var30;
+								var94 += au_fld;
+								var9 += var39;
+							}
+
+							while (--var17 >= 0.0F) {
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
+								var14 += var40;
+								var13 += var41;
+								var26 += var30;
+								var94 += au_fld;
+								var9 += var39;
+							}
+						} else {
+							while (--var16 >= 0.0F) {
+								xp(this, al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								var14 += var40;
+								var15 += var42;
+								var26 += var30;
+								var94 += au_fld;
+								var9 += var39;
+							}
+
+							while (--var17 >= 0.0F) {
+								xp(this, al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
+								var14 += var40;
+								var13 += var41;
+								var26 += var30;
+								var94 += au_fld;
+								var9 += var39;
+							}
+						}
+					} else {
+						var13 = var15;
+						if (var18 < 0.0F) {
+							var13 = var15 - var40 * var18;
+							var15 -= var42 * var18;
+							var26 -= var30 * var18;
+							var18 = 0.0F;
+						}
+
+						if (var17 < 0.0F) {
+							var14 -= var41 * var17;
+							var17 = 0.0F;
+						}
+
+						var18 = (int)(var18 + 0.5F);
+						var17 = (int)(var17 + 0.5F);
+						var16 = (int)(var16 + 0.5F) - var17;
+						var17 -= var18;
+						int var45 = var43[(int)var18];
+						if (var40 < var42) {
+							while (--var17 >= 0.0F) {
+								xp(this, al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
+								var13 += var40;
+								var15 += var42;
+								var26 += var30;
+								var45 += au_fld;
+								var9 += var39;
+							}
+
+							while (--var16 >= 0.0F) {
+								xp(this, al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								var14 += var41;
+								var15 += var42;
+								var26 += var30;
+								var45 += au_fld;
+								var9 += var39;
+							}
+						} else {
+							while (--var17 >= 0.0F) {
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
+								var13 += var40;
+								var15 += var42;
+								var26 += var30;
+								var45 += au_fld;
+								var9 += var39;
+							}
+
+							while (--var16 >= 0.0F) {
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								var14 += var41;
+								var15 += var42;
+								var26 += var30;
+								var45 += au_fld;
+								var9 += var39;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@ObfuscatedName("bo")
@@ -755,7 +1192,7 @@ public class fq extends fh {
 				}
 
 				int[] var43 = this.ar_fld.bm_fld;
-				int var44 = this.ar_fld.at_fld;
+				int var44 = this.ar_fld.ab_fld;
 				if (var16 <= var17 && var16 <= var18) {
 					if (!(var16 >= var44)) {
 						if (var17 > var44) {
@@ -767,7 +1204,7 @@ public class fq extends fh {
 						}
 
 						var24 = var24 - var29 * var13 + var29;
-						var7 = this.do_(var4, var1, var7, var38, var39);
+						var7 = this.cf(var4, var1, var7, var38, var39);
 						if (var17 < var18) {
 							var15 = var13;
 							if (var16 < 0.0F) {
@@ -790,7 +1227,7 @@ public class fq extends fh {
 
 								int var101;
 								for (var101 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -798,7 +1235,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -813,7 +1250,7 @@ public class fq extends fh {
 
 								int var100;
 								for (var100 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -821,7 +1258,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -851,7 +1288,7 @@ public class fq extends fh {
 
 								int var99;
 								for (var99 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -859,7 +1296,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -874,7 +1311,7 @@ public class fq extends fh {
 
 								int var98;
 								for (var98 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -882,7 +1319,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -903,7 +1340,7 @@ public class fq extends fh {
 						}
 
 						var25 = var25 - var29 * var14 + var29;
-						var8 = this.do_(var5, var2, var8, var38, var39);
+						var8 = this.cf(var5, var2, var8, var38, var39);
 						if (var18 < var16) {
 							var13 = var14;
 							if (var17 < 0.0F) {
@@ -926,7 +1363,7 @@ public class fq extends fh {
 
 								int var97;
 								for (var97 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -934,7 +1371,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -949,7 +1386,7 @@ public class fq extends fh {
 
 								int var96;
 								for (var96 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -957,7 +1394,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -986,7 +1423,7 @@ public class fq extends fh {
 							int var95 = var43[(int)var17];
 							if (var41 < var40) {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -995,7 +1432,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -1004,7 +1441,7 @@ public class fq extends fh {
 								}
 							} else {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -1013,7 +1450,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -1033,7 +1470,7 @@ public class fq extends fh {
 					}
 
 					var26 = var26 - var29 * var15 + var29;
-					var9 = this.do_(var6, var3, var9, var38, var39);
+					var9 = this.cf(var6, var3, var9, var38, var39);
 					if (var16 < var17) {
 						var14 = var15;
 						if (var18 < 0.0F) {
@@ -1055,7 +1492,7 @@ public class fq extends fh {
 						int var94 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -1064,7 +1501,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -1073,7 +1510,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -1082,7 +1519,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -1111,7 +1548,7 @@ public class fq extends fh {
 						int var45 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -1120,7 +1557,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -1129,7 +1566,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -1138,579 +1575,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
-								var14 += var41;
-								var15 += var42;
-								var26 += var30;
-								var45 += au_fld;
-								var9 += var39;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ej")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[FIIIF)V"
-	)
-	public static void ej(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var7 = var1[var3];
-		var4 = var4 + ((var7 & -1963584867) * var5 >> 8 & 686266414) + ((var7 & -958827850) * var5 >> 8 & 0xFF00);
-		int var8 = var0.ar_fld.ap_fld & bw(var2[var3], var6);
-		var1[var3] = (var8 & var4) + (~var8 & var7);
-	}
-
-	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "([IIIIIIFFFF)V"
-	)
-	final void cx(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, float var10) {
-		if (this.ar_fld.ax_fld) {
-			if (var6 > this.ar_fld.ac_fld) {
-				var6 = this.ar_fld.ac_fld;
-			}
-
-			if (var5 < 0) {
-				var5 = 0;
-			}
-		}
-
-		if (var5 < var6) {
-			var2 += var5 - 1;
-			var7 += var8 * var5;
-			var9 += var10 * var5;
-			if (this.ar_fld.an_fld) {
-				var4 = var6 - var5 >> 2;
-				var8 *= 4.0F;
-				if (this.ar_fld.aj_fld == 0) {
-					if (var4 > 0) {
-						do {
-							int var40 = (int)var7 & 65535;
-							var3 = this.as_fld[var40];
-							var7 += var8;
-							dx(this, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(this, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(this, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(this, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-
-					var4 = var6 - var5 & 3;
-					if (var4 > 0) {
-						int var41 = (int)var7 & 65535;
-						var3 = this.as_fld[var41];
-
-						do {
-							dx(this, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-				} else {
-					int var42 = this.ar_fld.aj_fld;
-					int var43 = 256 - this.ar_fld.aj_fld;
-					if (var4 > 0) {
-						do {
-							int var13 = (int)var7 & 65535;
-							var3 = this.as_fld[var13];
-							var7 += var8;
-							var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
-							this.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							this.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							this.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							this.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-
-					var4 = var6 - var5 & 3;
-					if (var4 > 0) {
-						int var44 = (int)var7 & 65535;
-						var3 = this.as_fld[var44];
-						var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
-
-						do {
-							this.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-				}
-			} else {
-				var4 = var6 - var5;
-				if (this.ar_fld.aj_fld == 0) {
-					do {
-						gk.ap(this, var1, an_fld, ++var2, (int)var7 & 65535, var9);
-						var9 += var10;
-						var7 += var8;
-					} while (--var4 > 0);
-				} else {
-					int var11 = this.ar_fld.aj_fld;
-					int var12 = 256 - this.ar_fld.aj_fld;
-
-					do {
-						this.cy(var1, an_fld, ++var2, (int)var7 & 65535, var11, var12, var9);
-						var9 += var10;
-						var7 += var8;
-					} while (--var4 > 0);
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFIII)V"
-	)
-	@Override
-	void bx(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
-		float var13 = (int)(var4 + 0.5F);
-		float var14 = (int)(var5 + 0.5F);
-		float var15 = (int)(var6 + 0.5F);
-		float var16 = (int)(var1 + 0.5F);
-		float var17 = (int)(var2 + 0.5F);
-		float var18 = (int)(var3 + 0.5F);
-		float var19 = var14 - var13;
-		float var20 = var17 - var16;
-		float var21 = var15 - var13;
-		float var22 = var18 - var16;
-		float var23 = var19 * var22 - var21 * var20;
-		if (var23 != 0.0F) {
-			float var24 = var10;
-			float var25 = var11;
-			float var26 = var12;
-			float var27 = var25 - var24;
-			float var28 = var26 - var24;
-			float var29 = (var27 * var22 - var28 * var20) / var23;
-			float var30 = (var28 * var19 - var27 * var21) / var23;
-			float var31 = var5 - var4;
-			float var32 = var2 - var1;
-			float var33 = var6 - var4;
-			float var34 = var3 - var1;
-			float var35 = var31 * var34 - var33 * var32;
-			if (var35 != 0.0F) {
-				float var36 = var8 - var7;
-				float var37 = var9 - var7;
-				float var38 = (var36 * var34 - var37 * var32) / var35;
-				float var39 = (var37 * var31 - var36 * var33) / var35;
-				float var40;
-				if (var18 != var17) {
-					var40 = (var15 - var14) / (var18 - var17);
-				} else {
-					var40 = 0.0F;
-				}
-
-				float var41;
-				if (var17 != var16) {
-					var41 = var19 / var20;
-				} else {
-					var41 = 0.0F;
-				}
-
-				float var42;
-				if (var18 != var16) {
-					var42 = var21 / var22;
-				} else {
-					var42 = 0.0F;
-				}
-
-				int[] var43 = this.ar_fld.bm_fld;
-				int var44 = this.ar_fld.at_fld;
-				if (var16 <= var17 && var16 <= var18) {
-					if (!(var16 >= var44)) {
-						if (var17 > var44) {
-							var17 = var44;
-						}
-
-						if (var18 > var44) {
-							var18 = var44;
-						}
-
-						var24 = var24 - var29 * var13 + var29;
-						var7 = this.do_(var4, var1, var7, var38, var39);
-						if (var17 < var18) {
-							var15 = var13;
-							if (var16 < 0.0F) {
-								var15 = var13 - var42 * var16;
-								var13 -= var41 * var16;
-								var24 -= var30 * var16;
-								var16 = 0.0F;
-							}
-
-							if (var17 < 0.0F) {
-								var14 -= var40 * var17;
-								var17 = 0.0F;
-							}
-
-							if ((var16 == var17 || !(var42 < var41)) && (var16 != var17 || !(var42 > var40))) {
-								var16 = (int)(var16 + 0.5F);
-								var17 = (int)(var17 + 0.5F);
-								var18 = (int)(var18 + 0.5F) - var17;
-								var17 -= var16;
-
-								int var101;
-								for (var101 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
-									var15 += var42;
-									var13 += var41;
-									var24 += var30;
-									var101 += au_fld;
-								}
-
-								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
-									var15 += var42;
-									var14 += var40;
-									var24 += var30;
-									var101 += au_fld;
-									var7 += var39;
-								}
-							} else {
-								var16 = (int)(var16 + 0.5F);
-								var17 = (int)(var17 + 0.5F);
-								var18 = (int)(var18 + 0.5F) - var17;
-								var17 -= var16;
-
-								int var100;
-								for (var100 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
-									var15 += var42;
-									var13 += var41;
-									var24 += var30;
-									var100 += au_fld;
-								}
-
-								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
-									var15 += var42;
-									var14 += var40;
-									var24 += var30;
-									var100 += au_fld;
-									var7 += var39;
-								}
-							}
-						} else {
-							var14 = var13;
-							if (var16 < 0.0F) {
-								var14 = var13 - var42 * var16;
-								var13 -= var41 * var16;
-								var24 -= var30 * var16;
-								var16 = 0.0F;
-							}
-
-							if (var18 < 0.0F) {
-								var15 -= var40 * var18;
-								var18 = 0.0F;
-							}
-
-							if ((var16 == var18 || !(var42 < var41)) && (var16 != var18 || !(var40 > var41))) {
-								var16 = (int)(var16 + 0.5F);
-								var18 = (int)(var18 + 0.5F);
-								var17 = (int)(var17 + 0.5F) - var18;
-								var18 -= var16;
-
-								int var99;
-								for (var99 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
-									var14 += var42;
-									var13 += var41;
-									var24 += var30;
-									var99 += au_fld;
-								}
-
-								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
-									var15 += var40;
-									var13 += var41;
-									var24 += var30;
-									var99 += au_fld;
-									var7 += var39;
-								}
-							} else {
-								var16 = (int)(var16 + 0.5F);
-								var18 = (int)(var18 + 0.5F);
-								var17 = (int)(var17 + 0.5F) - var18;
-								var18 -= var16;
-
-								int var98;
-								for (var98 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
-									var14 += var42;
-									var13 += var41;
-									var24 += var30;
-									var98 += au_fld;
-								}
-
-								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
-									var15 += var40;
-									var13 += var41;
-									var24 += var30;
-									var98 += au_fld;
-									var7 += var39;
-								}
-							}
-						}
-					}
-				} else if (var17 <= var18) {
-					if (!(var17 >= var44)) {
-						if (var18 > var44) {
-							var18 = var44;
-						}
-
-						if (var16 > var44) {
-							var16 = var44;
-						}
-
-						var25 = var25 - var29 * var14 + var29;
-						var8 = this.do_(var5, var2, var8, var38, var39);
-						if (var18 < var16) {
-							var13 = var14;
-							if (var17 < 0.0F) {
-								var13 = var14 - var41 * var17;
-								var14 -= var40 * var17;
-								var25 -= var30 * var17;
-								var17 = 0.0F;
-							}
-
-							if (var18 < 0.0F) {
-								var15 -= var42 * var18;
-								var18 = 0.0F;
-							}
-
-							if ((var17 == var18 || !(var41 < var40)) && (var17 != var18 || !(var41 > var42))) {
-								var17 = (int)(var17 + 0.5F);
-								var18 = (int)(var18 + 0.5F);
-								var16 = (int)(var16 + 0.5F) - var18;
-								var18 -= var17;
-
-								int var97;
-								for (var97 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
-									var13 += var41;
-									var14 += var40;
-									var25 += var30;
-									var97 += au_fld;
-								}
-
-								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
-									var13 += var41;
-									var15 += var42;
-									var25 += var30;
-									var97 += au_fld;
-									var8 += var39;
-								}
-							} else {
-								var17 = (int)(var17 + 0.5F);
-								var18 = (int)(var18 + 0.5F);
-								var16 = (int)(var16 + 0.5F) - var18;
-								var18 -= var17;
-
-								int var96;
-								for (var96 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
-									var13 += var41;
-									var14 += var40;
-									var25 += var30;
-									var96 += au_fld;
-								}
-
-								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
-									var13 += var41;
-									var15 += var42;
-									var25 += var30;
-									var96 += au_fld;
-									var8 += var39;
-								}
-							}
-						} else {
-							var15 = var14;
-							if (var17 < 0.0F) {
-								var15 = var14 - var41 * var17;
-								var14 -= var40 * var17;
-								var25 -= var30 * var17;
-								var17 = 0.0F;
-							}
-
-							if (var16 < 0.0F) {
-								var13 -= var42 * var16;
-								var16 = 0.0F;
-							}
-
-							var17 = (int)(var17 + 0.5F);
-							var16 = (int)(var16 + 0.5F);
-							var18 = (int)(var18 + 0.5F) - var16;
-							var16 -= var17;
-							int var95 = var43[(int)var17];
-							if (var41 < var40) {
-								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
-									var15 += var41;
-									var14 += var40;
-									var25 += var30;
-									var95 += au_fld;
-									var8 += var39;
-								}
-
-								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
-									var13 += var42;
-									var14 += var40;
-									var25 += var30;
-									var95 += au_fld;
-									var8 += var39;
-								}
-							} else {
-								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
-									var15 += var41;
-									var14 += var40;
-									var25 += var30;
-									var95 += au_fld;
-									var8 += var39;
-								}
-
-								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
-									var13 += var42;
-									var14 += var40;
-									var25 += var30;
-									var95 += au_fld;
-									var8 += var39;
-								}
-							}
-						}
-					}
-				} else if (!(var18 >= var44)) {
-					if (var16 > var44) {
-						var16 = var44;
-					}
-
-					if (var17 > var44) {
-						var17 = var44;
-					}
-
-					var26 = var26 - var29 * var15 + var29;
-					var9 = this.do_(var6, var3, var9, var38, var39);
-					if (var16 < var17) {
-						var14 = var15;
-						if (var18 < 0.0F) {
-							var14 = var15 - var40 * var18;
-							var15 -= var42 * var18;
-							var26 -= var30 * var18;
-							var18 = 0.0F;
-						}
-
-						if (var16 < 0.0F) {
-							var13 -= var41 * var16;
-							var16 = 0.0F;
-						}
-
-						var18 = (int)(var18 + 0.5F);
-						var16 = (int)(var16 + 0.5F);
-						var17 = (int)(var17 + 0.5F) - var16;
-						var16 -= var18;
-						int var94 = var43[(int)var18];
-						if (var40 < var42) {
-							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
-								var14 += var40;
-								var15 += var42;
-								var26 += var30;
-								var94 += au_fld;
-								var9 += var39;
-							}
-
-							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
-								var14 += var40;
-								var13 += var41;
-								var26 += var30;
-								var94 += au_fld;
-								var9 += var39;
-							}
-						} else {
-							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
-								var14 += var40;
-								var15 += var42;
-								var26 += var30;
-								var94 += au_fld;
-								var9 += var39;
-							}
-
-							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
-								var14 += var40;
-								var13 += var41;
-								var26 += var30;
-								var94 += au_fld;
-								var9 += var39;
-							}
-						}
-					} else {
-						var13 = var15;
-						if (var18 < 0.0F) {
-							var13 = var15 - var40 * var18;
-							var15 -= var42 * var18;
-							var26 -= var30 * var18;
-							var18 = 0.0F;
-						}
-
-						if (var17 < 0.0F) {
-							var14 -= var41 * var17;
-							var17 = 0.0F;
-						}
-
-						var18 = (int)(var18 + 0.5F);
-						var17 = (int)(var17 + 0.5F);
-						var16 = (int)(var16 + 0.5F) - var17;
-						var17 -= var18;
-						int var45 = var43[(int)var18];
-						if (var40 < var42) {
-							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
-								var13 += var40;
-								var15 += var42;
-								var26 += var30;
-								var45 += au_fld;
-								var9 += var39;
-							}
-
-							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
-								var14 += var41;
-								var15 += var42;
-								var26 += var30;
-								var45 += au_fld;
-								var9 += var39;
-							}
-						} else {
-							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
-								var13 += var40;
-								var15 += var42;
-								var26 += var30;
-								var45 += au_fld;
-								var9 += var39;
-							}
-
-							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -1721,21 +1586,6 @@ public class fq extends fh {
 					}
 				}
 			}
-		}
-	}
-
-	@ObfuscatedName("bg")
-	@ObfuscatedSignature(
-		descriptor = "([I[F[IIIIIF)V"
-	)
-	final void bg(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
-		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
-		if (var9 != 0) {
-			var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
-			int var10 = var1[var4];
-			var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 1283530046) * var5 & -1061422618) >> 8;
-			int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
-			var1[var4] = (var11 & var9) + (~var11 & var10);
 		}
 	}
 
@@ -1772,7 +1622,7 @@ public class fq extends fh {
 			int[] var23 = this.ar_fld.aq_fld.az(var22, -386542318);
 			if (var23 == null) {
 				int var81 = this.ar_fld.aq_fld.av(var22, (byte)-123);
-				this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
+				this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
 			} else {
 				this.ay_fld = this.ar_fld.aq_fld.ae(var22, -1405700627);
 				float var24 = (int)(var4 + 0.5F);
@@ -1839,7 +1689,7 @@ public class fq extends fh {
 						int var59 = (int)(((long)(var20 * var18 - var17 * var21) << 3 << 14) / var51);
 						int var60 = (int)(((long)(var14 * var21 - var20 * var15) << 14) / var51);
 						int[] var61 = this.ar_fld.bm_fld;
-						int var62 = this.ar_fld.at_fld;
+						int var62 = this.ar_fld.ab_fld;
 						if (var27 <= var28 && var27 <= var29) {
 							if (!(var27 >= var62)) {
 								if (var28 > var62) {
@@ -1851,7 +1701,7 @@ public class fq extends fh {
 								}
 
 								var10 = (var10 << 9) - var37 * (int)var24 + var37;
-								var7 = this.do_(var4, var1, var7, var46, var47);
+								var7 = this.cf(var4, var1, var7, var46, var47);
 								if (var28 < var29) {
 									var26 = var24;
 									if (var27 < 0.0F) {
@@ -1866,7 +1716,7 @@ public class fq extends fh {
 										var28 = 0.0F;
 									}
 
-									int var144 = (int)var27 - this.ar_fld.br_fld;
+									int var144 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var144;
 									var55 += var57 * var144;
 									var58 += var60 * var144;
@@ -1878,7 +1728,7 @@ public class fq extends fh {
 
 										int var152;
 										for (var152 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -1889,7 +1739,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -1907,7 +1757,7 @@ public class fq extends fh {
 
 										int var151;
 										for (var151 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -1918,7 +1768,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -1943,7 +1793,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var143 = (int)var27 - this.ar_fld.br_fld;
+									int var143 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var143;
 									var55 += var57 * var143;
 									var58 += var60 * var143;
@@ -1955,7 +1805,7 @@ public class fq extends fh {
 
 										int var150;
 										for (var150 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -1966,7 +1816,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -1984,7 +1834,7 @@ public class fq extends fh {
 
 										int var149;
 										for (var149 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -1995,7 +1845,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -2019,7 +1869,7 @@ public class fq extends fh {
 								}
 
 								var11 = (var11 << 9) - var37 * (int)var25 + var37;
-								var8 = this.do_(var5, var2, var8, var46, var47);
+								var8 = this.cf(var5, var2, var8, var46, var47);
 								if (var29 < var27) {
 									var24 = var25;
 									if (var28 < 0.0F) {
@@ -2034,7 +1884,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var142 = (int)var28 - this.ar_fld.br_fld;
+									int var142 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var142;
 									var55 += var57 * var142;
 									var58 += var60 * var142;
@@ -2046,7 +1896,7 @@ public class fq extends fh {
 
 										int var148;
 										for (var148 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -2057,7 +1907,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -2075,7 +1925,7 @@ public class fq extends fh {
 
 										int var147;
 										for (var147 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -2086,7 +1936,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -2111,7 +1961,7 @@ public class fq extends fh {
 										var27 = 0.0F;
 									}
 
-									int var141 = (int)var28 - this.ar_fld.br_fld;
+									int var141 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var141;
 									var55 += var57 * var141;
 									var58 += var60 * var141;
@@ -2122,7 +1972,7 @@ public class fq extends fh {
 									int var146 = var61[(int)var28];
 									if (var49 < var48) {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -2134,7 +1984,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -2146,7 +1996,7 @@ public class fq extends fh {
 										}
 									} else {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -2158,7 +2008,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -2181,7 +2031,7 @@ public class fq extends fh {
 							}
 
 							var12 = (var12 << 9) - var37 * (int)var26 + var37;
-							var9 = this.do_(var6, var3, var9, var46, var47);
+							var9 = this.cf(var6, var3, var9, var46, var47);
 							if (var27 < var28) {
 								var25 = var26;
 								if (var29 < 0.0F) {
@@ -2196,7 +2046,7 @@ public class fq extends fh {
 									var27 = 0.0F;
 								}
 
-								int var140 = (int)var29 - this.ar_fld.br_fld;
+								int var140 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var140;
 								var55 += var57 * var140;
 								var58 += var60 * var140;
@@ -2207,7 +2057,7 @@ public class fq extends fh {
 								int var145 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -2219,7 +2069,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -2231,7 +2081,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -2243,7 +2093,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -2268,7 +2118,7 @@ public class fq extends fh {
 									var28 = 0.0F;
 								}
 
-								int var63 = (int)var29 - this.ar_fld.br_fld;
+								int var63 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var63;
 								var55 += var57 * var63;
 								var58 += var60 * var63;
@@ -2279,7 +2129,7 @@ public class fq extends fh {
 								int var64 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -2291,7 +2141,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -2303,7 +2153,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -2315,7 +2165,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -2336,11 +2186,12 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("dx")
+	@ObfuscatedName("ka")
 	@ObfuscatedSignature(
-		descriptor = "([I[IIIIIIIIFFIIIIII)V"
+		descriptor = "(Lfq;[I[IIIIIIIIFFIIIIII)V"
 	)
-	final void dx(
+	public static void ka(
+		fq var0,
 		int[] var1,
 		int[] var2,
 		int var3,
@@ -2359,9 +2210,13 @@ public class fq extends fh {
 		int var16,
 		int var17
 	) {
-		if (this.ar_fld.ax_fld) {
-			if (var7 > this.ar_fld.ac_fld) {
-				var7 = this.ar_fld.ac_fld;
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var0.ar_fld.ax_fld) {
+			if (var7 > var0.ar_fld.ao_fld) {
+				var7 = var0.ar_fld.ao_fld;
 			}
 
 			if (var6 < 0) {
@@ -2374,7 +2229,7 @@ public class fq extends fh {
 			var8 += var9 * var6;
 			var10 += var11 * var6;
 			int var20 = var7 - var6;
-			int var26 = var6 - this.ar_fld.ao_fld;
+			int var26 = var6 - var0.ar_fld.am_fld;
 			var12 += (var15 >> 3) * var26;
 			var13 += (var16 >> 3) * var26;
 			var14 += (var17 >> 3) * var26;
@@ -2418,42 +2273,42 @@ public class fq extends fh {
 			var20 >>= 3;
 			var9 <<= 3;
 			int var18 = var8 >> 8;
-			if (this.ay_fld) {
-				if (this.ar_fld.aj_fld != 0) {
-					int var27 = this.ar_fld.aj_fld;
-					int var28 = 256 - this.ar_fld.aj_fld;
+			if (var0.ay_fld) {
+				if (var0.ar_fld.aa_fld != 0) {
+					int var27 = var0.ar_fld.aa_fld;
+					int var28 = 256 - var0.ar_fld.aa_fld;
 					int var29 = var18 * var28 >> 8;
 
 					while (var20-- > 0) {
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
@@ -2483,41 +2338,41 @@ public class fq extends fh {
 					}
 
 					for (int var133 = var7 - var6 & 7; var133-- > 0; var10 += var11) {
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var0.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 					}
 				} else {
 					while (var20-- > 0) {
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
@@ -2547,46 +2402,46 @@ public class fq extends fh {
 					}
 
 					for (int var132 = var7 - var6 & 7; var132-- > 0; var10 += var11) {
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(var0, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 					}
 				}
-			} else if (this.ar_fld.aj_fld != 0) {
-				int var149 = this.ar_fld.aj_fld;
-				int var150 = 256 - this.ar_fld.aj_fld;
+			} else if (var0.ar_fld.aa_fld != 0) {
+				int var149 = var0.ar_fld.aa_fld;
+				int var150 = 256 - var0.ar_fld.aa_fld;
 				int var151 = var18 * var150 >> 8;
 
 				while (var20-- > 0) {
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -2616,41 +2471,41 @@ public class fq extends fh {
 				}
 
 				for (int var135 = var7 - var6 & 7; var135-- > 0; var10 += var11) {
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var0.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 				}
 			} else {
 				while (var20-- > 0) {
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -2680,11 +2535,147 @@ public class fq extends fh {
 				}
 
 				for (int var134 = var7 - var6 & 7; var134-- > 0; var10 += var11) {
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					var0.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 				}
 			}
+		}
+	}
+
+	@ObfuscatedName("tv")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[F[IIIIIF)V"
+	)
+	public static void tv(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
+		if (var9 != 0) {
+			var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
+			int var10 = var1[var4];
+			var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 1283530046) * var5 & -1061422618) >> 8;
+			int var11 = var0.ar_fld.br_fld & bw(var2[var4], var8);
+			var1[var4] = (var11 & var9) + (~var11 & var10);
+		}
+	}
+
+	@ObfuscatedName("dr")
+	@ObfuscatedSignature(
+		descriptor = "([IIIIIIFFFF)V"
+	)
+	final void dr(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, float var10) {
+		if (this.ar_fld.ax_fld) {
+			if (var6 > this.ar_fld.ao_fld) {
+				var6 = this.ar_fld.ao_fld;
+			}
+
+			if (var5 < 0) {
+				var5 = 0;
+			}
+		}
+
+		if (var5 < var6) {
+			var2 += var5 - 1;
+			var7 += var8 * var5;
+			var9 += var10 * var5;
+			if (this.ar_fld.an_fld) {
+				var4 = var6 - var5 >> 2;
+				var8 *= 4.0F;
+				if (this.ar_fld.aa_fld == 0) {
+					if (var4 > 0) {
+						do {
+							int var40 = (int)var7 & 65535;
+							var3 = this.as_fld[var40];
+							var7 += var8;
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+
+					var4 = var6 - var5 & 3;
+					if (var4 > 0) {
+						int var41 = (int)var7 & 65535;
+						var3 = this.as_fld[var41];
+
+						do {
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+				} else {
+					int var42 = this.ar_fld.aa_fld;
+					int var43 = 256 - this.ar_fld.aa_fld;
+					if (var4 > 0) {
+						do {
+							int var13 = (int)var7 & 65535;
+							var3 = this.as_fld[var13];
+							var7 += var8;
+							var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+
+					var4 = var6 - var5 & 3;
+					if (var4 > 0) {
+						int var44 = (int)var7 & 65535;
+						var3 = this.as_fld[var44];
+						var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+
+						do {
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+				}
+			} else {
+				var4 = var6 - var5;
+				if (this.ar_fld.aa_fld == 0) {
+					do {
+						this.cq(var1, an_fld, ++var2, (int)var7 & 65535, var9);
+						var9 += var10;
+						var7 += var8;
+					} while (--var4 > 0);
+				} else {
+					int var11 = this.ar_fld.aa_fld;
+					int var12 = 256 - this.ar_fld.aa_fld;
+
+					do {
+						sz(this, var1, an_fld, ++var2, (int)var7 & 65535, var11, var12, var9);
+						var9 += var10;
+						var7 += var8;
+					} while (--var4 > 0);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("qg")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[F[IIIIF)V"
+	)
+	public static void qg(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			int var8 = var3[(var6 & -554176188) + (var6 >>> 25)];
+			var8 = ((var8 & -1968795152) * var5 & -16711936) + ((var8 & -1486676961) * var5 & 0xFF0000) >> 8;
+			var0.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
 		}
 	}
 
@@ -2721,7 +2712,7 @@ public class fq extends fh {
 			int[] var23 = this.ar_fld.aq_fld.az(var22, -386542318);
 			if (var23 == null) {
 				int var81 = this.ar_fld.aq_fld.av(var22, (byte)-12);
-				this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
+				this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
 			} else {
 				this.ay_fld = this.ar_fld.aq_fld.ae(var22, -1165295483);
 				float var24 = (int)(var4 + 0.5F);
@@ -2788,7 +2779,7 @@ public class fq extends fh {
 						int var59 = (int)(((long)(var20 * var18 - var17 * var21) << 14) / var51);
 						int var60 = (int)(((long)(var14 * var21 - var20 * var15) << 14) / var51);
 						int[] var61 = this.ar_fld.bm_fld;
-						int var62 = this.ar_fld.at_fld;
+						int var62 = this.ar_fld.ab_fld;
 						if (var27 <= var28 && var27 <= var29) {
 							if (!(var27 >= var62)) {
 								if (var28 > var62) {
@@ -2800,7 +2791,7 @@ public class fq extends fh {
 								}
 
 								var10 = (var10 << 9) - var37 * (int)var24 + var37;
-								var7 = this.do_(var4, var1, var7, var46, var47);
+								var7 = this.cf(var4, var1, var7, var46, var47);
 								if (var28 < var29) {
 									var26 = var24;
 									if (var27 < 0.0F) {
@@ -2815,7 +2806,7 @@ public class fq extends fh {
 										var28 = 0.0F;
 									}
 
-									int var146 = (int)var27 - this.ar_fld.br_fld;
+									int var146 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var146;
 									var55 += var57 * var146;
 									var58 += var60 * var146;
@@ -2827,7 +2818,7 @@ public class fq extends fh {
 
 										int var154;
 										for (var154 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var154, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var154, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -2838,7 +2829,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var154, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var154, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -2856,7 +2847,7 @@ public class fq extends fh {
 
 										int var153;
 										for (var153 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var153, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var153, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -2867,7 +2858,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var153, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var153, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -2892,7 +2883,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var145 = (int)var27 - this.ar_fld.br_fld;
+									int var145 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var145;
 									var55 += var57 * var145;
 									var58 += var60 * var145;
@@ -2904,7 +2895,7 @@ public class fq extends fh {
 
 										int var152;
 										for (var152 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var152, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var152, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -2915,7 +2906,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -2933,7 +2924,7 @@ public class fq extends fh {
 
 										int var151;
 										for (var151 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var151, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var151, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -2944,7 +2935,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -2968,7 +2959,7 @@ public class fq extends fh {
 								}
 
 								var11 = (var11 << 9) - var37 * (int)var25 + var37;
-								var8 = this.do_(var5, var2, var8, var46, var47);
+								var8 = this.cf(var5, var2, var8, var46, var47);
 								if (var29 < var27) {
 									var24 = var25;
 									if (var28 < 0.0F) {
@@ -2983,7 +2974,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var144 = (int)var28 - this.ar_fld.br_fld;
+									int var144 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var144;
 									var55 += var57 * var144;
 									var58 += var60 * var144;
@@ -2995,7 +2986,7 @@ public class fq extends fh {
 
 										int var150;
 										for (var150 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.cp(al_fld, var23, 0, 0, var150, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var150, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3006,7 +2997,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var150, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var150, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -3024,7 +3015,7 @@ public class fq extends fh {
 
 										int var149;
 										for (var149 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.cp(al_fld, var23, 0, 0, var149, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var149, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3035,7 +3026,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var149, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var149, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -3061,7 +3052,7 @@ public class fq extends fh {
 										var27 = 0.0F;
 									}
 
-									int var143 = (int)var28 - this.ar_fld.br_fld;
+									int var143 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var143;
 									var55 += var57 * var143;
 									var58 += var60 * var143;
@@ -3072,7 +3063,7 @@ public class fq extends fh {
 									int var148 = var61[(int)var28];
 									if (var49 < var48) {
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var26, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var26, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var83 += var48;
 											var11 += var38;
@@ -3084,7 +3075,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var24, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var24, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var83 += var48;
 											var11 += var38;
@@ -3096,7 +3087,7 @@ public class fq extends fh {
 										}
 									} else {
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var83, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var83, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var83 += var48;
 											var11 += var38;
@@ -3108,7 +3099,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var83, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var83, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var83 += var48;
 											var11 += var38;
@@ -3131,7 +3122,7 @@ public class fq extends fh {
 							}
 
 							var12 = (var12 << 9) - var37 * (int)var26 + var37;
-							var9 = this.do_(var6, var3, var9, var46, var47);
+							var9 = this.cf(var6, var3, var9, var46, var47);
 							if (var27 < var28) {
 								var25 = var26;
 								if (var29 < 0.0F) {
@@ -3146,7 +3137,7 @@ public class fq extends fh {
 									var27 = 0.0F;
 								}
 
-								int var142 = (int)var29 - this.ar_fld.br_fld;
+								int var142 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var142;
 								var55 += var57 * var142;
 								var58 += var60 * var142;
@@ -3157,7 +3148,7 @@ public class fq extends fh {
 								int var147 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3169,7 +3160,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -3181,7 +3172,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3193,7 +3184,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -3219,7 +3210,7 @@ public class fq extends fh {
 									var28 = 0.0F;
 								}
 
-								int var63 = (int)var29 - this.ar_fld.br_fld;
+								int var63 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var63;
 								var55 += var57 * var63;
 								var58 += var60 * var63;
@@ -3230,7 +3221,7 @@ public class fq extends fh {
 								int var64 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var24, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var24, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var85 += var50;
 										var12 += var38;
@@ -3242,7 +3233,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var25, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var25, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var85 += var50;
 										var12 += var38;
@@ -3254,7 +3245,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var85, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var85, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var85 += var50;
 										var12 += var38;
@@ -3266,7 +3257,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var85, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var85, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var85 += var50;
 										var12 += var38;
@@ -3287,6 +3278,18 @@ public class fq extends fh {
 		}
 	}
 
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;)I"
+	)
+	public static int mu(dr var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.aw_fld;
+	}
+
 	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
 		descriptor = "([I[FIIIF)V"
@@ -3294,7 +3297,7 @@ public class fq extends fh {
 	final void dt(int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
 		int var7 = var1[var3];
 		var4 = var4 + ((var7 & 16711935) * var5 >> 8 & 16711935) + ((var7 & 0xFF00) * var5 >> 8 & 0xFF00);
-		int var8 = this.ar_fld.ap_fld & bw(var2[var3], var6);
+		int var8 = this.ar_fld.br_fld & bw(var2[var3], var6);
 		var1[var3] = (var8 & var4) + (~var8 & var7);
 	}
 
@@ -3331,7 +3334,7 @@ public class fq extends fh {
 			int[] var23 = this.ar_fld.aq_fld.az(var22, -386542318);
 			if (var23 == null) {
 				int var81 = this.ar_fld.aq_fld.av(var22, (byte)-89);
-				this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
+				this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
 			} else {
 				this.ay_fld = this.ar_fld.aq_fld.ae(var22, -1308269498);
 				float var24 = (int)(var4 + 0.5F);
@@ -3398,7 +3401,7 @@ public class fq extends fh {
 						int var59 = (int)(((long)(var20 * var18 - var17 * var21) << 3 << 14) / var51);
 						int var60 = (int)(((long)(var14 * var21 - var20 * var15) << 14) / var51);
 						int[] var61 = this.ar_fld.bm_fld;
-						int var62 = this.ar_fld.at_fld;
+						int var62 = this.ar_fld.ab_fld;
 						if (var27 <= var28 && var27 <= var29) {
 							if (!(var27 >= var62)) {
 								if (var28 > var62) {
@@ -3410,7 +3413,7 @@ public class fq extends fh {
 								}
 
 								var10 = (var10 << 9) - var37 * (int)var24 + var37;
-								var7 = this.do_(var4, var1, var7, var46, var47);
+								var7 = this.cf(var4, var1, var7, var46, var47);
 								if (var28 < var29) {
 									var26 = var24;
 									if (var27 < 0.0F) {
@@ -3425,7 +3428,7 @@ public class fq extends fh {
 										var28 = 0.0F;
 									}
 
-									int var144 = (int)var27 - this.ar_fld.br_fld;
+									int var144 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var144;
 									var55 += var57 * var144;
 									var58 += var60 * var144;
@@ -3437,7 +3440,7 @@ public class fq extends fh {
 
 										int var152;
 										for (var152 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -3448,7 +3451,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -3466,7 +3469,7 @@ public class fq extends fh {
 
 										int var151;
 										for (var151 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -3477,7 +3480,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -3502,7 +3505,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var143 = (int)var27 - this.ar_fld.br_fld;
+									int var143 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var143;
 									var55 += var57 * var143;
 									var58 += var60 * var143;
@@ -3514,7 +3517,7 @@ public class fq extends fh {
 
 										int var150;
 										for (var150 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -3525,7 +3528,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -3543,7 +3546,7 @@ public class fq extends fh {
 
 										int var149;
 										for (var149 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -3554,7 +3557,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -3578,7 +3581,7 @@ public class fq extends fh {
 								}
 
 								var11 = (var11 << 9) - var37 * (int)var25 + var37;
-								var8 = this.do_(var5, var2, var8, var46, var47);
+								var8 = this.cf(var5, var2, var8, var46, var47);
 								if (var29 < var27) {
 									var24 = var25;
 									if (var28 < 0.0F) {
@@ -3593,7 +3596,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var142 = (int)var28 - this.ar_fld.br_fld;
+									int var142 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var142;
 									var55 += var57 * var142;
 									var58 += var60 * var142;
@@ -3605,7 +3608,7 @@ public class fq extends fh {
 
 										int var148;
 										for (var148 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3616,7 +3619,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -3634,7 +3637,7 @@ public class fq extends fh {
 
 										int var147;
 										for (var147 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3645,7 +3648,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -3670,7 +3673,7 @@ public class fq extends fh {
 										var27 = 0.0F;
 									}
 
-									int var141 = (int)var28 - this.ar_fld.br_fld;
+									int var141 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var141;
 									var55 += var57 * var141;
 									var58 += var60 * var141;
@@ -3681,7 +3684,7 @@ public class fq extends fh {
 									int var146 = var61[(int)var28];
 									if (var49 < var48) {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3693,7 +3696,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -3705,7 +3708,7 @@ public class fq extends fh {
 										}
 									} else {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -3717,7 +3720,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -3740,7 +3743,7 @@ public class fq extends fh {
 							}
 
 							var12 = (var12 << 9) - var37 * (int)var26 + var37;
-							var9 = this.do_(var6, var3, var9, var46, var47);
+							var9 = this.cf(var6, var3, var9, var46, var47);
 							if (var27 < var28) {
 								var25 = var26;
 								if (var29 < 0.0F) {
@@ -3755,7 +3758,7 @@ public class fq extends fh {
 									var27 = 0.0F;
 								}
 
-								int var140 = (int)var29 - this.ar_fld.br_fld;
+								int var140 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var140;
 								var55 += var57 * var140;
 								var58 += var60 * var140;
@@ -3766,7 +3769,7 @@ public class fq extends fh {
 								int var145 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3778,7 +3781,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -3790,7 +3793,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3802,7 +3805,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -3827,7 +3830,7 @@ public class fq extends fh {
 									var28 = 0.0F;
 								}
 
-								int var63 = (int)var29 - this.ar_fld.br_fld;
+								int var63 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var63;
 								var55 += var57 * var63;
 								var58 += var60 * var63;
@@ -3838,7 +3841,7 @@ public class fq extends fh {
 								int var64 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3850,7 +3853,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -3862,7 +3865,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -3874,7 +3877,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -3895,25 +3898,12 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-		descriptor = "([I[FIIIIF)V"
-	)
-	final void cy(int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
-		int var8 = this.as_fld[var4];
-		var8 = ((var8 & 16711935) * var6 >> 8 & 16711935) + ((var8 & 0xFF00) * var6 >> 8 & 0xFF00);
-		int var9 = var1[var3];
-		var8 = var8 + ((var9 & 16711935) * var5 >> 8 & 16711935) + ((var9 & 0xFF00) * var5 >> 8 & 0xFF00);
-		int var10 = this.ar_fld.ap_fld & bw(var2[var3], var7);
-		var1[var3] = (var10 & var8) + (~var10 & var9);
-	}
-
-	@ObfuscatedName("bl")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	@Override
-	void bl(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+	void bx(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
 		float var13 = (int)(var4 + 0.5F);
 		float var14 = (int)(var5 + 0.5F);
 		float var15 = (int)(var6 + 0.5F);
@@ -3965,7 +3955,7 @@ public class fq extends fh {
 				}
 
 				int[] var43 = this.ar_fld.bm_fld;
-				int var44 = this.ar_fld.at_fld;
+				int var44 = this.ar_fld.ab_fld;
 				if (var16 <= var17 && var16 <= var18) {
 					if (!(var16 >= var44)) {
 						if (var17 > var44) {
@@ -3977,7 +3967,7 @@ public class fq extends fh {
 						}
 
 						var24 = var24 - var29 * var13 + var29;
-						var7 = this.do_(var4, var1, var7, var38, var39);
+						var7 = this.cf(var4, var1, var7, var38, var39);
 						if (var17 < var18) {
 							var15 = var13;
 							if (var16 < 0.0F) {
@@ -4000,7 +3990,7 @@ public class fq extends fh {
 
 								int var101;
 								for (var101 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -4008,7 +3998,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -4023,7 +4013,7 @@ public class fq extends fh {
 
 								int var100;
 								for (var100 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -4031,7 +4021,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -4061,7 +4051,7 @@ public class fq extends fh {
 
 								int var99;
 								for (var99 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -4069,7 +4059,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -4084,7 +4074,7 @@ public class fq extends fh {
 
 								int var98;
 								for (var98 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -4092,7 +4082,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -4113,7 +4103,7 @@ public class fq extends fh {
 						}
 
 						var25 = var25 - var29 * var14 + var29;
-						var8 = this.do_(var5, var2, var8, var38, var39);
+						var8 = this.cf(var5, var2, var8, var38, var39);
 						if (var18 < var16) {
 							var13 = var14;
 							if (var17 < 0.0F) {
@@ -4136,7 +4126,7 @@ public class fq extends fh {
 
 								int var97;
 								for (var97 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -4144,7 +4134,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -4159,7 +4149,7 @@ public class fq extends fh {
 
 								int var96;
 								for (var96 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -4167,7 +4157,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -4196,7 +4186,7 @@ public class fq extends fh {
 							int var95 = var43[(int)var17];
 							if (var41 < var40) {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -4205,7 +4195,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -4214,7 +4204,7 @@ public class fq extends fh {
 								}
 							} else {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -4223,7 +4213,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -4243,7 +4233,7 @@ public class fq extends fh {
 					}
 
 					var26 = var26 - var29 * var15 + var29;
-					var9 = this.do_(var6, var3, var9, var38, var39);
+					var9 = this.cf(var6, var3, var9, var38, var39);
 					if (var16 < var17) {
 						var14 = var15;
 						if (var18 < 0.0F) {
@@ -4265,7 +4255,7 @@ public class fq extends fh {
 						int var94 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -4274,7 +4264,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -4283,7 +4273,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -4292,7 +4282,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -4321,7 +4311,7 @@ public class fq extends fh {
 						int var45 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -4330,7 +4320,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -4339,7 +4329,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -4348,7 +4338,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -4395,7 +4385,7 @@ public class fq extends fh {
 			int[] var23 = this.ar_fld.aq_fld.az(var22, -386542318);
 			if (var23 == null) {
 				int var81 = this.ar_fld.aq_fld.av(var22, (byte)-13);
-				this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
+				this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
 			} else {
 				this.ay_fld = this.ar_fld.aq_fld.ae(var22, -1906860792);
 				float var24 = (int)(var4 + 0.5F);
@@ -4462,7 +4452,7 @@ public class fq extends fh {
 						int var59 = (int)(((long)(var20 * var18 - var17 * var21) << 14) / var51);
 						int var60 = (int)(((long)(var14 * var21 - var20 * var15) << 14) / var51);
 						int[] var61 = this.ar_fld.bm_fld;
-						int var62 = this.ar_fld.at_fld;
+						int var62 = this.ar_fld.ab_fld;
 						if (var27 <= var28 && var27 <= var29) {
 							if (!(var27 >= var62)) {
 								if (var28 > var62) {
@@ -4474,7 +4464,7 @@ public class fq extends fh {
 								}
 
 								var10 = (var10 << 9) - var37 * (int)var24 + var37;
-								var7 = this.do_(var4, var1, var7, var46, var47);
+								var7 = this.cf(var4, var1, var7, var46, var47);
 								if (var28 < var29) {
 									var26 = var24;
 									if (var27 < 0.0F) {
@@ -4489,7 +4479,7 @@ public class fq extends fh {
 										var28 = 0.0F;
 									}
 
-									int var146 = (int)var27 - this.ar_fld.br_fld;
+									int var146 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var146;
 									var55 += var57 * var146;
 									var58 += var60 * var146;
@@ -4501,7 +4491,7 @@ public class fq extends fh {
 
 										int var154;
 										for (var154 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var154, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var154, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -4512,7 +4502,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var154, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var154, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -4530,7 +4520,7 @@ public class fq extends fh {
 
 										int var153;
 										for (var153 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var153, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var153, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -4541,7 +4531,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var153, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var153, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -4566,7 +4556,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var145 = (int)var27 - this.ar_fld.br_fld;
+									int var145 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var145;
 									var55 += var57 * var145;
 									var58 += var60 * var145;
@@ -4578,7 +4568,7 @@ public class fq extends fh {
 
 										int var152;
 										for (var152 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var152, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var152, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -4589,7 +4579,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -4607,7 +4597,7 @@ public class fq extends fh {
 
 										int var151;
 										for (var151 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.cp(al_fld, var23, 0, 0, var151, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var151, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -4618,7 +4608,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -4642,7 +4632,7 @@ public class fq extends fh {
 								}
 
 								var11 = (var11 << 9) - var37 * (int)var25 + var37;
-								var8 = this.do_(var5, var2, var8, var46, var47);
+								var8 = this.cf(var5, var2, var8, var46, var47);
 								if (var29 < var27) {
 									var24 = var25;
 									if (var28 < 0.0F) {
@@ -4657,7 +4647,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var144 = (int)var28 - this.ar_fld.br_fld;
+									int var144 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var144;
 									var55 += var57 * var144;
 									var58 += var60 * var144;
@@ -4669,7 +4659,7 @@ public class fq extends fh {
 
 										int var150;
 										for (var150 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.cp(al_fld, var23, 0, 0, var150, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var150, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -4680,7 +4670,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var150, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var150, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -4698,7 +4688,7 @@ public class fq extends fh {
 
 										int var149;
 										for (var149 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.cp(al_fld, var23, 0, 0, var149, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var149, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -4709,7 +4699,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var149, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var149, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -4735,7 +4725,7 @@ public class fq extends fh {
 										var27 = 0.0F;
 									}
 
-									int var143 = (int)var28 - this.ar_fld.br_fld;
+									int var143 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var143;
 									var55 += var57 * var143;
 									var58 += var60 * var143;
@@ -4746,7 +4736,7 @@ public class fq extends fh {
 									int var148 = var61[(int)var28];
 									if (var49 < var48) {
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var26, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var26, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var83 += var48;
 											var11 += var38;
@@ -4758,7 +4748,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var24, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var24, (int)var83, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var83 += var48;
 											var11 += var38;
@@ -4770,7 +4760,7 @@ public class fq extends fh {
 										}
 									} else {
 										while (--var27 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var83, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var83, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var83 += var48;
 											var11 += var38;
@@ -4782,7 +4772,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.cp(al_fld, var23, 0, 0, var148, (int)var83, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											this.ce(al_fld, var23, 0, 0, var148, (int)var83, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var83 += var48;
 											var11 += var38;
@@ -4805,7 +4795,7 @@ public class fq extends fh {
 							}
 
 							var12 = (var12 << 9) - var37 * (int)var26 + var37;
-							var9 = this.do_(var6, var3, var9, var46, var47);
+							var9 = this.cf(var6, var3, var9, var46, var47);
 							if (var27 < var28) {
 								var25 = var26;
 								if (var29 < 0.0F) {
@@ -4820,7 +4810,7 @@ public class fq extends fh {
 									var27 = 0.0F;
 								}
 
-								int var142 = (int)var29 - this.ar_fld.br_fld;
+								int var142 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var142;
 								var55 += var57 * var142;
 								var58 += var60 * var142;
@@ -4831,7 +4821,7 @@ public class fq extends fh {
 								int var147 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -4843,7 +4833,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -4855,7 +4845,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -4867,7 +4857,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -4893,7 +4883,7 @@ public class fq extends fh {
 									var28 = 0.0F;
 								}
 
-								int var63 = (int)var29 - this.ar_fld.br_fld;
+								int var63 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var63;
 								var55 += var57 * var63;
 								var58 += var60 * var63;
@@ -4904,7 +4894,7 @@ public class fq extends fh {
 								int var64 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var24, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var24, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var85 += var50;
 										var12 += var38;
@@ -4916,7 +4906,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var25, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var25, (int)var85, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var85 += var50;
 										var12 += var38;
@@ -4928,7 +4918,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var28 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var85, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var85, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var85 += var50;
 										var12 += var38;
@@ -4940,7 +4930,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.cp(al_fld, var23, 0, 0, var64, (int)var85, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										this.ce(al_fld, var23, 0, 0, var64, (int)var85, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var85 += var50;
 										var12 += var38;
@@ -5009,7 +4999,7 @@ public class fq extends fh {
 			}
 
 			int[] var33 = this.ar_fld.bm_fld;
-			int var34 = this.ar_fld.at_fld;
+			int var34 = this.ar_fld.ab_fld;
 			if (var14 <= var15 && var14 <= var16) {
 				if (!(var14 >= var34)) {
 					if (var15 > var34) {
@@ -5020,7 +5010,7 @@ public class fq extends fh {
 						var16 = var34;
 					}
 
-					var7 = this.do_(var4, var1, var7, var28, var29);
+					var7 = this.cf(var4, var1, var7, var28, var29);
 					if (var15 < var16) {
 						var13 = var11;
 						if (var14 < 0.0F) {
@@ -5145,7 +5135,7 @@ public class fq extends fh {
 						var14 = var34;
 					}
 
-					var8 = this.do_(var5, var2, var8, var28, var29);
+					var8 = this.cf(var5, var2, var8, var28, var29);
 					if (var16 < var14) {
 						var11 = var12;
 						if (var15 < 0.0F) {
@@ -5264,7 +5254,7 @@ public class fq extends fh {
 					var15 = var34;
 				}
 
-				var9 = this.do_(var6, var3, var9, var28, var29);
+				var9 = this.cf(var6, var3, var9, var28, var29);
 				if (var14 < var15) {
 					var12 = var13;
 					if (var16 < 0.0F) {
@@ -5420,7 +5410,7 @@ public class fq extends fh {
 			}
 
 			int[] var33 = this.ar_fld.bm_fld;
-			int var34 = this.ar_fld.at_fld;
+			int var34 = this.ar_fld.ab_fld;
 			if (var14 <= var15 && var14 <= var16) {
 				if (!(var14 >= var34)) {
 					if (var15 > var34) {
@@ -5431,7 +5421,7 @@ public class fq extends fh {
 						var16 = var34;
 					}
 
-					var7 = this.do_(var4, var1, var7, var28, var29);
+					var7 = this.cf(var4, var1, var7, var28, var29);
 					if (var15 < var16) {
 						var13 = var11;
 						if (var14 < 0.0F) {
@@ -5556,7 +5546,7 @@ public class fq extends fh {
 						var14 = var34;
 					}
 
-					var8 = this.do_(var5, var2, var8, var28, var29);
+					var8 = this.cf(var5, var2, var8, var28, var29);
 					if (var16 < var14) {
 						var11 = var12;
 						if (var15 < 0.0F) {
@@ -5675,7 +5665,7 @@ public class fq extends fh {
 					var15 = var34;
 				}
 
-				var9 = this.do_(var6, var3, var9, var28, var29);
+				var9 = this.cf(var6, var3, var9, var28, var29);
 				if (var14 < var15) {
 					var12 = var13;
 					if (var16 < 0.0F) {
@@ -5831,7 +5821,7 @@ public class fq extends fh {
 			}
 
 			int[] var33 = this.ar_fld.bm_fld;
-			int var34 = this.ar_fld.at_fld;
+			int var34 = this.ar_fld.ab_fld;
 			if (var14 <= var15 && var14 <= var16) {
 				if (!(var14 >= var34)) {
 					if (var15 > var34) {
@@ -5842,7 +5832,7 @@ public class fq extends fh {
 						var16 = var34;
 					}
 
-					var7 = this.do_(var4, var1, var7, var28, var29);
+					var7 = this.cf(var4, var1, var7, var28, var29);
 					if (var15 < var16) {
 						var13 = var11;
 						if (var14 < 0.0F) {
@@ -5967,7 +5957,7 @@ public class fq extends fh {
 						var14 = var34;
 					}
 
-					var8 = this.do_(var5, var2, var8, var28, var29);
+					var8 = this.cf(var5, var2, var8, var28, var29);
 					if (var16 < var14) {
 						var11 = var12;
 						if (var15 < 0.0F) {
@@ -6086,7 +6076,7 @@ public class fq extends fh {
 					var15 = var34;
 				}
 
-				var9 = this.do_(var6, var3, var9, var28, var29);
+				var9 = this.cf(var6, var3, var9, var28, var29);
 				if (var14 < var15) {
 					var12 = var13;
 					if (var16 < 0.0F) {
@@ -6194,17 +6184,141 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("cf")
+	@ObfuscatedName("dd")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFF)F"
 	)
-	float cf(float var1, float var2, float var3, float var4, float var5) {
+	float dd(float var1, float var2, float var3, float var4, float var5) {
 		var3 = var3 - var4 * var1 + var4;
 		if (var2 < 0.0F) {
 			var3 -= var5 * (int)var2;
 		}
 
 		return var3 - var5 * (var2 - (int)(var2 + 0.5F));
+	}
+
+	@ObfuscatedName("xp")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[IIIIIIFFFF)V"
+	)
+	public static void xp(fq var0, int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, float var10) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var0.ar_fld.ax_fld) {
+				if (var6 > var0.ar_fld.ao_fld) {
+					var6 = var0.ar_fld.ao_fld;
+				}
+
+				if (var5 < 0) {
+					var5 = 0;
+				}
+			}
+
+			if (var5 < var6) {
+				var2 += var5 - 1;
+				var7 += var8 * var5;
+				var9 += var10 * var5;
+				if (var0.ar_fld.an_fld) {
+					var4 = var6 - var5 >> 2;
+					var8 *= 4.0F;
+					if (var0.ar_fld.aa_fld == 0) {
+						if (var4 > 0) {
+							do {
+								int var40 = (int)var7 & 65535;
+								var3 = var0.as_fld[var40];
+								var7 += var8;
+								var0.cc(var1, an_fld, ++var2, var3, var9);
+								var9 += var10;
+								var0.cc(var1, an_fld, ++var2, var3, var9);
+								var9 += var10;
+								var0.cc(var1, an_fld, ++var2, var3, var9);
+								var9 += var10;
+								var0.cc(var1, an_fld, ++var2, var3, var9);
+								var9 += var10;
+							} while (--var4 > 0);
+						}
+
+						var4 = var6 - var5 & 3;
+						if (var4 > 0) {
+							int var41 = (int)var7 & 65535;
+							var3 = var0.as_fld[var41];
+
+							do {
+								var0.cc(var1, an_fld, ++var2, var3, var9);
+								var9 += var10;
+							} while (--var4 > 0);
+						}
+					} else {
+						int var42 = var0.ar_fld.aa_fld;
+						int var43 = 256 - var0.ar_fld.aa_fld;
+						if (var4 > 0) {
+							do {
+								int var13 = (int)var7 & 65535;
+								var3 = var0.as_fld[var13];
+								var7 += var8;
+								var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+								var0.cv(var1, an_fld, ++var2, var3, var42, var9);
+								var9 += var10;
+								var0.cv(var1, an_fld, ++var2, var3, var42, var9);
+								var9 += var10;
+								var0.cv(var1, an_fld, ++var2, var3, var42, var9);
+								var9 += var10;
+								var0.cv(var1, an_fld, ++var2, var3, var42, var9);
+								var9 += var10;
+							} while (--var4 > 0);
+						}
+
+						var4 = var6 - var5 & 3;
+						if (var4 > 0) {
+							int var44 = (int)var7 & 65535;
+							var3 = var0.as_fld[var44];
+							var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+
+							do {
+								var0.cv(var1, an_fld, ++var2, var3, var42, var9);
+								var9 += var10;
+							} while (--var4 > 0);
+						}
+					}
+				} else {
+					var4 = var6 - var5;
+					if (var0.ar_fld.aa_fld == 0) {
+						do {
+							var0.cq(var1, an_fld, ++var2, (int)var7 & 65535, var9);
+							var9 += var10;
+							var7 += var8;
+						} while (--var4 > 0);
+					} else {
+						int var11 = var0.ar_fld.aa_fld;
+						int var12 = 256 - var0.ar_fld.aa_fld;
+
+						do {
+							sz(var0, var1, an_fld, ++var2, (int)var7 & 65535, var11, var12, var9);
+							var9 += var10;
+							var7 += var8;
+						} while (--var4 > 0);
+					}
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("sz")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[FIIIIF)V"
+	)
+	public static void sz(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var8 = var0.as_fld[var4];
+		var8 = ((var8 & 16711935) * var6 >> 8 & 16711935) + ((var8 & 0xFF00) * var6 >> 8 & 0xFF00);
+		int var9 = var1[var3];
+		var8 = var8 + ((var9 & 16711935) * var5 >> 8 & 16711935) + ((var9 & 0xFF00) * var5 >> 8 & 0xFF00);
+		int var10 = var0.ar_fld.br_fld & bw(var2[var3], var7);
+		var1[var3] = (var10 & var8) + (~var10 & var9);
 	}
 
 	@ObfuscatedName("bn")
@@ -6240,7 +6354,7 @@ public class fq extends fh {
 			int[] var23 = this.ar_fld.aq_fld.az(var22, -386542318);
 			if (var23 == null) {
 				int var81 = this.ar_fld.aq_fld.av(var22, (byte)-128);
-				this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
+				this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, ag(var81, var10), ag(var81, var11), ag(var81, var12));
 			} else {
 				this.ay_fld = this.ar_fld.aq_fld.ae(var22, -2025467883);
 				float var24 = (int)(var4 + 0.5F);
@@ -6307,7 +6421,7 @@ public class fq extends fh {
 						int var59 = (int)(((long)(var20 * var18 - var17 * var21) << 3 << 14) / var51);
 						int var60 = (int)(((long)(var14 * var21 - var20 * var15) << 14) / var51);
 						int[] var61 = this.ar_fld.bm_fld;
-						int var62 = this.ar_fld.at_fld;
+						int var62 = this.ar_fld.ab_fld;
 						if (var27 <= var28 && var27 <= var29) {
 							if (!(var27 >= var62)) {
 								if (var28 > var62) {
@@ -6319,7 +6433,7 @@ public class fq extends fh {
 								}
 
 								var10 = (var10 << 9) - var37 * (int)var24 + var37;
-								var7 = this.do_(var4, var1, var7, var46, var47);
+								var7 = this.cf(var4, var1, var7, var46, var47);
 								if (var28 < var29) {
 									var26 = var24;
 									if (var27 < 0.0F) {
@@ -6334,7 +6448,7 @@ public class fq extends fh {
 										var28 = 0.0F;
 									}
 
-									int var144 = (int)var27 - this.ar_fld.br_fld;
+									int var144 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var144;
 									var55 += var57 * var144;
 									var58 += var60 * var144;
@@ -6346,7 +6460,7 @@ public class fq extends fh {
 
 										int var152;
 										for (var152 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -6357,7 +6471,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var152, (int)var25, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -6375,7 +6489,7 @@ public class fq extends fh {
 
 										int var151;
 										for (var151 = var61[(int)var27]; --var28 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -6386,7 +6500,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var151, (int)var26, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var50;
 											var25 += var48;
 											var10 += var38;
@@ -6411,7 +6525,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var143 = (int)var27 - this.ar_fld.br_fld;
+									int var143 = (int)var27 - this.ar_fld.ad_fld;
 									var52 += var54 * var143;
 									var55 += var57 * var143;
 									var58 += var60 * var143;
@@ -6423,7 +6537,7 @@ public class fq extends fh {
 
 										int var150;
 										for (var150 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var25, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -6434,7 +6548,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var150, (int)var24, (int)var26, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -6452,7 +6566,7 @@ public class fq extends fh {
 
 										int var149;
 										for (var149 = var61[(int)var27]; --var29 >= 0.0F; var7 += var47) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var25, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var25 += var50;
 											var24 += var49;
 											var10 += var38;
@@ -6463,7 +6577,7 @@ public class fq extends fh {
 										}
 
 										while (--var28 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var149, (int)var26, (int)var24, var10, var37, var7, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var48;
 											var24 += var49;
 											var10 += var38;
@@ -6487,7 +6601,7 @@ public class fq extends fh {
 								}
 
 								var11 = (var11 << 9) - var37 * (int)var25 + var37;
-								var8 = this.do_(var5, var2, var8, var46, var47);
+								var8 = this.cf(var5, var2, var8, var46, var47);
 								if (var29 < var27) {
 									var24 = var25;
 									if (var28 < 0.0F) {
@@ -6502,7 +6616,7 @@ public class fq extends fh {
 										var29 = 0.0F;
 									}
 
-									int var142 = (int)var28 - this.ar_fld.br_fld;
+									int var142 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var142;
 									var55 += var57 * var142;
 									var58 += var60 * var142;
@@ -6514,7 +6628,7 @@ public class fq extends fh {
 
 										int var148;
 										for (var148 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -6525,7 +6639,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var148, (int)var26, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -6543,7 +6657,7 @@ public class fq extends fh {
 
 										int var147;
 										for (var147 = var61[(int)var28]; --var29 >= 0.0F; var8 += var47) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -6554,7 +6668,7 @@ public class fq extends fh {
 										}
 
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var147, (int)var24, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var49;
 											var26 += var50;
 											var11 += var38;
@@ -6579,7 +6693,7 @@ public class fq extends fh {
 										var27 = 0.0F;
 									}
 
-									int var141 = (int)var28 - this.ar_fld.br_fld;
+									int var141 = (int)var28 - this.ar_fld.ad_fld;
 									var52 += var54 * var141;
 									var55 += var57 * var141;
 									var58 += var60 * var141;
@@ -6590,7 +6704,7 @@ public class fq extends fh {
 									int var146 = var61[(int)var28];
 									if (var49 < var48) {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var26, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -6602,7 +6716,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var24, (int)var25, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -6614,7 +6728,7 @@ public class fq extends fh {
 										}
 									} else {
 										while (--var27 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var26, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var26 += var49;
 											var25 += var48;
 											var11 += var38;
@@ -6626,7 +6740,7 @@ public class fq extends fh {
 										}
 
 										while (--var29 >= 0.0F) {
-											this.dx(al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
+											ka(this, al_fld, var23, 0, 0, var146, (int)var25, (int)var24, var11, var37, var8, var46, var52, var55, var58, var53, var56, var59);
 											var24 += var50;
 											var25 += var48;
 											var11 += var38;
@@ -6649,7 +6763,7 @@ public class fq extends fh {
 							}
 
 							var12 = (var12 << 9) - var37 * (int)var26 + var37;
-							var9 = this.do_(var6, var3, var9, var46, var47);
+							var9 = this.cf(var6, var3, var9, var46, var47);
 							if (var27 < var28) {
 								var25 = var26;
 								if (var29 < 0.0F) {
@@ -6664,7 +6778,7 @@ public class fq extends fh {
 									var27 = 0.0F;
 								}
 
-								int var140 = (int)var29 - this.ar_fld.br_fld;
+								int var140 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var140;
 								var55 += var57 * var140;
 								var58 += var60 * var140;
@@ -6675,7 +6789,7 @@ public class fq extends fh {
 								int var145 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -6687,7 +6801,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var25, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -6699,7 +6813,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -6711,7 +6825,7 @@ public class fq extends fh {
 									}
 
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var145, (int)var24, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var48;
 										var24 += var49;
 										var12 += var38;
@@ -6736,7 +6850,7 @@ public class fq extends fh {
 									var28 = 0.0F;
 								}
 
-								int var63 = (int)var29 - this.ar_fld.br_fld;
+								int var63 = (int)var29 - this.ar_fld.ad_fld;
 								var52 += var54 * var63;
 								var55 += var57 * var63;
 								var58 += var60 * var63;
@@ -6747,7 +6861,7 @@ public class fq extends fh {
 								int var64 = var61[(int)var29];
 								if (var48 < var50) {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var24, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -6759,7 +6873,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var25, (int)var26, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -6771,7 +6885,7 @@ public class fq extends fh {
 									}
 								} else {
 									while (--var28 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var24, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var24 += var48;
 										var26 += var50;
 										var12 += var38;
@@ -6783,7 +6897,7 @@ public class fq extends fh {
 									}
 
 									while (--var27 >= 0.0F) {
-										this.dx(al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
+										ka(this, al_fld, var23, 0, 0, var64, (int)var26, (int)var25, var12, var37, var9, var46, var52, var55, var58, var53, var56, var59);
 										var25 += var49;
 										var26 += var50;
 										var12 += var38;
@@ -6804,178 +6918,11 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("dh")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[IIIIIIIIFFIIIIII)V"
-	)
-	public static void dh(
-		fq var0,
-		int[] var1,
-		int[] var2,
-		int var3,
-		int var4,
-		int var5,
-		int var6,
-		int var7,
-		int var8,
-		int var9,
-		float var10,
-		float var11,
-		int var12,
-		int var13,
-		int var14,
-		int var15,
-		int var16,
-		int var17
-	) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var0.ar_fld.ax_fld) {
-				if (var7 > var0.ar_fld.ac_fld) {
-					var7 = var0.ar_fld.ac_fld;
-				}
-
-				if (var6 < 0) {
-					var6 = 0;
-				}
-			}
-
-			if (var6 < var7) {
-				var5 += var6;
-				var8 += var9 * var6;
-				var10 += var11 * var6;
-				int var20 = var7 - var6;
-				int var26 = var6 - var0.ar_fld.ao_fld;
-				var12 += var15 * var26;
-				var13 += var16 * var26;
-				var14 += var17 * var26;
-				int var25 = var14 >> 14;
-				int var21;
-				int var22;
-				if (var25 != 0) {
-					var21 = var12 / var25;
-					var22 = var13 / var25;
-				} else {
-					var21 = 0;
-					var22 = 0;
-				}
-
-				var12 += var15 * var20;
-				var13 += var16 * var20;
-				var14 += var17 * var20;
-				var25 = var14 >> 14;
-				int var23;
-				int var24;
-				if (var25 != 0) {
-					var23 = var12 / var25;
-					var24 = var13 / var25;
-				} else {
-					var23 = 0;
-					var24 = 0;
-				}
-
-				var3 = (var21 << 18) + var22;
-				int var19 = ((var23 - var21) / var20 << 18) + (var24 - var22) / var20;
-				var20 >>= 3;
-				var9 <<= 3;
-				int var18 = var8 >> 8;
-				if (var0.ay_fld) {
-					while (var20-- > 0) {
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var8 += var9;
-						var18 = var8 >> 8;
-					}
-
-					for (int var82 = var7 - var6 & 7; var82-- > 0; var10 += var11) {
-						cj(var0, var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-					}
-				} else {
-					while (var20-- > 0) {
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-						var10 += var11;
-						var8 += var9;
-						var18 = var8 >> 8;
-					}
-
-					for (int var81 = var7 - var6 & 7; var81-- > 0; var10 += var11) {
-						var0.co(var1, an_fld, var2, var5, var18, var3, var10);
-						var5++;
-						var3 += var19;
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("dd")
+	@ObfuscatedName("do")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFF)F"
 	)
-	float dd(float var1, float var2, float var3, float var4, float var5) {
+	float do_(float var1, float var2, float var3, float var4, float var5) {
 		var3 = var3 - var4 * var1 + var4;
 		if (var2 < 0.0F) {
 			var3 -= var5 * (int)var2;
@@ -6984,29 +6931,17 @@ public class fq extends fh {
 		return var3 - var5 * (var2 - (int)(var2 + 0.5F));
 	}
 
-	@ObfuscatedName("ck")
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIIF)V"
 	)
-	final void ck(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+	final void cu(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
 		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
 		var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
 		int var10 = var1[var4];
 		var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 0xFF00) * var5 & 0xFF0000) >> 8;
-		int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+		int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 		var1[var4] = (var11 & var9) + (~var11 & var10);
-	}
-
-	@ObfuscatedName("dx")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[FIIF)V"
-	)
-	public static void dx(fq var0, int[] var1, float[] var2, int var3, int var4, float var5) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			yp(var0, var1, var2, var3, var4, var5, bw(var2[var3], var5));
-		}
 	}
 
 	@ObfuscatedName("cr")
@@ -7017,52 +6952,12 @@ public class fq extends fh {
 		return Float.floatToRawIntBits(var0 - var1) >> 31;
 	}
 
-	@ObfuscatedName("ps")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[FIIIIF)V"
-	)
-	public static void ps(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
-		int var8 = var0.as_fld[var4];
-		var8 = ((var8 & 16711935) * var6 >> 8 & -1402618374) + ((var8 & -1279896234) * var6 >> 8 & -801194080);
-		int var9 = var1[var3];
-		var8 = var8 + ((var9 & 16711935) * var5 >> 8 & 1087981186) + ((var9 & 270624223) * var5 >> 8 & 157504361);
-		int var10 = var0.ar_fld.ap_fld & bw(var2[var3], var7);
-		var1[var3] = (var10 & var8) + (~var10 & var9);
-	}
-
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "(FF)I"
 	)
 	static final int ca(float var0, float var1) {
 		return Float.floatToRawIntBits(var0 - var1) >> 31;
-	}
-
-	@ObfuscatedName("vi")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;FFFFF)F"
-	)
-	public static float vi(fq var0, float var1, float var2, float var3, float var4, float var5) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var3 = var3 - var4 * var1 + var4;
-		if (var2 < 0.0F) {
-			var3 -= var5 * (int)var2;
-		}
-
-		return var3 - var5 * (var2 - (int)(var2 + 0.5F));
-	}
-
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "([I[F[IIIIF)V"
-	)
-	final void bb(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
-		int var8 = var3[(var6 & -554176188) + (var6 >>> 25)];
-		var8 = ((var8 & -1968795152) * var5 & -16711936) + ((var8 & -1486676961) * var5 & 0xFF0000) >> 8;
-		yp(this, var1, var2, var4, var8, var7, bw(var2[var4], var7));
 	}
 
 	@ObfuscatedName("bq")
@@ -7072,49 +6967,61 @@ public class fq extends fh {
 	final void bq(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
 		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
 		var8 = ((var8 & 16711935) * var5 & 1813987938) + ((var8 & 364717990) * var5 & 0xFF0000) >> 8;
-		yp(this, var1, var2, var4, var8, var7, bw(var2[var4], var7));
+		this.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
 	}
 
 	fq(fo var1) {
 		super(var1);
 	}
 
-	@ObfuscatedName("ci")
+	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIIF)V"
 	)
-	final void ci(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+	final void cj(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
 		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
 		var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
 		int var10 = var1[var4];
 		var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 0xFF00) * var5 & 0xFF0000) >> 8;
-		int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+		int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 		var1[var4] = (var11 & var9) + (~var11 & var10);
 	}
 
-	@ObfuscatedName("cw")
+	@ObfuscatedName("co")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIF)V"
 	)
-	final void cw(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+	final void co(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
 		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
 		if (var8 != 0) {
 			var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			yp(this, var1, var2, var4, var8, var7, bw(var2[var4], var7));
+			this.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
 		}
 	}
 
-	@ObfuscatedName("cd")
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "([I[F[IIIIF)V"
+	)
+	final void cm(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
+		if (var8 != 0) {
+			var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
+			this.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
+		}
+	}
+
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "([I[F[IIIIIF)V"
 	)
-	final void cd(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
+	final void bg(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, int var7, float var8) {
 		int var9 = var3[(var7 & 16256) + (var7 >>> 25)];
 		if (var9 != 0) {
 			var9 = ((var9 & 16711935) * var6 & -16711936 | (var9 & 0xFF00) * var6 & 0xFF0000) >> 8;
 			int var10 = var1[var4];
 			var9 += ((var10 & 16711935) * var5 & -16711936 | (var10 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+			int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 			var1[var4] = (var11 & var9) + (~var11 & var10);
 		}
 	}
@@ -7138,7 +7045,7 @@ public class fq extends fh {
 			var9 = ((var9 & -1305297893) * var6 & -16711936 | (var9 & 1447677727) * var6 & -578967248) >> 8;
 			int var10 = var1[var4];
 			var9 += ((var10 & 16711935) * var5 & -2092023530 | (var10 & -827184534) * var5 & -467887168) >> 8;
-			int var11 = this.ar_fld.ap_fld & bw(var2[var4], var8);
+			int var11 = this.ar_fld.br_fld & bw(var2[var4], var8);
 			var1[var4] = (var11 & var9) + (~var11 & var10);
 		}
 	}
@@ -7148,15 +7055,7 @@ public class fq extends fh {
 		descriptor = "([I[FIIF)V"
 	)
 	final void ch(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, var4, var5, bw(var2[var3], var5));
-	}
-
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "([I[FIIF)V"
-	)
-	final void ct(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, var4, var5, bw(var2[var3], var5));
+		this.ba(var1, var2, var3, var4, var5, bw(var2[var3], var5));
 	}
 
 	@ObfuscatedName("cl")
@@ -7164,7 +7063,7 @@ public class fq extends fh {
 		descriptor = "([I[FIIF)V"
 	)
 	final void cl(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
+		this.ba(var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
 	}
 
 	@ObfuscatedName("cs")
@@ -7173,8 +7072,8 @@ public class fq extends fh {
 	)
 	final void cs(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8) {
 		if (this.ar_fld.ax_fld) {
-			if (var6 > this.ar_fld.ac_fld) {
-				var6 = this.ar_fld.ac_fld;
+			if (var6 > this.ar_fld.ao_fld) {
+				var6 = this.ar_fld.ao_fld;
 			}
 
 			if (var5 < 0) {
@@ -7186,9 +7085,9 @@ public class fq extends fh {
 			var2 += var5 - 1;
 			var4 = var6 - var5 >> 2;
 			var7 += var8 * var5;
-			if (this.ar_fld.aj_fld != 0) {
-				if (this.ar_fld.aj_fld == 254) {
-					if (var5 == 0 || var6 > this.ar_fld.ac_fld - 1) {
+			if (this.ar_fld.aa_fld != 0) {
+				if (this.ar_fld.aa_fld == 254) {
+					if (var5 == 0 || var6 > this.ar_fld.ao_fld - 1) {
 						return;
 					}
 
@@ -7212,8 +7111,8 @@ public class fq extends fh {
 						this.cv(var1, an_fld, var2 - 1, var1[var2], 0, var7);
 					}
 				} else {
-					int var9 = this.ar_fld.aj_fld;
-					int var10 = 256 - this.ar_fld.aj_fld;
+					int var9 = this.ar_fld.aa_fld;
+					int var10 = 256 - this.ar_fld.aa_fld;
 					var3 = ((var3 & 16711935) * var10 >> 8 & 16711935) + ((var3 & 0xFF00) * var10 >> 8 & 0xFF00);
 
 					while (--var4 >= 0) {
@@ -7233,46 +7132,21 @@ public class fq extends fh {
 				}
 			} else {
 				while (--var4 >= 0) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
 				}
 
 				for (int var23 = var6 - var5 & 3; --var23 >= 0; var7 += var8) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 				}
 			}
 		}
-	}
-
-	@ObfuscatedName("vy")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[FIIIF)V"
-	)
-	public static void vy(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
-		int var7 = var1[var3];
-		var4 = var4 + ((var7 & 16711935) * var5 >> 8 & -622836552) + ((var7 & 0xFF00) * var5 >> 8 & 0xFF00);
-		int var8 = var0.ar_fld.ap_fld & bw(var2[var3], var6);
-		var1[var3] = (var8 & var4) + (~var8 & var7);
-	}
-
-	@ObfuscatedName("oq")
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;[I[F[IIIIF)V"
-	)
-	public static void oq(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
-		var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & -1986623305) * var5 & 571288885) >> 8;
-		yp(var0, var1, var2, var4, var8, var7, bw(var2[var4], var7));
 	}
 
 	@ObfuscatedName("dh")
@@ -7280,7 +7154,7 @@ public class fq extends fh {
 		descriptor = "([I[FIIF)V"
 	)
 	final void dh(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
+		this.ba(var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
 	}
 
 	@ObfuscatedName("bp")
@@ -7331,7 +7205,7 @@ public class fq extends fh {
 			}
 
 			int[] var33 = this.ar_fld.bm_fld;
-			int var34 = this.ar_fld.at_fld;
+			int var34 = this.ar_fld.ab_fld;
 			if (var14 <= var15 && var14 <= var16) {
 				if (!(var14 >= var34)) {
 					if (var15 > var34) {
@@ -7342,7 +7216,7 @@ public class fq extends fh {
 						var16 = var34;
 					}
 
-					var7 = this.do_(var4, var1, var7, var28, var29);
+					var7 = this.cf(var4, var1, var7, var28, var29);
 					if (var15 < var16) {
 						var13 = var11;
 						if (var14 < 0.0F) {
@@ -7467,7 +7341,7 @@ public class fq extends fh {
 						var14 = var34;
 					}
 
-					var8 = this.do_(var5, var2, var8, var28, var29);
+					var8 = this.cf(var5, var2, var8, var28, var29);
 					if (var16 < var14) {
 						var11 = var12;
 						if (var15 < 0.0F) {
@@ -7586,7 +7460,7 @@ public class fq extends fh {
 					var15 = var34;
 				}
 
-				var9 = this.do_(var6, var3, var9, var28, var29);
+				var9 = this.cf(var6, var3, var9, var28, var29);
 				if (var14 < var15) {
 					var12 = var13;
 					if (var16 < 0.0F) {
@@ -7694,121 +7568,26 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("cj")
+	@ObfuscatedName("wj")
 	@ObfuscatedSignature(
 		descriptor = "(Lfq;[I[F[IIIIF)V"
 	)
-	public static void cj(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+	public static void wj(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
-			var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			yp(var0, var1, var2, var4, var8, var7, bw(var2[var4], var7));
 		}
+
+		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
+		var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & -1986623305) * var5 & 571288885) >> 8;
+		var0.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
 	}
 
-	@ObfuscatedName("fc")
+	@ObfuscatedName("vz")
 	@ObfuscatedSignature(
-		descriptor = "(Lfq;[IIIIIIFFFF)V"
+		descriptor = "(Lev;IIIIZ)Z"
 	)
-	public static void fc(fq var0, int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, float var10) {
-		if (var0.ar_fld.ax_fld) {
-			if (var6 > var0.ar_fld.ac_fld) {
-				var6 = var0.ar_fld.ac_fld;
-			}
-
-			if (var5 < 0) {
-				var5 = 0;
-			}
-		}
-
-		if (var5 < var6) {
-			var2 += var5 - 1;
-			var7 += var8 * var5;
-			var9 += var10 * var5;
-			if (var0.ar_fld.an_fld) {
-				var4 = var6 - var5 >> 2;
-				var8 *= 4.0F;
-				if (var0.ar_fld.aj_fld == 0) {
-					if (var4 > 0) {
-						do {
-							int var40 = (int)var7 & 65535;
-							var3 = var0.as_fld[var40];
-							var7 += var8;
-							dx(var0, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(var0, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(var0, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-							dx(var0, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-
-					var4 = var6 - var5 & 3;
-					if (var4 > 0) {
-						int var41 = (int)var7 & 65535;
-						var3 = var0.as_fld[var41];
-
-						do {
-							dx(var0, var1, an_fld, ++var2, var3, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-				} else {
-					int var42 = var0.ar_fld.aj_fld;
-					int var43 = 256 - var0.ar_fld.aj_fld;
-					if (var4 > 0) {
-						do {
-							int var13 = (int)var7 & 65535;
-							var3 = var0.as_fld[var13];
-							var7 += var8;
-							var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
-							var0.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							var0.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							var0.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-							var0.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-
-					var4 = var6 - var5 & 3;
-					if (var4 > 0) {
-						int var44 = (int)var7 & 65535;
-						var3 = var0.as_fld[var44];
-						var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
-
-						do {
-							var0.cv(var1, an_fld, ++var2, var3, var42, var9);
-							var9 += var10;
-						} while (--var4 > 0);
-					}
-				}
-			} else {
-				var4 = var6 - var5;
-				if (var0.ar_fld.aj_fld == 0) {
-					do {
-						gk.ap(var0, var1, an_fld, ++var2, (int)var7 & 65535, var9);
-						var9 += var10;
-						var7 += var8;
-					} while (--var4 > 0);
-				} else {
-					int var11 = var0.ar_fld.aj_fld;
-					int var12 = 256 - var0.ar_fld.aj_fld;
-
-					do {
-						var0.cy(var1, an_fld, ++var2, (int)var7 & 65535, var11, var12, var9);
-						var9 += var10;
-						var7 += var8;
-					} while (--var4 > 0);
-				}
-			}
-		}
+	public static boolean vz(ev var0, int var1, int var2, int var3, int var4, boolean var5) {
+		return var0.cj(var0.ex_fld, var1, var2, var3, var4, var5);
 	}
 
 	@ObfuscatedName("ar")
@@ -7868,7 +7647,7 @@ public class fq extends fh {
 				}
 
 				int[] var43 = this.ar_fld.bm_fld;
-				int var44 = this.ar_fld.at_fld;
+				int var44 = this.ar_fld.ab_fld;
 				if (var16 <= var17 && var16 <= var18) {
 					if (!(var16 >= var44)) {
 						if (var17 > var44) {
@@ -7880,7 +7659,7 @@ public class fq extends fh {
 						}
 
 						var24 = var24 - var29 * var13 + var29;
-						var7 = this.do_(var4, var1, var7, var38, var39);
+						var7 = this.cf(var4, var1, var7, var38, var39);
 						if (var17 < var18) {
 							var15 = var13;
 							if (var16 < 0.0F) {
@@ -7903,7 +7682,7 @@ public class fq extends fh {
 
 								int var101;
 								for (var101 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -7911,7 +7690,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var101, 0, 0, (int)var14, (int)var15, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -7926,7 +7705,7 @@ public class fq extends fh {
 
 								int var100;
 								for (var100 = var43[(int)var16]; --var17 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -7934,7 +7713,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var100, 0, 0, (int)var15, (int)var14, var24, var29, var7, var38);
 									var15 += var42;
 									var14 += var40;
 									var24 += var30;
@@ -7964,7 +7743,7 @@ public class fq extends fh {
 
 								int var99;
 								for (var99 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var14, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -7972,7 +7751,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
+									xp(this, al_fld, var99, 0, 0, (int)var13, (int)var15, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -7987,7 +7766,7 @@ public class fq extends fh {
 
 								int var98;
 								for (var98 = var43[(int)var16]; --var18 >= 0.0F; var7 += var39) {
-									this.cx(al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var14, (int)var13, var24, var29, var7, var38);
 									var14 += var42;
 									var13 += var41;
 									var24 += var30;
@@ -7995,7 +7774,7 @@ public class fq extends fh {
 								}
 
 								while (--var17 >= 0.0F) {
-									this.cx(al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
+									xp(this, al_fld, var98, 0, 0, (int)var15, (int)var13, var24, var29, var7, var38);
 									var15 += var40;
 									var13 += var41;
 									var24 += var30;
@@ -8016,7 +7795,7 @@ public class fq extends fh {
 						}
 
 						var25 = var25 - var29 * var14 + var29;
-						var8 = this.do_(var5, var2, var8, var38, var39);
+						var8 = this.cf(var5, var2, var8, var38, var39);
 						if (var18 < var16) {
 							var13 = var14;
 							if (var17 < 0.0F) {
@@ -8039,7 +7818,7 @@ public class fq extends fh {
 
 								int var97;
 								for (var97 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -8047,7 +7826,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var97, 0, 0, (int)var15, (int)var13, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -8062,7 +7841,7 @@ public class fq extends fh {
 
 								int var96;
 								for (var96 = var43[(int)var17]; --var18 >= 0.0F; var8 += var39) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -8070,7 +7849,7 @@ public class fq extends fh {
 								}
 
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var96, 0, 0, (int)var13, (int)var15, var25, var29, var8, var38);
 									var13 += var41;
 									var15 += var42;
 									var25 += var30;
@@ -8099,7 +7878,7 @@ public class fq extends fh {
 							int var95 = var43[(int)var17];
 							if (var41 < var40) {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var15, (int)var14, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -8108,7 +7887,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var13, (int)var14, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -8117,7 +7896,7 @@ public class fq extends fh {
 								}
 							} else {
 								while (--var16 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var15, var25, var29, var8, var38);
 									var15 += var41;
 									var14 += var40;
 									var25 += var30;
@@ -8126,7 +7905,7 @@ public class fq extends fh {
 								}
 
 								while (--var18 >= 0.0F) {
-									this.cx(al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
+									xp(this, al_fld, var95, 0, 0, (int)var14, (int)var13, var25, var29, var8, var38);
 									var13 += var42;
 									var14 += var40;
 									var25 += var30;
@@ -8146,7 +7925,7 @@ public class fq extends fh {
 					}
 
 					var26 = var26 - var29 * var15 + var29;
-					var9 = this.do_(var6, var3, var9, var38, var39);
+					var9 = this.cf(var6, var3, var9, var38, var39);
 					if (var16 < var17) {
 						var14 = var15;
 						if (var18 < 0.0F) {
@@ -8168,7 +7947,7 @@ public class fq extends fh {
 						int var94 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -8177,7 +7956,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var14, (int)var13, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -8186,7 +7965,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -8195,7 +7974,7 @@ public class fq extends fh {
 							}
 
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var94, 0, 0, (int)var13, (int)var14, var26, var29, var9, var38);
 								var14 += var40;
 								var13 += var41;
 								var26 += var30;
@@ -8224,7 +8003,7 @@ public class fq extends fh {
 						int var45 = var43[(int)var18];
 						if (var40 < var42) {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var13, (int)var15, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -8233,7 +8012,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var14, (int)var15, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -8242,7 +8021,7 @@ public class fq extends fh {
 							}
 						} else {
 							while (--var17 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var13, var26, var29, var9, var38);
 								var13 += var40;
 								var15 += var42;
 								var26 += var30;
@@ -8251,7 +8030,7 @@ public class fq extends fh {
 							}
 
 							while (--var16 >= 0.0F) {
-								this.cx(al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
+								xp(this, al_fld, var45, 0, 0, (int)var15, (int)var14, var26, var29, var9, var38);
 								var14 += var41;
 								var15 += var42;
 								var26 += var30;
@@ -8265,12 +8044,76 @@ public class fq extends fh {
 		}
 	}
 
+	@ObfuscatedName("pf")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[FIIIIF)V"
+	)
+	public static void pf(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
+		int var8 = var0.as_fld[var4];
+		var8 = ((var8 & 16711935) * var6 >> 8 & 16711935) + ((var8 & 0xFF00) * var6 >> 8 & 0xFF00);
+		int var9 = var1[var3];
+		var8 = var8 + ((var9 & 16711935) * var5 >> 8 & 16711935) + ((var9 & 0xFF00) * var5 >> 8 & 0xFF00);
+		int var10 = var0.ar_fld.br_fld & bw(var2[var3], var7);
+		var1[var3] = (var10 & var8) + (~var10 & var9);
+	}
+
+	@ObfuscatedName("ha")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[F[IIIIF)V"
+	)
+	public static void ha(fq var0, int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
+		var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
+		var0.ba(var1, var2, var4, var8, var7, bw(var2[var4], var7));
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "([I[FIIFI)V"
+	)
+	final void ba(int[] var1, float[] var2, int var3, int var4, float var5, int var6) {
+		int var7 = this.ar_fld.br_fld & var6;
+		int var8 = this.ar_fld.be_fld & var6;
+		var1[var3] = var7 & var4 | ~var7 & var1[var3];
+		int var9 = var8 & Float.floatToRawIntBits(var5);
+		int var10 = ~var8 & Float.floatToRawIntBits(var2[var3]);
+		var2[var3] = Float.intBitsToFloat(var9 | var10);
+	}
+
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "([I[FIIIF)V"
+	)
+	final void dv(int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
+		int var7 = var1[var3];
+		var4 = var4 + ((var7 & -1963584867) * var5 >> 8 & 686266414) + ((var7 & -958827850) * var5 >> 8 & 0xFF00);
+		int var8 = this.ar_fld.br_fld & bw(var2[var3], var6);
+		var1[var3] = (var8 & var4) + (~var8 & var7);
+	}
+
+	@ObfuscatedName("dl")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFF)F"
+	)
+	float dl(float var1, float var2, float var3, float var4, float var5) {
+		var3 = var3 - var4 * var1 + var4;
+		if (var2 < 0.0F) {
+			var3 -= var5 * (int)var2;
+		}
+
+		return var3 - var5 * (var2 - (int)(var2 + 0.5F));
+	}
+
 	@ObfuscatedName("dc")
 	@ObfuscatedSignature(
 		descriptor = "([I[FIIF)V"
 	)
 	final void dc(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
+		this.ba(var1, var2, var3, this.as_fld[var4], var5, bw(var2[var3], var5));
 	}
 
 	@ObfuscatedName("da")
@@ -8279,8 +8122,8 @@ public class fq extends fh {
 	)
 	final void da(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8) {
 		if (this.ar_fld.ax_fld) {
-			if (var6 > this.ar_fld.ac_fld) {
-				var6 = this.ar_fld.ac_fld;
+			if (var6 > this.ar_fld.ao_fld) {
+				var6 = this.ar_fld.ao_fld;
 			}
 
 			if (var5 < 0) {
@@ -8292,9 +8135,9 @@ public class fq extends fh {
 			var2 += var5 - 1;
 			var4 = var6 - var5 >> 2;
 			var7 += var8 * var5;
-			if (this.ar_fld.aj_fld != 0) {
-				if (this.ar_fld.aj_fld == 254) {
-					if (var5 == 0 || var6 > this.ar_fld.ac_fld - 1) {
+			if (this.ar_fld.aa_fld != 0) {
+				if (this.ar_fld.aa_fld == 254) {
+					if (var5 == 0 || var6 > this.ar_fld.ao_fld - 1) {
 						return;
 					}
 
@@ -8318,8 +8161,8 @@ public class fq extends fh {
 						this.cv(var1, an_fld, var2 - 1, var1[var2], 0, var7);
 					}
 				} else {
-					int var9 = this.ar_fld.aj_fld;
-					int var10 = 256 - this.ar_fld.aj_fld;
+					int var9 = this.ar_fld.aa_fld;
+					int var10 = 256 - this.ar_fld.aa_fld;
 					var3 = ((var3 & 16711935) * var10 >> 8 & 16711935) + ((var3 & 0xFF00) * var10 >> 8 & 0xFF00);
 
 					while (--var4 >= 0) {
@@ -8339,18 +8182,18 @@ public class fq extends fh {
 				}
 			} else {
 				while (--var4 >= 0) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
 				}
 
 				for (int var23 = var6 - var5 & 3; --var23 >= 0; var7 += var8) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 				}
 			}
 		}
@@ -8362,8 +8205,8 @@ public class fq extends fh {
 	)
 	final void dk(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8) {
 		if (this.ar_fld.ax_fld) {
-			if (var6 > this.ar_fld.ac_fld) {
-				var6 = this.ar_fld.ac_fld;
+			if (var6 > this.ar_fld.ao_fld) {
+				var6 = this.ar_fld.ao_fld;
 			}
 
 			if (var5 < 0) {
@@ -8375,9 +8218,9 @@ public class fq extends fh {
 			var2 += var5 - 1;
 			var4 = var6 - var5 >> 2;
 			var7 += var8 * var5;
-			if (this.ar_fld.aj_fld != 0) {
-				if (this.ar_fld.aj_fld == 254) {
-					if (var5 == 0 || var6 > this.ar_fld.ac_fld - 1) {
+			if (this.ar_fld.aa_fld != 0) {
+				if (this.ar_fld.aa_fld == 254) {
+					if (var5 == 0 || var6 > this.ar_fld.ao_fld - 1) {
 						return;
 					}
 
@@ -8401,8 +8244,8 @@ public class fq extends fh {
 						this.cv(var1, an_fld, var2 - 1, var1[var2], 0, var7);
 					}
 				} else {
-					int var9 = this.ar_fld.aj_fld;
-					int var10 = 256 - this.ar_fld.aj_fld;
+					int var9 = this.ar_fld.aa_fld;
+					int var10 = 256 - this.ar_fld.aa_fld;
 					var3 = ((var3 & 16711935) * var10 >> 8 & 16711935) + ((var3 & 0xFF00) * var10 >> 8 & 0xFF00);
 
 					while (--var4 >= 0) {
@@ -8422,28 +8265,51 @@ public class fq extends fh {
 				}
 			} else {
 				while (--var4 >= 0) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 					var7 += var8;
 				}
 
 				for (int var23 = var6 - var5 & 3; --var23 >= 0; var7 += var8) {
-					dx(this, var1, an_fld, ++var2, var3, var7);
+					this.cc(var1, an_fld, ++var2, var3, var7);
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("ce")
+	@ObfuscatedName("vs")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[FIIIF)V"
+	)
+	public static void vs(fq var0, int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
+		int var7 = var1[var3];
+		var4 = var4 + ((var7 & 16711935) * var5 >> 8 & -622836552) + ((var7 & 0xFF00) * var5 >> 8 & 0xFF00);
+		int var8 = var0.ar_fld.br_fld & bw(var2[var3], var6);
+		var1[var3] = (var8 & var4) + (~var8 & var7);
+	}
+
+	@ObfuscatedName("pz")
+	@ObfuscatedSignature(
+		descriptor = "(Lfq;[I[FIIF)V"
+	)
+	public static void pz(fq var0, int[] var1, float[] var2, int var3, int var4, float var5) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ba(var1, var2, var3, var4, var5, bw(var2[var3], var5));
+		}
+	}
+
+	@ObfuscatedName("dx")
 	@ObfuscatedSignature(
 		descriptor = "([I[IIIIIIIIFFIIIIII)V"
 	)
-	final void ce(
+	final void dx(
 		int[] var1,
 		int[] var2,
 		int var3,
@@ -8463,8 +8329,8 @@ public class fq extends fh {
 		int var17
 	) {
 		if (this.ar_fld.ax_fld) {
-			if (var7 > this.ar_fld.ac_fld) {
-				var7 = this.ar_fld.ac_fld;
+			if (var7 > this.ar_fld.ao_fld) {
+				var7 = this.ar_fld.ao_fld;
 			}
 
 			if (var6 < 0) {
@@ -8477,7 +8343,7 @@ public class fq extends fh {
 			var8 += var9 * var6;
 			var10 += var11 * var6;
 			int var20 = var7 - var6;
-			int var26 = var6 - this.ar_fld.ao_fld;
+			int var26 = var6 - this.ar_fld.am_fld;
 			var12 += (var15 >> 3) * var26;
 			var13 += (var16 >> 3) * var26;
 			var14 += (var17 >> 3) * var26;
@@ -8522,37 +8388,664 @@ public class fq extends fh {
 			var9 <<= 3;
 			int var18 = var8 >> 8;
 			if (this.ay_fld) {
-				if (this.ar_fld.aj_fld != 0) {
-					int var27 = this.ar_fld.aj_fld;
-					int var28 = 256 - this.ar_fld.aj_fld;
+				if (this.ar_fld.aa_fld != 0) {
+					int var27 = this.ar_fld.aa_fld;
+					int var28 = 256 - this.ar_fld.aa_fld;
 					int var29 = var18 * var28 >> 8;
 
 					while (var20-- > 0) {
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						var21 = var23;
+						var22 = var24;
+						var12 += var15;
+						var13 += var16;
+						var14 += var17;
+						var25 = var14 >> 14;
+						if (var25 != 0) {
+							var23 = var12 / var25;
+							var24 = var13 / var25;
+							if (var23 < 0) {
+								var23 = 0;
+							} else if (var23 > 370119408) {
+								var23 = 556494785;
+							}
+						} else {
+							var23 = 0;
+							var24 = 0;
+						}
+
+						var3 = (var21 << 18) + var22;
+						var19 = (var23 - var21 >> 3 << 18) + (var24 - var22 >> 3);
+						var8 += var9;
+						var18 = var8 >> 8;
+					}
+
+					for (int var133 = var7 - var6 & 7; var133-- > 0; var10 += var11) {
+						this.cd(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+					}
+				} else {
+					while (var20-- > 0) {
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						var21 = var23;
+						var22 = var24;
+						var12 += var15;
+						var13 += var16;
+						var14 += var17;
+						var25 = var14 >> 14;
+						if (var25 != 0) {
+							var23 = var12 / var25;
+							var24 = var13 / var25;
+							if (var23 < 0) {
+								var23 = 0;
+							} else if (var23 > 145061795) {
+								var23 = 16256;
+							}
+						} else {
+							var23 = 0;
+							var24 = 0;
+						}
+
+						var3 = (var21 << 18) + var22;
+						var19 = (var23 - var21 >> 3 << 18) + (var24 - var22 >> 3);
+						var8 += var9;
+						var18 = var8 >> 8;
+					}
+
+					for (int var132 = var7 - var6 & 7; var132-- > 0; var10 += var11) {
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+						var5++;
+						var3 += var19;
+					}
+				}
+			} else if (this.ar_fld.aa_fld != 0) {
+				int var149 = this.ar_fld.aa_fld;
+				int var150 = 1274352213 - this.ar_fld.aa_fld;
+				int var151 = var18 * var150 >> 8;
+
+				while (var20-- > 0) {
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					var21 = var23;
+					var22 = var24;
+					var12 += var15;
+					var13 += var16;
+					var14 += var17;
+					var25 = var14 >> 14;
+					if (var25 != 0) {
+						var23 = var12 / var25;
+						var24 = var13 / var25;
+						if (var23 < 0) {
+							var23 = 0;
+						} else if (var23 > 16256) {
+							var23 = 16256;
+						}
+					} else {
+						var23 = 0;
+						var24 = 0;
+					}
+
+					var3 = (var21 << 18) + var22;
+					var19 = (var23 - var21 >> 3 << 18) + (var24 - var22 >> 3);
+					var8 += var9;
+					var18 = var8 >> 8;
+				}
+
+				for (int var135 = var7 - var6 & 7; var135-- > 0; var10 += var11) {
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+				}
+			} else {
+				while (var20-- > 0) {
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					var21 = var23;
+					var22 = var24;
+					var12 += var15;
+					var13 += var16;
+					var14 += var17;
+					var25 = var14 >> 14;
+					if (var25 != 0) {
+						var23 = var12 / var25;
+						var24 = var13 / var25;
+						if (var23 < 0) {
+							var23 = 0;
+						} else if (var23 > 16256) {
+							var23 = -874723503;
+						}
+					} else {
+						var23 = 0;
+						var24 = 0;
+					}
+
+					var3 = (var21 << 18) + var22;
+					var19 = (var23 - var21 >> 3 << 18) + (var24 - var22 >> 3);
+					var8 += var9;
+					var18 = var8 >> 8;
+				}
+
+				for (int var134 = var7 - var6 & 7; var134-- > 0; var10 += var11) {
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("ds")
+	@ObfuscatedSignature(
+		descriptor = "([I[IIIIIIIIFFIIIIII)V"
+	)
+	final void ds(
+		int[] var1,
+		int[] var2,
+		int var3,
+		int var4,
+		int var5,
+		int var6,
+		int var7,
+		int var8,
+		int var9,
+		float var10,
+		float var11,
+		int var12,
+		int var13,
+		int var14,
+		int var15,
+		int var16,
+		int var17
+	) {
+		if (this.ar_fld.ax_fld) {
+			if (var7 > this.ar_fld.ao_fld) {
+				var7 = this.ar_fld.ao_fld;
+			}
+
+			if (var6 < 0) {
+				var6 = 0;
+			}
+		}
+
+		if (var6 < var7) {
+			var5 += var6;
+			var8 += var9 * var6;
+			var10 += var11 * var6;
+			int var20 = var7 - var6;
+			int var26 = var6 - this.ar_fld.am_fld;
+			var12 += var15 * var26;
+			var13 += var16 * var26;
+			var14 += var17 * var26;
+			int var25 = var14 >> 14;
+			int var21;
+			int var22;
+			if (var25 != 0) {
+				var21 = var12 / var25;
+				var22 = var13 / var25;
+			} else {
+				var21 = 0;
+				var22 = 0;
+			}
+
+			var12 += var15 * var20;
+			var13 += var16 * var20;
+			var14 += var17 * var20;
+			var25 = var14 >> 14;
+			int var23;
+			int var24;
+			if (var25 != 0) {
+				var23 = var12 / var25;
+				var24 = var13 / var25;
+			} else {
+				var23 = 0;
+				var24 = 0;
+			}
+
+			var3 = (var21 << 18) + var22;
+			int var19 = ((var23 - var21) / var20 << 18) + (var24 - var22) / var20;
+			var20 >>= 3;
+			var9 <<= 3;
+			int var18 = var8 >> 8;
+			if (this.ay_fld) {
+				while (var20-- > 0) {
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					var8 += var9;
+					var18 = var8 >> 8;
+				}
+
+				for (int var82 = var7 - var6 & 7; var82-- > 0; var10 += var11) {
+					ha(this, var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+				}
+			} else {
+				while (var20-- > 0) {
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					var8 += var9;
+					var18 = var8 >> 8;
+				}
+
+				for (int var81 = var7 - var6 & 7; var81-- > 0; var10 += var11) {
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
+					var5++;
+					var3 += var19;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("bb")
+	@ObfuscatedSignature(
+		descriptor = "([I[F[IIIIF)V"
+	)
+	final void bb(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
+		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
+		var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
+		this.ba(var1, var2, var4, var8, var7, cn(var2[var4], var7));
+	}
+
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "([IIIIIIFFFF)V"
+	)
+	final void cx(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, float var10) {
+		if (this.ar_fld.ax_fld) {
+			if (var6 > this.ar_fld.at_fld) {
+				var6 = this.ar_fld.al_fld;
+			}
+
+			if (var5 < 0) {
+				var5 = 0;
+			}
+		}
+
+		if (var5 < var6) {
+			var2 += var5 - 1;
+			var7 += var8 * var5;
+			var9 += var10 * var5;
+			if (this.ar_fld.an_fld) {
+				var4 = var6 - var5 >> 2;
+				var8 *= 4.0F;
+				if (this.ar_fld.at_fld == 0) {
+					if (var4 > 0) {
+						do {
+							int var40 = (int)var7 & 65535;
+							var3 = this.as_fld[var40];
+							var7 += var8;
+							this.cq(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cq(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+							this.cq(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+
+					var4 = var6 - var5 & 3;
+					if (var4 > 0) {
+						int var41 = (int)var7 & 65535;
+						var3 = this.as_fld[var41];
+
+						do {
+							this.cc(var1, an_fld, ++var2, var3, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+				} else {
+					int var42 = this.ar_fld.al_fld;
+					int var43 = 256 - this.ar_fld.ac_fld;
+					if (var4 > 0) {
+						do {
+							int var13 = (int)var7 & 65535;
+							var3 = this.as_fld[var13];
+							var7 += var8;
+							var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+							this.dt(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+							this.cv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+
+					var4 = var6 - var5 & 3;
+					if (var4 > 0) {
+						int var44 = (int)var7 & 65535;
+						var3 = this.as_fld[var44];
+						var3 = ((var3 & 16711935) * var43 >> 8 & 16711935) + ((var3 & 0xFF00) * var43 >> 8 & 0xFF00);
+
+						do {
+							this.dv(var1, an_fld, ++var2, var3, var42, var9);
+							var9 += var10;
+						} while (--var4 > 0);
+					}
+				}
+			} else {
+				var4 = var6 - var5;
+				if (this.ar_fld.ab_fld == 0) {
+					do {
+						this.ch(var1, an_fld, ++var2, (int)var7 & 65535, var9);
+						var9 += var10;
+						var7 += var8;
+					} while (--var4 > 0);
+				} else {
+					int var11 = this.ar_fld.ad_fld;
+					int var12 = 256 - this.ar_fld.al_fld;
+
+					do {
+						sz(this, var1, an_fld, ++var2, (int)var7 & 65535, var11, var12, var9);
+						var9 += var10;
+						var7 += var8;
+					} while (--var4 > 0);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "([I[IIIIIIIIFFIIIIII)V"
+	)
+	final void cp(
+		int[] var1,
+		int[] var2,
+		int var3,
+		int var4,
+		int var5,
+		int var6,
+		int var7,
+		int var8,
+		int var9,
+		float var10,
+		float var11,
+		int var12,
+		int var13,
+		int var14,
+		int var15,
+		int var16,
+		int var17
+	) {
+		if (this.ar_fld.ax_fld) {
+			if (var7 > this.ar_fld.ao_fld) {
+				var7 = this.ar_fld.aj_fld;
+			}
+
+			if (var6 < 0) {
+				var6 = 0;
+			}
+		}
+
+		if (var6 < var7) {
+			var5 += var6;
+			var8 += var9 * var6;
+			var10 += var11 * var6;
+			int var20 = var7 - var6;
+			int var26 = var6 - this.ar_fld.ac_fld;
+			var12 += (var15 >> 3) * var26;
+			var13 += (var16 >> 3) * var26;
+			var14 += (var17 >> 3) * var26;
+			int var25 = var14 >> 14;
+			int var21;
+			int var22;
+			if (var25 != 0) {
+				var21 = var12 / var25;
+				var22 = var13 / var25;
+				if (var21 < 0) {
+					var21 = 0;
+				} else if (var21 > 16256) {
+					var21 = 16256;
+				}
+			} else {
+				var21 = 0;
+				var22 = 0;
+			}
+
+			var12 += var15;
+			var13 += var16;
+			var14 += var17;
+			var25 = var14 >> 14;
+			int var23;
+			int var24;
+			if (var25 != 0) {
+				var23 = var12 / var25;
+				var24 = var13 / var25;
+				if (var23 < 0) {
+					var23 = 0;
+				} else if (var23 > 16256) {
+					var23 = 16256;
+				}
+			} else {
+				var23 = 0;
+				var24 = 0;
+			}
+
+			var3 = (var21 << 18) + var22;
+			int var19 = (var23 - var21 >> 3 << 18) + (var24 - var22 >> 3);
+			var20 >>= 3;
+			var9 <<= 3;
+			int var18 = var8 >> 8;
+			if (this.ay_fld) {
+				if (this.ar_fld.ao_fld != 0) {
+					int var27 = this.ar_fld.am_fld;
+					int var28 = 256 - this.ar_fld.at_fld;
+					int var29 = var18 * var28 >> 8;
+
+					while (var20-- > 0) {
+						this.cj(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.ck(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.bg(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.ck(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.cz(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.cj(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						var5++;
+						var3 += var19;
+						var10 += var11;
+						this.cj(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
@@ -8586,41 +9079,41 @@ public class fq extends fh {
 					}
 
 					for (int var133 = var7 - var6 & 7; var133-- > 0; var10 += var11) {
-						this.cu(var1, an_fld, var2, var5, var27, var29, var3, var10);
+						this.bg(var1, an_fld, var2, var5, var27, var29, var3, var10);
 						var5++;
 						var3 += var19;
 					}
 				} else {
 					while (var20-- > 0) {
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 						var10 += var11;
@@ -8650,18 +9143,18 @@ public class fq extends fh {
 					}
 
 					for (int var132 = var7 - var6 & 7; var132-- > 0; var10 += var11) {
-						cj(this, var1, an_fld, var2, var5, var18, var3, var10);
+						ha(this, var1, an_fld, var2, var5, var18, var3, var10);
 						var5++;
 						var3 += var19;
 					}
 				}
-			} else if (this.ar_fld.aj_fld != 0) {
-				int var149 = this.ar_fld.aj_fld;
-				int var150 = 1274352213 - this.ar_fld.aj_fld;
+			} else if (this.ar_fld.aa_fld != 0) {
+				int var149 = this.ar_fld.ao_fld;
+				int var150 = 1274352213 - this.ar_fld.ao_fld;
 				int var151 = var18 * var150 >> 8;
 
 				while (var20-- > 0) {
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -8669,7 +9162,15 @@ public class fq extends fh {
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					this.bg(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.cd(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					var5++;
+					var3 += var19;
+					var10 += var11;
+					this.bg(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -8677,19 +9178,11 @@ public class fq extends fh {
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					this.bg(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
-					var5++;
-					var3 += var19;
-					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
-					var5++;
-					var3 += var19;
-					var10 += var11;
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					this.ck(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -8719,33 +9212,33 @@ public class fq extends fh {
 				}
 
 				for (int var135 = var7 - var6 & 7; var135-- > 0; var10 += var11) {
-					this.cj(var1, an_fld, var2, var5, var149, var151, var3, var10);
+					this.cd(var1, an_fld, var2, var5, var149, var151, var3, var10);
 					var5++;
 					var3 += var19;
 				}
 			} else {
 				while (var20-- > 0) {
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.bb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.bb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.bb(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
-					this.co(var1, an_fld, var2, var5, var18, var3, var10);
+					this.cm(var1, an_fld, var2, var5, var18, var3, var10);
 					var5++;
 					var3 += var19;
 					var10 += var11;
@@ -8791,54 +9284,16 @@ public class fq extends fh {
 		}
 	}
 
-	@ObfuscatedName("cg")
+	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
-		descriptor = "([I[F[IIIIF)V"
+		descriptor = "([I[FIIIIF)V"
 	)
-	final void cg(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
-		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
-		var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-		yp(this, var1, var2, var4, var8, var7, cr(var2[var4], var7));
-	}
-
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "([I[FIIF)V"
-	)
-	final void cc(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, var4, var5, bw(var2[var3], var5));
-	}
-
-	@ObfuscatedName("cq")
-	@ObfuscatedSignature(
-		descriptor = "([I[FIIF)V"
-	)
-	final void cq(int[] var1, float[] var2, int var3, int var4, float var5) {
-		yp(this, var1, var2, var3, var4, var5, bw(var2[var3], var5));
-	}
-
-	@ObfuscatedName("cm")
-	@ObfuscatedSignature(
-		descriptor = "([I[F[IIIIF)V"
-	)
-	final void cm(int[] var1, float[] var2, int[] var3, int var4, int var5, int var6, float var7) {
-		int var8 = var3[(var6 & 16256) + (var6 >>> 25)];
-		if (var8 != 0) {
-			var8 = ((var8 & 16711935) * var5 & -16711936) + ((var8 & 0xFF00) * var5 & 0xFF0000) >> 8;
-			yp(this, var1, var2, var4, var8, var7, bw(var2[var4], var7));
-		}
-	}
-
-	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-		descriptor = "([I[FIIFI)V"
-	)
-	final void ba(int[] var1, float[] var2, int var3, int var4, float var5, int var6) {
-		int var7 = this.ar_fld.ad_fld & var6;
-		int var8 = this.ar_fld.ad_fld & var6;
-		var1[var3] = var7 & var4 | ~var7 & var1[var3];
-		int var9 = var8 & Float.floatToRawIntBits(var5);
-		int var10 = ~var8 & Float.floatToRawIntBits(var2[var3]);
-		var2[var3] = Float.intBitsToFloat(var9 | var10);
+	final void cy(int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
+		int var8 = this.as_fld[var4];
+		var8 = ((var8 & 16711935) * var6 >> 8 & 16711935) + ((var8 & 0xFF00) * var6 >> 8 & 0xFF00);
+		int var9 = var1[var3];
+		var8 = var8 + ((var9 & 16711935) * var5 >> 8 & 16711935) + ((var9 & 0xFF00) * var5 >> 8 & 0xFF00);
+		int var10 = this.ar_fld.al_fld & ca(var2[var3], var7);
+		var1[var3] = (var10 & var8) + (~var10 & var9);
 	}
 }

@@ -52,7 +52,7 @@ public class gt implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;I)Lfe;"
+		descriptor = "(Lub;Lub;II)Lfe;"
 	)
 	public static fe ak(ub var0, ub var1, int var2) throws EOFException {
 		boolean var4 = true;
@@ -88,12 +88,28 @@ public class gt implements xm {
 		}
 	}
 
+	@ObfuscatedName("gr")
+	@ObfuscatedSignature(
+		descriptor = "(Loy;)I"
+	)
+	public static int gr(oy var0) {
+		return var0.bf_fld;
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()[Lgt;"
 	)
 	public static gt[] ay() {
 		return new gt[]{ag_fld, av_fld, ak_fld, az_fld};
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	public static void au(xi var0, int var1) {
+		var0.al_fld[(var0.au_fld += -308482632) * -661977895 - 1] = (byte)(128 - var1);
 	}
 
 	@ObfuscatedName("av")
@@ -103,6 +119,30 @@ public class gt implements xm {
 	@Override
 	public int av() {
 		return this.ae_fld;
+	}
+
+	@ObfuscatedName("tg")
+	@ObfuscatedSignature(
+		descriptor = "(Lau;[II)I"
+	)
+	public static int tg(au var0, int[] var1, int var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			int var3 = var1[var2];
+			int var4 = -1;
+			int var5 = Integer.MIN_VALUE;
+
+			for (int var6 = 0; var6 < var2; var6++) {
+				int var7 = var1[var6];
+				if (var7 < var3 && var7 > var5) {
+					var4 = var6;
+					var5 = var7;
+				}
+			}
+
+			return var4;
+		}
 	}
 
 	gt(byte var1) {
@@ -145,7 +185,7 @@ public class gt implements xm {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static int ag(int var0, int var1) {
 		return fa.ay_fld[var0] * 128 + (var1 << 7);

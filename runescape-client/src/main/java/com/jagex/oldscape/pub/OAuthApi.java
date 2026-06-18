@@ -35,11 +35,11 @@ public interface OAuthApi {
 	)
 	void ace(int var1);
 
-	@ObfuscatedName("acy")
+	@ObfuscatedName("getAccountHash")
 	@ObfuscatedSignature(
 		descriptor = "()J"
 	)
-	long acy();
+	long getAccountHash();
 
 	@ObfuscatedName("aco")
 	@ObfuscatedSignature(
@@ -53,11 +53,17 @@ public interface OAuthApi {
 	)
 	boolean acz();
 
-	@ObfuscatedName("setOtlTokenRequester")
+	@ObfuscatedName("acd")
 	@ObfuscatedSignature(
 		descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
 	)
-	void setOtlTokenRequester(OtlTokenRequester var1);
+	void acd(OtlTokenRequester var1);
+
+	@ObfuscatedName("acs")
+	@ObfuscatedSignature(
+		descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
+	)
+	void acs(OtlTokenRequester var1);
 
 	@ObfuscatedName("ach")
 	@ObfuscatedSignature(
@@ -71,12 +77,6 @@ public interface OAuthApi {
 	)
 	void acj(OtlTokenRequester var1);
 
-	@ObfuscatedName("acd")
-	@ObfuscatedSignature(
-		descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
-	)
-	void acd(OtlTokenRequester var1);
-
 	@ObfuscatedName("setClient")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
@@ -89,11 +89,11 @@ public interface OAuthApi {
 	)
 	void acn(RefreshAccessTokenRequester var1);
 
-	@ObfuscatedName("acs")
+	@ObfuscatedName("setOtlTokenRequester")
 	@ObfuscatedSignature(
 		descriptor = "(Lcom/jagex/oldscape/pub/OtlTokenRequester;)V"
 	)
-	void acs(OtlTokenRequester var1);
+	void setOtlTokenRequester(OtlTokenRequester var1);
 
 	@ObfuscatedName("setRefreshTokenRequester")
 	@ObfuscatedSignature(
@@ -101,9 +101,9 @@ public interface OAuthApi {
 	)
 	void setRefreshTokenRequester(RefreshAccessTokenRequester var1);
 
-	@ObfuscatedName("getAccountHash")
+	@ObfuscatedName("acy")
 	@ObfuscatedSignature(
 		descriptor = "()J"
 	)
-	long getAccountHash();
+	long acy();
 }

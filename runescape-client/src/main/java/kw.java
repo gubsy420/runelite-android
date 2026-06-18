@@ -54,12 +54,12 @@ public class kw {
 		descriptor = "I"
 	)
 	public static int ar_fld;
-	@ObfuscatedGetter(
-		intValue = 595615865
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 595615865
 	)
 	static int ag_fld = kj.ah(256);
 	@ObfuscatedName("al")
@@ -97,12 +97,12 @@ public class kw {
 		descriptor = "I"
 	)
 	public static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = -1280942989
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1280942989
 	)
 	static int az_fld = kj.ah(256);
 	@ObfuscatedName("ad")
@@ -135,17 +135,45 @@ public class kw {
 		descriptor = "I"
 	)
 	static int ac_fld;
-	@ObfuscatedGetter(
-		intValue = 1390174903
-	)
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1390174903
 	)
 	static int aj_fld;
 
 	kw() throws Throwable {
 		throw new Error();
+	}
+
+	@ObfuscatedName("tt")
+	@ObfuscatedSignature(
+		descriptor = "(Lrh;)V"
+	)
+	public static void tt(rh var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ag_fld = la.fq_fld.ah_fld.bo(var0.az_fld, 1797529286) ? rw.ag_fld : rw.az_fld;
+	}
+
+	@ObfuscatedName("ma")
+	@ObfuscatedSignature(
+		descriptor = "(Lbt;)Z"
+	)
+	public static boolean ma(bt var0) {
+		return !qa.jv(var0.ay_fld, 1547453022);
+	}
+
+	@ObfuscatedName("pt")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;)I"
+	)
+	public static int pt(gu var0) {
+		return var0.ag_fld;
 	}
 
 	static {

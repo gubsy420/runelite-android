@@ -14,14 +14,6 @@ public abstract class ri {
 	)
 	static int br_fld;
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	public boolean aq(gu var1, int var2, int var3) {
-		return this.ag(var1, var2, var3, -1560672265);
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;III)Z"
@@ -48,6 +40,14 @@ public abstract class ri {
 	)
 	abstract void az(int var1, int var2, int var3);
 
+	@ObfuscatedName("li")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	public boolean li(gu var1, int var2, int var3) {
+		return this.ag(var1, var2, var3, -1560672265);
+	}
+
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;Lrk;I)V"
@@ -60,17 +60,25 @@ public abstract class ri {
 	)
 	abstract void ae(gu var1, rk var2, int var3);
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("vx")
 	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
+		descriptor = "(Lgu;Lrk;I)V"
 	)
-	abstract boolean aw(gu var1, int var2, int var3);
+	public void vx(gu var1, rk var2, int var3) {
+		this.ak(var1, var2, var3, 1225683158);
+	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;II)Z"
 	)
 	abstract boolean ah(gu var1, int var2, int var3);
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	abstract boolean ay(gu var1, int var2, int var3);
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
@@ -80,27 +88,19 @@ public abstract class ri {
 		return (float)(var0 - var1) / (var2 - var1);
 	}
 
-	@ObfuscatedName("ol")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;Lrk;I)V"
-	)
-	public void ol(gu var1, rk var2, int var3) {
-		this.ak(var1, var2, var3, 1225683158);
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	abstract boolean ay(gu var1, int var2, int var3);
-
-	@ObfuscatedName("dz")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;DI)Z"
 	)
-	public boolean dz(gu var1, double var2, int var4) {
-		return this.aq(var1, (int)var2, var4);
+	public boolean kj(gu var1, double var2, int var4) {
+		return this.li(var1, (int)var2, var4);
 	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	abstract boolean as(gu var1, int var2, int var3);
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
@@ -119,7 +119,7 @@ public abstract class ri {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	static void ak() {
 		dt.ar_fld = -836973041;
@@ -151,9 +151,17 @@ public abstract class ri {
 		return (float)(var0 - var1) / (var2 - var1);
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)Z"
+	)
+	public static boolean aq(lu var0) {
+		return var0.hn_fld == 2;
+	}
+
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;II)Z"
 	)
-	abstract boolean as(gu var1, int var2, int var3);
+	abstract boolean aw(gu var1, int var2, int var3);
 }

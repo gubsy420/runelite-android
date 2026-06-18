@@ -4,43 +4,34 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("mt")
 public class mt extends mf {
-	@ObfuscatedName("fg")
-	@ObfuscatedSignature(
-		descriptor = "J"
-	)
-	public long fg_fld;
-	@ObfuscatedName("nt")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public static boolean nt_fld;
-	@ObfuscatedName("rg")
+	@ObfuscatedName("vp")
 	@ObfuscatedSignature(
 		descriptor = "D"
 	)
-	public static double rg_fld;
-	@ObfuscatedName("pg")
+	public static double vp_fld;
+	@ObfuscatedName("zm")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	public long pg_fld;
-	@ObfuscatedGetter(
-		longValue = 472907172249662241L
+	public long zm_fld;
+	@ObfuscatedName("lb")
+	@ObfuscatedSignature(
+		descriptor = "J"
 	)
+	public long lb_fld;
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public static boolean bo_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
-	long ak_fld = System.nanoTime();
-
-	@ObfuscatedName("lc")
-	@ObfuscatedSignature(
-		descriptor = "(Lmw;I)V"
+	@ObfuscatedGetter(
+		longValue = 472907172249662241L
 	)
-	public static void lc(mw var0, int var1) {
-		int var2 = var0.aw_fld.dd();
-		var0.as_fld[var1] = var0.as_fld[var1] + var2;
-	}
+	long ak_fld = System.nanoTime();
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
@@ -70,11 +61,51 @@ public class mt extends mf {
 		return var9;
 	}
 
-	@ObfuscatedName("ct")
+	@ObfuscatedName("eu")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int eu(int var1, int var2) {
+		long var3 = System.nanoTime();
+		bo_fld = true;
+		if (client.cg_fld > 0L) {
+			long var5 = this.ak_fld - var3;
+			long var7 = this.zm_fld - var3;
+			long var9 = Math.min(var5, var7);
+			var9 /= 1000000L;
+			ib(var9);
+			var3 = System.nanoTime();
+			if (var3 < this.ak_fld && var5 > var7) {
+				bo_fld = false;
+			} else {
+				this.ak_fld = this.ak_fld * 472907172249662241L + client.cg_fld;
+				if (this.ak_fld < var3) {
+					this.ak_fld = var3;
+				}
+			}
+		}
+
+		long var11 = 1000000L * var1;
+
+		int var12;
+		for (var12 = 0; var12 < 10 && (var12 < 1 && !bo_fld || this.zm_fld < var3); this.zm_fld += var11) {
+			var12++;
+			this.lb_fld = this.zm_fld;
+		}
+
+		if (this.zm_fld < var3) {
+			this.zm_fld = var3;
+		}
+
+		vp_fld = (double)Math.min(var3 - this.lb_fld, var11) / var11;
+		return var12;
+	}
+
+	@ObfuscatedName("ib")
 	@ObfuscatedSignature(
 		descriptor = "(J)V"
 	)
-	public static void ct(long var0) {
+	public static void ib(long var0) {
 		if (var0 > 0L) {
 			if (var0 % 10L == 0L) {
 				try {
@@ -110,7 +141,7 @@ public class mt extends mf {
 	)
 	@Override
 	public int ag(int var1, int var2, int var3) {
-		return client.im_fld && client.cl_fld >= 25 ? this.uk(var1, var2) : this.rw(var1, var2);
+		return client.vv_boolean && client.cl_fld >= 25 ? this.eu(var1, var2) : this.ye(var1, var2);
 	}
 
 	@ObfuscatedName("ay")
@@ -150,46 +181,6 @@ public class mt extends mf {
 		this.ak_fld = System.nanoTime();
 	}
 
-	@ObfuscatedName("uk")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int uk(int var1, int var2) {
-		long var3 = System.nanoTime();
-		nt_fld = true;
-		if (client.ua_fld > 0L) {
-			long var5 = this.ak_fld - var3;
-			long var7 = this.fg_fld - var3;
-			long var9 = Math.min(var5, var7);
-			var9 /= 1000000L;
-			ct(var9);
-			var3 = System.nanoTime();
-			if (var3 < this.ak_fld && var5 > var7) {
-				nt_fld = false;
-			} else {
-				this.ak_fld = this.ak_fld * 472907172249662241L + client.ua_fld;
-				if (this.ak_fld < var3) {
-					this.ak_fld = var3;
-				}
-			}
-		}
-
-		long var11 = 1000000L * var1;
-
-		int var12;
-		for (var12 = 0; var12 < 10 && (var12 < 1 && !nt_fld || this.fg_fld < var3); this.fg_fld += var11) {
-			var12++;
-			this.pg_fld = this.fg_fld;
-		}
-
-		if (this.fg_fld < var3) {
-			this.fg_fld = var3;
-		}
-
-		rg_fld = (double)Math.min(var3 - this.pg_fld, var11) / var11;
-		return var12;
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -206,6 +197,34 @@ public class mt extends mf {
 	@Override
 	public void az() {
 		this.ak_fld = System.nanoTime();
+	}
+
+	@ObfuscatedName("ye")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int ye(int var1, int var2) {
+		long var3 = 1000000L * var2;
+		long var5 = this.ak_fld - System.nanoTime();
+		if (var5 < var3) {
+			var5 = var3;
+		}
+
+		ib(var5 / 1000000L);
+		long var7 = System.nanoTime();
+		int var9 = 0;
+
+		while (var9 < 10 && (var9 < 1 || this.ak_fld < var7)) {
+			var9++;
+			this.ak_fld = this.ak_fld * 472907172249662241L + var1 * 1000000L;
+		}
+
+		if (this.ak_fld < var7) {
+			this.ak_fld = var7;
+		}
+
+		bo_fld = true;
+		return var9;
 	}
 
 	@ObfuscatedName("aw")
@@ -267,40 +286,22 @@ public class mt extends mf {
 		return var9;
 	}
 
-	@ObfuscatedName("rw")
+	@ObfuscatedName("ph")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(Lac;)V"
 	)
-	public int rw(int var1, int var2) {
-		long var3 = 1000000L * var2;
-		long var5 = this.ak_fld - System.nanoTime();
-		if (var5 < var3) {
-			var5 = var3;
-		}
-
-		ct(var5 / 1000000L);
-		long var7 = System.nanoTime();
-		int var9 = 0;
-
-		while (var9 < 10 && (var9 < 1 || this.ak_fld < var7)) {
-			var9++;
-			this.ak_fld = this.ak_fld * 472907172249662241L + var1 * 1000000L;
-		}
-
-		if (this.ak_fld < var7) {
-			this.ak_fld = var7;
-		}
-
-		nt_fld = true;
-		return var9;
+	public static void ph(ac var0) {
+		var0.ae_fld = var0.az_fld;
+		var0.ah_fld = ac.ak(var0.az_fld, var0.av_fld);
+		var0.aw_fld = ac.ag(var0.az_fld, var0.av_fld);
 	}
 
-	@ObfuscatedName("nv")
+	@ObfuscatedName("me")
 	@ObfuscatedSignature(
 		descriptor = "(II)I"
 	)
 	@Override
-	public int nv(int var1, int var2) {
+	public int me(int var1, int var2) {
 		return this.ag(var1, var2, 1099094056);
 	}
 }

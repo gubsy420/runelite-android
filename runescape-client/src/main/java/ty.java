@@ -9,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ty")
 public class ty {
-	@ObfuscatedGetter(
-		intValue = -1744104081
-	)
 	@ObfuscatedName("rh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1744104081
 	)
 	static int rh_fld;
 	@ObfuscatedName("ag")
@@ -50,24 +50,16 @@ public class ty {
 		return null;
 	}
 
-	@ObfuscatedName("jp")
-	@ObfuscatedSignature(
-		descriptor = "(Lcv;)Z"
-	)
-	public static boolean jp(cv var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (rw.ak_fld == var0.bm_fld) {
-			var0.af(-54664665);
-		}
-
-		return var0.bm_fld == rw.ag_fld;
-	}
-
 	static {
 		ImageIO.setUseCache(false);
+	}
+
+	@ObfuscatedName("kx")
+	@ObfuscatedSignature(
+		descriptor = "(Lvv;)I"
+	)
+	public static int kx(vv var0) {
+		return var0.az_fld;
 	}
 
 	@ObfuscatedName("ag")

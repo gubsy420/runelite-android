@@ -73,7 +73,7 @@ public class fc {
 		int var2 = ar_fld.bm_fld[0];
 		int var3 = var2 / yu.au_fld;
 		int var4 = var2 - var3 * yu.au_fld;
-		fo.xw(ar_fld, var0, var4, var1, var3);
+		fo.cv(ar_fld, var0, var4, var1, var3);
 	}
 
 	@ObfuscatedName("dv")
@@ -81,7 +81,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFI)V"
 	)
 	static void dv(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9) {
-		al_fld.as(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+		fh.hn(al_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
 	}
 
 	@ObfuscatedName("cr")
@@ -89,16 +89,16 @@ public class fc {
 		descriptor = "(IIII)V"
 	)
 	static void cr(int var0, int var1, int var2, int var3) {
-		ar_fld.ac_fld = var2 - var0;
-		ar_fld.at_fld = var3 - var1;
+		ar_fld.ao_fld = var2 - var0;
+		ar_fld.ab_fld = var3 - var1;
 		am();
-		if (ar_fld.bm_fld.length < ar_fld.at_fld) {
-			ar_fld.bm_fld = new int[wp.ay(ar_fld.at_fld)];
+		if (ar_fld.bm_fld.length < ar_fld.ab_fld) {
+			ar_fld.bm_fld = new int[wp.ay(ar_fld.ab_fld)];
 		}
 
 		int var4 = var1 * yu.au_fld + var0;
 
-		for (int var5 = 0; var5 < ar_fld.at_fld; var5++) {
+		for (int var5 = 0; var5 < ar_fld.ab_fld; var5++) {
 			ar_fld.bm_fld[var5] = var4;
 			var4 += yu.au_fld;
 		}
@@ -120,7 +120,7 @@ public class fc {
 		int var2 = ar_fld.bm_fld[0];
 		int var3 = var2 / yu.au_fld;
 		int var4 = var2 - var3 * yu.au_fld;
-		fo.xw(ar_fld, var0, var4, var1, var3);
+		fo.cv(ar_fld, var0, var4, var1, var3);
 	}
 
 	@ObfuscatedName("ae")
@@ -148,12 +148,20 @@ public class fc {
 		return af_fld;
 	}
 
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Lma;)Ljava/lang/String;"
+	)
+	public static String at(ma var0) {
+		return var0.af_fld.as_fld;
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	static int aw() {
-		return ar_fld.ao_fld;
+		return ar_fld.am_fld;
 	}
 
 	@ObfuscatedName("br")
@@ -164,12 +172,21 @@ public class fc {
 		av(var0, 0, 512);
 	}
 
+	@ObfuscatedName("nn")
+	@ObfuscatedSignature(
+		descriptor = "(Lml;II)V"
+	)
+	public static void nn(ml var0, int var1, int var2) {
+		var0.bz_fld[var1] = var2;
+		var0.ar_fld[var1] = (int)(2097152.0 * Math.pow(2.0, var2 * 5.493164E-4F) + 0.5);
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	static int as() {
-		return ar_fld.ab_fld;
+		return ar_fld.ap_fld;
 	}
 
 	@ObfuscatedName("ar")
@@ -177,7 +194,15 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int ar() {
-		return ar_fld.al_fld;
+		return ar_fld.at_fld;
+	}
+
+	@ObfuscatedName("iz")
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)I"
+	)
+	public static int iz(uk var0) {
+		return var0.av_fld;
 	}
 
 	@ObfuscatedName("af")
@@ -185,7 +210,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int af() {
-		return ar_fld.am_fld;
+		return ar_fld.aj_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -213,7 +238,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int ax() {
-		return ar_fld.ac_fld;
+		return ar_fld.ao_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -233,7 +258,7 @@ public class fc {
 			al_fld = ak_fld;
 		}
 
-		al_fld.aw(var0, var1, var2, var3);
+		al_fld.bh(var0, var1, var2, var3);
 	}
 
 	@ObfuscatedName("ai")
@@ -249,7 +274,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bw() {
-		return ar_fld.be_fld;
+		return ar_fld.ac_fld;
 	}
 
 	@ObfuscatedName("am")
@@ -257,7 +282,7 @@ public class fc {
 		descriptor = "()V"
 	)
 	public static void am() {
-		eb.zi(ar_fld);
+		ar_fld.ak();
 	}
 
 	fc() throws Throwable {
@@ -311,18 +336,6 @@ public class fc {
 		al_fld.al(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
 	}
 
-	@ObfuscatedName("wc")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int wc(nm var0, Object var1, Object var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak((nl)var1, (nl)var2, 673321348);
-	}
-
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFFFFFFIIIIIIIIIIIII)V"
@@ -359,7 +372,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void ac(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		fh.re(al_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.ay(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("aj")
@@ -367,7 +380,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFI)V"
 	)
 	static void aj(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9) {
-		al_fld.as(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+		fh.hn(al_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
 	}
 
 	static {
@@ -583,7 +596,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int cq() {
-		return ar_fld.ac_fld;
+		return ar_fld.ao_fld;
 	}
 
 	@ObfuscatedName("bx")
@@ -607,7 +620,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bp() {
-		return ar_fld.ao_fld;
+		return ar_fld.am_fld;
 	}
 
 	@ObfuscatedName("bl")
@@ -632,7 +645,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bv() {
-		return ar_fld.ab_fld;
+		return ar_fld.ap_fld;
 	}
 
 	@ObfuscatedName("bi")
@@ -640,7 +653,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bi() {
-		return ar_fld.al_fld;
+		return ar_fld.at_fld;
 	}
 
 	@ObfuscatedName("ca")
@@ -648,7 +661,17 @@ public class fc {
 		descriptor = "()V"
 	)
 	public static void ca() {
-		eb.zi(ar_fld);
+		ar_fld.ak();
+	}
+
+	@ObfuscatedName("sm")
+	@ObfuscatedSignature(
+		descriptor = "(Lgz;)V"
+	)
+	public static void sm(gz var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("bn")
@@ -656,7 +679,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bn() {
-		return ar_fld.am_fld;
+		return ar_fld.aj_fld;
 	}
 
 	@ObfuscatedName("bc")
@@ -664,7 +687,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bc() {
-		return ar_fld.am_fld;
+		return ar_fld.aj_fld;
 	}
 
 	@ObfuscatedName("ci")
@@ -761,7 +784,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bq() {
-		return ar_fld.be_fld;
+		return ar_fld.ac_fld;
 	}
 
 	@ObfuscatedName("ao")
@@ -769,7 +792,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void ao(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		al_fld.bo(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.bl(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("cp")
@@ -781,7 +804,7 @@ public class fc {
 			al_fld = ak_fld;
 		}
 
-		al_fld.aw(var0, var1, var2, var3);
+		al_fld.bh(var0, var1, var2, var3);
 	}
 
 	@ObfuscatedName("dh")
@@ -789,7 +812,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFI)V"
 	)
 	static void dh(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9) {
-		al_fld.as(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+		fh.hn(al_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
 	}
 
 	@ObfuscatedName("bb")
@@ -808,7 +831,7 @@ public class fc {
 		int var2 = ar_fld.bm_fld[0];
 		int var3 = var2 / yu.au_fld;
 		int var4 = var2 - var3 * yu.au_fld;
-		fo.xw(ar_fld, var0, var4, var1, var3);
+		fo.cv(ar_fld, var0, var4, var1, var3);
 	}
 
 	@ObfuscatedName("cv")
@@ -816,7 +839,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int cv() {
-		return ar_fld.ac_fld;
+		return ar_fld.ao_fld;
 	}
 
 	@ObfuscatedName("cy")
@@ -832,7 +855,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int al() {
-		return ar_fld.be_fld;
+		return ar_fld.ac_fld;
 	}
 
 	@ObfuscatedName("cx")
@@ -860,7 +883,7 @@ public class fc {
 			al_fld = ak_fld;
 		}
 
-		al_fld.aw(var0, var1, var2, var3);
+		al_fld.bh(var0, var1, var2, var3);
 	}
 
 	@ObfuscatedName("ag")
@@ -996,7 +1019,7 @@ public class fc {
 		descriptor = "()V"
 	)
 	public static void cg() {
-		eb.zi(ar_fld);
+		ar_fld.ak();
 	}
 
 	@ObfuscatedName("cw")
@@ -1004,7 +1027,7 @@ public class fc {
 		descriptor = "()V"
 	)
 	public static void cw() {
-		eb.zi(ar_fld);
+		ar_fld.ak();
 	}
 
 	@ObfuscatedName("ba")
@@ -1012,7 +1035,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int ba() {
-		return ar_fld.be_fld;
+		return ar_fld.ac_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -1020,7 +1043,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int ay() {
-		return ar_fld.br_fld;
+		return ar_fld.ad_fld;
 	}
 
 	@ObfuscatedName("ck")
@@ -1028,7 +1051,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void ck(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		al_fld.bo(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.bl(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("cb")
@@ -1036,7 +1059,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void cb(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		al_fld.bo(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.bl(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("co")
@@ -1044,7 +1067,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void co(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		al_fld.bo(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.bl(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("cu")
@@ -1052,7 +1075,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void cu(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		al_fld.bo(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.bl(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("cf")
@@ -1099,7 +1122,7 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bu() {
-		return ar_fld.al_fld;
+		return ar_fld.at_fld;
 	}
 
 	@ObfuscatedName("ct")
@@ -1146,7 +1169,7 @@ public class fc {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	static void dc(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11) {
-		fh.re(al_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+		al_fld.ay(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
 	}
 
 	@ObfuscatedName("aq")
@@ -1154,16 +1177,16 @@ public class fc {
 		descriptor = "(IIII)V"
 	)
 	static void aq(int var0, int var1, int var2, int var3) {
-		ar_fld.ac_fld = var2 - var0;
-		ar_fld.at_fld = var3 - var1;
+		ar_fld.ao_fld = var2 - var0;
+		ar_fld.ab_fld = var3 - var1;
 		am();
-		if (ar_fld.bm_fld.length < ar_fld.at_fld) {
-			ar_fld.bm_fld = new int[wp.ay(ar_fld.at_fld)];
+		if (ar_fld.bm_fld.length < ar_fld.ab_fld) {
+			ar_fld.bm_fld = new int[wp.ay(ar_fld.ab_fld)];
 		}
 
 		int var4 = var1 * yu.au_fld + var0;
 
-		for (int var5 = 0; var5 < ar_fld.at_fld; var5++) {
+		for (int var5 = 0; var5 < ar_fld.ab_fld; var5++) {
 			ar_fld.bm_fld[var5] = var4;
 			var4 += yu.au_fld;
 		}
@@ -1174,6 +1197,6 @@ public class fc {
 		descriptor = "()I"
 	)
 	static int bt() {
-		return ar_fld.br_fld;
+		return ar_fld.ad_fld;
 	}
 }

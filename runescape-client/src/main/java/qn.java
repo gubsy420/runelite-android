@@ -19,7 +19,7 @@ public class qn implements Callable {
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;II)V"
+		descriptor = "([Ljava/lang/Object;III)V"
 	)
 	static void ac(Object[] var0, int var1, int var2) {
 		while (var1 < var2) {
@@ -46,7 +46,7 @@ public class qn implements Callable {
 				return new qx("Error servicing REST query: " + var2.getMessage());
 			}
 
-			return this.ak_fld.ae();
+			return qk.it(this.ak_fld, -976144536);
 		} catch (Throwable var3) {
 			throw new RuntimeException(var3);
 		}
@@ -66,7 +66,7 @@ public class qn implements Callable {
 				return new qx("Error servicing REST query: " + var3.getMessage());
 			}
 
-			return this.ak_fld.ae();
+			return qk.it(this.ak_fld, -976144536);
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
@@ -91,7 +91,7 @@ public class qn implements Callable {
 				return new qx("Error servicing REST query: " + var3.getMessage());
 			}
 
-			return this.ak_fld.ae();
+			return qk.it(this.ak_fld, -976144536);
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}

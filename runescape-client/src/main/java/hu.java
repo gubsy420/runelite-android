@@ -1,4 +1,5 @@
-import javax.net.ssl.HandshakeCompletedListener;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.security.cert.X509Certificate;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -46,12 +47,12 @@ public class hu extends ht {
 		descriptor = "I"
 	)
 	static int an_fld;
-	@ObfuscatedGetter(
-		intValue = -70953483
-	)
 	@ObfuscatedName("je")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -70953483
 	)
 	static int je_fld;
 	@ObfuscatedName("ce")
@@ -71,10 +72,10 @@ public class hu extends ht {
 	@Override
 	void ak(xi var1, int var2) {
 		this.ak_fld = var1.cg() == 1;
-		this.ag_fld = xi.rp(var1, -1961259440);
-		this.az_fld = xi.rp(var1, 604706521);
-		this.av_fld = xi.rp(var1, 666873428);
-		this.ae_fld = xi.rp(var1, -1308060419);
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cw();
+		this.av_fld = var1.cw();
+		this.ae_fld = var1.cw();
 	}
 
 	@ObfuscatedName("av")
@@ -84,10 +85,10 @@ public class hu extends ht {
 	@Override
 	void av(xi var1) {
 		this.ak_fld = var1.cg() == 1;
-		this.ag_fld = xi.rp(var1, 705582686);
-		this.az_fld = xi.rp(var1, -347759385);
-		this.av_fld = xi.rp(var1, 532993964);
-		this.ae_fld = xi.rp(var1, -761993049);
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cw();
+		this.av_fld = var1.cw();
+		this.ae_fld = var1.cw();
 	}
 
 	@ObfuscatedName("az")
@@ -97,10 +98,10 @@ public class hu extends ht {
 	@Override
 	void az(xi var1) {
 		this.ak_fld = var1.cg() == 1;
-		this.ag_fld = xi.rp(var1, 384547486);
-		this.az_fld = xi.rp(var1, 648341475);
-		this.av_fld = xi.rp(var1, -1349750416);
-		this.ae_fld = xi.rp(var1, -1083172097);
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cw();
+		this.av_fld = var1.cw();
+		this.ae_fld = var1.cw();
 	}
 
 	@ObfuscatedName("ay")
@@ -116,24 +117,6 @@ public class hu extends ht {
 		var1.an_fld = this.ae_fld;
 	}
 
-	@ObfuscatedName("eq")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;Ljavax/net/ssl/HandshakeCompletedListener;)V"
-	)
-	public static void eq(qf var0, HandshakeCompletedListener var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-	}
-
-	@ObfuscatedName("gy")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;)Z"
-	)
-	public static boolean gy(cn var0) {
-		return var0.aw_fld;
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
@@ -141,10 +124,22 @@ public class hu extends ht {
 	@Override
 	void ae(xi var1) {
 		this.ak_fld = var1.cg() == 1;
-		this.ag_fld = xi.rp(var1, 687806846);
-		this.az_fld = xi.rp(var1, -521485600);
-		this.av_fld = xi.rp(var1, 84405502);
-		this.ae_fld = xi.rp(var1, 1210179112);
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cw();
+		this.av_fld = var1.cw();
+		this.ae_fld = var1.cw();
+	}
+
+	@ObfuscatedName("op")
+	@ObfuscatedSignature(
+		descriptor = "(Lql;)[Ljavax/security/cert/X509Certificate;"
+	)
+	public static X509Certificate[] op(ql var0) throws SSLPeerUnverifiedException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return null;
 	}
 
 	@ObfuscatedName("ah")

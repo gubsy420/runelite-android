@@ -22,11 +22,11 @@ public interface oq {
 	)
 	int az(int var1, byte var2);
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
-	boolean as(int var1);
+	boolean ak(int var1);
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -40,29 +40,37 @@ public interface oq {
 	)
 	String ah(int var1, int var2, int[] var3, byte var4) throws EOFException;
 
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean as(int var1) throws EOFException;
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean ay();
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean ar(int var1) throws EOFException;
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean aw();
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ak(int var1) throws EOFException;
-
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(II)I"
 	)
 	int ax(int var1, int var2);
+
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)I"
+	)
+	static int ih(yz var0) {
+		return var0.au_fld;
+	}
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
@@ -76,11 +84,23 @@ public interface oq {
 	)
 	int al(int var1);
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	boolean ay();
+	boolean aw();
+
+	@ObfuscatedName("gl")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)V"
+	)
+	static void gl(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.bo_fld = 702894342;
+	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(

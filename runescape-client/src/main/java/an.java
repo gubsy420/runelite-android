@@ -21,12 +21,12 @@ public class an {
 		descriptor = "Lbz;"
 	)
 	bz ak_fld;
-	@ObfuscatedGetter(
-		intValue = -496440865
-	)
 	@ObfuscatedName("mu")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -496440865
 	)
 	static int mu_fld;
 	@ObfuscatedName("ay")
@@ -50,21 +50,9 @@ public class an {
 	)
 	public static long bd_fld;
 
-	@ObfuscatedName("oe")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;)Z"
-	)
-	public static boolean oe(qf var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return false;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lba;"
+		descriptor = "(II)Lba;"
 	)
 	static ba ak(int var0) throws EOFException {
 		ba var2 = (ba)ba.ak_fld.ak(var0);
@@ -88,9 +76,21 @@ public class an {
 		this.az_fld = new ReentrantLock();
 	}
 
+	@ObfuscatedName("zt")
+	@ObfuscatedSignature(
+		descriptor = "(Ldu;)I"
+	)
+	public static int zt(du var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.az_fld;
+		}
+	}
+
 	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int cd(int var0, ba var1, boolean var2) throws EOFException {
 		if (6754 == var0) {
@@ -102,7 +102,7 @@ public class an {
 			gz.ax_fld -= 2;
 			pp var6 = ca.az(bp.au_fld[gz.ax_fld]);
 			int var5 = bp.au_fld[gz.ax_fld + 1];
-			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = pp.dc(var6, var5);
+			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var6.ai(var5, 894375913);
 			bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = var6.am(var5, 1558744381);
 			return 1;
 		} else if (6765 == var0) {

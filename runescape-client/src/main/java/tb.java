@@ -2,6 +2,7 @@ import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.io.EOFException;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -46,46 +47,10 @@ public class tb extends Canvas {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Graphics;)V"
 	)
+	@Export("update")
 	@Override
 	public final void update(Graphics var1) {
 		this.ak_fld.update(var1);
-	}
-
-	@ObfuscatedName("agw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;)V"
-	)
-	public final void agw(Graphics var1) {
-		this.ak_fld.paint(var1);
-	}
-
-	@ObfuscatedName("agb")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;)V"
-	)
-	public final void agb(Graphics var1) {
-		this.ak_fld.paint(var1);
-	}
-
-	@ObfuscatedName("paint")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;)V"
-	)
-	@Override
-	public final void paint(Graphics var1) {
-		this.ak_fld.paint(var1);
-	}
-
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "(Ltb;Ljava/awt/Graphics;)V"
-	)
-	public static void ki(tb var0, Graphics var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ak_fld.paint(var1);
-		}
 	}
 
 	@ObfuscatedName("agt")
@@ -96,11 +61,13 @@ public class tb extends Canvas {
 		this.ak_fld.paint(var1);
 	}
 
-	@ObfuscatedName("agc")
+	@ObfuscatedName("paint")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Graphics;)V"
 	)
-	public final void agc(Graphics var1) {
+	@Export("paint")
+	@Override
+	public final void paint(Graphics var1) {
 		this.ak_fld.paint(var1);
 	}
 
@@ -109,6 +76,38 @@ public class tb extends Canvas {
 		descriptor = "(Ljava/awt/Graphics;)V"
 	)
 	public final void agl(Graphics var1) {
+		this.ak_fld.paint(var1);
+	}
+
+	@ObfuscatedName("ey")
+	@ObfuscatedSignature(
+		descriptor = "(Ltb;Ljava/awt/Graphics;)V"
+	)
+	public static void ey(tb var0, Graphics var1) {
+		var0.ak_fld.paint(var1);
+	}
+
+	@ObfuscatedName("mt")
+	@ObfuscatedSignature(
+		descriptor = "(Ltb;Ljava/awt/Graphics;)V"
+	)
+	public static void mt(tb var0, Graphics var1) {
+		var0.ak_fld.paint(var1);
+	}
+
+	@ObfuscatedName("agk")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Graphics;)V"
+	)
+	public final void agk(Graphics var1) {
+		this.ak_fld.paint(var1);
+	}
+
+	@ObfuscatedName("agc")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Graphics;)V"
+	)
+	public final void agc(Graphics var1) {
 		this.ak_fld.update(var1);
 	}
 
@@ -126,7 +125,7 @@ public class tb extends Canvas {
 			}
 
 			if (var1.by_fld == -1) {
-				pk var8 = (pk)var3.ai_fld.ak(var1.bf_fld);
+				pk var8 = (pk)xz.tw(var3.an_fld, var1.bf_fld);
 				if (null != var8) {
 					if (var5 <= -1190890470) {
 						return;

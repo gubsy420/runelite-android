@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import net.runelite.api.NPC;
 import net.runelite.api.NpcOverrides;
 import net.runelite.api.Perspective;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -26,12 +27,12 @@ public class ds extends da implements NPC {
 		descriptor = "I"
 	)
 	static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -1147955469
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1147955469
 	)
 	int as_fld;
 	@ObfuscatedName("ae")
@@ -64,16 +65,16 @@ public class ds extends da implements NPC {
 		descriptor = "F"
 	)
 	static float ag_fld;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lpg;"
-	)
-	pg al_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lpg;"
 	)
 	pg af_fld;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lpg;"
+	)
+	pg al_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -90,31 +91,38 @@ public class ds extends da implements NPC {
 	)
 	static int ap_fld;
 
-	@ObfuscatedName("getCanvasTilePoly")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Polygon;"
-	)
-	@Override
-	public Polygon getCanvasTilePoly() {
-		try {
-			pp var1 = this.getTransformedComposition();
-			if (var1 == null) {
-				return null;
-			} else {
-				int var2 = var1.getSize();
-				return Perspective.getCanvasTileAreaPoly(og.ci_fld, this.getLocalLocation(), var2);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)V"
 	)
 	void bo(String var1) {
 		this.ay_fld = null == var1 ? "" : var1;
+	}
+
+	@ObfuscatedName("lh")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;B)Ljava/lang/String;"
+	)
+	public static String lh(ds var0, byte var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				throw new NullPointerException();
+			} else if (!var0.ay_fld.isEmpty()) {
+				return var0.ay_fld;
+			} else {
+				pp var2 = var0.ah_fld;
+				if (null != var2.dy_fld) {
+					var2 = var2.ar((byte)6);
+					if (var2 == null) {
+						var2 = var0.ah_fld;
+					}
+				}
+
+				return var2.cg_fld;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -125,9 +133,29 @@ public class ds extends da implements NPC {
 		this.ay_fld = null == var1 ? "" : var1;
 	}
 
+	@ObfuscatedName("jv")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String jv() {
+		try {
+			if (!og.ci_fld.isClientThread()) {
+				if (!tf.$assertionsDisabled) {
+					throw new AssertionError("must be called on client thread");
+				} else {
+					throw new IllegalStateException("must be called on client thread");
+				}
+			} else {
+				return lh(this, (byte)1);
+			}
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
 	@ObfuscatedName("fz")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;I)I"
+		descriptor = "(Llu;IB)I"
 	)
 	static int fz(lu var0, int var1) {
 		if (null != var0.gu_fld && var1 < var0.gu_fld.length) {
@@ -185,7 +213,7 @@ public class ds extends da implements NPC {
 
 					if (8 == var7) {
 						cv var21 = ot.ef();
-						var8 = null == var21 ? 0 : var21.ay_fld;
+						var8 = null == var21 ? 0 : var21.ad_fld;
 					}
 
 					if (var7 == 9) {
@@ -244,12 +272,12 @@ public class ds extends da implements NPC {
 
 					if (var7 == 18) {
 						cv var27 = ot.ef();
-						var8 = bw.dk_fld.ay_fld + (var27.bo_fld >> 7);
+						var8 = bw.dk_fld.as_fld + (var27.bi_fld >> 7);
 					}
 
 					if (var7 == 19) {
 						cv var28 = ot.ef();
-						var8 = bw.dk_fld.as_fld + (var28.bp_fld >> 7);
+						var8 = bw.dk_fld.ay_fld + (var28.dm_fld >> 7);
 					}
 
 					if (20 == var7) {
@@ -286,18 +314,11 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z"
-	)
-	boolean aw(int var1, byte var2) {
-		return var1 >= 0 && var1 <= 4 ? (this.as_fld & 1 << var1) != 0 : true;
-	}
-
 	@ObfuscatedName("getOverheadSpriteIds")
 	@ObfuscatedSignature(
 		descriptor = "()[S"
 	)
+	@Export("getOverheadSpriteIds")
 	@Override
 	public short[] getOverheadSpriteIds() {
 		try {
@@ -305,39 +326,19 @@ public class ds extends da implements NPC {
 				return (short[])this.ar_fld.ag_fld.clone();
 			} else {
 				pp var1 = this.getTransformedComposition();
-				return var1 != null && var1.er_fld != null ? (short[])var1.er_fld.clone() : null;
+				return var1 != null && var1.dl_fld != null ? (short[])var1.dl_fld.clone() : null;
 			}
 		} catch (Throwable var3) {
 			throw new RuntimeException(var3);
 		}
 	}
 
-	@ObfuscatedName("getCombatLevel")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(IB)Z"
 	)
-	@Override
-	public int getCombatLevel() {
-		try {
-			if (!og.ci_fld.isClientThread()) {
-				if (!tf.$assertionsDisabled) {
-					throw new AssertionError("must be called on client thread");
-				} else {
-					throw new IllegalStateException("must be called on client thread");
-				}
-			} else if (super.da_fld != -1) {
-				return super.da_fld;
-			} else {
-				pp var1 = this.ah_fld;
-				if (var1 != null && var1.getConfigs() != null) {
-					var1 = var1.transform();
-				}
-
-				return var1 == null ? -1 : var1.getCombatLevel();
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
+	boolean aw(int var1, byte var2) {
+		return var1 >= 0 && var1 <= 4 ? (this.as_fld & 1 << var1) != 0 : true;
 	}
 
 	@ObfuscatedName("co")
@@ -349,14 +350,26 @@ public class ds extends da implements NPC {
 		return this.et(260731919) ? 0 : this.ah_fld.ad(-1466954775);
 	}
 
+	@ObfuscatedName("dp")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;I)V"
+	)
+	public static void dp(ds var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.as_fld = var1;
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(ILgt;I)V"
 	)
 	final void as(int var1, gt var2, int var3) {
 		try {
-			int var4 = this.dq_fld[0];
-			int var5 = this.do_fld[0];
+			int var4 = this.ca_fld[0];
+			int var5 = this.dq_fld[0];
 			if (var1 == 0) {
 				var4--;
 				var5++;
@@ -393,8 +406,8 @@ public class ds extends da implements NPC {
 				var5--;
 			}
 
-			if (this.cm_fld.av() && this.cm_fld.ae().bw_fld * 1795231779 == 1) {
-				da.fz(this, -1141818571);
+			if (qa.jv(this.cm_fld, 381023412) && qa.kw(this.cm_fld, -125194071).bw_fld * 1795231779 == 1) {
+				this.do_(-1141818571);
 			}
 
 			this.dr(var4, var5, var2, (byte)-3);
@@ -409,17 +422,17 @@ public class ds extends da implements NPC {
 	)
 	final void ar(int var1, int var2, boolean var3, byte var4) {
 		try {
-			if (this.cm_fld.av() && this.cm_fld.ae().bw_fld * 1795231779 == 1) {
+			if (qa.jv(this.cm_fld, 2134442109) && qa.kw(this.cm_fld, -1668414856).bw_fld * 1795231779 == 1) {
 				if (var4 <= 0) {
 					return;
 				}
 
-				da.fz(this, 949041892);
+				this.do_(949041892);
 			}
 
 			if (!var3) {
-				int var5 = var1 - this.dq_fld[0];
-				int var6 = var2 - this.do_fld[0];
+				int var5 = var1 - this.ca_fld[0];
+				int var6 = var2 - this.dq_fld[0];
 				if (var5 >= -8) {
 					if (var4 <= 0) {
 						return;
@@ -438,18 +451,10 @@ public class ds extends da implements NPC {
 				}
 			}
 
-			this.da(var1, var2, 90944191);
+			da.yv(this, var1, var2);
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
 		}
-	}
-
-	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	short[] cp() {
-		return this.ar_fld != null ? this.ar_fld.ag() : this.ah_fld.aq(-1910412766);
 	}
 
 	@ObfuscatedName("av")
@@ -461,17 +466,17 @@ public class ds extends da implements NPC {
 		try {
 			if (this.ah_fld == null) {
 				return false;
-			} else if (da.ll(this, -466774676)) {
+			} else if (this.dy(-466774676)) {
 				return true;
 			} else {
 				fn var2 = null;
-				if (null != this.al_fld && this.al_fld.ae_fld) {
+				if (null != this.af_fld && this.af_fld.ae_fld) {
 					cv var3 = ot.ef();
 					if (null != var3) {
-						var2 = lp.ph(var3.av_fld, null, -1, null, -1, (byte)-97);
+						var2 = var3.av_fld.ar(null, -1, null, -1, (byte)-97);
 					}
 				} else {
-					var2 = this.ah_fld.aw(null, 1, null, 1, this.al_fld, 1319378869);
+					var2 = this.ah_fld.aw(null, 1, null, 1, this.af_fld, 1319378869);
 				}
 
 				return null != var2 && null != var2.cv_fld;
@@ -481,39 +486,16 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("getOverheadArchiveIds")
+	@ObfuscatedName("ky")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(Lds;IIS)V"
 	)
-	@Override
-	public int[] getOverheadArchiveIds() {
-		try {
-			if (this.ar_fld != null) {
-				return (int[])this.ar_fld.ak_fld.clone();
-			} else {
-				pp var1 = this.getTransformedComposition();
-				return var1 != null && var1.ez_fld != null ? (int[])var1.ez_fld.clone() : null;
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
+	public static void ky(ds var0, int var1, int var2, short var3) {
+		if (var0.ar_fld == null) {
+			var0.ar_fld = new xu(var0.ah_fld);
 		}
-	}
 
-	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;)V"
-	)
-	public void cf(pp var1) {
-		if (var1 == null) {
-			og.ci_fld.getCallbacks().post(new NpcDespawned(this));
-		} else {
-			pp var2 = this.ah_fld;
-			if (var2 == null) {
-				client.va_fld.add(new NpcSpawned(this));
-			} else if (var1.getId() != var2.getId()) {
-				client.sl_fld.add(new NpcChanged(this, var2));
-			}
-		}
+		var0.ar_fld.az(var1, var2, var3);
 	}
 
 	@ObfuscatedName("bm")
@@ -530,17 +512,34 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;)V"
 	)
 	void kg(pg var1) {
-		this.al_fld = var1;
+		this.af_fld = var1;
 	}
 
-	@Nullable
-	@ObfuscatedName("getModelOverrides")
+	@ObfuscatedName("getId")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/NpcOverrides;"
+		descriptor = "()I"
 	)
+	@Export("getId")
 	@Override
-	public NpcOverrides getModelOverrides() {
-		return this.al_fld;
+	public int getId() {
+		try {
+			pp var1 = this.ah_fld;
+			if (var1 != null && var1.getConfigs() != null) {
+				var1 = var1.transform();
+			}
+
+			return var1 == null ? -1 : var1.getId();
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)[S"
+	)
+	short[] ab(int var1) {
+		return this.ar_fld != null ? xu.dp(this.ar_fld, (byte)42) : this.ah_fld.aq(-1910412766);
 	}
 
 	@ObfuscatedName("ap")
@@ -567,11 +566,11 @@ public class ds extends da implements NPC {
 		this.ar_fld.av(var1, var2);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("by")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	void ac(int var1) {
+	void by(int var1) {
 		this.ar_fld = null;
 	}
 
@@ -580,7 +579,18 @@ public class ds extends da implements NPC {
 		descriptor = "(I)[I"
 	)
 	int[] af(int var1) {
-		return null != this.ar_fld ? xu.it(this.ar_fld, -929120066) : this.ah_fld.aa(1804117439);
+		return null != this.ar_fld ? xu.zg(this.ar_fld, -929120066) : pp.mm(this.ah_fld, 1804117439);
+	}
+
+	@Nullable
+	@ObfuscatedName("getChatheadOverrides")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/NpcOverrides;"
+	)
+	@Export("getChatheadOverrides")
+	@Override
+	public NpcOverrides getChatheadOverrides() {
+		return this.al_fld;
 	}
 
 	@ObfuscatedName("bd")
@@ -588,7 +598,7 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;I)V"
 	)
 	void bd(pg var1, int var2) {
-		this.af_fld = var1;
+		this.al_fld = var1;
 	}
 
 	@ObfuscatedName("bz")
@@ -596,7 +606,26 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;I)V"
 	)
 	void bz(pg var1, int var2) {
-		this.al_fld = var1;
+		this.af_fld = var1;
+	}
+
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		try {
+			if (this.ah_fld == null) {
+				return null;
+			} else {
+				String var1 = this.jv();
+				return var1.replace(' ', ' ');
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
 	}
 
 	@ObfuscatedName("hy")
@@ -606,7 +635,7 @@ public class ds extends da implements NPC {
 	@Override
 	int hy() {
 		try {
-			return (-1 == -1692034698 * this.ah_fld.es_fld ? this.dh_fld : this.ah_fld.es_fld * 1822119256) + this.ae((byte)-1);
+			return (-1 == -1692034698 * this.ah_fld.es_fld ? this.cd_fld : this.ah_fld.es_fld * 1822119256) + this.ae((byte)-1);
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
@@ -617,7 +646,7 @@ public class ds extends da implements NPC {
 		descriptor = "(B)Lpg;"
 	)
 	pg aj(byte var1) {
-		return this.af_fld;
+		return this.al_fld;
 	}
 
 	@ObfuscatedName("ep")
@@ -627,7 +656,7 @@ public class ds extends da implements NPC {
 	@Override
 	int ep(int var1) {
 		try {
-			return (-1 == -695561327 * this.ah_fld.es_fld ? -1950304843 * this.dh_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
+			return (-1 == -695561327 * this.ah_fld.es_fld ? -1950304843 * this.cd_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
@@ -650,22 +679,18 @@ public class ds extends da implements NPC {
 		return var1 >= 0 && var1 <= 4 ? (this.as_fld & 1 << var1) != 0 : true;
 	}
 
-	@ObfuscatedName("wh")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "(Lds;I)Lfy;"
+		descriptor = "(I)Lfy;"
 	)
-	public static fy wh(ds var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			int var2 = var0.ah_fld.ab(580930067);
-			fy var3 = var0.ax_fld;
-			byte var4 = ue.ak(var2, 2115810139);
-			byte var5 = ue.ag(var2);
-			byte var6 = (byte)(var2 & 127);
-			var3.ag(var4, var5, var6, (byte)127);
-			return var0.ax_fld;
-		}
+	fy bx(int var1) {
+		int var2 = this.ah_fld.ab(580930067);
+		fy var3 = this.ax_fld;
+		byte var4 = ue.ak(var2, 2115810139);
+		byte var5 = ue.ag(var2);
+		byte var6 = (byte)(var2 & 127);
+		fy.hv(var3, var4, var5, var6, (byte)127);
+		return this.ax_fld;
 	}
 
 	@ObfuscatedName("kb")
@@ -673,78 +698,7 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;)V"
 	)
 	void kb(pg var1) {
-		this.al_fld = var1;
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void bl(int var1) {
-		this.al_fld = null;
-	}
-
-	@ObfuscatedName("cu")
-	@ObfuscatedSignature(
-		descriptor = "(Lds;ILgt;)V"
-	)
-	public static void cu(ds var0, int var1, gt var2) throws EOFException {
-		try {
-			int var3 = var0.dq_fld[0];
-			int var4 = var0.do_fld[0];
-			if (var1 == 0) {
-				var3--;
-				var4++;
-			}
-
-			if (1 == var1) {
-				var4++;
-			}
-
-			if (var1 == 2) {
-				var3++;
-				var4++;
-			}
-
-			if (var1 == 3) {
-				var3--;
-			}
-
-			if (4 == var1) {
-				var3++;
-			}
-
-			if (var1 == 5) {
-				var3--;
-				var4--;
-			}
-
-			if (var1 == 6) {
-				var4--;
-			}
-
-			if (7 == var1) {
-				var3++;
-				var4--;
-			}
-
-			if (var0.cm_fld.av() && var0.cm_fld.ae().bw_fld * 1795231779 == 1) {
-				da.fz(var0, 515712444);
-			}
-
-			var0.dr(var3, var4, var2, (byte)-81);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("getIndex")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getIndex() {
-		return super.bx_fld;
+		this.af_fld = var1;
 	}
 
 	@ObfuscatedName("bh")
@@ -774,12 +728,12 @@ public class ds extends da implements NPC {
 		return this.ah_fld.dq_fld;
 	}
 
-	@ObfuscatedName("iq")
+	@ObfuscatedName("ia")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean iq() {
+	boolean ia() {
 		return this.ah_fld.dq_fld;
 	}
 
@@ -794,48 +748,48 @@ public class ds extends da implements NPC {
 				return null;
 			} else {
 				qa var1 = this.ew((byte)-17);
-				qa var2 = da.dp(this, var1, 2047884037);
+				qa var2 = da.yp(this, var1, 2047884037);
 				if (var1 == null && var2 == null) {
 					var2 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var3 = var1 == null ? null : var1.ae();
-				ol var4 = null == var2 ? null : var2.ae();
-				int var5 = null == var1 ? -1 : qa.do_(var1, -997382281);
-				int var6 = null == var2 ? -1 : qa.do_(var2, -1310865506);
+				ol var3 = var1 == null ? null : qa.kw(var1, -2058472448);
+				ol var4 = null == var2 ? null : qa.kw(var2, 253492857);
+				int var5 = null == var1 ? -1 : var1.aw(-997382281);
+				int var6 = null == var2 ? -1 : var2.aw(-1310865506);
 				fn var7 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var8 = ot.ef();
 					if (var8 != null) {
-						var7 = lp.ph(var8.av_fld, var3, var5, var4, var6, (byte)-66);
+						var7 = var8.av_fld.ar(var3, var5, var4, var6, (byte)-66);
 					}
 				} else {
-					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.al_fld, 1535988344);
+					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.af_fld, 1535988344);
 				}
 
 				if (var7 == null) {
 					return null;
 				} else {
-					var7.eu();
-					this.dh_fld = var7.ez_fld;
-					int var11 = var7.bw_fld;
+					var7.ap();
+					this.cd_fld = var7.ez_fld;
+					int var11 = var7.ke_fld;
 					if (1 == 1161975113 * this.ah_fld.cw_fld) {
 						var7.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var7, this.be_fld, (short)var11);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var7.gj(this.be_fld, (short)var11);
 					} else {
-						rl1.lx(var7);
+						var7.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var7, wh(this, -1393387783), (short)var7.bw_fld);
-						fn.uv(var7, 0.01F);
-						var7.bx(-5);
+						var7.gj(this.bx(-1393387783), (short)var7.ke_fld);
+						var7.gu(0.01F);
+						var7.ce(-5);
 					}
 
 					return var7;
@@ -857,48 +811,48 @@ public class ds extends da implements NPC {
 				return null;
 			} else {
 				qa var1 = this.ew((byte)-4);
-				qa var2 = da.dp(this, var1, 1841849619);
+				qa var2 = da.yp(this, var1, 1841849619);
 				if (var1 == null && var2 == null) {
 					var2 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var3 = var1 == null ? null : var1.ae();
-				ol var4 = null == var2 ? null : var2.ae();
-				int var5 = null == var1 ? -1 : qa.do_(var1, 251970869);
-				int var6 = null == var2 ? -1 : qa.do_(var2, -500011755);
+				ol var3 = var1 == null ? null : qa.kw(var1, -1189733917);
+				ol var4 = null == var2 ? null : qa.kw(var2, -496071745);
+				int var5 = null == var1 ? -1 : var1.aw(251970869);
+				int var6 = null == var2 ? -1 : var2.aw(-500011755);
 				fn var7 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var8 = ot.ef();
 					if (var8 != null) {
-						var7 = lp.ph(var8.av_fld, var3, var5, var4, var6, (byte)-90);
+						var7 = var8.av_fld.ar(var3, var5, var4, var6, (byte)-90);
 					}
 				} else {
-					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.al_fld, 568753661);
+					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.af_fld, 568753661);
 				}
 
 				if (var7 == null) {
 					return null;
 				} else {
-					var7.eu();
-					this.dh_fld = var7.ez_fld;
-					int var11 = var7.bw_fld;
+					var7.ap();
+					this.cd_fld = var7.ez_fld;
+					int var11 = var7.ke_fld;
 					if (1 == -1070340040 * this.ah_fld.cw_fld) {
 						var7.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var7, this.be_fld, (short)var11);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var7.gj(this.be_fld, (short)var11);
 					} else {
-						rl1.lx(var7);
+						var7.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var7, wh(this, -1393011857), (short)var7.bw_fld);
-						fn.uv(var7, 0.01F);
-						var7.bx(-5);
+						var7.gj(this.bx(-1393011857), (short)var7.ke_fld);
+						var7.gu(0.01F);
+						var7.ce(-5);
 					}
 
 					return var7;
@@ -906,43 +860,6 @@ public class ds extends da implements NPC {
 			}
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void bv(int var1) {
-		this.as_fld = var1;
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	protected boolean am() {
-		try {
-			if (this.ah_fld == null) {
-				return false;
-			} else if (da.ll(this, 492977244)) {
-				return true;
-			} else {
-				fn var1 = null;
-				if (null != this.al_fld && this.al_fld.ae_fld) {
-					cv var2 = ot.ef();
-					if (null != var2) {
-						var1 = lp.ph(var2.av_fld, null, -1, null, -1, (byte)35);
-					}
-				} else {
-					var1 = this.ah_fld.aw(null, 1, null, 1, this.al_fld, 1456747435);
-				}
-
-				return null != var1 && null != var1.cv_fld;
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
 		}
 	}
 
@@ -955,17 +872,17 @@ public class ds extends da implements NPC {
 		try {
 			if (this.ah_fld == null) {
 				return false;
-			} else if (da.ll(this, 1891533554)) {
+			} else if (this.dy(492977244)) {
 				return true;
 			} else {
 				fn var1 = null;
-				if (null != this.al_fld && this.al_fld.ae_fld) {
+				if (null != this.af_fld && this.af_fld.ae_fld) {
 					cv var2 = ot.ef();
 					if (null != var2) {
-						var1 = lp.ph(var2.av_fld, null, -1, null, -1, (byte)84);
+						var1 = var2.av_fld.ar(null, -1, null, -1, (byte)35);
 					}
 				} else {
-					var1 = this.ah_fld.aw(null, 1, null, 1, this.al_fld, 587301806);
+					var1 = this.ah_fld.aw(null, 1, null, 1, this.af_fld, 1456747435);
 				}
 
 				return null != var1 && null != var1.cv_fld;
@@ -984,17 +901,57 @@ public class ds extends da implements NPC {
 		try {
 			if (this.ah_fld == null) {
 				return false;
-			} else if (da.ll(this, -355522222)) {
+			} else if (this.dy(1891533554)) {
 				return true;
 			} else {
 				fn var1 = null;
-				if (null != this.al_fld && this.al_fld.ae_fld) {
+				if (null != this.af_fld && this.af_fld.ae_fld) {
 					cv var2 = ot.ef();
 					if (null != var2) {
-						var1 = lp.ph(var2.av_fld, null, -1, null, -1, (byte)-94);
+						var1 = var2.av_fld.ar(null, -1, null, -1, (byte)84);
 					}
 				} else {
-					var1 = this.ah_fld.aw(null, 1, null, 1, this.al_fld, 653422860);
+					var1 = this.ah_fld.aw(null, 1, null, 1, this.af_fld, 587301806);
+				}
+
+				return null != var1 && null != var1.cv_fld;
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@Nullable
+	@ObfuscatedName("getModelOverrides")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/NpcOverrides;"
+	)
+	@Export("getModelOverrides")
+	@Override
+	public NpcOverrides getModelOverrides() {
+		return this.af_fld;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Override
+	protected boolean am() {
+		try {
+			if (this.ah_fld == null) {
+				return false;
+			} else if (this.dy(-355522222)) {
+				return true;
+			} else {
+				fn var1 = null;
+				if (null != this.af_fld && this.af_fld.ae_fld) {
+					cv var2 = ot.ef();
+					if (null != var2) {
+						var1 = var2.av_fld.ar(null, -1, null, -1, (byte)-94);
+					}
+				} else {
+					var1 = this.ah_fld.aw(null, 1, null, 1, this.af_fld, 653422860);
 				}
 
 				return null != var1 && null != var1.cv_fld;
@@ -1011,24 +968,6 @@ public class ds extends da implements NPC {
 	@Override
 	public float bs(int var1) {
 		return this.au_fld ? 0.01F : 1.0F;
-	}
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		try {
-			if (this.ah_fld == null) {
-				return null;
-			} else {
-				String var1 = this.wy();
-				return var1.replace(' ', ' ');
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
 	}
 
 	@ObfuscatedName("cf")
@@ -1067,16 +1006,12 @@ public class ds extends da implements NPC {
 		return null != this.ah_fld;
 	}
 
-	@ObfuscatedName("cr")
+	@ObfuscatedName("ke")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)V"
+		descriptor = "()Lpg;"
 	)
-	void cr(int var1, int var2, short var3) {
-		if (this.ar_fld == null) {
-			this.ar_fld = new xu(this.ah_fld);
-		}
-
-		this.ar_fld.az(var1, var2, var3);
+	pg ke() {
+		return this.al_fld;
 	}
 
 	@ObfuscatedName("ci")
@@ -1088,16 +1023,69 @@ public class ds extends da implements NPC {
 		return this.et(260731919) ? 0 : this.ah_fld.ad(-1466954775);
 	}
 
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	final String bq() {
+		try {
+			if (!this.ay_fld.isEmpty()) {
+				return this.ay_fld;
+			} else {
+				pp var1 = this.ah_fld;
+				if (null != var1.dy_fld) {
+					var1 = var1.ar((byte)6);
+					if (var1 == null) {
+						var1 = this.ah_fld;
+					}
+				}
+
+				return var1.cg_fld;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
 		descriptor = "()Lfy;"
 	)
 	@Override
 	public fy ch() {
-		return this.au_fld ? wh(this, -1088633684) : null;
+		return this.au_fld ? this.bx(-1088633684) : null;
 	}
 
-	@ObfuscatedName("ve")
+	@ObfuscatedName("getCombatLevel")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCombatLevel")
+	@Override
+	public int getCombatLevel() {
+		try {
+			if (!og.ci_fld.isClientThread()) {
+				if (!tf.$assertionsDisabled) {
+					throw new AssertionError("must be called on client thread");
+				} else {
+					throw new IllegalStateException("must be called on client thread");
+				}
+			} else if (super.bo_fld != -1) {
+				return super.bo_fld;
+			} else {
+				pp var1 = this.ah_fld;
+				if (var1 != null && var1.getConfigs() != null) {
+					var1 = var1.transform();
+				}
+
+				return var1 == null ? -1 : var1.getCombatLevel();
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("lx")
 	@ObfuscatedSignature(
 		descriptor = "()Lpp;"
 	)
@@ -1119,7 +1107,7 @@ public class ds extends da implements NPC {
 	)
 	@Override
 	public fy cl() {
-		return this.au_fld ? wh(this, -1782600007) : null;
+		return this.au_fld ? this.bx(-1782600007) : null;
 	}
 
 	@ObfuscatedName("lw")
@@ -1127,7 +1115,7 @@ public class ds extends da implements NPC {
 		descriptor = "()V"
 	)
 	void lw() {
-		this.af_fld = null;
+		this.al_fld = null;
 	}
 
 	@ObfuscatedName("dh")
@@ -1157,51 +1145,6 @@ public class ds extends da implements NPC {
 		return this.au_fld ? -5 : 0;
 	}
 
-	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-		descriptor = "(Lds;)Ljava/lang/String;"
-	)
-	public static String co(ds var0) throws EOFException {
-		try {
-			if (!var0.ay_fld.isEmpty()) {
-				return var0.ay_fld;
-			} else {
-				pp var1 = var0.ah_fld;
-				if (null != var1.dy_fld) {
-					var1 = var1.ar((byte)6);
-					if (var1 == null) {
-						var1 = var0.ah_fld;
-					}
-				}
-
-				return var1.cg_fld;
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("getConvexHull")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Shape;"
-	)
-	@Override
-	public Shape getConvexHull() {
-		try {
-			fn var1 = this.getModel();
-			if (var1 == null) {
-				return null;
-			} else {
-				dx var2 = this.getWorldView();
-				int var3 = Perspective.getFootprintTileHeight(og.ci_fld, this.getLocalLocation(), var2.ae_fld, this.getFootprintSize());
-				var3 -= this.getAnimationHeightOffset();
-				return var1.bz(var2, super.bo_fld, super.bp_fld, this.getCurrentOrientation(), var3);
-			}
-		} catch (Throwable var5) {
-			throw new RuntimeException(var5);
-		}
-	}
-
 	@ObfuscatedName("hx")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -1209,22 +1152,10 @@ public class ds extends da implements NPC {
 	@Override
 	int hx() {
 		try {
-			return (-1 == -695561327 * this.ah_fld.es_fld ? this.dh_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
+			return (-1 == -695561327 * this.ah_fld.es_fld ? this.cd_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
-	}
-
-	@ObfuscatedName("lu")
-	@ObfuscatedSignature(
-		descriptor = "(Lds;I)[S"
-	)
-	public static short[] lu(ds var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ar_fld != null ? var0.ar_fld.ag() : var0.ah_fld.aq(-1910412766);
 	}
 
 	@ObfuscatedName("hu")
@@ -1234,7 +1165,7 @@ public class ds extends da implements NPC {
 	@Override
 	int hu() {
 		try {
-			return (-1 == -695561327 * this.ah_fld.es_fld ? -1950304843 * this.dh_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
+			return (-1 == -695561327 * this.ah_fld.es_fld ? -1950304843 * this.cd_fld : this.ah_fld.es_fld * -695561327) + this.ae((byte)-1);
 		} catch (Throwable var2) {
 			throw new RuntimeException(var2);
 		}
@@ -1248,25 +1179,13 @@ public class ds extends da implements NPC {
 		this.as_fld = var1;
 	}
 
-	@ObfuscatedName("ia")
+	@ObfuscatedName("il")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean ia() {
+	boolean il() {
 		return this.ah_fld.dq_fld;
-	}
-
-	@ObfuscatedName("sz")
-	@ObfuscatedSignature(
-		descriptor = "(Lds;I)Z"
-	)
-	public static boolean sz(ds var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1 >= 0 && var1 <= 4 ? (var0.as_fld & 1 << var1) != 0 : true;
 	}
 
 	@ObfuscatedName("be")
@@ -1275,15 +1194,15 @@ public class ds extends da implements NPC {
 	)
 	@Override
 	public fy be(int var1) {
-		return this.au_fld ? wh(this, -1402127565) : null;
+		return this.au_fld ? this.bx(-1402127565) : null;
 	}
 
-	@ObfuscatedName("il")
+	@ObfuscatedName("iq")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean il() {
+	boolean iq() {
 		return this.ah_fld.dq_fld;
 	}
 
@@ -1296,21 +1215,30 @@ public class ds extends da implements NPC {
 		return this.et(260731919) ? 0 : this.ah_fld.ad(-1466954775);
 	}
 
-	@ObfuscatedName("cm")
+	@ObfuscatedName("fe")
 	@ObfuscatedSignature(
-		descriptor = "()Lpp;"
+		descriptor = "(Lds;I)Z"
 	)
-	public pp getTransformedComposition() {
+	public static boolean fe(ds var0, int var1) throws EOFException {
 		try {
-			pp var1 = this.getComposition();
-			if (var1 != null && var1.getConfigs() != null) {
-				var1 = var1.transform();
+			if (var0 == null) {
+				var0.getClass();
 			}
 
-			return var1;
+			return var1 >= 0 && var1 <= 4 ? (var0.as_fld & 1 << var1) != 0 : true;
 		} catch (Throwable var3) {
 			throw new RuntimeException(var3);
 		}
+	}
+
+	@ObfuscatedName("getIndex")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getIndex")
+	@Override
+	public int getIndex() {
+		return super.bq_fld;
 	}
 
 	@ObfuscatedName("ld")
@@ -1323,7 +1251,7 @@ public class ds extends da implements NPC {
 		byte var3 = ue.ak(var1, 1567829471);
 		byte var4 = ue.ag(var1);
 		byte var5 = (byte)(var1 & 127);
-		var2.ag(var3, var4, var5, (byte)127);
+		fy.hv(var2, var3, var4, var5, (byte)127);
 		return this.ax_fld;
 	}
 
@@ -1362,48 +1290,48 @@ public class ds extends da implements NPC {
 				return null;
 			} else {
 				qa var1 = this.ew((byte)111);
-				qa var2 = da.dp(this, var1, 986577271);
+				qa var2 = da.yp(this, var1, 986577271);
 				if (var1 == null && var2 == null) {
 					var2 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var3 = var1 == null ? null : var1.ae();
-				ol var4 = null == var2 ? null : var2.ae();
-				int var5 = null == var1 ? -1 : qa.do_(var1, 112655392);
-				int var6 = null == var2 ? -1 : qa.do_(var2, 868342558);
+				ol var3 = var1 == null ? null : qa.kw(var1, 1948391714);
+				ol var4 = null == var2 ? null : qa.kw(var2, 1690515086);
+				int var5 = null == var1 ? -1 : var1.aw(112655392);
+				int var6 = null == var2 ? -1 : var2.aw(868342558);
 				fn var7 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var8 = ot.ef();
 					if (var8 != null) {
-						var7 = lp.ph(var8.av_fld, var3, var5, var4, var6, (byte)-34);
+						var7 = var8.av_fld.ar(var3, var5, var4, var6, (byte)-34);
 					}
 				} else {
-					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.al_fld, 875389717);
+					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.af_fld, 875389717);
 				}
 
 				if (var7 == null) {
 					return null;
 				} else {
-					var7.eu();
-					this.dh_fld = var7.ez_fld;
-					int var11 = var7.bw_fld;
+					var7.ap();
+					this.cd_fld = var7.ez_fld;
+					int var11 = var7.ke_fld;
 					if (1 == 1161975113 * this.ah_fld.cw_fld) {
 						var7.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var7, this.be_fld, (short)var11);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var7.gj(this.be_fld, (short)var11);
 					} else {
-						rl1.lx(var7);
+						var7.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var7, wh(this, -1096023523), (short)var7.bw_fld);
-						fn.uv(var7, 0.01F);
-						var7.bx(-5);
+						var7.gj(this.bx(-1096023523), (short)var7.ke_fld);
+						var7.gu(0.01F);
+						var7.ce(-5);
 					}
 
 					return var7;
@@ -1414,12 +1342,12 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("cx")
+	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
 		descriptor = "()[I"
 	)
-	int[] cx() {
-		return null != this.ar_fld ? xu.it(this.ar_fld, -929120066) : this.ah_fld.aa(1041083137);
+	int[] cs() {
+		return null != this.ar_fld ? xu.zg(this.ar_fld, -929120066) : pp.mm(this.ah_fld, 1041083137);
 	}
 
 	@ObfuscatedName("bu")
@@ -1437,7 +1365,9 @@ public class ds extends da implements NPC {
 	@Override
 	protected final fn az(int var1) {
 		try {
-			if (client.xg_fld != null && client.xg_fld.test(super.cm_fld.ag_fld * 163458875 != -1 ? super.cm_fld.ag_fld * 163458875 : super.cw_fld.ag_fld * 163458875)) {
+			if (client.bz_java_util_function_IntPredicate != null
+				&& client.bz_java_util_function_IntPredicate
+					.test(super.cm_fld.ag_fld * 163458875 != -1 ? super.cm_fld.ag_fld * 163458875 : super.cw_fld.ag_fld * 163458875)) {
 				int var2 = this.getAnimationFrame();
 				int var3 = this.getPoseAnimationFrame();
 
@@ -1445,7 +1375,7 @@ public class ds extends da implements NPC {
 				try {
 					super.cm_fld.ae_fld = -2147483648 | Math.max(super.cm_fld.av_fld * 1668710195 - 1, 0) << 16 | var2;
 					super.cw_fld.ae_fld = -1073741824 | Math.max(super.cw_fld.av_fld * 1668710195 - 1, 0) << 16 | var3;
-					var4 = this.zh();
+					var4 = this.ma();
 				} finally {
 					super.cm_fld.ae_fld = var2;
 					super.cw_fld.ae_fld = var3;
@@ -1453,30 +1383,10 @@ public class ds extends da implements NPC {
 
 				return var4;
 			} else {
-				return this.zh();
+				return this.ma();
 			}
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("wy")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String wy() {
-		try {
-			if (!og.ci_fld.isClientThread()) {
-				if (!tf.$assertionsDisabled) {
-					throw new AssertionError("must be called on client thread");
-				} else {
-					throw new IllegalStateException("must be called on client thread");
-				}
-			} else {
-				return this.ay((byte)1);
-			}
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
 		}
 	}
 
@@ -1502,8 +1412,28 @@ public class ds extends da implements NPC {
 		descriptor = "()Lfk;"
 	)
 	@Override
-	protected fk cy() {
+	protected fk cy_fk() {
 		return !this.ah_fld.eq_fld ? fk.az_fld : super.bk(-1793541582);
+	}
+
+	@ObfuscatedName("getCanvasTilePoly")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Polygon;"
+	)
+	@Export("getCanvasTilePoly")
+	@Override
+	public Polygon getCanvasTilePoly() {
+		try {
+			pp var1 = this.getTransformedComposition();
+			if (var1 == null) {
+				return null;
+			} else {
+				int var2 = var1.getSize();
+				return Perspective.getCanvasTileAreaPoly(og.ci_fld, this.getLocalLocation(), var2);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
 	}
 
 	@ObfuscatedName("bg")
@@ -1512,8 +1442,8 @@ public class ds extends da implements NPC {
 	)
 	final void bg(int var1, gt var2) {
 		try {
-			int var3 = this.dq_fld[0];
-			int var4 = this.do_fld[0];
+			int var3 = this.ca_fld[0];
+			int var4 = this.dq_fld[0];
 			if (var1 == 0) {
 				var3--;
 				var4++;
@@ -1550,8 +1480,8 @@ public class ds extends da implements NPC {
 				var4--;
 			}
 
-			if (this.cm_fld.av() && this.cm_fld.ae().bw_fld * 1795231779 == 1) {
-				da.fz(this, -236357370);
+			if (qa.jv(this.cm_fld, -450914360) && qa.kw(this.cm_fld, -894791013).bw_fld * 1795231779 == 1) {
+				this.do_(-236357370);
 			}
 
 			this.dr(var3, var4, var2, (byte)-56);
@@ -1566,8 +1496,8 @@ public class ds extends da implements NPC {
 	)
 	final void bb(int var1, gt var2) {
 		try {
-			int var3 = this.dq_fld[0];
-			int var4 = this.do_fld[0];
+			int var3 = this.ca_fld[0];
+			int var4 = this.dq_fld[0];
 			if (var1 == 0) {
 				var3--;
 				var4++;
@@ -1604,11 +1534,90 @@ public class ds extends da implements NPC {
 				var4--;
 			}
 
-			if (this.cm_fld.av() && this.cm_fld.ae().bw_fld * 1795231779 == 1) {
-				da.fz(this, -433686228);
+			if (qa.jv(this.cm_fld, -1102730688) && qa.kw(this.cm_fld, 1005951296).bw_fld * 1795231779 == 1) {
+				this.do_(-433686228);
 			}
 
 			this.dr(var3, var4, var2, (byte)-16);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;IIZ)V"
+	)
+	public static void kn(ds var0, int var1, int var2, boolean var3) throws EOFException {
+		try {
+			if (qa.jv(var0.cm_fld, 306236434) && qa.kw(var0.cm_fld, 543296740).bw_fld * 1795231779 == 1) {
+				var0.do_(-678334586);
+			}
+
+			if (!var3) {
+				int var4 = var1 - var0.ca_fld[0];
+				int var5 = var2 - var0.dq_fld[0];
+				if (var4 >= -1814132382 && var4 <= 8 && var5 >= -1649399838 && var5 <= 8) {
+					var0.dr(var1, var2, gt.az_fld, (byte)-27);
+					return;
+				}
+			}
+
+			da.yv(var0, var1, var2);
+		} catch (Throwable var7) {
+			throw new RuntimeException(var7);
+		}
+	}
+
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "(ILgt;)V"
+	)
+	final void cd(int var1, gt var2) {
+		try {
+			int var3 = this.ca_fld[0];
+			int var4 = this.dq_fld[0];
+			if (var1 == 0) {
+				var3--;
+				var4++;
+			}
+
+			if (1 == var1) {
+				var4++;
+			}
+
+			if (var1 == 2) {
+				var3++;
+				var4++;
+			}
+
+			if (var1 == 3) {
+				var3--;
+			}
+
+			if (4 == var1) {
+				var3++;
+			}
+
+			if (var1 == 5) {
+				var3--;
+				var4--;
+			}
+
+			if (var1 == 6) {
+				var4--;
+			}
+
+			if (7 == var1) {
+				var3++;
+				var4--;
+			}
+
+			if (qa.jv(this.cm_fld, -790395382) && qa.kw(this.cm_fld, 2010555377).bw_fld * 1795231779 == 1) {
+				this.do_(515712444);
+			}
+
+			this.dr(var3, var4, var2, (byte)-81);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
@@ -1625,48 +1634,48 @@ public class ds extends da implements NPC {
 				return null;
 			} else {
 				qa var1 = this.ew((byte)98);
-				qa var2 = da.dp(this, var1, 1460911999);
+				qa var2 = da.yp(this, var1, 1460911999);
 				if (var1 == null && var2 == null) {
 					var2 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var3 = var1 == null ? null : var1.ae();
-				ol var4 = null == var2 ? null : var2.ae();
-				int var5 = null == var1 ? -1 : qa.do_(var1, 1246519469);
-				int var6 = null == var2 ? -1 : qa.do_(var2, 974473945);
+				ol var3 = var1 == null ? null : qa.kw(var1, 1677489811);
+				ol var4 = null == var2 ? null : qa.kw(var2, 731812893);
+				int var5 = null == var1 ? -1 : var1.aw(1246519469);
+				int var6 = null == var2 ? -1 : var2.aw(974473945);
 				fn var7 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var8 = ot.ef();
 					if (var8 != null) {
-						var7 = lp.ph(var8.av_fld, var3, var5, var4, var6, (byte)1);
+						var7 = var8.av_fld.ar(var3, var5, var4, var6, (byte)1);
 					}
 				} else {
-					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.al_fld, 340367328);
+					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.af_fld, 340367328);
 				}
 
 				if (var7 == null) {
 					return null;
 				} else {
-					var7.eu();
-					this.dh_fld = var7.ez_fld;
-					int var11 = var7.bw_fld;
+					var7.ap();
+					this.cd_fld = var7.ez_fld;
+					int var11 = var7.ke_fld;
 					if (1 == 1161975113 * this.ah_fld.cw_fld) {
 						var7.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var7, this.be_fld, (short)var11);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var7.gj(this.be_fld, (short)var11);
 					} else {
-						rl1.lx(var7);
+						var7.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var7, wh(this, -1251080398), (short)var7.bw_fld);
-						fn.uv(var7, 0.01F);
-						var7.bx(-5);
+						var7.gj(this.bx(-1251080398), (short)var7.ke_fld);
+						var7.gu(0.01F);
+						var7.ce(-5);
 					}
 
 					return var7;
@@ -1677,11 +1686,96 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("zh")
+	@ObfuscatedName("getOverheadArchiveIds")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getOverheadArchiveIds")
+	@Override
+	public int[] getOverheadArchiveIds() {
+		try {
+			if (this.ar_fld != null) {
+				return (int[])this.ar_fld.ak_fld.clone();
+			} else {
+				pp var1 = this.getTransformedComposition();
+				return var1 != null && var1.ez_fld != null ? (int[])var1.ez_fld.clone() : null;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("cq")
+	@ObfuscatedSignature(
+		descriptor = "(IIZ)V"
+	)
+	final void cq(int var1, int var2, boolean var3) {
+		try {
+			if (qa.jv(this.cm_fld, -373035573) && qa.kw(this.cm_fld, 1733144161).bw_fld * 1795231779 == 1) {
+				this.do_(815982508);
+			}
+
+			if (!var3) {
+				int var4 = var1 - this.ca_fld[0];
+				int var5 = var2 - this.dq_fld[0];
+				if (var4 >= -8 && var4 <= 8 && var5 >= -8 && var5 <= 8) {
+					this.dr(var1, var2, gt.az_fld, (byte)-4);
+					return;
+				}
+			}
+
+			da.yv(this, var1, var2);
+		} catch (Throwable var7) {
+			throw new RuntimeException(var7);
+		}
+	}
+
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "()Lfy;"
+	)
+	@Override
+	public fy ct() {
+		return this.au_fld ? this.bx(-1744481710) : null;
+	}
+
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void lf() {
+		this.af_fld = null;
+	}
+
+	@ObfuscatedName("bl")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void bl(int var1) {
+		this.al_fld = null;
+	}
+
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	short[] ce() {
+		return this.ar_fld != null ? xu.dp(this.ar_fld, (byte)-16) : this.ah_fld.aq(-1910412766);
+	}
+
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	short[] cn() {
+		return this.ar_fld != null ? xu.dp(this.ar_fld, (byte)15) : this.ah_fld.aq(-1910412766);
+	}
+
+	@ObfuscatedName("ma")
 	@ObfuscatedSignature(
 		descriptor = "()Lfn;"
 	)
-	public fn zh() {
+	public fn ma() {
 		try {
 			int var2 = -178304394;
 			fn var10000;
@@ -1690,49 +1784,49 @@ public class ds extends da implements NPC {
 				var10000 = (fn)var1;
 			} else {
 				qa var3 = this.ew((byte)57);
-				qa var4 = da.dp(this, var3, 786862116);
+				qa var4 = da.yp(this, var3, 786862116);
 				if (var3 == null && var4 == null) {
 					var4 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var5 = var3 == null ? null : var3.ae();
-				ol var6 = null == var4 ? null : var4.ae();
-				int var7 = null == var3 ? -1 : qa.do_(var3, 808561641);
-				int var8 = null == var4 ? -1 : qa.do_(var4, 1375890446);
+				ol var5 = var3 == null ? null : qa.kw(var3, 1466187605);
+				ol var6 = null == var4 ? null : qa.kw(var4, 1974213854);
+				int var7 = null == var3 ? -1 : var3.aw(808561641);
+				int var8 = null == var4 ? -1 : var4.aw(1375890446);
 				fn var9 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var10 = ot.ef();
 					if (var10 != null) {
-						var9 = lp.ph(var10.av_fld, var5, var7, var6, var8, (byte)-52);
+						var9 = var10.av_fld.ar(var5, var7, var6, var8, (byte)-52);
 					}
 				} else {
-					var9 = this.ah_fld.aw(var5, var7, var6, var8, this.al_fld, 830390062);
+					var9 = this.ah_fld.aw(var5, var7, var6, var8, this.af_fld, 830390062);
 				}
 
 				if (var9 == null) {
 					Object var12 = null;
 					var10000 = (fn)var12;
 				} else {
-					var9.eu();
-					this.dh_fld = var9.ez_fld;
-					int var14 = var9.bw_fld;
+					var9.ap();
+					this.cd_fld = var9.ez_fld;
+					int var14 = var9.ke_fld;
 					if (1 == 1161975113 * this.ah_fld.cw_fld) {
 						var9.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var9, this.be_fld, (short)var14);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var9.gj(this.be_fld, (short)var14);
 					} else {
-						rl1.lx(var9);
+						var9.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var9, wh(this, -1315115765), (short)var9.bw_fld);
-						fn.uv(var9, 0.01F);
-						var9.bx(-5);
+						var9.gj(this.bx(-1315115765), (short)var9.ke_fld);
+						var9.gu(0.01F);
+						var9.ce(-5);
 					}
 
 					var10000 = var9;
@@ -1745,96 +1839,12 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
-		descriptor = "(IIZ)V"
+		descriptor = "(I)Z"
 	)
-	final void cq(int var1, int var2, boolean var3) {
-		try {
-			if (this.cm_fld.av() && this.cm_fld.ae().bw_fld * 1795231779 == 1) {
-				da.fz(this, 815982508);
-			}
-
-			if (!var3) {
-				int var4 = var1 - this.dq_fld[0];
-				int var5 = var2 - this.do_fld[0];
-				if (var4 >= -8 && var4 <= 8 && var5 >= -8 && var5 <= 8) {
-					this.dr(var1, var2, gt.az_fld, (byte)-4);
-					return;
-				}
-			}
-
-			this.da(var1, var2, 720445901);
-		} catch (Throwable var7) {
-			throw new RuntimeException(var7);
-		}
-	}
-
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "()Lfy;"
-	)
-	@Override
-	public fy ct() {
-		return this.au_fld ? wh(this, -1744481710) : null;
-	}
-
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void lf() {
-		this.al_fld = null;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;"
-	)
-	final String ay(byte var1) {
-		try {
-			if (!this.ay_fld.isEmpty()) {
-				return this.ay_fld;
-			} else {
-				pp var2 = this.ah_fld;
-				if (null != var2.dy_fld) {
-					var2 = var2.ar((byte)6);
-					if (var2 == null) {
-						var2 = this.ah_fld;
-					}
-				}
-
-				return var2.cg_fld;
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@Nullable
-	@ObfuscatedName("getChatheadOverrides")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/NpcOverrides;"
-	)
-	@Override
-	public NpcOverrides getChatheadOverrides() {
-		return this.af_fld;
-	}
-
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void by(int var1) {
-		this.af_fld = null;
-	}
-
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	short[] cn() {
-		return this.ar_fld != null ? this.ar_fld.ag() : this.ah_fld.aq(-1910412766);
+	boolean bc(int var1) {
+		return var1 >= 0 && var1 <= 4 ? (this.as_fld & 1 << var1) != 0 : true;
 	}
 
 	@ObfuscatedName("cm")
@@ -1880,48 +1890,48 @@ public class ds extends da implements NPC {
 				return null;
 			} else {
 				qa var1 = this.ew((byte)7);
-				qa var2 = da.dp(this, var1, 575414411);
+				qa var2 = da.yp(this, var1, 575414411);
 				if (var1 == null && var2 == null) {
 					var2 = this.cz_fld;
-					if (qa.jo(this.cz_fld, 30)) {
+					if (this.cz_fld.ax(30)) {
 						return null;
 					}
 				}
 
-				ol var3 = var1 == null ? null : var1.ae();
-				ol var4 = null == var2 ? null : var2.ae();
-				int var5 = null == var1 ? -1 : qa.do_(var1, 687787343);
-				int var6 = null == var2 ? -1 : qa.do_(var2, -1636571502);
+				ol var3 = var1 == null ? null : qa.kw(var1, 724785712);
+				ol var4 = null == var2 ? null : qa.kw(var2, -1026349814);
+				int var5 = null == var1 ? -1 : var1.aw(687787343);
+				int var6 = null == var2 ? -1 : var2.aw(-1636571502);
 				fn var7 = null;
-				if (this.al_fld != null && this.al_fld.ae_fld) {
+				if (this.af_fld != null && this.af_fld.ae_fld) {
 					cv var8 = ot.ef();
 					if (var8 != null) {
-						var7 = lp.ph(var8.av_fld, var3, var5, var4, var6, (byte)39);
+						var7 = var8.av_fld.ar(var3, var5, var4, var6, (byte)39);
 					}
 				} else {
-					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.al_fld, 1942585498);
+					var7 = this.ah_fld.aw(var3, var5, var4, var6, this.af_fld, 1942585498);
 				}
 
 				if (var7 == null) {
 					return null;
 				} else {
-					var7.eu();
-					this.dh_fld = var7.ez_fld;
-					int var11 = var7.bw_fld;
+					var7.ap();
+					this.cd_fld = var7.ez_fld;
+					int var11 = var7.ke_fld;
 					if (1 == 1161975113 * this.ah_fld.cw_fld) {
 						var7.cw_fld = true;
 					}
 
-					if (this.be_fld.av() && client.dv_fld >= this.bf_fld && client.dv_fld < this.by_fld) {
-						fn.li(var7, this.be_fld, (short)var11);
+					if (this.be_fld.av() && client.dv_fld >= this.bs_fld && client.dv_fld < this.ct_fld) {
+						var7.gj(this.be_fld, (short)var11);
 					} else {
-						rl1.lx(var7);
+						var7.cs();
 					}
 
 					if (this.au_fld) {
-						fn.li(var7, wh(this, -2144113712), (short)var7.bw_fld);
-						fn.uv(var7, 0.01F);
-						var7.bx(-5);
+						var7.gj(this.bx(-2144113712), (short)var7.ke_fld);
+						var7.gu(0.01F);
+						var7.ce(-5);
 					}
 
 					return var7;
@@ -1932,12 +1942,12 @@ public class ds extends da implements NPC {
 		}
 	}
 
-	@ObfuscatedName("kd")
+	@ObfuscatedName("kq")
 	@ObfuscatedSignature(
 		descriptor = "()Lpg;"
 	)
-	pg kd() {
-		return this.af_fld;
+	pg kq() {
+		return this.al_fld;
 	}
 
 	@ObfuscatedName("kp")
@@ -1945,38 +1955,29 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;)V"
 	)
 	void kp(pg var1) {
-		this.af_fld = var1;
+		this.al_fld = var1;
 	}
 
-	@ObfuscatedName("cs")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
 		descriptor = "()[I"
 	)
-	int[] cs() {
-		return null != this.ar_fld ? xu.it(this.ar_fld, -929120066) : this.ah_fld.aa(1344491068);
+	int[] cx() {
+		return null != this.ar_fld ? xu.zg(this.ar_fld, -929120066) : pp.mm(this.ah_fld, 1344491068);
 	}
 
-	@ObfuscatedName("kx")
+	@ObfuscatedName("th")
 	@ObfuscatedSignature(
-		descriptor = "(Lpg;)V"
+		descriptor = "()Lpp;"
 	)
-	void kx(pg var1) {
-		this.af_fld = var1;
-	}
-
-	@ObfuscatedName("getId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getId() {
+	public pp getTransformedComposition() {
 		try {
-			pp var1 = this.ah_fld;
+			pp var1 = this.getComposition();
 			if (var1 != null && var1.getConfigs() != null) {
 				var1 = var1.transform();
 			}
 
-			return var1 == null ? -1 : var1.getId();
+			return var1;
 		} catch (Throwable var3) {
 			throw new RuntimeException(var3);
 		}
@@ -1993,15 +1994,19 @@ public class ds extends da implements NPC {
 		descriptor = "(Lpg;)V"
 	)
 	void ks(pg var1) {
-		this.al_fld = var1;
+		this.af_fld = var1;
 	}
 
-	@ObfuscatedName("cv")
+	@ObfuscatedName("eb")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(Lds;I)V"
 	)
-	int[] cv() {
-		return null != this.ar_fld ? xu.it(this.ar_fld, -929120066) : this.ah_fld.aa(-2079987222);
+	public static void eb(ds var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.af_fld = null;
 	}
 
 	@ObfuscatedName("bp")
@@ -2017,15 +2022,7 @@ public class ds extends da implements NPC {
 		descriptor = "()V"
 	)
 	void le() {
-		this.af_fld = null;
-	}
-
-	@ObfuscatedName("lb")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void lb() {
-		this.af_fld = null;
+		this.al_fld = null;
 	}
 
 	@ObfuscatedName("cj")
@@ -2037,12 +2034,29 @@ public class ds extends da implements NPC {
 		return this.et(260731919) ? 0 : this.ah_fld.ad(-1466954775);
 	}
 
+	@ObfuscatedName("cu")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;)V"
+	)
+	public void cu(pp var1) {
+		if (var1 == null) {
+			og.ci_fld.getCallbacks().post(new NpcDespawned(this));
+		} else {
+			pp var2 = this.ah_fld;
+			if (var2 == null) {
+				client.hz_fld.add(new NpcSpawned(this));
+			} else if (var1.getId() != var2.getId()) {
+				client.la_java_util_List.add(new NpcChanged(this, var2));
+			}
+		}
+	}
+
 	@ObfuscatedName("lg")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	void lg() {
-		this.al_fld = null;
+		this.af_fld = null;
 	}
 
 	@ObfuscatedName("ln")
@@ -2050,15 +2064,15 @@ public class ds extends da implements NPC {
 		descriptor = "()V"
 	)
 	void ln() {
-		this.al_fld = null;
+		this.af_fld = null;
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(Lpg;)V"
 	)
-	boolean bn(int var1) {
-		return var1 >= 0 && var1 <= 4 ? (this.as_fld & 1 << var1) != 0 : true;
+	void kj(pg var1) {
+		this.al_fld = var1;
 	}
 
 	@ObfuscatedName("aw")
@@ -2067,7 +2081,7 @@ public class ds extends da implements NPC {
 	)
 	static void aw(dx var0, da var1, int var2, int var3, int var4, int var5, int var6, int var7, byte var8) throws EOFException {
 		try {
-			if (ev.jb(var1, true)) {
+			if (ev.ti(var1, true)) {
 				int var15 = var7;
 				int var14 = var6;
 				int var13 = var5;
@@ -2107,11 +2121,11 @@ public class ds extends da implements NPC {
 					int var20 = client.ka_fld;
 					var21 = client.le_fld;
 					var22 = client.db_fld.al_fld;
-					var23 = var59.az_fld;
+					var23 = var59.ar_fld;
 					var24 = var2 < var22;
 					var25 = -2;
 					label741:
-					if (client.us(1) && var1.cx_fld != null) {
+					if (client.fr(1) && var1.cx_fld != null) {
 						if (var16 <= 6) {
 							return;
 						}
@@ -2131,7 +2145,7 @@ public class ds extends da implements NPC {
 										return;
 									}
 
-									if (var20 != 3 && (var20 != 1 || !((cv)var1).as((byte)0))) {
+									if (var20 != 3 && (var20 != 1 || !((cv)var1).ah((byte)0))) {
 										break label741;
 									}
 								}
@@ -2149,10 +2163,10 @@ public class ds extends da implements NPC {
 								ch.an_fld[ch.af_fld] = var18.ap_fld;
 								ch.au_fld[ch.af_fld] = ch.at_fld;
 								ch.ax_fld[ch.af_fld] = ch.ac_fld - var25;
-								ch.ai_fld[ch.af_fld] = var1.cn_fld;
-								ch.aq_fld[ch.af_fld] = var1.cr_fld;
-								ch.ad_fld[ch.af_fld] = var1.ce_fld;
-								ch.am_fld[ch.af_fld] = var1.ca_fld;
+								ch.ai_fld[ch.af_fld] = var1.cu_fld;
+								ch.aq_fld[ch.af_fld] = var1.ck_fld;
+								ch.ad_fld[ch.af_fld] = var1.ci_fld;
+								ch.am_fld[ch.af_fld] = var1.do_fld;
 								ch.ao_fld[ch.af_fld] = var1.cx_fld;
 								ch.af_fld++;
 								var25 += 12;
@@ -2160,55 +2174,55 @@ public class ds extends da implements NPC {
 						}
 					}
 
-					rg var26 = client.da_fld.ay(var1.bl_fld, (byte)34);
-					if ((var26 == null || !var26.av(119840427)) && client.us(1073741824)) {
-						if (!var1.bk_fld.bi()) {
+					rg var26 = client.da_fld.ay(var1.bf_fld, (byte)34);
+					if ((var26 == null || !var26.av(119840427)) && client.fr(1073741824)) {
+						if (!var1.bk_fld.ar()) {
 							nn.ay(var0, var1, var1.ep(1014380112) + 15);
 
 							for (cr var27 = (cr)var1.bk_fld.ah(); null != var27; var27 = (cr)var9.bk_fld.ay()) {
 								cp var28 = var27.ag(var15);
 								if (var28 != null) {
 									pa var29 = var27.az_fld;
-									yv var30 = var29.av(615685914);
-									yv var31 = var29.ae(588330049);
+									yv var30 = var29.ae(615685914);
+									yv var31 = var29.av(588330049);
 									int var33 = 0;
 									int var32;
 									if (var30 != null && var31 != null) {
-										if (var29.aa_fld < var31.aw_fld) {
+										if (var29.ar_fld < var31.aw_fld) {
 											if (var16 <= 6) {
 												return;
 											}
 
-											var33 = var29.aa_fld;
+											var33 = var29.ar_fld;
 										}
 
 										var32 = var31.aw_fld - 2 * var33;
 									} else {
-										var32 = var29.an_fld;
+										var32 = var29.ay_fld;
 									}
 
 									int var34 = 255;
 									byte var35 = -1;
-									int var36 = var15 - var28.ak_fld;
-									int var37 = var28.az_fld * var32 / var29.an_fld;
+									int var36 = var15 - var28.av_fld;
+									int var37 = var28.ak_fld * var32 / var29.ay_fld;
 									int var81;
-									if (var28.av_fld > var36) {
-										int var38 = 0 == var29.af_fld ? 0 : var36 / var29.af_fld * var29.af_fld;
-										int var39 = var28.ag_fld * var32 / var29.an_fld;
-										var81 = var39 + (var37 - var39) * var38 / var28.av_fld;
+									if (var28.ag_fld > var36) {
+										int var38 = 0 == var29.al_fld ? 0 : var36 / var29.al_fld * var29.al_fld;
+										int var39 = var28.az_fld * var32 / var29.ay_fld;
+										var81 = var39 + (var37 - var39) * var38 / var28.ag_fld;
 									} else {
 										var81 = var37;
-										int var86 = var28.av_fld + var29.al_fld - var36;
-										if (var29.ar_fld >= 0) {
+										int var86 = var28.ag_fld + var29.aw_fld - var36;
+										if (var29.an_fld >= 0) {
 											if (var16 <= 6) {
 												return;
 											}
 
-											var34 = (var86 << 8) / (var29.al_fld - var29.ar_fld);
+											var34 = (var86 << 8) / (var29.aw_fld - var29.an_fld);
 										}
 									}
 
-									if (var28.az_fld > 0 && var81 < 1) {
+									if (var28.ak_fld > 0 && var81 < 1) {
 										var81 = 1;
 									}
 
@@ -2229,13 +2243,13 @@ public class ds extends da implements NPC {
 										int var40 = var12 + ch.ac_fld - var25;
 										var91 -= var33;
 										if (var34 >= 0 && var34 < 255) {
-											var30.ac(var91, var40, var34);
+											ow.dw(var30, var91, var40, var34);
 											yu.dw(var91, var40, var81 + var91, var40 + var88);
-											var31.ac(var91, var40, var34);
+											ow.dw(var31, var91, var40, var34);
 										} else {
-											var30.ab(var91, var40);
+											yv.aj(var30, var91, var40);
 											yu.dw(var91, var40, var91 + var81, var40 + var88);
-											var31.ab(var91, var40);
+											yv.aj(var31, var91, var40);
 										}
 
 										yu.dg(var11, var12, var13 + var11, var14 + var12);
@@ -2251,8 +2265,8 @@ public class ds extends da implements NPC {
 
 										var25 += 2;
 									}
-								} else if (var27.az()) {
-									var27.gy_void();
+								} else if (cr.jm(var27, -846113536)) {
+									var27.gy();
 								}
 							}
 						}
@@ -2266,7 +2280,7 @@ public class ds extends da implements NPC {
 								return;
 							}
 
-							if (var15 == var9.bs_fld && ea.dh((cv)var9)) {
+							if (var15 == var9.cn_fld && ea.dh((cv)var9)) {
 								cv var64 = (cv)var9;
 								if (var24) {
 									nn.ay(var0, var9, var9.ep(-1864736738) + 15);
@@ -2283,27 +2297,27 @@ public class ds extends da implements NPC {
 								return;
 							}
 
-							if (var65.ae_fld != -1 || -1 != var65.ah_fld) {
+							if (var65.aa_fld != -1 || -1 != var65.ax_fld) {
 								nn.ay(var0, var9, var9.ep(1518113170) + 15);
 								if (ch.at_fld > -1) {
-									if (-1 != var65.ae_fld) {
+									if (-1 != var65.aa_fld) {
 										var25 += 25;
-										ch.ay_fld[var65.ae_fld].ab(ch.at_fld + var11 - 12, var12 + ch.ac_fld - var25);
+										yv.aj(ch.ay_fld[var65.aa_fld], ch.at_fld + var11 - 12, var12 + ch.ac_fld - var25);
 									}
 
-									if (-1 != var65.ah_fld) {
+									if (-1 != var65.ax_fld) {
 										var25 += 25;
-										ch.as_fld[var65.ah_fld].ab(var11 + ch.at_fld - 12, ch.ac_fld + var12 - var25);
+										yv.aj(ch.as_fld[var65.ax_fld], var11 + ch.at_fld - 12, ch.ac_fld + var12 - var25);
 									}
 								}
 							}
 
-							if (var2 >= 0 && ku.id(var21, -1371589515) == 3) {
+							if (var2 >= 0 && ku.jy(var21, -1371589515) == 3) {
 								if (var16 <= 6) {
 									return;
 								}
 
-								if (ku.og(var21, 205903255) == var23[var2]) {
+								if (ku.ve(var21, 205903255) == var23[var2]) {
 									if (var16 <= 6) {
 										return;
 									}
@@ -2311,14 +2325,14 @@ public class ds extends da implements NPC {
 									nn.ay(var0, var9, var9.ep(-1538655255) + 15);
 									if (ch.at_fld > -1) {
 										var25 += do_.ar_fld[1].ay_fld;
-										do_.ar_fld[1].ab(var11 + ch.at_fld - 12, ch.ac_fld + var12 - var25);
+										yv.aj(do_.ar_fld[1], var11 + ch.at_fld - 12, ch.ac_fld + var12 - var25);
 									}
 								}
 							}
 						} else {
 							ds var66 = (ds)var9;
 							int[] var68 = var66.af(-1657027029);
-							short[] var70 = lu(var66, 297566127);
+							short[] var70 = var66.ab(297566127);
 							if (null != var70 && null != var68) {
 								for (int var72 = 0; var72 < var70.length; var72++) {
 									if (var70[var72] >= 0 && var68[var72] >= 0) {
@@ -2335,21 +2349,21 @@ public class ds extends da implements NPC {
 										if (null != var77) {
 											nn.ay(var58, var9, var9.ep(1777200565) + 15);
 											if (ch.at_fld > -1) {
-												var77.ab(ch.at_fld + var11 - (var77.aw_fld >> 1), (var12 - var77.ay_fld - 2) * (1 + var72) - var77.ay_fld + ch.ac_fld - 4);
+												yv.aj(var77, ch.at_fld + var11 - (var77.aw_fld >> 1), (var12 - var77.ay_fld - 2) * (1 + var72) - var77.ay_fld + ch.ac_fld - 4);
 											}
 										}
 									}
 								}
 							}
 
-							if (ku.id(var21, 889949708) == 1 && ku.og(var21, 205903255) == var58.ad_fld.ag(var2 - var22) && var15 % 20 < 10) {
+							if (ku.jy(var21, 889949708) == 1 && ku.ve(var21, 205903255) == yw.wk(var58.am_fld, var2 - var22, (byte)84) && var15 % 20 < 10) {
 								nn.ay(var58, var9, var9.ep(-74902208) + 15);
 								if (ch.at_fld > -1) {
 									if (var16 <= 6) {
 										return;
 									}
 
-									do_.ar_fld[0].ab(var11 + ch.at_fld - 12, var12 + ch.ac_fld - 28);
+									yv.aj(do_.ar_fld[0], var11 + ch.at_fld - 12, var12 + ch.ac_fld - 28);
 								}
 							}
 						}
@@ -2359,10 +2373,10 @@ public class ds extends da implements NPC {
 
 							for (int var67 = 0; var67 < var9.bh_fld.size() && var16 > 6; var67++) {
 								du var69 = (du)(du)var9.bh_fld.get(var67);
-								if (du.fy(var69, -32809735) > var15) {
-									py var71 = gf.ak(var69.ag((byte)54));
+								if (var69.az(-32809735) > var15) {
+									py var71 = gf.ak(du.zu(var69, (byte)54));
 									if (null != var71.ac_fld) {
-										var71 = py.cj(var71, (byte)106);
+										var71 = var71.av();
 										if (null == var71) {
 											if (var16 <= 6) {
 												break;
@@ -2371,22 +2385,22 @@ public class ds extends da implements NPC {
 										}
 									}
 
-									if (du.fy(var69, -32809735) - var71.ax_fld > var15) {
+									if (var69.az(-32809735) - var71.ao_fld > var15) {
 										if (var16 <= 6) {
 											break;
 										}
 									} else {
 										byte var73 = 2;
-										yv var75 = py.ib(var71, -1945220407);
-										yv var76 = var71.ay();
-										yv var78 = var71.aw();
-										yv var80 = var71.as();
+										yv var75 = var71.as();
+										yv var76 = py.yl(var71, (byte)32);
+										yv var78 = var71.ah();
+										yv var80 = var71.aw();
 										zf var83 = var71.ar();
 										if (var83 == null) {
 											var83 = ej.do_fld;
 										}
 
-										int var84 = var69.az(-1409959564);
+										int var84 = var69.av(-1409959564);
 										String var85 = var71.ae(var84);
 										int var89 = var83.an(var85);
 										int var93 = 0;
@@ -2436,15 +2450,15 @@ public class ds extends da implements NPC {
 										int var46 = ab.ag(var67);
 										int var47 = var45 + ch.at_fld;
 										int var48 = ch.ac_fld + var46;
-										int var49 = du.fy(var69, -32809735) - var15;
-										int var50 = var71.am_fld - var71.am_fld * var49 / var71.ax_fld;
-										int var51 = -var71.ad_fld + var49 * var71.ad_fld / var71.ax_fld;
+										int var49 = var69.az(-32809735) - var15;
+										int var50 = var71.ap_fld - var71.ap_fld * var49 / var71.ao_fld;
+										int var51 = -var71.am_fld + var49 * var71.am_fld / var71.ao_fld;
 										int var52 = var47 + var11 - (var94 >> 1) + var50;
 										int var53 = var51 + (var48 + var12 - 12);
-										int var54 = var71.at_fld + 15 + var53;
+										int var54 = var71.ad_fld + 15 + var53;
 										int var55 = 255;
-										if (var71.ao_fld >= 0) {
-											var55 = (var49 << 8) / (var71.ax_fld - var71.ao_fld);
+										if (var71.au_fld >= 0) {
+											var55 = (var49 << 8) / (var71.ao_fld - var71.au_fld);
 										}
 
 										if (var55 >= 0) {
@@ -2454,11 +2468,11 @@ public class ds extends da implements NPC {
 
 											if (var55 < 255) {
 												if (var75 != null) {
-													var75.ac(var52 - var75.as_fld, var53, var55);
+													ow.dw(var75, var52 - var75.as_fld, var53, var55);
 												}
 
 												if (null != var76) {
-													var76.ac(var41 + var52 - var76.as_fld, var53, var55);
+													ow.dw(var76, var41 + var52 - var76.as_fld, var53, var55);
 												}
 
 												if (var78 != null) {
@@ -2467,25 +2481,25 @@ public class ds extends da implements NPC {
 													}
 
 													for (int var98 = 0; var98 < var93; var98++) {
-														var78.ac(var98 * var78.aw_fld + (var42 + var52 - var78.as_fld), var53, var55);
+														ow.dw(var78, var98 * var78.aw_fld + (var42 + var52 - var78.as_fld), var53, var55);
 													}
 												}
 
 												if (var80 != null) {
-													var80.ac(var52 + var97 - var80.as_fld, var53, var55);
+													ow.dw(var80, var52 + var97 - var80.as_fld, var53, var55);
 												}
 
-												var83.ao(var71.ae(var69.az(-1409959564)), var43 + var52, var54, var71.au_fld, 0, var55);
+												var83.ao(var71.ae(var69.av(-1409959564)), var43 + var52, var54, var71.at_fld, 0, var55);
 												continue;
 											}
 										}
 
 										if (null != var75) {
-											var75.ab(var52 - var75.as_fld, var53);
+											yv.aj(var75, var52 - var75.as_fld, var53);
 										}
 
 										if (null != var76) {
-											var76.ab(var52 + var41 - var76.as_fld, var53);
+											yv.aj(var76, var52 + var41 - var76.as_fld, var53);
 										}
 
 										if (null != var78) {
@@ -2494,15 +2508,15 @@ public class ds extends da implements NPC {
 													return;
 												}
 
-												var78.ab(var78.aw_fld * var56 + (var42 + var52 - var78.as_fld), var53);
+												yv.aj(var78, var78.aw_fld * var56 + (var42 + var52 - var78.as_fld), var53);
 											}
 										}
 
 										if (null != var80) {
-											var80.ab(var52 + var97 - var80.as_fld, var53);
+											yv.aj(var80, var52 + var97 - var80.as_fld, var53);
 										}
 
-										zv.uj(var83, var71.ae(var69.az(-1409959564)), var43 + var52, var54, var71.au_fld | 0xFF000000, 0);
+										zv.uz(var83, var71.ae(var69.av(-1409959564)), var43 + var52, var54, var71.at_fld | 0xFF000000, 0);
 									}
 								}
 							}
@@ -2515,12 +2529,34 @@ public class ds extends da implements NPC {
 		}
 	}
 
+	@ObfuscatedName("getConvexHull")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Shape;"
+	)
+	@Export("getConvexHull")
+	@Override
+	public Shape getConvexHull() {
+		try {
+			fn var1 = this.getModel();
+			if (var1 == null) {
+				return null;
+			} else {
+				dx var2 = this.getWorldView();
+				int var3 = Perspective.getFootprintTileHeight(og.ci_fld, this.getLocalLocation(), var2.ae_fld, this.getFootprintSize());
+				var3 -= this.getAnimationHeightOffset();
+				return var1.kw(var2, super.bi_fld, super.dm_fld, this.getCurrentOrientation(), var3);
+			}
+		} catch (Throwable var5) {
+			throw new RuntimeException(var5);
+		}
+	}
+
 	@ObfuscatedName("li")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	void li() {
-		this.af_fld = null;
+		this.al_fld = null;
 	}
 
 	@ObfuscatedName("hc")
@@ -2528,36 +2564,38 @@ public class ds extends da implements NPC {
 		descriptor = "(I)V"
 	)
 	static void hc(int var0) {
-		cx.kq_fld.bm(client.ga_fld, (short)18462);
+		cn.ya(cx.kq_fld, client.ga_fld, (short)18462);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)[S"
+		descriptor = "(I)V"
 	)
-	short[] ab(int var1) {
-		return this.ar_fld != null ? this.ar_fld.ag() : this.ah_fld.aq(-1910412766);
+	void ac(int var1) {
+		this.af_fld = null;
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lfy;"
+		descriptor = "(B)Ljava/lang/String;"
 	)
-	fy bx(int var1) {
-		int var2 = this.ah_fld.cv(580930067);
-		fy var3 = this.ax_fld;
-		byte var4 = ue.ak(var2, 2115810139);
-		byte var5 = ue.ag(var2);
-		byte var6 = (byte)(var2 & 127);
-		var3.ag(var4, var5, var6, (byte)127);
-		return this.ax_fld;
-	}
+	final String ay(byte var1) {
+		try {
+			if (!this.ay_fld.isEmpty()) {
+				return this.ay_fld;
+			} else {
+				pp var2 = this.ah_fld;
+				if (null != var2.dy_fld) {
+					var2 = var2.ar((byte)6);
+					if (var2 == null) {
+						var2 = this.ah_fld;
+					}
+				}
 
-	@ObfuscatedName("bc")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean bc(int var1) {
-		return null != this.ah_fld;
+				return var2.cg_fld;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
 	}
 }

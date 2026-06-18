@@ -22,7 +22,7 @@ public class oj {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void ak() {
 		ld.au_fld = null;

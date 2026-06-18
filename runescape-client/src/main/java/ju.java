@@ -40,12 +40,12 @@ public class ju implements xm {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String aw_fld;
-	@ObfuscatedGetter(
-		intValue = 2129464951
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2129464951
 	)
 	int ay_fld;
 	@ObfuscatedName("at")
@@ -68,6 +68,18 @@ public class ju implements xm {
 		return this.ay_fld;
 	}
 
+	@ObfuscatedName("te")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;Lpg;)V"
+	)
+	public static void te(ds var0, pg var1) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.al_fld = var1;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -83,14 +95,6 @@ public class ju implements xm {
 	)
 	public static ju[] as() {
 		return new ju[]{ah_fld, av_fld, ae_fld, az_fld, ag_fld, ak_fld};
-	}
-
-	@ObfuscatedName("vl")
-	@ObfuscatedSignature(
-		descriptor = "(Lyl;I)[Ljava/lang/Object;"
-	)
-	public static Object[] vl(yl var0, int var1) {
-		return (Object[])(null == var0.az_fld ? null : var0.az_fld[var1]);
 	}
 
 	@ObfuscatedName("ae")
@@ -126,16 +130,12 @@ public class ju implements xm {
 		return new ju[]{ah_fld, av_fld, ae_fld, az_fld, ag_fld, ak_fld};
 	}
 
-	@ObfuscatedName("hi")
+	@ObfuscatedName("vm")
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;IJ)J"
+		descriptor = "(Luf;)I"
 	)
-	public static long hi(pp var0, int var1, long var2) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return hq.az(var0.ep_fld, var1, var2);
+	public static int vm(uf var0) {
+		return var0.ae_fld + var0.aw_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -165,16 +165,16 @@ public class ju implements xm {
 		descriptor = "(Lub;Lub;Lzz;ZIB)V"
 	)
 	static void az(ub var0, ub var1, zz var2, boolean var3, int var4, byte var5) throws EOFException {
-		client.rx(var0, var1, var2, var3, var4);
+		client.cw(var0, var1, var2, var3, var4);
 		if (lr.bx_fld) {
 			if (var5 == 0) {
-				client.zx(var0, var1, var2, var3, var4);
+				client.lv(var0, var1, var2, var3, var4);
 			} else {
 				if (4 == var4) {
 					jz.ac(4);
 				}
 
-				client.zx(var0, var1, var2, var3, var4);
+				client.lv(var0, var1, var2, var3, var4);
 			}
 		} else {
 			if (var4 == 0) {
@@ -204,12 +204,12 @@ public class ju implements xm {
 			do_.bp_fld = new ce(bf.cy_fld, var2.aw_fld);
 			if (var3) {
 				if (var5 == 0) {
-					client.zx(var0, var1, var2, var3, var4);
+					client.lv(var0, var1, var2, var3, var4);
 					return;
 				}
 
 				bn.ba_fld = "";
-				client.lq();
+				client.og();
 				bn.bq_fld = "";
 				bn.cd_fld = new String[8];
 				bn.bb_fld = 0;
@@ -219,7 +219,7 @@ public class ju implements xm {
 			he.cq_fld = "";
 			bn.cv_fld = true;
 			bn.dq_fld = false;
-			if (cx.kq_fld.as((short)22901)) {
+			if (cn.mv(cx.kq_fld, (short)22901)) {
 				sx.av(0, 0);
 			} else {
 				cp.bh("scape main", 255);
@@ -228,14 +228,14 @@ public class ju implements xm {
 			ah.ay();
 			ll.hy().ag(false);
 			lr.bx_fld = true;
-			client.hw();
+			client.px(-1);
 			bn.bo_fld = 1332414199 * ((pf.qw_fld - 765) / 2);
 			bn.ck_fld = bn.bo_fld + -999389370;
 			bh.cb_fld = 355797204 + bn.ck_fld;
-			hu.ce_fld.ao(bn.bo_fld, 0);
-			nq.cn_fld.ao(bn.bo_fld + 382, 0);
-			hk.cr_fld.ad(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
-			client.zx(var0, var1, var2, var3, var4);
+			hu.ce_fld.dq(bn.bo_fld, 0);
+			nq.cn_fld.dq(bn.bo_fld + 382, 0);
+			hk.cr_fld.ae(bn.bo_fld + 382 - hk.cr_fld.az_fld / 2, 18);
+			client.lv(var0, var1, var2, var3, var4);
 		}
 	}
 }

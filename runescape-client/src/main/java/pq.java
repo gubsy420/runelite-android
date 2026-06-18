@@ -19,12 +19,12 @@ public class pq extends vc {
 		descriptor = "Lub;"
 	)
 	public static ub ak_fld;
-	@ObfuscatedGetter(
-		intValue = -1715128639
-	)
 	@ObfuscatedName("oo")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1715128639
 	)
 	static int oo_fld;
 
@@ -53,7 +53,7 @@ public class pq extends vc {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(Lxi;IB)V"
 	)
 	void az(xi var1, int var2) {
 		if (2 == var2) {
@@ -63,9 +63,9 @@ public class pq extends vc {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lxi;I)V"
 	)
-	public void ag(xi var1) {
+	public void ag(xi var1, int var2) {
 		while (true) {
 			int var3 = var1.cg();
 			if (var3 == 0) {
@@ -92,11 +92,19 @@ public class pq extends vc {
 		ak_fld = var0;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("vt")
+	@ObfuscatedSignature(
+		descriptor = "(Ldx;I)Lcv;"
+	)
+	public static cv vt(dx var0, int var1) {
+		return (cv)(cv)var0.au_fld.ae(var1);
+	}
+
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void af(xi var1, int var2) {
+	void au(xi var1, int var2) {
 		if (2 == var2) {
 			this.az_fld = true;
 		}
@@ -108,29 +116,6 @@ public class pq extends vc {
 	)
 	public static void aw(ub var0) {
 		ak_fld = var0;
-	}
-
-	@ObfuscatedName("ru")
-	@ObfuscatedSignature(
-		descriptor = "(Lwl;)Z"
-	)
-	public static boolean ru(wl var0) {
-		return !var0.cy_fld;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	public void ay(xi var1) {
-		while (true) {
-			int var2 = var1.cg();
-			if (var2 == 0) {
-				return;
-			}
-
-			this.az(var1, var2);
-		}
 	}
 
 	@ObfuscatedName("ar")
@@ -148,21 +133,30 @@ public class pq extends vc {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ez")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(Lpq;Lxi;)V"
 	)
-	void al(xi var1, int var2) {
-		if (2 == var2) {
-			this.az_fld = true;
+	public static void ez(pq var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		while (true) {
+			int var2 = var1.cg();
+			if (var2 == 0) {
+				return;
+			}
+
+			var0.az(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
 	)
-	void au(xi var1, int var2) {
+	void af(xi var1, int var2) {
 		if (2 == var2) {
 			this.az_fld = true;
 		}

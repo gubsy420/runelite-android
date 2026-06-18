@@ -1,17 +1,10 @@
 import java.util.concurrent.ThreadFactory;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("sh")
 class sh implements ThreadFactory {
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public Thread ag(Runnable var1) {
-		return new Thread(var1, "OSRS Maya Anim Load");
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
@@ -20,11 +13,11 @@ class sh implements ThreadFactory {
 		return new Thread(var1, "OSRS Maya Anim Load");
 	}
 
-	@ObfuscatedName("cf")
+	@ObfuscatedName("gi")
 	@ObfuscatedSignature(
 		descriptor = "(Lsh;Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
-	public static Thread cf(sh var0, Runnable var1) {
+	public static Thread gi(sh var0, Runnable var1) {
 		if (var0 == null) {
 			throw new NullPointerException();
 		} else {
@@ -32,14 +25,19 @@ class sh implements ThreadFactory {
 		}
 	}
 
-	sh() {
+	@ObfuscatedName("kt")
+	@ObfuscatedSignature(
+		descriptor = "(Lli;)I"
+	)
+	public static int kt(li var0) {
+		return var0.bf_fld;
 	}
 
-	@ObfuscatedName("hl")
+	@ObfuscatedName("sx")
 	@ObfuscatedSignature(
 		descriptor = "(Lsh;Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
-	public static Thread hl(sh var0, Runnable var1) {
+	public static Thread sx(sh var0, Runnable var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -47,45 +45,45 @@ class sh implements ThreadFactory {
 		return new Thread(var1, "OSRS Maya Anim Load");
 	}
 
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public Thread ae(Runnable var1) {
+		return new Thread(var1, "OSRS Maya Anim Load");
+	}
+
+	sh() {
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public Thread az(Runnable var1) {
+		return new Thread(var1, "OSRS Maya Anim Load");
+	}
+
 	@ObfuscatedName("newThread")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
+	@Export("newThread")
 	@Override
 	public Thread newThread(Runnable var1) {
 		return new Thread(var1, "OSRS Maya Anim Load");
 	}
 
-	@ObfuscatedName("ud")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;)Z"
-	)
-	public static boolean ud(uk var0) {
-		return var0.af_fld;
-	}
-
-	@ObfuscatedName("um")
-	@ObfuscatedSignature(
-		descriptor = "(Lsh;Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public static Thread um(sh var0, Runnable var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return new Thread(var1, "OSRS Maya Anim Load");
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(FFF)Ltu;"
+		descriptor = "(FFFB)Ltu;"
 	)
 	public static tu ak(float var0, float var1, float var2) {
 		synchronized (tu.ae_fld) {
 			if (0 == tu.aw_fld) {
 				return new tu(var0, var1, var2);
 			} else {
-				tu.md(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var0, var1, var2, (byte)-50);
+				tu.fh(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var0, var1, var2, (byte)-50);
 				return tu.ae_fld[tu.aw_fld];
 			}
 		}
@@ -93,7 +91,7 @@ class sh implements ThreadFactory {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([FIFZFZ[F)I"
+		descriptor = "([FIFZFZ[FI)I"
 	)
 	public static int ak(float[] var0, int var1, float var2, boolean var3, float var4, boolean var5, float[] var6) {
 		float var8 = 0.0F;

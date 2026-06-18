@@ -9,30 +9,30 @@ public class wv {
 		descriptor = "Lwh;"
 	)
 	public wh av_fld;
-	@ObfuscatedGetter(
-		intValue = 193667497
-	)
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int az_fld;
-	@ObfuscatedGetter(
-		intValue = 1077344343
-	)
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int ag_fld = 1301974169;
-	@ObfuscatedGetter(
-		intValue = 1259083063
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 193667497
+	)
 	public int ak_fld;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1077344343
+	)
+	public int az_fld = 1301974169;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1259083063
+	)
+	public int ag_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lkr;"
@@ -41,7 +41,7 @@ public class wv {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "([BII)Ljava/lang/String;"
+		descriptor = "([BIIB)Ljava/lang/String;"
 	)
 	public static String ag(byte[] var0, int var1, int var2) {
 		char[] var4 = new char[var2];
@@ -100,8 +100,8 @@ public class wv {
 	}
 
 	public wv() {
-		this.az_fld = 0;
 		this.ak_fld = 0;
+		this.ag_fld = 0;
 		this.av_fld = new wh();
 		this.ae_fld = kr.az_fld;
 	}

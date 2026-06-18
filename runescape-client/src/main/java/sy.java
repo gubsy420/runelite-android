@@ -49,6 +49,14 @@ class sy implements Callable {
 	)
 	static lv hk_fld;
 
+	@ObfuscatedName("cb")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)I"
+	)
+	public static int cb(xi var0) {
+		return 187828303 - var0.al_fld[(var0.au_fld += 228932457) * -96957045 - 1] & 0xFF;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
@@ -72,33 +80,6 @@ class sy implements Callable {
 		}
 
 		return null;
-	}
-
-	@ObfuscatedName("sq")
-	@ObfuscatedSignature(
-		descriptor = "(Luo;Llu;)I"
-	)
-	public static int sq(uo var0, lu var1) {
-		lg var2 = (lg)var0.an_fld.ak(var1.bf_fld * -2097943517);
-		int var4 = -1146048298 * var1.by_fld;
-		lg var5 = var2;
-
-		lg var3;
-		while (true) {
-			if (null == var5) {
-				var3 = null;
-				break;
-			}
-
-			if (var4 >= var5.ak_fld && var4 <= var5.ag_fld) {
-				var3 = var5;
-				break;
-			}
-
-			var5 = var5.ae_fld;
-		}
-
-		return null != var3 ? var3.ak(-1724411564) : var1.ec_fld;
 	}
 
 	@ObfuscatedName("ak")

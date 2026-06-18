@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -27,35 +28,35 @@ public class ga implements WorldMapRegion {
 		descriptor = "I"
 	)
 	static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -831281439
-	)
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
+	@ObfuscatedGetter(
+		intValue = -831281439
+	)
+	int al_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/HashMap;"
 	)
 	HashMap ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1344557209
-	)
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int af_fld;
-	@ObfuscatedGetter(
-		intValue = 1934529249
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1344557209
+	)
 	int aw_fld;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1934529249
+	)
+	int ay_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "Lgk;"
@@ -66,20 +67,20 @@ public class ga implements WorldMapRegion {
 		descriptor = "Ljava/util/LinkedList;"
 	)
 	LinkedList ar_fld;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
 	@ObfuscatedGetter(
 		intValue = 2121588379
 	)
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int al_fld;
-	@ObfuscatedGetter(
-		intValue = -1240771359
-	)
+	int af_fld;
 	@ObfuscatedName("mr")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1240771359
 	)
 	static int mr_fld;
 	@ObfuscatedName("au")
@@ -118,199 +119,71 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("dr")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Ljava/util/List;)V"
+	)
+	public static void dr(ga var0, List var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			Iterator var2 = var1.iterator();
+
+			while (var2.hasNext()) {
+				he var3 = (he)(he)var2.next();
+				if (uh.ak(var3.av_fld).al_fld && var3.aw_fld.ak_fld * -621797759 >> 6 == var0.aw_fld && var3.aw_fld.ag_fld * 1479124089 >> 6 == var0.ay_fld) {
+					he var4 = new he(var3.aw_fld, var3.aw_fld, var3.av_fld, jx(var0, var3.av_fld));
+					var0.au_fld.add(var4);
+				}
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)V"
 	)
 	void ag(int var1, int var2, int var3, byte var4) {
-		int var6 = this.af_fld;
-		int var7 = this.aw_fld;
-		int var8 = this.ay_fld;
+		int var6 = this.aw_fld;
+		int var7 = this.ay_fld;
+		int var8 = this.al_fld;
 		yv var5 = (yv)(yv)ae_fld.ak(cw.ak(var6, var7, var8));
 		if (null != var5) {
-			if (this.ay_fld == var3) {
+			if (this.al_fld == var3) {
 				if (var4 == 0) {
 					return;
 				}
 
-				var5.ao(var1, var2);
+				var5.dq(var1, var2);
 			} else {
-				var5.ap(var1, var2, var3, var3);
+				var5.dl(var1, var2, var3, var3);
 			}
 		}
 	}
 
 	ga(int var1, int var2, int var3, HashMap var4) {
-		this.af_fld = var1;
-		this.aw_fld = var2;
+		this.aw_fld = var1;
+		this.ay_fld = var2;
 		this.ar_fld = new LinkedList();
 		this.au_fld = new LinkedList();
 		this.ax_fld = new HashMap();
-		this.al_fld = -86976621 * (var3 | 0xFF000000);
+		this.af_fld = -86976621 * (var3 | 0xFF000000);
 		this.ah_fld = var4;
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IILhi;)V"
-	)
-	public static void ac(ga var0, int var1, int var2, hi var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			for (int var4 = 0; var4 < var3.af_fld; var4++) {
-				ge[] var5 = var3.ai_fld[var4][var1][var2];
-				if (null != var5 && 0 != var5.length) {
-					ge[] var6 = var5;
-
-					for (int var7 = 0; var7 < var6.length; var7++) {
-						ge var8 = var6[var7];
-						int var10 = var8.ag_fld;
-						boolean var9 = var10 >= kn.ak_fld.at_fld && var10 <= kn.av_fld.at_fld || var10 == kn.ae_fld.at_fld;
-						if (var9) {
-							oe var11 = ko.az(var8.ak_fld);
-							int var12 = 0 != var11.cj_fld ? -3407872 : -3355444;
-							if (var8.ag_fld == kn.ak_fld.at_fld) {
-								an(var0, var1, var2, var8.az_fld, var12);
-							}
-
-							if (kn.az_fld.at_fld == var8.ag_fld) {
-								an(var0, var1, var2, var8.az_fld, -3355444);
-								an(var0, var1, var2, 1 + var8.az_fld, var12);
-							}
-
-							if (kn.av_fld.at_fld == var8.ag_fld) {
-								if (0 == var8.az_fld) {
-									yu.ew(var0.ay_fld * var1, (63 - var2) * var0.ay_fld, 1, var12);
-								}
-
-								if (1 == var8.az_fld) {
-									yu.ew(var0.ay_fld + var1 * var0.ay_fld - 1, (63 - var2) * var0.ay_fld, 1, var12);
-								}
-
-								if (var8.az_fld == 2) {
-									yu.ew(var0.ay_fld + var0.ay_fld * var1 - 1, var0.ay_fld + var0.ay_fld * (63 - var2) - 1, 1, var12);
-								}
-
-								if (3 == var8.az_fld) {
-									yu.ew(var0.ay_fld * var1, var0.ay_fld + var0.ay_fld * (63 - var2) - 1, 1, var12);
-								}
-							}
-
-							if (var8.ag_fld == kn.ae_fld.at_fld) {
-								int var13 = var8.az_fld % 2;
-								if (0 == var13) {
-									for (int var17 = 0; var17 < var0.ay_fld; var17++) {
-										yu.ew(var17 + var0.ay_fld * var1, (64 - var2) * var0.ay_fld - 1 - var17, 1, var12);
-									}
-								} else {
-									for (int var14 = 0; var14 < var0.ay_fld; var14++) {
-										yu.ew(var0.ay_fld * var1 + var14, var14 + (63 - var2) * var0.ay_fld, 1, var12);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		} catch (Throwable var16) {
-			throw new RuntimeException(var16);
-		}
-	}
-
-	@ObfuscatedName("eb")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Lgk;Ljava/util/List;S)V"
-	)
-	public static void eb(ga var0, gk var1, List var2, short var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				var0.ax_fld.clear();
-				var0.as_fld = var1;
-				var0.ay(var2, (byte)-60);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("em")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IIIII)Ljava/util/List;"
-	)
-	public static List em(ga var0, int var1, int var2, int var3, int var4, int var5) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		LinkedList var6 = new LinkedList();
-		if (var4 >= var1 && var5 >= var2) {
-			if (var4 < var3 + var1 && var5 < var2 + var3) {
-				Iterator var7 = var0.ax_fld.values().iterator();
-
-				while (var7.hasNext()) {
-					hr var8 = (hr)(hr)var7.next();
-					if (var8.aq((byte)100) && var8.ai(var4, var5, (byte)-90)) {
-						var6.add(var8);
-					}
-				}
-
-				var7 = var0.au_fld.iterator();
-
-				while (var7.hasNext()) {
-					hr var10 = (hr)(hr)var7.next();
-					if (var10.aq((byte)113) && var10.ai(var4, var5, (byte)-60)) {
-						var6.add(var10);
-					}
-				}
-
-				return var6;
-			} else {
-				return var6;
-			}
-		} else {
-			return var6;
-		}
-	}
-
-	@ObfuscatedName("dd")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Ljava/util/HashSet;II)V"
-	)
-	public static void dd(ga var0, HashSet var1, int var2, int var3) throws EOFException {
-		try {
-			Iterator var4 = var0.ax_fld.values().iterator();
-
-			while (var4.hasNext()) {
-				hr var5 = (hr)(hr)var4.next();
-				if (var5.aq((byte)45)) {
-					int var6 = var5.ag(111445600);
-					if (var1.contains(var6)) {
-						pc var7 = uh.ak(var6);
-						var0.ac(var7, -967672449 * var5.as_fld, var5.ar_fld, var2, var3, 167634901);
-					}
-				}
-			}
-
-			var0.ax(var1, var2, var3, (byte)112);
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("dg")
+	@ObfuscatedName("db")
 	@ObfuscatedSignature(
 		descriptor = "(Lpc;IIII)V"
 	)
-	void dg(pc var1, int var2, int var3, int var4, int var5) {
+	void db(pc var1, int var2, int var3, int var4, int var5) {
 		try {
 			yv var6 = var1.ae(false, -1966622853);
 			if (null != var6) {
-				var6.ab(var2 - var6.aw_fld / 2, var3 - var6.ay_fld / 2);
+				yv.aj(var6, var2 - var6.aw_fld / 2, var3 - var6.ay_fld / 2);
 				if (var4 % var5 < var5 / 2) {
 					yu.de(var2, var3, 15, 16776960, -746574696);
 					yu.de(var2, var3, 7, -135820646, 256);
@@ -331,108 +204,8 @@ public class ga implements WorldMapRegion {
 				var4 = new HashSet();
 			}
 
-			this.ap(var1, var2, var4, var3, (byte)2);
-			zp(this, var1, var2, var4, var3, (byte)0);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("zp")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IILjava/util/HashSet;IB)V"
-	)
-	public static void zp(ga var0, int var1, int var2, HashSet var3, int var4, byte var5) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			float var6 = var4 / 64.0F;
-			Iterator var7 = var0.au_fld.iterator();
-
-			while (var7.hasNext()) {
-				if (var5 != 0) {
-					return;
-				}
-
-				hr var8 = (hr)(hr)var7.next();
-				if (var8.aq((byte)19)) {
-					int var9 = var8.aw_fld.ag_fld * -621797759 % 64;
-					int var10 = var8.aw_fld.az_fld * 1479124089 % 64;
-					var8.as_fld = -1969704677 * (int)(var6 * var9 + var1);
-					var8.ar_fld = (int)(var6 * (63 - var10) + var2);
-					if (var3.contains(var8.ag(1314412832))) {
-						if (var5 != 0) {
-							return;
-						}
-					} else {
-						ti(var0, var8, var8.as_fld, var8.ar_fld, var6);
-					}
-				}
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lpc;IIIII)V"
-	)
-	void ac(pc var1, int var2, int var3, int var4, int var5, int var6) {
-		try {
-			yv var7 = var1.ae(false, -2135784525);
-			if (null == var7) {
-				if (var6 < 1810855184) {
-					;
-				}
-			} else {
-				var7.ab(var2 - var7.aw_fld / 2, var3 - var7.ay_fld / 2);
-				if (var4 % var5 < var5 / 2) {
-					yu.de(var2, var3, 15, 16776960, 128);
-					yu.de(var2, var3, 7, 16777215, 256);
-				}
-			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
-		}
-	}
-
-	@ObfuscatedName("zn")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;)Ljava/util/List;"
-	)
-	public static List zn(ga var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		LinkedList var1 = new LinkedList();
-		var1.addAll(var0.au_fld);
-		var1.addAll(var0.ax_fld.values());
-		return var1;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/List;B)V"
-	)
-	void ay(List var1, byte var2) {
-		try {
-			Iterator var3 = var1.iterator();
-
-			while (var3.hasNext()) {
-				he var4 = (he)(he)var3.next();
-				if (!uh.ak(var4.ak_fld).al_fld) {
-					if (var2 >= 2) {
-						return;
-					}
-				} else if (var4.aw_fld.ag_fld * -621797759 >> 6 == this.af_fld && var4.aw_fld.az_fld * 1479124089 >> 6 == this.aw_fld) {
-					he var5 = new he(var4.aw_fld, var4.aw_fld, var4.ak_fld, this.bs(var4.ak_fld, -1548529809));
-					this.au_fld.add(var5);
-				}
-			}
+			this.bz(var1, var2, var4, var3, (byte)2);
+			fn(this, var1, var2, var4, var3, (byte)0);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
@@ -450,8 +223,8 @@ public class ga implements WorldMapRegion {
 				}
 
 				for (int var7 = 0; var7 < 64; var7++) {
-					this.aq(var6, var7, this.as_fld, var1, var3, var4, (byte)113);
-					aj(this, var6, var7, this.as_fld, var1, var4);
+					zg(this, var6, var7, this.as_fld, var1, var3, var4, (byte)113);
+					this.am(var6, var7, this.as_fld, var1, var4, 1280826057);
 				}
 			}
 
@@ -465,170 +238,6 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("ds")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IIIILhi;I)V"
-	)
-	public static void ds(ga var0, int var1, int var2, int var3, int var4, hi var5, int var6) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			for (int var7 = var1; var7 < var1 + var3; var7++) {
-				int var8 = var2;
-
-				while (var8 < var2 + var4) {
-					int var9 = 0;
-
-					while (true) {
-						label137: {
-							if (var9 < var5.af_fld) {
-								ge[] var10 = var5.ai_fld[var9][var7][var8];
-								if (null == var10 || var10.length == 0) {
-									break label137;
-								}
-
-								ge[] var11 = var10;
-								int var12 = 0;
-
-								while (true) {
-									oe var14;
-									boolean var15;
-									if (var12 >= var11.length) {
-										break label137;
-									}
-
-									if (var6 != 1417671953) {
-										return;
-									}
-
-									label113: {
-										ge var13 = var11[var12];
-										var14 = ko.az(var13.ak_fld);
-										if (var14.dy_fld != null) {
-											int[] var16 = var14.dy_fld;
-
-											for (int var17 = 0; var17 < var16.length; var17++) {
-												if (var6 != 1417671953) {
-													return;
-												}
-
-												int var18 = var16[var17];
-												oe var19 = ko.az(var18);
-												if (var19.dm_fld != -1) {
-													var15 = true;
-													break label113;
-												}
-											}
-										} else if (var14.dm_fld != -1) {
-											var15 = true;
-											break label113;
-										}
-
-										var15 = false;
-									}
-
-									if (var15) {
-										var0.ah(var14, var9, var7, var8, var5, -1591040896);
-										break;
-									}
-
-									var12++;
-								}
-							}
-
-							var8++;
-							break;
-						}
-
-						var9++;
-					}
-				}
-			}
-		} catch (Throwable var20) {
-			throw new RuntimeException(var20);
-		}
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)V"
-	)
-	void as(byte var1) {
-		if (this.as_fld != null) {
-			this.as_fld.bs();
-		} else {
-			Iterator var2 = this.ar_fld.iterator();
-
-			while (var2.hasNext()) {
-				gy var3 = (gy)(gy)var2.next();
-				var3.bs();
-			}
-		}
-	}
-
-	@ObfuscatedName("sw")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Lyv;Lpv;B)I"
-	)
-	public static int sw(ga var0, yv var1, pv var2, byte var3) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			switch (var2.av_fld) {
-				case 0:
-					return -var1.aw_fld / 2;
-				case 2:
-					return 0;
-				default:
-					return -var1.aw_fld;
-			}
-		}
-	}
-
-	@ObfuscatedName("cj")
-	@ObfuscatedSignature(
-		descriptor = "(IILhi;Lhg;Lhs;Lgm;)V"
-	)
-	void cj(int var1, int var2, hi var3, hg var4, hs var5, gm var6) {
-		try {
-			int var7 = var3.ae_fld[0][var1][var2] - 1;
-			int var8 = var3.ax_fld[0][var1][var2] - 1;
-			if (var7 == -1 && var8 == -1) {
-				yu.dj(this.ay_fld * var1, (63 - var2) * this.ay_fld, -1452661003 * this.ay_fld, this.ay_fld * 2100538837, this.al_fld);
-			}
-
-			int var9 = 16711935;
-			if (var8 != -1) {
-				var9 = ue.ak(var8, this.al_fld, var6);
-			}
-
-			if (var8 > -1 && var3.an_fld[0][var1][var2] == 0) {
-				yu.dj(this.ay_fld * var1, this.ay_fld * (933449829 - var2), -943497604 * this.ay_fld, this.ay_fld, var9);
-			} else {
-				int var10 = this.ad(var1, var2, var3, var5, (byte)6);
-				if (-1 == var8) {
-					yu.dj(this.ay_fld * var1, (813016758 - var2) * this.ay_fld, this.ay_fld, this.ay_fld * 1414102270, var10);
-				} else {
-					var4.ak(
-						var1 * this.ay_fld,
-						(63 - var2) * this.ay_fld,
-						var10,
-						var9,
-						this.ay_fld * -1333499888,
-						this.ay_fld * -328281465,
-						var3.an_fld[0][var1][var2],
-						var3.aa_fld[0][var1][var2],
-						-828063812
-					);
-				}
-			}
-		} catch (Throwable var12) {
-			throw new RuntimeException(var12);
-		}
-	}
-
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Lub;I)Z"
@@ -639,7 +248,7 @@ public class ga implements WorldMapRegion {
 			if (null != this.as_fld) {
 				this.as_fld.be(var1);
 				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, 64, this.as_fld, 1417671953);
+					this.ae(0, 0, 64, 64, this.as_fld, 1417671953);
 					return true;
 				} else {
 					return false;
@@ -659,7 +268,7 @@ public class ga implements WorldMapRegion {
 
 					while (var4.hasNext()) {
 						gy var8 = (gy)(gy)var4.next();
-						ds(this, gy.ms(var8, (byte)0) * 8, gy.aw(var8, (byte)-89) * 8, 8, 8, var8, 1417671953);
+						this.ae(var8.aw() * 8, var8.ay() * 8, 8, 8, var8, 1417671953);
 					}
 				}
 
@@ -676,10 +285,10 @@ public class ga implements WorldMapRegion {
 	)
 	void al(gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) {
 		try {
-			this.ay_fld = var2;
+			this.al_fld = var2;
 			if (this.as_fld != null || !this.ar_fld.isEmpty()) {
-				int var10 = this.af_fld;
-				int var11 = this.aw_fld;
+				int var10 = this.aw_fld;
+				int var11 = this.ay_fld;
 				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
 				if (var9 == null) {
 					if (fc.ah() != var7) {
@@ -691,23 +300,23 @@ public class ga implements WorldMapRegion {
 					if (aac.ak_fld < 238) {
 						var12 &= this.af(var5, 1255331156);
 						if (null != this.as_fld) {
-							var14 = this.as_fld.al_fld * -556413785;
+							var14 = this.as_fld.ar_fld * -556413785;
 						} else {
-							var14 = ((hi)this.ar_fld.getFirst()).al_fld * -556413785;
+							var14 = ((hi)this.ar_fld.getFirst()).ar_fld * -556413785;
 						}
 					} else {
-						var12 &= this.ar(var1.ay(-143778459), var5, 283199525);
-						int var16 = this.af_fld;
-						int var17 = this.aw_fld;
+						var12 &= go(this, var1.ay(-143778459), var5);
+						int var16 = this.aw_fld;
+						int var17 = this.ay_fld;
 						int var15 = var16 << 8 | var17;
 						var14 = var15;
 					}
 
-					var12 &= var6.cv(var14, -1894769908);
+					var12 &= var6.dz(var14, -1894769908);
 					if (var12) {
 						byte[] var13;
 						if (aac.ak_fld < 238) {
-							var13 = ub.ae(var6, var14, (byte)125);
+							var13 = ub.xk(var6, var14, (byte)125);
 						} else {
 							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
 						}
@@ -724,7 +333,7 @@ public class ga implements WorldMapRegion {
 							}
 						}
 
-						yv var26 = new yv(this.ay_fld * -1662404544, this.ay_fld * -1662404544);
+						yv var26 = new yv(this.al_fld * -1662404544, this.al_fld * -1662404544);
 						var26.ax();
 						if (null != this.as_fld) {
 							this.an(var3, var4, var24, new hl(), (byte)82);
@@ -732,16 +341,134 @@ public class ga implements WorldMapRegion {
 							this.aa(var3, var4, var24, new hl(), 1182872171);
 						}
 
-						int var18 = this.af_fld;
-						int var19 = this.aw_fld;
-						int var20 = this.ay_fld;
-						ir.kk(ae_fld, var26, cw.ak(var18, var19, var20), 4 * var26.ah_fld.length);
-						this.as((byte)8);
+						int var18 = this.aw_fld;
+						int var19 = this.ay_fld;
+						int var20 = this.al_fld;
+						ae_fld.ae(var26, cw.ak(var18, var19, var20), 4 * var26.ah_fld.length);
+						yg(this, (byte)8);
 					}
 				}
 			}
 		} catch (Throwable var21) {
 			throw new RuntimeException(var21);
+		}
+	}
+
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;II)Lgw;"
+	)
+	public static gw jx(ga var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		pc var3 = uh.ak(var1);
+		return var0.bh(var3, -2140792005);
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lgf;ILhg;[Lyc;Lub;Lub;D)V"
+	)
+	public static void af(ga var0, gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.al_fld = var2;
+			if (var0.as_fld != null || !var0.ar_fld.isEmpty()) {
+				int var10 = var0.aw_fld;
+				int var11 = var0.ay_fld;
+				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
+				if (var9 == null) {
+					if (fc.ah() != var7) {
+						fc.az(var7);
+					}
+
+					boolean var12 = true;
+					int var14;
+					if (aac.ak_fld < 238) {
+						var12 &= var0.af(var5, 1367097844);
+						if (null != var0.as_fld) {
+							var14 = var0.as_fld.ar_fld * -556413785;
+						} else {
+							var14 = ((hi)var0.ar_fld.getFirst()).ar_fld * -556413785;
+						}
+					} else {
+						var12 &= go(var0, var1.ay(-143778459), var5);
+						int var16 = var0.aw_fld;
+						int var17 = var0.ay_fld;
+						int var15 = var16 << 8 | var17;
+						var14 = var15;
+					}
+
+					var12 &= var6.dz(var14, -1396043384);
+					if (var12) {
+						byte[] var13;
+						if (aac.ak_fld < 238) {
+							var13 = ub.xk(var6, var14, (byte)92);
+						} else {
+							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
+						}
+
+						hs var25;
+						if (var13 == null) {
+							var25 = new hs();
+						} else {
+							yv var26 = qd.ak(var13);
+							if (null == var26) {
+								var25 = new hs();
+							} else {
+								var25 = new hs(var26.ah_fld);
+							}
+						}
+
+						yv var27 = new yv(var0.al_fld * -1662404544, var0.al_fld * -1662404544);
+						var27.ax();
+						if (null != var0.as_fld) {
+							var0.an(var3, var4, var25, new hl(), (byte)-15);
+						} else {
+							var0.aa(var3, var4, var25, new hl(), 1182872171);
+						}
+
+						int var18 = var0.aw_fld;
+						int var19 = var0.ay_fld;
+						int var20 = var0.al_fld;
+						ae_fld.ae(var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
+						yg(var0, (byte)8);
+					}
+				}
+			}
+		} catch (Throwable var22) {
+			throw new RuntimeException(var22);
+		}
+	}
+
+	@ObfuscatedName("gx")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Ljava/util/ArrayList;Ljava/util/List;)V"
+	)
+	public static void gx(ga var0, ArrayList var1, List var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.ax_fld.clear();
+			Iterator var3 = var1.iterator();
+
+			while (var3.hasNext()) {
+				gy var4 = (gy)(gy)var3.next();
+				if (hi.xz(var4, 2070211401) == var0.aw_fld && var4.by() == var0.ay_fld) {
+					var0.ar_fld.add(var4);
+				}
+			}
+
+			nn(var0, var2, (byte)-64);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
 	}
 
@@ -755,73 +482,95 @@ public class ga implements WorldMapRegion {
 				var4 = new HashSet();
 			}
 
-			this.ap(var1, var2, var4, var3, (byte)112);
-			zp(this, var1, var2, var4, var3, (byte)0);
+			this.bz(var1, var2, var4, var3, (byte)112);
+			fn(this, var1, var2, var4, var3, (byte)0);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("sn")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;Ljava/util/ArrayList;Ljava/util/List;)V"
+		descriptor = "(Ljava/util/HashSet;IIB)V"
 	)
-	public static void sn(ga var0, ArrayList var1, List var2) throws EOFException {
+	void ax(HashSet var1, int var2, int var3, byte var4) {
 		try {
-			var0.ax_fld.clear();
-			Iterator var3 = var1.iterator();
+			Iterator var5 = this.ax_fld.values().iterator();
 
-			while (var3.hasNext()) {
-				gy var4 = (gy)(gy)var3.next();
-				if (var4.bf() == var0.af_fld && var4.by() == var0.aw_fld) {
-					var0.ar_fld.add(var4);
+			while (var5.hasNext()) {
+				hr var6 = (hr)(hr)var5.next();
+				if (var6.aq((byte)120)) {
+					int var7 = var6.ag(-1798904925);
+					if (var1.contains(var7)) {
+						if (var4 <= 1) {
+							return;
+						}
+
+						pc var8 = uh.ak(var7);
+						lk(this, var8, var6.ar_fld, var6.as_fld, var2, var3, -2146458702);
+					}
 				}
 			}
 
-			var0.ay(var2, (byte)-64);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
+			this.at(var1, var2, var3, (byte)90);
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("xd")
 	@ObfuscatedSignature(
-		descriptor = "(IILhi;Lhg;Lhs;Lgm;B)V"
+		descriptor = "(Lga;III)V"
 	)
-	void aq(int var1, int var2, hi var3, hg var4, hs var5, gm var6, byte var7) {
-		try {
-			int var8 = var3.ae_fld[0][var1][var2] - 1;
-			int var9 = var3.ax_fld[0][var1][var2] - 1;
-			if (var8 == -1 && var9 == -1) {
-				yu.dj(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, this.ay_fld, this.al_fld);
-			}
-
-			int var10 = 16711935;
-			if (var9 != -1) {
-				var10 = ue.ak(var9, this.al_fld, var6);
-			}
-
-			if (var9 > -1) {
-				if (var7 == 3) {
-					return;
-				}
-
-				if (var3.an_fld[0][var1][var2] == 0) {
-					yu.dj(this.ay_fld * var1, this.ay_fld * (63 - var2), this.ay_fld, this.ay_fld, var10);
-					return;
-				}
-			}
-
-			int var11 = this.ad(var1, var2, var3, var5, (byte)6);
-			if (-1 == var9) {
-				yu.dj(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, this.ay_fld, var11);
+	public static void xd(ga var0, int var1, int var2, int var3) {
+		int var5 = 535755321 * var0.aw_fld;
+		int var6 = var0.ay_fld;
+		int var7 = -524901965 * var0.al_fld;
+		yv var4 = (yv)(yv)ae_fld.ak(cw.ak(var5, var6, var7));
+		if (null != var4) {
+			if (var0.al_fld == var3) {
+				var4.dq(var1, var2);
 			} else {
-				var4.ak(
-					var1 * this.ay_fld, (63 - var2) * this.ay_fld, var11, var10, this.ay_fld, this.ay_fld, var3.an_fld[0][var1][var2], var3.aa_fld[0][var1][var2], -828063812
-				);
+				var4.dl(var1, var2, var3, var3);
 			}
-		} catch (Throwable var12) {
-			throw new RuntimeException(var12);
+		}
+	}
+
+	@ObfuscatedName("fn")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILjava/util/HashSet;IB)V"
+	)
+	public static void fn(ga var0, int var1, int var2, HashSet var3, int var4, byte var5) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			float var6 = var4 / 64.0F;
+			Iterator var7 = var0.au_fld.iterator();
+
+			while (var7.hasNext()) {
+				if (var5 != 0) {
+					return;
+				}
+
+				hr var8 = (hr)(hr)var7.next();
+				if (var8.aq((byte)19)) {
+					int var9 = var8.aw_fld.ak_fld * -621797759 % 64;
+					int var10 = var8.aw_fld.ag_fld * 1479124089 % 64;
+					var8.ar_fld = -1969704677 * (int)(var6 * var9 + var1);
+					var8.as_fld = (int)(var6 * (63 - var10) + var2);
+					if (var3.contains(var8.ag(1314412832))) {
+						if (var5 != 0) {
+							return;
+						}
+					} else {
+						var0.aj(var8, var8.ar_fld, var8.as_fld, var6, -1996327199);
+					}
+				}
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
 		}
 	}
 
@@ -831,6 +580,110 @@ public class ga implements WorldMapRegion {
 	)
 	void du(HashSet var1, int var2, int var3) {
 		try {
+			Iterator var4 = this.ax_fld.values().iterator();
+
+			while (var4.hasNext()) {
+				hr var5 = (hr)(hr)var4.next();
+				if (var5.aq((byte)45)) {
+					int var6 = var5.ag(111445600);
+					if (var1.contains(var6)) {
+						pc var7 = uh.ak(var6);
+						lk(this, var7, -967672449 * var5.ar_fld, var5.as_fld, var2, var3, 167634901);
+					}
+				}
+			}
+
+			this.at(var1, var2, var3, (byte)112);
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("getMapIcons")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Collection;"
+	)
+	@Export("getMapIcons")
+	@Override
+	public Collection getMapIcons() {
+		return Collections.unmodifiableCollection(this.be().values());
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Lhr;IIFI)V"
+	)
+	void aj(hr var1, int var2, int var3, float var4, int var5) {
+		try {
+			pc var6 = uh.ak(var1.ag(-613111085));
+			this.bm(var6, var2, var3, 842150400);
+			this.bd(var1, var6, var2, var3, var4, (byte)58);
+		} catch (Throwable var7) {
+			throw new RuntimeException(var7);
+		}
+	}
+
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "(Lhg;[Lyc;Lhs;Lgm;)V"
+	)
+	void ck(hg var1, yc[] var2, hs var3, gm var4) {
+		try {
+			for (int var5 = 0; var5 < -1544444519; var5++) {
+				for (int var6 = 0; var6 < -583930190; var6++) {
+					zg(this, var5, var6, this.as_fld, var1, var3, var4, (byte)-83);
+					this.am(var5, var6, this.as_fld, var1, var4, 1095142768);
+				}
+			}
+
+			for (int var9 = 0; var9 < 64; var9++) {
+				for (int var10 = 0; var10 < -1517336384; var10++) {
+					this.ai(var9, var10, this.as_fld, var1, var2, -1722287877);
+				}
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
+		}
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(IILhi;Lhg;Lgm;I)V"
+	)
+	void am(int var1, int var2, hi var3, hg var4, gm var5, int var6) {
+		try {
+			for (int var7 = 1; var7 < var3.al_fld; var7++) {
+				int var8 = var3.ax_fld[var7][var1][var2] - 1;
+				if (var8 > -1) {
+					int var9 = ue.ak(var8, this.af_fld, var5);
+					if (var3.an_fld[var7][var1][var2] == 0) {
+						yu.dj(this.al_fld * var1, (63 - var2) * this.al_fld, this.al_fld, this.al_fld, var9);
+					} else {
+						var4.ak(
+							var1 * this.al_fld,
+							this.al_fld * (63 - var2),
+							0,
+							var9,
+							this.al_fld,
+							this.al_fld,
+							var3.an_fld[var7][var1][var2],
+							var3.aa_fld[var7][var1][var2],
+							-828063812
+						);
+					}
+				}
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
+	}
+
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/HashSet;II)V"
+	)
+	void cm(HashSet var1, int var2, int var3) {
+		try {
 			Iterator var4 = this.au_fld.iterator();
 
 			while (var4.hasNext()) {
@@ -838,7 +691,7 @@ public class ga implements WorldMapRegion {
 				if (var5.aq((byte)106)) {
 					pc var6 = uh.ak(var5.ag(-1547341453));
 					if (var6 != null && var1.contains(var6.aw(1946166832))) {
-						this.ac(var6, var5.as_fld * -1248999831, var5.ar_fld, var2, var3, -1476836117);
+						lk(this, var6, var5.ar_fld * -1248999831, var5.as_fld, var2, var3, -1476836117);
 					}
 				}
 			}
@@ -857,13 +710,63 @@ public class ga implements WorldMapRegion {
 
 			while (var2.hasNext()) {
 				he var3 = (he)(he)var2.next();
-				if (uh.ak(var3.ak_fld).al_fld && var3.aw_fld.ag_fld * -621797759 >> 6 == this.af_fld && var3.aw_fld.az_fld * 1479124089 >> 6 == this.aw_fld) {
-					he var4 = new he(var3.aw_fld, var3.aw_fld, var3.ak_fld, this.bs(var3.ak_fld, -1548529809));
+				if (uh.ak(var3.av_fld).al_fld && var3.aw_fld.ak_fld * -621797759 >> 6 == this.aw_fld && var3.aw_fld.ag_fld * 1479124089 >> 6 == this.ay_fld) {
+					he var4 = new he(var3.aw_fld, var3.aw_fld, var3.av_fld, jx(this, var3.av_fld));
 					this.au_fld.add(var4);
 				}
 			}
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("qi")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;ILub;)Z"
+	)
+	public static boolean qi(ga var0, int var1, ub var2) throws EOFException {
+		try {
+			var0.ax_fld.clear();
+			int var4 = var0.aw_fld;
+			int var5 = -1067214234 * var0.ay_fld;
+			int var3 = var4 << 8 | var5;
+			byte[] var7 = var2.bb(var3, var1, 584982574);
+			xi var8 = null;
+			if (var7 != null) {
+				var8 = new xi(var7);
+			}
+
+			if (null != var0.as_fld) {
+				hi.hr(var0.as_fld, var8, (byte)116);
+				if (var0.as_fld.bz()) {
+					var0.ae(0, 0, 972261056, -694324728, var0.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var9 = true;
+				Iterator var10 = var0.ar_fld.iterator();
+
+				while (var10.hasNext()) {
+					gy var11 = (gy)(gy)var10.next();
+					hi.hr(var11, var8, (byte)125);
+					var9 &= var11.bz();
+				}
+
+				if (var9) {
+					var10 = var0.ar_fld.iterator();
+
+					while (var10.hasNext()) {
+						gy var15 = (gy)(gy)var10.next();
+						var0.ae(var15.aw() * 8, var15.ay() * 8, 8, 8, var15, 1417671953);
+					}
+				}
+
+				return var9;
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
 		}
 	}
 
@@ -873,13 +776,13 @@ public class ga implements WorldMapRegion {
 	)
 	void ah(oe var1, int var2, int var3, int var4, hi var5, int var6) {
 		try {
-			kj var7 = new kj(var2, this.af_fld + var3, var4 + this.aw_fld);
+			kj var7 = new kj(var2, this.aw_fld + var3, var4 + this.ay_fld);
 			Object var8 = null;
 			if (this.as_fld != null) {
-				var8 = new kj(var2 + -155955479 * this.as_fld.ar_fld, var3 + -1935125952 * this.as_fld.ah_fld, var4 + this.as_fld.aw_fld * 37981504);
+				var8 = new kj(var2 + -155955479 * this.as_fld.aw_fld, var3 + -1935125952 * this.as_fld.au_fld, var4 + this.as_fld.ay_fld * 37981504);
 			} else {
 				gy var9 = (gy)var5;
-				var8 = new kj(var2 + var9.ar_fld, var3 + var9.ah_fld + var9.ae() * 8, var4 + var9.aw_fld + gy.wk(var9, (byte)107) * 8);
+				var8 = new kj(var2 + var9.aw_fld, var3 + var9.au_fld + var9.ae() * 8, var4 + var9.ay_fld + var9.ah() * 8);
 			}
 
 			Object var13;
@@ -904,14 +807,14 @@ public class ga implements WorldMapRegion {
 		descriptor = "(IILhi;Lhs;B)I"
 	)
 	int ad(int var1, int var2, hi var3, hs var4, byte var5) {
-		return 0 == var3.ae_fld[0][var1][var2] ? this.al_fld : var4.ak(var1, var2);
+		return 0 == var3.ae_fld[0][var1][var2] ? this.af_fld : var4.ak(var1, var2);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/HashSet;IIB)V"
 	)
-	void ax(HashSet var1, int var2, int var3, byte var4) {
+	void at(HashSet var1, int var2, int var3, byte var4) {
 		try {
 			Iterator var5 = this.au_fld.iterator();
 
@@ -920,7 +823,7 @@ public class ga implements WorldMapRegion {
 				if (var6.aq((byte)48)) {
 					pc var7 = uh.ak(var6.ag(1213845708));
 					if (var7 != null && var1.contains(var7.aw(2064835430))) {
-						this.ac(var7, var6.as_fld, var6.ar_fld, var2, var3, 1370835204);
+						lk(this, var7, var6.ar_fld, var6.as_fld, var2, var3, 1370835204);
 					}
 				}
 			}
@@ -929,54 +832,85 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("lz")
+	@ObfuscatedName("dq")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;Ljava/util/HashSet;IIB)V"
+		descriptor = "(IILhi;)V"
 	)
-	public static void lz(ga var0, HashSet var1, int var2, int var3, byte var4) throws EOFException {
+	void dq(int var1, int var2, hi var3) {
+		try {
+			for (int var4 = 0; var4 < var3.al_fld; var4++) {
+				ge[] var5 = var3.ai_fld[var4][var1][var2];
+				if (null != var5 && 0 != var5.length) {
+					ge[] var6 = var5;
+
+					for (int var7 = 0; var7 < var6.length; var7++) {
+						ge var8 = var6[var7];
+						int var10 = var8.ag_fld;
+						boolean var9 = var10 >= kn.ak_fld.at_fld && var10 <= kn.av_fld.at_fld || var10 == kn.ae_fld.at_fld;
+						if (var9) {
+							oe var11 = ko.az(var8.ak_fld);
+							int var12 = 0 != var11.cj_fld ? -3407872 : -3355444;
+							if (var8.ag_fld == kn.ak_fld.at_fld) {
+								this.bf(var1, var2, var8.az_fld, var12, -430558397);
+							}
+
+							if (kn.az_fld.at_fld == var8.ag_fld) {
+								this.bf(var1, var2, var8.az_fld, -3355444, 329792940);
+								this.bf(var1, var2, 1 + var8.az_fld, var12, -486499032);
+							}
+
+							if (kn.av_fld.at_fld == var8.ag_fld) {
+								if (0 == var8.az_fld) {
+									yu.ew(this.al_fld * var1, (63 - var2) * this.al_fld, 1, var12);
+								}
+
+								if (1 == var8.az_fld) {
+									yu.ew(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, 1, var12);
+								}
+
+								if (var8.az_fld == 2) {
+									yu.ew(this.al_fld + this.al_fld * var1 - 1, this.al_fld + this.al_fld * (63 - var2) - 1, 1, var12);
+								}
+
+								if (3 == var8.az_fld) {
+									yu.ew(this.al_fld * var1, this.al_fld + this.al_fld * (63 - var2) - 1, 1, var12);
+								}
+							}
+
+							if (var8.ag_fld == kn.ae_fld.at_fld) {
+								int var13 = var8.az_fld % 2;
+								if (0 == var13) {
+									for (int var17 = 0; var17 < this.al_fld; var17++) {
+										yu.ew(var17 + this.al_fld * var1, (64 - var2) * this.al_fld - 1 - var17, 1, var12);
+									}
+								} else {
+									for (int var14 = 0; var14 < this.al_fld; var14++) {
+										yu.ew(this.al_fld * var1 + var14, var14 + (63 - var2) * this.al_fld, 1, var12);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (Throwable var16) {
+			throw new RuntimeException(var16);
+		}
+	}
+
+	@ObfuscatedName("mx")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILhi;Lhs;)I"
+	)
+	public static int mx(ga var0, int var1, int var2, hi var3, hs var4) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
 			}
 
-			Iterator var5 = var0.ax_fld.values().iterator();
-
-			while (var5.hasNext()) {
-				hr var6 = (hr)(hr)var5.next();
-				if (var6.aq((byte)120)) {
-					int var7 = var6.ag(-1798904925);
-					if (var1.contains(var7)) {
-						if (var4 <= 1) {
-							return;
-						}
-
-						pc var8 = uh.ak(var7);
-						var0.ac(var8, var6.as_fld, var6.ar_fld, var2, var3, -2146458702);
-					}
-				}
-			}
-
-			var0.ax(var1, var2, var3, (byte)90);
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	void bp(int var1, int var2, int var3) {
-		int var5 = 535755321 * this.af_fld;
-		int var6 = this.aw_fld;
-		int var7 = -524901965 * this.ay_fld;
-		yv var4 = (yv)(yv)ae_fld.ak(cw.ak(var5, var6, var7));
-		if (null != var4) {
-			if (this.ay_fld == var3) {
-				var4.ao(var1, var2);
-			} else {
-				var4.ap(var1, var2, var3, var3);
-			}
+			return 0 == var3.ae_fld[0][var1][var2] ? var0.af_fld : var4.ak(var1, var2);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
 	}
 
@@ -988,9 +922,9 @@ public class ga implements WorldMapRegion {
 		try {
 			yv var5 = var1.ae(false, -1952228395);
 			if (null != var5) {
-				int var6 = sw(this, var5, var1.ao_fld, (byte)69);
+				int var6 = this.br(var5, var1.ao_fld, (byte)69);
 				int var7 = this.be(var5, var1.ab_fld, 1929009007);
-				var5.ab(var6 + var2, var7 + var3);
+				yv.aj(var5, var6 + var2, var7 + var3);
 			}
 		} catch (Throwable var8) {
 			throw new RuntimeException(var8);
@@ -1006,8 +940,23 @@ public class ga implements WorldMapRegion {
 		if (var7 != null) {
 			if (var7.av_fld.az(var5)) {
 				zf var8 = (zf)(zf)this.ah_fld.get(var7.av_fld);
-				var8.at(var7.ak_fld, var3 - var7.az_fld / 2, var4, var7.az_fld, var7.ag_fld, 0xFF000000 | var2.af_fld, 0, 1, 0, var8.ap_fld / 2);
+				var8.at(var7.ak_fld, var3 - var7.ag_fld / 2, var4, var7.ag_fld, var7.az_fld, 0xFF000000 | var2.ar_fld, 0, 1, 0, var8.ap_fld / 2);
 			}
+		}
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(Lyv;Lpv;B)I"
+	)
+	int br(yv var1, pv var2, byte var3) {
+		switch (var2.av_fld) {
+			case 0:
+				return -var1.aw_fld / 2;
+			case 2:
+				return 0;
+			default:
+				return -var1.aw_fld;
 		}
 	}
 
@@ -1026,9 +975,37 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("nn")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Ljava/util/List;B)V"
+	)
+	public static void nn(ga var0, List var1, byte var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				Iterator var3 = var1.iterator();
+
+				while (var3.hasNext()) {
+					he var4 = (he)(he)var3.next();
+					if (!uh.ak(var4.av_fld).al_fld) {
+						if (var2 >= 2) {
+							return;
+						}
+					} else if (var4.aw_fld.ak_fld * -621797759 >> 6 == var0.aw_fld && var4.aw_fld.ag_fld * 1479124089 >> 6 == var0.ay_fld) {
+						he var5 = new he(var4.aw_fld, var4.aw_fld, var4.av_fld, jx(var0, var4.av_fld));
+						var0.au_fld.add(var5);
+					}
+				}
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
 	@ObfuscatedName("gv")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static final int gv() {
 		return xy.kh_fld.ah((byte)5);
@@ -1046,12 +1023,12 @@ public class ga implements WorldMapRegion {
 			while (var6.hasNext()) {
 				hr var7 = (hr)(hr)var6.next();
 				if (var7.aq((byte)31)) {
-					int var8 = var7.aw_fld.ag_fld * -621797759 % 64;
-					int var9 = var7.aw_fld.az_fld * 1479124089 % 64;
-					var7.as_fld = -1969704677 * (int)(var5 * var8 + var1);
-					var7.ar_fld = (int)(var5 * (63 - var9) + var2);
+					int var8 = var7.aw_fld.ak_fld * -621797759 % 64;
+					int var9 = var7.aw_fld.ag_fld * 1479124089 % 64;
+					var7.ar_fld = -1969704677 * (int)(var5 * var8 + var1);
+					var7.as_fld = (int)(var5 * (63 - var9) + var2);
 					if (!var3.contains(var7.ag(-980128308))) {
-						ti(this, var7, var7.as_fld, var7.ar_fld, var5);
+						this.aj(var7, var7.ar_fld, var7.as_fld, var5, -1996327199);
 					}
 				}
 			}
@@ -1095,6 +1072,90 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/util/List;"
+	)
+	List bj(byte var1) {
+		LinkedList var2 = new LinkedList();
+		var2.addAll(this.au_fld);
+		var2.addAll(this.ax_fld.values());
+		return var2;
+	}
+
+	@ObfuscatedName("nf")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;ILub;)Z"
+	)
+	public static boolean nf(ga var0, int var1, ub var2) throws EOFException {
+		try {
+			var0.ax_fld.clear();
+			int var4 = -1818413218 * var0.aw_fld;
+			int var5 = var0.ay_fld;
+			int var3 = var4 << 8 | var5;
+			byte[] var7 = var2.bb(var3, var1, 584982574);
+			xi var8 = null;
+			if (var7 != null) {
+				var8 = new xi(var7);
+			}
+
+			if (null != var0.as_fld) {
+				hi.hr(var0.as_fld, var8, (byte)74);
+				if (var0.as_fld.bz()) {
+					var0.ae(0, 0, 64, 64, var0.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var9 = true;
+				Iterator var10 = var0.ar_fld.iterator();
+
+				while (var10.hasNext()) {
+					gy var11 = (gy)(gy)var10.next();
+					hi.hr(var11, var8, (byte)99);
+					var9 &= var11.bz();
+				}
+
+				if (var9) {
+					var10 = var0.ar_fld.iterator();
+
+					while (var10.hasNext()) {
+						gy var15 = (gy)(gy)var10.next();
+						var0.ae(var15.aw() * 8, var15.ay() * 8, 8, 8, var15, 1417671953);
+					}
+				}
+
+				return var9;
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	void bf(int var1, int var2, int var3, int var4, int var5) {
+		var3 %= 4;
+		if (var3 == 0) {
+			yu.eo(var1 * this.al_fld, this.al_fld * (63 - var2), this.al_fld, var4);
+		}
+
+		if (1 == var3) {
+			yu.ew(this.al_fld * var1, (63 - var2) * this.al_fld, this.al_fld, var4);
+		}
+
+		if (2 == var3) {
+			yu.eo(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, this.al_fld, var4);
+		}
+
+		if (var3 == 3) {
+			yu.ew(this.al_fld * var1, this.al_fld * (63 - var2) + this.al_fld - 1, this.al_fld, var4);
+		}
+	}
+
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(Lhg;[Lyc;Lhs;Lgm;I)V"
@@ -1106,10 +1167,10 @@ public class ga implements WorldMapRegion {
 			while (var6.hasNext()) {
 				gy var7 = (gy)(gy)var6.next();
 
-				for (int var8 = gy.ms(var7, (byte)72) * 8; var8 < gy.ms(var7, (byte)18) * 8 + 8; var8++) {
-					for (int var9 = gy.aw(var7, (byte)-102) * 8; var9 < gy.aw(var7, (byte)-74) * 8 + 8; var9++) {
-						this.aq(var8, var9, var7, var1, var3, var4, (byte)29);
-						aj(this, var8, var9, var7, var1, var4);
+				for (int var8 = var7.aw() * 8; var8 < var7.aw() * 8 + 8; var8++) {
+					for (int var9 = var7.ay() * 8; var9 < var7.ay() * 8 + 8; var9++) {
+						zg(this, var8, var9, var7, var1, var3, var4, (byte)29);
+						this.am(var8, var9, var7, var1, var4, 1886055530);
 					}
 				}
 			}
@@ -1119,8 +1180,8 @@ public class ga implements WorldMapRegion {
 			while (var6.hasNext()) {
 				gy var12 = (gy)(gy)var6.next();
 
-				for (int var13 = gy.ms(var12, (byte)26) * 8; var13 < gy.ms(var12, (byte)-14) * 8 + 8; var13++) {
-					for (int var14 = gy.aw(var12, (byte)-71) * 8; var14 < gy.aw(var12, (byte)-101) * 8 + 8; var14++) {
+				for (int var13 = var12.aw() * 8; var13 < var12.aw() * 8 + 8; var13++) {
+					for (int var14 = var12.ay() * 8; var14 < var12.ay() * 8 + 8; var14++) {
 						this.ai(var13, var14, var12, var1, var2, -1722287877);
 					}
 				}
@@ -1130,122 +1191,16 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("rn")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Lgf;ILhg;[Lyc;Lub;Lub;D)V"
-	)
-	public static void rn(ga var0, gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			var0.ay_fld = var2;
-			if (var0.as_fld != null || !var0.ar_fld.isEmpty()) {
-				int var10 = var0.af_fld;
-				int var11 = var0.aw_fld;
-				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
-				if (var9 == null) {
-					if (fc.ah() != var7) {
-						fc.az(var7);
-					}
-
-					boolean var12 = true;
-					int var14;
-					if (aac.ak_fld < 238) {
-						var12 &= var0.af(var5, 1367097844);
-						if (null != var0.as_fld) {
-							var14 = var0.as_fld.al_fld * -556413785;
-						} else {
-							var14 = ((hi)var0.ar_fld.getFirst()).al_fld * -556413785;
-						}
-					} else {
-						var12 &= var0.ar(var1.ay(-143778459), var5, 283199525);
-						int var16 = var0.af_fld;
-						int var17 = var0.aw_fld;
-						int var15 = var16 << 8 | var17;
-						var14 = var15;
-					}
-
-					var12 &= var6.cv(var14, -1396043384);
-					if (var12) {
-						byte[] var13;
-						if (aac.ak_fld < 238) {
-							var13 = ub.ae(var6, var14, (byte)92);
-						} else {
-							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
-						}
-
-						hs var25;
-						if (var13 == null) {
-							var25 = new hs();
-						} else {
-							yv var26 = qd.ak(var13);
-							if (null == var26) {
-								var25 = new hs();
-							} else {
-								var25 = new hs(var26.ah_fld);
-							}
-						}
-
-						yv var27 = new yv(var0.ay_fld * -1662404544, var0.ay_fld * -1662404544);
-						var27.ax();
-						if (null != var0.as_fld) {
-							var0.an(var3, var4, var25, new hl(), (byte)-15);
-						} else {
-							var0.aa(var3, var4, var25, new hl(), 1182872171);
-						}
-
-						int var18 = var0.af_fld;
-						int var19 = var0.aw_fld;
-						int var20 = var0.ay_fld;
-						ir.kk(ae_fld, var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
-						var0.as((byte)8);
-					}
-				}
-			}
-		} catch (Throwable var22) {
-			throw new RuntimeException(var22);
-		}
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IIII)V"
-	)
-	public static void an(ga var0, int var1, int var2, int var3, int var4) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var3 %= 4;
-			if (var3 == 0) {
-				yu.eo(var1 * var0.ay_fld, var0.ay_fld * (63 - var2), var0.ay_fld, var4);
-			}
-
-			if (1 == var3) {
-				yu.ew(var0.ay_fld * var1, (63 - var2) * var0.ay_fld, var0.ay_fld, var4);
-			}
-
-			if (2 == var3) {
-				yu.eo(var0.ay_fld + var1 * var0.ay_fld - 1, (63 - var2) * var0.ay_fld, var0.ay_fld, var4);
-			}
-
-			if (var3 == 3) {
-				yu.ew(var0.ay_fld * var1, var0.ay_fld * (63 - var2) + var0.ay_fld - 1, var0.ay_fld, var4);
-			}
-		}
-	}
-
 	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
 		descriptor = "(Lgf;ILhg;[Lyc;Lub;Lub;D)V"
 	)
 	void cp(gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) {
 		try {
-			this.ay_fld = var2;
+			this.al_fld = var2;
 			if (this.as_fld != null || !this.ar_fld.isEmpty()) {
-				int var10 = this.af_fld;
-				int var11 = this.aw_fld;
+				int var10 = this.aw_fld;
+				int var11 = this.ay_fld;
 				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
 				if (var9 == null) {
 					if (fc.ah() != var7) {
@@ -1257,23 +1212,23 @@ public class ga implements WorldMapRegion {
 					if (aac.ak_fld < 238) {
 						var12 &= this.af(var5, 1394833723);
 						if (null != this.as_fld) {
-							var14 = this.as_fld.al_fld * -556413785;
+							var14 = this.as_fld.ar_fld * -556413785;
 						} else {
-							var14 = ((hi)this.ar_fld.getFirst()).al_fld * -556413785;
+							var14 = ((hi)this.ar_fld.getFirst()).ar_fld * -556413785;
 						}
 					} else {
-						var12 &= this.ar(var1.ay(-143778459), var5, 283199525);
-						int var16 = this.af_fld;
-						int var17 = this.aw_fld;
+						var12 &= go(this, var1.ay(-143778459), var5);
+						int var16 = this.aw_fld;
+						int var17 = this.ay_fld;
 						int var15 = var16 << 8 | var17;
 						var14 = var15;
 					}
 
-					var12 &= var6.cv(var14, -1390593395);
+					var12 &= var6.dz(var14, -1390593395);
 					if (var12) {
 						byte[] var13;
 						if (aac.ak_fld < 238) {
-							var13 = ub.ae(var6, var14, (byte)113);
+							var13 = ub.xk(var6, var14, (byte)113);
 						} else {
 							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
 						}
@@ -1290,7 +1245,7 @@ public class ga implements WorldMapRegion {
 							}
 						}
 
-						yv var27 = new yv(this.ay_fld * -1662404544, this.ay_fld * -1662404544);
+						yv var27 = new yv(this.al_fld * -1662404544, this.al_fld * -1662404544);
 						var27.ax();
 						if (null != this.as_fld) {
 							this.an(var3, var4, var25, new hl(), (byte)28);
@@ -1298,11 +1253,11 @@ public class ga implements WorldMapRegion {
 							this.aa(var3, var4, var25, new hl(), 1182872171);
 						}
 
-						int var18 = this.af_fld;
-						int var19 = this.aw_fld;
-						int var20 = this.ay_fld;
-						ir.kk(ae_fld, var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
-						this.as((byte)8);
+						int var18 = this.aw_fld;
+						int var19 = this.ay_fld;
+						int var20 = this.al_fld;
+						ae_fld.ae(var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
+						yg(this, (byte)8);
 					}
 				}
 			}
@@ -1332,15 +1287,15 @@ public class ga implements WorldMapRegion {
 		descriptor = "(III)V"
 	)
 	void bo(int var1, int var2, int var3) {
-		int var5 = this.af_fld;
-		int var6 = this.aw_fld;
-		int var7 = this.ay_fld;
+		int var5 = this.aw_fld;
+		int var6 = this.ay_fld;
+		int var7 = this.al_fld;
 		yv var4 = (yv)(yv)ae_fld.ak(cw.ak(var5, var6, var7));
 		if (null != var4) {
-			if (this.ay_fld == var3) {
-				var4.ao(var1, var2);
+			if (this.al_fld == var3) {
+				var4.dq(var1, var2);
 			} else {
-				var4.ap(var1, var2, var3, var3);
+				var4.dl(var1, var2, var3, var3);
 			}
 		}
 	}
@@ -1358,15 +1313,15 @@ public class ga implements WorldMapRegion {
 			while (var7.hasNext()) {
 				Entry var8 = (Entry)(Entry)var7.next();
 				kj var9 = (kj)(kj)var8.getKey();
-				int var10 = (int)(var5 * var9.ag_fld + var1 - var6);
-				int var11 = (int)(var2 + var4 - var9.az_fld * var5 - var6);
+				int var10 = (int)(var5 * var9.ak_fld + var1 - var6);
+				int var11 = (int)(var2 + var4 - var9.ag_fld * var5 - var6);
 				hr var12 = (hr)(hr)var8.getValue();
 				if (null != var12 && var12.aq((byte)89)) {
-					var12.as_fld = var10;
-					var12.ar_fld = var11;
+					var12.ar_fld = var10;
+					var12.as_fld = var11;
 					pc var13 = uh.ak(var12.ag(-1550383516));
 					if (!var3.contains(var13.aw(2005819136))) {
-						ti(this, var12, var10, var11, var5);
+						this.aj(var12, var10, var11, var5, -1996327199);
 					}
 				}
 			}
@@ -1375,59 +1330,16 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("zc")
+	@ObfuscatedName("fm")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;Lpc;)Lgw;"
+		descriptor = "(Lqo;Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	public static gw zc(ga var0, pc var1) {
+	public static int fm(qo var0, Object var1, Object var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		if (null != var1.as_fld && var0.ah_fld != null && var0.ah_fld.get(hb.ak_fld) != null) {
-			hb var2 = hb.ag(var1.aw_fld);
-			if (var2 == null) {
-				return null;
-			} else {
-				zf var3 = (zf)(zf)var0.ah_fld.get(var2);
-				if (null == var3) {
-					return null;
-				} else {
-					int var4 = var3.aq(var1.as_fld, 1000000);
-					String[] var5 = new String[var4];
-					var3.cr(var1.as_fld, null, var5);
-					int var6 = var3.ap_fld * var5.length / 2;
-					int var7 = 0;
-					String[] var8 = var5;
-
-					for (int var9 = 0; var9 < var8.length; var9++) {
-						String var10 = var8[var9];
-						int var11 = var3.an(var10);
-						if (var11 > var7) {
-							var7 = var11;
-						}
-					}
-
-					return new gw(var1.as_fld, var7, var6, var2);
-				}
-			}
-		} else {
-			return null;
-		}
-	}
-
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "(Lgk;Ljava/util/List;)V"
-	)
-	void bt(gk var1, List var2) {
-		try {
-			this.ax_fld.clear();
-			this.as_fld = var1;
-			this.ay(var2, (byte)-99);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
+		return var0.ak((qu)var1, (qu)var2, (byte)0);
 	}
 
 	@ObfuscatedName("bv")
@@ -1441,36 +1353,28 @@ public class ga implements WorldMapRegion {
 
 			while (var3.hasNext()) {
 				gy var4 = (gy)(gy)var3.next();
-				if (var4.bf() == this.af_fld && var4.by() == this.aw_fld) {
+				if (hi.xz(var4, 2028004966) == this.aw_fld && var4.by() == this.ay_fld) {
 					this.ar_fld.add(var4);
 				}
 			}
 
-			this.ay(var2, (byte)-81);
+			nn(this, var2, (byte)-81);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/ArrayList;Ljava/util/List;)V"
+		descriptor = "(Lgk;Ljava/util/List;S)V"
 	)
-	void bi(ArrayList var1, List var2) {
+	void az(gk var1, List var2, short var3) {
 		try {
 			this.ax_fld.clear();
-			Iterator var3 = var1.iterator();
-
-			while (var3.hasNext()) {
-				gy var4 = (gy)(gy)var3.next();
-				if (var4.bf() == this.af_fld && var4.by() == this.aw_fld) {
-					this.ar_fld.add(var4);
-				}
-			}
-
-			this.ay(var2, (byte)-57);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
+			this.as_fld = var1;
+			nn(this, var2, (byte)-60);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
 	}
 
@@ -1485,22 +1389,22 @@ public class ga implements WorldMapRegion {
 
 			while (var3.hasNext()) {
 				gy var4 = (gy)(gy)var3.next();
-				if (var4.bf() == this.af_fld && var4.by() == this.aw_fld) {
+				if (hi.xz(var4, 1818931802) == this.aw_fld && var4.by() == this.ay_fld) {
 					this.ar_fld.add(var4);
 				}
 			}
 
-			this.ay(var2, (byte)-18);
+			nn(this, var2, (byte)-18);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("eg")
+	@ObfuscatedName("ef")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/List;"
 	)
-	List eg() {
+	List ef() {
 		LinkedList var1 = new LinkedList();
 		var1.addAll(this.au_fld);
 		var1.addAll(this.ax_fld.values());
@@ -1516,7 +1420,7 @@ public class ga implements WorldMapRegion {
 			for (int var6 = var1; var6 < var1 + var3; var6++) {
 				label85:
 				for (int var7 = var2; var7 < var2 + var4; var7++) {
-					for (int var8 = 0; var8 < var5.af_fld; var8++) {
+					for (int var8 = 0; var8 < var5.al_fld; var8++) {
 						ge[] var9 = var5.ai_fld[var8][var6][var7];
 						if (null != var9 && var9.length != 0) {
 							ge[] var10 = var9;
@@ -1560,13 +1464,119 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("dz")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILhi;[Lyc;)V"
+	)
+	public static void dz(ga var0, int var1, int var2, hi var3, yc[] var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				for (int var5 = 0; var5 < var3.al_fld; var5++) {
+					ge[] var6 = var3.ai_fld[var5][var1][var2];
+					if (null != var6 && 0 != var6.length) {
+						ge[] var7 = var6;
+
+						for (int var8 = 0; var8 < var7.length; var8++) {
+							ge var9 = var7[var8];
+							if (jk.az(var9.ag_fld) || ef.aw(var9.ag_fld)) {
+								oe var10 = ko.az(var9.ak_fld);
+								if (var10.dq_fld != -1) {
+									int var11 = var9.az_fld != 1 && 3 != var9.az_fld ? var10.co_fld : var10.cb_fld;
+									var4[var10.dq_fld].ah(var1 * var0.al_fld, (64 - var11 - var2) * var0.al_fld, -1662562878 * var0.al_fld, var0.al_fld * -1662562878);
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILhi;)V"
+	)
+	void ba(int var1, int var2, int var3, int var4, hi var5) {
+		try {
+			for (int var6 = var1; var6 < var1 + var3; var6++) {
+				label87:
+				for (int var7 = var2; var7 < var2 + var4; var7++) {
+					for (int var8 = 0; var8 < var5.al_fld; var8++) {
+						ge[] var9 = var5.ai_fld[var8][var6][var7];
+						if (null != var9 && var9.length != 0) {
+							ge[] var10 = var9;
+
+							for (int var11 = 0; var11 < var10.length; var11++) {
+								oe var13;
+								boolean var14;
+								label78: {
+									ge var12 = var10[var11];
+									var13 = ko.az(var12.ak_fld);
+									if (var13.dy_fld != null) {
+										int[] var15 = var13.dy_fld;
+
+										for (int var16 = 0; var16 < var15.length; var16++) {
+											int var17 = var15[var16];
+											oe var18 = ko.az(var17);
+											if (var18.dm_fld != -1) {
+												var14 = true;
+												break label78;
+											}
+										}
+									} else if (var13.dm_fld != -1) {
+										var14 = true;
+										break label78;
+									}
+
+									var14 = false;
+								}
+
+								if (var14) {
+									this.ah(var13, var8, var6, var7, var5, -1591040896);
+									continue label87;
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
+		}
+	}
+
+	@ObfuscatedName("uj")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lpc;II)V"
+	)
+	public static void uj(ga var0, pc var1, int var2, int var3) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			yv var4 = var1.ae(false, -1956488871);
+			if (null != var4) {
+				int var5 = var0.br(var4, var1.ao_fld, (byte)105);
+				int var6 = var0.be(var4, var1.ab_fld, 2146777205);
+				yv.aj(var4, var5 + var2, var6 + var3);
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
+		}
+	}
+
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "(Lpc;I)Lgw;"
 	)
 	gw bh(pc var1, int var2) {
 		if (null != var1.as_fld && this.ah_fld != null && this.ah_fld.get(hb.ak_fld) != null) {
-			hb var3 = hb.ag(var1.aw_fld);
+			hb var3 = hb.ag(var1.af_fld);
 			if (var3 == null) {
 				return null;
 			} else {
@@ -1574,9 +1584,9 @@ public class ga implements WorldMapRegion {
 				if (null == var4) {
 					return null;
 				} else {
-					int var5 = var4.aq(var1.as_fld, 1000000);
+					int var5 = zv.xc(var4, var1.as_fld, 1000000);
 					String[] var6 = new String[var5];
-					var4.cr(var1.as_fld, null, var6);
+					zv.sh(var4, var1.as_fld, null, var6);
 					int var7 = var4.ap_fld * var6.length / 2;
 					int var8 = 0;
 					String[] var9 = var6;
@@ -1597,19 +1607,19 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "(Loe;IIILhi;)V"
 	)
-	void bg(oe var1, int var2, int var3, int var4, hi var5) {
+	void bb(oe var1, int var2, int var3, int var4, hi var5) {
 		try {
-			kj var6 = new kj(var2, this.af_fld + var3, var4 + this.aw_fld);
+			kj var6 = new kj(var2, this.aw_fld + var3, var4 + this.ay_fld);
 			Object var7 = null;
 			if (this.as_fld != null) {
-				var7 = new kj(var2 + 833039784 * this.as_fld.ar_fld, var3 + -1935125952 * this.as_fld.ah_fld, var4 + this.as_fld.aw_fld * 1469727198);
+				var7 = new kj(var2 + 833039784 * this.as_fld.aw_fld, var3 + -1935125952 * this.as_fld.au_fld, var4 + this.as_fld.ay_fld * 1469727198);
 			} else {
 				gy var8 = (gy)var5;
-				var7 = new kj(var2 + var8.ar_fld, var3 + var8.ah_fld + var8.ae() * 8, var4 + var8.aw_fld + gy.wk(var8, (byte)15) * 8);
+				var7 = new kj(var2 + var8.aw_fld, var3 + var8.au_fld + var8.ae() * 8, var4 + var8.ay_fld + var8.ah() * 8);
 			}
 
 			Object var13;
@@ -1629,48 +1639,16 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("ss")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Loe;IIILhi;)V"
-	)
-	public static void ss(ga var0, oe var1, int var2, int var3, int var4, hi var5) throws EOFException {
-		try {
-			kj var6 = new kj(var2, var0.af_fld + var3, var4 + var0.aw_fld);
-			Object var7 = null;
-			if (var0.as_fld != null) {
-				var7 = new kj(var2 + 1435903083 * var0.as_fld.ar_fld, var3 + 2073024386 * var0.as_fld.ah_fld, var4 + var0.as_fld.aw_fld * -991344348);
-			} else {
-				gy var8 = (gy)var5;
-				var7 = new kj(var2 + var8.ar_fld, var3 + var8.ah_fld + var8.ae() * 8, var4 + var8.aw_fld + gy.wk(var8, (byte)84) * 8);
-			}
-
-			Object var13;
-			if (null != var1.dy_fld) {
-				var13 = new gi((kj)var7, var6, var1.cn_fld * -2141333993, var0);
-			} else {
-				pc var9 = uh.ak(var1.dm_fld);
-				var13 = new he((kj)var7, var6, var9.ah_fld, var0.bh(var9, -2140792005));
-			}
-
-			pc var14 = uh.ak(((hr)var13).ag(1072178408));
-			if (var14.al_fld) {
-				var0.ax_fld.put(new kj(0, var3, var4), var13);
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("ck")
+	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
 		descriptor = "(Lhg;[Lyc;Lhs;Lgm;)V"
 	)
-	void ck(hg var1, yc[] var2, hs var3, gm var4) {
+	void cz(hg var1, yc[] var2, hs var3, gm var4) {
 		try {
 			for (int var5 = 0; var5 < 64; var5++) {
 				for (int var6 = 0; var6 < 64; var6++) {
-					this.aq(var5, var6, this.as_fld, var1, var3, var4, (byte)-9);
-					aj(this, var5, var6, this.as_fld, var1, var4);
+					zg(this, var5, var6, this.as_fld, var1, var3, var4, (byte)-9);
+					this.am(var5, var6, this.as_fld, var1, var4, 2079821787);
 				}
 			}
 
@@ -1684,279 +1662,172 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("cd")
+	@ObfuscatedName("qj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/List;)V"
+		descriptor = "(Lga;IILhi;Lhg;[Lyc;)V"
 	)
-	void cd(List var1) {
-		try {
-			Iterator var2 = var1.iterator();
-
-			while (var2.hasNext()) {
-				he var3 = (he)(he)var2.next();
-				if (uh.ak(var3.ak_fld).al_fld && var3.aw_fld.ag_fld * -621797759 >> 6 == this.af_fld && var3.aw_fld.az_fld * 1479124089 >> 6 == this.aw_fld) {
-					he var4 = new he(var3.aw_fld, var3.aw_fld, var3.ak_fld, this.bs(var3.ak_fld, -1548529809));
-					this.au_fld.add(var4);
-				}
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("ti")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Lhr;IIF)V"
-	)
-	public static void ti(ga var0, hr var1, int var2, int var3, float var4) throws EOFException {
+	public static void qj(ga var0, int var1, int var2, hi var3, hg var4, yc[] var5) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
+			} else {
+				var0.ab(var1, var2, var3, -1141627905);
+				var0.ao(var1, var2, var3, var5, 1299515695);
 			}
-
-			pc var6 = uh.ak(var1.ag(-613111085));
-			var0.bm(var6, var2, var3, 842150400);
-			var0.bd(var1, var6, var2, var3, var4, (byte)58);
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
 		}
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("we")
 	@ObfuscatedSignature(
-		descriptor = "(ILub;)Z"
+		descriptor = "(Lga;IILhi;Lhs;)I"
 	)
-	boolean cq(int var1, ub var2) {
+	public static int we(ga var0, int var1, int var2, hi var3, hs var4) throws EOFException {
 		try {
-			this.ax_fld.clear();
-			int var4 = -1818413218 * this.af_fld;
-			int var5 = this.aw_fld;
-			int var3 = var4 << 8 | var5;
-			byte[] var7 = var2.bb(var3, var1, 584982574);
-			xi var8 = null;
-			if (var7 != null) {
-				var8 = new xi(var7);
+			if (var0 == null) {
+				var0.getClass();
 			}
 
-			if (null != this.as_fld) {
-				this.as_fld.br(var8, (byte)74);
-				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, 64, this.as_fld, 1417671953);
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				boolean var9 = true;
-				Iterator var10 = this.ar_fld.iterator();
-
-				while (var10.hasNext()) {
-					gy var11 = (gy)(gy)var10.next();
-					var11.br(var8, (byte)99);
-					var9 &= var11.bz();
-				}
-
-				if (var9) {
-					var10 = this.ar_fld.iterator();
-
-					while (var10.hasNext()) {
-						gy var15 = (gy)(gy)var10.next();
-						ds(this, gy.ms(var15, (byte)-28) * 8, gy.aw(var15, (byte)-22) * 8, 8, 8, var15, 1417671953);
-					}
-				}
-
-				return var9;
-			}
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
+			return 0 == var3.ae_fld[0][var1][var2] ? var0.af_fld : var4.ak(var1, var2);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("getMapIcons")
+	@ObfuscatedName("mn")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Collection;"
+		descriptor = "(Lga;IILhi;Lhg;Lgm;)V"
 	)
-	@Override
-	public Collection getMapIcons() {
-		return Collections.unmodifiableCollection(this.bx().values());
+	public static void mn(ga var0, int var1, int var2, hi var3, hg var4, gm var5) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			for (int var6 = 1; var6 < var3.al_fld; var6++) {
+				int var7 = var3.ax_fld[var6][var1][var2] - 1;
+				if (var7 > -1) {
+					int var8 = ue.ak(var7, var0.af_fld, var5);
+					if (var3.an_fld[var6][var1][var2] == 0) {
+						yu.dj(var0.al_fld * var1, (-1707311069 - var2) * var0.al_fld, var0.al_fld, var0.al_fld, var8);
+					} else {
+						var4.ak(
+							var1 * var0.al_fld,
+							var0.al_fld * (63 - var2),
+							0,
+							var8,
+							var0.al_fld,
+							1693125524 * var0.al_fld,
+							var3.an_fld[var6][var1][var2],
+							var3.aa_fld[var6][var1][var2],
+							-828063812
+						);
+					}
+				}
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
 	}
 
-	@ObfuscatedName("ej")
+	@ObfuscatedName("wa")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)Ljava/util/List;"
+		descriptor = "(Lga;Lhr;Lpc;IIF)V"
 	)
-	public static List ej(ga var0) {
+	public static void wa(ga var0, hr var1, pc var2, int var3, int var4, float var5) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		LinkedList var1 = new LinkedList();
-		var1.addAll(var0.au_fld);
-		var1.addAll(var0.ax_fld.values());
-		return var1;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/HashMap;"
-	)
-	public HashMap bx() {
-		return this.ax_fld;
-	}
-
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;B)Ljava/util/List;"
-	)
-	public static List kn(ga var0, byte var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			LinkedList var2 = new LinkedList();
-			var2.addAll(var0.au_fld);
-			var2.addAll(var0.ax_fld.values());
-			return var2;
+		gw var6 = var1.az(841763630);
+		if (var6 != null) {
+			if (var6.av_fld.az(var5)) {
+				zf var7 = (zf)(zf)var0.ah_fld.get(var6.av_fld);
+				var7.at(var6.ak_fld, var3 - var6.ag_fld / 2, var4, var6.ag_fld, var6.az_fld, 0xFF000000 | var2.ar_fld, 0, 1, 0, var7.ap_fld / 2);
+			}
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(ILub;I)Z"
+		descriptor = "(IIIILhi;I)V"
 	)
-	boolean ar(int var1, ub var2, int var3) {
+	void ae(int var1, int var2, int var3, int var4, hi var5, int var6) {
 		try {
-			this.ax_fld.clear();
-			int var5 = this.af_fld;
-			int var6 = this.aw_fld;
-			int var4 = var5 << 8 | var6;
-			byte[] var8 = var2.bb(var4, var1, 584982574);
-			xi var9 = null;
-			if (var8 != null) {
-				var9 = new xi(var8);
-			}
+			for (int var7 = var1; var7 < var1 + var3; var7++) {
+				int var8 = var2;
 
-			if (null != this.as_fld) {
-				this.as_fld.br(var9, (byte)87);
-				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, 64, this.as_fld, 1417671953);
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				boolean var10 = true;
-				Iterator var11 = this.ar_fld.iterator();
+				while (var8 < var2 + var4) {
+					int var9 = 0;
 
-				while (var11.hasNext()) {
-					gy var12 = (gy)(gy)var11.next();
-					var12.br(var9, (byte)8);
-					var10 &= var12.bz();
-				}
+					while (true) {
+						label132: {
+							if (var9 < var5.al_fld) {
+								ge[] var10 = var5.ai_fld[var9][var7][var8];
+								if (null == var10 || var10.length == 0) {
+									break label132;
+								}
 
-				if (var10) {
-					var11 = this.ar_fld.iterator();
+								ge[] var11 = var10;
+								int var12 = 0;
 
-					while (var11.hasNext()) {
-						gy var15 = (gy)(gy)var11.next();
-						ds(this, gy.ms(var15, (byte)-81) * 8, gy.aw(var15, (byte)-70) * 8, 8, 8, var15, 1417671953);
+								while (true) {
+									oe var14;
+									boolean var15;
+									if (var12 >= var11.length) {
+										break label132;
+									}
+
+									if (var6 != 1417671953) {
+										return;
+									}
+
+									label109: {
+										ge var13 = var11[var12];
+										var14 = ko.az(var13.ak_fld);
+										if (var14.dy_fld != null) {
+											int[] var16 = var14.dy_fld;
+
+											for (int var17 = 0; var17 < var16.length; var17++) {
+												if (var6 != 1417671953) {
+													return;
+												}
+
+												int var18 = var16[var17];
+												oe var19 = ko.az(var18);
+												if (var19.dm_fld != -1) {
+													var15 = true;
+													break label109;
+												}
+											}
+										} else if (var14.dm_fld != -1) {
+											var15 = true;
+											break label109;
+										}
+
+										var15 = false;
+									}
+
+									if (var15) {
+										this.ah(var14, var9, var7, var8, var5, -1591040896);
+										break;
+									}
+
+									var12++;
+								}
+							}
+
+							var8++;
+							break;
+						}
+
+						var9++;
 					}
 				}
-
-				return var10;
 			}
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-		descriptor = "(ILub;)Z"
-	)
-	boolean cy(int var1, ub var2) {
-		try {
-			this.ax_fld.clear();
-			int var4 = this.af_fld;
-			int var5 = -1067214234 * this.aw_fld;
-			int var3 = var4 << 8 | var5;
-			byte[] var7 = var2.bb(var3, var1, 584982574);
-			xi var8 = null;
-			if (var7 != null) {
-				var8 = new xi(var7);
-			}
-
-			if (null != this.as_fld) {
-				this.as_fld.br(var8, (byte)116);
-				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 972261056, -694324728, this.as_fld, 1417671953);
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				boolean var9 = true;
-				Iterator var10 = this.ar_fld.iterator();
-
-				while (var10.hasNext()) {
-					gy var11 = (gy)(gy)var10.next();
-					var11.br(var8, (byte)125);
-					var9 &= var11.bz();
-				}
-
-				if (var9) {
-					var10 = this.ar_fld.iterator();
-
-					while (var10.hasNext()) {
-						gy var15 = (gy)(gy)var10.next();
-						ds(this, gy.ms(var15, (byte)4) * 8, gy.aw(var15, (byte)-28) * 8, 8, 8, var15, 1417671953);
-					}
-				}
-
-				return var9;
-			}
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-		descriptor = "(Lub;)Z"
-	)
-	boolean cf(ub var1) {
-		try {
-			this.ax_fld.clear();
-			if (null != this.as_fld) {
-				this.as_fld.be(var1);
-				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, 64, this.as_fld, 1417671953);
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				boolean var2 = true;
-				Iterator var3 = this.ar_fld.iterator();
-
-				while (var3.hasNext()) {
-					gy var4 = (gy)(gy)var3.next();
-					var4.be(var1);
-					var2 &= var4.bz();
-				}
-
-				if (var2) {
-					var3 = this.ar_fld.iterator();
-
-					while (var3.hasNext()) {
-						gy var8 = (gy)(gy)var3.next();
-						ds(this, gy.ms(var8, (byte)-68) * 8, gy.aw(var8, (byte)-104) * 8, 8, 8, var8, 1417671953);
-					}
-				}
-
-				return var2;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
 		}
 	}
 
@@ -1965,7 +1836,7 @@ public class ga implements WorldMapRegion {
 		descriptor = "(IILhi;Lhs;)I"
 	)
 	int dz(int var1, int var2, hi var3, hs var4) {
-		return 0 == var3.ae_fld[0][var1][var2] ? this.al_fld : var4.ak(var1, var2);
+		return 0 == var3.ae_fld[0][var1][var2] ? this.af_fld : var4.ak(var1, var2);
 	}
 
 	@ObfuscatedName("ao")
@@ -1974,7 +1845,7 @@ public class ga implements WorldMapRegion {
 	)
 	void ao(int var1, int var2, hi var3, yc[] var4, int var5) {
 		try {
-			for (int var6 = 0; var6 < var3.af_fld; var6++) {
+			for (int var6 = 0; var6 < var3.al_fld; var6++) {
 				ge[] var7 = var3.ai_fld[var6][var1][var2];
 				if (null != var7) {
 					if (0 == var7.length) {
@@ -1998,7 +1869,7 @@ public class ga implements WorldMapRegion {
 									}
 
 									int var12 = var10.az_fld != 1 && 3 != var10.az_fld ? var11.co_fld : var11.cb_fld;
-									var4[var11.dq_fld].ah(var1 * this.ay_fld, (64 - var12 - var2) * this.ay_fld, -1662562878 * this.ay_fld, this.ay_fld * -1662562878);
+									var4[var11.dq_fld].ah(var1 * this.al_fld, (64 - var12 - var2) * this.al_fld, -1662562878 * this.al_fld, this.al_fld * -1662562878);
 								}
 							}
 						}
@@ -2010,79 +1881,12 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("ce")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Lgf;ILhg;[Lyc;Lub;Lub;D)V"
+		descriptor = "()Ljava/util/HashMap;"
 	)
-	void ce(gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) {
-		try {
-			this.ay_fld = var2;
-			if (this.as_fld != null || !this.ar_fld.isEmpty()) {
-				int var10 = this.af_fld;
-				int var11 = this.aw_fld;
-				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
-				if (var9 == null) {
-					if (fc.ah() != var7) {
-						fc.az(var7);
-					}
-
-					boolean var12 = true;
-					int var14;
-					if (aac.ak_fld < 238) {
-						var12 &= this.af(var5, 1729861973);
-						if (null != this.as_fld) {
-							var14 = this.as_fld.al_fld * -556413785;
-						} else {
-							var14 = ((hi)this.ar_fld.getFirst()).al_fld * -556413785;
-						}
-					} else {
-						var12 &= this.ar(var1.ay(-143778459), var5, 283199525);
-						int var16 = this.af_fld;
-						int var17 = this.aw_fld;
-						int var15 = var16 << 8 | var17;
-						var14 = var15;
-					}
-
-					var12 &= var6.cv(var14, -1627108580);
-					if (var12) {
-						byte[] var13;
-						if (aac.ak_fld < 238) {
-							var13 = ub.ae(var6, var14, (byte)93);
-						} else {
-							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
-						}
-
-						hs var25;
-						if (var13 == null) {
-							var25 = new hs();
-						} else {
-							yv var26 = qd.ak(var13);
-							if (null == var26) {
-								var25 = new hs();
-							} else {
-								var25 = new hs(var26.ah_fld);
-							}
-						}
-
-						yv var27 = new yv(this.ay_fld * -1662404544, this.ay_fld * -1662404544);
-						var27.ax();
-						if (null != this.as_fld) {
-							this.an(var3, var4, var25, new hl(), (byte)27);
-						} else {
-							this.aa(var3, var4, var25, new hl(), 1182872171);
-						}
-
-						int var18 = this.af_fld;
-						int var19 = this.aw_fld;
-						int var20 = this.ay_fld;
-						ir.kk(ae_fld, var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
-						this.as((byte)8);
-					}
-				}
-			}
-		} catch (Throwable var22) {
-			throw new RuntimeException(var22);
-		}
+	public HashMap be() {
+		return this.ax_fld;
 	}
 
 	@ObfuscatedName("cn")
@@ -2091,10 +1895,10 @@ public class ga implements WorldMapRegion {
 	)
 	void cn(gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) {
 		try {
-			this.ay_fld = var2;
+			this.al_fld = var2;
 			if (this.as_fld != null || !this.ar_fld.isEmpty()) {
-				int var10 = this.af_fld;
-				int var11 = this.aw_fld;
+				int var10 = this.aw_fld;
+				int var11 = this.ay_fld;
 				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
 				if (var9 == null) {
 					if (fc.ah() != var7) {
@@ -2106,23 +1910,23 @@ public class ga implements WorldMapRegion {
 					if (aac.ak_fld < 238) {
 						var12 &= this.af(var5, 1072682610);
 						if (null != this.as_fld) {
-							var14 = this.as_fld.al_fld * -556413785;
+							var14 = this.as_fld.ar_fld * -556413785;
 						} else {
-							var14 = ((hi)this.ar_fld.getFirst()).al_fld * -556413785;
+							var14 = ((hi)this.ar_fld.getFirst()).ar_fld * -556413785;
 						}
 					} else {
-						var12 &= this.ar(var1.ay(-143778459), var5, 283199525);
-						int var16 = this.af_fld;
-						int var17 = this.aw_fld;
+						var12 &= go(this, var1.ay(-143778459), var5);
+						int var16 = this.aw_fld;
+						int var17 = this.ay_fld;
 						int var15 = var16 << 8 | var17;
 						var14 = var15;
 					}
 
-					var12 &= var6.cv(var14, -1120776268);
+					var12 &= var6.dz(var14, -1120776268);
 					if (var12) {
 						byte[] var13;
 						if (aac.ak_fld < 238) {
-							var13 = ub.ae(var6, var14, (byte)124);
+							var13 = ub.xk(var6, var14, (byte)124);
 						} else {
 							var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
 						}
@@ -2139,7 +1943,7 @@ public class ga implements WorldMapRegion {
 							}
 						}
 
-						yv var27 = new yv(this.ay_fld * -1662404544, this.ay_fld * -1662404544);
+						yv var27 = new yv(this.al_fld * -1662404544, this.al_fld * -1662404544);
 						var27.ax();
 						if (null != this.as_fld) {
 							this.an(var3, var4, var25, new hl(), (byte)24);
@@ -2147,11 +1951,11 @@ public class ga implements WorldMapRegion {
 							this.aa(var3, var4, var25, new hl(), 1182872171);
 						}
 
-						int var18 = this.af_fld;
-						int var19 = this.aw_fld;
-						int var20 = this.ay_fld;
-						ir.kk(ae_fld, var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
-						this.as((byte)8);
+						int var18 = this.aw_fld;
+						int var19 = this.ay_fld;
+						int var20 = this.al_fld;
+						ae_fld.ae(var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
+						yg(this, (byte)8);
 					}
 				}
 			}
@@ -2160,75 +1964,38 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("cv")
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
-		descriptor = "(ILub;)Z"
+		descriptor = "(IIIII)Ljava/util/List;"
 	)
-	boolean cv(int var1, ub var2) {
-		try {
-			this.ax_fld.clear();
-			int var4 = this.af_fld;
-			int var5 = this.aw_fld;
-			int var3 = var4 << 8 | var5;
-			byte[] var7 = var2.bb(var3, var1, 584982574);
-			xi var8 = null;
-			if (var7 != null) {
-				var8 = new xi(var7);
-			}
+	List er(int var1, int var2, int var3, int var4, int var5) {
+		LinkedList var6 = new LinkedList();
+		if (var4 >= var1 && var5 >= var2) {
+			if (var4 < var3 + var1 && var5 < var2 + var3) {
+				Iterator var7 = this.ax_fld.values().iterator();
 
-			if (null != this.as_fld) {
-				this.as_fld.br(var8, (byte)71);
-				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, 64, this.as_fld, 1417671953);
-					return true;
-				} else {
-					return false;
+				while (var7.hasNext()) {
+					hr var8 = (hr)(hr)var7.next();
+					if (var8.aq((byte)100) && var8.ai(var4, var5, (byte)-90)) {
+						var6.add(var8);
+					}
 				}
+
+				var7 = this.au_fld.iterator();
+
+				while (var7.hasNext()) {
+					hr var10 = (hr)(hr)var7.next();
+					if (var10.aq((byte)113) && var10.ai(var4, var5, (byte)-60)) {
+						var6.add(var10);
+					}
+				}
+
+				return var6;
 			} else {
-				boolean var9 = true;
-				Iterator var10 = this.ar_fld.iterator();
-
-				while (var10.hasNext()) {
-					gy var11 = (gy)(gy)var10.next();
-					var11.br(var8, (byte)24);
-					var9 &= var11.bz();
-				}
-
-				if (var9) {
-					var10 = this.ar_fld.iterator();
-
-					while (var10.hasNext()) {
-						gy var15 = (gy)(gy)var10.next();
-						ds(this, gy.ms(var15, (byte)16) * 8, gy.aw(var15, (byte)-39) * 8, 8, 8, var15, 1417671953);
-					}
-				}
-
-				return var9;
+				return var6;
 			}
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
-	@ObfuscatedName("dx")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/HashSet;II)V"
-	)
-	void dx(HashSet var1, int var2, int var3) {
-		try {
-			Iterator var4 = this.au_fld.iterator();
-
-			while (var4.hasNext()) {
-				hr var5 = (hr)(hr)var4.next();
-				if (var5.aq((byte)90)) {
-					pc var6 = uh.ak(var5.ag(1510069897));
-					if (var6 != null && var1.contains(var6.aw(1652090226))) {
-						this.ac(var6, var5.as_fld * 416995729, var5.ar_fld * 1662649233, var2, var3, -1400962089);
-					}
-				}
-			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
+		} else {
+			return var6;
 		}
 	}
 
@@ -2243,22 +2010,22 @@ public class ga implements WorldMapRegion {
 
 			while (var3.hasNext()) {
 				gy var4 = (gy)(gy)var3.next();
-				if (var4.bf() == this.af_fld && var4.by() == this.aw_fld) {
+				if (hi.xz(var4, 1883691882) == this.aw_fld && var4.by() == this.ay_fld) {
 					this.ar_fld.add(var4);
 				}
 			}
 
-			this.ay(var2, (byte)-94);
+			nn(this, var2, (byte)-94);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "(IILjava/util/HashSet;IB)V"
 	)
-	void ap(int var1, int var2, HashSet var3, int var4, byte var5) {
+	void bz(int var1, int var2, HashSet var3, int var4, byte var5) {
 		try {
 			float var6 = var4 / 64.0F;
 			float var7 = var6 / 2.0F;
@@ -2267,15 +2034,15 @@ public class ga implements WorldMapRegion {
 			while (var8.hasNext()) {
 				Entry var9 = (Entry)(Entry)var8.next();
 				kj var10 = (kj)(kj)var9.getKey();
-				int var11 = (int)(var6 * var10.ag_fld + var1 - var7);
-				int var12 = (int)(var2 + var4 - var10.az_fld * var6 - var7);
+				int var11 = (int)(var6 * var10.ak_fld + var1 - var7);
+				int var12 = (int)(var2 + var4 - var10.ag_fld * var6 - var7);
 				hr var13 = (hr)(hr)var9.getValue();
 				if (null != var13 && var13.aq((byte)93)) {
-					var13.as_fld = var11;
-					var13.ar_fld = var12;
+					var13.ar_fld = var11;
+					var13.as_fld = var12;
 					pc var14 = uh.ak(var13.ag(1236002642));
 					if (!var3.contains(var14.aw(1657984622))) {
-						ti(this, var13, var11, var12, var6);
+						this.aj(var13, var11, var12, var6, -1996327199);
 					}
 				}
 			}
@@ -2284,41 +2051,20 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("cb")
+	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
-		descriptor = "(IILhi;Lhg;[Lyc;)V"
+		descriptor = "(IIILjava/util/HashSet;)V"
 	)
-	void cb(int var1, int var2, hi var3, hg var4, yc[] var5) {
+	void ca(int var1, int var2, int var3, HashSet var4) {
 		try {
-			this.ab(var1, var2, var3, -1141627905);
-			this.ao(var1, var2, var3, var5, 1299515695);
-		} catch (Throwable var7) {
-			throw new RuntimeException(var7);
-		}
-	}
-
-	@ObfuscatedName("sk")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Ljava/util/HashSet;II)V"
-	)
-	public static void sk(ga var0, HashSet var1, int var2, int var3) throws EOFException {
-		try {
-			Iterator var4 = var0.ax_fld.values().iterator();
-
-			while (var4.hasNext()) {
-				hr var5 = (hr)(hr)var4.next();
-				if (var5.aq((byte)105)) {
-					int var6 = var5.ag(1455480072);
-					if (var1.contains(var6)) {
-						pc var7 = uh.ak(var6);
-						var0.ac(var7, var5.as_fld, var5.ar_fld, var2, var3, -2047673427);
-					}
-				}
+			if (null == var4) {
+				var4 = new HashSet();
 			}
 
-			var0.ax(var1, var2, var3, (byte)41);
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
+			this.bz(var1, var2, var4, var3, (byte)58);
+			fn(this, var1, var2, var4, var3, (byte)0);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
 	}
 
@@ -2335,11 +2081,11 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "(IILhi;Lhg;[Lyc;)V"
 	)
-	void cu(int var1, int var2, hi var3, hg var4, yc[] var5) {
+	void cb(int var1, int var2, hi var3, hg var4, yc[] var5) {
 		try {
 			this.ab(var1, var2, var3, -1141627905);
 			this.ao(var1, var2, var3, var5, 1299515695);
@@ -2358,7 +2104,7 @@ public class ga implements WorldMapRegion {
 			if (null != this.as_fld) {
 				this.as_fld.be(var1);
 				if (this.as_fld.bz()) {
-					ds(this, 0, 0, 64, -272152700, this.as_fld, 1417671953);
+					this.ae(0, 0, 64, -272152700, this.as_fld, 1417671953);
 					return true;
 				} else {
 					return false;
@@ -2378,7 +2124,7 @@ public class ga implements WorldMapRegion {
 
 					while (var3.hasNext()) {
 						gy var8 = (gy)(gy)var3.next();
-						ds(this, gy.ms(var8, (byte)-37) * 8, gy.aw(var8, (byte)-73) * 8, 8, 8, var8, 1417671953);
+						this.ae(var8.aw() * 8, var8.ay() * 8, 8, 8, var8, 1417671953);
 					}
 				}
 
@@ -2389,26 +2135,60 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("nd")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILjava/util/HashSet;I)V"
+	)
+	public static void nd(ga var0, int var1, int var2, HashSet var3, int var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			float var5 = var4 / 64.0F;
+			float var6 = var5 / 2.0F;
+			Iterator var7 = var0.ax_fld.entrySet().iterator();
+
+			while (var7.hasNext()) {
+				Entry var8 = (Entry)(Entry)var7.next();
+				kj var9 = (kj)(kj)var8.getKey();
+				int var10 = (int)(var5 * var9.ak_fld + var1 - var6);
+				int var11 = (int)(var2 + var4 - var9.ag_fld * var5 - var6);
+				hr var12 = (hr)(hr)var8.getValue();
+				if (null != var12 && var12.aq((byte)91)) {
+					var12.ar_fld = var10;
+					var12.as_fld = var11;
+					pc var13 = uh.ak(var12.ag(872853367));
+					if (!var3.contains(var13.aw(1708954540))) {
+						var0.aj(var12, var10, var11, var5, -1996327199);
+					}
+				}
+			}
+		} catch (Throwable var15) {
+			throw new RuntimeException(var15);
+		}
+	}
+
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
 		descriptor = "(IILhi;Lhg;Lgm;)V"
 	)
 	void ch(int var1, int var2, hi var3, hg var4, gm var5) {
 		try {
-			for (int var6 = 1; var6 < var3.af_fld; var6++) {
+			for (int var6 = 1; var6 < var3.al_fld; var6++) {
 				int var7 = var3.ax_fld[var6][var1][var2] - 1;
 				if (var7 > -1) {
-					int var8 = ue.ak(var7, this.al_fld, var5);
+					int var8 = ue.ak(var7, this.af_fld, var5);
 					if (var3.an_fld[var6][var1][var2] == 0) {
-						yu.dj(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, this.ay_fld, var8);
+						yu.dj(this.al_fld * var1, (63 - var2) * this.al_fld, this.al_fld, this.al_fld, var8);
 					} else {
 						var4.ak(
-							var1 * this.ay_fld,
-							this.ay_fld * (63 - var2),
+							var1 * this.al_fld,
+							this.al_fld * (63 - var2),
 							0,
 							var8,
-							this.ay_fld,
-							this.ay_fld,
+							this.al_fld,
+							this.al_fld,
 							var3.an_fld[var6][var1][var2],
 							var3.aa_fld[var6][var1][var2],
 							-828063812
@@ -2421,26 +2201,26 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("dc")
+	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
 		descriptor = "(IILhi;Lhg;Lgm;)V"
 	)
-	void dc(int var1, int var2, hi var3, hg var4, gm var5) {
+	void ct(int var1, int var2, hi var3, hg var4, gm var5) {
 		try {
-			for (int var6 = 1; var6 < var3.af_fld; var6++) {
+			for (int var6 = 1; var6 < var3.al_fld; var6++) {
 				int var7 = var3.ax_fld[var6][var1][var2] - 1;
 				if (var7 > -1) {
-					int var8 = ue.ak(var7, this.al_fld, var5);
+					int var8 = ue.ak(var7, this.af_fld, var5);
 					if (var3.an_fld[var6][var1][var2] == 0) {
-						yu.dj(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, this.ay_fld, var8);
+						yu.dj(this.al_fld * var1, (-1216832097 - var2) * this.al_fld, 1497371820 * this.al_fld, this.al_fld, var8);
 					} else {
 						var4.ak(
-							var1 * this.ay_fld,
-							this.ay_fld * (63 - var2),
+							var1 * this.al_fld,
+							this.al_fld * (63 - var2),
 							0,
 							var8,
-							this.ay_fld,
-							this.ay_fld,
+							this.al_fld,
+							170571969 * this.al_fld,
 							var3.an_fld[var6][var1][var2],
 							var3.aa_fld[var6][var1][var2],
 							-828063812
@@ -2451,14 +2231,6 @@ public class ga implements WorldMapRegion {
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
 		}
-	}
-
-	@ObfuscatedName("dh")
-	@ObfuscatedSignature(
-		descriptor = "(IILhi;Lhs;)I"
-	)
-	int dh(int var1, int var2, hi var3, hs var4) {
-		return 0 == var3.ae_fld[0][var1][var2] ? this.al_fld : var4.ak(var1, var2);
 	}
 
 	@ObfuscatedName("ab")
@@ -2467,7 +2239,7 @@ public class ga implements WorldMapRegion {
 	)
 	void ab(int var1, int var2, hi var3, int var4) {
 		try {
-			for (int var5 = 0; var5 < var3.af_fld; var5++) {
+			for (int var5 = 0; var5 < var3.al_fld; var5++) {
 				ge[] var6 = var3.ai_fld[var5][var1][var2];
 				if (null != var6 && 0 != var6.length) {
 					ge[] var7 = var6;
@@ -2511,17 +2283,17 @@ public class ga implements WorldMapRegion {
 							oe var12 = ko.az(var9.ak_fld);
 							int var13 = 0 != var12.cj_fld ? -3407872 : -3355444;
 							if (var9.ag_fld == kn.ak_fld.at_fld) {
-								an(this, var1, var2, var9.az_fld, var13);
+								this.bf(var1, var2, var9.az_fld, var13, -1968397897);
 							}
 
 							if (kn.az_fld.at_fld == var9.ag_fld) {
-								an(this, var1, var2, var9.az_fld, -3355444);
-								an(this, var1, var2, 1 + var9.az_fld, var13);
+								this.bf(var1, var2, var9.az_fld, -3355444, -1805496080);
+								this.bf(var1, var2, 1 + var9.az_fld, var13, -1077625597);
 							}
 
 							if (kn.av_fld.at_fld == var9.ag_fld) {
 								if (0 == var9.az_fld) {
-									yu.ew(this.ay_fld * var1, (63 - var2) * this.ay_fld, 1, var13);
+									yu.ew(this.al_fld * var1, (63 - var2) * this.al_fld, 1, var13);
 								}
 
 								if (1 == var9.az_fld) {
@@ -2529,15 +2301,15 @@ public class ga implements WorldMapRegion {
 										return;
 									}
 
-									yu.ew(this.ay_fld + var1 * this.ay_fld - 1, (63 - var2) * this.ay_fld, 1, var13);
+									yu.ew(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, 1, var13);
 								}
 
 								if (var9.az_fld == 2) {
-									yu.ew(this.ay_fld + this.ay_fld * var1 - 1, this.ay_fld + this.ay_fld * (63 - var2) - 1, 1, var13);
+									yu.ew(this.al_fld + this.al_fld * var1 - 1, this.al_fld + this.al_fld * (63 - var2) - 1, 1, var13);
 								}
 
 								if (3 == var9.az_fld) {
-									yu.ew(this.ay_fld * var1, this.ay_fld + this.ay_fld * (63 - var2) - 1, 1, var13);
+									yu.ew(this.al_fld * var1, this.al_fld + this.al_fld * (63 - var2) - 1, 1, var13);
 								}
 							}
 
@@ -2548,12 +2320,12 @@ public class ga implements WorldMapRegion {
 
 								int var14 = var9.az_fld % 2;
 								if (0 == var14) {
-									for (int var15 = 0; var15 < this.ay_fld; var15++) {
-										yu.ew(var15 + this.ay_fld * var1, (64 - var2) * this.ay_fld - 1 - var15, 1, var13);
+									for (int var15 = 0; var15 < this.al_fld; var15++) {
+										yu.ew(var15 + this.al_fld * var1, (64 - var2) * this.al_fld - 1 - var15, 1, var13);
 									}
 								} else {
-									for (int var17 = 0; var17 < this.ay_fld; var17++) {
-										yu.ew(this.ay_fld * var1 + var17, var17 + (63 - var2) * this.ay_fld, 1, var13);
+									for (int var17 = 0; var17 < this.al_fld; var17++) {
+										yu.ew(this.al_fld * var1 + var17, var17 + (63 - var2) * this.al_fld, 1, var13);
 									}
 								}
 							}
@@ -2566,41 +2338,13 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("dm")
-	@ObfuscatedSignature(
-		descriptor = "(IILhi;[Lyc;)V"
-	)
-	void dm(int var1, int var2, hi var3, yc[] var4) {
-		try {
-			for (int var5 = 0; var5 < var3.af_fld; var5++) {
-				ge[] var6 = var3.ai_fld[var5][var1][var2];
-				if (null != var6 && 0 != var6.length) {
-					ge[] var7 = var6;
-
-					for (int var8 = 0; var8 < var7.length; var8++) {
-						ge var9 = var7[var8];
-						if (jk.az(var9.ag_fld) || ef.aw(var9.ag_fld)) {
-							oe var10 = ko.az(var9.ak_fld);
-							if (var10.dq_fld != -1) {
-								int var11 = var9.az_fld != 1 && 3 != var9.az_fld ? var10.co_fld : var10.cb_fld;
-								var4[var10.dq_fld].ah(var1 * this.ay_fld, (64 - var11 - var2) * this.ay_fld, -1662562878 * this.ay_fld, this.ay_fld * -1662562878);
-							}
-						}
-					}
-				}
-			}
-		} catch (Throwable var13) {
-			throw new RuntimeException(var13);
-		}
-	}
-
 	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
 		descriptor = "(IILhi;[Lyc;)V"
 	)
 	void dt(int var1, int var2, hi var3, yc[] var4) {
 		try {
-			for (int var5 = 0; var5 < var3.af_fld; var5++) {
+			for (int var5 = 0; var5 < var3.al_fld; var5++) {
 				ge[] var6 = var3.ai_fld[var5][var1][var2];
 				if (null != var6 && 0 != var6.length) {
 					ge[] var7 = var6;
@@ -2611,7 +2355,7 @@ public class ga implements WorldMapRegion {
 							oe var10 = ko.az(var9.ak_fld);
 							if (var10.dq_fld != -1) {
 								int var11 = var9.az_fld != 1 && 3 != var9.az_fld ? var10.co_fld : var10.cb_fld;
-								var4[var10.dq_fld].ah(var1 * this.ay_fld, (64 - var11 - var2) * this.ay_fld, -1662562878 * this.ay_fld, this.ay_fld * -1662562878);
+								var4[var10.dq_fld].ah(var1 * this.al_fld, (64 - var11 - var2) * this.al_fld, -1662562878 * this.al_fld, this.al_fld * -1662562878);
 							}
 						}
 					}
@@ -2620,14 +2364,6 @@ public class ga implements WorldMapRegion {
 		} catch (Throwable var13) {
 			throw new RuntimeException(var13);
 		}
-	}
-
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(
-		descriptor = "(Lzw;)I"
-	)
-	public static int ip(zw var0) {
-		return var0.ak_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -2641,84 +2377,11 @@ public class ga implements WorldMapRegion {
 			while (var2.hasNext()) {
 				hr var3 = (hr)(hr)var2.next();
 				if (var3 instanceof gi) {
-					gi.md((gi)var3, -7119122);
+					((gi)var3).ak();
 				}
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("di")
-	@ObfuscatedSignature(
-		descriptor = "(Lhr;Lpc;IIF)V"
-	)
-	void di(hr var1, pc var2, int var3, int var4, float var5) {
-		gw var6 = var1.az(841763630);
-		if (var6 != null) {
-			if (var6.av_fld.az(var5)) {
-				zf var7 = (zf)(zf)this.ah_fld.get(var6.av_fld);
-				var7.at(var6.ak_fld, var3 - var6.az_fld / 2, var4, var6.az_fld, var6.ag_fld, 0xFF000000 | var2.af_fld, 0, 1, 0, var7.ap_fld / 2);
-			}
-		}
-	}
-
-	@ObfuscatedName("pt")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Ljava/util/HashSet;II)V"
-	)
-	public static void pt(ga var0, HashSet var1, int var2, int var3) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				Iterator var4 = var0.ax_fld.values().iterator();
-
-				while (var4.hasNext()) {
-					hr var5 = (hr)(hr)var4.next();
-					if (var5.aq((byte)18)) {
-						int var6 = var5.ag(806175368);
-						if (var1.contains(var6)) {
-							pc var7 = uh.ak(var6);
-							var0.ac(var7, var5.as_fld, var5.ar_fld, var2, var3, -706140048);
-						}
-					}
-				}
-
-				var0.ax(var1, var2, var3, (byte)126);
-			}
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
-		}
-	}
-
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(
-		descriptor = "(IILjava/util/HashSet;I)V"
-	)
-	void dl(int var1, int var2, HashSet var3, int var4) {
-		try {
-			float var5 = var4 / 64.0F;
-			float var6 = var5 / 2.0F;
-			Iterator var7 = this.ax_fld.entrySet().iterator();
-
-			while (var7.hasNext()) {
-				Entry var8 = (Entry)(Entry)var7.next();
-				kj var9 = (kj)(kj)var8.getKey();
-				int var10 = (int)(var5 * var9.ag_fld + var1 - var6);
-				int var11 = (int)(var2 + var4 - var9.az_fld * var5 - var6);
-				hr var12 = (hr)(hr)var8.getValue();
-				if (null != var12 && var12.aq((byte)91)) {
-					var12.as_fld = var10;
-					var12.ar_fld = var11;
-					pc var13 = uh.ak(var12.ag(872853367));
-					if (!var3.contains(var13.aw(1708954540))) {
-						ti(this, var12, var10, var11, var5);
-					}
-				}
-			}
-		} catch (Throwable var15) {
-			throw new RuntimeException(var15);
 		}
 	}
 
@@ -2735,41 +2398,20 @@ public class ga implements WorldMapRegion {
 			while (var7.hasNext()) {
 				Entry var8 = (Entry)(Entry)var7.next();
 				kj var9 = (kj)(kj)var8.getKey();
-				int var10 = (int)(var5 * (var9.ag_fld * -1021139576) + var1 - var6);
-				int var11 = (int)(var2 + var4 - var9.az_fld * var5 - var6);
+				int var10 = (int)(var5 * (var9.ak_fld * -1021139576) + var1 - var6);
+				int var11 = (int)(var2 + var4 - var9.ag_fld * var5 - var6);
 				hr var12 = (hr)(hr)var8.getValue();
 				if (null != var12 && var12.aq((byte)119)) {
-					var12.as_fld = 911558488 * var10;
-					var12.ar_fld = var11;
+					var12.ar_fld = 911558488 * var10;
+					var12.as_fld = var11;
 					pc var13 = uh.ak(var12.ag(-1677866726));
 					if (!var3.contains(var13.aw(1656590941))) {
-						ti(this, var12, var10, var11, var5);
+						this.aj(var12, var10, var11, var5, -1996327199);
 					}
 				}
 			}
 		} catch (Throwable var15) {
 			throw new RuntimeException(var15);
-		}
-	}
-
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IIILjava/util/HashSet;)V"
-	)
-	public static void cn(ga var0, int var1, int var2, int var3, HashSet var4) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (null == var4) {
-				var4 = new HashSet();
-			}
-
-			var0.ap(var1, var2, var4, var3, (byte)58);
-			zp(var0, var1, var2, var4, var3, (byte)0);
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
 		}
 	}
 
@@ -2786,15 +2428,15 @@ public class ga implements WorldMapRegion {
 			while (var7.hasNext()) {
 				Entry var8 = (Entry)(Entry)var7.next();
 				kj var9 = (kj)(kj)var8.getKey();
-				int var10 = (int)(var5 * var9.ag_fld + var1 - var6);
-				int var11 = (int)(var2 + var4 - var9.az_fld * var5 - var6);
+				int var10 = (int)(var5 * var9.ak_fld + var1 - var6);
+				int var11 = (int)(var2 + var4 - var9.ag_fld * var5 - var6);
 				hr var12 = (hr)(hr)var8.getValue();
 				if (null != var12 && var12.aq((byte)104)) {
-					var12.as_fld = var10;
-					var12.ar_fld = var11;
+					var12.ar_fld = var10;
+					var12.as_fld = var11;
 					pc var13 = uh.ak(var12.ag(2013518915));
 					if (!var3.contains(var13.aw(1907047584))) {
-						ti(this, var12, var10, var11, var5);
+						this.aj(var12, var10, var11, var5, -1996327199);
 					}
 				}
 			}
@@ -2803,11 +2445,52 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("dk")
+	@ObfuscatedName("re")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lub;)Z"
+	)
+	public static boolean re(ga var0, ub var1) throws EOFException {
+		try {
+			var0.ax_fld.clear();
+			if (null != var0.as_fld) {
+				var0.as_fld.be(var1);
+				if (var0.as_fld.bz()) {
+					var0.ae(0, 0, 64, 64, var0.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var2 = true;
+				Iterator var3 = var0.ar_fld.iterator();
+
+				while (var3.hasNext()) {
+					gy var4 = (gy)(gy)var3.next();
+					var4.be(var1);
+					var2 &= var4.bz();
+				}
+
+				if (var2) {
+					var3 = var0.ar_fld.iterator();
+
+					while (var3.hasNext()) {
+						gy var8 = (gy)(gy)var3.next();
+						var0.ae(var8.aw() * 8, var8.ay() * 8, 8, 8, var8, 1417671953);
+					}
+				}
+
+				return var2;
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/HashSet;II)V"
 	)
-	void dk(HashSet var1, int var2, int var3) {
+	void cg(HashSet var1, int var2, int var3) {
 		try {
 			Iterator var4 = this.au_fld.iterator();
 
@@ -2816,7 +2499,7 @@ public class ga implements WorldMapRegion {
 				if (var5.aq((byte)32)) {
 					pc var6 = uh.ak(var5.ag(-1553772271));
 					if (var6 != null && var1.contains(var6.aw(1850426779))) {
-						this.ac(var6, var5.as_fld, var5.ar_fld * -582851424, var2, var3, 1328018226);
+						lk(this, var6, var5.ar_fld, var5.as_fld * -582851424, var2, var3, 1328018226);
 					}
 				}
 			}
@@ -2833,56 +2516,11 @@ public class ga implements WorldMapRegion {
 		return var2 << 16 | var0 << 8 | var1;
 	}
 
-	@ObfuscatedName("rl")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IILhi;Lhg;Lgm;)V"
-	)
-	public static void rl(ga var0, int var1, int var2, hi var3, hg var4, gm var5) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			for (int var6 = 1; var6 < var3.af_fld; var6++) {
-				int var7 = var3.ax_fld[var6][var1][var2] - 1;
-				if (var7 > -1) {
-					int var8 = ue.ak(var7, var0.al_fld, var5);
-					if (var3.an_fld[var6][var1][var2] == 0) {
-						yu.dj(var0.ay_fld * var1, (-1216832097 - var2) * var0.ay_fld, 1497371820 * var0.ay_fld, var0.ay_fld, var8);
-					} else {
-						var4.ak(
-							var1 * var0.ay_fld,
-							var0.ay_fld * (63 - var2),
-							0,
-							var8,
-							var0.ay_fld,
-							170571969 * var0.ay_fld,
-							var3.an_fld[var6][var1][var2],
-							var3.aa_fld[var6][var1][var2],
-							-828063812
-						);
-					}
-				}
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
-		}
-	}
-
-	@ObfuscatedName("kc")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;I)Lss;"
-	)
-	public static ss kc(cx var0, int var1) {
-		ss var2 = (ss)(ss)var0.ag_fld.get(var1);
-		return null != var2 ? var2 : var0.av_fld;
-	}
-
-	@ObfuscatedName("ds")
+	@ObfuscatedName("dk")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/HashSet;II)V"
 	)
-	void ds(HashSet var1, int var2, int var3) {
+	void dk(HashSet var1, int var2, int var3) {
 		try {
 			Iterator var4 = this.au_fld.iterator();
 
@@ -2891,7 +2529,7 @@ public class ga implements WorldMapRegion {
 				if (var5.aq((byte)115)) {
 					pc var6 = uh.ak(var5.ag(-1776273640));
 					if (var6 != null && var1.contains(var6.aw(2009079329))) {
-						this.ac(var6, var5.as_fld * -550275736, var5.ar_fld, var2, var3, 1742246588);
+						lk(this, var6, var5.ar_fld * -550275736, var5.as_fld, var2, var3, 1742246588);
 					}
 				}
 			}
@@ -2900,15 +2538,69 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("db")
+	@ObfuscatedName("zn")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;)Ljava/util/List;"
+	)
+	public static List zn(ga var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		LinkedList var1 = new LinkedList();
+		var1.addAll(var0.au_fld);
+		var1.addAll(var0.ax_fld.values());
+		return var1;
+	}
+
+	@ObfuscatedName("ev")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IIIII)Ljava/util/List;"
+	)
+	public static List ev(ga var0, int var1, int var2, int var3, int var4, int var5) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		LinkedList var6 = new LinkedList();
+		if (var4 >= var1 && var5 >= var2) {
+			if (var4 < var3 + var1 && var5 < var2 + var3) {
+				Iterator var7 = var0.ax_fld.values().iterator();
+
+				while (var7.hasNext()) {
+					hr var8 = (hr)(hr)var7.next();
+					if (var8.aq((byte)71) && var8.ai(var4, var5, (byte)-62)) {
+						var6.add(var8);
+					}
+				}
+
+				var7 = var0.au_fld.iterator();
+
+				while (var7.hasNext()) {
+					hr var10 = (hr)(hr)var7.next();
+					if (var10.aq((byte)46) && var10.ai(var4, var5, (byte)-81)) {
+						var6.add(var10);
+					}
+				}
+
+				return var6;
+			} else {
+				return var6;
+			}
+		} else {
+			return var6;
+		}
+	}
+
+	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
 		descriptor = "(Lpc;IIII)V"
 	)
-	void db(pc var1, int var2, int var3, int var4, int var5) {
+	void dg(pc var1, int var2, int var3, int var4, int var5) {
 		try {
 			yv var6 = var1.ae(false, -1984702827);
 			if (null != var6) {
-				var6.ab(var2 - var6.aw_fld / 2, var3 - var6.ay_fld / 2);
+				yv.aj(var6, var2 - var6.aw_fld / 2, var3 - var6.ay_fld / 2);
 				if (var4 % var5 < var5 / 2) {
 					yu.de(var2, var3, 15, 16776960, -898450265);
 					yu.de(var2, var3, 7, -187070593, -1549351507);
@@ -2925,7 +2617,7 @@ public class ga implements WorldMapRegion {
 	)
 	void do_(int var1, int var2, hi var3) {
 		try {
-			for (int var4 = 0; var4 < var3.af_fld; var4++) {
+			for (int var4 = 0; var4 < var3.al_fld; var4++) {
 				ge[] var5 = var3.ai_fld[var4][var1][var2];
 				if (null != var5 && 0 != var5.length) {
 					ge[] var6 = var5;
@@ -2938,41 +2630,41 @@ public class ga implements WorldMapRegion {
 							oe var11 = ko.az(var8.ak_fld * -460330380);
 							int var12 = 0 != var11.cj_fld ? 1368014672 : 547511781;
 							if (var8.ag_fld == kn.ak_fld.at_fld) {
-								an(this, var1, var2, -1196528831 * var8.az_fld, var12);
+								this.bf(var1, var2, -1196528831 * var8.az_fld, var12, -1679179700);
 							}
 
 							if (kn.az_fld.at_fld == var8.ag_fld) {
-								an(this, var1, var2, -1506679147 * var8.az_fld, -3355444);
-								an(this, var1, var2, 1 + var8.az_fld, var12);
+								this.bf(var1, var2, -1506679147 * var8.az_fld, -3355444, -524636776);
+								this.bf(var1, var2, 1 + var8.az_fld, var12, -244666143);
 							}
 
 							if (kn.av_fld.at_fld == var8.ag_fld) {
 								if (0 == var8.az_fld) {
-									yu.ew(this.ay_fld * var1, (1145105253 - var2) * this.ay_fld, 1, var12);
+									yu.ew(this.al_fld * var1, (1145105253 - var2) * this.al_fld, 1, var12);
 								}
 
 								if (1 == var8.az_fld) {
-									yu.ew(this.ay_fld + var1 * this.ay_fld - 1, (63 - var2) * this.ay_fld, 1, var12);
+									yu.ew(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, 1, var12);
 								}
 
 								if (var8.az_fld == 2) {
-									yu.ew(this.ay_fld + this.ay_fld * var1 - 1, this.ay_fld + this.ay_fld * (1482741578 - var2) - 1, 1, var12);
+									yu.ew(this.al_fld + this.al_fld * var1 - 1, this.al_fld + this.al_fld * (1482741578 - var2) - 1, 1, var12);
 								}
 
 								if (3 == var8.az_fld) {
-									yu.ew(this.ay_fld * var1, this.ay_fld + this.ay_fld * (63 - var2) - 1, 1, var12);
+									yu.ew(this.al_fld * var1, this.al_fld + this.al_fld * (63 - var2) - 1, 1, var12);
 								}
 							}
 
 							if (var8.ag_fld == kn.ae_fld.at_fld) {
 								int var13 = var8.az_fld % 2;
 								if (0 == var13) {
-									for (int var17 = 0; var17 < this.ay_fld; var17++) {
-										yu.ew(var17 + this.ay_fld * var1, (2089031879 - var2) * this.ay_fld - 1 - var17, 1, var12);
+									for (int var17 = 0; var17 < this.al_fld; var17++) {
+										yu.ew(var17 + this.al_fld * var1, (2089031879 - var2) * this.al_fld - 1 - var17, 1, var12);
 									}
 								} else {
-									for (int var14 = 0; var14 < this.ay_fld; var14++) {
-										yu.ew(this.ay_fld * var1 + var14, var14 + (63 - var2) * this.ay_fld, 1, var12);
+									for (int var14 = 0; var14 < this.al_fld; var14++) {
+										yu.ew(this.al_fld * var1 + var14, var14 + (63 - var2) * this.al_fld, 1, var12);
 									}
 								}
 							}
@@ -2985,17 +2677,53 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("dy")
+	@ObfuscatedName("rv")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILhi;Lhg;Lgm;)V"
+	)
+	public static void rv(ga var0, int var1, int var2, hi var3, hg var4, gm var5) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			for (int var6 = 1; var6 < var3.al_fld; var6++) {
+				int var7 = var3.ax_fld[var6][var1][var2] - 1;
+				if (var7 > -1) {
+					int var8 = ue.ak(var7, var0.af_fld, var5);
+					if (var3.an_fld[var6][var1][var2] == 0) {
+						yu.dj(var0.al_fld * var1, (63 - var2) * var0.al_fld, var0.al_fld, var0.al_fld, var8);
+					} else {
+						var4.ak(
+							var1 * var0.al_fld,
+							var0.al_fld * (63 - var2),
+							0,
+							var8,
+							var0.al_fld,
+							var0.al_fld,
+							var3.an_fld[var6][var1][var2],
+							var3.aa_fld[var6][var1][var2],
+							-828063812
+						);
+					}
+				}
+			}
+		} catch (Throwable var10) {
+			throw new RuntimeException(var10);
+		}
+	}
+
+	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
 		descriptor = "(Lpc;II)V"
 	)
-	void dy(pc var1, int var2, int var3) {
+	void dw(pc var1, int var2, int var3) {
 		try {
-			yv var4 = var1.ae(false, -1956488871);
+			yv var4 = var1.ae(false, -2000715492);
 			if (null != var4) {
-				int var5 = sw(this, var4, var1.ao_fld, (byte)105);
-				int var6 = this.be(var4, var1.ab_fld, 2146777205);
-				var4.ab(var5 + var2, var6 + var3);
+				int var5 = this.br(var4, var1.ao_fld, (byte)5);
+				int var6 = this.be(var4, var1.ab_fld, -117943284);
+				yv.aj(var4, var5 + var2, var6 + var3);
 			}
 		} catch (Throwable var8) {
 			throw new RuntimeException(var8);
@@ -3013,12 +2741,12 @@ public class ga implements WorldMapRegion {
 
 			while (var4.hasNext()) {
 				gy var5 = (gy)(gy)var4.next();
-				if (var5.bf() == this.af_fld && var5.by() == this.aw_fld) {
+				if (hi.xz(var5, 1018685436) == this.aw_fld && var5.by() == this.ay_fld) {
 					this.ar_fld.add(var5);
 				}
 			}
 
-			this.ay(var2, (byte)-23);
+			nn(this, var2, (byte)-23);
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
@@ -3033,65 +2761,53 @@ public class ga implements WorldMapRegion {
 		if (var6 != null) {
 			if (var6.av_fld.az(var5)) {
 				zf var7 = (zf)(zf)this.ah_fld.get(var6.av_fld);
-				var7.at(var6.ak_fld, var3 - var6.az_fld / 2, var4, var6.az_fld, var6.ag_fld * 991086030, 1013326408 | var2.af_fld, 0, 1, 0, var7.ap_fld / 2);
+				var7.at(var6.ak_fld, var3 - var6.ag_fld / 2, var4, var6.ag_fld, var6.az_fld * 991086030, 1013326408 | var2.ar_fld, 0, 1, 0, var7.ap_fld / 2);
 			}
 		}
 	}
 
-	@ObfuscatedName("fw")
+	@ObfuscatedName("zg")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;IIIILhi;)V"
+		descriptor = "(Lga;IILhi;Lhg;Lhs;Lgm;B)V"
 	)
-	public static void fw(ga var0, int var1, int var2, int var3, int var4, hi var5) throws EOFException {
+	public static void zg(ga var0, int var1, int var2, hi var3, hg var4, hs var5, gm var6, byte var7) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
 			}
 
-			for (int var6 = var1; var6 < var1 + var3; var6++) {
-				label91:
-				for (int var7 = var2; var7 < var2 + var4; var7++) {
-					for (int var8 = 0; var8 < var5.af_fld; var8++) {
-						ge[] var9 = var5.ai_fld[var8][var6][var7];
-						if (null != var9 && var9.length != 0) {
-							ge[] var10 = var9;
+			int var8 = var3.ae_fld[0][var1][var2] - 1;
+			int var9 = var3.ax_fld[0][var1][var2] - 1;
+			if (var8 == -1 && var9 == -1) {
+				yu.dj(var0.al_fld * var1, (63 - var2) * var0.al_fld, var0.al_fld, var0.al_fld, var0.af_fld);
+			}
 
-							for (int var11 = 0; var11 < var10.length; var11++) {
-								oe var13;
-								boolean var14;
-								label82: {
-									ge var12 = var10[var11];
-									var13 = ko.az(var12.ak_fld);
-									if (var13.dy_fld != null) {
-										int[] var15 = var13.dy_fld;
+			int var10 = 16711935;
+			if (var9 != -1) {
+				var10 = ue.ak(var9, var0.af_fld, var6);
+			}
 
-										for (int var16 = 0; var16 < var15.length; var16++) {
-											int var17 = var15[var16];
-											oe var18 = ko.az(var17);
-											if (var18.dm_fld != -1) {
-												var14 = true;
-												break label82;
-											}
-										}
-									} else if (var13.dm_fld != -1) {
-										var14 = true;
-										break label82;
-									}
+			if (var9 > -1) {
+				if (var7 == 3) {
+					return;
+				}
 
-									var14 = false;
-								}
-
-								if (var14) {
-									var0.ah(var13, var8, var6, var7, var5, -1591040896);
-									continue label91;
-								}
-							}
-						}
-					}
+				if (var3.an_fld[0][var1][var2] == 0) {
+					yu.dj(var0.al_fld * var1, var0.al_fld * (63 - var2), var0.al_fld, var0.al_fld, var10);
+					return;
 				}
 			}
-		} catch (Throwable var20) {
-			throw new RuntimeException(var20);
+
+			int var11 = var0.ad(var1, var2, var3, var5, (byte)6);
+			if (-1 == var9) {
+				yu.dj(var0.al_fld * var1, (63 - var2) * var0.al_fld, var0.al_fld, var0.al_fld, var11);
+			} else {
+				var4.ak(
+					var1 * var0.al_fld, (63 - var2) * var0.al_fld, var11, var10, var0.al_fld, var0.al_fld, var3.an_fld[0][var1][var2], var3.aa_fld[0][var1][var2], -828063812
+				);
+			}
+		} catch (Throwable var12) {
+			throw new RuntimeException(var12);
 		}
 	}
 
@@ -3104,7 +2820,7 @@ public class ga implements WorldMapRegion {
 		if (var6 != null) {
 			if (var6.av_fld.az(var5)) {
 				zf var7 = (zf)(zf)this.ah_fld.get(var6.av_fld);
-				var7.at(var6.ak_fld, var3 - var6.az_fld / 2, var4, var6.az_fld * -118810168, var6.ag_fld * -2010323292, 0xFF000000 | var2.af_fld, 0, 1, 0, var7.ap_fld / 2);
+				var7.at(var6.ak_fld, var3 - var6.ag_fld / 2, var4, var6.ag_fld * -118810168, var6.az_fld * -2010323292, 0xFF000000 | var2.ar_fld, 0, 1, 0, var7.ap_fld / 2);
 			}
 		}
 	}
@@ -3121,12 +2837,12 @@ public class ga implements WorldMapRegion {
 			while (var6.hasNext()) {
 				hr var7 = (hr)(hr)var6.next();
 				if (var7.aq((byte)81)) {
-					int var8 = var7.aw_fld.ag_fld * -621797759 % 64;
-					int var9 = var7.aw_fld.az_fld * 1479124089 % 64;
-					var7.as_fld = -1969704677 * (int)(var5 * var8 + var1);
-					var7.ar_fld = (int)(var5 * (63 - var9) + var2);
+					int var8 = var7.aw_fld.ak_fld * -621797759 % 64;
+					int var9 = var7.aw_fld.ag_fld * 1479124089 % 64;
+					var7.ar_fld = -1969704677 * (int)(var5 * var8 + var1);
+					var7.as_fld = (int)(var5 * (63 - var9) + var2);
 					if (!var3.contains(var7.ag(1570031227))) {
-						ti(this, var7, var7.as_fld, var7.ar_fld, var5);
+						this.aj(var7, var7.ar_fld, var7.as_fld, var5, -1996327199);
 					}
 				}
 			}
@@ -3135,30 +2851,81 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("re")
+	@ObfuscatedName("ds")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;Lhg;[Lyc;Lhs;Lgm;)V"
+		descriptor = "(Ljava/util/HashSet;II)V"
 	)
-	public static void re(ga var0, hg var1, yc[] var2, hs var3, gm var4) throws EOFException {
+	void ds(HashSet var1, int var2, int var3) {
 		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
+			Iterator var4 = this.ax_fld.values().iterator();
 
-			for (int var5 = 0; var5 < -1544444519; var5++) {
-				for (int var6 = 0; var6 < -583930190; var6++) {
-					var0.aq(var5, var6, var0.as_fld, var1, var3, var4, (byte)-83);
-					aj(var0, var5, var6, var0.as_fld, var1, var4);
+			while (var4.hasNext()) {
+				hr var5 = (hr)(hr)var4.next();
+				if (var5.aq((byte)18)) {
+					int var6 = var5.ag(806175368);
+					if (var1.contains(var6)) {
+						pc var7 = uh.ak(var6);
+						lk(this, var7, var5.ar_fld, var5.as_fld, var2, var3, -706140048);
+					}
 				}
 			}
 
-			for (int var9 = 0; var9 < 64; var9++) {
-				for (int var10 = 0; var10 < -1517336384; var10++) {
-					var0.ai(var9, var10, var0.as_fld, var1, var2, -1722287877);
+			this.at(var1, var2, var3, (byte)126);
+		} catch (Throwable var9) {
+			throw new RuntimeException(var9);
+		}
+	}
+
+	@ObfuscatedName("lk")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lpc;IIIII)V"
+	)
+	public static void lk(ga var0, pc var1, int var2, int var3, int var4, int var5, int var6) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				yv var7 = var1.ae(false, -2135784525);
+				if (null == var7) {
+					if (var6 < 1810855184) {
+						;
+					}
+				} else {
+					yv.aj(var7, var2 - var7.aw_fld / 2, var3 - var7.ay_fld / 2);
+					if (var4 % var5 < var5 / 2) {
+						yu.de(var2, var3, 15, 16776960, 128);
+						yu.de(var2, var3, 7, 16777215, 256);
+					}
 				}
 			}
 		} catch (Throwable var8) {
 			throw new RuntimeException(var8);
+		}
+	}
+
+	@ObfuscatedName("dj")
+	@ObfuscatedSignature(
+		descriptor = "(IILjava/util/HashSet;I)V"
+	)
+	void dj(int var1, int var2, HashSet var3, int var4) {
+		try {
+			float var5 = var4 / 64.0F;
+			Iterator var6 = this.au_fld.iterator();
+
+			while (var6.hasNext()) {
+				hr var7 = (hr)(hr)var6.next();
+				if (var7.aq((byte)62)) {
+					int var8 = var7.aw_fld.ak_fld * -621797759 % 64;
+					int var9 = var7.aw_fld.ag_fld * 1479124089 % 64;
+					var7.ar_fld = -1969704677 * (int)(var5 * var8 + var1);
+					var7.as_fld = (int)(var5 * (63 - var9) + var2);
+					if (!var3.contains(var7.ag(-2018833526))) {
+						this.aj(var7, var7.ar_fld, var7.as_fld, var5, -1996327199);
+					}
+				}
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
 		}
 	}
 
@@ -3174,42 +2941,6 @@ public class ga implements WorldMapRegion {
 				return 0;
 			default:
 				return -var1.aw_fld;
-		}
-	}
-
-	@ObfuscatedName("zg")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IILhi;Lhg;Lgm;)V"
-	)
-	public static void zg(ga var0, int var1, int var2, hi var3, hg var4, gm var5) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			for (int var6 = 1; var6 < var3.af_fld; var6++) {
-				int var7 = var3.ax_fld[var6][var1][var2] - 1;
-				if (var7 > -1) {
-					int var8 = ue.ak(var7, var0.al_fld, var5);
-					if (var3.an_fld[var6][var1][var2] == 0) {
-						yu.dj(var0.ay_fld * var1, (-1707311069 - var2) * var0.ay_fld, var0.ay_fld, var0.ay_fld, var8);
-					} else {
-						var4.ak(
-							var1 * var0.ay_fld,
-							var0.ay_fld * (63 - var2),
-							0,
-							var8,
-							var0.ay_fld,
-							1693125524 * var0.ay_fld,
-							var3.an_fld[var6][var1][var2],
-							var3.aa_fld[var6][var1][var2],
-							-828063812
-						);
-					}
-				}
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
 		}
 	}
 
@@ -3258,6 +2989,38 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "(Loe;IIILhi;)V"
+	)
+	void bq(oe var1, int var2, int var3, int var4, hi var5) {
+		try {
+			kj var6 = new kj(var2, this.aw_fld + var3, var4 + this.ay_fld);
+			Object var7 = null;
+			if (this.as_fld != null) {
+				var7 = new kj(var2 + -155955479 * this.as_fld.aw_fld, var3 + -1935125952 * this.as_fld.au_fld, var4 + this.as_fld.ay_fld * 37981504);
+			} else {
+				gy var8 = (gy)var5;
+				var7 = new kj(var2 + var8.aw_fld, var3 + var8.au_fld + var8.ae() * 8, var4 + var8.ay_fld + var8.ah() * 8);
+			}
+
+			Object var13;
+			if (null != var1.dy_fld) {
+				var13 = new gi((kj)var7, var6, var1.cn_fld, this);
+			} else {
+				pc var9 = uh.ak(var1.dm_fld);
+				var13 = new he((kj)var7, var6, var9.ah_fld, this.bh(var9, -2140792005));
+			}
+
+			pc var14 = uh.ak(((hr)var13).ag(158630261));
+			if (var14.al_fld) {
+				this.ax_fld.put(new kj(0, var3, var4), var13);
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
+	}
+
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(IILhi;Lhg;[Lyc;I)V"
@@ -3268,42 +3031,6 @@ public class ga implements WorldMapRegion {
 			this.ao(var1, var2, var3, var5, 1299515695);
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
-		}
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;IILhi;Lhg;Lgm;)V"
-	)
-	public static void aj(ga var0, int var1, int var2, hi var3, hg var4, gm var5) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				for (int var7 = 1; var7 < var3.af_fld; var7++) {
-					int var8 = var3.ax_fld[var7][var1][var2] - 1;
-					if (var8 > -1) {
-						int var9 = ue.ak(var8, var0.al_fld, var5);
-						if (var3.an_fld[var7][var1][var2] == 0) {
-							yu.dj(var0.ay_fld * var1, (63 - var2) * var0.ay_fld, var0.ay_fld, var0.ay_fld, var9);
-						} else {
-							var4.ak(
-								var1 * var0.ay_fld,
-								var0.ay_fld * (63 - var2),
-								0,
-								var9,
-								var0.ay_fld,
-								var0.ay_fld,
-								var3.an_fld[var7][var1][var2],
-								var3.aa_fld[var7][var1][var2],
-								-828063812
-							);
-						}
-					}
-				}
-			}
-		} catch (Throwable var10) {
-			throw new RuntimeException(var10);
 		}
 	}
 
@@ -3331,7 +3058,7 @@ public class ga implements WorldMapRegion {
 	)
 	gw ec(pc var1) {
 		if (null != var1.as_fld && this.ah_fld != null && this.ah_fld.get(hb.ak_fld) != null) {
-			hb var2 = hb.ag(var1.aw_fld);
+			hb var2 = hb.ag(var1.af_fld);
 			if (var2 == null) {
 				return null;
 			} else {
@@ -3339,9 +3066,9 @@ public class ga implements WorldMapRegion {
 				if (null == var3) {
 					return null;
 				} else {
-					int var4 = var3.aq(var1.as_fld, -1996314836);
+					int var4 = zv.xc(var3, var1.as_fld, 1000000);
 					String[] var5 = new String[var4];
-					var3.cr(var1.as_fld, null, var5);
+					zv.sh(var3, var1.as_fld, null, var5);
 					int var6 = var3.ap_fld * var5.length / 2;
 					int var7 = 0;
 					String[] var8 = var5;
@@ -3362,20 +3089,54 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lgw;"
+		descriptor = "(Loe;IIILhi;)V"
 	)
-	gw bs(int var1, int var2) {
-		pc var3 = uh.ak(var1);
-		return this.bh(var3, -2140792005);
+	void bg(oe var1, int var2, int var3, int var4, hi var5) {
+		try {
+			kj var6 = new kj(var2, this.aw_fld + var3, var4 + this.ay_fld);
+			Object var7 = null;
+			if (this.as_fld != null) {
+				var7 = new kj(var2 + 1435903083 * this.as_fld.aw_fld, var3 + 2073024386 * this.as_fld.au_fld, var4 + this.as_fld.ay_fld * -991344348);
+			} else {
+				gy var8 = (gy)var5;
+				var7 = new kj(var2 + var8.aw_fld, var3 + var8.au_fld + var8.ae() * 8, var4 + var8.ay_fld + var8.ah() * 8);
+			}
+
+			Object var13;
+			if (null != var1.dy_fld) {
+				var13 = new gi((kj)var7, var6, var1.cn_fld * -2141333993, this);
+			} else {
+				pc var9 = uh.ak(var1.dm_fld);
+				var13 = new he((kj)var7, var6, var9.ah_fld, this.bh(var9, -2140792005));
+			}
+
+			pc var14 = uh.ak(((hr)var13).ag(1072178408));
+			if (var14.al_fld) {
+				this.ax_fld.put(new kj(0, var3, var4), var13);
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
 	}
 
-	@ObfuscatedName("ei")
+	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/List;"
 	)
-	List ei() {
+	List eq() {
+		LinkedList var1 = new LinkedList();
+		var1.addAll(this.au_fld);
+		var1.addAll(this.ax_fld.values());
+		return var1;
+	}
+
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/List;"
+	)
+	List eg() {
 		LinkedList var1 = new LinkedList();
 		var1.addAll(this.au_fld);
 		var1.addAll(this.ax_fld.values());
@@ -3389,49 +3150,73 @@ public class ga implements WorldMapRegion {
 	void ee(int var1, int var2, int var3, int var4) {
 		var3 %= 4;
 		if (var3 == 0) {
-			yu.eo(var1 * this.ay_fld, this.ay_fld * (-1478728330 - var2), this.ay_fld, var4);
+			yu.eo(var1 * this.al_fld, this.al_fld * (-1478728330 - var2), this.al_fld, var4);
 		}
 
 		if (1 == var3) {
-			yu.ew(this.ay_fld * var1, (63 - var2) * this.ay_fld, -2046308541 * this.ay_fld, var4);
+			yu.ew(this.al_fld * var1, (63 - var2) * this.al_fld, -2046308541 * this.al_fld, var4);
 		}
 
 		if (2 == var3) {
-			yu.eo(this.ay_fld + var1 * this.ay_fld - 1, (63 - var2) * this.ay_fld, 632489797 * this.ay_fld, var4);
+			yu.eo(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, 632489797 * this.al_fld, var4);
 		}
 
 		if (var3 == 3) {
-			yu.ew(this.ay_fld * var1, this.ay_fld * (-2036407633 - var2) + this.ay_fld - 1, this.ay_fld, var4);
+			yu.ew(this.al_fld * var1, this.al_fld * (-2036407633 - var2) + this.al_fld - 1, this.al_fld, var4);
 		}
 	}
 
-	@ObfuscatedName("ob")
+	@ObfuscatedName("go")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;IILjava/util/HashSet;I)V"
+		descriptor = "(Lga;ILub;I)Z"
 	)
-	public static void ob(ga var0, int var1, int var2, HashSet var3, int var4) throws EOFException {
+	public static boolean go(ga var0, int var1, ub var2) throws EOFException {
 		try {
 			if (var0 == null) {
 				var0.getClass();
-			} else {
-				float var5 = var4 / 64.0F;
-				Iterator var6 = var0.au_fld.iterator();
+			}
 
-				while (var6.hasNext()) {
-					hr var7 = (hr)(hr)var6.next();
-					if (var7.aq((byte)62)) {
-						int var8 = var7.aw_fld.ag_fld * -621797759 % 64;
-						int var9 = var7.aw_fld.az_fld * 1479124089 % 64;
-						var7.as_fld = -1969704677 * (int)(var5 * var8 + var1);
-						var7.ar_fld = (int)(var5 * (63 - var9) + var2);
-						if (!var3.contains(var7.ag(-2018833526))) {
-							ti(var0, var7, var7.as_fld, var7.ar_fld, var5);
-						}
+			var0.ax_fld.clear();
+			int var5 = var0.aw_fld;
+			int var6 = var0.ay_fld;
+			int var4 = var5 << 8 | var6;
+			byte[] var8 = var2.bb(var4, var1, 584982574);
+			xi var9 = null;
+			if (var8 != null) {
+				var9 = new xi(var8);
+			}
+
+			if (null != var0.as_fld) {
+				hi.hr(var0.as_fld, var9, (byte)87);
+				if (var0.as_fld.bz()) {
+					var0.ae(0, 0, 64, 64, var0.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var10 = true;
+				Iterator var11 = var0.ar_fld.iterator();
+
+				while (var11.hasNext()) {
+					gy var12 = (gy)(gy)var11.next();
+					hi.hr(var12, var9, (byte)8);
+					var10 &= var12.bz();
+				}
+
+				if (var10) {
+					var11 = var0.ar_fld.iterator();
+
+					while (var11.hasNext()) {
+						gy var15 = (gy)(gy)var11.next();
+						var0.ae(var15.aw() * 8, var15.ay() * 8, 8, 8, var15, 1417671953);
 					}
 				}
+
+				return var10;
 			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
 		}
 	}
 
@@ -3442,25 +3227,135 @@ public class ga implements WorldMapRegion {
 	void ek(int var1, int var2, int var3, int var4) {
 		var3 %= 4;
 		if (var3 == 0) {
-			yu.eo(var1 * this.ay_fld, this.ay_fld * (63 - var2), this.ay_fld, var4);
+			yu.eo(var1 * this.al_fld, this.al_fld * (63 - var2), this.al_fld, var4);
 		}
 
 		if (1 == var3) {
-			yu.ew(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, var4);
+			yu.ew(this.al_fld * var1, (63 - var2) * this.al_fld, this.al_fld, var4);
 		}
 
 		if (2 == var3) {
-			yu.eo(this.ay_fld + var1 * this.ay_fld - 1, (63 - var2) * this.ay_fld, this.ay_fld, var4);
+			yu.eo(this.al_fld + var1 * this.al_fld - 1, (63 - var2) * this.al_fld, this.al_fld, var4);
 		}
 
 		if (var3 == 3) {
-			yu.ew(this.ay_fld * var1, this.ay_fld * (63 - var2) + this.ay_fld - 1, this.ay_fld, var4);
+			yu.ew(this.al_fld * var1, this.al_fld * (63 - var2) + this.al_fld - 1, this.al_fld, var4);
+		}
+	}
+
+	@ObfuscatedName("nr")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;ILub;)Z"
+	)
+	public static boolean nr(ga var0, int var1, ub var2) throws EOFException {
+		try {
+			var0.ax_fld.clear();
+			int var4 = var0.aw_fld;
+			int var5 = var0.ay_fld;
+			int var3 = var4 << 8 | var5;
+			byte[] var7 = var2.bb(var3, var1, 584982574);
+			xi var8 = null;
+			if (var7 != null) {
+				var8 = new xi(var7);
+			}
+
+			if (null != var0.as_fld) {
+				hi.hr(var0.as_fld, var8, (byte)71);
+				if (var0.as_fld.bz()) {
+					var0.ae(0, 0, 64, 64, var0.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var9 = true;
+				Iterator var10 = var0.ar_fld.iterator();
+
+				while (var10.hasNext()) {
+					gy var11 = (gy)(gy)var10.next();
+					hi.hr(var11, var8, (byte)24);
+					var9 &= var11.bz();
+				}
+
+				if (var9) {
+					var10 = var0.ar_fld.iterator();
+
+					while (var10.hasNext()) {
+						gy var15 = (gy)(gy)var10.next();
+						var0.ae(var15.aw() * 8, var15.ay() * 8, 8, 8, var15, 1417671953);
+					}
+				}
+
+				return var9;
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IILhi;Lhg;Lhs;Lgm;)V"
+	)
+	public static void bs(ga var0, int var1, int var2, hi var3, hg var4, hs var5, gm var6) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				int var7 = var3.ae_fld[0][var1][var2] - 1;
+				int var8 = var3.ax_fld[0][var1][var2] - 1;
+				if (var7 == -1 && var8 == -1) {
+					yu.dj(var0.al_fld * var1, (63 - var2) * var0.al_fld, -1452661003 * var0.al_fld, var0.al_fld * 2100538837, var0.af_fld);
+				}
+
+				int var9 = 16711935;
+				if (var8 != -1) {
+					var9 = ue.ak(var8, var0.af_fld, var6);
+				}
+
+				if (var8 > -1 && var3.an_fld[0][var1][var2] == 0) {
+					yu.dj(var0.al_fld * var1, var0.al_fld * (933449829 - var2), -943497604 * var0.al_fld, var0.al_fld, var9);
+				} else {
+					int var10 = var0.ad(var1, var2, var3, var5, (byte)6);
+					if (-1 == var8) {
+						yu.dj(var0.al_fld * var1, (813016758 - var2) * var0.al_fld, var0.al_fld, var0.al_fld * 1414102270, var10);
+					} else {
+						var4.ak(
+							var1 * var0.al_fld,
+							(63 - var2) * var0.al_fld,
+							var10,
+							var9,
+							var0.al_fld * -1333499888,
+							var0.al_fld * -328281465,
+							var3.an_fld[0][var1][var2],
+							var3.aa_fld[0][var1][var2],
+							-828063812
+						);
+					}
+				}
+			}
+		} catch (Throwable var12) {
+			throw new RuntimeException(var12);
+		}
+	}
+
+	@ObfuscatedName("ty")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lgk;Ljava/util/List;)V"
+	)
+	public static void ty(ga var0, gk var1, List var2) throws EOFException {
+		try {
+			var0.ax_fld.clear();
+			var0.as_fld = var1;
+			nn(var0, var2, (byte)-99);
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
 		}
 	}
 
 	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int ce(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -3617,10 +3512,10 @@ public class ga implements WorldMapRegion {
 				char var18 = (char)bp.au_fld[gz.ax_fld];
 				int var47 = bp.au_fld[gz.ax_fld + 1];
 				os var70 = gx.ak(var47);
-				if (!var70.ar(var18, -1975842656)) {
+				if (!os.xn(var70, var18, -1975842656)) {
 					throw new RuntimeException();
 				} else {
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.se(var70, 943006773);
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var70.ah(943006773);
 					return 1;
 				}
 			} else if (8021 == var0) {
@@ -3628,10 +3523,10 @@ public class ga implements WorldMapRegion {
 				int var17 = bp.au_fld[gz.ax_fld];
 				int var46 = bp.au_fld[1 + gz.ax_fld];
 				os var69 = gx.ak(var46);
-				if (!os.ks(var69, (char)var17, (byte)76)) {
+				if (!var69.af((char)var17, (byte)76)) {
 					throw new RuntimeException();
 				} else {
-					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.cg(var69, 1178899929);
+					bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = os.fe(var69, 1178899929);
 					return 1;
 				}
 			} else if (8022 == var0) {
@@ -3660,7 +3555,7 @@ public class ga implements WorldMapRegion {
 				int var15 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 				sl var44 = nl.ck(bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525], null);
 				if (var15 >= 0 && var15 <= 5000) {
-					var44.aw(var15, 1783985890);
+					var44.aw(var15);
 					return 1;
 				} else {
 					throw new RuntimeException();
@@ -3713,71 +3608,458 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ew")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/HashSet;IIB)V"
+		descriptor = "(Lyv;Lop;)I"
 	)
-	void at(HashSet var1, int var2, int var3, byte var4) {
+	int ew(yv var1, op var2) {
+		switch (var2.av_fld) {
+			case 1:
+				return -var1.ay_fld / 2;
+			case 2:
+				return 0;
+			default:
+				return -var1.ay_fld;
+		}
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lpc;IIIII)V"
+	)
+	void ac(pc var1, int var2, int var3, int var4, int var5, int var6) {
 		try {
-			Iterator var5 = this.ax_fld.values().iterator();
+			yv var7 = var1.ae(false, -2135784525);
+			if (null == var7) {
+				if (var6 < 1810855184) {
+					;
+				}
+			} else {
+				yv.aj(var7, var2 - var7.ad_fld / 2, var3 - var7.as_fld / 2);
+				if (var4 % var5 < var5 / 2) {
+					yu.dj(var2, var3, 15, 16776960, 128);
+					yu.gn(var2, var3, 7, 16777215, 256);
+				}
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
+		}
+	}
 
-			while (var5.hasNext()) {
-				hr var6 = (hr)(hr)var5.next();
-				if (var6.aq((byte)120)) {
-					int var7 = var6.ag(-1798904925);
-					if (var1.contains(var7)) {
-						if (var4 <= 1) {
-							return;
-						}
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/List;B)V"
+	)
+	void ay(List var1, byte var2) {
+		try {
+			Iterator var3 = var1.iterator();
 
-						pc var8 = uh.ak(var7);
-						this.ac(var8, var6.as_fld, var6.ar_fld, var2, var3, -2146458702);
+			while (var3.hasNext()) {
+				he var4 = (he)(he)var3.next();
+				if (!uh.ak(698419181 * var4.ak_fld).al_fld) {
+					if (var2 >= 2) {
+						return;
 					}
+				} else if (var4.aw_fld.ak_fld * -621797759 >> 6 == this.ay_fld && var4.ay_fld.az_fld * 1479124089 >> 6 == this.af_fld) {
+					he var5 = new he(var4.ay_fld, var4.aw_fld, 698419181 * var4.ak_fld, jx(this, var4.av_fld));
+					this.au_fld.add(var5);
+				}
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("yh")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Lpc;)Lgw;"
+	)
+	public static gw yh(ga var0, pc var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (null != var1.as_fld && var0.ah_fld != null && var0.ah_fld.get(hb.ak_fld) != null) {
+			hb var2 = hb.ag(var1.af_fld);
+			if (var2 == null) {
+				return null;
+			} else {
+				zf var3 = (zf)(zf)var0.ah_fld.get(var2);
+				if (null == var3) {
+					return null;
+				} else {
+					int var4 = zv.xc(var3, var1.as_fld, -1996314836);
+					String[] var5 = new String[var4];
+					zv.sh(var3, var1.as_fld, null, var5);
+					int var6 = var3.ap_fld * var5.length / 2;
+					int var7 = 0;
+					String[] var8 = var5;
+
+					for (int var9 = 0; var9 < var8.length; var9++) {
+						String var10 = var8[var9];
+						int var11 = var3.an(var10);
+						if (var11 > var7) {
+							var7 = var11;
+						}
+					}
+
+					return new gw(var1.as_fld, var7, var6, var2);
+				}
+			}
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	void as(byte var1) {
+		try {
+			Iterator var2 = this.ax_fld.values().iterator();
+
+			while (var2.hasNext()) {
+				hr var3 = (hr)(hr)var2.next();
+				if (var3 instanceof gi) {
+					((gi)var3).ak();
+				}
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(IILhi;Lhg;Lhs;Lgm;B)V"
+	)
+	void aq(int var1, int var2, hi var3, hg var4, hs var5, gm var6, byte var7) {
+		try {
+			int var8 = var3.ax_fld[0][var1][var2] - 1;
+			int var9 = var3.ae_fld[0][var1][var2] - 1;
+			if (var8 == -1 && var9 == -1) {
+				yu.fw(this.ay_fld * var1, (63 - var2) * this.af_fld, this.al_fld, this.aw_fld * -831281439, this.ay_fld * 2121588379);
+			}
+
+			int var10 = 16711935;
+			if (var9 != -1) {
+				var10 = ue.ak(var9, this.ay_fld * 2121588379, var6);
+			}
+
+			if (var9 > -1) {
+				if (var7 == 3) {
+					return;
+				}
+
+				if (var3.aa_fld[0][var1][var2] == 0) {
+					yu.fg(this.af_fld * var1, this.ay_fld * (63 - var2), this.al_fld, this.al_fld, var10);
+					return;
 				}
 			}
 
-			this.ax(var1, var2, var3, (byte)90);
-		} catch (Throwable var9) {
-			throw new RuntimeException(var9);
+			int var11 = this.ad(var1, var2, var3, var5, (byte)6);
+			if (-1 == var9) {
+				yu.go(this.af_fld * var1, (63 - var2) * this.al_fld, -831281439 * this.aw_fld, this.af_fld * -831281439, var11);
+			} else {
+				var4.ak(
+					var1 * this.al_fld,
+					(63 - var2) * this.af_fld,
+					var11,
+					var10,
+					this.al_fld,
+					this.ay_fld * -831281439,
+					var3.aa_fld[0][var1][var2],
+					var3.an_fld[0][var1][var2],
+					-828063812
+				);
+			}
+		} catch (Throwable var12) {
+			throw new RuntimeException(var12);
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lhr;IIFI)V"
+		descriptor = "(Lga;Lgf;ILhg;[Lyc;Lub;Lub;D)V"
 	)
-	void aj(hr var1, int var2, int var3, float var4, int var5) {
+	public static void ao(ga var0, gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) throws EOFException {
 		try {
-			pc var6 = uh.ak(var1.ag(-613111085));
-			this.bm(var6, var2, var3, 842150400);
-			this.bd(var1, var6, var2, var3, var4, (byte)58);
-		} catch (Throwable var7) {
-			throw new RuntimeException(var7);
+			if (var0 == null) {
+				var0.getClass();
+			} else {
+				var0.al_fld = var2;
+				if (var0.as_fld != null || !var0.ar_fld.isEmpty()) {
+					int var10 = var0.aw_fld;
+					int var11 = var0.ay_fld;
+					yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
+					if (var9 == null) {
+						if (fc.ah() != var7) {
+							fc.az(var7);
+						}
+
+						boolean var12 = true;
+						int var14;
+						if (aac.ak_fld < 238) {
+							var12 &= var0.af(var5, 1729861973);
+							if (null != var0.as_fld) {
+								var14 = var0.as_fld.ar_fld * -556413785;
+							} else {
+								var14 = ((hi)var0.ar_fld.getFirst()).ar_fld * -556413785;
+							}
+						} else {
+							var12 &= go(var0, var1.ay(-143778459), var5);
+							int var16 = var0.aw_fld;
+							int var17 = var0.ay_fld;
+							int var15 = var16 << 8 | var17;
+							var14 = var15;
+						}
+
+						var12 &= var6.dz(var14, -1627108580);
+						if (var12) {
+							byte[] var13;
+							if (aac.ak_fld < 238) {
+								var13 = ub.xk(var6, var14, (byte)93);
+							} else {
+								var13 = var6.bb(var14, var1.ay(-143778459), 584982574);
+							}
+
+							hs var25;
+							if (var13 == null) {
+								var25 = new hs();
+							} else {
+								yv var26 = qd.ak(var13);
+								if (null == var26) {
+									var25 = new hs();
+								} else {
+									var25 = new hs(var26.ah_fld);
+								}
+							}
+
+							yv var27 = new yv(var0.al_fld * -1662404544, var0.al_fld * -1662404544);
+							var27.ax();
+							if (null != var0.as_fld) {
+								var0.an(var3, var4, var25, new hl(), (byte)27);
+							} else {
+								var0.aa(var3, var4, var25, new hl(), 1182872171);
+							}
+
+							int var18 = var0.aw_fld;
+							int var19 = var0.ay_fld;
+							int var20 = var0.al_fld;
+							ae_fld.ae(var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
+							yg(var0, (byte)8);
+						}
+					}
+				}
+			}
+		} catch (Throwable var22) {
+			throw new RuntimeException(var22);
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IILhi;Lhg;Lgm;I)V"
+		descriptor = "(IILjava/util/HashSet;IB)V"
 	)
-	void am(int var1, int var2, hi var3, hg var4, gm var5, int var6) {
+	void ap(int var1, int var2, HashSet var3, int var4, byte var5) {
 		try {
-			for (int var7 = 1; var7 < var3.af_fld; var7++) {
-				int var8 = var3.ax_fld[var7][var1][var2] - 1;
-				if (var8 > -1) {
-					int var9 = ue.ak(var8, 2121588379 * this.af_fld, var5);
-					if (var3.aa_fld[var7][var1][var2] == 0) {
-						yu.gn(this.ay_fld * var1, (63 - var2) * this.ay_fld, this.ay_fld, -831281439 * this.al_fld, var9);
+			float var6 = var4 / 64.0F;
+			float var7 = var6 / 2.0F;
+			Iterator var8 = this.ax_fld.entrySet().iterator();
+
+			while (var8.hasNext()) {
+				Entry var9 = (Entry)(Entry)var8.next();
+				kj var10 = (kj)(kj)var9.getKey();
+				int var11 = (int)(var6 * (var10.ag_fld * -621797759) + var1 - var7);
+				int var12 = (int)(var2 + var4 - 1479124089 * var10.az_fld * var6 - var7);
+				hr var13 = (hr)(hr)var9.getValue();
+				if (null != var13 && var13.aq((byte)93)) {
+					var13.as_fld = -1969704677 * var11;
+					var13.ar_fld = -1295971127 * var12;
+					pc var14 = uh.ak(var13.ag(1236002642));
+					if (!var3.contains(var14.aw(1657984622))) {
+						this.aj(var13, var11, var12, var6, -1996327199);
+					}
+				}
+			}
+		} catch (Throwable var15) {
+			throw new RuntimeException(var15);
+		}
+	}
+
+	@ObfuscatedName("yg")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;B)V"
+	)
+	public static void yg(ga var0, byte var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (var0.as_fld != null) {
+				var0.as_fld.bs();
+			} else {
+				Iterator var2 = var0.ar_fld.iterator();
+
+				while (var2.hasNext()) {
+					gy var3 = (gy)(gy)var2.next();
+					var3.bs();
+				}
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(ILub;I)Z"
+	)
+	boolean ar(int var1, ub var2, int var3) {
+		try {
+			this.ax_fld.clear();
+			int var5 = 1344557209 * this.al_fld;
+			int var6 = 1934529249 * this.al_fld;
+			int var4 = var5 << 8 | var6;
+			byte[] var8 = var2.cx(var4, var1, 584982574);
+			xi var9 = null;
+			if (var8 != null) {
+				var9 = new xi(var8);
+			}
+
+			if (null != this.as_fld) {
+				hi.hr(this.as_fld, var9, (byte)87);
+				if (this.as_fld.bz()) {
+					this.ae(0, 0, 64, 64, this.as_fld, 1417671953);
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				boolean var10 = true;
+				Iterator var11 = this.ar_fld.iterator();
+
+				while (var11.hasNext()) {
+					gy var12 = (gy)(gy)var11.next();
+					hi.hr(var12, var9, (byte)8);
+					var10 &= var12.bz();
+				}
+
+				if (var10) {
+					var11 = this.ar_fld.iterator();
+
+					while (var11.hasNext()) {
+						gy var15 = (gy)(gy)var11.next();
+						this.ae(var15.ah() * 8, var15.aw() * 8, 8, 8, var15, 1417671953);
+					}
+				}
+
+				return var10;
+			}
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
+		}
+	}
+
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "(Lgf;ILhg;[Lyc;Lub;Lub;D)V"
+	)
+	void ce(gf var1, int var2, hg var3, yc[] var4, ub var5, ub var6, double var7) {
+		try {
+			this.aw_fld = var2 * -550494943;
+			if (this.as_fld != null || !this.ar_fld.isEmpty()) {
+				int var10 = 1344557209 * this.al_fld;
+				int var11 = this.al_fld * 1934529249;
+				yv var9 = (yv)(yv)ae_fld.ak(cw.ak(var10, var11, var2));
+				if (var9 == null) {
+					if (fc.bo() != var7) {
+						fc.bj(var7);
+					}
+
+					boolean var12 = true;
+					int var14;
+					if (aac.ak_fld < 238) {
+						var12 &= this.af(var5, 1729861973);
+						if (null != this.as_fld) {
+							var14 = this.as_fld.af_fld * -556413785;
+						} else {
+							var14 = ((hi)this.ar_fld.getFirst()).aw_fld * -556413785;
+						}
+					} else {
+						var12 &= go(this, var1.ay(-143778459), var5);
+						int var16 = this.af_fld * 1344557209;
+						int var17 = this.ay_fld;
+						int var15 = var16 << 8 | var17;
+						var14 = var15;
+					}
+
+					var12 &= var6.dm(var14, -1627108580);
+					if (var12) {
+						byte[] var13;
+						if (aac.ak_fld < 238) {
+							var13 = ub.xk(var6, var14, (byte)93);
+						} else {
+							var13 = var6.cx(var14, var1.aq(-143778459), 584982574);
+						}
+
+						hs var25;
+						if (var13 == null) {
+							var25 = new hs();
+						} else {
+							yv var26 = qd.ak(var13);
+							if (null == var26) {
+								var25 = new hs();
+							} else {
+								var25 = new hs(var26.ah_fld);
+							}
+						}
+
+						yv var27 = new yv(this.ay_fld * -1662404544, this.aw_fld * -1662404544);
+						var27.cw();
+						if (null != this.as_fld) {
+							this.an(var3, var4, var25, new hl(), (byte)27);
+						} else {
+							this.aa(var3, var4, var25, new hl(), 1182872171);
+						}
+
+						int var18 = this.ay_fld * 1344557209;
+						int var19 = 1934529249 * this.aw_fld;
+						int var20 = -831281439 * this.af_fld;
+						ae_fld.ax(var27, cw.ak(var18, var19, var20), 4 * var27.ah_fld.length);
+						yg(this, (byte)8);
+					}
+				}
+			}
+		} catch (Throwable var22) {
+			throw new RuntimeException(var22);
+		}
+	}
+
+	@ObfuscatedName("cl")
+	@ObfuscatedSignature(
+		descriptor = "(IILhi;Lhg;Lgm;)V"
+	)
+	void cl(int var1, int var2, hi var3, hg var4, gm var5) {
+		try {
+			for (int var6 = 1; var6 < var3.aw_fld; var6++) {
+				int var7 = var3.ax_fld[var6][var1][var2] - 1;
+				if (var7 > -1) {
+					int var8 = ue.ak(var7, 2121588379 * this.ay_fld, var5);
+					if (var3.aa_fld[var6][var1][var2] == 0) {
+						yu.fw(this.al_fld * var1, (-1707311069 - var2) * this.ay_fld, -831281439 * this.af_fld, -831281439 * this.ay_fld, var8);
 					} else {
 						var4.ak(
-							var1 * this.af_fld,
-							this.aw_fld * (63 - var2),
+							var1 * this.al_fld,
+							this.ay_fld * (63 - var2),
 							0,
-							var9,
-							-831281439 * this.al_fld,
-							this.ay_fld,
-							var3.an_fld[var7][var1][var2],
-							var3.aa_fld[var7][var1][var2],
+							var8,
+							-831281439 * this.af_fld,
+							1693125524 * this.af_fld,
+							var3.an_fld[var6][var1][var2],
+							var3.aa_fld[var6][var1][var2],
 							-828063812
 						);
 					}
@@ -3788,310 +4070,99 @@ public class ga implements WorldMapRegion {
 		}
 	}
 
-	@ObfuscatedName("or")
+	@ObfuscatedName("ov")
 	@ObfuscatedSignature(
-		descriptor = "(Lga;IIIII)Ljava/util/List;"
+		descriptor = "(Lga;Ljava/util/ArrayList;Ljava/util/List;)V"
 	)
-	public static List or(ga var0, int var1, int var2, int var3, int var4, int var5) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			LinkedList var6 = new LinkedList();
-			if (var4 >= var1 && var5 >= var2) {
-				if (var4 < var3 + var1 && var5 < var2 + var3) {
-					Iterator var7 = var0.ax_fld.values().iterator();
-
-					while (var7.hasNext()) {
-						hr var8 = (hr)(hr)var7.next();
-						if (var8.aq((byte)71) && var8.ai(var4, var5, (byte)-62)) {
-							var6.add(var8);
-						}
-					}
-
-					var7 = var0.au_fld.iterator();
-
-					while (var7.hasNext()) {
-						hr var10 = (hr)(hr)var7.next();
-						if (var10.aq((byte)46) && var10.ai(var4, var5, (byte)-81)) {
-							var6.add(var10);
-						}
-					}
-
-					return var6;
-				} else {
-					return var6;
-				}
-			} else {
-				return var6;
-			}
-		}
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(IILjava/util/HashSet;IB)V"
-	)
-	void bz(int var1, int var2, HashSet var3, int var4, byte var5) {
+	public static void ov(ga var0, ArrayList var1, List var2) throws EOFException {
 		try {
-			float var6 = var4 / 64.0F;
-			Iterator var7 = this.au_fld.iterator();
+			var0.ax_fld.clear();
+			Iterator var3 = var1.iterator();
 
-			while (var7.hasNext()) {
-				if (var5 != 0) {
-					return;
-				}
-
-				hr var8 = (hr)(hr)var7.next();
-				if (var8.aq((byte)19)) {
-					int var9 = var8.aw_fld.ak_fld * -621797759 % 64;
-					int var10 = var8.aw_fld.az_fld * 1479124089 % 64;
-					var8.as_fld = -1969704677 * (int)(var6 * var9 + var1);
-					var8.as_fld = (int)(var6 * (63 - var10) + var2) * -1295971127;
-					if (var3.contains(var8.ag(1314412832))) {
-						if (var5 != 0) {
-							return;
-						}
-					} else {
-						ti(this, var8, var8.as_fld, 90492281 * var8.as_fld, var6);
-					}
+			while (var3.hasNext()) {
+				gy var4 = (gy)(gy)var3.next();
+				if (hi.xz(var4, 1202339488) == var0.aw_fld && var4.by() == var0.ay_fld) {
+					var0.ar_fld.add(var4);
 				}
 			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
+
+			nn(var0, var2, (byte)-57);
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
 		}
 	}
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("dm")
 	@ObfuscatedSignature(
-		descriptor = "(Lyv;Lpv;B)I"
+		descriptor = "(IILhi;[Lyc;)V"
 	)
-	int br(yv var1, pv var2, byte var3) {
-		switch (var2.av_fld) {
-			case 0:
-				return -var1.ay_fld / 2;
-			case 2:
-				return 0;
-			default:
-				return -var1.as_fld;
-		}
-	}
-
-	@ObfuscatedName("rc")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Loe;IIILhi;)V"
-	)
-	public static void rc(ga var0, oe var1, int var2, int var3, int var4, hi var5) throws EOFException {
+	void dm(int var1, int var2, hi var3, yc[] var4) {
 		try {
-			kj var6 = new kj(var2, var0.af_fld + var3, var4 + var0.aw_fld);
-			Object var7 = null;
-			if (var0.as_fld != null) {
-				var7 = new kj(var2 + -155955479 * var0.as_fld.ar_fld, var3 + -1935125952 * var0.as_fld.ah_fld, var4 + var0.as_fld.aw_fld * 37981504);
-			} else {
-				gy var8 = (gy)var5;
-				var7 = new kj(var2 + var8.ar_fld, var3 + var8.ah_fld + var8.ae() * 8, var4 + var8.aw_fld + gy.wk(var8, (byte)14) * 8);
-			}
+			for (int var5 = 0; var5 < var3.as_fld; var5++) {
+				ge[] var6 = var3.ai_fld[var5][var1][var2];
+				if (null != var6 && 0 != var6.length) {
+					ge[] var7 = var6;
 
-			Object var13;
-			if (null != var1.dy_fld) {
-				var13 = new gi((kj)var7, var6, var1.cn_fld, var0);
-			} else {
-				pc var9 = uh.ak(var1.dm_fld);
-				var13 = new he((kj)var7, var6, var9.ah_fld, var0.bh(var9, -2140792005));
-			}
-
-			pc var14 = uh.ak(((hr)var13).ag(158630261));
-			if (var14.al_fld) {
-				var0.ax_fld.put(new kj(0, var3, var4), var13);
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/util/List;"
-	)
-	List bj(byte var1) {
-		LinkedList var2 = new LinkedList();
-		var2.addAll(this.au_fld);
-		var2.addAll(this.ax_fld.values());
-		return var2;
-	}
-
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	void bf(int var1, int var2, int var3, int var4, int var5) {
-		var3 %= 4;
-		if (var3 == 0) {
-			yu.gt(var1 * this.al_fld, this.af_fld * (63 - var2), this.aw_fld * -831281439, var4);
-		}
-
-		if (1 == var3) {
-			yu.fo(this.af_fld * var1, (63 - var2) * this.aw_fld, -831281439 * this.al_fld, var4);
-		}
-
-		if (2 == var3) {
-			yu.gu(this.aw_fld + var1 * this.aw_fld - 1, (63 - var2) * this.af_fld, -831281439 * this.af_fld, var4);
-		}
-
-		if (var3 == 3) {
-			yu.gm(this.af_fld * var1, this.ay_fld * (63 - var2) + this.aw_fld - 1, this.aw_fld * -831281439, var4);
-		}
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lgk;Ljava/util/List;S)V"
-	)
-	void az(gk var1, List var2, short var3) {
-		try {
-			this.ax_fld.clear();
-			this.as_fld = var1;
-			this.ay(var2, (byte)-60);
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILhi;I)V"
-	)
-	void ae(int var1, int var2, int var3, int var4, hi var5, int var6) {
-		try {
-			for (int var7 = var1; var7 < var1 + var3; var7++) {
-				int var8 = var2;
-
-				while (var8 < var2 + var4) {
-					int var9 = 0;
-
-					while (true) {
-						label132: {
-							if (var9 < var5.al_fld) {
-								ge[] var10 = var5.ai_fld[var9][var7][var8];
-								if (null == var10 || var10.length == 0) {
-									break label132;
-								}
-
-								ge[] var11 = var10;
-								int var12 = 0;
-
-								while (true) {
-									oe var14;
-									boolean var15;
-									if (var12 >= var11.length) {
-										break label132;
-									}
-
-									if (var6 != 1417671953) {
-										return;
-									}
-
-									label109: {
-										ge var13 = var11[var12];
-										var14 = ko.az(-1805943069 * var13.az_fld);
-										if (var14.dy_fld != null) {
-											int[] var16 = var14.dy_fld;
-
-											for (int var17 = 0; var17 < var16.length; var17++) {
-												if (var6 != 1417671953) {
-													return;
-												}
-
-												int var18 = var16[var17];
-												oe var19 = ko.az(var18);
-												if (var19.cu_fld != -1) {
-													var15 = true;
-													break label109;
-												}
-											}
-										} else if (var14.dq_fld != -1) {
-											var15 = true;
-											break label109;
-										}
-
-										var15 = false;
-									}
-
-									if (var15) {
-										this.ah(var14, var9, var7, var8, var5, -1591040896);
-										break;
-									}
-
-									var12++;
-								}
+					for (int var8 = 0; var8 < var7.length; var8++) {
+						ge var9 = var7[var8];
+						if (jk.az(var9.ag_fld) || ef.aw(1087707119 * var9.ak_fld)) {
+							oe var10 = ko.az(var9.ak_fld);
+							if (var10.dw_fld != -1) {
+								int var11 = var9.az_fld != 1 && 3 != var9.az_fld ? 695712753 * var10.dg_fld : 1444253843 * var10.dg_fld;
+								var4[var10.cu_fld * -720581821].ah(var1 * this.af_fld, (64 - var11 - var2) * this.aw_fld, -1662562878 * this.af_fld, this.aw_fld * -1662562878);
 							}
-
-							var8++;
-							break;
 						}
-
-						var9++;
 					}
 				}
 			}
-		} catch (Throwable var20) {
-			throw new RuntimeException(var20);
+		} catch (Throwable var13) {
+			throw new RuntimeException(var13);
 		}
 	}
 
-	@ObfuscatedName("cm")
+	@ObfuscatedName("ez")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/HashSet;II)V"
+		descriptor = "(Lpc;)Lgw;"
 	)
-	void cm(HashSet var1, int var2, int var3) {
-		try {
-			Iterator var4 = this.au_fld.iterator();
-
-			while (var4.hasNext()) {
-				hr var5 = (hr)(hr)var4.next();
-				if (var5.aq((byte)90)) {
-					pc var6 = uh.ak(var5.ag(1510069897));
-					if (var6 != null && var1.contains(var6.aw(1652090226))) {
-						this.ac(var6, var5.as_fld * 416995729, var5.as_fld * 1662649233, var2, var3, -1400962089);
-					}
-				}
-			}
-		} catch (Throwable var8) {
-			throw new RuntimeException(var8);
-		}
-	}
-
-	@ObfuscatedName("en")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)Ljava/util/List;"
-	)
-	List en(int var1, int var2, int var3, int var4, int var5) {
-		LinkedList var6 = new LinkedList();
-		if (var4 >= var1 && var5 >= var2) {
-			if (var4 < var3 + var1 && var5 < var2 + var3) {
-				Iterator var7 = this.ax_fld.values().iterator();
-
-				while (var7.hasNext()) {
-					hr var8 = (hr)(hr)var7.next();
-					if (var8.aq((byte)71) && var8.ai(var4, var5, (byte)-62)) {
-						var6.add(var8);
-					}
-				}
-
-				var7 = this.au_fld.iterator();
-
-				while (var7.hasNext()) {
-					hr var10 = (hr)(hr)var7.next();
-					if (var10.aq((byte)46) && var10.ai(var4, var5, (byte)-81)) {
-						var6.add(var10);
-					}
-				}
-
-				return var6;
+	gw ez(pc var1) {
+		if (null != var1.as_fld && this.ah_fld != null && this.ah_fld.get(hb.ak_fld) != null) {
+			hb var2 = hb.ag(var1.ac_fld * 2075360011);
+			if (var2 == null) {
+				return null;
 			} else {
-				return var6;
+				zf var3 = (zf)(zf)this.ah_fld.get(var2);
+				if (null == var3) {
+					return null;
+				} else {
+					int var4 = zv.xc(var3, var1.an_fld, -1996314836);
+					String[] var5 = new String[var4];
+					zv.sh(var3, var1.as_fld, null, var5);
+					int var6 = var3.at_fld * var5.length / 2;
+					int var7 = 0;
+					String[] var8 = var5;
+
+					for (int var9 = 0; var9 < var8.length; var9++) {
+						String var10 = var8[var9];
+						int var11 = var3.getTextWidth(var10);
+						if (var11 > var7) {
+							var7 = var11;
+						}
+					}
+
+					return new gw(var1.as_fld, var7, var6, var2);
+				}
 			}
 		} else {
-			return var6;
+			return null;
 		}
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lgw;"
+	)
+	gw bs(int var1, int var2) {
+		pc var3 = uh.ak(var1);
+		return this.bh(var3, -2140792005);
 	}
 }

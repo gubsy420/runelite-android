@@ -14,16 +14,17 @@ public class oi extends vc {
 	)
 	static iw ak_fld = new iw(64);
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("es")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnl;Lnl;)I"
+		descriptor = "(Lrr;II)V"
 	)
-	public static int bj(nd var0, nl var1, nl var2) {
+	public static void es(rr var0, int var1, int var2) {
 		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1.az_fld.av_fld * -220330603 < var2.az_fld.av_fld * -220330603 ? -1 : (var2.az_fld.av_fld * -220330603 == var1.az_fld.av_fld * -220330603 ? 0 : 1);
+			var0.getClass();
 		}
+
+		var0.ae_fld = var1 * 267957414;
+		var0.ah_fld = -1808184316 * var2;
 	}
 
 	@ObfuscatedName("ag")
@@ -31,7 +32,7 @@ public class oi extends vc {
 		descriptor = "()V"
 	)
 	public static void ag() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	oi() throws Throwable {

@@ -25,7 +25,7 @@ public class pt extends vc {
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static final int ao(int var0, int var1) {
 		if (var0 == -2) {

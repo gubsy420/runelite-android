@@ -14,12 +14,12 @@ public class yw {
 		descriptor = "I"
 	)
 	static int ar_fld;
-	@ObfuscatedGetter(
-		intValue = -201871515
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -201871515
 	)
 	int ag_fld;
 	@ObfuscatedName("at")
@@ -27,14 +27,6 @@ public class yw {
 		descriptor = "I"
 	)
 	static int at_fld;
-
-	@ObfuscatedName("nl")
-	@ObfuscatedSignature(
-		descriptor = "(Lyw;I)I"
-	)
-	public static int nl(yw var0, int var1) {
-		return var0.ak_fld[var1];
-	}
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
@@ -44,29 +36,9 @@ public class yw {
 		this.ag_fld = 0;
 	}
 
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(Lyw;)V"
-	)
-	public static void ab(yw var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ag_fld = 0;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void ae(int var1) {
-		this.ak_fld[(this.ag_fld += 215542381) * -201871515 - 1] = var1;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(IB)V"
 	)
 	public void ak(int var1) {
 		this.ak_fld[(this.ag_fld += 215542381) * -201871515 - 1] = var1;
@@ -74,34 +46,10 @@ public class yw {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)I"
 	)
 	public int az() {
 		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int ag(int var1) {
-		return this.ak_fld[var1];
-	}
-
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int kv(int var1) {
-		return this.ak_fld[var1];
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int ah(int var1) {
-		return this.ag(var1);
 	}
 
 	@ObfuscatedName("ay")
@@ -112,31 +60,83 @@ public class yw {
 		return this.ak_fld[var1];
 	}
 
-	@ObfuscatedName("hs")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
-	public int hs() {
-		return this.az();
+	public int ah(int var1) {
+		return this.ak_fld[var1];
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int aw(int var1) {
+		return this.ak_fld[var1];
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public void av() {
 		this.ag_fld = 0;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("mf")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int mf(int var1) {
+		return wk(this, var1, (byte)104);
+	}
+
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int as() {
+	public int aa() {
+		return this.az();
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int ar() {
 		return this.ag_fld;
+	}
+
+	@ObfuscatedName("wk")
+	@ObfuscatedSignature(
+		descriptor = "(Lyw;IB)I"
+	)
+	public static int wk(yw var0, int var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak_fld[var1];
 	}
 
 	public yw(int var1) {
 		this.ak_fld = new int[var1];
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void al() {
+		this.ag_fld = 0;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I"
+	)
+	public int ag(int var1, byte var2) {
+		return this.ak_fld[var1];
 	}
 }

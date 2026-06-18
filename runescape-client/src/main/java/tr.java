@@ -1,21 +1,22 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("tr")
 public interface tr extends Iterable {
-	@ObfuscatedName("ed")
+	@ObfuscatedName("sv")
 	@ObfuscatedSignature(
-		descriptor = "(Lwl;)I"
+		descriptor = "(Lol;Lfn;IIB)Lfn;"
 	)
-	static int ed(wl var0) {
-		return var0.bf_fld;
-	}
-
-	@ObfuscatedName("hb")
-	@ObfuscatedSignature(
-		descriptor = "(Ldu;)I"
-	)
-	static int hb(du var0) {
-		return var0.ag_fld;
+	static fn sv(ol var0, fn var1, int var2, int var3, byte var4) throws EOFException {
+		try {
+			if (var0 == null) {
+				throw new NullPointerException();
+			} else {
+				return var0.jt(rl21.ao_fld, var1, var2, var3);
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
 	}
 }

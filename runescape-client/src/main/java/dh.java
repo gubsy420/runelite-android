@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -411,90 +410,77 @@ public class dh implements rm {
 		255,
 		255
 	};
-	@ObfuscatedGetter(
-		intValue = -578266889
-	)
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ae_fld;
-	@ObfuscatedGetter(
-		intValue = 471274365
-	)
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ah_fld;
-	@ObfuscatedGetter(
-		intValue = -847340065
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = 1372631127
+		intValue = -578266889
 	)
+	int aw_fld;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 471274365
+	)
+	int ae_fld;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -847340065
+	)
+	int ah_fld;
 	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1372631127
 	)
 	static int ii_fld;
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IF)V"
+		descriptor = "(IFB)V"
 	)
 	void ak(int var1, float var2) {
 		int var4 = this.aw(var1, var2, 255);
-		this.ae_fld = 452323527 * az_fld[var4];
+		this.aw_fld = 452323527 * az_fld[var4];
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IF)V"
+		descriptor = "(IFI)V"
 	)
 	void ag(int var1, float var2) {
 		int var4 = this.aw(var1, var2, 127);
-		this.ah_fld = 508050901 * av_fld[var4];
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ldh;IF)V"
-	)
-	public static void ak(dh var0, int var1, float var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var0.aw(var1, var2, -899711912);
-		var0.aw_fld = 279797279 * av_fld[var3];
+		this.ae_fld = 508050901 * av_fld[var4];
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IF)V"
+		descriptor = "(IFI)V"
 	)
 	void az(int var1, float var2) {
 		int var4 = this.aw(var1, var2, 127);
-		this.aw_fld = 279797279 * av_fld[var4];
+		this.ah_fld = 279797279 * av_fld[var4];
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(S)I"
 	)
 	int av() {
-		return this.ae_fld;
+		return this.aw_fld;
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	public static int ag(int var0, int var1) {
 		return var1 + (-3 - var0 << 8);
@@ -502,7 +488,7 @@ public class dh implements rm {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IFI)I"
+		descriptor = "(IFIB)I"
 	)
 	int aw(int var1, float var2, int var3) {
 		float var5 = var2 * (var1 / 100.0F);
@@ -516,7 +502,7 @@ public class dh implements rm {
 	)
 	@Override
 	public int ae(int var1) {
-		return this.ah_fld;
+		return this.ae_fld;
 	}
 
 	dh() {
@@ -528,29 +514,7 @@ public class dh implements rm {
 	)
 	void af(int var1, float var2) {
 		int var3 = this.aw(var1, var2, 127);
-		this.ah_fld = 508050901 * av_fld[var3];
-	}
-
-	@ObfuscatedName("jb")
-	@ObfuscatedSignature(
-		descriptor = "(Ldh;IF)V"
-	)
-	public static void jb(dh var0, int var1, float var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var0.aw(var1, var2, 127);
-		var0.aw_fld = -1198010238 * av_fld[var3];
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(IF)V"
-	)
-	void as(int var1, float var2) {
-		int var3 = this.aw(var1, var2, 255);
-		this.ae_fld = 452323527 * az_fld[var3];
+		this.ae_fld = 508050901 * av_fld[var3];
 	}
 
 	@ObfuscatedName("al")
@@ -559,7 +523,7 @@ public class dh implements rm {
 	)
 	void al(int var1, float var2) {
 		int var3 = this.aw(var1, var2, 355954432);
-		this.ah_fld = 508050901 * av_fld[var3];
+		this.ae_fld = 508050901 * av_fld[var3];
 	}
 
 	@ObfuscatedName("ar")
@@ -568,7 +532,20 @@ public class dh implements rm {
 	)
 	void ar(int var1, float var2) {
 		int var3 = this.aw(var1, var2, 255);
-		this.ae_fld = 452323527 * az_fld[var3];
+		this.aw_fld = 452323527 * az_fld[var3];
+	}
+
+	@ObfuscatedName("zx")
+	@ObfuscatedSignature(
+		descriptor = "(Ldh;IF)V"
+	)
+	public static void zx(dh var0, int var1, float var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			int var3 = var0.aw(var1, var2, 255);
+			var0.aw_fld = 452323527 * az_fld[var3];
+		}
 	}
 
 	@ObfuscatedName("aq")
@@ -577,15 +554,24 @@ public class dh implements rm {
 	)
 	@Override
 	public int aq() {
-		return this.ah_fld;
+		return this.ae_fld;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("zf")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lcl;IIBBBB)V"
 	)
-	int an() {
-		return this.ae_fld;
+	public static void zf(cl var0, int var1, int var2, byte var3, byte var4, byte var5, byte var6) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			for (int var7 = 0; var7 < var0.ak_fld.size(); var7++) {
+				cv var8 = (cv)(cv)var0.ak_fld.get(var7);
+				var8.bs_fld = var1;
+				var8.ct_fld = var2;
+				fy.hv(var8.be_fld, var3, var4, var5, var6);
+			}
+		}
 	}
 
 	@ObfuscatedName("aa")
@@ -593,7 +579,15 @@ public class dh implements rm {
 		descriptor = "()I"
 	)
 	int aa() {
-		return this.ae_fld;
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "(Ldh;)I"
+	)
+	public static int bv(dh var0) {
+		return var0.aw_fld;
 	}
 
 	@ObfuscatedName("ai")
@@ -601,7 +595,7 @@ public class dh implements rm {
 		descriptor = "()I"
 	)
 	int ai() {
-		return this.ae_fld;
+		return this.aw_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -610,7 +604,7 @@ public class dh implements rm {
 	)
 	void ay(int var1, float var2) {
 		int var3 = this.aw(var1, var2, 563774616);
-		this.ae_fld = 452323527 * az_fld[var3];
+		this.aw_fld = 452323527 * az_fld[var3];
 	}
 
 	@ObfuscatedName("am")
@@ -619,7 +613,7 @@ public class dh implements rm {
 	)
 	@Override
 	public int am() {
-		return this.ah_fld;
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ad")
@@ -628,7 +622,7 @@ public class dh implements rm {
 	)
 	@Override
 	public int ad() {
-		return this.ah_fld;
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -637,51 +631,7 @@ public class dh implements rm {
 	)
 	@Override
 	public int ah(byte var1) {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("da")
-	@ObfuscatedSignature(
-		descriptor = "(Lev;)V"
-	)
-	public static void da(ev var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			for (int var1 = 0; var1 < var0.cd_fld; var1++) {
-				for (int var2 = 0; var2 < var0.cc_fld; var2++) {
-					for (int var3 = 0; var3 < var0.cq_fld; var3++) {
-						var0.bl_fld[var1][var2][var3] = null;
-					}
-				}
-			}
-
-			if (var0.dp_fld != null) {
-				for (int var4 = 0; var4 < var0.dt_fld; var4++) {
-					for (int var7 = 0; var7 < var0.dp_fld[var4]; var7++) {
-						var0.dq_fld[var4][var7] = null;
-					}
-
-					var0.dp_fld[var4] = 0;
-				}
-			}
-
-			if (var0.bb_fld != null) {
-				Arrays.fill(var0.bb_fld, null);
-			}
-
-			var0.bg_fld = 0;
-
-			for (int var5 = 0; var5 < var0.dw_fld; var5++) {
-				var0.dy_fld[var5] = null;
-			}
-
-			var0.dw_fld = 0;
-
-			for (int var6 = 0; var6 < var0.cl_fld.length; var6++) {
-				var0.cl_fld[var6] = null;
-			}
-		}
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ab")
@@ -694,12 +644,25 @@ public class dh implements rm {
 		return Math.min(Math.max(Math.round(var5), 0), var3);
 	}
 
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "(Ldh;IF)V"
+	)
+	public static void eg(dh var0, int var1, float var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			int var3 = var0.aw(var1, var2, -899711912);
+			var0.ah_fld = 279797279 * av_fld[var3];
+		}
+	}
+
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
 	public int ao() {
-		return this.aw_fld;
+		return this.ah_fld;
 	}
 }

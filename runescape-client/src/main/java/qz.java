@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.security.SecureRandom;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
@@ -27,16 +28,17 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getSupportedCipherSuites")
 	@Override
 	public String[] getSupportedCipherSuites() {
 		return null;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;)Ljavax/net/ssl/SSLSocket;"
 	)
-	SSLSocket ac(String var1, TlsClientProtocol var2) {
+	SSLSocket aj(String var1, TlsClientProtocol var2) {
 		return new qf(this, var2, var1);
 	}
 
@@ -52,6 +54,7 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getDefaultCipherSuites")
 	@Override
 	public String[] getDefaultCipherSuites() {
 		return null;
@@ -72,16 +75,17 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/InetAddress;I)Ljava/net/Socket;"
 	)
+	@Export("createSocket")
 	@Override
 	public Socket createSocket(InetAddress var1, int var2) throws IOException {
 		return null;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;"
 	)
-	public Socket ao(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+	public Socket at(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
 		return null;
 	}
 
@@ -89,6 +93,7 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;"
 	)
+	@Export("createSocket")
 	@Override
 	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
 		return null;
@@ -106,6 +111,7 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/net/Socket;"
 	)
+	@Export("createSocket")
 	@Override
 	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
 		return null;
@@ -163,6 +169,7 @@ public class qz extends SSLSocketFactory {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/Socket;Ljava/lang/String;IZ)Ljava/net/Socket;"
 	)
+	@Export("createSocket")
 	@Override
 	public Socket createSocket(Socket var1, String var2, int var3, boolean var4) throws IOException {
 		try {
@@ -181,11 +188,11 @@ public class qz extends SSLSocketFactory {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/Socket;Ljava/lang/String;IZ)Ljava/net/Socket;"
 	)
-	public Socket as(Socket var1, String var2, int var3, boolean var4) throws IOException {
+	public Socket ay(Socket var1, String var2, int var3, boolean var4) throws IOException {
 		try {
 			if (var1 == null) {
 				var1 = new Socket();
@@ -202,11 +209,11 @@ public class qz extends SSLSocketFactory {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/Socket;Ljava/lang/String;IZ)Ljava/net/Socket;"
 	)
-	public Socket ay(Socket var1, String var2, int var3, boolean var4) throws IOException {
+	public Socket as(Socket var1, String var2, int var3, boolean var4) throws IOException {
 		try {
 			if (var1 == null) {
 				var1 = new Socket();
@@ -269,7 +276,7 @@ public class qz extends SSLSocketFactory {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Lqz;"
+		descriptor = "(I)Lqz;"
 	)
 	public static qz ak() {
 		if (null == ak_fld) {
@@ -279,11 +286,11 @@ public class qz extends SSLSocketFactory {
 		return ak_fld;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/net/Socket;"
 	)
-	public Socket aa(String var1, int var2) throws IOException, UnknownHostException {
+	public Socket an(String var1, int var2) throws IOException, UnknownHostException {
 		return null;
 	}
 
@@ -303,19 +310,27 @@ public class qz extends SSLSocketFactory {
 		return null;
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;)Ljavax/net/ssl/SSLSocket;"
 	)
-	SSLSocket bd(String var1, TlsClientProtocol var2) {
+	SSLSocket ac(String var1, TlsClientProtocol var2) {
 		return new qf(this, var2, var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;"
 	)
-	public Socket at(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+	public Socket ap(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+		return null;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;"
+	)
+	public Socket ao(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
 		return null;
 	}
 
@@ -327,36 +342,13 @@ public class qz extends SSLSocketFactory {
 		return null;
 	}
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;"
-	)
-	public Socket ap(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
-		return null;
-	}
-
 	@ObfuscatedName("createSocket")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;ILjava/net/InetAddress;I)Ljava/net/Socket;"
 	)
+	@Export("createSocket")
 	@Override
 	public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
-		return null;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;)Ljavax/net/ssl/SSLSocket;"
-	)
-	SSLSocket aj(String var1, TlsClientProtocol var2) {
-		return new qf(this, var2, var1);
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/InetAddress;I)Ljava/net/Socket;"
-	)
-	public Socket am(InetAddress var1, int var2) throws IOException {
 		return null;
 	}
 
@@ -368,11 +360,27 @@ public class qz extends SSLSocketFactory {
 		return new qf(this, var2, var1);
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/InetAddress;I)Ljava/net/Socket;"
+	)
+	public Socket am(InetAddress var1, int var2) throws IOException {
+		return null;
+	}
+
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;)Ljavax/net/ssl/SSLSocket;"
+	)
+	SSLSocket bd(String var1, TlsClientProtocol var2) {
+		return new qf(this, var2, var1);
+	}
+
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/net/Socket;"
 	)
-	public Socket an(String var1, int var2) throws IOException, UnknownHostException {
+	public Socket aa(String var1, int var2) throws IOException, UnknownHostException {
 		return null;
 	}
 }

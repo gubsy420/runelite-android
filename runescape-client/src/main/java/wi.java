@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -89,90 +88,6 @@ public class wi {
 		throw new Error();
 	}
 
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;Lfn;ILol;I)Lfn;"
-	)
-	public static fn bx(ol var0, fn var1, int var2, ol var3, int var4) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (ol.bz_fld && !var0.aa(1341206696) && !var3.aa(1040218931)) {
-			return var0.ax(var1, var2, var3, var4, 2101557929);
-		} else {
-			fn var5 = var1.ay(false);
-			boolean var6 = false;
-			fe var7 = null;
-			ea var8 = null;
-			if (var0.aa(1653002995)) {
-				sp var9 = var0.am((byte)15);
-				if (null == var9) {
-					return var5;
-				}
-
-				if (var3.aa(158379179) && null == var0.bo_fld) {
-					fn.sb(var5, var9, var2);
-					return var5;
-				}
-
-				var8 = var9.ah_fld;
-				var5.bs(var8, var9, var2, var0.bo_fld, false, !var3.aa(225325488));
-			} else {
-				var2 = var0.bk_fld[var2];
-				var7 = gz.ag(var2 >> 16);
-				var2 &= -912087254;
-				if (null == var7) {
-					return var3.as(var1, var4, (byte)-4);
-				}
-
-				if (!var3.aa(-1963952404) && (null == var0.bj_fld || var4 == -1)) {
-					var5.di(var7, var2);
-					return var5;
-				}
-
-				if (var0.bj_fld == null || var4 == -1) {
-					var5.di(var7, var2);
-					return var5;
-				}
-
-				var6 = var3.aa(1457186665);
-				if (!var6) {
-					var5.bh(var7, var2, var0.bj_fld, false);
-				}
-			}
-
-			if (var3.aa(732012186)) {
-				sp var13 = var3.am((byte)15);
-				if (var13 == null) {
-					return var5;
-				}
-
-				if (var8 == null) {
-					var8 = var13.ah_fld;
-				}
-
-				var5.bs(var8, var13, var4, var0.bo_fld, true, true);
-			} else {
-				var4 = var3.bk_fld[var4];
-				fe var14 = gz.ag(var4 >> 16);
-				var4 &= 65535;
-				if (var14 == null) {
-					return var0.as(var1, var2, (byte)-121);
-				}
-
-				var5.bh(var14, var4, var0.bj_fld, true);
-			}
-
-			if (var6 && var7 != null) {
-				var5.bh(var7, var2, var0.bj_fld, false);
-			}
-
-			var5.dw();
-			return var5;
-		}
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "([BII)Ljava/lang/String;"
@@ -235,7 +150,7 @@ public class wi {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lzm;"
+		descriptor = "(I)[Lzm;"
 	)
 	static zm[] ak() {
 		return new zm[]{

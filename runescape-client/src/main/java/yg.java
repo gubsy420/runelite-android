@@ -64,7 +64,7 @@ public class yg extends vc {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+		descriptor = "(Lxi;B)V"
 	)
 	void az(xi var1) {
 		while (true) {
@@ -73,8 +73,36 @@ public class yg extends vc {
 				return;
 			}
 
-			this.av(var1, var3, -643670049);
+			hf(this, var1, var3, -643670049);
 		}
+	}
+
+	@ObfuscatedName("hy")
+	@ObfuscatedSignature(
+		descriptor = "(Lfi;I)V"
+	)
+	public static void hy(fi var0, int var1) {
+		int var2 = var0.ae_fld + 1 & 996017125;
+		if (var0.al_fld != var2) {
+			var0.as_fld[var0.ae_fld] = var1;
+			var0.ay_fld[var0.ae_fld * -1741143045] = 0;
+			var0.ae_fld = var2;
+		}
+	}
+
+	@ObfuscatedName("kh")
+	@ObfuscatedSignature(
+		descriptor = "()[[I"
+	)
+	public int[][] kh() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void ae() {
 	}
 
 	@ObfuscatedName("au")
@@ -88,39 +116,8 @@ public class yg extends vc {
 				return;
 			}
 
-			this.av(var1, var2, -1219619261);
+			hf(this, var1, var2, -1219619261);
 		}
-	}
-
-	@ObfuscatedName("bo")
-	@ObfuscatedSignature(
-		descriptor = "(Lfm;)I"
-	)
-	public static int bo(fm var0) {
-		return var0.av_fld - var0.aw_fld;
-	}
-
-	@ObfuscatedName("zf")
-	@ObfuscatedSignature(
-		descriptor = "(Lyg;I)V"
-	)
-	public static void zf(yg var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-	}
-
-	@ObfuscatedName("px")
-	@ObfuscatedSignature(
-		descriptor = "(Luf;II)V"
-	)
-	public static void px(uf var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ah_fld = var1;
-		var0.aw_fld = var2 * 1102569018;
 	}
 
 	@ObfuscatedName("ah")
@@ -147,7 +144,7 @@ public class yg extends vc {
 					var1.az(new xi(var2));
 				}
 
-				zf(var1, -1815603751);
+				var1.ae();
 				ag_fld.az(var1, var0);
 				return var1;
 			}
@@ -180,7 +177,7 @@ public class yg extends vc {
 					var1.az(new xi(var2));
 				}
 
-				zf(var1, -275104303);
+				var1.ae();
 				ag_fld.az(var1, var0);
 				return var1;
 			}
@@ -205,29 +202,13 @@ public class yg extends vc {
 					var1.az(new xi(var2));
 				}
 
-				zf(var1, -745082637);
+				var1.ae();
 				ag_fld.az(var1, var0);
 				return var1;
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
-	}
-
-	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-		descriptor = "()[[Ljava/lang/Object;"
-	)
-	public Object[][] cf() {
-		return (Object[][])this.av_fld;
-	}
-
-	@ObfuscatedName("yt")
-	@ObfuscatedSignature(
-		descriptor = "()[[I"
-	)
-	public int[][] yt() {
-		return this.az_fld;
 	}
 
 	@ObfuscatedName("af")
@@ -246,52 +227,12 @@ public class yg extends vc {
 					var1.az(new xi(var2));
 				}
 
-				zf(var1, 386878766);
+				var1.ae();
 				ag_fld.az(var1, var0);
 				return var1;
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;II)V"
-	)
-	void av(xi var1, int var2, int var3) {
-		if (var2 == 1) {
-			int var4 = var1.cg();
-			if (this.az_fld == null) {
-				this.az_fld = new int[var4][];
-			}
-
-			for (int var5 = var1.cg(); var5 != 255; var5 = var1.cg()) {
-				if (var3 >= 1458895526) {
-					return;
-				}
-
-				int var6 = var5 & 127;
-				boolean var7 = (var5 & 128) != 0;
-				int[] var8 = new int[var1.cg()];
-
-				for (int var9 = 0; var9 < var8.length; var9++) {
-					var8[var9] = var1.dz();
-				}
-
-				this.az_fld[var6] = var8;
-				if (var7) {
-					if (null == this.av_fld) {
-						if (var3 >= 1458895526) {
-							return;
-						}
-
-						this.av_fld = (Object[][])(new Object[this.az_fld.length][]);
-					}
-
-					this.av_fld[var6] = (Object[])wu.av(var1, var8);
-				}
-			}
 		}
 	}
 
@@ -309,7 +250,7 @@ public class yg extends vc {
 				return;
 			}
 
-			this.av(var1, var2, -1421449768);
+			hf(this, var1, var2, -1421449768);
 		}
 	}
 
@@ -353,9 +294,68 @@ public class yg extends vc {
 		ak_fld = var0;
 	}
 
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void ai() {
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "()[[Ljava/lang/Object;"
+	)
+	public Object[][] ba() {
+		return (Object[][])this.av_fld;
+	}
+
+	@ObfuscatedName("hf")
+	@ObfuscatedSignature(
+		descriptor = "(Lyg;Lxi;II)V"
+	)
+	public static void hf(yg var0, xi var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var2 == 1) {
+				int var4 = var1.cg();
+				if (var0.az_fld == null) {
+					var0.az_fld = new int[var4][];
+				}
+
+				for (int var5 = var1.cg(); var5 != 255; var5 = var1.cg()) {
+					if (var3 >= 1458895526) {
+						return;
+					}
+
+					int var6 = var5 & 127;
+					boolean var7 = (var5 & 128) != 0;
+					int[] var8 = new int[var1.cg()];
+
+					for (int var9 = 0; var9 < var8.length; var9++) {
+						var8[var9] = var1.dz();
+					}
+
+					var0.az_fld[var6] = var8;
+					if (var7) {
+						if (null == var0.av_fld) {
+							if (var3 >= 1458895526) {
+								return;
+							}
+
+							var0.av_fld = (Object[][])(new Object[var0.az_fld.length][]);
+						}
+
+						var0.av_fld[var6] = (Object[])wu.av(var1, var8);
+					}
+				}
+			}
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(C)Z"
+		descriptor = "(CI)Z"
 	)
 	static final boolean ag(char var0) {
 		if (Character.isISOControl(var0)) {
@@ -385,10 +385,43 @@ public class yg extends vc {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(Lxi;II)V"
 	)
-	void ae(int var1) {
+	void av(xi var1, int var2, int var3) {
+		if (var2 == 1) {
+			int var4 = var1.cg();
+			if (this.az_fld == null) {
+				this.az_fld = new int[var4][];
+			}
+
+			for (int var5 = var1.ei(); var5 != 255; var5 = var1.eq()) {
+				if (var3 >= 1458895526) {
+					return;
+				}
+
+				int var6 = var5 & 127;
+				boolean var7 = (var5 & 128) != 0;
+				int[] var8 = new int[var1.eq()];
+
+				for (int var9 = 0; var9 < var8.length; var9++) {
+					var8[var9] = var1.ew((byte)17);
+				}
+
+				this.az_fld[var6] = var8;
+				if (var7) {
+					if (null == this.av_fld) {
+						if (var3 >= 1458895526) {
+							return;
+						}
+
+						this.av_fld = (Object[][])(new Object[this.az_fld.length][]);
+					}
+
+					this.av_fld[var6] = (Object[])wu.av(var1, var8);
+				}
+			}
+		}
 	}
 }

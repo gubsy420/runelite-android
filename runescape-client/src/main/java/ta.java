@@ -9,47 +9,55 @@ public class ta {
 		descriptor = "I"
 	)
 	static int bq_fld;
-	@ObfuscatedName("yg")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public static boolean yg_fld;
-	@ObfuscatedGetter(
-		intValue = -1425659435
-	)
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int aw_fld;
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public boolean ct_fld;
-	@ObfuscatedName("xm")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public static boolean xm_fld;
-	@ObfuscatedGetter(
-		intValue = 601491703
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1425659435
+	)
 	int ay_fld;
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public static boolean la_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 601491703
+	)
+	int aw_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	static int ak_fld;
+	@ObfuscatedName("ni")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public boolean ni_fld;
+	@ObfuscatedName("pw")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public static boolean pw_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "J"
 	)
 	static long as_fld;
+
+	@ObfuscatedName("fg")
+	@ObfuscatedSignature(
+		descriptor = "(Lts;)V"
+	)
+	public void fg(ts var1) {
+		pw_fld = this.ni_fld;
+	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -59,102 +67,98 @@ public class ta {
 		if (null == var1) {
 			return false;
 		} else {
-			switch (256783734 * this.aw_fld) {
+			switch (256783734 * this.ay_fld) {
 				case 1:
-					return var1.av(this.ay_fld, 2106477002);
+					return var1.av(this.aw_fld, 2106477002);
 				case 2:
-					return var1.ae(this.ay_fld * 469625163, 545390506);
+					return var1.ae(this.aw_fld * 469625163, 545390506);
 				case 3:
-					return var1.ah((char)(this.ay_fld * 1031940425), (short)-21393);
+					return var1.ah((char)(this.aw_fld * 1031940425), (short)-21393);
 				case 4:
-					return var1.aw(this.ay_fld == 1, 1838794664);
+					return var1.aw(this.aw_fld == 1, 1838794664);
 				default:
 					return false;
 			}
 		}
 	}
 
-	@ObfuscatedName("jy")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lts;)V"
 	)
-	public void jy(ts var1) {
-		xm_fld = false;
-	}
-
-	@ObfuscatedName("zm")
-	@ObfuscatedSignature(
-		descriptor = "(Lts;)V"
-	)
-	public void zm(ts var1) {
-		xm_fld = this.ct_fld;
+	public void ag(ts var1) {
+		pw_fld = false;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lts;)Z"
+		descriptor = "(Lts;I)Z"
 	)
 	boolean ak(ts var1) {
-		this.zm(var1);
+		this.fg(var1);
 		if (null == var1) {
-			this.jy(var1);
+			this.ag(var1);
 			return false;
 		} else {
-			switch (this.aw_fld) {
+			switch (this.ay_fld) {
 				case 1:
-					boolean var4 = var1.av(this.ay_fld, 1905801461);
-					this.jy(var1);
+					boolean var4 = var1.av(this.aw_fld, 1905801461);
+					this.ag(var1);
 					return var4;
 				case 2:
-					boolean var3 = var1.ae(this.ay_fld, 1080632209);
-					this.jy(var1);
+					boolean var3 = var1.ae(this.aw_fld, 1080632209);
+					this.ag(var1);
 					return var3;
 				case 3:
-					boolean var2 = var1.ah((char)this.ay_fld, (short)-3730);
-					this.jy(var1);
+					boolean var2 = var1.ah((char)this.aw_fld, (short)-3730);
+					this.ag(var1);
 					return var2;
 				case 4:
-					boolean var10000 = var1.aw(this.ay_fld == 1, 1906190534);
-					this.jy(var1);
+					boolean var10000 = var1.aw(this.aw_fld == 1, 1906190534);
+					this.ag(var1);
 					return var10000;
 				default:
-					this.jy(var1);
+					this.ag(var1);
 					return false;
 			}
 		}
 	}
 
-	@ObfuscatedName("kn")
+	@ObfuscatedName("ph")
 	@ObfuscatedSignature(
-		descriptor = "(Loe;IJ)J"
+		descriptor = "(Lxi;Lxi;)V"
 	)
-	public static long kn(oe var0, int var1, long var2) {
-		return hq.az(var0.es_fld, var1, var2);
+	public static void ph(xi var0, xi var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.cy(var1.al_fld, 0, var1.au_fld);
 	}
 
 	ta(int var1, int var2) {
-		this.ct_fld = yg_fld;
-		this.aw_fld = var1;
-		this.ay_fld = var2;
+		this.ni_fld = la_fld;
+		this.ay_fld = var1;
+		this.aw_fld = var2;
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lts;)Z"
 	)
-	boolean ag(ts var1) {
+	boolean ag_boolean(ts var1) {
 		if (null == var1) {
 			return false;
 		} else {
-			switch (-105105418 * this.aw_fld) {
+			switch (-105105418 * this.ay_fld) {
 				case 1:
-					return var1.av(1441053575 * this.ay_fld, 2015032444);
+					return var1.av(1441053575 * this.aw_fld, 2015032444);
 				case 2:
-					return var1.ae(this.ay_fld, 659887621);
+					return var1.ae(this.aw_fld, 659887621);
 				case 3:
-					return var1.ah((char)this.ay_fld, (short)-12456);
+					return var1.ah((char)this.aw_fld, (short)-12456);
 				case 4:
-					return var1.aw(this.ay_fld == 1, 576622783);
+					return var1.aw(this.aw_fld == 1, 576622783);
 				default:
 					return false;
 			}

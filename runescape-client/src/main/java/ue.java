@@ -1,3 +1,4 @@
+import java.awt.Component;
 import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -88,7 +89,7 @@ public class ue {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)B"
+		descriptor = "(II)B"
 	)
 	public static byte ag(int var0) {
 		return (byte)(var0 >> 7 & 7);
@@ -96,7 +97,7 @@ public class ue {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	static final int az(int var0) {
 		double var2 = (var0 >> 10 & 31) / 31.0;
@@ -273,6 +274,18 @@ public class ue {
 				int var19 = (var17 << 8) + (var29 << 16) + var30;
 				as_fld[var3] = var19 & 16777215;
 			}
+		}
+	}
+
+	@ObfuscatedName("su")
+	@ObfuscatedSignature(
+		descriptor = "(Ltg;Ljava/awt/Component;)V"
+	)
+	public static void su(tg var0, Component var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var1.addMouseWheelListener(var0);
 		}
 	}
 
@@ -838,6 +851,14 @@ public class ue {
 		}
 	}
 
+	@ObfuscatedName("vm")
+	@ObfuscatedSignature(
+		descriptor = "(Lqw;)Z"
+	)
+	public static boolean vm(qw var0) {
+		return var0.ag_fld != null || null == var0.ak_fld;
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -856,7 +877,7 @@ public class ue {
 
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(III)I"
+		descriptor = "(IIIB)I"
 	)
 	static final int ai(int var0, int var1, int var2) {
 		int var4 = var0 / var2;
@@ -877,7 +898,7 @@ public class ue {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IILgm;)I"
+		descriptor = "(IILgm;B)I"
 	)
 	static int ak(int var0, int var1, gm var2) throws EOFException {
 		ov var4 = var2.ak(var0, -52807257);
@@ -901,7 +922,7 @@ public class ue {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ae(int var0) {
 		return 255 - (var0 & 0xFF);

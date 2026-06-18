@@ -9,28 +9,28 @@ public class ih extends ht {
 		descriptor = "I"
 	)
 	public static int az_fld;
-	@ObfuscatedGetter(
-		intValue = -511078303
-	)
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
+	@ObfuscatedGetter(
+		intValue = -511078303
+	)
+	int ak_fld;
 	// $VF: synthetic field
 	@ObfuscatedName("this$0")
 	@ObfuscatedSignature(
 		descriptor = "Lia;"
 	)
 	ia this$0;
-	@ObfuscatedGetter(
-		intValue = 1717675171
-	)
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
+	@ObfuscatedGetter(
+		intValue = 1717675171
+	)
+	int ag_fld;
 	@ObfuscatedName("hm")
 	@ObfuscatedSignature(
 		descriptor = "Luv;"
@@ -48,8 +48,8 @@ public class ih extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = var1.co();
+		this.ag_fld = var1.co((byte)-5);
+		this.ak_fld = var1.co((byte)-9);
 	}
 
 	@ObfuscatedName("ak")
@@ -58,8 +58,8 @@ public class ih extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = var1.co();
-		this.ag_fld = var1.co();
+		this.ag_fld = var1.co((byte)-67);
+		this.ak_fld = var1.co((byte)-32);
 	}
 
 	@ObfuscatedName("ag")
@@ -68,7 +68,7 @@ public class ih extends ht {
 	)
 	@Override
 	void ag(ik var1, int var2) {
-		ik.dw(var1, this.ak_fld, this.ag_fld, (short)23964);
+		var1.aa(this.ag_fld, this.ak_fld, (short)23964);
 	}
 
 	ih(ia var1) {
@@ -81,7 +81,7 @@ public class ih extends ht {
 	)
 	@Override
 	void aw(ik var1) {
-		ik.dw(var1, this.ak_fld * 1849913113, -661190236 * this.ag_fld, (short)-7242);
+		var1.aa(this.ag_fld * 1849913113, -661190236 * this.ak_fld, (short)-7242);
 	}
 
 	@ObfuscatedName("ae")
@@ -90,8 +90,16 @@ public class ih extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = var1.co();
+		this.ag_fld = var1.co((byte)-12);
+		this.ak_fld = var1.co((byte)-108);
+	}
+
+	@ObfuscatedName("fl")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;)[I"
+	)
+	public static int[] fl(pp var0) {
+		return var0.ez_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -100,7 +108,7 @@ public class ih extends ht {
 	)
 	@Override
 	void ay(ik var1) {
-		ik.dw(var1, this.ak_fld, this.ag_fld, (short)-4356);
+		var1.aa(this.ag_fld, this.ak_fld, (short)-4356);
 	}
 
 	@ObfuscatedName("ah")
@@ -109,7 +117,7 @@ public class ih extends ht {
 	)
 	@Override
 	void ah(ik var1) {
-		ik.dw(var1, this.ak_fld, this.ag_fld, (short)-21686);
+		var1.aa(this.ag_fld, this.ak_fld, (short)-21686);
 	}
 
 	@ObfuscatedName("av")
@@ -118,13 +126,13 @@ public class ih extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = var1.co();
-		this.ag_fld = var1.co() * -1281218558;
+		this.ag_fld = var1.co((byte)-24);
+		this.ak_fld = var1.co((byte)-103) * -1281218558;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lxv;ILjava/lang/String;)Ljava/lang/String;"
+		descriptor = "(Lxv;ILjava/lang/String;I)Ljava/lang/String;"
 	)
 	static String av(xv var0, int var1, String var2) {
 		if (var0 == null) {

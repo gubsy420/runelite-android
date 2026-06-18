@@ -1,6 +1,6 @@
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.RandomAccessFile;
+import java.util.Map.Entry;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -193,24 +193,34 @@ public class lo {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()Lvu;"
+		descriptor = "(I)Lvu;"
 	)
 	static vu ae() {
-		return kg.ps_fld;
+		return kg.fingerprint;
+	}
+
+	@ObfuscatedName("om")
+	@ObfuscatedSignature(
+		descriptor = "(Lqs;Ljava/util/Map$Entry;Ljava/util/Map$Entry;)I"
+	)
+	public static int om(qs var0, Entry var1, Entry var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
 	}
 
 	lo() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ur")
+	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/awt/event/WindowEvent;)V"
+		descriptor = "(Lnl;)Ljava/lang/String;"
 	)
-	public static void ur(tf var0, WindowEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	public static String dt(nl var0) {
+		return var0.av_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -223,7 +233,7 @@ public class lo {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/io/File;"
+		descriptor = "(Ljava/lang/String;B)Ljava/io/File;"
 	)
 	static File ak(String var0) {
 		if (!my.ak_fld) {

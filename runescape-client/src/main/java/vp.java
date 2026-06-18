@@ -29,17 +29,25 @@ public class vp {
 	)
 	String av_fld;
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ok")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(Lwq;I)I"
 	)
-	public String av() {
-		return this.av_fld;
+	public static int ok(wq var0, int var1) {
+		return var0.ag_fld[var1];
+	}
+
+	@ObfuscatedName("zk")
+	@ObfuscatedSignature(
+		descriptor = "(Lvp;)Ljava/lang/String;"
+	)
+	public static String zk(vp var0) {
+		return var0.av_fld;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	public String ak() {
 		return this.av_fld;
@@ -53,18 +61,6 @@ public class vp {
 		return this.av_fld;
 	}
 
-	@ObfuscatedName("sg")
-	@ObfuscatedSignature(
-		descriptor = "(Lvp;)Ljava/lang/String;"
-	)
-	public static String sg(vp var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.av_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
@@ -75,5 +71,13 @@ public class vp {
 
 	vp(String var1) {
 		this.av_fld = var1;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String ae() {
+		return this.av_fld;
 	}
 }

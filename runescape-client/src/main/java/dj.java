@@ -5,20 +5,20 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("dj")
 public class dj {
-	@ObfuscatedGetter(
-		intValue = -1837573717
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int ak_fld = 809805565;
 	@ObfuscatedGetter(
-		intValue = 461180733
+		intValue = -1837573717
 	)
+	static int ak_fld = 809805565;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 461180733
 	)
 	static int ag_fld = 1314249906;
 	@ObfuscatedName("az")
@@ -31,12 +31,12 @@ public class dj {
 		descriptor = "I"
 	)
 	static int ab_fld;
-	@ObfuscatedGetter(
-		intValue = 430325731
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 430325731
 	)
 	volatile int av_fld = 1572510105 * ak_fld;
 	@ObfuscatedName("am")
@@ -55,17 +55,9 @@ public class dj {
 	)
 	volatile byte[] ae_fld;
 
-	@ObfuscatedName("og")
-	@ObfuscatedSignature(
-		descriptor = "(Lwj;)I"
-	)
-	public static int og(wj var0) {
-		return null != var0.ak_fld ? var0.ak_fld.bx() : 0;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()[B"
+		descriptor = "(B)[B"
 	)
 	public byte[] ag() {
 		return this.ae_fld;
@@ -75,17 +67,17 @@ public class dj {
 		this.az_fld = var1;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()[B"
 	)
-	public byte[] as() {
+	public byte[] aw() {
 		return this.ae_fld;
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	public String az() {
 		return this.az_fld.toString();
@@ -107,17 +99,17 @@ public class dj {
 		return ak_fld != this.av_fld;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "()[B"
 	)
-	public byte[] aw() {
+	public byte[] as() {
 		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(B)Z"
 	)
 	public boolean ak() {
 		return ak_fld != this.av_fld;
@@ -149,7 +141,7 @@ public class dj {
 
 	@ObfuscatedName("gn")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(IB)V"
 	)
 	static final void gn(int var0) {
 		var0 = Math.max(Math.min(var0, 100), 0);

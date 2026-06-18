@@ -59,6 +59,16 @@ public class eq {
 	)
 	int[] ar_fld;
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lgq;)V"
+	)
+	public static void ag(gq var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+	}
+
 	eq(byte[] var1, ea var2) {
 		this.af_fld = false;
 		this.ae_fld = var2;
@@ -93,19 +103,19 @@ public class eq {
 				}
 
 				if ((var9 & 1) != 0) {
-					ag_fld[var7] = xi.nx(var4, (byte)116);
+					ag_fld[var7] = var4.dv();
 				} else {
 					ag_fld[var7] = var12;
 				}
 
 				if ((var9 & 2) != 0) {
-					az_fld[var7] = xi.nx(var4, (byte)94);
+					az_fld[var7] = var4.dv();
 				} else {
 					az_fld[var7] = var12;
 				}
 
 				if ((var9 & 4) != 0) {
-					av_fld[var7] = xi.nx(var4, (byte)71);
+					av_fld[var7] = var4.dv();
 				} else {
 					av_fld[var7] = var12;
 				}

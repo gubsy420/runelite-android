@@ -87,18 +87,18 @@ public class cw {
 		descriptor = "Lcw;"
 	)
 	static cw aa_fld = new cw(15);
-	@ObfuscatedGetter(
-		intValue = 1787878589
-	)
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1787878589
 	)
 	int ai_fld;
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Z)Lzb;"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Lzb;"
 	)
 	public static zb av(String var0, String var1, boolean var2) throws FileNotFoundException {
 		File var4 = new File(mh.aq_fld, "preferences" + var0 + ".dat");
@@ -137,7 +137,7 @@ public class cw {
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V"
+		descriptor = "(IIIII)V"
 	)
 	static void af(int var0, int var1, int var2, int var3) {
 		mb.ar_fld = var0;
@@ -148,7 +148,7 @@ public class cw {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)J"
+		descriptor = "(IIII)J"
 	)
 	static long ak(int var0, int var1, int var2) {
 		return var2 << 16 | var0 << 8 | var1;

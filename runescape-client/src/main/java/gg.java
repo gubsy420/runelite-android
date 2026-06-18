@@ -22,11 +22,11 @@ public interface gg {
 	)
 	void au(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException;
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V"
 	)
-	void av(int var1, int var2, int var3, int var4, int var5) throws EOFException;
+	void ak(int var1, int var2, int var3, int var4, int var5) throws EOFException;
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -64,11 +64,11 @@ public interface gg {
 	)
 	void ax(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException;
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
-	void ay(lu var1, int var2, int var3) throws EOFException;
+	void as(lu var1, int var2, int var3) throws EOFException;
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -76,23 +76,23 @@ public interface gg {
 	)
 	void ae(int var1, int var2, byte var3);
 
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;II)V"
+	)
+	void af(lu var1, int var2, int var3) throws EOFException;
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	void av(int var1, int var2, int var3, int var4, int var5) throws EOFException;
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
 	void ar(lu var1, int var2, int var3) throws EOFException;
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	void ak(int var1, int var2, int var3, int var4, int var5) throws EOFException;
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;II)V"
-	)
-	void as(lu var1, int var2, int var3) throws EOFException;
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
@@ -124,11 +124,11 @@ public interface gg {
 	)
 	void ad(int var1, int var2);
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
-	void af(lu var1, int var2, int var3) throws EOFException;
+	void ay(lu var1, int var2, int var3) throws EOFException;
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(

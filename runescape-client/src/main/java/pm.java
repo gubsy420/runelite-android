@@ -11,12 +11,12 @@ public class pm extends oj {
 		descriptor = "I"
 	)
 	static int cq_fld;
-	@ObfuscatedGetter(
-		intValue = -811848167
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -811848167
 	)
 	int ak_fld;
 	@ObfuscatedName("cg")
@@ -43,17 +43,39 @@ public class pm extends oj {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	public static int ag() {
 		int var10000 = tj.au_fld += -453549775;
-		client.rw();
+		client.vq();
 		return var10000 * -1348315183 - 1;
+	}
+
+	@ObfuscatedName("st")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;IZ)V"
+	)
+	public static void st(da var0, int var1, boolean var2) {
+		var0.cg_fld.av(var1, var2);
+	}
+
+	@ObfuscatedName("kf")
+	@ObfuscatedSignature(
+		descriptor = "(Lpw;Lxi;I)V"
+	)
+	public static void kf(pw var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (249 == var2) {
+			var0.az_fld = nc.ak(var1, var0.az_fld);
+		}
 	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "([I)Lsl;"
+		descriptor = "([IB)Lsl;"
 	)
 	public static sl au(int[] var0) {
 		sl var2 = new sl(yq.ak_fld, false);
@@ -71,7 +93,7 @@ public class pm extends oj {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;II)V"
+		descriptor = "(Lyz;III)V"
 	)
 	static void ag(yz var0, int var1, int var2) throws EOFException {
 		Object[] var4 = (Object[])var0.getArguments();
@@ -79,25 +101,25 @@ public class pm extends oj {
 			try {
 				((JavaScriptCallback)var4[0]).run(var0);
 			} catch (Exception var16) {
-				client.ii_fld.error("Error in JavaScriptCallback", (Throwable)var16);
+				client.logger.error("Error in JavaScriptCallback", (Throwable)var16);
 			}
 		} else {
 			try {
-				client.rm_yz = var0;
+				client.vg_fld = var0;
 				int var10 = 1446060577;
-				Object[] var11 = (Object[])yz.hw(var0, 1697120891);
+				Object[] var11 = (Object[])var0.az(1697120891);
 				ba var12;
-				if (to.ak(var0.ae(2124195901))) {
+				if (to.ak(yz.lb(var0, 2124195901))) {
 					gb.aj_fld = (hv)var11[0];
 					pc var13 = uh.ak(gb.aj_fld.ak_fld);
-					var12 = wl.ag(var0.ae(2138333026), var13.ah_fld, var13.ar_fld);
-				} else if (me.ag(var0.ae(1980752758))) {
+					var12 = wl.ag(yz.lb(var0, 2138333026), var13.ah_fld, var13.ac_fld);
+				} else if (me.ag(yz.lb(var0, 1980752758))) {
 					if (var10 != 1446060577) {
 						return;
 					}
 
 					int var18 = (Integer)var11[0];
-					var12 = wl.ag(var0.ae(1998626560), var18, -1);
+					var12 = wl.ag(yz.lb(var0, 1998626560), var18, -1);
 				} else {
 					int var19 = (Integer)var11[0];
 					var12 = an.ak(var19);
@@ -107,7 +129,7 @@ public class pm extends oj {
 					me.az(var0, var12, var1, var2, 16711935);
 				}
 			} finally {
-				client.sw_ba = null;
+				client.zc_fld = null;
 			}
 		}
 	}

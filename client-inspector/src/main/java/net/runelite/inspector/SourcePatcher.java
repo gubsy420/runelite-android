@@ -62,14 +62,9 @@ public final class SourcePatcher
 		// `intValue()` call (works regardless of how the inferred type lands).
 		// SCAN_AND_FIX below handles this generically since the var name shifts
 		// across runs.
-		// rl20.java: `Iterators.transform(this.dw_fld.an_fld.iterator(), var0 -> var0.ah_fld)`
-		// — same generic erasure, var0 is Object. Cast back to the concrete type whose
-		// field ah_fld we want.
-		PATCHES.add(new Patch(
-			"rl20.java",
-			"return Iterators.transform(this.dw_fld.an_fld.iterator(), var0 -> var0.ah_fld);",
-			"return Iterators.transform(this.dw_fld.an_fld.iterator(), var0 -> ((rg)var0).ah_fld);"
-		));
+		// Iterators.transform lambdas are now patched tree-wide by the generic
+		// SCAN_AND_FIX pass below (Vineflower-erased iterator element type → cast
+		// inferred from a sibling method's explicit cast on the same field).
 		// og.java: `ci_fld.sk_fld.execute(client::em);` — invokedynamic captured a
 		// local `xi` and built a Runnable, but Vineflower simplified to a method ref
 		// without seeing the capture, so the arity is wrong. Replace with a lambda
@@ -336,7 +331,90 @@ public final class SourcePatcher
 			}
 		}
 
-		System.out.println("applied " + applied + " literal patch(es); " + throwableFixes + " Throwable-upcast rethrows simplified; " + mapToIntFixes + " mapToInt generics fixed; " + stubFixes + " stub Exception-throws unchecked; " + objectIntFixes + " Object-vs-int anti-tamper comparison(s) dead-coded" + (missing > 0 ? "; " + missing + " skipped" : ""));
+		// Tree-wide: `Iterators.transform(<expr>, varN -> varN.<field>)` — Vineflower
+		// erased the iterator's element generic, so varN is typed Object and the field
+		// access fails to compile. Fix is structural: find a sibling method in the SAME
+		// FILE that does `((<Type>)anything).<field>` (typical pattern: a `byIndex`/
+		// lookup method that explicitly casts before reading the same field). Use that
+		// Type as the cast. The match survives re-obfuscation because the source name
+		// of the field is preserved across revisions (the duplicate-renamer's `_fld`
+		// suffix doesn't churn — only the prefix obfuscates, and we don't bake the
+		// prefix into the pattern). When no sibling cast is found, we leave the call
+		// untouched — recompile will fail loudly so we know to widen the heuristic.
+		java.util.regex.Pattern iterTransformPattern = java.util.regex.Pattern.compile(
+			"Iterators\\.transform\\(([^,]+),\\s*(var\\d+)\\s*->\\s*\\2\\.(\\w+)\\)");
+		int iterTransformFixes = 0;
+		int iterTransformSkipped = 0;
+		try (java.util.stream.Stream<Path> walk = Files.walk(root))
+		{
+			List<Path> javaFiles = walk
+				.filter(p -> p.toString().endsWith(".java"))
+				.collect(java.util.stream.Collectors.toList());
+			for (Path file : javaFiles)
+			{
+				String content = Files.readString(file, StandardCharsets.UTF_8);
+				java.util.regex.Matcher m = iterTransformPattern.matcher(content);
+				if (!m.find()) continue;
+				m.reset();
+				StringBuilder out = new StringBuilder(content.length());
+				int pos = 0;
+				while (m.find())
+				{
+					out.append(content, pos, m.start());
+					String container = m.group(1);
+					String varName = m.group(2);
+					String fieldName = m.group(3);
+					// Look for `(<Type>)<expr>.<fieldName>` or `(<Type>)<expr>; ... <var>.<fieldName>`
+					// elsewhere in the same file. Type is the captured cast target.
+					java.util.regex.Pattern siblingCast = java.util.regex.Pattern.compile(
+						"\\((\\w+)\\)[\\w.\\s\\[\\](),]*?\\)?\\.?\\w*\\.(?:" + java.util.regex.Pattern.quote(fieldName) + ")");
+					// Simpler: just look for `<Type> <localvar> = (<Type>)…` followed nearby by `<localvar>.<fieldName>`.
+					java.util.regex.Pattern siblingDecl = java.util.regex.Pattern.compile(
+						"(\\w+)\\s+(\\w+)\\s*=\\s*\\(\\1\\)[^;]+;[^}]{0,400}?\\2\\.(?:" + java.util.regex.Pattern.quote(fieldName) + ")\\b",
+						java.util.regex.Pattern.DOTALL);
+					java.util.regex.Matcher sm = siblingDecl.matcher(content);
+					String castType = null;
+					while (sm.find())
+					{
+						String candidate = sm.group(1);
+						// Skip primitives; accept anything else as a class type (obfuscated
+						// names start lowercase, runelite-api names start uppercase — both
+						// are valid).
+						switch (candidate)
+						{
+							case "int": case "long": case "byte": case "short": case "char":
+							case "float": case "double": case "boolean": case "void":
+								continue;
+							default:
+								castType = candidate;
+						}
+						if (castType != null) break;
+					}
+					if (castType != null)
+					{
+						out.append("Iterators.transform(").append(container).append(", ")
+							.append(varName).append(" -> ((").append(castType).append(")")
+							.append(varName).append(").").append(fieldName).append(")");
+						iterTransformFixes++;
+					}
+					else
+					{
+						// No sibling cast found — leave call as-is so the recompile breaks loudly.
+						out.append(m.group());
+						iterTransformSkipped++;
+					}
+					pos = m.end();
+				}
+				out.append(content, pos, content.length());
+				String patched = out.toString();
+				if (!patched.equals(content))
+				{
+					Files.writeString(file, patched, StandardCharsets.UTF_8);
+				}
+			}
+		}
+
+		System.out.println("applied " + applied + " literal patch(es); " + throwableFixes + " Throwable-upcast rethrows simplified; " + mapToIntFixes + " mapToInt generics fixed; " + iterTransformFixes + " Iterators.transform lambdas fixed (skipped " + iterTransformSkipped + "); " + stubFixes + " stub Exception-throws unchecked; " + objectIntFixes + " Object-vs-int anti-tamper comparison(s) dead-coded" + (missing > 0 ? "; " + missing + " skipped" : ""));
 		// Skips are warnings, not failures — upstream changes legitimately drift the
 		// patch context. We log them but don't fail the pipeline.
 	}

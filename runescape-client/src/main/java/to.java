@@ -9,12 +9,12 @@ public class to {
 		descriptor = "[F"
 	)
 	float[] ak_fld;
-	@ObfuscatedGetter(
-		intValue = -1835396327
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1835396327
 	)
 	int ag_fld;
 	@ObfuscatedName("ed")
@@ -228,18 +228,6 @@ public class to {
 
 				return var2;
 			}
-		}
-	}
-
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;II)I"
-	)
-	public static int be(pp var0, int var1, int var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return my.ag(var0.ep_fld, var1, var2);
 		}
 	}
 
@@ -567,7 +555,7 @@ public class to {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	public static boolean ak(int var0) {
 		return var0 == 10 || var0 == 11 || var0 == 12 || 13 == var0 || var0 == 14 || var0 == 15 || 16 == var0 || var0 == 17;

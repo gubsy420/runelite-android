@@ -24,12 +24,12 @@ public class id extends ht {
 		descriptor = "I"
 	)
 	static int ao_fld;
-	@ObfuscatedGetter(
-		longValue = -2558719364586235269L
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -2558719364586235269L
 	)
 	long ak_fld;
 	@ObfuscatedName("al")
@@ -43,12 +43,12 @@ public class id extends ht {
 		descriptor = "Lia;"
 	)
 	ia this$0;
-	@ObfuscatedGetter(
-		intValue = -1654282045
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1654282045
 	)
 	int az_fld;
 
@@ -59,17 +59,9 @@ public class id extends ht {
 		this.az_fld = 0;
 	}
 
-	@ObfuscatedName("uz")
-	@ObfuscatedSignature(
-		descriptor = "(Lqc;)I"
-	)
-	public static int uz(qc var0) {
-		return var0.av_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()J"
+		descriptor = "(I)J"
 	)
 	static long ak() {
 		try {
@@ -89,7 +81,7 @@ public class id extends ht {
 				int var6 = var4.read(var5.al_fld, var5.au_fld, 1000 - var5.au_fld);
 				if (var6 == -1) {
 					var5.au_fld = 0;
-					return xi.ob(var5, -1955802427);
+					return var5.cu();
 				}
 
 				var5.au_fld += 228932457 * var6;
@@ -107,7 +99,7 @@ public class id extends ht {
 	)
 	@Override
 	void ag(ik var1, int var2) {
-		ik.om(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-30);
+		ik.hp(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-30);
 	}
 
 	@ObfuscatedName("az")
@@ -118,11 +110,11 @@ public class id extends ht {
 	void az(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld -= 1623835331;
-			this.ak_fld = xi.ob(var1, -165334179);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
-		this.az_fld = xi.tx(var1, 607901599);
+		this.ag_fld = var1.cl();
+		this.az_fld = var1.cm();
 	}
 
 	@ObfuscatedName("av")
@@ -133,11 +125,11 @@ public class id extends ht {
 	void av(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, 1335062652);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
-		this.az_fld = xi.tx(var1, 1279328142);
+		this.ag_fld = var1.cl();
+		this.az_fld = var1.cm();
 	}
 
 	@ObfuscatedName("as")
@@ -153,8 +145,8 @@ public class id extends ht {
 				rg var9 = (rg)bw.dk_fld.an_fld.ak(var0.ag_fld);
 				if (var9 != null) {
 					tu var10 = mf.bn(var0, var1, var2);
-					var6 = (int)var10.ay_fld;
-					var7 = (int)var10.ar_fld;
+					var6 = (int)var10.ar_fld;
+					var7 = (int)var10.as_fld;
 					var8 += jf.dv(bw.dk_fld, var9.dp(-938110694), var9.dj(189745805), bw.dk_fld.ae_fld);
 					var10.ah();
 				}
@@ -206,7 +198,7 @@ public class id extends ht {
 	)
 	@Override
 	void ah(ik var1) {
-		ik.om(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-44);
+		ik.hp(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-44);
 	}
 
 	@ObfuscatedName("aw")
@@ -215,7 +207,15 @@ public class id extends ht {
 	)
 	@Override
 	void aw(ik var1) {
-		ik.om(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)98);
+		ik.hp(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)98);
+	}
+
+	@ObfuscatedName("uv")
+	@ObfuscatedSignature(
+		descriptor = "(Lzo;)Ljava/lang/String;"
+	)
+	public static String uv(zo var0) {
+		return var0.af_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -224,7 +224,7 @@ public class id extends ht {
 	)
 	@Override
 	void ay(ik var1) {
-		ik.om(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-22);
+		ik.hp(var1, this.ak_fld, this.ag_fld, this.az_fld, (byte)-22);
 	}
 
 	@ObfuscatedName("al")
@@ -267,14 +267,6 @@ public class id extends ht {
 		}
 	}
 
-	@ObfuscatedName("lh")
-	@ObfuscatedSignature(
-		descriptor = "(Lgj;)I"
-	)
-	public static int lh(gj var0) {
-		return var0.ak_fld[0].length;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
@@ -287,11 +279,11 @@ public class id extends ht {
 			}
 
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, 864927921);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
-		this.az_fld = xi.tx(var1, 1552929484);
+		this.ag_fld = var1.cl();
+		this.az_fld = var1.cm();
 	}
 
 	@ObfuscatedName("ae")
@@ -302,10 +294,10 @@ public class id extends ht {
 	void ae(xi var1) {
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			this.ak_fld = xi.ob(var1, -295583461);
+			this.ak_fld = var1.cu();
 		}
 
-		this.ag_fld = var1.ch();
-		this.az_fld = xi.tx(var1, 1507116758);
+		this.ag_fld = var1.cl();
+		this.az_fld = var1.cm();
 	}
 }

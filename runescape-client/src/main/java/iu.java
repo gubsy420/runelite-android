@@ -3,37 +3,31 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("iu")
 public interface iu {
-	@ObfuscatedName("of")
-	@ObfuscatedSignature(
-		descriptor = "(Lfz;)I"
-	)
-	static int of(fz var0) {
-		return var0.ag_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)V"
 	)
 	void ag(Object var1);
 
-	@ObfuscatedName("oi")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;)[Ljava/lang/String;"
-	)
-	static String[] oi(qf var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return null;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)V"
 	)
 	void az(Object var1);
+
+	@ObfuscatedName("gs")
+	@ObfuscatedSignature(
+		descriptor = "(Lpq;Lxi;I)V"
+	)
+	static void gs(pq var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (2 == var2) {
+				var0.az_fld = true;
+			}
+		}
+	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(

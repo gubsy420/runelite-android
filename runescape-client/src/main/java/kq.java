@@ -167,142 +167,31 @@ public class kq {
 		}
 	}
 
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(Lkq;[BII[BI)I"
-	)
-	public static int bz(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			int var6 = 0;
-			int var7 = var5 << 3;
-
-			for (int var14 = var3 + var2; var2 < var14; var2++) {
-				int var8 = var1[var2] & 255;
-				int var9 = var0.ak_fld[var8];
-				byte var10 = var0.ag_fld[var8];
-				if (0 == var10) {
-					throw new RuntimeException("" + var8);
-				}
-
-				int var11 = var7 >> 3;
-				int var12 = var7 & 7;
-				int var15 = var6 & -var12 >> 857111301;
-				int var13 = var11 + (var10 + var12 - 1 >> 3);
-				var12 += 24;
-				var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
-				if (var11 < var13) {
-					var11++;
-					var12 -= 8;
-					var4[var11] = (byte)(var6 = var9 >>> var12);
-					if (var11 < var13) {
-						var11++;
-						var12 -= 8;
-						var4[var11] = (byte)(var6 = var9 >>> var12);
-						if (var11 < var13) {
-							var11++;
-							var12 -= 8;
-							var4[var11] = (byte)(var6 = var9 >>> var12);
-							if (var11 < var13) {
-								var11++;
-								var12 -= 8;
-								var4[var11] = (byte)(var6 = var9 << -var12);
-							}
-						}
-					}
-				}
-
-				var7 += var10;
-			}
-
-			return (var7 + 7 >> 3) - var5;
-		}
-	}
-
-	@ObfuscatedName("dz")
-	@ObfuscatedSignature(
-		descriptor = "(Lkq;[BII[BI)I"
-	)
-	public static int dz(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			int var6 = 0;
-			int var7 = var5 << 3;
-
-			for (int var14 = var3 + var2; var2 < var14; var2++) {
-				int var8 = var1[var2] & 255;
-				int var9 = var0.ak_fld[var8];
-				byte var10 = var0.ag_fld[var8];
-				if (0 == var10) {
-					throw new RuntimeException("" + var8);
-				}
-
-				int var11 = var7 >> 3;
-				int var12 = var7 & 7;
-				int var15 = var6 & -var12 >> 31;
-				int var13 = var11 + (var10 + var12 - 1 >> 3);
-				var12 += 24;
-				var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
-				if (var11 < var13) {
-					var11++;
-					var12 -= 8;
-					var4[var11] = (byte)(var6 = var9 >>> var12);
-					if (var11 < var13) {
-						var11++;
-						var12 -= 8;
-						var4[var11] = (byte)(var6 = var9 >>> var12);
-						if (var11 < var13) {
-							var11++;
-							var12 -= 8;
-							var4[var11] = (byte)(var6 = var9 >>> var12);
-							if (var11 < var13) {
-								var11++;
-								var12 -= 8;
-								var4[var11] = (byte)(var6 = var9 << -var12);
-							}
-						}
-					}
-				}
-
-				var7 += var10;
-			}
-
-			return (var7 + 7 >> 3) - var5;
-		}
-	}
-
-	@ObfuscatedName("ky")
+	@ObfuscatedName("uh")
 	@ObfuscatedSignature(
 		descriptor = "(Lkq;[BII[BIB)I"
 	)
-	public static int ky(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5, byte var6) {
+	public static int uh(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5, byte var6) {
 		if (var0 == null) {
-			var0.getClass();
-		}
+			throw new NullPointerException();
+		} else {
+			int var7 = 0;
+			int var8 = var5 << 3;
 
-		int var7 = 0;
-		int var8 = var5 << 3;
+			for (int var15 = var3 + var2; var2 < var15; var2++) {
+				int var9 = var1[var2] & 255;
+				int var10 = var0.ak_fld[var9];
+				byte var11 = var0.ag_fld[var9];
+				if (0 == var11) {
+					throw new RuntimeException("" + var9);
+				}
 
-		for (int var15 = var3 + var2; var2 < var15; var2++) {
-			int var9 = var1[var2] & 255;
-			int var10 = var0.ak_fld[var9];
-			byte var11 = var0.ag_fld[var9];
-			if (0 == var11) {
-				throw new RuntimeException("" + var9);
-			}
-
-			int var12 = var8 >> 3;
-			int var13 = var8 & 7;
-			int var16 = var7 & -var13 >> 31;
-			int var14 = var12 + (var11 + var13 - 1 >> 3);
-			var13 += 24;
-			var4[var12] = (byte)(var7 = var16 | var10 >>> var13);
-			if (var12 < var14) {
-				var12++;
-				var13 -= 8;
-				var4[var12] = (byte)(var7 = var10 >>> var13);
+				int var12 = var8 >> 3;
+				int var13 = var8 & 7;
+				int var16 = var7 & -var13 >> 31;
+				int var14 = var12 + (var11 + var13 - 1 >> 3);
+				var13 += 24;
+				var4[var12] = (byte)(var7 = var16 | var10 >>> var13);
 				if (var12 < var14) {
 					var12++;
 					var13 -= 8;
@@ -314,16 +203,21 @@ public class kq {
 						if (var12 < var14) {
 							var12++;
 							var13 -= 8;
-							var4[var12] = (byte)(var7 = var10 << -var13);
+							var4[var12] = (byte)(var7 = var10 >>> var13);
+							if (var12 < var14) {
+								var12++;
+								var13 -= 8;
+								var4[var12] = (byte)(var7 = var10 << -var13);
+							}
 						}
 					}
 				}
+
+				var8 += var11;
 			}
 
-			var8 += var11;
+			return (var8 + 7 >> 3) - var5;
 		}
-
-		return (var8 + 7 >> 3) - var5;
 	}
 
 	public kq(byte[] var1) {
@@ -405,148 +299,6 @@ public class kq {
 		}
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "([BI[BII)I"
-	)
-	int ag(byte[] var1, int var2, byte[] var3, int var4, int var5) {
-		if (0 == var5) {
-			return 0;
-		} else {
-			int var7 = 0;
-			var5 += var4;
-			int var8 = var2;
-
-			while (true) {
-				byte var9 = var1[var8];
-				if (var9 < 0) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				int var10;
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if (0 != (var9 & 64)) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if ((var9 & 32) != 0) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if (0 != (var9 & 16)) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if ((var9 & 8) != 0) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if ((var9 & 4) != 0) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if ((var9 & 2) != 0) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				if (0 != (var9 & 1)) {
-					var7 = this.az_fld[var7];
-				} else {
-					var7++;
-				}
-
-				if ((var10 = this.az_fld[var7]) < 0) {
-					var3[var4++] = (byte)(~var10);
-					if (var4 >= var5) {
-						break;
-					}
-
-					var7 = 0;
-				}
-
-				var8++;
-			}
-
-			return 1 + var8 - var2;
-		}
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "([BII[BI)I"
@@ -596,29 +348,179 @@ public class kq {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
-		descriptor = "(Lkq;[BII[BI)I"
+		descriptor = "(Loy;)Ljf;"
 	)
-	public static int bx(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5) {
+	public static jf eq(oy var0) {
+		return var0.bx_fld;
+	}
+
+	@ObfuscatedName("rb")
+	@ObfuscatedSignature(
+		descriptor = "(Lkq;[BI[BIII)I"
+	)
+	public static int rb(kq var0, byte[] var1, int var2, byte[] var3, int var4, int var5) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
+		if (0 == var5) {
+			return 0;
+		} else {
+			int var7 = 0;
+			var5 += var4;
+			int var8 = var2;
+
+			while (true) {
+				byte var9 = var1[var8];
+				if (var9 < 0) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				int var10;
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 64)) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 32) != 0) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 16)) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 8) != 0) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 4) != 0) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 2) != 0) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 1)) {
+					var7 = var0.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = var0.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				var8++;
+			}
+
+			return 1 + var8 - var2;
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "([BII[BI)I"
+	)
+	int az(byte[] var1, int var2, int var3, byte[] var4, int var5) {
 		int var6 = 0;
 		int var7 = var5 << 3;
 
 		for (int var14 = var3 + var2; var2 < var14; var2++) {
 			int var8 = var1[var2] & 255;
-			int var9 = var0.ak_fld[var8];
-			byte var10 = var0.ag_fld[var8];
+			int var9 = this.ak_fld[var8];
+			byte var10 = this.ag_fld[var8];
 			if (0 == var10) {
 				throw new RuntimeException("" + var8);
 			}
 
 			int var11 = var7 >> 3;
 			int var12 = var7 & 7;
-			int var15 = var6 & -var12 >> 31;
+			int var15 = var6 & -var12 >> 857111301;
 			int var13 = var11 + (var10 + var12 - 1 >> 3);
 			var12 += 24;
 			var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
@@ -791,6 +693,59 @@ public class kq {
 		}
 	}
 
+	@ObfuscatedName("wz")
+	@ObfuscatedSignature(
+		descriptor = "(Lkq;[BII[BI)I"
+	)
+	public static int wz(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var6 = 0;
+		int var7 = var5 << 3;
+
+		for (int var14 = var3 + var2; var2 < var14; var2++) {
+			int var8 = var1[var2] & 255;
+			int var9 = var0.ak_fld[var8];
+			byte var10 = var0.ag_fld[var8];
+			if (0 == var10) {
+				throw new RuntimeException("" + var8);
+			}
+
+			int var11 = var7 >> 3;
+			int var12 = var7 & 7;
+			int var15 = var6 & -var12 >> 31;
+			int var13 = var11 + (var10 + var12 - 1 >> 3);
+			var12 += 24;
+			var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
+			if (var11 < var13) {
+				var11++;
+				var12 -= 8;
+				var4[var11] = (byte)(var6 = var9 >>> var12);
+				if (var11 < var13) {
+					var11++;
+					var12 -= 8;
+					var4[var11] = (byte)(var6 = var9 >>> var12);
+					if (var11 < var13) {
+						var11++;
+						var12 -= 8;
+						var4[var11] = (byte)(var6 = var9 >>> var12);
+						if (var11 < var13) {
+							var11++;
+							var12 -= 8;
+							var4[var11] = (byte)(var6 = var9 << -var12);
+						}
+					}
+				}
+			}
+
+			var7 += var10;
+		}
+
+		return (var7 + 7 >> 3) - var5;
+	}
+
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "([BI[BII)I"
@@ -933,9 +888,62 @@ public class kq {
 		}
 	}
 
+	@ObfuscatedName("lk")
+	@ObfuscatedSignature(
+		descriptor = "(Lkq;[BII[BI)I"
+	)
+	public static int lk(kq var0, byte[] var1, int var2, int var3, byte[] var4, int var5) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			int var6 = 0;
+			int var7 = var5 << 3;
+
+			for (int var14 = var3 + var2; var2 < var14; var2++) {
+				int var8 = var1[var2] & 255;
+				int var9 = var0.ak_fld[var8];
+				byte var10 = var0.ag_fld[var8];
+				if (0 == var10) {
+					throw new RuntimeException("" + var8);
+				}
+
+				int var11 = var7 >> 3;
+				int var12 = var7 & 7;
+				int var15 = var6 & -var12 >> 31;
+				int var13 = var11 + (var10 + var12 - 1 >> 3);
+				var12 += 24;
+				var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
+				if (var11 < var13) {
+					var11++;
+					var12 -= 8;
+					var4[var11] = (byte)(var6 = var9 >>> var12);
+					if (var11 < var13) {
+						var11++;
+						var12 -= 8;
+						var4[var11] = (byte)(var6 = var9 >>> var12);
+						if (var11 < var13) {
+							var11++;
+							var12 -= 8;
+							var4[var11] = (byte)(var6 = var9 >>> var12);
+							if (var11 < var13) {
+								var11++;
+								var12 -= 8;
+								var4[var11] = (byte)(var6 = var9 << -var12);
+							}
+						}
+					}
+				}
+
+				var7 += var10;
+			}
+
+			return (var7 + 7 >> 3) - var5;
+		}
+	}
+
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "([BIIII)Z"
+		descriptor = "([BIIIII)Z"
 	)
 	static boolean af(byte[] var0, int var1, int var2, int var3, int var4) throws EOFException {
 		boolean var6 = true;
@@ -969,7 +977,7 @@ public class kq {
 					if (var16 >= 0 && var17 >= 0 && var16 <= var3 && var17 <= var4) {
 						oe var18 = ko.az(var8);
 						if (!ef.aw(var15) || !client.gk_fld || var18.cj_fld != 0 || 1 == var18.cu_fld || var18.du_fld) {
-							if (!oe.fq(var18, -1094057003)) {
+							if (!oe.fn(var18, -1094057003)) {
 								client.jw_fld++;
 								var6 = false;
 							}
@@ -989,6 +997,148 @@ public class kq {
 		}
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "([BI[BIII)I"
+	)
+	int ag(byte[] var1, int var2, byte[] var3, int var4, int var5, int var6) {
+		if (0 == var5) {
+			return 0;
+		} else {
+			int var7 = 0;
+			var5 += var4;
+			int var8 = var2;
+
+			while (true) {
+				byte var9 = var1[var8];
+				if (var9 < 0) {
+					var7 = this.ak_fld[var7];
+				} else {
+					var7++;
+				}
+
+				int var10;
+				if ((var10 = this.ak_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 64)) {
+					var7 = this.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 32) != 0) {
+					var7 = this.ak_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 16)) {
+					var7 = this.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 8) != 0) {
+					var7 = this.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 4) != 0) {
+					var7 = this.ak_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.ak_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if ((var9 & 2) != 0) {
+					var7 = this.ak_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.ak_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				if (0 != (var9 & 1)) {
+					var7 = this.az_fld[var7];
+				} else {
+					var7++;
+				}
+
+				if ((var10 = this.az_fld[var7]) < 0) {
+					var3[var4++] = (byte)(~var10);
+					if (var4 >= var5) {
+						break;
+					}
+
+					var7 = 0;
+				}
+
+				var8++;
+			}
+
+			return 1 + var8 - var2;
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "([BII[BIB)I"
@@ -999,7 +1149,7 @@ public class kq {
 
 		for (int var15 = var3 + var2; var2 < var15; var2++) {
 			int var9 = var1[var2] & 255;
-			int var10 = this.ak_fld[var9];
+			int var10 = this.az_fld[var9];
 			byte var11 = this.ag_fld[var9];
 			if (0 == var11) {
 				throw new RuntimeException("" + var9);
@@ -1036,5 +1186,54 @@ public class kq {
 		}
 
 		return (var8 + 7 >> 3) - var5;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "([BII[BI)I"
+	)
+	int ah(byte[] var1, int var2, int var3, byte[] var4, int var5) {
+		int var6 = 0;
+		int var7 = var5 << 3;
+
+		for (int var14 = var3 + var2; var2 < var14; var2++) {
+			int var8 = var1[var2] & 255;
+			int var9 = this.ak_fld[var8];
+			byte var10 = this.ag_fld[var8];
+			if (0 == var10) {
+				throw new RuntimeException("" + var8);
+			}
+
+			int var11 = var7 >> 3;
+			int var12 = var7 & 7;
+			int var15 = var6 & -var12 >> 31;
+			int var13 = var11 + (var10 + var12 - 1 >> 3);
+			var12 += 24;
+			var4[var11] = (byte)(var6 = var15 | var9 >>> var12);
+			if (var11 < var13) {
+				var11++;
+				var12 -= 8;
+				var4[var11] = (byte)(var6 = var9 >>> var12);
+				if (var11 < var13) {
+					var11++;
+					var12 -= 8;
+					var4[var11] = (byte)(var6 = var9 >>> var12);
+					if (var11 < var13) {
+						var11++;
+						var12 -= 8;
+						var4[var11] = (byte)(var6 = var9 >>> var12);
+						if (var11 < var13) {
+							var11++;
+							var12 -= 8;
+							var4[var11] = (byte)(var6 = var9 << -var12);
+						}
+					}
+				}
+			}
+
+			var7 += var10;
+		}
+
+		return (var7 + 7 >> 3) - var5;
 	}
 }

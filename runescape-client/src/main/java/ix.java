@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import java.util.ArrayList;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -17,12 +16,12 @@ public class ix extends ht {
 		descriptor = "Lia;"
 	)
 	ia this$0;
-	@ObfuscatedGetter(
-		intValue = 1757790679
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1757790679
 	)
 	int ak_fld;
 
@@ -32,7 +31,7 @@ public class ix extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = xi.tx(var1, 1147559688);
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("ag")
@@ -41,7 +40,7 @@ public class ix extends ht {
 	)
 	@Override
 	void ag(ik var1, int var2) {
-		var1.au(this.ak_fld, -898993419);
+		ik.un(var1, this.ak_fld);
 	}
 
 	@ObfuscatedName("av")
@@ -50,7 +49,7 @@ public class ix extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = xi.tx(var1, 1438833867);
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("az")
@@ -59,23 +58,15 @@ public class ix extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = xi.tx(var1, 2025888192);
+		this.ak_fld = var1.cm();
 	}
 
-	@ObfuscatedName("ml")
+	@ObfuscatedName("rc")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;I)Log;"
+		descriptor = "(Lrl;)Laax;"
 	)
-	public static og ml(cv var0, int var1) throws EOFException {
-		try {
-			if (var0 == null) {
-				throw new NullPointerException();
-			} else {
-				return kb.ag(var1 - 2048, -1752383175);
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
+	public static aax rc(rl var0) {
+		return var0.az_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -84,7 +75,7 @@ public class ix extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = xi.tx(var1, 689864118);
+		this.ak_fld = var1.cm();
 	}
 
 	ix(ia var1) {
@@ -98,7 +89,7 @@ public class ix extends ht {
 	)
 	@Override
 	void ah(ik var1) {
-		var1.au(this.ak_fld * -1838517067, -898993419);
+		ik.un(var1, this.ak_fld * -1838517067);
 	}
 
 	@ObfuscatedName("aw")
@@ -107,7 +98,7 @@ public class ix extends ht {
 	)
 	@Override
 	void aw(ik var1) {
-		var1.au(this.ak_fld * -1470893945, -898993419);
+		ik.un(var1, this.ak_fld * -1470893945);
 	}
 
 	@ObfuscatedName("ay")
@@ -116,12 +107,12 @@ public class ix extends ht {
 	)
 	@Override
 	void ay(ik var1) {
-		var1.au(this.ak_fld, -898993419);
+		ik.un(var1, this.ak_fld);
 	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	static int as(int var0) {
 		co var2 = (co)cz.ag_fld.ak(var0);
@@ -134,7 +125,7 @@ public class ix extends ht {
 
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZB)I"
 	)
 	static int bh(int var0, ba var1, boolean var2) {
 		if (var0 == 3200) {
@@ -201,10 +192,10 @@ public class ix extends ht {
 						cx.kq_fld.ay(var34 == 1, (byte)117);
 						break;
 					case 2:
-						cn.up(cx.kq_fld, var34 == 1, (byte)2);
+						cn.eu(cx.kq_fld, var34 == 1, (byte)2);
 						break;
 					case 3:
-						cn.ij(cx.kq_fld, 1 == var34, -158899562);
+						cx.kq_fld.au(1 == var34, -158899562);
 						break;
 					case 4:
 						if (var34 < 0) {
@@ -217,7 +208,7 @@ public class ix extends ht {
 						dj.gn(var34);
 						break;
 					case 6:
-						cx.kq_fld.by(var34, 2094461615);
+						cn.fg(cx.kq_fld, var34);
 						fw.gr();
 						break;
 					case 7:
@@ -228,7 +219,7 @@ public class ix extends ht {
 						throw new RuntimeException(var47);
 				}
 			} else {
-				switch (var25.ah_fld) {
+				switch (var25.aw_fld) {
 					case 1:
 						cx.kq_fld.ah(var34 == 1, (byte)9);
 						break;
@@ -294,32 +285,32 @@ public class ix extends ht {
 			if (var24 == cc.ak_fld) {
 				switch (var16.ar_fld) {
 					case 1:
-						var33 = cn.za(cx.kq_fld, 708365829) ? 1 : 0;
+						var33 = cx.kq_fld.bl(708365829) ? 1 : 0;
 						break;
 					case 2:
-						var33 = cx.kq_fld.as((short)22209) ? 1 : 0;
+						var33 = cn.mv(cx.kq_fld, (short)22209) ? 1 : 0;
 						break;
 					case 3:
 						var33 = cx.kq_fld.al(562053266) ? 1 : 0;
 						break;
 					case 4:
-						var33 = cn.tr(cx.kq_fld, (byte)0);
+						var33 = cx.kq_fld.aj((byte)0);
 						break;
 					case 5:
 						var33 = hs.go();
 						break;
 					case 6:
-						var33 = (int)(cx.kq_fld.bf(465869533) * 100.0F);
+						var33 = (int)(cn.uk(cx.kq_fld, 465869533) * 100.0F);
 						break;
 					case 7:
-						var33 = cx.kq_fld.bl(-604134089) ? 1 : 0;
+						var33 = cx.kq_fld.aw(-604134089) ? 1 : 0;
 						break;
 					default:
 						String var42 = String.format("Unkown device option: %s.", (Object[])(new Object[]{var16}));
 						throw new RuntimeException(var42);
 				}
 			} else {
-				switch (var24.ah_fld) {
+				switch (var24.aw_fld) {
 					case 1:
 						var33 = cx.kq_fld.ae((byte)22) ? 1 : 0;
 						break;
@@ -405,7 +396,7 @@ public class ix extends ht {
 						throw new RuntimeException(var52);
 				}
 			} else {
-				switch (var21.ah_fld) {
+				switch (var21.aw_fld) {
 					case 1:
 						var28 = 0;
 						var38 = 1;

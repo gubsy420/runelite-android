@@ -48,12 +48,12 @@ public class cb implements gg {
 	)
 	static int ag_fld;
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
 	@Override
-	public void ar(lu var1, int var2, int var3) throws EOFException {
+	public void af(lu var1, int var2, int var3) throws EOFException {
 		kf.ag(var1, var2, var3, 1440145996);
 	}
 
@@ -63,7 +63,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void ao(int var1, int var2) {
-		ce.lm(do_.bp_fld, var1, var2, (byte)40);
+		do_.bp_fld.ae(var1, var2);
 	}
 
 	@ObfuscatedName("ag")
@@ -72,7 +72,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void ag(lu var1, int var2, int var3, int var4) throws EOFException {
-		client.yl(var1, var2, var3);
+		client.uw(var1, var2, var3);
 	}
 
 	@ObfuscatedName("ax")
@@ -81,16 +81,16 @@ public class cb implements gg {
 	)
 	@Override
 	public void ax(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V"
 	)
 	@Override
-	public void av(int var1, int var2, int var3, int var4, int var5) throws EOFException {
-		wl.ji(lz.ah(), var1, var2, var3, var4, (short)-22457);
+	public void ak(int var1, int var2, int var3, int var4, int var5) throws EOFException {
+		lz.ah().at(var1, var2, var3, var4, (short)-22457);
 	}
 
 	@ObfuscatedName("ae")
@@ -99,7 +99,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void ae(int var1, int var2, byte var3) {
-		ce.lm(do_.bp_fld, var1, var2, (byte)-62);
+		do_.bp_fld.ae(var1, var2);
 	}
 
 	@ObfuscatedName("ah")
@@ -117,27 +117,65 @@ public class cb implements gg {
 	)
 	@Override
 	public void al(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
 	cb() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("rv")
+	@ObfuscatedSignature(
+		descriptor = "(Loy;)I"
+	)
+	public static int rv(oy var0) {
+		return var0.bp_fld;
+	}
+
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
 	@Override
-	public void ay(lu var1, int var2, int var3) throws EOFException {
+	public void as(lu var1, int var2, int var3) throws EOFException {
 		kf.ag(var1, var2, var3, 2086251503);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("pl")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;)[I"
+	)
+	public static int[] pl(lu var0) {
+		if (var0.bx_fld == 11 && var0.hi_fld != null) {
+			int[] var1 = new int[3];
+			int var2 = 0;
+			Iterator var3 = var0.hi_fld.af().iterator();
+
+			while (var3.hasNext()) {
+				mu var4 = (mu)(mu)var3.next();
+				if (!mu.wi(var4, (byte)1).equals("user_id")) {
+					if (var4.ak((byte)9) != 0) {
+						return null;
+					}
+
+					var1[var2++] = var4.ag((byte)-20);
+					if (var2 > 3) {
+						return null;
+					}
+				}
+			}
+
+			return var1;
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V"
 	)
 	@Override
-	public void ak(int var1, int var2, int var3, int var4, int var5) throws EOFException {
+	public void av(int var1, int var2, int var3, int var4, int var5) throws EOFException {
 		qv.cs(var1, var2, var3, var4, (byte)0);
 	}
 
@@ -147,15 +185,15 @@ public class cb implements gg {
 	)
 	@Override
 	public void aa(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
 	@Override
-	public void as(lu var1, int var2, int var3) throws EOFException {
+	public void ar(lu var1, int var2, int var3) throws EOFException {
 		kf.ag(var1, var2, var3, 313818173);
 	}
 
@@ -165,7 +203,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void au(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
 	@ObfuscatedName("az")
@@ -174,15 +212,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void az(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
-	}
-
-	@ObfuscatedName("nj")
-	@ObfuscatedSignature(
-		descriptor = "(Lgh;)I"
-	)
-	public static int nj(gh var0) {
-		return var0.ay_fld * var0.ar_fld;
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
 	@ObfuscatedName("an")
@@ -191,7 +221,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void an(int var1, int var2, int var3, int var4, int var5, double var6) throws EOFException {
-		wl.jv(lz.ah(), var1, var2, var3, var4, var5, var6);
+		wl.yb(lz.ah(), var1, var2, var3, var4, var5, var6);
 	}
 
 	@ObfuscatedName("as")
@@ -199,7 +229,7 @@ public class cb implements gg {
 		descriptor = "(B)V"
 	)
 	static void as(byte var0) throws FileNotFoundException, EOFException {
-		if (null != ob.ek_fld && ob.ek_fld.al()) {
+		if (null != ob.ek_fld && dn.wl(ob.ek_fld, -1230663374)) {
 			ob.ek_fld.as((byte)84);
 		}
 
@@ -207,7 +237,7 @@ public class cb implements gg {
 		es.ad(-1452426046);
 		if (gz.gb_fld != null) {
 			if (var0 == 32) {
-				client.wu();
+				client.we();
 				return;
 			}
 
@@ -215,7 +245,7 @@ public class cb implements gg {
 		}
 
 		gz.gb_fld = null;
-		client.aq_fld.ae();
+		client.appletStub.ae();
 		if (null != fw.qz_fld) {
 			try {
 				fw.qz_fld.ae(-1723669543);
@@ -227,7 +257,7 @@ public class cb implements gg {
 		pd.aj((byte)1);
 		td.ar((byte)-110);
 		client.da_fld.an((byte)67);
-		client.ds_fld.ag();
+		na.mh(client.ds_fld);
 		ca.px_fld = null;
 		sx.av(0, 0);
 		ah.ay();
@@ -236,12 +266,12 @@ public class cb implements gg {
 
 		while (var1.hasNext()) {
 			dx var2 = (dx)(dx)var1.next();
-			dx.cy(var2, -1880611165);
+			var2.ar(-1880611165);
 		}
 
 		client.kd_fld.az(false, 1796016238);
 		if (null != dx.on_fld) {
-			dx.on_fld.aw(-1509452726);
+			dx.on_fld.av(-1509452726);
 		}
 
 		ef.pt_fld.ar();
@@ -270,10 +300,10 @@ public class cb implements gg {
 		cp.ph_fld = new un(255, mh.af_fld, mh.al_fld, 750000);
 		fw.qz_fld = new la();
 		cf.cg_fld = new uo(bu.hv_fld, ab.hu_fld, gz.hy_fld, ow.ie_fld, dm.is_fld);
-		og.ci_fld.ahg(2072206514);
+		tf.rh(og.ci_fld, 2072206514);
 		ao.aq(cy.ag_fld);
 		jk.af(0, (byte)43);
-		client.wu();
+		client.we();
 	}
 
 	@ObfuscatedName("ai")
@@ -282,7 +312,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void ai(int var1, int var2, int var3, int var4) throws EOFException {
-		wl.ji(lz.ah(), var1, var2, var3, var4, (short)17716);
+		lz.ah().at(var1, var2, var3, var4, (short)17716);
 	}
 
 	@ObfuscatedName("aq")
@@ -291,7 +321,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void aq(int var1, int var2, int var3, int var4) throws EOFException {
-		wl.ji(lz.ah(), var1, var2, var3, var4, (short)-16448);
+		lz.ah().at(var1, var2, var3, var4, (short)-16448);
 	}
 
 	@ObfuscatedName("am")
@@ -300,7 +330,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void am(int var1, int var2) {
-		ce.lm(do_.bp_fld, var1, var2, (byte)21);
+		do_.bp_fld.ae(var1, var2);
 	}
 
 	@ObfuscatedName("ad")
@@ -309,15 +339,15 @@ public class cb implements gg {
 	)
 	@Override
 	public void ad(int var1, int var2) {
-		ce.lm(do_.bp_fld, var1, var2, (byte)-107);
+		do_.bp_fld.ae(var1, var2);
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;II)V"
 	)
 	@Override
-	public void af(lu var1, int var2, int var3) throws EOFException {
+	public void ay(lu var1, int var2, int var3) throws EOFException {
 		kf.ag(var1, var2, var3, 1671212444);
 	}
 
@@ -327,7 +357,7 @@ public class cb implements gg {
 	)
 	@Override
 	public void ab(int var1, int var2) {
-		ce.lm(do_.bp_fld, var1, var2, (byte)-70);
+		do_.bp_fld.ae(var1, var2);
 	}
 
 	@ObfuscatedName("ck")
@@ -337,8 +367,8 @@ public class cb implements gg {
 	static void ck(dx var0, ko var1, byte var2) throws EOFException {
 		int var3 = 0;
 
-		for (int var4 = 0; var4 < var0.am_fld.az(); var4++) {
-			rg var5 = (rg)var0.an_fld.ak(var0.am_fld.ag(var4));
+		for (int var4 = 0; var4 < var0.ad_fld.az(); var4++) {
+			rg var5 = (rg)var0.an_fld.ak(yw.wk(var0.ad_fld, var4, (byte)114));
 			if (var5 != null && client.es_fld != var5.ah_fld.ag_fld * 1674941469 && var5.as(-743791201) == var1) {
 				boolean var10000;
 				if (var3 < client.gj_fld) {

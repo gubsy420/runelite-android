@@ -1,4 +1,3 @@
-import java.awt.event.MouseEvent;
 import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -11,17 +10,17 @@ public interface ff {
 	)
 	fn au(lu var1) throws EOFException;
 
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;I)Lfn;"
+	)
+	fn ak(lu var1, int var2) throws EOFException;
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)Lfn;"
 	)
 	fn ag(lu var1, int var2) throws EOFException;
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;I)Lfn;"
-	)
-	fn az(lu var1, int var2) throws EOFException;
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -29,11 +28,11 @@ public interface ff {
 	)
 	fn av(lu var1, ol var2, int var3, int var4) throws EOFException;
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
-	fn ab(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+	fn ad(lu var1, ol var2, int var3, boolean var4) throws EOFException;
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
@@ -65,11 +64,19 @@ public interface ff {
 	)
 	fn ar(lu var1) throws EOFException;
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
-	fn ad(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+	fn aj(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+
+	@ObfuscatedName("lr")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;I)V"
+	)
+	static void lr(da var0, int var1) {
+		var0.cg_fld.af_fld = var1 * 1590123092;
+	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -88,25 +95,6 @@ public interface ff {
 		descriptor = "(Llu;)Lfn;"
 	)
 	fn ax(lu var1) throws EOFException;
-
-	@ObfuscatedName("lg")
-	@ObfuscatedSignature(
-		descriptor = "(Lna;)Lvw;"
-	)
-	static vw lg(na var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		vw var1 = var0.ak_fld.hg_vw;
-		if (var1 == var0.ak_fld) {
-			var0.ag_fld = null;
-			return null;
-		} else {
-			var0.ag_fld = var1.hg_vw;
-			return var1;
-		}
-	}
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
@@ -138,61 +126,23 @@ public interface ff {
 	)
 	fn am(lu var1, ol var2, int var3) throws EOFException;
 
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lol;IZ)Lfn;"
+	)
+	fn bd(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
 	fn at(lu var1, ol var2, int var3, boolean var4) throws EOFException;
 
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lol;IZ)Lfn;"
-	)
-	fn ao(lu var1, ol var2, int var3, boolean var4) throws EOFException;
-
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)Lfn;"
 	)
-	fn ak(lu var1, int var2) throws EOFException;
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lol;IZ)Lfn;"
-	)
-	fn ap(lu var1, ol var2, int var3, boolean var4) throws EOFException;
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lol;IZ)Lfn;"
-	)
-	fn ac(lu var1, ol var2, int var3, boolean var4) throws EOFException;
-
-	@ObfuscatedName("ig")
-	@ObfuscatedSignature(
-		descriptor = "(Ltj;Ljava/awt/event/MouseEvent;)V"
-	)
-	static void ig(tj var0, MouseEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1.isPopupTrigger()) {
-			var1.consume();
-		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lol;IZB)Lfn;"
-	)
-	fn aw(lu var1, ol var2, int var3, boolean var4, byte var5) throws EOFException;
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;Lol;IZ)Lfn;"
-	)
-	fn aj(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+	fn az(lu var1, int var2) throws EOFException;
 
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
@@ -200,17 +150,33 @@ public interface ff {
 	)
 	fn bm(lu var1, ol var2, int var3, boolean var4) throws EOFException;
 
-	@ObfuscatedName("po")
-	@ObfuscatedSignature(
-		descriptor = "(Luo;)Z"
-	)
-	static boolean po(uo var0) {
-		return null == var0.ac_fld;
-	}
-
-	@ObfuscatedName("bd")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;Lol;IZ)Lfn;"
 	)
-	fn bd(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+	fn ap(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lol;IZB)Lfn;"
+	)
+	fn aw(lu var1, ol var2, int var3, boolean var4, byte var5) throws EOFException;
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lol;IZ)Lfn;"
+	)
+	fn ao(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lol;IZ)Lfn;"
+	)
+	fn ab(lu var1, ol var2, int var3, boolean var4) throws EOFException;
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;Lol;IZ)Lfn;"
+	)
+	fn ac(lu var1, ol var2, int var3, boolean var4) throws EOFException;
 }

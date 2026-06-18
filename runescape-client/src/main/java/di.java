@@ -8,26 +8,26 @@ import net.runelite.api.events.PlayerDespawned;
 
 @ObfuscatedName("di")
 public class di {
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] af_fld;
+	int[] as_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[Lcl;"
 	)
 	cl[] av_fld;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "[I"
-	)
-	int[] az_fld = new int[2048];
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] ar_fld;
+	int[] ar_fld = new int[2048];
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "[I"
+	)
+	int[] af_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "[Z"
@@ -43,22 +43,22 @@ public class di {
 		descriptor = "Lxi;"
 	)
 	xi aw_fld;
-	@ObfuscatedName("as")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	int[] as_fld;
+	int[] az_fld;
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	static int bm_fld;
-	@ObfuscatedGetter(
-		intValue = 450716151
-	)
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 450716151
 	)
 	int ax_fld;
 	@ObfuscatedName("ag")
@@ -71,28 +71,28 @@ public class di {
 		descriptor = "[Ljava/lang/String;"
 	)
 	String[] ay_fld;
-	@ObfuscatedGetter(
-		intValue = 1540972327
-	)
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int au_fld;
 	@ObfuscatedGetter(
-		intValue = -273927123
+		intValue = 1540972327
 	)
+	int au_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int al_fld;
 	@ObfuscatedGetter(
-		intValue = -910506503
+		intValue = -273927123
 	)
+	int al_fld;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -910506503
 	)
 	int an_fld;
 	@ObfuscatedName("ci")
@@ -106,42 +106,38 @@ public class di {
 	)
 	static int ak_fld;
 
-	@ObfuscatedName("cy")
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void an() {
+		this.al_fld = 0;
+
+		for (int var2 = 0; var2 < 2048; var2++) {
+			this.av_fld[var2].cd();
+		}
+	}
+
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void cy() {
+	void bl() {
 		for (int var1 = 0; var1 < this.ax_fld; var1++) {
-			int var2 = this.ar_fld[var1];
+			int var2 = this.af_fld[var1];
 			cl var3 = this.av_fld[var2];
 			Iterator var4 = client.da_fld.iterator();
 
 			while (var4.hasNext()) {
 				dx var5 = (dx)(dx)var4.next();
-				cv var6 = (cv)var5.au_fld.ak(var2);
+				cv var6 = (cv)var5.au_fld.ae(var2);
 				if (var6 != null) {
 					var3.av(var6);
 					var6.mb();
 				}
 			}
 
-			cl.bc(var3, -545932035);
-		}
-	}
-
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;I)V"
-	)
-	public static void lk(di var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.al_fld = 0;
-
-		for (int var2 = 0; var2 < 2048; var2++) {
-			var0.av_fld[var2].ak();
+			var3.dv();
 		}
 	}
 
@@ -150,16 +146,16 @@ public class di {
 		descriptor = "(Lxj;I)V"
 	)
 	final void ag(xj var1, int var2) {
-		lk(this, 1892411727);
-		var1.ap(1835603047);
+		this.an();
+		var1.as(1835603047);
 		int var3 = client.dj_fld;
 		cl var4 = this.av_fld[var3];
 		int var5 = var1.ar(30, -106081977);
-		var4.ag(-1);
-		kj.am(var4.az_fld, var5);
+		cl.yp(var4, -1, (byte)1);
+		var4.az_fld.ar(var5);
 		var4.av_fld = 0;
 		this.al_fld = 0;
-		this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var3;
+		this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var3;
 		this.au_fld = 0;
 
 		for (int var6 = 1; var6 < 2048; var6++) {
@@ -172,12 +168,12 @@ public class di {
 				int var8 = var7 >> 16;
 				int var9 = var7 >> 8 & 0xFF;
 				int var10 = var7 & 0xFF;
-				this.av_fld[var6].ag(kj.ak(var8, var9, var10));
-				this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var6;
+				cl.yp(this.av_fld[var6], kj.ak(var8, var9, var10), (byte)1);
+				this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var6;
 			}
 		}
 
-		var1.as(872525068);
+		var1.af(872525068);
 	}
 
 	@ObfuscatedName("as")
@@ -194,7 +190,17 @@ public class di {
 			}
 
 			dx var3 = (dx)(dx)var2.next();
-			cm(this, var3, -1496394045);
+			this.ar(var3, -1496394045);
+		}
+	}
+
+	@ObfuscatedName("hz")
+	@ObfuscatedSignature(
+		descriptor = "(Lcv;)V"
+	)
+	public void hz(cv var1) {
+		if (var1 != null) {
+			og.ci_fld.getCallbacks().post(new PlayerDespawned(var1));
 		}
 	}
 
@@ -205,10 +211,10 @@ public class di {
 	void av(xj var1, byte var2) {
 		this.ax_fld = 0;
 		int var3 = 0;
-		var1.ap(1354976927);
+		var1.as(1354976927);
 
 		for (int var4 = 0; var4 < this.al_fld; var4++) {
-			int var5 = this.az_fld[var4];
+			int var5 = this.ar_fld[var4];
 			if ((this.av_fld[var5].av_fld & 1) == 0) {
 				if (var3 > 0) {
 					var3--;
@@ -216,7 +222,7 @@ public class di {
 				} else {
 					int var6 = var1.ar(1, -106081977);
 					if (0 == var6) {
-						var3 = this.ae(var1, 196256772);
+						var3 = uc(this, var1, 196256772);
 						this.av_fld[var5].av_fld = (byte)(this.av_fld[var5].av_fld | 2);
 					} else {
 						this.ah(var1, var5, (byte)-87);
@@ -225,14 +231,14 @@ public class di {
 			}
 		}
 
-		var1.as(934723216);
+		var1.af(934723216);
 		if (var3 != 0) {
 			throw new RuntimeException();
 		} else {
-			var1.ap(934871781);
+			var1.as(934871781);
 
 			for (int var7 = 0; var7 < this.al_fld; var7++) {
-				int var11 = this.az_fld[var7];
+				int var11 = this.ar_fld[var7];
 				if (0 != (this.av_fld[var11].av_fld & 1)) {
 					if (var3 > 0) {
 						var3--;
@@ -240,7 +246,7 @@ public class di {
 					} else {
 						int var14 = var1.ar(1, -106081977);
 						if (var14 == 0) {
-							var3 = this.ae(var1, 539464846);
+							var3 = uc(this, var1, 539464846);
 							this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
 						} else {
 							this.ah(var1, var11, (byte)41);
@@ -249,14 +255,14 @@ public class di {
 				}
 			}
 
-			var1.as(-903449990);
+			var1.af(-903449990);
 			if (var3 != 0) {
 				throw new RuntimeException();
 			} else {
-				var1.ap(-613165895);
+				var1.as(-613165895);
 
 				for (int var8 = 0; var8 < this.au_fld; var8++) {
-					int var12 = this.as_fld[var8];
+					int var12 = this.az_fld[var8];
 					if ((this.av_fld[var12].av_fld & 1) != 0) {
 						if (var2 >= 1) {
 							return;
@@ -268,7 +274,7 @@ public class di {
 						} else {
 							int var15 = var1.ar(1, -106081977);
 							if (var15 == 0) {
-								var3 = this.ae(var1, -270786553);
+								var3 = uc(this, var1, -270786553);
 								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
 							} else if (this.aw(var1, var12)) {
 								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
@@ -277,14 +283,14 @@ public class di {
 					}
 				}
 
-				var1.as(1868826832);
+				var1.af(1868826832);
 				if (var3 != 0) {
 					throw new RuntimeException();
 				} else {
-					var1.ap(1363379217);
+					var1.as(1363379217);
 
 					for (int var9 = 0; var9 < this.au_fld; var9++) {
-						int var13 = this.as_fld[var9];
+						int var13 = this.az_fld[var9];
 						if (0 == (this.av_fld[var13].av_fld & 1)) {
 							if (var3 > 0) {
 								if (var2 >= 1) {
@@ -296,7 +302,7 @@ public class di {
 							} else {
 								int var16 = var1.ar(1, -106081977);
 								if (var16 == 0) {
-									var3 = this.ae(var1, 1887156882);
+									var3 = uc(this, var1, 1887156882);
 									this.av_fld[var13].av_fld = (byte)(this.av_fld[var13].av_fld | 2);
 								} else if (this.aw(var1, var13)) {
 									this.av_fld[var13].av_fld = (byte)(this.av_fld[var13].av_fld | 2);
@@ -305,7 +311,7 @@ public class di {
 						}
 					}
 
-					var1.as(1477499512);
+					var1.af(1477499512);
 					if (0 != var3) {
 						throw new RuntimeException();
 					} else {
@@ -323,60 +329,13 @@ public class di {
 									return;
 								}
 
-								this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var10;
+								this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var10;
 							} else {
-								this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var10;
+								this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var10;
 							}
 						}
 					}
 				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)I"
-	)
-	int ae(xj var1, int var2) {
-		int var3 = var1.ar(2, -106081977);
-		int var4;
-		if (0 == var3) {
-			var4 = 0;
-		} else if (1 == var3) {
-			var4 = var1.ar(5, -106081977);
-		} else if (var3 == 2) {
-			var4 = var1.ar(8, -106081977);
-		} else {
-			var4 = var1.ar(11, -106081977);
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("td")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;)V"
-	)
-	public static void td(di var0) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			for (int var1 = 0; var1 < var0.ax_fld; var1++) {
-				int var2 = var0.ar_fld[var1];
-				cl var3 = var0.av_fld[var2];
-				Iterator var4 = client.da_fld.iterator();
-
-				while (var4.hasNext()) {
-					dx var5 = (dx)(dx)var4.next();
-					cv var6 = (cv)var5.au_fld.ak(var2);
-					if (var6 != null) {
-						var3.av(var6);
-						var6.mb();
-					}
-				}
-
-				cl.bc(var3, -1789026075);
 			}
 		}
 	}
@@ -388,7 +347,7 @@ public class di {
 	void ah(xj var1, int var2, byte var3) {
 		boolean var4 = var1.ar(1, -106081977) == 1;
 		if (var4) {
-			this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+			this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
 		}
 
 		int var5 = var1.ar(2, -106081977);
@@ -401,40 +360,40 @@ public class di {
 			} else if (client.dj_fld == var2) {
 				throw new RuntimeException();
 			} else {
-				var6.ay(-178250224);
+				cl.be(var6, -178250224);
 				if (var1.ar(1, -106081977) != 0) {
 					this.aw(var1, var2);
 				}
 
-				this.ar_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
+				this.af_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
 			}
 		} else if (var5 == 1) {
 			int var14 = var1.ar(3, -106081977);
 			kj var17 = var6.az_fld;
 			if (var14 == 0) {
+				var17.ak_fld--;
 				var17.ag_fld--;
-				var17.az_fld--;
 			} else if (1 == var14) {
-				var17.az_fld--;
+				var17.ag_fld--;
 			} else if (var14 == 2) {
-				var17.ag_fld++;
-				var17.az_fld--;
+				var17.ak_fld++;
+				var17.ag_fld--;
 			} else if (3 == var14) {
 				if (var3 == 33) {
 					return;
 				}
 
-				var17.ag_fld--;
+				var17.ak_fld--;
 			} else if (4 == var14) {
-				var17.ag_fld++;
+				var17.ak_fld++;
 			} else if (var14 == 5) {
-				var17.ag_fld--;
-				var17.az_fld++;
-			} else if (6 == var14) {
-				var17.az_fld++;
-			} else if (7 == var14) {
+				var17.ak_fld--;
 				var17.ag_fld++;
-				var17.az_fld++;
+			} else if (6 == var14) {
+				var17.ag_fld++;
+			} else if (7 == var14) {
+				var17.ak_fld++;
+				var17.ag_fld++;
 			}
 
 			this.ae_fld[var2] = true;
@@ -443,61 +402,61 @@ public class di {
 			int var13 = var1.ar(4, -106081977);
 			kj var16 = var6.az_fld;
 			if (0 == var13) {
+				var16.ak_fld -= 2;
 				var16.ag_fld -= 2;
-				var16.az_fld -= 2;
 			} else if (1 == var13) {
-				var16.ag_fld--;
-				var16.az_fld -= 2;
+				var16.ak_fld--;
+				var16.ag_fld -= 2;
 			} else if (var13 == 2) {
 				if (var3 == 33) {
 					return;
 				}
 
-				var16.az_fld -= 2;
-			} else if (var13 == 3) {
-				var16.ag_fld++;
-				var16.az_fld -= 2;
-			} else if (var13 == 4) {
-				var16.ag_fld += 2;
-				var16.az_fld -= 2;
-			} else if (var13 == 5) {
 				var16.ag_fld -= 2;
-				var16.az_fld--;
+			} else if (var13 == 3) {
+				var16.ak_fld++;
+				var16.ag_fld -= 2;
+			} else if (var13 == 4) {
+				var16.ak_fld += 2;
+				var16.ag_fld -= 2;
+			} else if (var13 == 5) {
+				var16.ak_fld -= 2;
+				var16.ag_fld--;
 			} else if (var13 == 6) {
 				if (var3 == 33) {
 					return;
 				}
 
-				var16.ag_fld += 2;
-				var16.az_fld--;
+				var16.ak_fld += 2;
+				var16.ag_fld--;
 			} else if (7 == var13) {
-				var16.ag_fld -= 2;
+				var16.ak_fld -= 2;
 			} else if (var13 == 8) {
-				var16.ag_fld += 2;
+				var16.ak_fld += 2;
 			} else if (var13 == 9) {
-				var16.ag_fld -= 2;
-				var16.az_fld++;
+				var16.ak_fld -= 2;
+				var16.ag_fld++;
 			} else if (var13 == 10) {
-				var16.ag_fld += 2;
-				var16.az_fld++;
+				var16.ak_fld += 2;
+				var16.ag_fld++;
 			} else if (var13 == 11) {
 				if (var3 == 33) {
 					return;
 				}
 
-				var16.ag_fld -= 2;
-				var16.az_fld += 2;
-			} else if (12 == var13) {
-				var16.ag_fld--;
-				var16.az_fld += 2;
-			} else if (var13 == 13) {
-				var16.az_fld += 2;
-			} else if (var13 == 14) {
-				var16.ag_fld++;
-				var16.az_fld += 2;
-			} else if (15 == var13) {
+				var16.ak_fld -= 2;
 				var16.ag_fld += 2;
-				var16.az_fld += 2;
+			} else if (12 == var13) {
+				var16.ak_fld--;
+				var16.ag_fld += 2;
+			} else if (var13 == 13) {
+				var16.ag_fld += 2;
+			} else if (var13 == 14) {
+				var16.ak_fld++;
+				var16.ag_fld += 2;
+			} else if (15 == var13) {
+				var16.ak_fld += 2;
+				var16.ag_fld += 2;
 			}
 
 			this.ae_fld[var2] = true;
@@ -518,9 +477,9 @@ public class di {
 				}
 
 				kj var21 = var6.az_fld;
-				var21.ak_fld = 615342573 * (byte)(var21.ak_fld + var18 & 3);
-				var21.ag_fld += var19 * -1810751103;
-				var21.az_fld += var20 * -1225554487;
+				var21.az_fld = 615342573 * (byte)(var21.az_fld + var18 & 3);
+				var21.ak_fld += var19 * -1810751103;
+				var21.ag_fld += var20 * -1225554487;
 				this.ae_fld[var2] = true;
 				this.ah_fld[var2] = var6.ae_fld;
 			} else {
@@ -529,18 +488,45 @@ public class di {
 				int var10 = kj.az(var8);
 				int var11 = kj.av(var8);
 				kj var12 = var6.az_fld;
-				var12.ak_fld = (byte)(var9 + var12.ak_fld & 3);
-				var12.ag_fld = -1810751103 * (var10 + var12.ag_fld & 16383);
-				var12.az_fld = -1225554487 * (var12.az_fld + var11 & 16383);
+				var12.az_fld = (byte)(var9 + var12.az_fld & 3);
+				var12.ak_fld = -1810751103 * (var10 + var12.ak_fld & 16383);
+				var12.ag_fld = -1225554487 * (var12.ag_fld + var11 & 16383);
 				this.ae_fld[var2] = true;
 				this.ah_fld[var2] = var6.ae_fld;
 			}
 		}
 	}
 
+	@ObfuscatedName("qy")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lcv;I)V"
+	)
+	public static void qy(di var0, cv var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.hz(var1);
+		if (var1 != null) {
+			var0.av_fld[var1.bq_fld].av(var1);
+		}
+	}
+
+	@ObfuscatedName("sy")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;I)Lrx;"
+	)
+	public static rx sy(di var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var1 >= 0 && var1 < var0.av_fld.length ? var0.av_fld[var1] : null;
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)Z"
+		descriptor = "(Lxj;IB)Z"
 	)
 	boolean aw(xj var1, int var2) {
 		cl var4 = this.av_fld[var2];
@@ -554,7 +540,7 @@ public class di {
 			int var19 = var1.ar(13, -106081977);
 			boolean var22 = var1.ar(1, -106081977) == 1;
 			if (var22) {
-				this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+				this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
 			}
 
 			if (var4.aw(2066800489)) {
@@ -566,16 +552,16 @@ public class di {
 			}
 		} else if (1 == var5) {
 			int var15 = var1.ar(2, -106081977);
-			int var18 = var4.ag_fld;
+			int var18 = var4.ay_fld;
 			int var21 = kj.ag(var18) + var15 & 3;
-			cl.ri(var4, var21, (byte)45);
-			var4.ag_fld = 1483486233 * ((var21 << 28) + (var18 & 268435455));
+			cl.oa(var4, var21, (byte)45);
+			var4.ay_fld = 1483486233 * ((var21 << 28) + (var18 & 268435455));
 			return false;
 		} else if (2 == var5) {
 			int var14 = var1.ar(5, -106081977);
 			int var17 = var14 >> 3;
 			int var20 = var14 & 7;
-			int var23 = var4.ag_fld;
+			int var23 = var4.ay_fld;
 			int var24 = kj.ag(var23) + var17 & 3;
 			int var25 = var23 >> 14 & 0xFF;
 			int var26 = var23 & 0xFF;
@@ -615,31 +601,31 @@ public class di {
 				var26++;
 			}
 
-			cl.ri(var4, var24, (byte)45);
-			var4.ag_fld = kj.ak(var24, var25, var26);
+			cl.oa(var4, var24, (byte)45);
+			var4.ay_fld = kj.ak(var24, var25, var26);
 			return false;
 		} else {
 			int var6 = var1.ar(18, -106081977);
 			int var7 = var6 >> 16;
 			int var8 = var6 >> 8 & 0xFF;
 			int var9 = var6 & 0xFF;
-			int var10 = var4.ag_fld;
+			int var10 = var4.ay_fld;
 			int var11 = kj.ag(var10) + var7 & 3;
-			cl.ri(var4, var11, (byte)45);
+			cl.oa(var4, var11, (byte)45);
 			int var12 = kj.az(var10) + var8 & 0xFF;
 			int var13 = kj.av(var10) + var9 & 0xFF;
-			var4.ag_fld = kj.ak(var4.al(1970928487), var12, var13);
+			var4.ay_fld = kj.ak(var4.al(1970928487), var12, var13);
 			return false;
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
 		descriptor = "(Lxj;I)V"
 	)
-	void af(xj var1, int var2) throws EOFException {
+	void bk(xj var1, int var2) throws EOFException {
 		for (int var3 = 0; var3 < this.an_fld; var3++) {
-			int var4 = this.af_fld[var3];
+			int var4 = this.as_fld[var3];
 			int var5 = var1.cg();
 			if ((var5 & 2) != 0) {
 				if (var2 == 915197995) {
@@ -657,11 +643,11 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "(Lxj;II)V"
 	)
-	void bg(xj var1, int var2, int var3) throws EOFException {
+	void bb(xj var1, int var2, int var3) throws EOFException {
 		cl var4 = this.av_fld[var2];
 		int var5 = Integer.MAX_VALUE;
 		if ((var3 & 131072) != 0) {
@@ -673,24 +659,24 @@ public class di {
 					if (var9 != 32767) {
 						int var10 = var1.dz();
 						int var11 = var1.cg();
-						int var12 = var9 > 0 ? xi.uk(var1, 1898450231) : var11;
-						var4.ab(var8, var9, var10, var11, var12);
+						int var12 = var9 > 0 ? var1.de() : var11;
+						cl.zc(var4, var8, var9, var10, var11, var12);
 					} else {
-						var4.bc(var8);
+						cl.ga(var4, var8);
 					}
 				}
 			}
 		}
 
 		if (0 != (var3 & 256)) {
-			int var16 = var1.ew();
+			int var16 = xi.tl(var1, (byte)1);
 			int var29 = var16 >> 8;
 			int var37 = var29 >= 13 && var29 <= 20 ? var29 - 12 : 0;
-			ki var43 = (ki)ka.ak(ti.ak(), xi.uk(var1, 1898450231));
-			boolean var48 = xi.uk(var1, 1898450231) == 1;
+			ki var43 = (ki)ka.ak(ti.ak(), var1.de());
+			boolean var48 = var1.de() == 1;
 			int var53 = var1.df();
 			this.aw_fld.au_fld = 0;
-			xi.xp(var1, this.aw_fld.al_fld, 0, var53, (byte)8);
+			var1.dh(this.aw_fld.al_fld, 0, var53);
 			this.aw_fld.au_fld = 0;
 			String var57 = zv.ay(in.an(hr.ag(this.aw_fld)));
 			byte[] var13 = null;
@@ -698,25 +684,25 @@ public class di {
 				var13 = new byte[var37];
 
 				for (int var14 = 0; var14 < var37; var14++) {
-					var13[var14] = xi.rx(var1, -1134409442);
+					var13[var14] = var1.dj();
 				}
 			}
 
-			cl.ql(var4, var16, var43, var48, var57, var13, (byte)-60);
+			var4.ac(var16, var43, var48, var57, var13, (byte)-60);
 		}
 
 		if (0 != (var3 & 8)) {
-			int var17 = xi.uk(var1, 1898450231);
-			var4.ai(var17, var1);
+			int var17 = var1.de();
+			cl.cz(var4, var17, var1);
 		}
 
 		if ((var3 & 16) != 0) {
-			String var18 = xi.kc(var1, 166496896);
-			cl.kb(var4, var18, -1286278843);
+			String var18 = xi.at(var1, 166496896);
+			var4.ad(var18);
 		}
 
 		if ((var3 & 2048) != 0) {
-			var4.ae_fld = (gt)ka.ak(ge.ak(-824479380), xi.wc(var1, -1708285175));
+			var4.ae_fld = (gt)ka.ak(ge.ak(-824479380), xi.pb(var1, -1708285175));
 			if (Integer.MAX_VALUE == var5) {
 				this.ah_fld[var2] = var4.ae_fld;
 			}
@@ -727,14 +713,14 @@ public class di {
 
 			for (int var30 = 0; var30 < var19; var30++) {
 				int var38 = var1.df();
-				int var44 = xi.oh(var1, (byte)86);
+				int var44 = var1.ex();
 				int var49 = var1.em();
-				cl.sx(var4, var38, var44, var49 >> 16, var49 & 65535);
+				cl.gy(var4, var38, var44, var49 >> 16, var49 & 65535);
 			}
 		}
 
 		if ((var3 & 32768) != 0) {
-			byte var15 = xi.rp(var1, 1309128811);
+			byte var15 = var1.cw();
 			if (var15 == 127) {
 				this.ah_fld[var2] = gt.ak_fld;
 			} else {
@@ -744,34 +730,34 @@ public class di {
 
 		if ((var3 & 4096) != 0) {
 			int var20 = client.dv_fld + var1.eo();
-			int var31 = client.dv_fld + var1.ew();
-			byte var39 = xi.wc(var1, -1985742420);
-			byte var45 = xi.wc(var1, -1894270363);
-			byte var50 = xi.wc(var1, -1628943203);
+			int var31 = client.dv_fld + xi.tl(var1, (byte)1);
+			byte var39 = xi.pb(var1, -1985742420);
+			byte var45 = xi.pb(var1, -1894270363);
+			byte var50 = xi.pb(var1, -1628943203);
 			byte var54 = (byte)var1.cg();
 			var4.bd(var20, var31, var39, var45, var50, var54);
 		}
 
 		if ((var3 & 128) != 0) {
-			var1.ew();
-			xi.uk(var1, 1898450231);
-			var1.dp();
+			xi.tl(var1, (byte)1);
+			var1.de();
+			xi.iu(var1, -1527157562);
 			int var21 = var1.cg();
 			this.aw_fld.au_fld = 0;
-			xi.it(var1, this.aw_fld.al_fld, 0, var21);
+			var1.el(this.aw_fld.al_fld, 0, var21);
 			this.aw_fld.au_fld = 0;
 		}
 
 		if (0 != (var3 & 1024)) {
 			for (int var22 = 0; var22 < 3; var22++) {
-				this.ay_fld[var22] = xi.kc(var1, 1705045318);
+				this.ay_fld[var22] = xi.at(var1, 1705045318);
 			}
 
-			var4.bm(this.ay_fld);
+			cl.da(var4, this.ay_fld, (byte)-37);
 		}
 
 		if ((var3 & 262144) != 0) {
-			int var23 = xi.uk(var1, 1898450231);
+			int var23 = var1.de();
 			if (var23 > 0) {
 				for (int var32 = 0; var32 < var23; var32++) {
 					int var40 = var1.dz();
@@ -784,8 +770,8 @@ public class di {
 		}
 
 		if ((var3 & 64) != 0) {
-			int var24 = xi.oh(var1, (byte)43);
-			int var33 = xi.uk(var1, 1898450231);
+			int var24 = var1.ex();
+			int var33 = var1.de();
 			var4.am(var24, var33);
 		}
 
@@ -803,37 +789,110 @@ public class di {
 			int var26 = var1.df();
 			byte[] var35 = new byte[var26];
 			xi var41 = new xi(var35);
-			var1.el(var35, 0, var26);
+			var1.eh(var35, 0, var26);
 			var4.an(var41);
 		}
 
 		if (0 != (var3 & 32)) {
 			int var27 = var1.eo();
-			var4.ck(var27);
+			var4.at(var27);
 		}
 
 		if ((var3 & 8192) != 0) {
-			byte var28 = xi.rp(var1, 1127100194);
-			byte var36 = xi.lc(var1, 1469597225);
-			byte var42 = xi.wc(var1, -1984396702);
-			byte var47 = xi.rx(var1, -1134409442);
-			int var52 = xi.oh(var1, (byte)25) + client.dv_fld;
-			int var56 = var1.ew() + client.dv_fld;
-			int var58 = xi.oh(var1, (byte)125);
-			cl.vx(var4, var28, var36, var42, var47, var52, var56, var58, (short)26850);
+			byte var28 = var1.cw();
+			byte var36 = var1.ep();
+			byte var42 = xi.pb(var1, -1984396702);
+			byte var47 = var1.dj();
+			int var52 = var1.ex() + client.dv_fld;
+			int var56 = xi.tl(var1, (byte)1) + client.dv_fld;
+			int var58 = var1.ex();
+			cl.zw(var4, var28, var36, var42, var47, var52, var56, var58, (short)26850);
 			this.ae_fld[var2] = false;
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;)V"
+		descriptor = "(Ldx;I)V"
 	)
-	void ax(cv var1) {
-		this.ml(var1);
-		if (var1 != null) {
-			this.av_fld[var1.bx_fld].av(var1);
+	void ar(dx var1, int var2) throws EOFException {
+		for (int var3 = 0; var3 < this.al_fld; var3++) {
+			int var4;
+			cl var5;
+			cv var7;
+			boolean var10000;
+			if (var2 >= -344962779) {
+				return;
+			}
+
+			label74: {
+				var4 = this.ar_fld[var3];
+				var5 = this.av_fld[var4];
+				kj var6 = var5.az_fld;
+				var7 = (cv)var1.au_fld.ae(var4);
+				if (var6.ak_fld > var1.as_fld && var6.ag_fld > var1.ay_fld && var6.ak_fld < var1.as_fld + var1.ah_fld) {
+					if (var2 >= -344962779) {
+						return;
+					}
+
+					if (var6.ag_fld < var1.ay_fld + var1.aw_fld) {
+						var10000 = true;
+						break label74;
+					}
+				}
+
+				var10000 = false;
+			}
+
+			boolean var8 = var10000;
+			if (client.dj_fld == var4 && var8 && 0 != var1.ag_fld) {
+				client.es_fld = -1784608945 * var1.ag_fld;
+			}
+
+			if (var8 && var7 == null) {
+				var7 = var5.ah(var4, var1);
+				cl.mv(var5, var7, -1629734723);
+				xf.sk(var1.au_fld, var7, var4);
+			} else if (!var8) {
+				if (var2 >= -344962779) {
+					return;
+				}
+
+				if (null != var7) {
+					var5.av(var7);
+					var7.mb();
+				}
+			}
 		}
+	}
+
+	@ObfuscatedName("zm")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;I)V"
+	)
+	public static void zm(di var0, xj var1, int var2) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var3 = var1.au_fld * -520382865;
+		var0.an_fld = 0;
+		var0.av(var1, (byte)-42);
+		var0.ay((byte)34);
+		var0.as(1256262501);
+		var0.bk(var1, -1698084881);
+		var0.al(1217613053);
+		if (var1.au_fld - var3 != var2) {
+			throw new RuntimeException(var1.au_fld - var3 + " " + var2);
+		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lrx;"
+	)
+	rx ao(int var1) {
+		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
 	}
 
 	@ObfuscatedName("au")
@@ -862,29 +921,29 @@ public class di {
 								return;
 							}
 
-							var10000 = xi.uk(var1, 1898450231);
+							var10000 = var1.de();
 						} else {
 							var10000 = var12;
 						}
 
 						int var13 = var10000;
-						var5.ab(var9, var10, var11, var12, var13);
+						cl.zc(var5, var9, var10, var11, var12, var13);
 					} else {
-						var5.bc(var9);
+						cl.ga(var5, var9);
 					}
 				}
 			}
 		}
 
 		if (0 != (var3 & 256)) {
-			int var17 = var1.ew();
+			int var17 = xi.tl(var1, (byte)1);
 			int var30 = var17 >> 8;
 			int var38 = var30 >= 13 && var30 <= 20 ? var30 - 12 : 0;
-			ki var44 = (ki)ka.ak(ti.ak(), xi.uk(var1, 1898450231));
-			boolean var49 = xi.uk(var1, 1898450231) == 1;
+			ki var44 = (ki)ka.ak(ti.ak(), var1.de());
+			boolean var49 = var1.de() == 1;
 			int var54 = var1.df();
 			this.aw_fld.au_fld = 0;
-			xi.xp(var1, this.aw_fld.al_fld, 0, var54, (byte)8);
+			var1.dh(this.aw_fld.al_fld, 0, var54);
 			this.aw_fld.au_fld = 0;
 			String var58 = zv.ay(in.an(hr.ag(this.aw_fld)));
 			byte[] var14 = null;
@@ -896,16 +955,16 @@ public class di {
 				var14 = new byte[var38];
 
 				for (int var15 = 0; var15 < var38; var15++) {
-					var14[var15] = xi.rx(var1, -1134409442);
+					var14[var15] = var1.dj();
 				}
 			}
 
-			cl.ql(var5, var17, var44, var49, var58, var14, (byte)71);
+			var5.ac(var17, var44, var49, var58, var14, (byte)71);
 		}
 
 		if (0 != (var3 & 8)) {
-			int var18 = xi.uk(var1, 1898450231);
-			var5.ai(var18, var1);
+			int var18 = var1.de();
+			cl.cz(var5, var18, var1);
 		}
 
 		if ((var3 & 16) != 0) {
@@ -913,12 +972,12 @@ public class di {
 				return;
 			}
 
-			String var19 = xi.kc(var1, -1592067221);
-			cl.kb(var5, var19, -1286278843);
+			String var19 = xi.at(var1, -1592067221);
+			var5.ad(var19);
 		}
 
 		if ((var3 & 2048) != 0) {
-			var5.ae_fld = (gt)ka.ak(ge.ak(-1925779397), xi.wc(var1, -1510198870));
+			var5.ae_fld = (gt)ka.ak(ge.ak(-1925779397), xi.pb(var1, -1510198870));
 			if (Integer.MAX_VALUE == var6) {
 				this.ah_fld[var2] = var5.ae_fld;
 			}
@@ -929,9 +988,9 @@ public class di {
 
 			for (int var31 = 0; var31 < var20; var31++) {
 				int var39 = var1.df();
-				int var45 = xi.oh(var1, (byte)120);
+				int var45 = var1.ex();
 				int var50 = var1.em();
-				cl.sx(var5, var39, var45, var50 >> 16, var50 & 65535);
+				cl.gy(var5, var39, var45, var50 >> 16, var50 & 65535);
 			}
 		}
 
@@ -940,7 +999,7 @@ public class di {
 				return;
 			}
 
-			byte var16 = xi.rp(var1, 809298492);
+			byte var16 = var1.cw();
 			if (var16 == 127) {
 				this.ah_fld[var2] = gt.ak_fld;
 			} else {
@@ -954,10 +1013,10 @@ public class di {
 			}
 
 			int var21 = client.dv_fld + var1.eo();
-			int var32 = client.dv_fld + var1.ew();
-			byte var40 = xi.wc(var1, -2138521840);
-			byte var46 = xi.wc(var1, -1873587485);
-			byte var51 = xi.wc(var1, -2021156308);
+			int var32 = client.dv_fld + xi.tl(var1, (byte)1);
+			byte var40 = xi.pb(var1, -2138521840);
+			byte var46 = xi.pb(var1, -1873587485);
+			byte var51 = xi.pb(var1, -2021156308);
 			byte var55 = (byte)var1.cg();
 			var5.bd(var21, var32, var40, var46, var51, var55);
 		}
@@ -967,25 +1026,25 @@ public class di {
 				return;
 			}
 
-			var1.ew();
-			xi.uk(var1, 1898450231);
-			var1.dp();
+			xi.tl(var1, (byte)1);
+			var1.de();
+			xi.iu(var1, -519527577);
 			int var22 = var1.cg();
 			this.aw_fld.au_fld = 0;
-			xi.it(var1, this.aw_fld.al_fld, 0, var22);
+			var1.el(this.aw_fld.al_fld, 0, var22);
 			this.aw_fld.au_fld = 0;
 		}
 
 		if (0 != (var3 & 1024)) {
 			for (int var23 = 0; var23 < 3; var23++) {
-				this.ay_fld[var23] = xi.kc(var1, 1955261850);
+				this.ay_fld[var23] = xi.at(var1, 1955261850);
 			}
 
-			var5.bm(this.ay_fld);
+			cl.da(var5, this.ay_fld, (byte)-94);
 		}
 
 		if ((var3 & 262144) != 0) {
-			int var24 = xi.uk(var1, 1898450231);
+			int var24 = var1.de();
 			if (var24 > 0) {
 				if (var4 >= -2049343944) {
 					return;
@@ -1002,8 +1061,8 @@ public class di {
 		}
 
 		if ((var3 & 64) != 0) {
-			int var25 = xi.oh(var1, (byte)49);
-			int var34 = xi.uk(var1, 1898450231);
+			int var25 = var1.ex();
+			int var34 = var1.de();
 			var5.am(var25, var34);
 		}
 
@@ -1021,24 +1080,24 @@ public class di {
 			int var27 = var1.df();
 			byte[] var36 = new byte[var27];
 			xi var42 = new xi(var36);
-			var1.el(var36, 0, var27);
+			var1.eh(var36, 0, var27);
 			var5.an(var42);
 		}
 
 		if (0 != (var3 & 32)) {
 			int var28 = var1.eo();
-			var5.ck(var28);
+			var5.at(var28);
 		}
 
 		if ((var3 & 8192) != 0) {
-			byte var29 = xi.rp(var1, 815912735);
-			byte var37 = xi.lc(var1, 1513370254);
-			byte var43 = xi.wc(var1, -1956679190);
-			byte var48 = xi.rx(var1, -1134409442);
-			int var53 = xi.oh(var1, (byte)41) + client.dv_fld;
-			int var57 = var1.ew() + client.dv_fld;
-			int var59 = xi.oh(var1, (byte)65);
-			cl.vx(var5, var29, var37, var43, var48, var53, var57, var59, (short)15083);
+			byte var29 = var1.cw();
+			byte var37 = var1.ep();
+			byte var43 = xi.pb(var1, -1956679190);
+			byte var48 = var1.dj();
+			int var53 = var1.ex() + client.dv_fld;
+			int var57 = xi.tl(var1, (byte)1) + client.dv_fld;
+			int var59 = var1.ex();
+			cl.zw(var5, var29, var37, var43, var48, var53, var57, var59, (short)15083);
 			this.ae_fld[var2] = false;
 		}
 	}
@@ -1049,7 +1108,7 @@ public class di {
 	)
 	void bn(xj var1) throws EOFException {
 		for (int var2 = 0; var2 < this.an_fld; var2++) {
-			int var3 = this.af_fld[var2];
+			int var3 = this.as_fld[var2];
 			int var4 = var1.cg();
 			if ((var4 & 2) != 0) {
 				var4 += var1.cg() << 8;
@@ -1063,24 +1122,14 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("ml")
-	@ObfuscatedSignature(
-		descriptor = "(Lcv;)V"
-	)
-	public void ml(cv var1) {
-		if (var1 != null) {
-			og.ci_fld.getCallbacks().post(new PlayerDespawned(var1));
-		}
-	}
-
-	@ObfuscatedName("bj")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Lxj;I)V"
 	)
-	void bj(xj var1, int var2) {
+	void af(xj var1, int var2) {
 		boolean var3 = var1.ar(1, -106081977) == 1;
 		if (var3) {
-			this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+			this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
 		}
 
 		int var4 = var1.ar(2, -106081977);
@@ -1091,36 +1140,36 @@ public class di {
 			} else if (client.dj_fld == var2) {
 				throw new RuntimeException();
 			} else {
-				var5.ay(1606003730);
+				cl.be(var5, 1606003730);
 				if (var1.ar(1, -106081977) != 0) {
 					this.aw(var1, var2);
 				}
 
-				this.ar_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
+				this.af_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
 			}
 		} else if (var4 == 1) {
 			int var13 = var1.ar(3, -106081977);
 			kj var16 = var5.az_fld;
 			if (var13 == 0) {
+				var16.ak_fld--;
 				var16.ag_fld--;
-				var16.az_fld--;
 			} else if (1 == var13) {
-				var16.az_fld--;
+				var16.ag_fld--;
 			} else if (var13 == 2) {
-				var16.ag_fld++;
-				var16.az_fld--;
+				var16.ak_fld++;
+				var16.ag_fld--;
 			} else if (3 == var13) {
-				var16.ag_fld--;
+				var16.ak_fld--;
 			} else if (4 == var13) {
-				var16.ag_fld++;
+				var16.ak_fld++;
 			} else if (var13 == 5) {
-				var16.ag_fld--;
-				var16.az_fld++;
-			} else if (6 == var13) {
-				var16.az_fld++;
-			} else if (7 == var13) {
+				var16.ak_fld--;
 				var16.ag_fld++;
-				var16.az_fld++;
+			} else if (6 == var13) {
+				var16.ag_fld++;
+			} else if (7 == var13) {
+				var16.ak_fld++;
+				var16.ag_fld++;
 			}
 
 			this.ae_fld[var2] = true;
@@ -1129,49 +1178,49 @@ public class di {
 			int var12 = var1.ar(4, -106081977);
 			kj var15 = var5.az_fld;
 			if (0 == var12) {
+				var15.ak_fld -= 2;
 				var15.ag_fld -= 2;
-				var15.az_fld -= 2;
 			} else if (1 == var12) {
-				var15.ag_fld--;
-				var15.az_fld -= 2;
+				var15.ak_fld--;
+				var15.ag_fld -= 2;
 			} else if (var12 == 2) {
-				var15.az_fld -= 2;
+				var15.ag_fld -= 2;
 			} else if (var12 == 3) {
-				var15.ag_fld++;
-				var15.az_fld -= 2;
+				var15.ak_fld++;
+				var15.ag_fld -= 2;
 			} else if (var12 == 4) {
-				var15.ag_fld += 2;
-				var15.az_fld -= 2;
+				var15.ak_fld += 2;
+				var15.ag_fld -= 2;
 			} else if (var12 == 5) {
-				var15.ag_fld -= 2;
-				var15.az_fld--;
-			} else if (var12 == 6) {
-				var15.ag_fld += 2;
-				var15.az_fld--;
-			} else if (7 == var12) {
-				var15.ag_fld -= 2;
-			} else if (var12 == 8) {
-				var15.ag_fld += 2;
-			} else if (var12 == 9) {
-				var15.ag_fld -= 2;
-				var15.az_fld++;
-			} else if (var12 == 10) {
-				var15.ag_fld += 2;
-				var15.az_fld++;
-			} else if (var12 == 11) {
-				var15.ag_fld -= 2;
-				var15.az_fld += 2;
-			} else if (12 == var12) {
+				var15.ak_fld -= 2;
 				var15.ag_fld--;
-				var15.az_fld += 2;
-			} else if (var12 == 13) {
-				var15.az_fld += 2;
-			} else if (var12 == 14) {
+			} else if (var12 == 6) {
+				var15.ak_fld += 2;
+				var15.ag_fld--;
+			} else if (7 == var12) {
+				var15.ak_fld -= 2;
+			} else if (var12 == 8) {
+				var15.ak_fld += 2;
+			} else if (var12 == 9) {
+				var15.ak_fld -= 2;
 				var15.ag_fld++;
-				var15.az_fld += 2;
-			} else if (15 == var12) {
+			} else if (var12 == 10) {
+				var15.ak_fld += 2;
+				var15.ag_fld++;
+			} else if (var12 == 11) {
+				var15.ak_fld -= 2;
 				var15.ag_fld += 2;
-				var15.az_fld += 2;
+			} else if (12 == var12) {
+				var15.ak_fld--;
+				var15.ag_fld += 2;
+			} else if (var12 == 13) {
+				var15.ag_fld += 2;
+			} else if (var12 == 14) {
+				var15.ak_fld++;
+				var15.ag_fld += 2;
+			} else if (15 == var12) {
+				var15.ak_fld += 2;
+				var15.ag_fld += 2;
 			}
 
 			this.ae_fld[var2] = true;
@@ -1192,9 +1241,9 @@ public class di {
 				}
 
 				kj var20 = var5.az_fld;
-				var20.ak_fld = 615342573 * (byte)(var20.ak_fld + var17 & 3);
-				var20.ag_fld += var18 * -1810751103;
-				var20.az_fld += var19 * -1225554487;
+				var20.az_fld = 615342573 * (byte)(var20.az_fld + var17 & 3);
+				var20.ak_fld += var18 * -1810751103;
+				var20.ag_fld += var19 * -1225554487;
 				this.ae_fld[var2] = true;
 				this.ah_fld[var2] = var5.ae_fld;
 			} else {
@@ -1203,162 +1252,9 @@ public class di {
 				int var9 = kj.az(var7);
 				int var10 = kj.av(var7);
 				kj var11 = var5.az_fld;
-				var11.ak_fld = (byte)(var8 + var11.ak_fld & 3);
-				var11.ag_fld = -1810751103 * (var9 + var11.ag_fld & 16383);
-				var11.az_fld = -1225554487 * (var11.az_fld + var10 & 16383);
-				this.ae_fld[var2] = true;
-				this.ah_fld[var2] = var5.ae_fld;
-			}
-		}
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int aa(int var1) {
-		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			if (var1 == this.az_fld[var3]) {
-				return var3;
-			}
-		}
-
-		return -1;
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)V"
-	)
-	void bk(xj var1, int var2) {
-		boolean var3 = var1.ar(1, -106081977) == 1;
-		if (var3) {
-			this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
-		}
-
-		int var4 = var1.ar(2, -106081977);
-		cl var5 = this.av_fld[var2];
-		if (var4 == 0) {
-			if (var3) {
-				this.ae_fld[var2] = false;
-			} else if (client.dj_fld == var2) {
-				throw new RuntimeException();
-			} else {
-				var5.ay(-1190222514);
-				if (var1.ar(1, -106081977) != 0) {
-					this.aw(var1, var2);
-				}
-
-				this.ar_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
-			}
-		} else if (var4 == 1) {
-			int var13 = var1.ar(3, -106081977);
-			kj var16 = var5.az_fld;
-			if (var13 == 0) {
-				var16.ag_fld--;
-				var16.az_fld--;
-			} else if (1 == var13) {
-				var16.az_fld--;
-			} else if (var13 == 2) {
-				var16.ag_fld++;
-				var16.az_fld--;
-			} else if (3 == var13) {
-				var16.ag_fld--;
-			} else if (4 == var13) {
-				var16.ag_fld++;
-			} else if (var13 == 5) {
-				var16.ag_fld--;
-				var16.az_fld++;
-			} else if (6 == var13) {
-				var16.az_fld++;
-			} else if (7 == var13) {
-				var16.ag_fld++;
-				var16.az_fld++;
-			}
-
-			this.ae_fld[var2] = true;
-			this.ah_fld[var2] = var5.ae_fld;
-		} else if (var4 == 2) {
-			int var12 = var1.ar(4, -106081977);
-			kj var15 = var5.az_fld;
-			if (0 == var12) {
-				var15.ag_fld -= 2;
-				var15.az_fld -= 2;
-			} else if (1 == var12) {
-				var15.ag_fld--;
-				var15.az_fld -= 2;
-			} else if (var12 == 2) {
-				var15.az_fld -= 2;
-			} else if (var12 == 3) {
-				var15.ag_fld++;
-				var15.az_fld -= 2;
-			} else if (var12 == 4) {
-				var15.ag_fld += 2;
-				var15.az_fld -= 2;
-			} else if (var12 == 5) {
-				var15.ag_fld -= 2;
-				var15.az_fld--;
-			} else if (var12 == 6) {
-				var15.ag_fld += 2;
-				var15.az_fld--;
-			} else if (7 == var12) {
-				var15.ag_fld -= 2;
-			} else if (var12 == 8) {
-				var15.ag_fld += 2;
-			} else if (var12 == 9) {
-				var15.ag_fld -= 2;
-				var15.az_fld++;
-			} else if (var12 == 10) {
-				var15.ag_fld += 2;
-				var15.az_fld++;
-			} else if (var12 == 11) {
-				var15.ag_fld -= 2;
-				var15.az_fld += 2;
-			} else if (12 == var12) {
-				var15.ag_fld--;
-				var15.az_fld += 2;
-			} else if (var12 == 13) {
-				var15.az_fld += 2;
-			} else if (var12 == 14) {
-				var15.ag_fld++;
-				var15.az_fld += 2;
-			} else if (15 == var12) {
-				var15.ag_fld += 2;
-				var15.az_fld += 2;
-			}
-
-			this.ae_fld[var2] = true;
-			this.ah_fld[var2] = var5.ae_fld;
-		} else {
-			int var6 = var1.ar(1, -106081977);
-			if (0 == var6) {
-				int var14 = var1.ar(12, -106081977);
-				int var17 = var14 >> 10;
-				int var18 = var14 >> 5 & 31;
-				if (var18 > 15) {
-					var18 -= 32;
-				}
-
-				int var19 = var14 & 31;
-				if (var19 > 15) {
-					var19 -= 32;
-				}
-
-				kj var20 = var5.az_fld;
-				var20.ak_fld = 615342573 * (byte)(var20.ak_fld + var17 & 3);
-				var20.ag_fld += var18 * -1810751103;
-				var20.az_fld += var19 * -1225554487;
-				this.ae_fld[var2] = true;
-				this.ah_fld[var2] = var5.ae_fld;
-			} else {
-				int var7 = var1.ar(30, -106081977);
-				int var8 = kj.ag(var7);
-				int var9 = kj.az(var7);
-				int var10 = kj.av(var7);
-				kj var11 = var5.az_fld;
-				var11.ak_fld = (byte)(var8 + var11.ak_fld & 3);
-				var11.ag_fld = -1810751103 * (var9 + var11.ag_fld & 16383);
-				var11.az_fld = -1225554487 * (var11.az_fld + var10 & 16383);
+				var11.az_fld = (byte)(var8 + var11.az_fld & 3);
+				var11.ak_fld = -1810751103 * (var9 + var11.ak_fld & 16383);
+				var11.ag_fld = -1225554487 * (var11.ag_fld + var10 & 16383);
 				this.ae_fld[var2] = true;
 				this.ah_fld[var2] = var5.ae_fld;
 			}
@@ -1367,153 +1263,148 @@ public class di {
 
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;IB)Lrx;"
-	)
-	public static rx bh(di var0, int var1, byte var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1 >= 0 && var1 < var0.av_fld.length ? var0.av_fld[var1] : null;
-		}
-	}
-
-	@ObfuscatedName("hz")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;Lxj;)V"
-	)
-	public static void hz(di var0, xj var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ax_fld = 0;
-			int var2 = 0;
-			var1.ap(-2097965206);
-
-			for (int var3 = 0; var3 < var0.al_fld; var3++) {
-				int var4 = var0.az_fld[var3];
-				if ((var0.av_fld[var4].av_fld & 1) == 0) {
-					if (var2 > 0) {
-						var2--;
-						var0.av_fld[var4].av_fld = (byte)(var0.av_fld[var4].av_fld | 2);
-					} else {
-						int var5 = var1.ar(1, -106081977);
-						if (0 == var5) {
-							var2 = var0.ae(var1, 1770819933);
-							var0.av_fld[var4].av_fld = (byte)(var0.av_fld[var4].av_fld | 2);
-						} else {
-							var0.ah(var1, var4, (byte)65);
-						}
-					}
-				}
-			}
-
-			var1.as(-582404284);
-			if (var2 != 0) {
-				throw new RuntimeException();
-			} else {
-				var1.ap(-259252045);
-
-				for (int var6 = 0; var6 < var0.al_fld; var6++) {
-					int var10 = var0.az_fld[var6];
-					if (0 != (var0.av_fld[var10].av_fld & 1)) {
-						if (var2 > 0) {
-							var2--;
-							var0.av_fld[var10].av_fld = (byte)(var0.av_fld[var10].av_fld | 2);
-						} else {
-							int var13 = var1.ar(1, -106081977);
-							if (var13 == 0) {
-								var2 = var0.ae(var1, 701584633);
-								var0.av_fld[var10].av_fld = (byte)(var0.av_fld[var10].av_fld | 2);
-							} else {
-								var0.ah(var1, var10, (byte)-30);
-							}
-						}
-					}
-				}
-
-				var1.as(-2043446941);
-				if (var2 != 0) {
-					throw new RuntimeException();
-				} else {
-					var1.ap(-2134816069);
-
-					for (int var7 = 0; var7 < var0.au_fld; var7++) {
-						int var11 = var0.as_fld[var7];
-						if ((var0.av_fld[var11].av_fld & 1) != 0) {
-							if (var2 > 0) {
-								var2--;
-								var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
-							} else {
-								int var14 = var1.ar(1, -106081977);
-								if (var14 == 0) {
-									var2 = var0.ae(var1, 901029536);
-									var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
-								} else if (var0.aw(var1, var11)) {
-									var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
-								}
-							}
-						}
-					}
-
-					var1.as(-249702873);
-					if (var2 != 0) {
-						throw new RuntimeException();
-					} else {
-						var1.ap(1188762499);
-
-						for (int var8 = 0; var8 < var0.au_fld; var8++) {
-							int var12 = var0.as_fld[var8];
-							if (0 == (var0.av_fld[var12].av_fld & 1)) {
-								if (var2 > 0) {
-									var2--;
-									var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
-								} else {
-									int var15 = var1.ar(1, -106081977);
-									if (var15 == 0) {
-										var2 = var0.ae(var1, -160690296);
-										var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
-									} else if (var0.aw(var1, var12)) {
-										var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
-									}
-								}
-							}
-						}
-
-						var1.as(-1984317787);
-						if (0 != var2) {
-							throw new RuntimeException();
-						} else {
-							var0.al_fld = 0;
-							var0.au_fld = 0;
-
-							for (int var9 = 1; var9 < 2048; var9++) {
-								var0.av_fld[var9].av_fld = (byte)(var0.av_fld[var9].av_fld >> 1);
-								if (var0.av_fld[var9].aw(461887062)) {
-									var0.az_fld[(var0.al_fld += -9684059) * -273927123 - 1] = var9;
-								} else {
-									var0.as_fld[(var0.au_fld += -260300649) * 1540972327 - 1] = var9;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("pn")
-	@ObfuscatedSignature(
 		descriptor = "(Lxj;I)V"
 	)
-	public void pn(xj var1, int var2) {
-		da.zq_fld = true;
+	void bh(xj var1, int var2) {
+		boolean var3 = var1.ar(1, -106081977) == 1;
+		if (var3) {
+			this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+		}
+
+		int var4 = var1.ar(2, -106081977);
+		cl var5 = this.av_fld[var2];
+		if (var4 == 0) {
+			if (var3) {
+				this.ae_fld[var2] = false;
+			} else if (client.dj_fld == var2) {
+				throw new RuntimeException();
+			} else {
+				cl.be(var5, -1190222514);
+				if (var1.ar(1, -106081977) != 0) {
+					this.aw(var1, var2);
+				}
+
+				this.af_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
+			}
+		} else if (var4 == 1) {
+			int var13 = var1.ar(3, -106081977);
+			kj var16 = var5.az_fld;
+			if (var13 == 0) {
+				var16.ak_fld--;
+				var16.ag_fld--;
+			} else if (1 == var13) {
+				var16.ag_fld--;
+			} else if (var13 == 2) {
+				var16.ak_fld++;
+				var16.ag_fld--;
+			} else if (3 == var13) {
+				var16.ak_fld--;
+			} else if (4 == var13) {
+				var16.ak_fld++;
+			} else if (var13 == 5) {
+				var16.ak_fld--;
+				var16.ag_fld++;
+			} else if (6 == var13) {
+				var16.ag_fld++;
+			} else if (7 == var13) {
+				var16.ak_fld++;
+				var16.ag_fld++;
+			}
+
+			this.ae_fld[var2] = true;
+			this.ah_fld[var2] = var5.ae_fld;
+		} else if (var4 == 2) {
+			int var12 = var1.ar(4, -106081977);
+			kj var15 = var5.az_fld;
+			if (0 == var12) {
+				var15.ak_fld -= 2;
+				var15.ag_fld -= 2;
+			} else if (1 == var12) {
+				var15.ak_fld--;
+				var15.ag_fld -= 2;
+			} else if (var12 == 2) {
+				var15.ag_fld -= 2;
+			} else if (var12 == 3) {
+				var15.ak_fld++;
+				var15.ag_fld -= 2;
+			} else if (var12 == 4) {
+				var15.ak_fld += 2;
+				var15.ag_fld -= 2;
+			} else if (var12 == 5) {
+				var15.ak_fld -= 2;
+				var15.ag_fld--;
+			} else if (var12 == 6) {
+				var15.ak_fld += 2;
+				var15.ag_fld--;
+			} else if (7 == var12) {
+				var15.ak_fld -= 2;
+			} else if (var12 == 8) {
+				var15.ak_fld += 2;
+			} else if (var12 == 9) {
+				var15.ak_fld -= 2;
+				var15.ag_fld++;
+			} else if (var12 == 10) {
+				var15.ak_fld += 2;
+				var15.ag_fld++;
+			} else if (var12 == 11) {
+				var15.ak_fld -= 2;
+				var15.ag_fld += 2;
+			} else if (12 == var12) {
+				var15.ak_fld--;
+				var15.ag_fld += 2;
+			} else if (var12 == 13) {
+				var15.ag_fld += 2;
+			} else if (var12 == 14) {
+				var15.ak_fld++;
+				var15.ag_fld += 2;
+			} else if (15 == var12) {
+				var15.ak_fld += 2;
+				var15.ag_fld += 2;
+			}
+
+			this.ae_fld[var2] = true;
+			this.ah_fld[var2] = var5.ae_fld;
+		} else {
+			int var6 = var1.ar(1, -106081977);
+			if (0 == var6) {
+				int var14 = var1.ar(12, -106081977);
+				int var17 = var14 >> 10;
+				int var18 = var14 >> 5 & 31;
+				if (var18 > 15) {
+					var18 -= 32;
+				}
+
+				int var19 = var14 & 31;
+				if (var19 > 15) {
+					var19 -= 32;
+				}
+
+				kj var20 = var5.az_fld;
+				var20.az_fld = 615342573 * (byte)(var20.az_fld + var17 & 3);
+				var20.ak_fld += var18 * -1810751103;
+				var20.ag_fld += var19 * -1225554487;
+				this.ae_fld[var2] = true;
+				this.ah_fld[var2] = var5.ae_fld;
+			} else {
+				int var7 = var1.ar(30, -106081977);
+				int var8 = kj.ag(var7);
+				int var9 = kj.az(var7);
+				int var10 = kj.av(var7);
+				kj var11 = var5.az_fld;
+				var11.az_fld = (byte)(var8 + var11.az_fld & 3);
+				var11.ak_fld = -1810751103 * (var9 + var11.ak_fld & 16383);
+				var11.ag_fld = -1225554487 * (var11.ag_fld + var10 & 16383);
+				this.ae_fld[var2] = true;
+				this.ah_fld[var2] = var5.ae_fld;
+			}
+		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lrx;"
 	)
-	rx aq(int var1) {
+	rx ad(int var1) {
 		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
 	}
 
@@ -1522,16 +1413,16 @@ public class di {
 		descriptor = "(Lxj;)V"
 	)
 	final void ac(xj var1) {
-		lk(this, 1576106432);
-		var1.ap(-379543771);
+		this.an();
+		var1.as(-379543771);
 		int var2 = client.dj_fld;
 		cl var3 = this.av_fld[var2];
 		int var4 = var1.ar(30, -106081977);
-		var3.ag(-1);
-		kj.am(var3.az_fld, var4);
+		cl.yp(var3, -1, (byte)1);
+		var3.az_fld.ar(var4);
 		var3.av_fld = 0;
 		this.al_fld = 0;
-		this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var2;
+		this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var2;
 		this.au_fld = 0;
 
 		for (int var5 = 1; var5 < 2048; var5++) {
@@ -1540,19 +1431,19 @@ public class di {
 				int var7 = var6 >> 16;
 				int var8 = var6 >> 8 & 0xFF;
 				int var9 = var6 & 0xFF;
-				this.av_fld[var5].ag(kj.ak(var7, var8, var9));
-				this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var5;
+				cl.yp(this.av_fld[var5], kj.ak(var7, var8, var9), (byte)1);
+				this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var5;
 			}
 		}
 
-		var1.as(292636571);
+		var1.af(292636571);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lrx;"
 	)
-	rx ao(int var1) {
+	rx ai(int var1) {
 		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
 	}
 
@@ -1561,16 +1452,16 @@ public class di {
 		descriptor = "(Lxj;)V"
 	)
 	final void ap(xj var1) {
-		lk(this, 1876152777);
-		var1.ap(-367097064);
+		this.an();
+		var1.as(-367097064);
 		int var2 = client.dj_fld;
 		cl var3 = this.av_fld[var2];
 		int var4 = var1.ar(30, -106081977);
-		var3.ag(-1);
-		kj.am(var3.az_fld, var4);
+		cl.yp(var3, -1, (byte)1);
+		var3.az_fld.ar(var4);
 		var3.av_fld = 0;
 		this.al_fld = 0;
-		this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var2;
+		this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var2;
 		this.au_fld = 0;
 
 		for (int var5 = 1; var5 < 2048; var5++) {
@@ -1579,28 +1470,12 @@ public class di {
 				int var7 = var6 >> 16;
 				int var8 = var6 >> 8 & 0xFF;
 				int var9 = var6 & 0xFF;
-				this.av_fld[var5].ag(kj.ak(var7, var8, var9));
-				this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var5;
+				cl.yp(this.av_fld[var5], kj.ak(var7, var8, var9), (byte)1);
+				this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var5;
 			}
 		}
 
-		var1.as(-1404776600);
-	}
-
-	@ObfuscatedName("dk")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)V"
-	)
-	public void dk(xj var1, int var2) {
-		da.zq_fld = false;
-
-		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			ArrayList var4 = this.av_fld[this.az_fld[var3]].ak_fld;
-
-			for (int var5 = 0; var5 < var4.size(); var5++) {
-				((cv)var4.get(var5)).rn();
-			}
-		}
+		var1.af(-1404776600);
 	}
 
 	@ObfuscatedName("ay")
@@ -1613,13 +1488,13 @@ public class di {
 				return;
 			}
 
-			int var3 = this.ar_fld[var2];
+			int var3 = this.af_fld[var2];
 			cl var4 = this.av_fld[var3];
 			Iterator var5 = client.da_fld.iterator();
 
 			while (var5.hasNext()) {
 				dx var6 = (dx)(dx)var5.next();
-				cv var7 = (cv)var6.au_fld.ak(var3);
+				cv var7 = (cv)var6.au_fld.ae(var3);
 				if (var7 != null) {
 					if (var1 <= 0) {
 						return;
@@ -1630,8 +1505,16 @@ public class di {
 				}
 			}
 
-			cl.bc(var4, 751745270);
+			var4.dv();
 		}
+	}
+
+	@ObfuscatedName("jb")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;I)V"
+	)
+	public void jb(xj var1, int var2) {
+		da.nx_fld = true;
 	}
 
 	@ObfuscatedName("dy")
@@ -1641,13 +1524,13 @@ public class di {
 	static void dy(dx var0, int var1, int var2, int var3, int var4, int var5, short var6, int var7, short var8, int var9, int var10, byte var11) throws EOFException {
 		na var12 = var0.aa_fld[var1][var2][var3];
 		if (var12 != null) {
-			for (dw var13 = (dw)var12.aw(); var13 != null; var13 = (dw)var12.as()) {
-				if (var13.ag_fld == var4) {
+			for (dw var13 = (dw)var12.aw(); var13 != null; var13 = (dw)na.iy(var12)) {
+				if (var13.ah_fld == var4) {
 					if (var11 >= 7) {
 						return;
 					}
 
-					if (var5 == var13.az_fld) {
+					if (var5 == var13.ay_fld) {
 						if (var11 >= 7) {
 							return;
 						}
@@ -1657,16 +1540,16 @@ public class di {
 							var14 = new oo(var4);
 						}
 
-						if (var14.ag((byte)-1) && var7 > -1 && var7 < var14.ah_fld.length) {
-							var14.ah_fld[var7] = var6;
+						if (oo.tz(var14, (byte)-1) && var7 > -1 && var7 < var14.ae_fld.length) {
+							var14.ae_fld[var7] = var6;
 						}
 
-						if (oo.vr(var14, (byte)53) && var9 > -1 && var9 < var14.ae_fld.length) {
+						if (var14.ag((byte)53) && var9 > -1 && var9 < var14.ah_fld.length) {
 							if (var11 >= 7) {
 								return;
 							}
 
-							var14.ae_fld[var9] = var8;
+							var14.ah_fld[var9] = var8;
 						}
 
 						if (var10 > -1) {
@@ -1674,7 +1557,7 @@ public class di {
 							var14.al_fld = null;
 						}
 
-						var13.ay(var14, -2091273894);
+						dw.lr(var13, var14, -2091273894);
 						break;
 					}
 				}
@@ -1690,7 +1573,7 @@ public class di {
 	)
 	void al(int var1) throws EOFException {
 		for (int var2 = 0; var2 < this.al_fld; var2++) {
-			int var3 = this.az_fld[var2];
+			int var3 = this.ar_fld[var2];
 			if (this.ae_fld[var3]) {
 				if (var1 != 1217613053) {
 					return;
@@ -1703,406 +1586,113 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("hx")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;I)I"
+		descriptor = "(Ldi;Lxj;I)V"
 	)
-	public static int cq(di var0, int var1) {
+	public static void hx(di var0, xj var1, int var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		for (int var2 = 0; var2 < var0.al_fld; var2++) {
-			if (var1 == var0.az_fld[var2]) {
-				return var2;
-			}
-		}
-
-		return -1;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)V"
-	)
-	final void az(xj var1, int var2) throws EOFException {
-		this.pn(var1, var2);
-		int var4 = var1.au_fld;
-		this.an_fld = 0;
-		this.av(var1, (byte)-1);
-		this.ay((byte)48);
-		this.as(1266968455);
-		this.af(var1, -1676625560);
-		this.al(1217613053);
-		if (var1.au_fld - var4 != var2) {
-			throw new RuntimeException(var1.au_fld - var4 + " " + var2);
-		} else {
-			this.dk(var1, var2);
-		}
-	}
-
-	di() {
-		this.av_fld = new cl[2048];
-		this.ae_fld = new boolean[2048];
-		this.ah_fld = new gt[2048];
-		this.aw_fld = new xi(new byte[5000]);
-		this.ay_fld = new String[3];
-		this.as_fld = new int[2048];
-		this.ar_fld = new int[2048];
-		this.af_fld = new int[2048];
-		this.al_fld = 0;
-		this.au_fld = 0;
-		this.ax_fld = 0;
-		this.an_fld = 0;
-
-		for (int var1 = 0; var1 < 2048; var1++) {
-			this.av_fld[var1] = new cl(var1);
-		}
-	}
-
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	void br(xj var1) {
-		this.ax_fld = 0;
-		int var2 = 0;
-		var1.ap(836096032);
-
-		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			int var4 = this.az_fld[var3];
-			if ((this.av_fld[var4].av_fld & 1) == 0) {
-				if (var2 > 0) {
-					var2--;
-					this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
-				} else {
-					int var5 = var1.ar(1, -106081977);
-					if (0 == var5) {
-						var2 = this.ae(var1, 1896914067);
-						this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
-					} else {
-						this.ah(var1, var4, (byte)-1);
-					}
-				}
-			}
-		}
-
-		var1.as(-1118488724);
-		if (var2 != 0) {
-			throw new RuntimeException();
-		} else {
-			var1.ap(502767353);
-
-			for (int var6 = 0; var6 < this.al_fld; var6++) {
-				int var10 = this.az_fld[var6];
-				if (0 != (this.av_fld[var10].av_fld & 1)) {
-					if (var2 > 0) {
-						var2--;
-						this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
-					} else {
-						int var13 = var1.ar(1, -106081977);
-						if (var13 == 0) {
-							var2 = this.ae(var1, -352563614);
-							this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
-						} else {
-							this.ah(var1, var10, (byte)16);
-						}
-					}
-				}
-			}
-
-			var1.as(-1487355310);
-			if (var2 != 0) {
-				throw new RuntimeException();
-			} else {
-				var1.ap(740331866);
-
-				for (int var7 = 0; var7 < this.au_fld; var7++) {
-					int var11 = this.as_fld[var7];
-					if ((this.av_fld[var11].av_fld & 1) != 0) {
-						if (var2 > 0) {
-							var2--;
-							this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-						} else {
-							int var14 = var1.ar(1, -106081977);
-							if (var14 == 0) {
-								var2 = this.ae(var1, 1691837623);
-								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-							} else if (this.aw(var1, var11)) {
-								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-							}
-						}
-					}
-				}
-
-				var1.as(639822474);
-				if (var2 != 0) {
-					throw new RuntimeException();
-				} else {
-					var1.ap(-1624596660);
-
-					for (int var8 = 0; var8 < this.au_fld; var8++) {
-						int var12 = this.as_fld[var8];
-						if (0 == (this.av_fld[var12].av_fld & 1)) {
-							if (var2 > 0) {
-								var2--;
-								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-							} else {
-								int var15 = var1.ar(1, -106081977);
-								if (var15 == 0) {
-									var2 = this.ae(var1, -271097813);
-									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-								} else if (this.aw(var1, var12)) {
-									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-								}
-							}
-						}
-					}
-
-					var1.as(521791823);
-					if (0 != var2) {
-						throw new RuntimeException();
-					} else {
-						this.al_fld = 0;
-						this.au_fld = 0;
-
-						for (int var9 = 1; var9 < 2048; var9++) {
-							this.av_fld[var9].av_fld = (byte)(this.av_fld[var9].av_fld >> 1);
-							if (this.av_fld[var9].aw(786239521)) {
-								this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var9;
-							} else {
-								this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var9;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	void bd(xj var1) {
-		this.ax_fld = 0;
-		int var2 = 0;
-		var1.ap(895686739);
-
-		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			int var4 = this.az_fld[var3];
-			if ((this.av_fld[var4].av_fld & 1) == 0) {
-				if (var2 > 0) {
-					var2--;
-					this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
-				} else {
-					int var5 = var1.ar(1, -106081977);
-					if (0 == var5) {
-						var2 = this.ae(var1, -426564967);
-						this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
-					} else {
-						this.ah(var1, var4, (byte)-34);
-					}
-				}
-			}
-		}
-
-		var1.as(1671762047);
-		if (var2 != 0) {
-			throw new RuntimeException();
-		} else {
-			var1.ap(-1634664914);
-
-			for (int var6 = 0; var6 < this.al_fld; var6++) {
-				int var10 = this.az_fld[var6];
-				if (0 != (this.av_fld[var10].av_fld & 1)) {
-					if (var2 > 0) {
-						var2--;
-						this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
-					} else {
-						int var13 = var1.ar(1, -106081977);
-						if (var13 == 0) {
-							var2 = this.ae(var1, 1442253107);
-							this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
-						} else {
-							this.ah(var1, var10, (byte)-61);
-						}
-					}
-				}
-			}
-
-			var1.as(519795553);
-			if (var2 != 0) {
-				throw new RuntimeException();
-			} else {
-				var1.ap(-2049525542);
-
-				for (int var7 = 0; var7 < this.au_fld; var7++) {
-					int var11 = this.as_fld[var7];
-					if ((this.av_fld[var11].av_fld & 1) != 0) {
-						if (var2 > 0) {
-							var2--;
-							this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-						} else {
-							int var14 = var1.ar(1, -106081977);
-							if (var14 == 0) {
-								var2 = this.ae(var1, -626022447);
-								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-							} else if (this.aw(var1, var11)) {
-								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
-							}
-						}
-					}
-				}
-
-				var1.as(-1099543678);
-				if (var2 != 0) {
-					throw new RuntimeException();
-				} else {
-					var1.ap(-758833977);
-
-					for (int var8 = 0; var8 < this.au_fld; var8++) {
-						int var12 = this.as_fld[var8];
-						if (0 == (this.av_fld[var12].av_fld & 1)) {
-							if (var2 > 0) {
-								var2--;
-								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-							} else {
-								int var15 = var1.ar(1, -106081977);
-								if (var15 == 0) {
-									var2 = this.ae(var1, 276873181);
-									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-								} else if (this.aw(var1, var12)) {
-									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
-								}
-							}
-						}
-					}
-
-					var1.as(-1827357665);
-					if (0 != var2) {
-						throw new RuntimeException();
-					} else {
-						this.al_fld = 0;
-						this.au_fld = 0;
-
-						for (int var9 = 1; var9 < 2048; var9++) {
-							this.av_fld[var9].av_fld = (byte)(this.av_fld[var9].av_fld >> 1);
-							if (this.av_fld[var9].aw(467706174)) {
-								this.az_fld[(this.al_fld += -636084852) * -273927123 - 1] = var9;
-							} else {
-								this.as_fld[(this.au_fld += -322832668) * 1540972327 - 1] = var9;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)V"
-	)
-	void bh(xj var1, int var2) {
 		boolean var3 = var1.ar(1, -106081977) == 1;
 		if (var3) {
-			this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+			var0.as_fld[(var0.an_fld += -1004737463) * -910506503 - 1] = var2;
 		}
 
 		int var4 = var1.ar(2, -106081977);
-		cl var5 = this.av_fld[var2];
+		cl var5 = var0.av_fld[var2];
 		if (var4 == 0) {
 			if (var3) {
-				this.ae_fld[var2] = false;
+				var0.ae_fld[var2] = false;
 			} else if (client.dj_fld == var2) {
 				throw new RuntimeException();
 			} else {
-				var5.ay(-1152427193);
+				cl.be(var5, -1152427193);
 				if (var1.ar(1, -106081977) != 0) {
-					this.aw(var1, var2);
+					var0.aw(var1, var2);
 				}
 
-				this.ar_fld[(this.ax_fld += 727166919) * 450716151 - 1] = var2;
+				var0.af_fld[(var0.ax_fld += 727166919) * 450716151 - 1] = var2;
 			}
 		} else if (var4 == 1) {
 			int var13 = var1.ar(3, -106081977);
 			kj var16 = var5.az_fld;
 			if (var13 == 0) {
+				var16.ak_fld--;
 				var16.ag_fld--;
-				var16.az_fld--;
 			} else if (1 == var13) {
-				var16.az_fld--;
+				var16.ag_fld--;
 			} else if (var13 == 2) {
-				var16.ag_fld++;
-				var16.az_fld--;
+				var16.ak_fld++;
+				var16.ag_fld--;
 			} else if (3 == var13) {
-				var16.ag_fld--;
+				var16.ak_fld--;
 			} else if (4 == var13) {
-				var16.ag_fld++;
+				var16.ak_fld++;
 			} else if (var13 == 5) {
-				var16.ag_fld--;
-				var16.az_fld++;
-			} else if (6 == var13) {
-				var16.az_fld++;
-			} else if (7 == var13) {
+				var16.ak_fld--;
 				var16.ag_fld++;
-				var16.az_fld++;
+			} else if (6 == var13) {
+				var16.ag_fld++;
+			} else if (7 == var13) {
+				var16.ak_fld++;
+				var16.ag_fld++;
 			}
 
-			this.ae_fld[var2] = true;
-			this.ah_fld[var2] = var5.ae_fld;
+			var0.ae_fld[var2] = true;
+			var0.ah_fld[var2] = var5.ae_fld;
 		} else if (var4 == 2) {
 			int var12 = var1.ar(4, -106081977);
 			kj var15 = var5.az_fld;
 			if (0 == var12) {
+				var15.ak_fld -= 2;
 				var15.ag_fld -= 2;
-				var15.az_fld -= 2;
 			} else if (1 == var12) {
-				var15.ag_fld--;
-				var15.az_fld -= 2;
+				var15.ak_fld--;
+				var15.ag_fld -= 2;
 			} else if (var12 == 2) {
-				var15.az_fld -= 2;
+				var15.ag_fld -= 2;
 			} else if (var12 == 3) {
-				var15.ag_fld++;
-				var15.az_fld -= 2;
+				var15.ak_fld++;
+				var15.ag_fld -= 2;
 			} else if (var12 == 4) {
-				var15.ag_fld += 2;
-				var15.az_fld -= 2;
+				var15.ak_fld += 2;
+				var15.ag_fld -= 2;
 			} else if (var12 == 5) {
-				var15.ag_fld -= 2;
-				var15.az_fld--;
-			} else if (var12 == 6) {
-				var15.ag_fld += 2;
-				var15.az_fld--;
-			} else if (7 == var12) {
-				var15.ag_fld -= 2;
-			} else if (var12 == 8) {
-				var15.ag_fld += 2;
-			} else if (var12 == 9) {
-				var15.ag_fld -= 2;
-				var15.az_fld++;
-			} else if (var12 == 10) {
-				var15.ag_fld += 2;
-				var15.az_fld++;
-			} else if (var12 == 11) {
-				var15.ag_fld -= 2;
-				var15.az_fld += 2;
-			} else if (12 == var12) {
+				var15.ak_fld -= 2;
 				var15.ag_fld--;
-				var15.az_fld += 2;
-			} else if (var12 == 13) {
-				var15.az_fld += 2;
-			} else if (var12 == 14) {
+			} else if (var12 == 6) {
+				var15.ak_fld += 2;
+				var15.ag_fld--;
+			} else if (7 == var12) {
+				var15.ak_fld -= 2;
+			} else if (var12 == 8) {
+				var15.ak_fld += 2;
+			} else if (var12 == 9) {
+				var15.ak_fld -= 2;
 				var15.ag_fld++;
-				var15.az_fld += 2;
-			} else if (15 == var12) {
+			} else if (var12 == 10) {
+				var15.ak_fld += 2;
+				var15.ag_fld++;
+			} else if (var12 == 11) {
+				var15.ak_fld -= 2;
 				var15.ag_fld += 2;
-				var15.az_fld += 2;
+			} else if (12 == var12) {
+				var15.ak_fld--;
+				var15.ag_fld += 2;
+			} else if (var12 == 13) {
+				var15.ag_fld += 2;
+			} else if (var12 == 14) {
+				var15.ak_fld++;
+				var15.ag_fld += 2;
+			} else if (15 == var12) {
+				var15.ak_fld += 2;
+				var15.ag_fld += 2;
 			}
 
-			this.ae_fld[var2] = true;
-			this.ah_fld[var2] = var5.ae_fld;
+			var0.ae_fld[var2] = true;
+			var0.ah_fld[var2] = var5.ae_fld;
 		} else {
 			int var6 = var1.ar(1, -106081977);
 			if (0 == var6) {
@@ -2119,22 +1709,448 @@ public class di {
 				}
 
 				kj var20 = var5.az_fld;
-				var20.ak_fld = 615342573 * (byte)(var20.ak_fld + var17 & 3);
-				var20.ag_fld += var18 * -1810751103;
-				var20.az_fld += var19 * -1225554487;
-				this.ae_fld[var2] = true;
-				this.ah_fld[var2] = var5.ae_fld;
+				var20.az_fld = 615342573 * (byte)(var20.az_fld + var17 & 3);
+				var20.ak_fld += var18 * -1810751103;
+				var20.ag_fld += var19 * -1225554487;
+				var0.ae_fld[var2] = true;
+				var0.ah_fld[var2] = var5.ae_fld;
 			} else {
 				int var7 = var1.ar(30, -106081977);
 				int var8 = kj.ag(var7);
 				int var9 = kj.az(var7);
 				int var10 = kj.av(var7);
 				kj var11 = var5.az_fld;
-				var11.ak_fld = (byte)(var8 + var11.ak_fld & 3);
-				var11.ag_fld = -1810751103 * (var9 + var11.ag_fld & 16383);
-				var11.az_fld = -1225554487 * (var11.az_fld + var10 & 16383);
-				this.ae_fld[var2] = true;
-				this.ah_fld[var2] = var5.ae_fld;
+				var11.az_fld = (byte)(var8 + var11.az_fld & 3);
+				var11.ak_fld = -1810751103 * (var9 + var11.ak_fld & 16383);
+				var11.ag_fld = -1225554487 * (var11.ag_fld + var10 & 16383);
+				var0.ae_fld[var2] = true;
+				var0.ah_fld[var2] = var5.ae_fld;
+			}
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;IB)V"
+	)
+	final void az(xj var1, int var2) throws EOFException {
+		this.jb(var1, var2);
+		int var4 = var1.au_fld;
+		this.an_fld = 0;
+		this.av(var1, (byte)-1);
+		this.ay((byte)48);
+		this.as(1266968455);
+		this.bk(var1, -1676625560);
+		this.al(1217613053);
+		if (var1.au_fld - var4 != var2) {
+			throw new RuntimeException(var1.au_fld - var4 + " " + var2);
+		} else {
+			this.ch(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void bo() {
+		for (int var1 = 0; var1 < this.ax_fld; var1++) {
+			int var2 = this.af_fld[var1];
+			cl var3 = this.av_fld[var2];
+			Iterator var4 = client.da_fld.iterator();
+
+			while (var4.hasNext()) {
+				dx var5 = (dx)(dx)var4.next();
+				cv var6 = (cv)var5.au_fld.ae(var2);
+				if (var6 != null) {
+					var3.av(var6);
+					var6.mb();
+				}
+			}
+
+			var3.dv();
+		}
+	}
+
+	di() {
+		this.av_fld = new cl[2048];
+		this.ae_fld = new boolean[2048];
+		this.ah_fld = new gt[2048];
+		this.aw_fld = new xi(new byte[5000]);
+		this.ay_fld = new String[3];
+		this.az_fld = new int[2048];
+		this.af_fld = new int[2048];
+		this.as_fld = new int[2048];
+		this.al_fld = 0;
+		this.au_fld = 0;
+		this.ax_fld = 0;
+		this.an_fld = 0;
+
+		for (int var1 = 0; var1 < 2048; var1++) {
+			this.av_fld[var1] = new cl(var1);
+		}
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;)V"
+	)
+	void be(xj var1) {
+		this.ax_fld = 0;
+		int var2 = 0;
+		var1.as(-2097965206);
+
+		for (int var3 = 0; var3 < this.al_fld; var3++) {
+			int var4 = this.ar_fld[var3];
+			if ((this.av_fld[var4].av_fld & 1) == 0) {
+				if (var2 > 0) {
+					var2--;
+					this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
+				} else {
+					int var5 = var1.ar(1, -106081977);
+					if (0 == var5) {
+						var2 = uc(this, var1, 1770819933);
+						this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
+					} else {
+						this.ah(var1, var4, (byte)65);
+					}
+				}
+			}
+		}
+
+		var1.af(-582404284);
+		if (var2 != 0) {
+			throw new RuntimeException();
+		} else {
+			var1.as(-259252045);
+
+			for (int var6 = 0; var6 < this.al_fld; var6++) {
+				int var10 = this.ar_fld[var6];
+				if (0 != (this.av_fld[var10].av_fld & 1)) {
+					if (var2 > 0) {
+						var2--;
+						this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
+					} else {
+						int var13 = var1.ar(1, -106081977);
+						if (var13 == 0) {
+							var2 = uc(this, var1, 701584633);
+							this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
+						} else {
+							this.ah(var1, var10, (byte)-30);
+						}
+					}
+				}
+			}
+
+			var1.af(-2043446941);
+			if (var2 != 0) {
+				throw new RuntimeException();
+			} else {
+				var1.as(-2134816069);
+
+				for (int var7 = 0; var7 < this.au_fld; var7++) {
+					int var11 = this.az_fld[var7];
+					if ((this.av_fld[var11].av_fld & 1) != 0) {
+						if (var2 > 0) {
+							var2--;
+							this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+						} else {
+							int var14 = var1.ar(1, -106081977);
+							if (var14 == 0) {
+								var2 = uc(this, var1, 901029536);
+								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+							} else if (this.aw(var1, var11)) {
+								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+							}
+						}
+					}
+				}
+
+				var1.af(-249702873);
+				if (var2 != 0) {
+					throw new RuntimeException();
+				} else {
+					var1.as(1188762499);
+
+					for (int var8 = 0; var8 < this.au_fld; var8++) {
+						int var12 = this.az_fld[var8];
+						if (0 == (this.av_fld[var12].av_fld & 1)) {
+							if (var2 > 0) {
+								var2--;
+								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+							} else {
+								int var15 = var1.ar(1, -106081977);
+								if (var15 == 0) {
+									var2 = uc(this, var1, -160690296);
+									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+								} else if (this.aw(var1, var12)) {
+									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+								}
+							}
+						}
+					}
+
+					var1.af(-1984317787);
+					if (0 != var2) {
+						throw new RuntimeException();
+					} else {
+						this.al_fld = 0;
+						this.au_fld = 0;
+
+						for (int var9 = 1; var9 < 2048; var9++) {
+							this.av_fld[var9].av_fld = (byte)(this.av_fld[var9].av_fld >> 1);
+							if (this.av_fld[var9].aw(461887062)) {
+								this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var9;
+							} else {
+								this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var9;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("mk")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;)V"
+	)
+	public static void mk(di var0, xj var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ax_fld = 0;
+		int var2 = 0;
+		var1.as(836096032);
+
+		for (int var3 = 0; var3 < var0.al_fld; var3++) {
+			int var4 = var0.ar_fld[var3];
+			if ((var0.av_fld[var4].av_fld & 1) == 0) {
+				if (var2 > 0) {
+					var2--;
+					var0.av_fld[var4].av_fld = (byte)(var0.av_fld[var4].av_fld | 2);
+				} else {
+					int var5 = var1.ar(1, -106081977);
+					if (0 == var5) {
+						var2 = uc(var0, var1, 1896914067);
+						var0.av_fld[var4].av_fld = (byte)(var0.av_fld[var4].av_fld | 2);
+					} else {
+						var0.ah(var1, var4, (byte)-1);
+					}
+				}
+			}
+		}
+
+		var1.af(-1118488724);
+		if (var2 != 0) {
+			throw new RuntimeException();
+		} else {
+			var1.as(502767353);
+
+			for (int var6 = 0; var6 < var0.al_fld; var6++) {
+				int var10 = var0.ar_fld[var6];
+				if (0 != (var0.av_fld[var10].av_fld & 1)) {
+					if (var2 > 0) {
+						var2--;
+						var0.av_fld[var10].av_fld = (byte)(var0.av_fld[var10].av_fld | 2);
+					} else {
+						int var13 = var1.ar(1, -106081977);
+						if (var13 == 0) {
+							var2 = uc(var0, var1, -352563614);
+							var0.av_fld[var10].av_fld = (byte)(var0.av_fld[var10].av_fld | 2);
+						} else {
+							var0.ah(var1, var10, (byte)16);
+						}
+					}
+				}
+			}
+
+			var1.af(-1487355310);
+			if (var2 != 0) {
+				throw new RuntimeException();
+			} else {
+				var1.as(740331866);
+
+				for (int var7 = 0; var7 < var0.au_fld; var7++) {
+					int var11 = var0.az_fld[var7];
+					if ((var0.av_fld[var11].av_fld & 1) != 0) {
+						if (var2 > 0) {
+							var2--;
+							var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
+						} else {
+							int var14 = var1.ar(1, -106081977);
+							if (var14 == 0) {
+								var2 = uc(var0, var1, 1691837623);
+								var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
+							} else if (var0.aw(var1, var11)) {
+								var0.av_fld[var11].av_fld = (byte)(var0.av_fld[var11].av_fld | 2);
+							}
+						}
+					}
+				}
+
+				var1.af(639822474);
+				if (var2 != 0) {
+					throw new RuntimeException();
+				} else {
+					var1.as(-1624596660);
+
+					for (int var8 = 0; var8 < var0.au_fld; var8++) {
+						int var12 = var0.az_fld[var8];
+						if (0 == (var0.av_fld[var12].av_fld & 1)) {
+							if (var2 > 0) {
+								var2--;
+								var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
+							} else {
+								int var15 = var1.ar(1, -106081977);
+								if (var15 == 0) {
+									var2 = uc(var0, var1, -271097813);
+									var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
+								} else if (var0.aw(var1, var12)) {
+									var0.av_fld[var12].av_fld = (byte)(var0.av_fld[var12].av_fld | 2);
+								}
+							}
+						}
+					}
+
+					var1.af(521791823);
+					if (0 != var2) {
+						throw new RuntimeException();
+					} else {
+						var0.al_fld = 0;
+						var0.au_fld = 0;
+
+						for (int var9 = 1; var9 < 2048; var9++) {
+							var0.av_fld[var9].av_fld = (byte)(var0.av_fld[var9].av_fld >> 1);
+							if (var0.av_fld[var9].aw(786239521)) {
+								var0.ar_fld[(var0.al_fld += -9684059) * -273927123 - 1] = var9;
+							} else {
+								var0.az_fld[(var0.au_fld += -260300649) * 1540972327 - 1] = var9;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;)V"
+	)
+	void bd(xj var1) {
+		this.ax_fld = 0;
+		int var2 = 0;
+		var1.as(895686739);
+
+		for (int var3 = 0; var3 < this.al_fld; var3++) {
+			int var4 = this.ar_fld[var3];
+			if ((this.av_fld[var4].av_fld & 1) == 0) {
+				if (var2 > 0) {
+					var2--;
+					this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
+				} else {
+					int var5 = var1.ar(1, -106081977);
+					if (0 == var5) {
+						var2 = uc(this, var1, -426564967);
+						this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
+					} else {
+						this.ah(var1, var4, (byte)-34);
+					}
+				}
+			}
+		}
+
+		var1.af(1671762047);
+		if (var2 != 0) {
+			throw new RuntimeException();
+		} else {
+			var1.as(-1634664914);
+
+			for (int var6 = 0; var6 < this.al_fld; var6++) {
+				int var10 = this.ar_fld[var6];
+				if (0 != (this.av_fld[var10].av_fld & 1)) {
+					if (var2 > 0) {
+						var2--;
+						this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
+					} else {
+						int var13 = var1.ar(1, -106081977);
+						if (var13 == 0) {
+							var2 = uc(this, var1, 1442253107);
+							this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
+						} else {
+							this.ah(var1, var10, (byte)-61);
+						}
+					}
+				}
+			}
+
+			var1.af(519795553);
+			if (var2 != 0) {
+				throw new RuntimeException();
+			} else {
+				var1.as(-2049525542);
+
+				for (int var7 = 0; var7 < this.au_fld; var7++) {
+					int var11 = this.az_fld[var7];
+					if ((this.av_fld[var11].av_fld & 1) != 0) {
+						if (var2 > 0) {
+							var2--;
+							this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+						} else {
+							int var14 = var1.ar(1, -106081977);
+							if (var14 == 0) {
+								var2 = uc(this, var1, -626022447);
+								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+							} else if (this.aw(var1, var11)) {
+								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
+							}
+						}
+					}
+				}
+
+				var1.af(-1099543678);
+				if (var2 != 0) {
+					throw new RuntimeException();
+				} else {
+					var1.as(-758833977);
+
+					for (int var8 = 0; var8 < this.au_fld; var8++) {
+						int var12 = this.az_fld[var8];
+						if (0 == (this.av_fld[var12].av_fld & 1)) {
+							if (var2 > 0) {
+								var2--;
+								this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+							} else {
+								int var15 = var1.ar(1, -106081977);
+								if (var15 == 0) {
+									var2 = uc(this, var1, 276873181);
+									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+								} else if (this.aw(var1, var12)) {
+									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
+								}
+							}
+						}
+					}
+
+					var1.af(-1827357665);
+					if (0 != var2) {
+						throw new RuntimeException();
+					} else {
+						this.al_fld = 0;
+						this.au_fld = 0;
+
+						for (int var9 = 1; var9 < 2048; var9++) {
+							this.av_fld[var9].av_fld = (byte)(this.av_fld[var9].av_fld >> 1);
+							if (this.av_fld[var9].aw(467706174)) {
+								this.ar_fld[(this.al_fld += -636084852) * -273927123 - 1] = var9;
+							} else {
+								this.az_fld[(this.au_fld += -322832668) * 1540972327 - 1] = var9;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -2149,7 +2165,7 @@ public class di {
 		this.av(var1, (byte)-38);
 		this.ay((byte)101);
 		this.as(-1430480506);
-		this.af(var1, -1997951482);
+		this.bk(var1, -1997951482);
 		this.al(1217613053);
 		if (var1.au_fld - var3 != var2) {
 			throw new RuntimeException(var1.au_fld - var3 + " " + var2);
@@ -2172,7 +2188,7 @@ public class di {
 			int var18 = var1.ar(13, -106081977);
 			boolean var21 = var1.ar(1, -106081977) == 1;
 			if (var21) {
-				this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+				this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
 			}
 
 			if (var3.aw(1646902685)) {
@@ -2184,16 +2200,16 @@ public class di {
 			}
 		} else if (1 == var4) {
 			int var14 = var1.ar(2, -106081977);
-			int var17 = var3.ag_fld;
+			int var17 = var3.ay_fld;
 			int var20 = kj.ag(var17) + var14 & 3;
-			cl.ri(var3, var20, (byte)45);
-			var3.ag_fld = 1483486233 * ((var20 << 28) + (var17 & 268435455));
+			cl.oa(var3, var20, (byte)45);
+			var3.ay_fld = 1483486233 * ((var20 << 28) + (var17 & 268435455));
 			return false;
 		} else if (2 == var4) {
 			int var13 = var1.ar(5, -106081977);
 			int var16 = var13 >> 3;
 			int var19 = var13 & 7;
-			int var22 = var3.ag_fld;
+			int var22 = var3.ay_fld;
 			int var23 = kj.ag(var22) + var16 & 3;
 			int var24 = var22 >> 14 & 0xFF;
 			int var25 = var22 & 0xFF;
@@ -2233,20 +2249,20 @@ public class di {
 				var25++;
 			}
 
-			cl.ri(var3, var23, (byte)45);
-			var3.ag_fld = kj.ak(var23, var24, var25);
+			cl.oa(var3, var23, (byte)45);
+			var3.ay_fld = kj.ak(var23, var24, var25);
 			return false;
 		} else {
 			int var5 = var1.ar(18, -106081977);
 			int var6 = var5 >> 16;
 			int var7 = var5 >> 8 & 0xFF;
 			int var8 = var5 & 0xFF;
-			int var9 = var3.ag_fld;
+			int var9 = var3.ay_fld;
 			int var10 = kj.ag(var9) + var6 & 3;
-			cl.ri(var3, var10, (byte)45);
+			cl.oa(var3, var10, (byte)45);
 			int var11 = kj.az(var9) + var7 & 0xFF;
 			int var12 = kj.av(var9) + var8 & 0xFF;
-			var3.ag_fld = kj.ak(var3.al(740887796), var11, var12);
+			var3.ay_fld = kj.ak(var3.al(740887796), var11, var12);
 			return false;
 		}
 	}
@@ -2267,7 +2283,7 @@ public class di {
 			int var18 = var1.ar(13, -106081977);
 			boolean var21 = var1.ar(1, -106081977) == 1;
 			if (var21) {
-				this.af_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
+				this.as_fld[(this.an_fld += -1004737463) * -910506503 - 1] = var2;
 			}
 
 			if (var3.aw(-475022545)) {
@@ -2279,16 +2295,16 @@ public class di {
 			}
 		} else if (1 == var4) {
 			int var14 = var1.ar(2, -106081977);
-			int var17 = var3.ag_fld;
+			int var17 = var3.ay_fld;
 			int var20 = kj.ag(var17) + var14 & 3;
-			cl.ri(var3, var20, (byte)45);
-			var3.ag_fld = 1483486233 * ((var20 << 28) + (var17 & 268435455));
+			cl.oa(var3, var20, (byte)45);
+			var3.ay_fld = 1483486233 * ((var20 << 28) + (var17 & 268435455));
 			return false;
 		} else if (2 == var4) {
 			int var13 = var1.ar(5, -106081977);
 			int var16 = var13 >> 3;
 			int var19 = var13 & 7;
-			int var22 = var3.ag_fld;
+			int var22 = var3.ay_fld;
 			int var23 = kj.ag(var22) + var16 & 3;
 			int var24 = var22 >> 14 & 0xFF;
 			int var25 = var22 & 0xFF;
@@ -2328,20 +2344,20 @@ public class di {
 				var25++;
 			}
 
-			cl.ri(var3, var23, (byte)45);
-			var3.ag_fld = kj.ak(var23, var24, var25);
+			cl.oa(var3, var23, (byte)45);
+			var3.ay_fld = kj.ak(var23, var24, var25);
 			return false;
 		} else {
 			int var5 = var1.ar(18, -106081977);
 			int var6 = var5 >> 16;
 			int var7 = var5 >> 8 & 0xFF;
 			int var8 = var5 & 0xFF;
-			int var9 = var3.ag_fld;
+			int var9 = var3.ay_fld;
 			int var10 = kj.ag(var9) + var6 & 3;
-			cl.ri(var3, var10, (byte)45);
+			cl.oa(var3, var10, (byte)45);
 			int var11 = kj.az(var9) + var7 & 0xFF;
 			int var12 = kj.av(var9) + var8 & 0xFF;
-			var3.ag_fld = kj.ak(var3.al(-524841822), var11, var12);
+			var3.ay_fld = kj.ak(var3.al(-524841822), var11, var12);
 			return false;
 		}
 	}
@@ -2353,10 +2369,10 @@ public class di {
 	void bz(xj var1) {
 		this.ax_fld = 0;
 		int var2 = 0;
-		var1.ap(-1314493947);
+		var1.as(-1314493947);
 
 		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			int var4 = this.az_fld[var3];
+			int var4 = this.ar_fld[var3];
 			if ((this.av_fld[var4].av_fld & 1) == 0) {
 				if (var2 > 0) {
 					var2--;
@@ -2364,7 +2380,7 @@ public class di {
 				} else {
 					int var5 = var1.ar(1, -106081977);
 					if (0 == var5) {
-						var2 = this.ae(var1, 2023356513);
+						var2 = uc(this, var1, 2023356513);
 						this.av_fld[var4].av_fld = (byte)(this.av_fld[var4].av_fld | 2);
 					} else {
 						this.ah(var1, var4, (byte)-45);
@@ -2373,14 +2389,14 @@ public class di {
 			}
 		}
 
-		var1.as(-1563528929);
+		var1.af(-1563528929);
 		if (var2 != 0) {
 			throw new RuntimeException();
 		} else {
-			var1.ap(-2050731280);
+			var1.as(-2050731280);
 
 			for (int var6 = 0; var6 < this.al_fld; var6++) {
-				int var10 = this.az_fld[var6];
+				int var10 = this.ar_fld[var6];
 				if (0 != (this.av_fld[var10].av_fld & 1)) {
 					if (var2 > 0) {
 						var2--;
@@ -2388,7 +2404,7 @@ public class di {
 					} else {
 						int var13 = var1.ar(1, -106081977);
 						if (var13 == 0) {
-							var2 = this.ae(var1, 1667595136);
+							var2 = uc(this, var1, 1667595136);
 							this.av_fld[var10].av_fld = (byte)(this.av_fld[var10].av_fld | 2);
 						} else {
 							this.ah(var1, var10, (byte)-31);
@@ -2397,14 +2413,14 @@ public class di {
 				}
 			}
 
-			var1.as(1050125400);
+			var1.af(1050125400);
 			if (var2 != 0) {
 				throw new RuntimeException();
 			} else {
-				var1.ap(-40678327);
+				var1.as(-40678327);
 
 				for (int var7 = 0; var7 < this.au_fld; var7++) {
-					int var11 = this.as_fld[var7];
+					int var11 = this.az_fld[var7];
 					if ((this.av_fld[var11].av_fld & 1) != 0) {
 						if (var2 > 0) {
 							var2--;
@@ -2412,7 +2428,7 @@ public class di {
 						} else {
 							int var14 = var1.ar(1, -106081977);
 							if (var14 == 0) {
-								var2 = this.ae(var1, 103524476);
+								var2 = uc(this, var1, 103524476);
 								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
 							} else if (this.aw(var1, var11)) {
 								this.av_fld[var11].av_fld = (byte)(this.av_fld[var11].av_fld | 2);
@@ -2421,14 +2437,14 @@ public class di {
 					}
 				}
 
-				var1.as(271331872);
+				var1.af(271331872);
 				if (var2 != 0) {
 					throw new RuntimeException();
 				} else {
-					var1.ap(508003816);
+					var1.as(508003816);
 
 					for (int var8 = 0; var8 < this.au_fld; var8++) {
-						int var12 = this.as_fld[var8];
+						int var12 = this.az_fld[var8];
 						if (0 == (this.av_fld[var12].av_fld & 1)) {
 							if (var2 > 0) {
 								var2--;
@@ -2436,7 +2452,7 @@ public class di {
 							} else {
 								int var15 = var1.ar(1, -106081977);
 								if (var15 == 0) {
-									var2 = this.ae(var1, 1923886505);
+									var2 = uc(this, var1, 1923886505);
 									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
 								} else if (this.aw(var1, var12)) {
 									this.av_fld[var12].av_fld = (byte)(this.av_fld[var12].av_fld | 2);
@@ -2445,7 +2461,7 @@ public class di {
 						}
 					}
 
-					var1.as(-1734829887);
+					var1.af(-1734829887);
 					if (0 != var2) {
 						throw new RuntimeException();
 					} else {
@@ -2455,9 +2471,9 @@ public class di {
 						for (int var9 = 1; var9 < 2048; var9++) {
 							this.av_fld[var9].av_fld = (byte)(this.av_fld[var9].av_fld >> 1);
 							if (this.av_fld[var9].aw(489552778)) {
-								this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var9;
+								this.ar_fld[(this.al_fld += -9684059) * -273927123 - 1] = var9;
 							} else {
-								this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var9;
+								this.az_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var9;
 							}
 						}
 					}
@@ -2466,112 +2482,40 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bp() {
+	void bx() {
 		for (int var1 = 0; var1 < this.ax_fld; var1++) {
-			int var2 = this.ar_fld[var1];
+			int var2 = this.af_fld[var1];
 			cl var3 = this.av_fld[var2];
 			Iterator var4 = client.da_fld.iterator();
 
 			while (var4.hasNext()) {
 				dx var5 = (dx)(dx)var4.next();
-				cv var6 = (cv)var5.au_fld.ak(var2);
+				cv var6 = (cv)var5.au_fld.ae(var2);
 				if (var6 != null) {
 					var3.av(var6);
 					var6.mb();
 				}
 			}
 
-			cl.bc(var3, -1931965696);
+			var3.dv();
 		}
 	}
 
-	@ObfuscatedName("wd")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;I)Lrx;"
-	)
-	public static rx wd(di var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1 >= 0 && var1 < var0.av_fld.length ? var0.av_fld[var1] : null;
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)I"
-	)
-	int bs(xj var1) {
-		int var2 = var1.ar(2, -106081977);
-		int var3;
-		if (0 == var2) {
-			var3 = 0;
-		} else if (1 == var2) {
-			var3 = var1.ar(5, -106081977);
-		} else if (var2 == 2) {
-			var3 = var1.ar(8, -106081977);
-		} else {
-			var3 = var1.ar(11, -106081977);
-		}
-
-		return var3;
-	}
-
-	@ObfuscatedName("bc")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bc() throws EOFException {
+	void bt() throws EOFException {
 		client.es_fld = 0;
 		Iterator var1 = client.da_fld.iterator();
 
 		while (var1.hasNext()) {
 			dx var2 = (dx)(dx)var1.next();
-			cm(this, var2, -372757021);
-		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void bx() throws EOFException {
-		client.es_fld = 0;
-		Iterator var1 = client.da_fld.iterator();
-
-		while (var1.hasNext()) {
-			dx var2 = (dx)(dx)var1.next();
-			cm(this, var2, -579489706);
-		}
-	}
-
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(Ldx;)V"
-	)
-	void bv(dx var1) throws EOFException {
-		for (int var2 = 0; var2 < this.al_fld; var2++) {
-			int var3 = this.az_fld[var2];
-			cl var4 = this.av_fld[var3];
-			kj var5 = var4.az_fld;
-			cv var6 = (cv)var1.au_fld.ak(var3);
-			boolean var7 = var5.ag_fld > var1.ay_fld && var5.az_fld > var1.as_fld && var5.ag_fld < var1.ay_fld + var1.ah_fld && var5.az_fld < var1.as_fld + var1.aw_fld;
-			if (client.dj_fld == var3 && var7 && 0 != var1.ag_fld) {
-				client.es_fld = -1784608945 * var1.ag_fld;
-			}
-
-			if (var7 && var6 == null) {
-				var6 = var4.ah(var3, var1);
-				var4.az(var6);
-				var1.au_fld.ag(var6, var3);
-			} else if (!var7 && null != var6) {
-				var4.av(var6);
-				var6.mb();
-			}
+			this.ar(var2, -579489706);
 		}
 	}
 
@@ -2581,19 +2525,19 @@ public class di {
 	)
 	void bi(dx var1) throws EOFException {
 		for (int var2 = 0; var2 < this.al_fld; var2++) {
-			int var3 = this.az_fld[var2];
+			int var3 = this.ar_fld[var2];
 			cl var4 = this.av_fld[var3];
 			kj var5 = var4.az_fld;
-			cv var6 = (cv)var1.au_fld.ak(var3);
-			boolean var7 = var5.ag_fld > var1.ay_fld && var5.az_fld > var1.as_fld && var5.ag_fld < var1.ay_fld + var1.ah_fld && var5.az_fld < var1.as_fld + var1.aw_fld;
+			cv var6 = (cv)var1.au_fld.ae(var3);
+			boolean var7 = var5.ak_fld > var1.as_fld && var5.ag_fld > var1.ay_fld && var5.ak_fld < var1.as_fld + var1.ah_fld && var5.ag_fld < var1.ay_fld + var1.aw_fld;
 			if (client.dj_fld == var3 && var7 && 0 != var1.ag_fld) {
 				client.es_fld = -1784608945 * var1.ag_fld;
 			}
 
 			if (var7 && var6 == null) {
 				var6 = var4.ah(var3, var1);
-				var4.az(var6);
-				var1.au_fld.ag(var6, var3);
+				cl.mv(var4, var6, -1226907778);
+				xf.sk(var1.au_fld, var6, var3);
 			} else if (!var7 && null != var6) {
 				var4.av(var6);
 				var6.mb();
@@ -2601,82 +2545,29 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("cm")
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;Ldx;I)V"
+		descriptor = "(Ldx;)V"
 	)
-	public static void cm(di var0, dx var1, int var2) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var3 = 0; var3 < var0.al_fld; var3++) {
-			int var4;
-			cl var5;
-			cv var7;
-			boolean var10000;
-			if (var2 >= -344962779) {
-				return;
-			}
-
-			label78: {
-				var4 = var0.az_fld[var3];
-				var5 = var0.av_fld[var4];
-				kj var6 = var5.az_fld;
-				var7 = (cv)var1.au_fld.ak(var4);
-				if (var6.ag_fld > var1.ay_fld && var6.az_fld > var1.as_fld && var6.ag_fld < var1.ay_fld + var1.ah_fld) {
-					if (var2 >= -344962779) {
-						return;
-					}
-
-					if (var6.az_fld < var1.as_fld + var1.aw_fld) {
-						var10000 = true;
-						break label78;
-					}
-				}
-
-				var10000 = false;
-			}
-
-			boolean var8 = var10000;
-			if (client.dj_fld == var4 && var8 && 0 != var1.ag_fld) {
+	void bv(dx var1) throws EOFException {
+		for (int var2 = 0; var2 < this.al_fld; var2++) {
+			int var3 = this.ar_fld[var2];
+			cl var4 = this.av_fld[var3];
+			kj var5 = var4.az_fld;
+			cv var6 = (cv)var1.au_fld.ae(var3);
+			boolean var7 = var5.ak_fld > var1.as_fld && var5.ag_fld > var1.ay_fld && var5.ak_fld < var1.as_fld + var1.ah_fld && var5.ag_fld < var1.ay_fld + var1.aw_fld;
+			if (client.dj_fld == var3 && var7 && 0 != var1.ag_fld) {
 				client.es_fld = -1784608945 * var1.ag_fld;
 			}
 
-			if (var8 && var7 == null) {
-				var7 = var5.ah(var4, var1);
-				var5.az(var7);
-				var1.au_fld.ag(var7, var4);
-			} else if (!var8) {
-				if (var2 >= -344962779) {
-					return;
-				}
-
-				if (null != var7) {
-					var5.av(var7);
-					var7.mb();
-				}
+			if (var7 && var6 == null) {
+				var6 = var4.ah(var3, var1);
+				cl.mv(var4, var6, -602451377);
+				xf.sk(var1.au_fld, var6, var3);
+			} else if (!var7 && null != var6) {
+				var4.av(var6);
+				var6.mb();
 			}
-		}
-	}
-
-	@ObfuscatedName("bu")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	void bu(xj var1) throws EOFException {
-		for (int var2 = 0; var2 < this.an_fld; var2++) {
-			int var3 = this.af_fld[var2];
-			int var4 = var1.cg();
-			if ((var4 & 2) != 0) {
-				var4 += var1.cg() << 8;
-			}
-
-			if (0 != (var4 & 16384)) {
-				var4 += var1.cg() << 16;
-			}
-
-			this.au(var1, var3, var4, -2091823155);
 		}
 	}
 
@@ -2686,16 +2577,23 @@ public class di {
 	)
 	void cd(cv var1) {
 		if (var1 != null) {
-			this.av_fld[var1.bx_fld].av(var1);
+			this.av_fld[var1.bq_fld].av(var1);
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lrx;"
+		descriptor = "()V"
 	)
-	rx ai(int var1) {
-		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
+	void bw() throws EOFException {
+		for (int var1 = 0; var1 < this.al_fld; var1++) {
+			int var2 = this.ar_fld[var1];
+			if (this.ae_fld[var2]) {
+				cl var3 = this.av_fld[var2];
+				var3.ax(this.ah_fld[var2], (byte)40);
+				this.ae_fld[var2] = false;
+			}
+		}
 	}
 
 	@ObfuscatedName("ba")
@@ -2704,7 +2602,22 @@ public class di {
 	)
 	void ba() throws EOFException {
 		for (int var1 = 0; var1 < this.al_fld; var1++) {
-			int var2 = this.az_fld[var1];
+			int var2 = this.ar_fld[var1];
+			if (this.ae_fld[var2]) {
+				cl var3 = this.av_fld[var2];
+				var3.ax(this.ah_fld[var2], (byte)-5);
+				this.ae_fld[var2] = false;
+			}
+		}
+	}
+
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void bq() throws EOFException {
+		for (int var1 = 0; var1 < this.al_fld; var1++) {
+			int var2 = this.ar_fld[var1];
 			if (this.ae_fld[var2]) {
 				cl var3 = this.av_fld[var2];
 				var3.ax(this.ah_fld[var2], (byte)-50);
@@ -2713,11 +2626,29 @@ public class di {
 		}
 	}
 
-	@ObfuscatedName("bb")
+	@ObfuscatedName("kh")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;II)I"
+	)
+	public static int kh(di var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (int var3 = 0; var3 < var0.al_fld; var3++) {
+			if (var1 == var0.ar_fld[var3]) {
+				return var3;
+			}
+		}
+
+		return -1;
+	}
+
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "(Lxj;II)V"
 	)
-	void bb(xj var1, int var2, int var3) throws EOFException {
+	void bg(xj var1, int var2, int var3) throws EOFException {
 		cl var4 = this.av_fld[var2];
 		int var5 = Integer.MAX_VALUE;
 		if ((var3 & 131072) != 0) {
@@ -2729,24 +2660,24 @@ public class di {
 					if (var9 != 32767) {
 						int var10 = var1.dz();
 						int var11 = var1.cg();
-						int var12 = var9 > 0 ? xi.uk(var1, 1898450231) : var11;
-						var4.ab(var8, var9, var10, var11, var12);
+						int var12 = var9 > 0 ? var1.de() : var11;
+						cl.zc(var4, var8, var9, var10, var11, var12);
 					} else {
-						var4.bc(var8);
+						cl.ga(var4, var8);
 					}
 				}
 			}
 		}
 
 		if (0 != (var3 & 256)) {
-			int var16 = var1.ew();
+			int var16 = xi.tl(var1, (byte)1);
 			int var29 = var16 >> 8;
 			int var37 = var29 >= 13 && var29 <= 20 ? var29 - 12 : 0;
-			ki var43 = (ki)ka.ak(ti.ak(), xi.uk(var1, 1898450231));
-			boolean var48 = xi.uk(var1, 1898450231) == 1;
+			ki var43 = (ki)ka.ak(ti.ak(), var1.de());
+			boolean var48 = var1.de() == 1;
 			int var53 = var1.df();
 			this.aw_fld.au_fld = 0;
-			xi.xp(var1, this.aw_fld.al_fld, 0, var53, (byte)8);
+			var1.dh(this.aw_fld.al_fld, 0, var53);
 			this.aw_fld.au_fld = 0;
 			String var57 = zv.ay(in.an(hr.ag(this.aw_fld)));
 			byte[] var13 = null;
@@ -2754,25 +2685,25 @@ public class di {
 				var13 = new byte[var37];
 
 				for (int var14 = 0; var14 < var37; var14++) {
-					var13[var14] = xi.rx(var1, -1134409442);
+					var13[var14] = var1.dj();
 				}
 			}
 
-			cl.ql(var4, var16, var43, var48, var57, var13, (byte)5);
+			var4.ac(var16, var43, var48, var57, var13, (byte)5);
 		}
 
 		if (0 != (var3 & 8)) {
-			int var17 = xi.uk(var1, 1898450231);
-			var4.ai(var17, var1);
+			int var17 = var1.de();
+			cl.cz(var4, var17, var1);
 		}
 
 		if ((var3 & 16) != 0) {
-			String var18 = xi.kc(var1, 1086031367);
-			cl.kb(var4, var18, -1286278843);
+			String var18 = xi.at(var1, 1086031367);
+			var4.ad(var18);
 		}
 
 		if ((var3 & 2048) != 0) {
-			var4.ae_fld = (gt)ka.ak(ge.ak(-769087485), xi.wc(var1, -1843574869));
+			var4.ae_fld = (gt)ka.ak(ge.ak(-769087485), xi.pb(var1, -1843574869));
 			if (Integer.MAX_VALUE == var5) {
 				this.ah_fld[var2] = var4.ae_fld;
 			}
@@ -2783,14 +2714,14 @@ public class di {
 
 			for (int var30 = 0; var30 < var19; var30++) {
 				int var38 = var1.df();
-				int var44 = xi.oh(var1, (byte)80);
+				int var44 = var1.ex();
 				int var49 = var1.em();
-				cl.sx(var4, var38, var44, var49 >> 16, var49 & 65535);
+				cl.gy(var4, var38, var44, var49 >> 16, var49 & 65535);
 			}
 		}
 
 		if ((var3 & 32768) != 0) {
-			byte var15 = xi.rp(var1, -23463823);
+			byte var15 = var1.cw();
 			if (var15 == 127) {
 				this.ah_fld[var2] = gt.ak_fld;
 			} else {
@@ -2800,34 +2731,34 @@ public class di {
 
 		if ((var3 & 4096) != 0) {
 			int var20 = client.dv_fld + var1.eo();
-			int var31 = client.dv_fld + var1.ew();
-			byte var39 = xi.wc(var1, -2129449402);
-			byte var45 = xi.wc(var1, -1528258303);
-			byte var50 = xi.wc(var1, -1800096019);
+			int var31 = client.dv_fld + xi.tl(var1, (byte)1);
+			byte var39 = xi.pb(var1, -2129449402);
+			byte var45 = xi.pb(var1, -1528258303);
+			byte var50 = xi.pb(var1, -1800096019);
 			byte var54 = (byte)var1.cg();
 			var4.bd(var20, var31, var39, var45, var50, var54);
 		}
 
 		if ((var3 & 128) != 0) {
-			var1.ew();
-			xi.uk(var1, 1898450231);
-			var1.dp();
+			xi.tl(var1, (byte)1);
+			var1.de();
+			xi.iu(var1, 976110331);
 			int var21 = var1.cg();
 			this.aw_fld.au_fld = 0;
-			xi.it(var1, this.aw_fld.al_fld, 0, var21);
+			var1.el(this.aw_fld.al_fld, 0, var21);
 			this.aw_fld.au_fld = 0;
 		}
 
 		if (0 != (var3 & 1024)) {
 			for (int var22 = 0; var22 < 3; var22++) {
-				this.ay_fld[var22] = xi.kc(var1, -347592161);
+				this.ay_fld[var22] = xi.at(var1, -347592161);
 			}
 
-			var4.bm(this.ay_fld);
+			cl.da(var4, this.ay_fld, (byte)-84);
 		}
 
 		if ((var3 & 262144) != 0) {
-			int var23 = xi.uk(var1, 1898450231);
+			int var23 = var1.de();
 			if (var23 > 0) {
 				for (int var32 = 0; var32 < var23; var32++) {
 					int var40 = var1.dz();
@@ -2840,8 +2771,8 @@ public class di {
 		}
 
 		if ((var3 & 64) != 0) {
-			int var24 = xi.oh(var1, (byte)67);
-			int var33 = xi.uk(var1, 1898450231);
+			int var24 = var1.ex();
+			int var33 = var1.de();
 			var4.am(var24, var33);
 		}
 
@@ -2859,92 +2790,74 @@ public class di {
 			int var26 = var1.df();
 			byte[] var35 = new byte[var26];
 			xi var41 = new xi(var35);
-			var1.el(var35, 0, var26);
+			var1.eh(var35, 0, var26);
 			var4.an(var41);
 		}
 
 		if (0 != (var3 & 32)) {
 			int var27 = var1.eo();
-			var4.ck(var27);
+			var4.at(var27);
 		}
 
 		if ((var3 & 8192) != 0) {
-			byte var28 = xi.rp(var1, -1032951505);
-			byte var36 = xi.lc(var1, 1410723405);
-			byte var42 = xi.wc(var1, -2106261374);
-			byte var47 = xi.rx(var1, -1134409442);
-			int var52 = xi.oh(var1, (byte)26) + client.dv_fld;
-			int var56 = var1.ew() + client.dv_fld;
-			int var58 = xi.oh(var1, (byte)83);
-			cl.vx(var4, var28, var36, var42, var47, var52, var56, var58, (short)27335);
+			byte var28 = var1.cw();
+			byte var36 = var1.ep();
+			byte var42 = xi.pb(var1, -2106261374);
+			byte var47 = var1.dj();
+			int var52 = var1.ex() + client.dv_fld;
+			int var56 = xi.tl(var1, (byte)1) + client.dv_fld;
+			int var58 = var1.ex();
+			cl.zw(var4, var28, var36, var42, var47, var52, var56, var58, (short)27335);
 			this.ae_fld[var2] = false;
 		}
 	}
 
-	@ObfuscatedName("gt")
-	@ObfuscatedSignature(
-		descriptor = "(Ldi;Lxj;I)V"
-	)
-	public static void gt(di var0, xj var1, int var2) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var1.au_fld * -520382865;
-		var0.an_fld = 0;
-		var0.av(var1, (byte)-42);
-		var0.ay((byte)34);
-		var0.as(1256262501);
-		var0.af(var1, -1698084881);
-		var0.al(1217613053);
-		if (var1.au_fld - var3 != var2) {
-			throw new RuntimeException(var1.au_fld - var3 + " " + var2);
-		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	final void at(xj var1) {
-		lk(this, 1664051548);
-		var1.ap(-901582417);
-		int var2 = client.dj_fld;
-		cl var3 = this.av_fld[var2];
-		int var4 = var1.ar(30, -106081977);
-		var3.ag(-1);
-		kj.am(var3.az_fld, var4);
-		var3.av_fld = 0;
-		this.al_fld = 0;
-		this.az_fld[(this.al_fld += -9684059) * -273927123 - 1] = var2;
-		this.au_fld = 0;
-
-		for (int var5 = 1; var5 < -192732981; var5++) {
-			if (var5 != var2) {
-				int var6 = var1.ar(18, -106081977);
-				int var7 = var6 >> 16;
-				int var8 = var6 >> 8 & 0xFF;
-				int var9 = var6 & 854044079;
-				this.av_fld[var5].ag(kj.ak(var7, var8, var9));
-				this.as_fld[(this.au_fld += -260300649) * 1540972327 - 1] = var5;
-			}
-		}
-
-		var1.as(1972545492);
-	}
-
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bq() throws EOFException {
+	void bc() throws EOFException {
 		for (int var1 = 0; var1 < this.al_fld; var1++) {
-			int var2 = this.az_fld[var1];
+			int var2 = this.ar_fld[var1];
 			if (this.ae_fld[var2]) {
 				cl var3 = this.av_fld[var2];
 				var3.ax(this.ah_fld[var2], (byte)15);
 				this.ae_fld[var2] = false;
 			}
+		}
+	}
+
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;)I"
+	)
+	public static int by(di var0, xj var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var2 = var1.ar(2, -106081977);
+		int var3;
+		if (0 == var2) {
+			var3 = 0;
+		} else if (1 == var2) {
+			var3 = var1.ar(5, -106081977);
+		} else if (var2 == 2) {
+			var3 = var1.ar(8, -106081977);
+		} else {
+			var3 = var1.ar(11, -106081977);
+		}
+
+		return var3;
+	}
+
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "(Lcv;)V"
+	)
+	void cc(cv var1) {
+		if (var1 != null) {
+			this.av_fld[var1.bq_fld].av(var1);
 		}
 	}
 
@@ -2954,7 +2867,47 @@ public class di {
 	)
 	void cq(cv var1) {
 		if (var1 != null) {
-			this.av_fld[var1.bx_fld].av(var1);
+			this.av_fld[var1.bq_fld].av(var1);
+		}
+	}
+
+	@ObfuscatedName("uc")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;I)I"
+	)
+	public static int uc(di var0, xj var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var3 = var1.ar(2, -106081977);
+		int var4;
+		if (0 == var3) {
+			var4 = 0;
+		} else if (1 == var3) {
+			var4 = var1.ar(5, -106081977);
+		} else if (var3 == 2) {
+			var4 = var1.ar(8, -106081977);
+		} else {
+			var4 = var1.ar(11, -106081977);
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("ch")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;I)V"
+	)
+	public void ch(xj var1, int var2) {
+		da.nx_fld = false;
+
+		for (int var3 = 0; var3 < this.al_fld; var3++) {
+			ArrayList var4 = this.av_fld[this.ar_fld[var3]].ak_fld;
+
+			for (int var5 = 0; var5 < var4.size(); var5++) {
+				((cv)var4.get(var5)).ml();
+			}
 		}
 	}
 
@@ -2964,29 +2917,37 @@ public class di {
 	)
 	void cv(cv var1) {
 		if (var1 != null) {
-			this.av_fld[var1.bx_fld].av(var1);
+			this.av_fld[var1.bq_fld].av(var1);
 		}
 	}
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bt() {
+	void cy() {
 		this.al_fld = 0;
 
 		for (int var1 = 0; var1 < 2048; var1++) {
-			this.av_fld[var1].ak();
+			this.av_fld[var1].cd();
 		}
 	}
 
-	@ObfuscatedName("em")
+	@ObfuscatedName("fj")
 	@ObfuscatedSignature(
-		descriptor = "(Lqf;)V"
+		descriptor = "(Ldi;)V"
 	)
-	public static void em(qf var0) {
+	public static void fj(di var0) throws EOFException {
 		if (var0 == null) {
 			var0.getClass();
+		} else {
+			client.es_fld = 0;
+			Iterator var1 = client.da_fld.iterator();
+
+			while (var1.hasNext()) {
+				dx var2 = (dx)(dx)var1.next();
+				var0.ar(var2, -372757021);
+			}
 		}
 	}
 
@@ -2996,7 +2957,7 @@ public class di {
 	)
 	int cf(int var1) {
 		for (int var2 = 0; var2 < this.al_fld; var2++) {
-			if (var1 == this.az_fld[var2]) {
+			if (var1 == this.ar_fld[var2]) {
 				return var2;
 			}
 		}
@@ -3004,107 +2965,294 @@ public class di {
 		return -1;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(I)I"
 	)
-	void an(int var1) {
-		this.au_fld = 0;
-
-		for (int var2 = 0; var2 < 2048; var2++) {
-			this.av_fld[var2].ay(1991707552);
+	int cx(int var1) {
+		for (int var2 = 0; var2 < this.al_fld; var2++) {
+			if (var1 == this.ar_fld[var2]) {
+				return var2;
+			}
 		}
+
+		return -1;
 	}
 
-	@ObfuscatedName("qs")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;)V"
+		descriptor = "(IB)Lrx;"
 	)
-	public static void qs(di var0) throws EOFException {
+	rx ak(int var1) {
+		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;I)I"
+	)
+	int ae(xj var1, int var2) {
+		int var3 = var1.ar(2, -106081977);
+		int var4;
+		if (0 == var3) {
+			var4 = 0;
+		} else if (1 == var3) {
+			var4 = var1.ar(5, -106081977);
+		} else if (var3 == 2) {
+			var4 = var1.ar(8, -106081977);
+		} else {
+			var4 = var1.ar(11, -106081977);
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("xu")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;)V"
+	)
+	public static void xu(di var0, xj var1) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			for (int var1 = 0; var1 < var0.al_fld; var1++) {
-				int var2 = var0.az_fld[var1];
-				if (var0.ae_fld[var2]) {
-					cl var3 = var0.av_fld[var2];
-					var3.ax(var0.ah_fld[var2], (byte)40);
-					var0.ae_fld[var2] = false;
-				}
+		}
+
+		var0.an();
+		var1.as(-901582417);
+		int var2 = client.dj_fld;
+		cl var3 = var0.av_fld[var2];
+		int var4 = var1.ar(30, -106081977);
+		cl.yp(var3, -1, (byte)1);
+		var3.az_fld.ar(var4);
+		var3.av_fld = 0;
+		var0.al_fld = 0;
+		var0.ar_fld[(var0.al_fld += -9684059) * -273927123 - 1] = var2;
+		var0.au_fld = 0;
+
+		for (int var5 = 1; var5 < -192732981; var5++) {
+			if (var5 != var2) {
+				int var6 = var1.ar(18, -106081977);
+				int var7 = var6 >> 16;
+				int var8 = var6 >> 8 & 0xFF;
+				int var9 = var6 & 854044079;
+				cl.yp(var0.av_fld[var5], kj.ak(var7, var8, var9), (byte)1);
+				var0.az_fld[(var0.au_fld += -260300649) * 1540972327 - 1] = var5;
 			}
+		}
+
+		var1.af(1972545492);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Lcv;I)V"
+	)
+	void ax(cv var1, int var2) {
+		this.hz(var1);
+		if (var1 != null) {
+			this.av_fld[-1857618981 * var1.bb_fld].az(var1, -611577879);
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;I)V"
+		descriptor = "(II)I"
 	)
-	void ar(dx var1, int var2) throws EOFException {
-		for (int var3 = 0; var3 < this.al_fld; var3++) {
-			int var4;
-			cl var5;
-			cv var7;
-			boolean var10000;
-			if (var2 >= -344962779) {
-				return;
+	int aa(int var1, int var2) {
+		for (int var3 = 0; var3 < this.ax_fld; var3++) {
+			if (var1 == this.as_fld[var3]) {
+				return var3;
+			}
+		}
+
+		return -1;
+	}
+
+	@ObfuscatedName("jk")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;Lxj;)V"
+	)
+	public static void jk(di var0, xj var1) throws EOFException {
+		for (int var2 = 0; var2 < var0.an_fld; var2++) {
+			int var3 = var0.as_fld[var2];
+			int var4 = var1.cg();
+			if ((var4 & 2) != 0) {
+				var4 += var1.cg() << 8;
 			}
 
-			label74: {
-				var4 = this.ar_fld[var3];
-				var5 = this.av_fld[var4];
-				kj var6 = var5.az_fld;
-				var7 = (cv)var1.au_fld.ae(var4);
-				if (var6.az_fld > var1.ay_fld && var6.ak_fld > var1.as_fld && var6.ak_fld < var1.as_fld + var1.ag_fld) {
-					if (var2 >= -344962779) {
-						return;
-					}
-
-					if (var6.ak_fld < var1.as_fld + var1.ah_fld) {
-						var10000 = true;
-						break label74;
-					}
-				}
-
-				var10000 = false;
+			if (0 != (var4 & 16384)) {
+				var4 += var1.cg() << 16;
 			}
 
-			boolean var8 = var10000;
-			if (client.ez_fld == var4 && var8 && 0 != var1.ah_fld) {
-				client.ox_fld = -1784608945 * var1.ah_fld;
-			}
-
-			if (var8 && var7 == null) {
-				var7 = var5.ah(var4, var1);
-				var5.av(var7);
-				var1.au_fld.ag(var7, var4);
-			} else if (!var8) {
-				if (var2 >= -344962779) {
-					return;
-				}
-
-				if (null != var7) {
-					var5.az(var7);
-					var7.mb();
-				}
-			}
+			var0.au(var1, var3, var4, -2091823155);
 		}
 	}
 
-	@ObfuscatedName("ri")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;)V"
+		descriptor = "(Lxj;)V"
 	)
-	public static void ri(di var0) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			for (int var1 = 0; var1 < var0.al_fld; var1++) {
-				int var2 = var0.az_fld[var1];
-				if (var0.ae_fld[var2]) {
-					cl var3 = var0.av_fld[var2];
-					var3.ax(var0.ah_fld[var2], (byte)-5);
-					var0.ae_fld[var2] = false;
+	final void ab(xj var1) throws EOFException {
+		this.as(1442419582);
+		var1.ap(-1765525869);
+		int var2 = client.ez_fld * -1593647060;
+		cl var3 = this.av_fld[var2];
+		int var4 = var1.ar(30, -106081977);
+		cl.yp(var3, -1, (byte)1);
+		var3.az_fld.ar(var4);
+		var3.av_fld = 0;
+		this.ax_fld = 0;
+		this.ar_fld[(this.au_fld = this.ax_fld + 1227014965) * -1482869773 - 1] = var2;
+		this.an_fld = 0;
+
+		for (int var5 = 1; var5 < 2048; var5++) {
+			if (var5 != var2) {
+				int var6 = var1.au(18, -106081977);
+				int var7 = var6 >> 16;
+				int var8 = var6 >> 8 & -1813100345;
+				int var9 = var6 & -252866092;
+				cl.yp(this.av_fld[var5], kj.ak(var7, var8, var9), (byte)1);
+				this.as_fld[(this.ax_fld = this.an_fld + -260300649) * 1540972327 - 1] = var5;
+			}
+		}
+
+		var1.af(366283578);
+	}
+
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;I)V"
+	)
+	void bj(xj var1, int var2) {
+		boolean var3 = var1.ar(1, -106081977) == 1;
+		if (var3) {
+			this.af_fld[(this.au_fld += -1004737463) * -910506503 - 1] = var2;
+		}
+
+		int var4 = var1.au(2, -106081977);
+		cl var5 = this.av_fld[var2];
+		if (var4 == 0) {
+			if (var3) {
+				this.ae_fld[var2] = false;
+			} else if (client.op_fld == var2) {
+				throw new RuntimeException();
+			} else {
+				cl.be(var5, -1152427193);
+				if (var1.au(1, -106081977) != 0) {
+					this.aw(var1, var2);
 				}
+
+				this.ar_fld[(this.an_fld = this.ax_fld + 727166919) * 450716151 - 1] = var2;
+			}
+		} else if (var4 == 1) {
+			int var13 = var1.ar(3, -106081977);
+			kj var16 = var5.az_fld;
+			if (var13 == 0) {
+				var16.ak_fld = var16.ag_fld - -1810751103;
+				var16.ag_fld = var16.ak_fld - -1225554487;
+			} else if (1 == var13) {
+				var16.az_fld = var16.ak_fld - -1225554487;
+			} else if (var13 == 2) {
+				var16.az_fld = var16.ag_fld + -1810751103;
+				var16.ag_fld = var16.ak_fld - -1225554487;
+			} else if (3 == var13) {
+				var16.ak_fld--;
+			} else if (4 == var13) {
+				var16.az_fld += -85943451;
+			} else if (var13 == 5) {
+				var16.az_fld -= -85943451;
+				var16.az_fld += -992663603;
+			} else if (6 == var13) {
+				var16.ak_fld += 1356068937;
+			} else if (7 == var13) {
+				var16.ag_fld = var16.az_fld + -1810751103;
+				var16.ak_fld += 1356068937;
+			}
+
+			this.ae_fld[var2] = true;
+			this.ah_fld[var2] = var5.ae_fld;
+		} else if (var4 == 2) {
+			int var12 = var1.au(4, -106081977);
+			kj var15 = var5.az_fld;
+			if (0 == var12) {
+				var15.ak_fld -= 2;
+				var15.az_fld -= -1985327206;
+			} else if (1 == var12) {
+				var15.az_fld = var15.ag_fld - -1810751103;
+				var15.ak_fld -= -1582829422;
+			} else if (var12 == 2) {
+				var15.az_fld = var15.ag_fld - 1843858322;
+			} else if (var12 == 3) {
+				var15.ak_fld = var15.az_fld + -1810751103;
+				var15.az_fld -= -1985327206;
+			} else if (var12 == 4) {
+				var15.ak_fld += 2;
+				var15.ak_fld = var15.az_fld - 1843858322;
+			} else if (var12 == 5) {
+				var15.ak_fld -= 2;
+				var15.ag_fld = var15.ak_fld - -1225554487;
+			} else if (var12 == 6) {
+				var15.az_fld = var15.ag_fld + 673465090;
+				var15.az_fld = var15.ak_fld - -1225554487;
+			} else if (7 == var12) {
+				var15.ak_fld -= 2;
+			} else if (var12 == 8) {
+				var15.az_fld += -171886902;
+			} else if (var12 == 9) {
+				var15.ag_fld = var15.ak_fld - 673465090;
+				var15.az_fld += -992663603;
+			} else if (var12 == 10) {
+				var15.ak_fld = var15.ag_fld + 673465090;
+				var15.az_fld = var15.ak_fld + -1225554487;
+			} else if (var12 == 11) {
+				var15.az_fld = var15.ak_fld - 673465090;
+				var15.ag_fld = var15.az_fld + 1843858322;
+			} else if (12 == var12) {
+				var15.ak_fld--;
+				var15.ak_fld = var15.az_fld + 1843858322;
+			} else if (var12 == 13) {
+				var15.ag_fld += 2;
+			} else if (var12 == 14) {
+				var15.ak_fld = var15.ag_fld + -1810751103;
+				var15.ag_fld += 2;
+			} else if (15 == var12) {
+				var15.az_fld = var15.ag_fld + 673465090;
+				var15.ag_fld += 2;
+			}
+
+			this.ae_fld[var2] = true;
+			this.ah_fld[var2] = var5.ae_fld;
+		} else {
+			int var6 = var1.au(1, -106081977);
+			if (0 == var6) {
+				int var14 = var1.ar(12, -106081977);
+				int var17 = var14 >> 10;
+				int var18 = var14 >> 5 & 31;
+				if (var18 > 15) {
+					var18 -= 32;
+				}
+
+				int var19 = var14 & 31;
+				if (var19 > 15) {
+					var19 -= 32;
+				}
+
+				kj var20 = var5.az_fld;
+				var20.az_fld = 615342573 * (byte)(var20.ag_fld + var17 & 3);
+				var20.ak_fld += var18 * -1810751103;
+				var20.ag_fld += var19 * -1225554487;
+				this.ae_fld[var2] = true;
+				this.ah_fld[var2] = var5.ae_fld;
+			} else {
+				int var7 = var1.au(30, -106081977);
+				int var8 = kj.as(var7);
+				int var9 = kj.ay(var7);
+				int var10 = kj.as(var7);
+				kj var11 = var5.az_fld;
+				var11.ag_fld = (byte)(var8 + var11.az_fld & 3) * 615342573;
+				var11.ag_fld = -1810751103 * (var9 + var11.ag_fld & 16383);
+				var11.ak_fld = -1225554487 * (var11.ak_fld + var10 & 16383);
+				this.ae_fld[var2] = true;
+				this.ah_fld[var2] = var5.ae_fld;
 			}
 		}
 	}
@@ -3114,29 +3262,6 @@ public class di {
 		descriptor = "(I)Lrx;"
 	)
 	rx am(int var1) {
-		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void bl() throws EOFException {
-		for (int var1 = 0; var1 < this.an_fld; var1++) {
-			int var2 = this.as_fld[var1];
-			if (this.ae_fld[var2]) {
-				cl var3 = this.av_fld[var2];
-				var3.ax(this.ah_fld[var2], (byte)-5);
-				this.ae_fld[var2] = false;
-			}
-		}
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lrx;"
-	)
-	rx ak(int var1, byte var2) {
 		return var1 >= 0 && var1 < this.av_fld.length ? this.av_fld[var1] : null;
 	}
 }

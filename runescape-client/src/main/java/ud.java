@@ -135,12 +135,12 @@ public class ud {
 		descriptor = "Lud;"
 	)
 	static ud aj_fld = new ud(25);
-	@ObfuscatedGetter(
-		intValue = 201272883
-	)
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 201272883
 	)
 	public int bm_fld;
 	@ObfuscatedName("ae")
@@ -149,13 +149,47 @@ public class ud {
 	)
 	public static ud ae_fld = new ud(3);
 
+	@ObfuscatedName("np")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)I"
+	)
+	public static int np(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (1.0 == var0.bk_fld) {
+			return 25;
+		} else if (1.5 == var0.bk_fld) {
+			return 37;
+		} else if (2.0 == var0.bk_fld) {
+			return 50;
+		} else if (var0.bk_fld == 3.0) {
+			return 75;
+		} else {
+			return 4.0 == var0.bk_fld ? 100 : 200;
+		}
+	}
+
+	@ObfuscatedName("wp")
+	@ObfuscatedSignature(
+		descriptor = "(Lmw;)Z"
+	)
+	public static boolean wp(mw var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.aw_fld.al_fld != null;
+		}
+	}
+
 	ud(int var1) {
 		this.bm_fld = var1;
 	}
 
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;ILfn;)V"
+		descriptor = "(Ldx;ILfn;I)V"
 	)
 	static void ca(dx var0, int var1, fn var2) throws EOFException {
 		short var4 = 512;
@@ -170,7 +204,7 @@ public class ud {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIZII)Lyv;"
+		descriptor = "(IIIIIZIII)Lyv;"
 	)
 	public static final yv az(int var0, int var1, int var2, int var3, int var4, boolean var5, int var6, int var7) throws EOFException {
 		if (var6 != 36 || var7 != 32) {
@@ -190,12 +224,12 @@ public class ud {
 		}
 
 		og var12 = kb.ag(var0, -1752383175);
-		if (var1 > 1 && var12.er_fld != null) {
+		if (var1 > 1 && var12.ez_fld != null) {
 			int var13 = -1;
 
 			for (int var14 = 0; var14 < 10; var14++) {
-				if (var1 >= var12.ez_fld[var14] && var12.ez_fld[var14] != 0) {
-					var13 = var12.er_fld[var14];
+				if (var1 >= var12.er_fld[var14] && var12.er_fld[var14] != 0) {
+					var13 = var12.ez_fld[var14];
 				}
 			}
 
@@ -240,7 +274,7 @@ public class ud {
 			fc.ad(var20, var20);
 			fc.ar_fld.an_fld = false;
 			if (var12.fa_fld != -1) {
-				var28.ab(0, 0);
+				yv.aj(var28, 0, 0);
 			}
 
 			int var21 = var12.dy_fld * -1724104019;
@@ -256,7 +290,7 @@ public class ud {
 
 			int var22 = fc.ah_fld[var12.di_fld * -64616359] * var21 >> 16;
 			int var23 = fc.aw_fld[var12.di_fld * -64616359] * var21 >> 16;
-			var27.eu();
+			var27.ap();
 			var27.bv(
 				0,
 				-146741915 * var12.dn_fld,
@@ -267,7 +301,7 @@ public class ud {
 				var12.dp_fld + var23
 			);
 			if (-1 != var12.ej_fld) {
-				var28.ab(0, 0);
+				yv.aj(var28, 0, 0);
 			}
 
 			if (var2 >= 1) {
@@ -284,7 +318,7 @@ public class ud {
 
 			fc.aa(var26.ah_fld, var6, var7, null);
 			if (var12.eg_fld != -1) {
-				var28.ab(0, 0);
+				yv.aj(var28, 0, 0);
 			}
 
 			if (var4 == 1 || 2 == var4 && var12.dj_fld == 1) {
@@ -298,7 +332,7 @@ public class ud {
 					var25 = "<col=00ff80>" + var1 / 1000000 + kh.hc_fld + "</col>";
 				}
 
-				zv.uj(var24, var25, 0, 9, 16776960, 1);
+				zv.uz(var24, var25, 0, 9, 16776960, 1);
 			}
 
 			if (!var5 && var6 == 36 && var7 == 32) {

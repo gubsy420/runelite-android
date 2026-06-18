@@ -19,12 +19,12 @@ public class lz {
 		descriptor = "I"
 	)
 	public static int ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1334874899
-	)
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1334874899
 	)
 	static int am_fld;
 	@ObfuscatedName("ch")
@@ -40,7 +40,7 @@ public class lz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()J"
+		descriptor = "(S)J"
 	)
 	public static final synchronized long ak() {
 		long var1 = System.currentTimeMillis();
@@ -52,9 +52,17 @@ public class lz {
 		return var1 + yd.ag_fld;
 	}
 
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)I"
+	)
+	public static int at(xi var0) {
+		return 128 - var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] & 0xFF;
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "()Lwl;"
+		descriptor = "(B)Lwl;"
 	)
 	static wl ah() {
 		return ca.px_fld;

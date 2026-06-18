@@ -30,6 +30,27 @@ public class qw {
 	)
 	static int ah_fld;
 
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "()Lqx;"
+	)
+	public final qx ad() {
+		if (this.az()) {
+			return new qx(this.ag_fld);
+		} else if (!this.av()) {
+			return null;
+		} else {
+			try {
+				return (qx)(qx)this.ak_fld.get();
+			} catch (Exception var3) {
+				String var2 = "Error retrieving REST request reply";
+				System.err.println(var2 + "\r\n" + var3);
+				this.ag(var2);
+				return new qx(var2);
+			}
+		}
+	}
+
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)V"
@@ -46,60 +67,14 @@ public class qw {
 		}
 	}
 
-	@ObfuscatedName("ly")
-	@ObfuscatedSignature(
-		descriptor = "(Lqw;Ljava/lang/String;)V"
-	)
-	public static void ly(qw var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (null == var1) {
-			var1 = "";
-		}
-
-		var0.ag_fld = var1;
-		if (var0.ak_fld != null) {
-			var0.ak_fld.cancel(true);
-			var0.ak_fld = null;
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public final boolean av() {
-		return this.az() ? true : this.ak_fld.isDone();
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	void ag(String var1) {
-		if (null == var1) {
-			var1 = "";
-		}
-
-		this.ag_fld = var1;
-		if (this.ak_fld != null) {
-			this.ak_fld.cancel(true);
-			this.ak_fld = null;
-		}
-	}
-
-	@ObfuscatedName("hi")
+	@ObfuscatedName("lm")
 	@ObfuscatedSignature(
 		descriptor = "(Lqw;)Lqx;"
 	)
-	public static qx hi(qw var0) {
+	public static qx lm(qw var0) {
 		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var0.az()) {
+			throw new NullPointerException();
+		} else if (var0.az()) {
 			return new qx(var0.ag_fld);
 		} else if (!var0.av()) {
 			return null;
@@ -115,9 +90,33 @@ public class qw {
 		}
 	}
 
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	public final boolean av() {
+		return this.az() ? true : this.ak_fld.isDone();
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V"
+	)
+	void ag(String var1) {
+		if (null == var1) {
+			var1 = "";
+		}
+
+		this.ag_fld = var1;
+		if (this.ak_fld != null) {
+			this.ak_fld.cancel(true);
+			this.ak_fld = null;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(B)Z"
 	)
 	public boolean az() {
 		return this.ag_fld != null || null == this.ak_fld;
@@ -129,7 +128,7 @@ public class qw {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()Lqx;"
+		descriptor = "(I)Lqx;"
 	)
 	public final qx ae() {
 		if (this.az()) {
@@ -148,12 +147,12 @@ public class qw {
 		}
 	}
 
-	@ObfuscatedName("eu")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;Lvp;)V"
+		descriptor = "()Ljava/lang/String;"
 	)
-	public static void eu(qt var0, vp var1) {
-		var0.av_fld.put("Content-Type", var1.ak());
+	public final String ah() {
+		return this.ag_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -164,57 +163,48 @@ public class qw {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public final String ak() {
+	public final String ay() {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lqw;)Z"
 	)
-	public boolean au() {
-		return this.ag_fld != null || null == this.ak_fld;
-	}
-
-	qw(Future var1) {
-		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean an() {
-		return this.ag_fld != null || null == this.ak_fld;
-	}
-
-	@ObfuscatedName("rr")
-	@ObfuscatedSignature(
-		descriptor = "(Lqw;)Lqx;"
-	)
-	public static qx rr(qw var0) {
+	public static boolean cl(qw var0) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		if (var0.az()) {
-			return new qx(var0.ag_fld);
-		} else if (!var0.av()) {
-			return null;
-		} else {
-			try {
-				return (qx)(qx)var0.ak_fld.get();
-			} catch (Exception var3) {
-				String var2 = "Error retrieving REST request reply";
-				System.err.println(var2 + "\r\n" + var3);
-				var0.ag(var2);
-				return new qx(var2);
-			}
+		return var0.ag_fld != null || null == var0.ak_fld;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	void as(String var1) {
+		if (null == var1) {
+			var1 = "";
 		}
+
+		this.ag_fld = var1;
+		if (this.ak_fld != null) {
+			this.ak_fld.cancel(true);
+			this.ak_fld = null;
+		}
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public final String ak() {
+		return this.ag_fld;
 	}
 
 	@ObfuscatedName("ax")
@@ -225,40 +215,40 @@ public class qw {
 		return this.ag_fld != null || null == this.ak_fld;
 	}
 
+	qw(Future var1) {
+		this.ak_fld = var1;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean au() {
+		return this.ag_fld != null || null == this.ak_fld;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	void ar(String var1) {
+		if (null == var1) {
+			var1 = "";
+		}
+
+		this.ag_fld = var1;
+		if (this.ak_fld != null) {
+			this.ak_fld.cancel(true);
+			this.ak_fld = null;
+		}
+	}
+
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	public final boolean aa() {
 		return this.az() ? true : this.ak_fld.isDone();
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public final boolean ai() {
-		return this.az() ? true : this.ak_fld.isDone();
-	}
-
-	@ObfuscatedName("ul")
-	@ObfuscatedSignature(
-		descriptor = "(Lqw;Ljava/lang/String;)V"
-	)
-	public static void ul(qw var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (null == var1) {
-				var1 = "";
-			}
-
-			var0.ag_fld = var1;
-			if (var0.ak_fld != null) {
-				var0.ak_fld.cancel(true);
-				var0.ak_fld = null;
-			}
-		}
 	}
 
 	@ObfuscatedName("aq")
@@ -279,30 +269,6 @@ public class qw {
 				this.ag(var2);
 				return new qx(var2);
 			}
-		}
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean al() {
-		return this.ag_fld != null || null == this.ak_fld;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	void ar(String var1) {
-		if (null == var1) {
-			var1 = "";
-		}
-
-		this.ag_fld = var1;
-		if (this.ak_fld != null) {
-			this.ak_fld.cancel(true);
-			this.ak_fld = null;
 		}
 	}
 }

@@ -20,12 +20,12 @@ public class ic extends ho {
 		descriptor = "I"
 	)
 	public static int bp_fld;
-	@ObfuscatedGetter(
-		intValue = 1754788897
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1754788897
 	)
 	int ak_fld;
 	@ObfuscatedName("aj")
@@ -34,17 +34,17 @@ public class ic extends ho {
 	)
 	static int aj_fld;
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void az(xi var1) {
-		this.ak_fld = xi.tx(var1, 1999653962);
+	void av(xi var1) {
+		this.ak_fld = var1.cm();
 		var1.cg();
 		if (var1.cg() != 609791365) {
 			var1.au_fld -= -1301696665;
-			xi.ob(var1, 151640323);
+			var1.cu();
 		}
 	}
 
@@ -68,11 +68,25 @@ public class ic extends ho {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = xi.tx(var1, 421229745);
+		this.ak_fld = var1.cm();
 		var1.cg();
 		if (var1.cg() != 255) {
 			var1.au_fld--;
-			xi.ob(var1, -2012107076);
+			var1.cu();
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	@Override
+	void az(xi var1) {
+		this.ak_fld = var1.cm();
+		var1.cg();
+		if (var1.cg() != 255) {
+			var1.au_fld--;
+			var1.cu();
 		}
 	}
 
@@ -82,25 +96,11 @@ public class ic extends ho {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = xi.tx(var1, 1045588579);
-		var1.cg();
-		if (var1.cg() != 255) {
-			var1.au_fld--;
-			xi.ob(var1, 163159251);
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	@Override
-	void av(xi var1) {
-		this.ak_fld = xi.tx(var1, 635163785) * 1952510641;
+		this.ak_fld = var1.cm() * 1952510641;
 		var1.cg();
 		if (var1.cg() != 1648679957) {
 			var1.au_fld -= 355395575;
-			xi.ob(var1, -1004698788);
+			var1.cu();
 		}
 	}
 
@@ -131,17 +131,9 @@ public class ic extends ho {
 		var1.az(this.ak_fld * 1901455139, -2128602860);
 	}
 
-	@ObfuscatedName("sl")
-	@ObfuscatedSignature(
-		descriptor = "(Lyw;)I"
-	)
-	public static int sl(yw var0) {
-		return var0.ag_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IZ)[B"
+		descriptor = "(IZI)[B"
 	)
 	public static byte[] ak(int var0, boolean var1) {
 		synchronized (zi.ae_fld) {

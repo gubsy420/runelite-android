@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -20,20 +19,20 @@ public class op implements xm {
 		descriptor = "Lop;"
 	)
 	static op az_fld = new op(0, 2);
-	@ObfuscatedGetter(
-		intValue = 1567188249
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
 	@ObfuscatedGetter(
-		intValue = 996915081
+		intValue = 1567188249
 	)
+	public int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 996915081
 	)
 	int ae_fld;
 	@ObfuscatedName("bm")
@@ -80,6 +79,18 @@ public class op implements xm {
 		return this.ae_fld;
 	}
 
+	@ObfuscatedName("rv")
+	@ObfuscatedSignature(
+		descriptor = "(Lwj;III)I"
+	)
+	public static int rv(wj var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var2 >= var3 ? var1 : (int)((float)var2 / var3 * var1);
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -87,14 +98,6 @@ public class op implements xm {
 	@Override
 	public int ae() {
 		return this.ae_fld;
-	}
-
-	@ObfuscatedName("nb")
-	@ObfuscatedSignature(
-		descriptor = "(Lma;)Ljava/util/ArrayList;"
-	)
-	public static ArrayList nb(ma var0) {
-		return var0.af_fld.av_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -117,7 +120,7 @@ public class op implements xm {
 
 				for (int var9 = var2; var9 < var2 + 64; var9++) {
 					for (int var10 = var3; var10 < var3 + 64; var10++) {
-						if (var8.af(var9, var10, (byte)2)) {
+						if (gn.ve(var8, var9, var10, (byte)2)) {
 							var8.ar(var9, var10, 1073741824, 1646253375);
 						}
 					}

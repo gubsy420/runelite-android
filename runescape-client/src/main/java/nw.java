@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -20,20 +21,12 @@ class nw implements Comparator {
 	)
 	static int ap_fld;
 
-	@ObfuscatedName("qc")
-	@ObfuscatedSignature(
-		descriptor = "(Lgn;)I"
-	)
-	public static int qc(gn var0) {
-		return var0.bx_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lnl;Lnl;)I"
 	)
 	int ag(nl var1, nl var2) {
-		return nl.rl(var1, -1153614698).compareTo(nl.rl(var2, -1977237832));
+		return nl.dq(var1, -1153614698).compareTo(nl.dq(var2, -1977237832));
 	}
 
 	@ObfuscatedName("ak")
@@ -41,7 +34,7 @@ class nw implements Comparator {
 		descriptor = "(Lnl;Lnl;I)I"
 	)
 	int ak(nl var1, nl var2, int var3) {
-		return nl.rl(var1, -1831942091).compareTo(nl.rl(var2, -1882616510));
+		return nl.dq(var1, -1831942091).compareTo(nl.dq(var2, -1882616510));
 	}
 
 	@ObfuscatedName("compare")
@@ -57,6 +50,7 @@ class nw implements Comparator {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
@@ -65,19 +59,19 @@ class nw implements Comparator {
 	nw() {
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	public int ah(Object var1, Object var2) {
+	public int ae(Object var1, Object var2) {
 		return this.ak((nl)var1, (nl)var2, -1371272090);
 	}
 
-	@ObfuscatedName("vl")
+	@ObfuscatedName("gt")
 	@ObfuscatedSignature(
 		descriptor = "(Lnw;Ljava/lang/Object;)Z"
 	)
-	public static boolean vl(nw var0, Object var1) {
+	public static boolean gt(nw var0, Object var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -85,19 +79,11 @@ class nw implements Comparator {
 		return var0.equals(var1);
 	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int aw(Object var1, Object var2) {
-		return this.ak((nl)var1, (nl)var2, -1371272090);
-	}
-
-	@ObfuscatedName("jm")
+	@ObfuscatedName("jt")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean jm(Object var1) {
+	public boolean jt(Object var1) {
 		return super.equals(var1);
 	}
 
@@ -106,7 +92,19 @@ class nw implements Comparator {
 		descriptor = "(Lnl;Lnl;)I"
 	)
 	int az(nl var1, nl var2) {
-		return nl.rl(var1, -1187213681).compareTo(nl.rl(var2, -2026244468));
+		return nl.dq(var1, -1187213681).compareTo(nl.dq(var2, -2026244468));
+	}
+
+	@ObfuscatedName("vr")
+	@ObfuscatedSignature(
+		descriptor = "(Lnw;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int vr(nw var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak((nl)var1, (nl)var2, -1371272090);
 	}
 
 	@ObfuscatedName("jg")
@@ -122,7 +120,7 @@ class nw implements Comparator {
 		descriptor = "(Lnl;Lnl;)I"
 	)
 	int ay(nl var1, nl var2) {
-		return nl.rl(var1, -1432631896).compareTo(nl.rl(var2, -1628469181));
+		return nl.dq(var1, -1432631896).compareTo(nl.dq(var2, -1628469181));
 	}
 
 	@ObfuscatedName("av")
@@ -130,6 +128,14 @@ class nw implements Comparator {
 		descriptor = "(Lnl;Lnl;)I"
 	)
 	int av(nl var1, nl var2) {
-		return nl.rl(var1, -1365224266).compareTo(nl.rl(var2, -1807905021));
+		return nl.dq(var1, -1365224266).compareTo(nl.dq(var2, -1807905021));
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public int aw(Object var1, Object var2) {
+		return this.ak((nl)var1, (nl)var2, -1371272090);
 	}
 }

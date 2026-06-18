@@ -5,12 +5,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("kl")
 public class kl {
-	@ObfuscatedGetter(
-		intValue = 283199525
-	)
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 283199525
 	)
 	static int bc_fld;
 	@ObfuscatedName("ak")
@@ -46,7 +46,7 @@ public class kl {
 
 	@ObfuscatedName("hk")
 	@ObfuscatedSignature(
-		descriptor = "()Ldx;"
+		descriptor = "(B)Ldx;"
 	)
 	static dx hk() {
 		dx var1 = bw.dk_fld;
@@ -98,6 +98,14 @@ public class kl {
 		return var1 + (var0 << 8);
 	}
 
+	@ObfuscatedName("ym")
+	@ObfuscatedSignature(
+		descriptor = "(Lqu;)I"
+	)
+	public static int ym(qu var0) {
+		return var0.ak_fld.hashCode();
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -122,9 +130,17 @@ public class kl {
 		return var1 + (var0 << 8);
 	}
 
+	@ObfuscatedName("sj")
+	@ObfuscatedSignature(
+		descriptor = "(Lbq;)I"
+	)
+	public static int sj(bq var0) {
+		return var0.az_fld;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lov;"
+		descriptor = "(IB)Lov;"
 	)
 	public static ov ag(int var0) throws EOFException {
 		ov var2 = (ov)ov.ay_fld.ak(var0);
@@ -137,7 +153,7 @@ public class kl {
 				var2.av(new xi(var3), var0);
 			}
 
-			ov.mt(var2, (byte)-13);
+			var2.az((byte)-13);
 			ov.ay_fld.az(var2, var0);
 			return var2;
 		}
@@ -145,10 +161,10 @@ public class kl {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;IILuo;Lqg;)V"
+		descriptor = "(Llu;IILuo;Lqg;I)V"
 	)
 	public static void ah(lu var0, int var1, int var2, uo var3, qg var4) throws EOFException {
-		lu var8 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld, -639060534);
+		lu var8 = -1 == var0.cv_fld ? null : var3.ag(var0.cv_fld, var0.cy_fld);
 		int var6;
 		int var7;
 		if (null == var8) {

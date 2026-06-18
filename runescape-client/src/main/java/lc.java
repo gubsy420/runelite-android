@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -49,41 +50,16 @@ public class lc {
 	)
 	static int au_fld;
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("oc")
 	@ObfuscatedSignature(
-		descriptor = "(Lfz;I)I"
+		descriptor = "(Lqa;)V"
 	)
-	public static int hj(fz var0, int var1) {
-		return var0.az_fld[var1];
-	}
-
-	@ObfuscatedName("lg")
-	@ObfuscatedSignature(
-		descriptor = "(Lwl;IIZ)V"
-	)
-	public static void lg(wl var0, int var1, int var2, boolean var3) {
+	public static void oc(qa var0) throws EOFException {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.bz_fld = var1;
-		var0.br_fld = var2;
-		lz.ak();
-		if (var3) {
-			var0.as(1617225818);
-		}
-	}
-
-	@ObfuscatedName("yt")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;II)V"
-	)
-	public static void yt(da var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		bb.jx(var0.cg_fld, var1, var2, -1106240719);
+		var0.ah_fld = 0;
 	}
 
 	lc() throws Throwable {

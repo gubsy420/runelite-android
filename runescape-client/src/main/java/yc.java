@@ -1,4 +1,5 @@
 import net.runelite.api.IndexedSprite;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -22,20 +23,20 @@ public class yc extends yu implements IndexedSprite {
 		descriptor = "[I"
 	)
 	public int[] ag_fld;
-	@ObfuscatedGetter(
-		intValue = 1463899361
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int av_fld;
 	@ObfuscatedGetter(
-		intValue = 391680949
+		intValue = 1463899361
 	)
+	public int av_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 391680949
 	)
 	public int az_fld;
 	@ObfuscatedName("ah")
@@ -43,22 +44,110 @@ public class yc extends yu implements IndexedSprite {
 		descriptor = "I"
 	)
 	public int ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1809103893
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int aw_fld;
 	@ObfuscatedGetter(
-		intValue = -1548281861
+		intValue = 1809103893
 	)
+	public int aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1548281861
+	)
 	public int ay_fld;
+
+	@ObfuscatedName("setHeight")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setHeight")
+	@Override
+	public void setHeight(int var1) {
+		this.av_fld = var1;
+	}
+
+	@ObfuscatedName("getOriginalHeight")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalHeight")
+	@Override
+	public int getOriginalHeight() {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("wz")
+	@ObfuscatedSignature(
+		descriptor = "(Lyc;III)V"
+	)
+	public static void wz(yc var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			for (int var4 = 0; var4 < var0.ag_fld.length; var4++) {
+				int var5 = var0.ag_fld[var4] >> 16 & 0xFF;
+				var5 += var1;
+				if (var5 < 0) {
+					var5 = 0;
+				} else if (var5 > -1656736165) {
+					var5 = 255;
+				}
+
+				int var6 = var0.ag_fld[var4] >> 8 & 1849369497;
+				var6 += var2;
+				if (var6 < 0) {
+					var6 = 0;
+				} else if (var6 > 255) {
+					var6 = 255;
+				}
+
+				int var7 = var0.ag_fld[var4] & -1194848756;
+				var7 += var3;
+				if (var7 < 0) {
+					var7 = 0;
+				} else if (var7 > -2091114649) {
+					var7 = 255;
+				}
+
+				var0.ag_fld[var4] = (var5 << 16) + (var6 << 8) + var7;
+			}
+		}
+	}
+
+	@ObfuscatedName("setPalette")
+	@ObfuscatedSignature(
+		descriptor = "([I)V"
+	)
+	@Export("setPalette")
+	@Override
+	public void setPalette(int[] var1) {
+		this.ag_fld = var1;
+	}
+
+	@ObfuscatedName("getOffsetX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOffsetX")
+	@Override
+	public int getOffsetX() {
+		return this.ae_fld;
+	}
+
+	@ObfuscatedName("getWidth")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getWidth")
+	@Override
+	public int getWidth() {
+		return this.az_fld;
+	}
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
@@ -123,88 +212,11 @@ public class yc extends yu implements IndexedSprite {
 		ag(al_fld, this.ak_fld, this.ag_fld, var7, var8, var17, var14, var3, var4, var11, var12, var5);
 	}
 
-	@ObfuscatedName("getOriginalHeight")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getOriginalHeight() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("getPalette")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getPalette() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("fa")
-	@ObfuscatedSignature(
-		descriptor = "(Lyc;)V"
-	)
-	public static void fa(yc var0) {
-		if (var0.az_fld != var0.aw_fld || var0.av_fld != var0.ay_fld) {
-			byte[] var1 = new byte[var0.aw_fld * var0.ay_fld];
-			int var2 = 0;
-
-			for (int var3 = 0; var3 < var0.av_fld; var3++) {
-				for (int var4 = 0; var4 < var0.az_fld; var4++) {
-					var1[var4 + var0.ae_fld + (var3 + var0.ah_fld) * var0.aw_fld] = var0.ak_fld[var2++];
-				}
-			}
-
-			var0.ak_fld = var1;
-			var0.az_fld = var0.aw_fld;
-			var0.av_fld = var0.ay_fld;
-			var0.ae_fld = 0;
-			var0.ah_fld = 0;
-		}
-	}
-
-	@ObfuscatedName("setPalette")
-	@ObfuscatedSignature(
-		descriptor = "([I)V"
-	)
-	@Override
-	public void setPalette(int[] var1) {
-		this.ag_fld = var1;
-	}
-
-	@ObfuscatedName("setOffsetX")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setOffsetX(int var1) {
-		this.ae_fld = var1;
-	}
-
-	@ObfuscatedName("getWidth")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getWidth() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getHeight")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getHeight() {
-		return this.av_fld;
-	}
-
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
 	)
-	public void ad(int var1, int var2) {
+	public void ae(int var1, int var2) {
 		var1 += this.ae_fld;
 		var2 += this.ah_fld;
 		int var3 = var1 + var2 * au_fld;
@@ -247,6 +259,52 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "(Lfm;)I"
+	)
+	public static int ku(fm var0) {
+		return var0.aw_fld + var0.av_fld;
+	}
+
+	@ObfuscatedName("en")
+	@ObfuscatedSignature(
+		descriptor = "(Lyc;III)V"
+	)
+	public static void en(yc var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			for (int var4 = 0; var4 < var0.ag_fld.length; var4++) {
+				int var5 = var0.ag_fld[var4] >> 16 & 0xFF;
+				var5 += var1;
+				if (var5 < 0) {
+					var5 = 0;
+				} else if (var5 > 255) {
+					var5 = 255;
+				}
+
+				int var6 = var0.ag_fld[var4] >> 8 & 0xFF;
+				var6 += var2;
+				if (var6 < 0) {
+					var6 = 0;
+				} else if (var6 > 255) {
+					var6 = 255;
+				}
+
+				int var7 = var0.ag_fld[var4] & 0xFF;
+				var7 += var3;
+				if (var7 < 0) {
+					var7 = 0;
+				} else if (var7 > 255) {
+					var7 = 255;
+				}
+
+				var0.ag_fld[var4] = (var5 << 16) + (var6 << 8) + var7;
+			}
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "([I[B[IIIIIIIIII)V"
@@ -274,6 +332,29 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void au() {
+		if (this.az_fld != this.aw_fld || this.av_fld != this.ay_fld) {
+			byte[] var1 = new byte[this.aw_fld * this.ay_fld];
+			int var2 = 0;
+
+			for (int var3 = 0; var3 < this.av_fld; var3++) {
+				for (int var4 = 0; var4 < this.az_fld; var4++) {
+					var1[var4 + this.ae_fld + (var3 + this.ah_fld) * this.aw_fld] = this.ak_fld[var2++];
+				}
+			}
+
+			this.ak_fld = var1;
+			this.az_fld = this.aw_fld;
+			this.av_fld = this.ay_fld;
+			this.ae_fld = 0;
+			this.ah_fld = 0;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -294,85 +375,6 @@ public class yc extends yu implements IndexedSprite {
 			this.av_fld = this.ay_fld;
 			this.ae_fld = 0;
 			this.ah_fld = 0;
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void ax() {
-		if (this.az_fld != this.aw_fld || this.av_fld != this.ay_fld) {
-			byte[] var1 = new byte[this.aw_fld * this.ay_fld];
-			int var2 = 0;
-
-			for (int var3 = 0; var3 < this.av_fld; var3++) {
-				for (int var4 = 0; var4 < this.az_fld; var4++) {
-					var1[var4 + this.ae_fld + (var3 + this.ah_fld) * this.aw_fld] = this.ak_fld[var2++];
-				}
-			}
-
-			this.ak_fld = var1;
-			this.az_fld = this.aw_fld;
-			this.av_fld = this.ay_fld;
-			this.ae_fld = 0;
-			this.ah_fld = 0;
-		}
-	}
-
-	@ObfuscatedName("setOffsetY")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setOffsetY(int var1) {
-		this.ah_fld = var1;
-	}
-
-	@ObfuscatedName("yg")
-	@ObfuscatedSignature(
-		descriptor = "(Lyc;II)V"
-	)
-	public static void yg(yc var0, int var1, int var2) {
-		var1 += var0.ae_fld;
-		var2 += var0.ah_fld;
-		int var3 = var1 + var2 * au_fld;
-		int var4 = 0;
-		int var5 = var0.av_fld;
-		int var6 = var0.az_fld;
-		int var7 = au_fld - var6;
-		int var8 = 0;
-		if (var2 < aa_fld) {
-			int var9 = aa_fld - var2;
-			var5 -= var9;
-			var2 = aa_fld;
-			var4 += var9 * var6;
-			var3 += var9 * au_fld;
-		}
-
-		if (var2 + var5 > ai_fld) {
-			var5 -= var2 + var5 - ai_fld;
-		}
-
-		if (var1 < aq_fld) {
-			int var12 = aq_fld - var1;
-			var6 -= var12;
-			var1 = aq_fld;
-			var4 += var12;
-			var3 += var12;
-			var8 += var12;
-			var7 += var12;
-		}
-
-		if (var1 + var6 > am_fld) {
-			int var13 = var1 + var6 - am_fld;
-			var6 -= var13;
-			var8 += var13;
-			var7 += var13;
-		}
-
-		if (var6 > 0 && var5 > 0) {
-			ak(al_fld, var0.ak_fld, var0.ag_fld, var4, var3, var6, var5, var7, var8);
 		}
 	}
 
@@ -492,30 +494,14 @@ public class yc extends yu implements IndexedSprite {
 		ag(al_fld, this.ak_fld, this.ag_fld, var7, var8, var17, var14, var3, var4, var11, var12, var5);
 	}
 
-	@ObfuscatedName("getOffsetY")
+	@ObfuscatedName("setOriginalHeight")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)V"
 	)
+	@Export("setOriginalHeight")
 	@Override
-	public int getOffsetY() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("getOffsetX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getOffsetX() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("ob")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V"
-	)
-	public void ob(int var1, int var2, int var3, int var4) {
-		this.ah(var1, var2, var3, var4);
+	public void setOriginalHeight(int var1) {
+		this.ay_fld = var1;
 	}
 
 	@ObfuscatedName("aw")
@@ -571,16 +557,27 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
-	@ObfuscatedName("setOriginalWidth")
+	public yc() {
+	}
+
+	@ObfuscatedName("getHeight")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHeight")
+	@Override
+	public int getHeight() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("setOffsetX")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
+	@Export("setOffsetX")
 	@Override
-	public void setOriginalWidth(int var1) {
-		this.aw_fld = var1;
-	}
-
-	public yc() {
+	public void setOffsetX(int var1) {
+		this.ae_fld = var1;
 	}
 
 	@ObfuscatedName("an")
@@ -671,11 +668,59 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("setOffsetY")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setOffsetY")
+	@Override
+	public void setOffsetY(int var1) {
+		this.ah_fld = var1;
+	}
+
+	@ObfuscatedName("getPixels")
+	@ObfuscatedSignature(
+		descriptor = "()[B"
+	)
+	@Export("getPixels")
+	@Override
+	public byte[] getPixels() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("getPalette")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getPalette")
+	@Override
+	public int[] getPalette() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("getOriginalWidth")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getOriginalWidth")
+	@Override
+	public int getOriginalWidth() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("zw")
+	@ObfuscatedSignature(
+		descriptor = "(Luo;Llu;)Z"
+	)
+	public static boolean zw(uo var0, lu var1) {
+		return var0.ac_fld == var1;
+	}
+
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
 	)
-	public void ae(int var1, int var2) {
+	public void ad(int var1, int var2) {
 		var1 += this.ae_fld;
 		var2 += this.ah_fld;
 		int var3 = var1 + var2 * au_fld;
@@ -718,13 +763,35 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
-	@ObfuscatedName("getPixels")
+	@ObfuscatedName("tc")
 	@ObfuscatedSignature(
-		descriptor = "()[B"
+		descriptor = "(IIII)V"
 	)
-	@Override
-	public byte[] getPixels() {
-		return this.ak_fld;
+	public void tc(int var1, int var2, int var3, int var4) {
+		this.ah(var1, var2, var3, var4);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ax() {
+		if (this.az_fld != this.aw_fld || this.av_fld != this.ay_fld) {
+			byte[] var1 = new byte[this.aw_fld * this.ay_fld];
+			int var2 = 0;
+
+			for (int var3 = 0; var3 < this.av_fld; var3++) {
+				for (int var4 = 0; var4 < this.az_fld; var4++) {
+					var1[var4 + this.ae_fld + (var3 + this.ah_fld) * this.aw_fld] = this.ak_fld[var2++];
+				}
+			}
+
+			this.ak_fld = var1;
+			this.az_fld = this.aw_fld;
+			this.av_fld = this.ay_fld;
+			this.ae_fld = 0;
+			this.ah_fld = 0;
+		}
 	}
 
 	@ObfuscatedName("ak")
@@ -780,6 +847,73 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(II)V"
+	)
+	public void am(int var1, int var2) {
+		var1 += this.ae_fld;
+		var2 += this.ah_fld;
+		int var3 = var1 + var2 * au_fld;
+		int var4 = 0;
+		int var5 = this.av_fld;
+		int var6 = this.az_fld;
+		int var7 = au_fld - var6;
+		int var8 = 0;
+		if (var2 < aa_fld) {
+			int var9 = aa_fld - var2;
+			var5 -= var9;
+			var2 = aa_fld;
+			var4 += var9 * var6;
+			var3 += var9 * au_fld;
+		}
+
+		if (var2 + var5 > ai_fld) {
+			var5 -= var2 + var5 - ai_fld;
+		}
+
+		if (var1 < aq_fld) {
+			int var12 = aq_fld - var1;
+			var6 -= var12;
+			var1 = aq_fld;
+			var4 += var12;
+			var3 += var12;
+			var8 += var12;
+			var7 += var12;
+		}
+
+		if (var1 + var6 > am_fld) {
+			int var13 = var1 + var6 - am_fld;
+			var6 -= var13;
+			var8 += var13;
+			var7 += var13;
+		}
+
+		if (var6 > 0 && var5 > 0) {
+			ak(al_fld, this.ak_fld, this.ag_fld, var4, var3, var6, var5, var7, var8);
+		}
+	}
+
+	@ObfuscatedName("setWidth")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setWidth")
+	@Override
+	public void setWidth(int var1) {
+		this.az_fld = var1;
+	}
+
+	@ObfuscatedName("setPixels")
+	@ObfuscatedSignature(
+		descriptor = "([B)V"
+	)
+	@Export("setPixels")
+	@Override
+	public void setPixels(byte[] var1) {
+		this.ak_fld = var1;
+	}
+
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(III)V"
@@ -814,108 +948,24 @@ public class yc extends yu implements IndexedSprite {
 		}
 	}
 
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void ai(int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < this.ag_fld.length; var4++) {
-			int var5 = this.ag_fld[var4] >> 16 & 0xFF;
-			var5 += var1;
-			if (var5 < 0) {
-				var5 = 0;
-			} else if (var5 > -1656736165) {
-				var5 = 255;
-			}
-
-			int var6 = this.ag_fld[var4] >> 8 & 1849369497;
-			var6 += var2;
-			if (var6 < 0) {
-				var6 = 0;
-			} else if (var6 > 255) {
-				var6 = 255;
-			}
-
-			int var7 = this.ag_fld[var4] & -1194848756;
-			var7 += var3;
-			if (var7 < 0) {
-				var7 = 0;
-			} else if (var7 > -2091114649) {
-				var7 = 255;
-			}
-
-			this.ag_fld[var4] = (var5 << 16) + (var6 << 8) + var7;
-		}
-	}
-
-	@ObfuscatedName("setWidth")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setWidth(int var1) {
-		this.az_fld = var1;
-	}
-
-	@ObfuscatedName("setPixels")
-	@ObfuscatedSignature(
-		descriptor = "([B)V"
-	)
-	@Override
-	public void setPixels(byte[] var1) {
-		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(III)V"
-	)
-	public void aq(int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < this.ag_fld.length; var4++) {
-			int var5 = this.ag_fld[var4] >> 16 & 0xFF;
-			var5 += var1;
-			if (var5 < 0) {
-				var5 = 0;
-			} else if (var5 > 255) {
-				var5 = 255;
-			}
-
-			int var6 = this.ag_fld[var4] >> 8 & 0xFF;
-			var6 += var2;
-			if (var6 < 0) {
-				var6 = 0;
-			} else if (var6 > 255) {
-				var6 = 255;
-			}
-
-			int var7 = this.ag_fld[var4] & 0xFF;
-			var7 += var3;
-			if (var7 < 0) {
-				var7 = 0;
-			} else if (var7 > 255) {
-				var7 = 255;
-			}
-
-			this.ag_fld[var4] = (var5 << 16) + (var6 << 8) + var7;
-		}
-	}
-
-	@ObfuscatedName("setOriginalHeight")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setOriginalHeight(int var1) {
-		this.ay_fld = var1;
-	}
-
-	@ObfuscatedName("getOriginalWidth")
+	@ObfuscatedName("getOffsetY")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getOffsetY")
 	@Override
-	public int getOriginalWidth() {
-		return this.aw_fld;
+	public int getOffsetY() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("setOriginalWidth")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setOriginalWidth")
+	@Override
+	public void setOriginalWidth(int var1) {
+		this.aw_fld = var1;
 	}
 
 	@ObfuscatedName("al")
@@ -977,15 +1027,6 @@ public class yc extends yu implements IndexedSprite {
 
 			this.ag_fld[var4] = (var5 << 16) + (var6 << 8) + var7;
 		}
-	}
-
-	@ObfuscatedName("setHeight")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setHeight(int var1) {
-		this.av_fld = var1;
 	}
 
 	@ObfuscatedName("ao")

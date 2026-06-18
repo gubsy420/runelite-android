@@ -82,11 +82,11 @@ public class mh {
 		try {
 			zb var2 = new zb(dm.ai_fld, "rw", 10000L);
 			xi var3 = new xi(500);
-			var3.bc(3);
-			var3.bc(var1 != null ? 1 : 0);
-			xi.vs(var3, var0.getPath(), (byte)-100);
+			var3.ea(3);
+			var3.ea(var1 != null ? 1 : 0);
+			var3.cv(var0.getPath());
 			if (null != var1) {
-				xi.vs(var3, var1.getPath(), (byte)-58);
+				var3.cv(var1.getPath());
 			}
 
 			var2.az(var3.al_fld, 0, var3.au_fld);
@@ -136,10 +136,10 @@ public class mh {
 		try {
 			if (fp.ax_fld.startsWith("win")) {
 				if (null == uf.aa_fld) {
-					uf.aa_fld = client.kb("USERPROFILE");
+					uf.aa_fld = client.ly("USERPROFILE");
 				}
 			} else if (uf.aa_fld == null) {
-				uf.aa_fld = client.kb("HOME");
+				uf.aa_fld = client.ly("HOME");
 			}
 
 			if (uf.aa_fld != null) {
@@ -170,7 +170,7 @@ public class mh {
 					xi var12 = new xi((int)var11.ah());
 
 					while (var12.au_fld < var12.al_fld.length) {
-						int var13 = zb.fd(var11, var12.al_fld, var12.au_fld * -2093418188, var12.al_fld.length - var12.au_fld);
+						int var13 = zb.oe(var11, var12.al_fld, var12.au_fld * -2093418188, var12.al_fld.length - var12.au_fld);
 						if (-1 == var13) {
 							throw new IOException();
 						}
@@ -190,14 +190,14 @@ public class mh {
 					}
 
 					if (var57 <= 2) {
-						var8 = var12.cl();
+						var8 = var12.ct();
 						if (var14 == 1) {
-							var9 = var12.cl();
+							var9 = var12.ct();
 						}
 					} else {
-						var8 = xi.ag(var12, (byte)-27);
+						var8 = xi.jw(var12, (byte)-27);
 						if (1 == var14) {
-							var9 = xi.ag(var12, (byte)-31);
+							var9 = xi.jw(var12, (byte)-31);
 						}
 					}
 				} catch (Exception var37) {
@@ -378,10 +378,10 @@ public class mh {
 		try {
 			if (fp.ax_fld.startsWith("win")) {
 				if (null == uf.aa_fld) {
-					uf.aa_fld = client.kb("USERPROFILE");
+					uf.aa_fld = client.ly("USERPROFILE");
 				}
 			} else if (uf.aa_fld == null) {
-				uf.aa_fld = client.kb("HOME");
+				uf.aa_fld = client.ly("HOME");
 			}
 
 			if (uf.aa_fld != null) {
@@ -412,7 +412,7 @@ public class mh {
 					xi var12 = new xi((int)var11.ah());
 
 					while (var12.au_fld < var12.al_fld.length) {
-						int var13 = zb.fd(var11, var12.al_fld, var12.au_fld, var12.al_fld.length - var12.au_fld);
+						int var13 = zb.oe(var11, var12.al_fld, var12.au_fld, var12.al_fld.length - var12.au_fld);
 						if (-1 == var13) {
 							throw new IOException();
 						}
@@ -432,14 +432,14 @@ public class mh {
 					}
 
 					if (var57 <= 2) {
-						var8 = var12.cl();
+						var8 = var12.ct();
 						if (var14 == 1) {
-							var9 = var12.cl();
+							var9 = var12.ct();
 						}
 					} else {
-						var8 = xi.ag(var12, (byte)-93);
+						var8 = xi.jw(var12, (byte)-93);
 						if (1 == var14) {
-							var9 = xi.ag(var12, (byte)-119);
+							var9 = xi.jw(var12, (byte)-119);
 						}
 					}
 				} catch (Exception var37) {
@@ -588,11 +588,11 @@ public class mh {
 		try {
 			zb var2 = new zb(dm.ai_fld, "rw", 10000L);
 			xi var3 = new xi(500);
-			var3.bc(3);
-			var3.bc(var1 != null ? 1 : 0);
-			xi.vs(var3, var0.getPath(), (byte)-66);
+			var3.ea(3);
+			var3.ea(var1 != null ? 1 : 0);
+			var3.cv(var0.getPath());
 			if (null != var1) {
-				xi.vs(var3, var1.getPath(), (byte)-1);
+				var3.cv(var1.getPath());
 			}
 
 			var2.az(var3.al_fld, 0, var3.au_fld);
@@ -624,11 +624,11 @@ public class mh {
 		try {
 			zb var2 = new zb(dm.ai_fld, "rw", 10000L);
 			xi var3 = new xi(500);
-			var3.bc(3);
-			var3.bc(var1 != null ? 1 : 0);
-			xi.vs(var3, var0.getPath(), (byte)-68);
+			var3.ea(3);
+			var3.ea(var1 != null ? 1 : 0);
+			var3.cv(var0.getPath());
 			if (null != var1) {
-				xi.vs(var3, var1.getPath(), (byte)-49);
+				var3.cv(var1.getPath());
 			}
 
 			var2.az(var3.al_fld, 0, var3.au_fld);
@@ -636,14 +636,6 @@ public class mh {
 		} catch (IOException var4) {
 			var4.printStackTrace();
 		}
-	}
-
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
-	)
-	public static void ce(pi var0) {
-		var0.aq_fld = var0.az_fld * 1110542537;
 	}
 
 	@ObfuscatedName("au")
@@ -834,17 +826,9 @@ public class mh {
 		}
 	}
 
-	@ObfuscatedName("la")
-	@ObfuscatedSignature(
-		descriptor = "(Lny;II)I"
-	)
-	public static int la(ny var0, int var1, int var2) {
-		return my.ag(var0.ah_fld, var1, var2);
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lco;"
+		descriptor = "(II)Lco;"
 	)
 	static co ae(int var0) {
 		return (co)(co)cz.ag_fld.ak(var0);
@@ -856,21 +840,21 @@ public class mh {
 	)
 	public static void ab() {
 		try {
-			af_fld.ak();
+			zu.pw(af_fld, 1352694741);
 
 			for (int var0 = 0; var0 < lz.am_fld; var0++) {
-				tw.au_fld[var0].ak();
+				zu.pw(tw.au_fld[var0], 1352694741);
 			}
 
-			al_fld.ak();
-			ad_fld.ak();
+			zu.pw(al_fld, 1352694741);
+			zu.pw(ad_fld, 1352694741);
 		} catch (Exception var1) {
 		}
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lto;FFF)F"
+		descriptor = "(Lto;FFFB)F"
 	)
 	static float az(to var0, float var1, float var2, float var3) {
 		float var5 = tk.ag(var0.ak_fld, var0.ag_fld, var1);

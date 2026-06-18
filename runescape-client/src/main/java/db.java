@@ -9,20 +9,20 @@ public class db {
 		descriptor = "Ljava/lang/String;"
 	)
 	public static String ag_fld = ",";
-	@ObfuscatedGetter(
-		intValue = 304996695
-	)
 	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int bg_fld;
 	@ObfuscatedGetter(
-		intValue = 867932261
+		intValue = 304996695
 	)
+	static int bg_fld;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 867932261
 	)
 	static int aa_fld;
 	@ObfuscatedName("az")
@@ -85,6 +85,22 @@ public class db {
 	)
 	public static String av(int var0) {
 		return "<col=" + Integer.toHexString(var0) + ">";
+	}
+
+	@ObfuscatedName("ym")
+	@ObfuscatedSignature(
+		descriptor = "(Leg;SS)V"
+	)
+	public static void ym(eg var0, short var1, short var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (int var3 = 0; var3 < var0.au_fld; var3++) {
+			if (var0.ao_fld[var3] == var1) {
+				var0.ao_fld[var3] = var2;
+			}
+		}
 	}
 
 	db() throws Throwable {

@@ -12,12 +12,12 @@ import org.json.JSONObject;
 
 @ObfuscatedName("mo")
 public class mo {
-	@ObfuscatedGetter(
-		intValue = -54859065
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -54859065
 	)
 	int av_fld;
 	@ObfuscatedName("ag")
@@ -60,9 +60,32 @@ public class mo {
 		this.av_fld = 0;
 	}
 
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(Lmo;Lorg/json/JSONObject;ILde;)V"
+	)
+	public static void bd(mo var0, JSONObject var1, int var2, de var3) {
+		var0.az_fld.clear();
+
+		JSONObject var4;
+		try {
+			var4 = var1;
+			var0.av_fld = 1479348967 * var2;
+			var1.getLong("lastfullsyncat");
+			var1.getLong("lastcardupdatedat");
+		} catch (Exception var7) {
+			return;
+		}
+
+		try {
+			var0.ag(var4.getJSONArray("crmcomponents"), var0.av_fld * -379005019, var3, 1164120112);
+		} catch (Exception var6) {
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lorg/json/JSONObject;ILde;)V"
+		descriptor = "(Lorg/json/JSONObject;ILde;B)V"
 	)
 	void ak(JSONObject var1, int var2, de var3) {
 		this.az_fld.clear();
@@ -83,6 +106,41 @@ public class mo {
 		}
 	}
 
+	@ObfuscatedName("ym")
+	@ObfuscatedSignature(
+		descriptor = "(Lmo;Lorg/json/JSONArray;ILde;)V"
+	)
+	public static void ym(mo var0, JSONArray var1, int var2, de var3) throws JSONException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (null != var1) {
+			for (int var4 = 0; var4 < var1.length(); var4++) {
+				JSONObject var5 = var1.getJSONObject(var4);
+				if (var5.getString("game").equals("osrs") && !var5.getBoolean("removed")) {
+					String var6 = var5.getString("platform");
+					if (!var6.equals("mobile") && !var6.equals("android") && !var6.equals("ios")) {
+						mj var7 = new mj();
+
+						try {
+							var7.ah(var5, var2, var3);
+						} catch (Exception var9) {
+						}
+
+						if (!var7.as_fld.isEmpty()) {
+							String var8 = var5.getString("location");
+							var0.az_fld.put(var8, var7);
+						}
+					}
+				}
+			}
+
+			var0.az_fld = var0.az();
+			lz.ak();
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Lorg/json/JSONArray;ILde;I)V"
@@ -92,17 +150,17 @@ public class mo {
 			for (int var5 = 0; var5 < var1.length(); var5++) {
 				JSONObject var6 = var1.getJSONObject(var5);
 				if (!var6.getString("game").equals("osrs")) {
-					if (var4 == -538711872) {
+					if (false) {
 						return;
 					}
 				} else if (var6.getBoolean("removed")) {
-					if (var4 == -538711872) {
+					if (false) {
 						return;
 					}
 				} else {
 					String var7 = var6.getString("platform");
 					if (!var7.equals("mobile") && !var7.equals("android")) {
-						if (var4 == -538711872) {
+						if (false) {
 							return;
 						}
 
@@ -115,7 +173,7 @@ public class mo {
 							}
 
 							if (!var8.as_fld.isEmpty()) {
-								if (var4 == -538711872) {
+								if (false) {
 									return;
 								}
 
@@ -132,22 +190,9 @@ public class mo {
 		}
 	}
 
-	@ObfuscatedName("le")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;[Ljava/lang/Object;)Lyb;"
-	)
-	public static yb le(yb var0, Object[] var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var0.ag_fld = (Object[])var1;
-			return var0;
-		}
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/Map;"
+		descriptor = "(B)Ljava/util/Map;"
 	)
 	Map az() {
 		HashMap var2 = new HashMap();
@@ -178,16 +223,20 @@ public class mo {
 		return var2;
 	}
 
-	@ObfuscatedName("qf")
+	@ObfuscatedName("yi")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;)I"
+		descriptor = "(Lbo;)Z"
 	)
-	public static int qf(kj var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return kj.bk(var0, -540273059);
-		}
+	public static boolean yi(bo var0) {
+		return var0.ah_fld.bx((byte)41) || var0.ah_fld.bl(-1440239599) >= 100 && 1 != client.ep_fld;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Lmj;"
+	)
+	mj al(String var1) {
+		return (mj)(mj)this.az_fld.get(var1);
 	}
 
 	@ObfuscatedName("ah")
@@ -213,27 +262,12 @@ public class mo {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lorg/json/JSONObject;ILde;)V"
+		descriptor = "(Ljava/lang/String;I)Lmj;"
 	)
-	void ae(JSONObject var1, int var2, de var3) {
-		this.az_fld.clear();
-
-		JSONObject var4;
-		try {
-			var4 = var1;
-			this.av_fld = 1479348967 * var2;
-			var1.getLong("lastfullsyncat");
-			var1.getLong("lastcardupdatedat");
-		} catch (Exception var7) {
-			return;
-		}
-
-		try {
-			this.ag(var4.getJSONArray("crmcomponents"), this.av_fld * -379005019, var3, 1164120112);
-		} catch (Exception var6) {
-		}
+	mj av(String var1) {
+		return (mj)(mj)this.az_fld.get(var1);
 	}
 
 	@ObfuscatedName("as")
@@ -283,16 +317,12 @@ public class mo {
 		return (mj)(mj)this.az_fld.get(var1);
 	}
 
-	@ObfuscatedName("lo")
+	@ObfuscatedName("jh")
 	@ObfuscatedSignature(
-		descriptor = "(Lmo;Ljava/lang/String;I)Lmj;"
+		descriptor = "(Lxi;)I"
 	)
-	public static mj lo(mo var0, String var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return (mj)(mj)var0.az_fld.get(var1);
+	public static int jh(xi var0) {
+		return var0.al_fld[(var0.au_fld += 228932457) * -1381264220 - 1] - 128 & -1131663940;
 	}
 
 	@ObfuscatedName("dq")
@@ -343,8 +373,8 @@ public class mo {
 		if (client.dg_fld == 1) {
 			tu var21;
 			var21 = sq.ek();
-			int var23 = (int)var21.ay_fld;
-			int var25 = (int)var21.ar_fld;
+			int var23 = (int)var21.ar_fld;
+			int var25 = (int)var21.as_fld;
 			label66:
 			if (client.jl_fld >= 2 && 0 == client.dv_fld % 50) {
 				if (ga.mr_fld >> 7 == var23 >> 7) {
@@ -357,9 +387,9 @@ public class mo {
 					}
 				}
 
-				int var16 = (int)var21.as_fld;
-				int var17 = (ga.mr_fld >> 7) + bw.dk_fld.ay_fld;
-				int var18 = bw.dk_fld.as_fld + (an.mu_fld >> 7);
+				int var16 = (int)var21.ay_fld;
+				int var17 = (ga.mr_fld >> 7) + bw.dk_fld.as_fld;
+				int var18 = bw.dk_fld.ay_fld + (an.mu_fld >> 7);
 				bu.he(var17, var18, var16, true);
 			}
 
@@ -396,48 +426,5 @@ public class mo {
 			this.az_fld = this.az();
 			lz.ak();
 		}
-	}
-
-	@ObfuscatedName("kd")
-	@ObfuscatedSignature(
-		descriptor = "(Lmo;Lorg/json/JSONArray;ILde;)V"
-	)
-	public static void kd(mo var0, JSONArray var1, int var2, de var3) throws JSONException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (null != var1) {
-			for (int var4 = 0; var4 < var1.length(); var4++) {
-				JSONObject var5 = var1.getJSONObject(var4);
-				if (var5.getString("game").equals("osrs") && !var5.getBoolean("removed")) {
-					String var6 = var5.getString("platform");
-					if (!var6.equals("mobile") && !var6.equals("android") && !var6.equals("ios")) {
-						mj var7 = new mj();
-
-						try {
-							var7.ah(var5, var2, var3);
-						} catch (Exception var9) {
-						}
-
-						if (!var7.as_fld.isEmpty()) {
-							String var8 = var5.getString("location");
-							var0.az_fld.put(var8, var7);
-						}
-					}
-				}
-			}
-
-			var0.az_fld = var0.az();
-			lz.ak();
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Lmj;"
-	)
-	mj av(String var1, int var2) {
-		return (mj)(mj)this.az_fld.get(var1);
 	}
 }

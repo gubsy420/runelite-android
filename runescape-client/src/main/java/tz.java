@@ -19,6 +19,14 @@ public class tz {
 	)
 	static int ag_fld;
 
+	@ObfuscatedName("qo")
+	@ObfuscatedSignature(
+		descriptor = "(Lml;II)V"
+	)
+	public static void qo(ml var0, int var1, int var2) {
+		var0.at_fld[var1] = var2;
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIIIII)Z"
@@ -70,17 +78,9 @@ public class tz {
 		}
 	}
 
-	@ObfuscatedName("pv")
-	@ObfuscatedSignature(
-		descriptor = "(Ldj;)Ljava/lang/String;"
-	)
-	public static String pv(dj var0) {
-		return var0.az_fld.toString();
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[SII)V"
+		descriptor = "([Ljava/lang/String;[SIII)V"
 	)
 	static void ag(String[] var0, short[] var1, int var2, int var3) {
 		if (var2 < var3) {
@@ -279,6 +279,18 @@ public class tz {
 		int var10 = var8 * var6 + var7 * var9;
 		int var12 = var7 * var7 + var6 * var6;
 		return 0 <= var10 && var10 <= var12;
+	}
+
+	@ObfuscatedName("ud")
+	@ObfuscatedSignature(
+		descriptor = "(Lmw;I)I"
+	)
+	public static int ud(mw var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ar(var1);
 	}
 
 	tz() throws Throwable {

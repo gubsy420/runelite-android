@@ -72,7 +72,11 @@ void main() {
   float a = float(abhsl >> 24 & 0xff) / 255.f;
   int bias = (abhsl >> 16) & 0xff;
 
-  vec3 hsl = vec3(abhsl >> 10 & 63, abhsl >> 7 & 7, abhsl & 127);
+  // Explicit float() per-arg. Adreno accepts implicit int→float in vec3 constructors
+  // even though the GLSL ES 3.10 spec is ambiguous about chained int bitops inside one;
+  // Mali (G52/G68/G610) drivers reject it and emit nothing for the shader → black game
+  // viewport. Costs nothing and stays portable.
+  vec3 hsl = vec3(float(abhsl >> 10 & 63), float(abhsl >> 7 & 7), float(abhsl & 127));
   hsl += ((vec3(entityTint.xyz) - hsl) * float(entityTint.w)) / 128.0;
   vec3 rgb = hslToRgb(hsl);
 

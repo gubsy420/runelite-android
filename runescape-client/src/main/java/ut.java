@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ut")
 public class ut extends vc {
-	@ObfuscatedGetter(
-		intValue = -808180635
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -808180635
 	)
 	int ag_fld;
 	@ObfuscatedName("ak")
@@ -22,6 +22,14 @@ public class ut extends vc {
 		descriptor = "B"
 	)
 	byte az_fld;
+
+	@ObfuscatedName("sg")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;)Lqt;"
+	)
+	public static qt sg(qk var0) {
+		return var0.ag_fld;
+	}
 
 	ut() {
 	}

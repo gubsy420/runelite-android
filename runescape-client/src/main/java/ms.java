@@ -27,26 +27,26 @@ public class ms extends vw {
 		descriptor = "[S"
 	)
 	short[] av_fld;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "[B"
-	)
-	byte[] ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "[B"
 	)
 	byte[] ah_fld;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "[Lmi;"
-	)
-	mi[] aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "[B"
 	)
 	byte[] ay_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "[Lmi;"
+	)
+	mi[] aw_fld;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "[B"
+	)
+	byte[] ae_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/ArrayList;"
@@ -72,12 +72,12 @@ public class ms extends vw {
 		descriptor = "[[B"
 	)
 	static byte[][] ly_fld;
-	@ObfuscatedGetter(
-		intValue = -376162231
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -376162231
 	)
 	int ag_fld;
 	@ObfuscatedName("am")
@@ -85,22 +85,22 @@ public class ms extends vw {
 		descriptor = "I"
 	)
 	public static int am_fld;
-	@ObfuscatedGetter(
-		intValue = -1996164195
-	)
 	@ObfuscatedName("ne")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1996164195
 	)
 	static int ne_fld;
 
 	ms(byte[] var1) {
 		this.az_fld = new ai[128];
 		this.av_fld = new short[128];
-		this.ae_fld = new byte[128];
 		this.ah_fld = new byte[128];
-		this.aw_fld = new mi[128];
 		this.ay_fld = new byte[128];
+		this.aw_fld = new mi[128];
+		this.ae_fld = new byte[128];
 		this.ar_fld = new int[128];
 		xi var2 = new xi(var1);
 		int var3 = 0;
@@ -112,7 +112,7 @@ public class ms extends vw {
 		byte[] var4 = new byte[var3];
 
 		for (int var5 = 0; var5 < var3; var5++) {
-			var4[var5] = xi.rp(var2, 412704007);
+			var4[var5] = var2.cw();
 		}
 
 		var2.au_fld++;
@@ -128,7 +128,7 @@ public class ms extends vw {
 		byte[] var7 = new byte[var6];
 
 		for (int var8 = 0; var8 < var6; var8++) {
-			var7[var8] = xi.rp(var2, -69874312);
+			var7[var8] = var2.cw();
 		}
 
 		var2.au_fld++;
@@ -144,7 +144,7 @@ public class ms extends vw {
 		byte[] var10 = new byte[var9];
 
 		for (int var11 = 0; var11 < var9; var11++) {
-			var10[var11] = xi.rp(var2, -1750691241);
+			var10[var11] = var2.cw();
 		}
 
 		var2.au_fld++;
@@ -202,7 +202,7 @@ public class ms extends vw {
 		byte[] var18 = new byte[var17];
 
 		for (int var19 = 0; var19 < var17; var19++) {
-			var18[var19] = xi.rp(var2, 561637319);
+			var18[var19] = var2.cw();
 		}
 
 		var2.au_fld++;
@@ -257,7 +257,7 @@ public class ms extends vw {
 					var71 = var2.al_fld[var39++] - 1;
 				}
 
-				this.ay_fld[var24] = (byte)var71;
+				this.ae_fld[var24] = (byte)var71;
 				var62--;
 			}
 		}
@@ -278,7 +278,7 @@ public class ms extends vw {
 					var72 = var2.al_fld[var41++] + 16 << 2;
 				}
 
-				this.ah_fld[var25] = (byte)var72;
+				this.ay_fld[var25] = (byte)var72;
 				var62--;
 			}
 		}
@@ -320,7 +320,7 @@ public class ms extends vw {
 				}
 			}
 
-			this.ae_fld[var27] = (byte)var74;
+			this.ah_fld[var27] = (byte)var74;
 			var62--;
 		}
 
@@ -330,26 +330,26 @@ public class ms extends vw {
 			mi var28 = var44[var75];
 			if (var28.ak_fld != null) {
 				for (byte var29 = 1; var29 < var28.ak_fld.length; var29 += 2) {
-					var28.ak_fld[var29] = xi.rp(var2, -545746081);
+					var28.ak_fld[var29] = var2.cw();
 				}
 			}
 
 			if (var28.ag_fld != null) {
 				for (byte var96 = 3; var96 < var28.ag_fld.length - 2; var96 += 2) {
-					var28.ag_fld[var96] = xi.rp(var2, 631402217);
+					var28.ag_fld[var96] = var2.cw();
 				}
 			}
 		}
 
 		if (var49 != null) {
 			for (byte var76 = 1; var76 < var49.length; var76 += 2) {
-				var49[var76] = xi.rp(var2, -130876328);
+				var49[var76] = var2.cw();
 			}
 		}
 
 		if (null != var52) {
 			for (byte var77 = 1; var77 < var52.length; var77 += 2) {
-				var52[var77] = xi.rp(var2, -1132714457);
+				var52[var77] = var2.cw();
 			}
 		}
 
@@ -390,7 +390,7 @@ public class ms extends vw {
 			byte var91 = var49[1];
 
 			for (int var99 = 0; var99 < var81; var99++) {
-				this.ae_fld[var99] = (byte)(32 + this.ae_fld[var99] * var91 >> 6);
+				this.ah_fld[var99] = (byte)(32 + this.ah_fld[var99] * var91 >> 6);
 			}
 
 			for (byte var100 = 2; var100 < var49.length; var100 += 2) {
@@ -402,7 +402,7 @@ public class ms extends vw {
 					int var35 = var30 - var81;
 					int var36 = var32 >>> 31;
 					int var34 = (var32 + var36) / var35 - var36;
-					this.ae_fld[var33] = (byte)(this.ae_fld[var33] * var34 + 32 >> 6);
+					this.ah_fld[var33] = (byte)(this.ah_fld[var33] * var34 + 32 >> 6);
 					var32 += var31 - var91;
 				}
 
@@ -411,7 +411,7 @@ public class ms extends vw {
 			}
 
 			for (int var103 = var81; var103 < 128; var103++) {
-				this.ae_fld[var103] = (byte)(this.ae_fld[var103] * var91 + 32 >> 6);
+				this.ah_fld[var103] = (byte)(this.ah_fld[var103] * var91 + 32 >> 6);
 			}
 
 			var49 = null;
@@ -430,7 +430,7 @@ public class ms extends vw {
 			int var92 = var52[1] << 1;
 
 			for (int var101 = 0; var101 < var83; var101++) {
-				int var104 = var92 + (this.ah_fld[var101] & 255);
+				int var104 = var92 + (this.ay_fld[var101] & 255);
 				if (var104 < 0) {
 					var104 = 0;
 				}
@@ -439,7 +439,7 @@ public class ms extends vw {
 					var104 = 128;
 				}
 
-				this.ah_fld[var101] = (byte)var104;
+				this.ay_fld[var101] = (byte)var104;
 			}
 
 			for (byte var102 = 2; var102 < var52.length; var102 += 2) {
@@ -451,7 +451,7 @@ public class ms extends vw {
 					int var112 = var105 - var83;
 					int var113 = var109 >>> 31;
 					int var111 = (var109 + var113) / var112 - var113;
-					int var37 = (this.ah_fld[var110] & 255) + var111;
+					int var37 = (this.ay_fld[var110] & 255) + var111;
 					if (var37 < 0) {
 						var37 = 0;
 					}
@@ -460,7 +460,7 @@ public class ms extends vw {
 						var37 = 128;
 					}
 
-					this.ah_fld[var110] = (byte)var37;
+					this.ay_fld[var110] = (byte)var37;
 					var109 += var107 - var92;
 				}
 
@@ -469,7 +469,7 @@ public class ms extends vw {
 			}
 
 			for (int var106 = var83; var106 < 128; var106++) {
-				int var108 = (this.ah_fld[var106] & 255) + var92;
+				int var108 = (this.ay_fld[var106] & 255) + var92;
 				if (var108 < 0) {
 					var108 = 0;
 				}
@@ -478,53 +478,181 @@ public class ms extends vw {
 					var108 = 128;
 				}
 
-				this.ah_fld[var106] = (byte)var108;
+				this.ay_fld[var106] = (byte)var108;
 			}
 
 			var52 = null;
 		}
 
 		for (int var84 = 0; var84 < var12; var84++) {
-			var44[var84].aw_fld = var2.cg();
+			var44[var84].az_fld = var2.cg();
 		}
 
 		for (int var85 = 0; var85 < var12; var85++) {
 			mi var93 = var44[var85];
 			if (var93.ak_fld != null) {
-				var93.ah_fld = var2.cg();
+				var93.av_fld = var2.cg();
 			}
 
 			if (var93.ag_fld != null) {
-				var93.az_fld = var2.cg();
+				var93.ae_fld = var2.cg();
 			}
 
-			if (var93.aw_fld > 0) {
-				var93.ae_fld = var2.cg();
+			if (var93.az_fld > 0) {
+				var93.ah_fld = var2.cg();
 			}
 		}
 
 		for (int var86 = 0; var86 < var12; var86++) {
-			var44[var86].av_fld = var2.cg();
+			var44[var86].ay_fld = var2.cg();
 		}
 
 		for (int var87 = 0; var87 < var12; var87++) {
 			mi var94 = var44[var87];
-			if (var94.av_fld > 0) {
-				var94.as_fld = var2.cg();
+			if (var94.ay_fld > 0) {
+				var94.aw_fld = var2.cg();
 			}
 		}
 
 		for (int var88 = 0; var88 < var12; var88++) {
 			mi var95 = var44[var88];
-			if (var95.as_fld > 0) {
-				var95.ay_fld = var2.cg();
+			if (var95.aw_fld > 0) {
+				var95.as_fld = var2.cg();
 			}
 		}
 	}
 
+	@ObfuscatedName("sm")
+	@ObfuscatedSignature(
+		descriptor = "(Lms;I)V"
+	)
+	public static void sm(ms var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ar_fld = null;
+		}
+	}
+
+	@ObfuscatedName("ml")
+	@ObfuscatedSignature(
+		descriptor = "(Lms;Lap;Ljava/util/BitSet;)Z"
+	)
+	public static boolean ml(ms var0, ap var1, BitSet var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			boolean var3 = true;
+			int var4 = 0;
+			ai var5 = new ai();
+			int var6 = var2.nextSetBit(0);
+
+			while (var6 != -1) {
+				int var7 = var2.nextClearBit(var6);
+
+				for (int var8 = var6; var8 < var7; var8++) {
+					if (var2.get(var8)) {
+						int var9 = var0.ar_fld[var8];
+						if (var9 != 0) {
+							if (var9 != var4) {
+								var4 = var9--;
+								if ((var9 & 1) == 0) {
+									var5 = new ai(ap.cf(var1, var9 >> 2));
+								} else {
+									var5 = ap.oe(var1, var9 >> 2, (byte)-100);
+								}
+
+								if (var5.ak()) {
+									var3 = false;
+								} else {
+									var0.as_fld.add(var0.as_fld.size(), var5);
+								}
+							}
+
+							if (!var5.ak()) {
+								var0.az_fld[var8] = var5;
+								var0.ar_fld[var8] = 0;
+							}
+						}
+					}
+				}
+
+				var6 = var2.nextSetBit(var7);
+			}
+
+			return var3;
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
+	}
+
+	@ObfuscatedName("ko")
+	@ObfuscatedSignature(
+		descriptor = "(Lms;Lap;Ljava/util/BitSet;)Z"
+	)
+	public static boolean ko(ms var0, ap var1, BitSet var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			boolean var3 = true;
+			int var4 = 0;
+			ai var5 = new ai();
+			int var6 = var2.nextSetBit(0);
+
+			while (var6 != -1) {
+				int var7 = var2.nextClearBit(var6);
+
+				for (int var8 = var6; var8 < var7; var8++) {
+					if (var2.get(var8)) {
+						int var9 = var0.ar_fld[var8];
+						if (var9 != 0) {
+							if (var9 != var4) {
+								var4 = var9--;
+								if ((var9 & 1) == 0) {
+									var5 = new ai(ap.cf(var1, var9 >> 2));
+								} else {
+									var5 = ap.oe(var1, var9 >> 2, (byte)-83);
+								}
+
+								if (var5.ak()) {
+									var3 = false;
+								} else {
+									var0.as_fld.add(var0.as_fld.size(), var5);
+								}
+							}
+
+							if (!var5.ak()) {
+								var0.az_fld[var8] = var5;
+								var0.ar_fld[var8] = 0;
+							}
+						}
+					}
+				}
+
+				var6 = var2.nextSetBit(var7);
+			}
+
+			return var3;
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
+	}
+
+	@ObfuscatedName("xw")
+	@ObfuscatedSignature(
+		descriptor = "(Lli;I)V"
+	)
+	public static void xw(li var0, int var1) {
+		var0.am_fld.ar(var1);
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lap;Ljava/util/BitSet;)Z"
+		descriptor = "(Lap;Ljava/util/BitSet;I)Z"
 	)
 	boolean ak(ap var1, BitSet var2) {
 		try {
@@ -543,9 +671,9 @@ public class ms extends vw {
 							if (var10 != var5) {
 								var5 = var10--;
 								if ((var10 & 1) == 0) {
-									var6 = new ai(ap.mv(var1, var10 >> 2));
+									var6 = new ai(ap.cf(var1, var10 >> 2));
 								} else {
-									var6 = var1.av(var10 >> 2);
+									var6 = ap.oe(var1, var10 >> 2, (byte)34);
 								}
 
 								if (var6.ak()) {
@@ -572,17 +700,9 @@ public class ms extends vw {
 		}
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void ag() {
-		this.ar_fld = null;
-	}
-
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int am(int var0, ba var1, boolean var2) throws EOFException {
 		try {
@@ -728,106 +848,6 @@ public class ms extends vw {
 		}
 	}
 
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Lap;Ljava/util/BitSet;)Z"
-	)
-	boolean av(ap var1, BitSet var2) {
-		try {
-			boolean var3 = true;
-			int var4 = 0;
-			ai var5 = new ai();
-			int var6 = var2.nextSetBit(0);
-
-			while (var6 != -1) {
-				int var7 = var2.nextClearBit(var6);
-
-				for (int var8 = var6; var8 < var7; var8++) {
-					if (var2.get(var8)) {
-						int var9 = this.ar_fld[var8];
-						if (var9 != 0) {
-							if (var9 != var4) {
-								var4 = var9--;
-								if ((var9 & 1) == 0) {
-									var5 = new ai(ap.mv(var1, var9 >> 2));
-								} else {
-									var5 = var1.av(var9 >> 2);
-								}
-
-								if (var5.ak()) {
-									var3 = false;
-								} else {
-									this.as_fld.add(this.as_fld.size(), var5);
-								}
-							}
-
-							if (!var5.ak()) {
-								this.az_fld[var8] = var5;
-								this.ar_fld[var8] = 0;
-							}
-						}
-					}
-				}
-
-				var6 = var2.nextSetBit(var7);
-			}
-
-			return var3;
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lap;Ljava/util/BitSet;)Z"
-	)
-	boolean ae(ap var1, BitSet var2) {
-		try {
-			boolean var3 = true;
-			int var4 = 0;
-			ai var5 = new ai();
-			int var6 = var2.nextSetBit(0);
-
-			while (var6 != -1) {
-				int var7 = var2.nextClearBit(var6);
-
-				for (int var8 = var6; var8 < var7; var8++) {
-					if (var2.get(var8)) {
-						int var9 = this.ar_fld[var8];
-						if (var9 != 0) {
-							if (var9 != var4) {
-								var4 = var9--;
-								if ((var9 & 1) == 0) {
-									var5 = new ai(ap.mv(var1, var9 >> 2));
-								} else {
-									var5 = var1.av(var9 >> 2);
-								}
-
-								if (var5.ak()) {
-									var3 = false;
-								} else {
-									this.as_fld.add(this.as_fld.size(), var5);
-								}
-							}
-
-							if (!var5.ak()) {
-								this.az_fld[var8] = var5;
-								this.ar_fld[var8] = 0;
-							}
-						}
-					}
-				}
-
-				var6 = var2.nextSetBit(var7);
-			}
-
-			return var3;
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -842,14 +862,6 @@ public class ms extends vw {
 	)
 	void aw() {
 		this.ar_fld = null;
-	}
-
-	@ObfuscatedName("ur")
-	@ObfuscatedSignature(
-		descriptor = "(Lay;)Z"
-	)
-	public static boolean ur(ay var0) {
-		return var0.av_fld.isDone();
 	}
 
 	@ObfuscatedName("az")
@@ -873,9 +885,9 @@ public class ms extends vw {
 							if (var9 != var4) {
 								var4 = var9--;
 								if ((var9 & 1) == 0) {
-									var5 = new ai(ap.mv(var1, var9 >> 2));
+									var5 = new ai(ap.cf(var1, var9 >> 2));
 								} else {
-									var5 = var1.av(var9 >> 2);
+									var5 = ap.oe(var1, var9 >> 2, (byte)-86);
 								}
 
 								if (var5.ak()) {
@@ -908,27 +920,27 @@ public class ms extends vw {
 	)
 	static final void cq(dx var0, da var1, int var2) throws EOFException {
 		try {
-			int var3 = var1.dv_fld - var1.bt_fld & 2047;
+			int var3 = var1.bt_fld - var1.bc_fld & 2047;
 			if (var3 != 0) {
 				byte var4 = -1;
 				boolean var5 = true;
-				var1.dz_fld++;
+				var1.cf_fld++;
 				int var6 = var3 > 1024 ? -1 : 1;
-				var1.bt_fld = var1.bt_fld + var1.dt_fld * var6 * -450034243;
+				var1.bc_fld = var1.bc_fld + var1.bw_fld * var6 * -450034243;
 				boolean var7 = true;
-				if (var3 < var1.dt_fld || var3 > 2048 - var1.dt_fld) {
-					var1.bt_fld = var1.dv_fld * -1509908899;
+				if (var3 < var1.bw_fld || var3 > 2048 - var1.bw_fld) {
+					var1.bc_fld = var1.bt_fld * -1509908899;
 					var7 = false;
 				}
 
-				if (var1.dt_fld > 0) {
+				if (var1.bw_fld > 0) {
 					if (var2 != 1764677584) {
 						return;
 					}
 
 					label90:
-					if (var1.dt((byte)50) == var1.bi_fld) {
-						if (var1.dz_fld <= 25) {
+					if (var1.dt((byte)50) == var1.cr_fld) {
+						if (var1.cf_fld <= 25) {
 							if (var2 != 1764677584) {
 								return;
 							}
@@ -938,24 +950,24 @@ public class ms extends vw {
 							}
 						}
 
-						if (-1 == var6 && -1 != var1.bu_fld) {
-							var1.dm(var1.bu_fld, (byte)95);
-						} else if (1 == var6 && -1 != var1.bn_fld) {
-							var1.dm(var1.bn_fld, (byte)78);
+						if (-1 == var6 && -1 != var1.bl_fld) {
+							var1.fy(var1.bl_fld, (byte)95);
+						} else if (1 == var6 && -1 != var1.cj_fld) {
+							var1.fy(var1.cj_fld, (byte)78);
 						} else {
-							var1.dm(var1.bc_fld, (byte)52);
+							var1.fy(var1.dr_fld, (byte)52);
 						}
 					}
 				}
 
-				var1.bt_fld = -450034243 * (var1.bt_fld & 2047);
+				var1.bc_fld = -450034243 * (var1.bc_fld & 2047);
 			} else {
 				if (var1.bj_fld) {
-					var1.de((byte)75);
+					da.mq(var1, (byte)75);
 					var1.bj_fld = false;
 				}
 
-				var1.dz_fld = 0;
+				var1.cf_fld = 0;
 			}
 		} catch (Throwable var9) {
 			throw new RuntimeException(var9);
@@ -964,7 +976,7 @@ public class ms extends vw {
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;II)Z"
+		descriptor = "(Lub;IIB)Z"
 	)
 	static boolean ar(ub var0, int var1, int var2) throws EOFException {
 		try {
@@ -978,5 +990,13 @@ public class ms extends vw {
 		} catch (Throwable var5) {
 			throw new RuntimeException(var5);
 		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void ag(int var1) {
+		this.ar_fld = null;
 	}
 }

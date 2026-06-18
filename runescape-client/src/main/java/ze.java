@@ -36,20 +36,20 @@ public class ze extends vw {
 		descriptor = "[I"
 	)
 	int[] ah_fld;
-	@ObfuscatedGetter(
-		intValue = -299547523
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -1446068587
+		intValue = -299547523
 	)
+	int ag_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1446068587
 	)
 	int ak_fld;
 	@ObfuscatedName("ab")

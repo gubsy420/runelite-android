@@ -8,36 +8,28 @@ public class ug extends vc {
 		descriptor = "J"
 	)
 	public long er_fld;
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "Lug;"
-	)
-	public ug eg_fld;
 	@ObfuscatedName("en")
 	@ObfuscatedSignature(
 		descriptor = "Lug;"
 	)
 	public ug en_fld;
-
-	@ObfuscatedName("ms")
+	@ObfuscatedName("eg")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "Lug;"
 	)
-	public void ms() {
-		if (this.en_fld != null) {
-			this.en_fld.eg_fld = this.eg_fld;
-			this.eg_fld.en_fld = this.en_fld;
-			this.eg_fld = null;
-			this.en_fld = null;
+	public ug eg_fld;
+
+	@ObfuscatedName("ml")
+	@ObfuscatedSignature(
+		descriptor = "(Lug;)V"
+	)
+	public static void ml(ug var0) {
+		if (var0.eg_fld != null) {
+			var0.eg_fld.en_fld = var0.en_fld;
+			var0.en_fld.eg_fld = var0.eg_fld;
+			var0.en_fld = null;
+			var0.eg_fld = null;
 		}
-	}
-
-	@ObfuscatedName("fd")
-	@ObfuscatedSignature(
-		descriptor = "(Lse;)I"
-	)
-	public static int fd(se var0) {
-		return var0.ay_fld;
 	}
 
 	public ug() {
@@ -48,11 +40,11 @@ public class ug extends vc {
 		descriptor = "()V"
 	)
 	public void mb() {
-		if (this.en_fld != null) {
-			this.en_fld.eg_fld = this.eg_fld;
+		if (this.eg_fld != null) {
 			this.eg_fld.en_fld = this.en_fld;
-			this.eg_fld = null;
+			this.en_fld.eg_fld = this.eg_fld;
 			this.en_fld = null;
+			this.eg_fld = null;
 		}
 	}
 }

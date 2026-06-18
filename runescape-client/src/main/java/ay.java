@@ -61,35 +61,6 @@ public class ay {
 		return this.av_fld.isDone();
 	}
 
-	@ObfuscatedName("ec")
-	@ObfuscatedSignature(
-		descriptor = "(Lay;)V"
-	)
-	public static void ec(ay var0) {
-		var0.av_fld = var0.az_fld.submit(new ag(var0, var0.ak_fld, var0.ag_fld));
-	}
-
-	@ObfuscatedName("ss")
-	@ObfuscatedSignature(
-		descriptor = "(Lct;)Z"
-	)
-	public static boolean ss(ct var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return (wu.ag_fld.ag(138822965) & var0.al_fld) != 0;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void ag() {
-		this.az_fld.shutdown();
-		this.az_fld = null;
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -100,7 +71,7 @@ public class ay {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	void av() {
 		this.av_fld = this.az_fld.submit(new ag(this, this.ak_fld, this.ag_fld));
@@ -112,18 +83,34 @@ public class ay {
 		this.av();
 	}
 
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean ah() {
+		return this.av_fld.isDone();
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean aw() {
+		return this.av_fld.isDone();
+	}
+
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void bd() throws EOFException, UnsupportedEncodingException {
 		if (client.jk_fld > 0) {
 			kx.ab((short)24750);
 		} else {
-			lj.lm(client.ls_fld, 1761845536);
+			client.ls_fld.az();
 			jk.af(40, (byte)-28);
-			ky.lm_fld = df.xl(client.aq_fld, -2066903909);
-			client.aq_fld.av();
+			ky.lm_fld = client.appletStub.ah();
+			client.appletStub.av();
 		}
 	}
 
@@ -136,11 +123,24 @@ public class ay {
 		this.az_fld = null;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("rb")
+	@ObfuscatedSignature(
+		descriptor = "(Lay;I)V"
+	)
+	public static void rb(ay var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.az_fld.shutdown();
+			var0.az_fld = null;
+		}
+	}
+
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()Lxi;"
 	)
-	public xi af() {
+	public xi au() {
 		try {
 			return (xi)(xi)this.av_fld.get();
 		} catch (Exception var2) {
@@ -160,12 +160,36 @@ public class ay {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("gr")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lay;)V"
 	)
-	void ax() {
-		this.av_fld = this.az_fld.submit(new ag(this, this.ak_fld, this.ag_fld));
+	public static void gr(ay var0) {
+		var0.av_fld = var0.az_fld.submit(new ag(var0, var0.ak_fld, var0.ag_fld));
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "()Lxi;"
+	)
+	public xi ar() {
+		try {
+			return (xi)(xi)this.av_fld.get();
+		} catch (Exception var2) {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()Lxi;"
+	)
+	public xi af() {
+		try {
+			return (xi)(xi)this.av_fld.get();
+		} catch (Exception var2) {
+			return null;
+		}
 	}
 
 	@ObfuscatedName("an")
@@ -178,24 +202,12 @@ public class ay {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()Lxi;"
+		descriptor = "(I)Lxi;"
 	)
 	public xi az() {
 		try {
 			return (xi)(xi)this.av_fld.get();
 		} catch (Exception var3) {
-			return null;
-		}
-	}
-
-	@ObfuscatedName("dc")
-	@ObfuscatedSignature(
-		descriptor = "(Lay;)Lxi;"
-	)
-	public static xi dc(ay var0) {
-		try {
-			return (xi)(xi)var0.av_fld.get();
-		} catch (Exception var2) {
 			return null;
 		}
 	}
@@ -222,5 +234,22 @@ public class ay {
 	)
 	public static lf[] ak_Arrlf(int var0) {
 		return new lf[]{lf.av_fld, lf.ak_fld, lf.az_fld, lf.ag_fld};
+	}
+
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(Lay;)V"
+	)
+	public static void bt(ay var0) {
+		var0.av_fld = var0.az_fld.submit(new ag(var0, var0.ak_fld, var0.ag_fld));
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ag(int var1) {
+		this.az_fld.shutdown();
+		this.az_fld = null;
 	}
 }

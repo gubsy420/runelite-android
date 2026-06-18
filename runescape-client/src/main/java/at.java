@@ -59,7 +59,7 @@ public class at {
 
 				while (var11 < var8) {
 					if (var10 == 0) {
-						int var12 = var5[this.ah_fld].az(var4);
+						int var12 = pg.hm(var5[this.ah_fld], var4);
 
 						for (int var13 = var21 - 1; var13 >= 0; var13--) {
 							if (var11 + var13 < var8) {
@@ -109,14 +109,6 @@ public class at {
 		}
 	}
 
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(
-		descriptor = "(Lry;)Z"
-	)
-	public static boolean nx(ry var0) {
-		return -1 != var0.aw_fld;
-	}
-
 	at(bh var1) {
 		this.ak_fld = var1.ak(16, 1088262844);
 		this.ag_fld = var1.ak(24, -1291668627);
@@ -129,7 +121,7 @@ public class at {
 		for (int var3 = 0; var3 < this.ae_fld; var3++) {
 			int var4 = 0;
 			int var5 = var1.ak(3, -1381858557);
-			boolean var6 = var1.av() != 0;
+			boolean var6 = var1.ag() != 0;
 			if (var6) {
 				var4 = var1.ak(5, -1203332422);
 			}
@@ -144,23 +136,19 @@ public class at {
 		}
 	}
 
-	@ObfuscatedName("zn")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lat;[FIZLbh;[Lbd;)V"
+		descriptor = "([FIZLbh;[Lbd;)V"
 	)
-	public static void zn(at var0, float[] var1, int var2, boolean var3, bh var4, bd[] var5) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	void ak(float[] var1, int var2, boolean var3, bh var4, bd[] var5) {
 		for (int var6 = 0; var6 < var2; var6++) {
 			var1[var6] = 0.0F;
 		}
 
 		if (!var3) {
-			int var21 = var5[var0.ah_fld].ak_fld;
-			int var7 = var0.az_fld - var0.ag_fld;
-			int var8 = var7 / var0.av_fld;
+			int var21 = var5[this.ah_fld].ak_fld;
+			int var7 = this.az_fld - this.ag_fld;
+			int var8 = var7 / this.av_fld;
 			int[] var9 = new int[var8];
 
 			for (int var10 = 0; var10 < 8; var10++) {
@@ -168,25 +156,25 @@ public class at {
 
 				while (var11 < var8) {
 					if (var10 == 0) {
-						int var12 = var5[var0.ah_fld].az(var4);
+						int var12 = pg.hm(var5[this.ah_fld], var4);
 
 						for (int var13 = var21 - 1; var13 >= 0; var13--) {
 							if (var11 + var13 < var8) {
-								var9[var11 + var13] = var12 % var0.ae_fld;
+								var9[var11 + var13] = var12 % this.ae_fld;
 							}
 
-							var12 /= var0.ae_fld;
+							var12 /= this.ae_fld;
 						}
 					}
 
 					for (int var22 = 0; var22 < var21; var22++) {
 						int var23 = var9[var11];
-						int var14 = var0.aw_fld[var23 * 8 + var10];
+						int var14 = this.aw_fld[var23 * 8 + var10];
 						if (var14 >= 0) {
-							int var15 = var0.ag_fld + var11 * var0.av_fld;
+							int var15 = this.ag_fld + var11 * this.av_fld;
 							bd var16 = var5[var14];
-							if (var0.ak_fld == 0) {
-								int var24 = var0.av_fld / var16.ak_fld;
+							if (this.ak_fld == 0) {
+								int var24 = this.av_fld / var16.ak_fld;
 
 								for (int var25 = 0; var25 < var24; var25++) {
 									float[] var26 = var16.av(var4);
@@ -198,80 +186,10 @@ public class at {
 							} else {
 								int var17 = 0;
 
-								while (var17 < var0.av_fld) {
+								while (var17 < this.av_fld) {
 									float[] var18 = var16.av(var4);
 
 									for (int var19 = 0; var19 < var16.ak_fld; var19++) {
-										var1[var15 + var17] = var1[var15 + var17] + var18[var19];
-										var17++;
-									}
-								}
-							}
-						}
-
-						if (++var11 >= var8) {
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "([FIZLbh;[Lbd;)V"
-	)
-	void ak(float[] var1, int var2, boolean var3, bh var4, bd[] var5) {
-		for (int var6 = 0; var6 < var2; var6++) {
-			var1[var6] = 0.0F;
-		}
-
-		if (!var3) {
-			int var21 = var5[this.az_fld].ag_fld;
-			int var7 = this.az_fld - this.av_fld;
-			int var8 = var7 / this.ae_fld;
-			int[] var9 = new int[var8];
-
-			for (int var10 = 0; var10 < 8; var10++) {
-				int var11 = 0;
-
-				while (var11 < var8) {
-					if (var10 == 0) {
-						int var12 = var5[this.ak_fld].az(var4);
-
-						for (int var13 = var21 - 1; var13 >= 0; var13--) {
-							if (var11 + var13 < var8) {
-								var9[var11 + var13] = var12 % this.ak_fld;
-							}
-
-							var12 /= this.ae_fld;
-						}
-					}
-
-					for (int var22 = 0; var22 < var21; var22++) {
-						int var23 = var9[var11];
-						int var14 = this.aw_fld[var23 * 8 + var10];
-						if (var14 >= 0) {
-							int var15 = this.ag_fld + var11 * this.ah_fld;
-							bd var16 = var5[var14];
-							if (this.av_fld == 0) {
-								int var24 = this.ak_fld / var16.ak_fld;
-
-								for (int var25 = 0; var25 < var24; var25++) {
-									float[] var26 = var16.as(var4);
-
-									for (int var20 = 0; var20 < var16.ak_fld; var20++) {
-										var1[var15 + var25 + var20 * var24] = var1[var15 + var25 + var20 * var24] + var26[var20];
-									}
-								}
-							} else {
-								int var17 = 0;
-
-								while (var17 < this.ag_fld) {
-									float[] var18 = var16.av(var4);
-
-									for (int var19 = 0; var19 < var16.ag_fld; var19++) {
 										var1[var15 + var17] = var1[var15 + var17] + var18[var19];
 										var17++;
 									}

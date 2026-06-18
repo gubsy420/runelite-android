@@ -9,9 +9,9 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @Target({ElementType.FIELD})
 @ObfuscatedName("rl8")
 public @interface rl8 {
-	@ObfuscatedName("wt")
+	@ObfuscatedName("jv")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int wt();
+	int jv();
 }

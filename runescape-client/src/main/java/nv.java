@@ -39,16 +39,6 @@ public class nv {
 	)
 	static int bx_fld;
 
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "(Lyg;)V"
-	)
-	public static void hl(yg var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-	}
-
 	nv() throws Throwable {
 		throw new Error();
 	}

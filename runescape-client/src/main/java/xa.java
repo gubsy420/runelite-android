@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -23,20 +24,24 @@ public class xa {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ns")
-	@ObfuscatedSignature(
-		descriptor = "(Ldg;)I"
-	)
-	public static int ns(dg var0) {
-		return var0.ag_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	public static boolean az(int var0) {
 		return var0 == 10 || var0 == 11 || var0 == 12 || 13 == var0 || var0 == 14 || var0 == 15 || 16 == var0 || var0 == 17;
+	}
+
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "(Lte;Ljava/awt/Graphics;II)V"
+	)
+	public static void bq(te var0, Graphics var1, int var2, int var3) {
+		try {
+			var1.drawImage(var0.ak_fld, var2, var3, var0.ag_fld);
+		} catch (Exception var5) {
+			var0.ag_fld.repaint();
+		}
 	}
 
 	@ObfuscatedName("av")

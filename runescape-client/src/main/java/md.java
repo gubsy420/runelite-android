@@ -20,30 +20,16 @@ class md implements Callable {
 	)
 	ml this$0;
 
-	@ObfuscatedName("td")
+	@ObfuscatedName("jp")
 	@ObfuscatedSignature(
-		descriptor = "(Lmd;)Ljava/lang/Object;"
+		descriptor = "(Lrh;)V"
 	)
-	public static Object td(md var0) {
-		PriorityQueue var1 = var0.this$0.ah_fld;
-
-		while (true) {
-			Object var2 = null;
-			synchronized (var1) {
-				if (var1.isEmpty() || var0.val$cancelled.get()) {
-					return null;
-				}
-
-				var2 = (mp)var1.remove();
-			}
-
-			((mp)var2).ag_fld.az();
+	public static void jp(rh var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ag_fld = la.fq_fld.ah_fld.bo(var0.az_fld, 673626674) ? rw.ag_fld : rw.az_fld;
 		}
-	}
-
-	md(ml var1, AtomicBoolean var2) {
-		this.this$0 = var1;
-		this.val$cancelled = var2;
 	}
 
 	@ObfuscatedName("ak")
@@ -63,13 +49,39 @@ class md implements Callable {
 				var2 = (mp)var1.remove();
 			}
 
-			((mp)var2).ag_fld.az();
+			((mp)var2).ag_fld.ag();
+		}
+	}
+
+	md(ml var1, AtomicBoolean var2) {
+		this.this$0 = var1;
+		this.val$cancelled = var2;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/Object;"
+	)
+	public Object ag() {
+		PriorityQueue var1 = this.this$0.ah_fld;
+
+		while (true) {
+			Object var2 = null;
+			synchronized (var1) {
+				if (var1.isEmpty() || this.val$cancelled.get()) {
+					return null;
+				}
+
+				var2 = (mp)var1.remove();
+			}
+
+			((mp)var2).ag_fld.ag();
 		}
 	}
 
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(C)Z"
+		descriptor = "(CB)Z"
 	)
 	public static boolean ai(char var0) {
 		if (var0 >= ' ' && var0 <= '~') {
@@ -97,13 +109,25 @@ class md implements Callable {
 				var2 = (mp)var1.remove();
 			}
 
-			((mp)var2).ag_fld.az();
+			((mp)var2).ag_fld.ag();
 		}
+	}
+
+	@ObfuscatedName("oq")
+	@ObfuscatedSignature(
+		descriptor = "(Lds;Lpg;)V"
+	)
+	public static void oq(ds var0, pg var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.al_fld = var1;
 	}
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(I)Ljava/lang/String;"
 	)
 	static String af() {
 		StringBuilder var1 = new StringBuilder();
@@ -123,7 +147,7 @@ class md implements Callable {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[JII)V"
+		descriptor = "([Ljava/lang/String;[JIII)V"
 	)
 	public static void av(String[] var0, long[] var1, int var2, int var3) {
 		if (var2 < var3) {

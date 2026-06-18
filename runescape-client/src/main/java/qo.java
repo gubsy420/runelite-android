@@ -2,6 +2,7 @@ import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -27,44 +28,30 @@ class qo implements Comparator {
 		return this.ak((qu)var1, (qu)var2, (byte)0);
 	}
 
-	@ObfuscatedName("yz")
-	@ObfuscatedSignature(
-		descriptor = "(Lqo;Lqu;Lqu;)I"
-	)
-	public static int yz(qo var0, qu var1, qu var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else if (var1.az_fld > var2.az_fld) {
-			return 1;
-		} else {
-			return var1.az_fld < var2.az_fld ? -1 : 0;
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lqu;Lqu;B)I"
 	)
 	int ak(qu var1, qu var2, byte var3) {
-		if (var1.az_fld > var2.az_fld) {
+		if (var1.av_fld > var2.av_fld) {
 			return 1;
 		} else {
-			return var1.az_fld < var2.az_fld ? -1 : 0;
+			return var1.av_fld < var2.av_fld ? -1 : 0;
 		}
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lgu;Lvr;)Luf;"
+		descriptor = "(Lgu;Lvr;I)Luf;"
 	)
 	public static uf av(gu var0, vr var1) {
-		int var3 = var1.al_fld;
-		int var4 = var1.af_fld;
-		int var5 = var1.au_fld;
-		int var6 = var1.aa_fld;
-		int var7 = var0.av();
-		int var8 = var0.ah();
-		int var9 = gu.ns(var0, -1706001434);
+		int var3 = var1.ar_fld;
+		int var4 = var1.aa_fld;
+		int var5 = var1.af_fld;
+		int var6 = var1.an_fld;
+		int var7 = gu.rg(var0, (byte)-23);
+		int var8 = var0.ak();
+		int var9 = var0.az();
 		double var10 = hx.av(var7);
 		double var12 = pw.az(var7);
 		int var14 = (int)(var10 * var3 - var12 * var4);
@@ -96,11 +83,23 @@ class qo implements Comparator {
 			} else {
 				uf.az_fld--;
 				uf.ak_fld[uf.az_fld].ag(var28, var30);
-				uf.uo(uf.ak_fld[uf.az_fld], var33, var34);
+				uf.ak_fld[uf.az_fld].az(var33, var34);
 				var32 = uf.ak_fld[uf.az_fld];
 			}
 
 			return var32;
+		}
+	}
+
+	@ObfuscatedName("oh")
+	@ObfuscatedSignature(
+		descriptor = "(Lqo;Ljava/lang/Object;)Z"
+	)
+	public static boolean oh(qo var0, Object var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.equals(var1);
 		}
 	}
 
@@ -113,36 +112,12 @@ class qo implements Comparator {
 		return this.ak((qu)var1, (qu)var2, (byte)0);
 	}
 
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int ae(Object var1, Object var2) {
-		return this.ak((qu)var1, (qu)var2, (byte)0);
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jg(Object var1) {
-		return super.equals(var1);
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int aw(Object var1, Object var2) {
 		return this.ak((qu)var1, (qu)var2, (byte)0);
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jt(Object var1) {
-		return super.equals(var1);
 	}
 
 	@ObfuscatedName("jm")
@@ -153,13 +128,34 @@ class qo implements Comparator {
 		return super.equals(var1);
 	}
 
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;)Z"
+	)
+	public boolean jt(Object var1) {
+		return super.equals(var1);
+	}
+
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lqu;Lqu;)I"
+	)
+	int ag(qu var1, qu var2) {
+		if (var1.av_fld > var2.av_fld) {
+			return 1;
+		} else {
+			return var1.av_fld < var2.av_fld ? -1 : 0;
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -167,16 +163,16 @@ class qo implements Comparator {
 		descriptor = "(Lqu;Lqu;)I"
 	)
 	int az(qu var1, qu var2) {
-		if (var1.az_fld > var2.az_fld) {
+		if (var1.av_fld > var2.av_fld) {
 			return 1;
 		} else {
-			return var1.az_fld < var2.az_fld ? -1 : 0;
+			return var1.av_fld < var2.av_fld ? -1 : 0;
 		}
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int ah(int var0, ba var1, boolean var2) throws FileNotFoundException, EOFException, UnsupportedEncodingException {
 		try {
@@ -290,7 +286,7 @@ class qo implements Comparator {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Luz;"
+		descriptor = "(B)Luz;"
 	)
 	public static uz ak() {
 		synchronized (uz.ak_fld) {

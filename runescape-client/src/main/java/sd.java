@@ -4,14 +4,14 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("sd")
 public class sd implements xm {
-	@ObfuscatedGetter(
-		intValue = -2001568875
-	)
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
+	@ObfuscatedGetter(
+		intValue = -2001568875
+	)
+	int aw_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lsd;"
@@ -32,14 +32,14 @@ public class sd implements xm {
 		descriptor = "Lsd;"
 	)
 	static sd ak_fld = new sd(0, 0);
-	@ObfuscatedGetter(
-		intValue = 587465729
-	)
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
+	@ObfuscatedGetter(
+		intValue = 587465729
+	)
+	int ah_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lsd;"
@@ -60,7 +60,7 @@ public class sd implements xm {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.aw_fld;
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -69,7 +69,7 @@ public class sd implements xm {
 	)
 	@Override
 	public int ae() {
-		return this.aw_fld;
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -78,12 +78,12 @@ public class sd implements xm {
 	)
 	@Override
 	public int av() {
-		return this.aw_fld;
+		return this.ah_fld;
 	}
 
 	sd(int var1, int var2) {
-		this.ah_fld = var1;
-		this.aw_fld = var2;
+		this.aw_fld = var1;
+		this.ah_fld = var2;
 	}
 
 	@ObfuscatedName("ay")
@@ -102,13 +102,56 @@ public class sd implements xm {
 		return new sd[]{ak_fld, ag_fld, az_fld, av_fld, ae_fld};
 	}
 
+	@ObfuscatedName("di")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;Lyk;)V"
+	)
+	public static void di(xj var0, yk var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ag_fld = var1;
+	}
+
+	@ObfuscatedName("xm")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;ILxj;)V"
+	)
+	public static void xm(cl var0, int var1, xj var2) {
+		bb.pt(var0.as_fld, var1, var2, (byte)-25);
+		var0.aq();
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
 	public int ah() {
-		return this.aw_fld;
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("dj")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)V"
+	)
+	public static void dj(wl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.bt_fld = null;
+	}
+
+	@ObfuscatedName("hc")
+	@ObfuscatedSignature(
+		descriptor = "(Lmx;)V"
+	)
+	public static void hc(mx var0) {
+		if (var0.au_fld != null) {
+			var0.au_fld.az();
+		}
 	}
 
 	@ObfuscatedName("ar")

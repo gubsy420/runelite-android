@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -40,12 +41,12 @@ public class cx implements Iterable {
 		descriptor = "Ldx;"
 	)
 	dx ah_fld;
-	@ObfuscatedGetter(
-		intValue = 1189633661
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1189633661
 	)
 	int aw_fld;
 	@ObfuscatedName("kq")
@@ -53,6 +54,33 @@ public class cx implements Iterable {
 		descriptor = "Lcn;"
 	)
 	static cn kq_fld;
+
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;II)Ldx;"
+	)
+	public static dx ct(cx var0, int var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		Iterator var3 = var0.iterator();
+
+		while (var3.hasNext()) {
+			dx var4 = (dx)(dx)var3.next();
+			if (!var4.ak(-787091592)) {
+				int var5 = var4.as_fld * 1945570176;
+				int var6 = var4.ay_fld * 923374599;
+				int var7 = var4.ah_fld + var5;
+				int var8 = var4.aw_fld + var6;
+				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
+					return var4;
+				}
+			}
+		}
+
+		return var0.ah_fld;
+	}
 
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
@@ -62,18 +90,10 @@ public class cx implements Iterable {
 		if (null != var1) {
 			this.ag_fld.remove(var1.ag_fld);
 			this.az_fld.remove(var1.ag_fld);
-			dx.cy(var1, -1506359563);
-			var1.gy_void();
+			var1.ar(-1506359563);
+			var1.gy();
 			this.aw_fld--;
 		}
-	}
-
-	@ObfuscatedName("yj")
-	@ObfuscatedSignature(
-		descriptor = "(ILcx;)Ldx;"
-	)
-	public static dx yj(int var0, cx var1) {
-		return pd.ag(var0, var1);
 	}
 
 	@ObfuscatedName("ak")
@@ -81,38 +101,8 @@ public class cx implements Iterable {
 		descriptor = "(IIII)Ldx;"
 	)
 	dx ak(int var1, int var2, int var3, int var4) {
-		this.ah_fld = this.ag(0, var1, var2, var3, er.ak_fld, (byte)112);
+		this.ah_fld = cl(this, 0, var1, var2, var3, er.ak_fld, (byte)112);
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILer;B)Ldx;"
-	)
-	dx ag(int var1, int var2, int var3, int var4, er var5, byte var6) {
-		dx var7 = new dx(var1, var2, var3, var4, var5);
-		this.ak_fld.ag(var7, var1);
-		this.aw_fld++;
-		return var7;
-	}
-
-	@ObfuscatedName("db")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILer;)Ldx;"
-	)
-	public dx db(int var1, int var2, int var3, int var4, er var5) {
-		return this.ag(var1, var2, var3, var4, var5, (byte)112);
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(II)V"
-	)
-	void az(int var1, int var2) {
-		this.pj(var1);
-		dx var3 = (dx)this.ak_fld.ak(var1);
-		this.av(var3, -1004161645);
-		this.li(var1);
 	}
 
 	@ObfuscatedName("av")
@@ -120,14 +110,22 @@ public class cx implements Iterable {
 		descriptor = "(Ldx;I)V"
 	)
 	void av(dx var1, int var2) {
-		this.or(var1);
+		this.lr(var1);
 		if (null != var1) {
 			this.ag_fld.remove(var1.ag_fld);
 			this.az_fld.remove(var1.ag_fld);
-			dx.cy(var1, -1504480606);
-			var1.gy_void();
+			var1.ar(-1504480606);
+			var1.gy();
 			this.aw_fld--;
 		}
+	}
+
+	@ObfuscatedName("yh")
+	@ObfuscatedSignature(
+		descriptor = "(ILcx;)Ldx;"
+	)
+	public static dx yh(int var0, cx var1) {
+		return kx.ak(var0, var1);
 	}
 
 	@ObfuscatedName("af")
@@ -137,14 +135,6 @@ public class cx implements Iterable {
 	void af(int var1, ss var2, sb var3, byte var4) {
 		this.ag_fld.put(var1, var2);
 		this.az_fld.put(var1, var3);
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ldx;"
-	)
-	public dx ah(int var1) {
-		return this.ah_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -157,8 +147,8 @@ public class cx implements Iterable {
 		while (var4.hasNext()) {
 			dx var5 = (dx)(dx)var4.next();
 			if (!var5.ak(-787091592)) {
-				int var6 = var5.ay_fld;
-				int var7 = var5.as_fld;
+				int var6 = var5.as_fld;
+				int var7 = var5.ay_fld;
 				int var8 = var5.ah_fld + var6;
 				int var9 = var5.aw_fld + var7;
 				if (var1 >= var6 && var2 >= var7 && var1 < var8 && var2 < var9) {
@@ -168,14 +158,6 @@ public class cx implements Iterable {
 		}
 
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;)Ljava/util/Iterator;"
-	)
-	public static Iterator hl(cx var0) {
-		return var0.ak_fld.iterator();
 	}
 
 	@ObfuscatedName("bk")
@@ -188,8 +170,8 @@ public class cx implements Iterable {
 		while (var3.hasNext()) {
 			dx var4 = (dx)(dx)var3.next();
 			if (!var4.ak(-787091592)) {
-				int var5 = var4.ay_fld;
-				int var6 = var4.as_fld;
+				int var5 = var4.as_fld;
+				int var6 = var4.ay_fld;
 				int var7 = var4.ah_fld + var5;
 				int var8 = var4.aw_fld + var6;
 				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
@@ -199,18 +181,6 @@ public class cx implements Iterable {
 		}
 
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;B)I"
-	)
-	public static int lv(cx var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.aw_fld;
 	}
 
 	@ObfuscatedName("au")
@@ -227,24 +197,19 @@ public class cx implements Iterable {
 		descriptor = "(I)Lrg;"
 	)
 	public rg bf(int var1) {
-		return (rg)(rg)this.ah(-225377813).an_fld.ak(var1);
+		return (rg)(rg)gw(this, -225377813).an_fld.ak(var1);
 	}
 
-	@ObfuscatedName("fh")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Lcx;)Ldx;"
+		descriptor = "(Lcx;B)I"
 	)
-	public static dx fh(cx var0) {
-		return var0.ah_fld;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(III)Ldx;"
-	)
-	dx aq(int var1, int var2, int var3) {
-		this.ah_fld = this.ag(0, var1, var2, var3, er.ak_fld, (byte)30);
-		return this.ah_fld;
+	public static int as(cx var0, byte var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.aw_fld;
+		}
 	}
 
 	cx() {
@@ -252,6 +217,14 @@ public class cx implements Iterable {
 		this.az_fld = new HashMap(16);
 		this.aw_fld = 0;
 		this.an((byte)43);
+	}
+
+	@ObfuscatedName("nb")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ldx;"
+	)
+	public dx nb(int var1, int var2) {
+		return this.aw(var1, var2, -2017518756);
 	}
 
 	@ObfuscatedName("ar")
@@ -272,6 +245,19 @@ public class cx implements Iterable {
 		return null != var3 ? var3 : this.ae_fld;
 	}
 
+	@ObfuscatedName("wc")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;IB)V"
+	)
+	public static void wc(cx var0, int var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ag_fld.remove(var1);
+			var0.az_fld.remove(var1);
+		}
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Ldx;"
@@ -285,26 +271,8 @@ public class cx implements Iterable {
 		descriptor = "(III)Ldx;"
 	)
 	dx am(int var1, int var2, int var3) {
-		this.ah_fld = this.ag(0, var1, var2, var3, er.ak_fld, (byte)52);
+		this.ah_fld = cl(this, 0, var1, var2, var3, er.ak_fld, (byte)52);
 		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ku")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;Ldx;)V"
-	)
-	public static void ku(cx var0, dx var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (null != var1) {
-				var0.ag_fld.remove(var1.ag_fld);
-				var0.az_fld.remove(var1.ag_fld);
-				dx.cy(var1, -1420324143);
-				var1.gy_void();
-				var0.aw_fld -= -989278166;
-			}
-		}
 	}
 
 	@ObfuscatedName("aa")
@@ -312,7 +280,41 @@ public class cx implements Iterable {
 		descriptor = "(III)Ldx;"
 	)
 	dx aa(int var1, int var2, int var3) {
-		this.ah_fld = this.ag(0, var1, var2, var3, er.ak_fld, (byte)77);
+		this.ah_fld = cl(this, 0, var1, var2, var3, er.ak_fld, (byte)77);
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("li")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;)V"
+	)
+	public static void li(cx var0) {
+		Iterator var1 = var0.ak_fld.iterator();
+
+		while (var1.hasNext()) {
+			dx var2 = (dx)(dx)var1.next();
+			var0.av(var2, -886050072);
+		}
+
+		xv.aa(var0.ak_fld);
+		var0.aw_fld = 0;
+		var0.ag_fld.clear();
+		var0.az_fld.clear();
+		var0.av_fld = ss.ag_fld;
+		var0.ae_fld = sb.ag_fld;
+		if (var0.ah_fld != null) {
+			var0.ah_fld.ag(-1187084379);
+			var0.ak_fld.ag(var0.ah_fld, 0L);
+			var0.aw_fld = 1504998661;
+		}
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(III)Ldx;"
+	)
+	dx ai(int var1, int var2, int var3) {
+		this.ah_fld = cl(this, 0, var1, var2, var3, er.ak_fld, (byte)58);
 		return this.ah_fld;
 	}
 
@@ -324,8 +326,8 @@ public class cx implements Iterable {
 		if (null != var1) {
 			this.ag_fld.remove(var1.ag_fld);
 			this.az_fld.remove(var1.ag_fld);
-			dx.cy(var1, -1350239050);
-			var1.gy_void();
+			var1.ar(-1350239050);
+			var1.gy();
 			this.aw_fld--;
 		}
 	}
@@ -361,6 +363,14 @@ public class cx implements Iterable {
 		this.av(var2, -1187201370);
 	}
 
+	@ObfuscatedName("tv")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILer;)Ldx;"
+	)
+	public dx tv(int var1, int var2, int var3, int var4, er var5) {
+		return cl(this, var1, var2, var3, var4, var5, (byte)112);
+	}
+
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(B)V"
@@ -373,7 +383,7 @@ public class cx implements Iterable {
 			this.av(var3, -460298726);
 		}
 
-		this.ak_fld.az();
+		xv.aa(this.ak_fld);
 		this.aw_fld = 0;
 		this.ag_fld.clear();
 		this.az_fld.clear();
@@ -386,59 +396,6 @@ public class cx implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("vh")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;II)Ldx;"
-	)
-	public static dx vh(cx var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		Iterator var3 = var0.iterator();
-
-		while (var3.hasNext()) {
-			dx var4 = (dx)(dx)var3.next();
-			if (!var4.ak(-787091592)) {
-				int var5 = var4.ay_fld * 1945570176;
-				int var6 = var4.as_fld * 923374599;
-				int var7 = var4.ah_fld + var5;
-				int var8 = var4.aw_fld + var6;
-				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
-					return var4;
-				}
-			}
-		}
-
-		return var0.ah_fld;
-	}
-
-	@ObfuscatedName("gy")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;ILss;Lsb;)V"
-	)
-	public static void gy(cx var0, int var1, ss var2, sb var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ag_fld.put(var1, var2);
-		var0.az_fld.put(var1, var3);
-	}
-
-	@ObfuscatedName("we")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;III)Ldx;"
-	)
-	public static dx we(cx var0, int var1, int var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ah_fld = var0.ag(0, var1, var2, var3, er.ak_fld, (byte)58);
-		return var0.ah_fld;
-	}
-
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Ldx;)V"
@@ -447,46 +404,66 @@ public class cx implements Iterable {
 		if (null != var1) {
 			this.ag_fld.remove(1242947863 * var1.ag_fld);
 			this.az_fld.remove(var1.ag_fld);
-			dx.cy(var1, -1403286262);
-			var1.gy_void();
+			var1.ar(-1403286262);
+			var1.gy();
 			this.aw_fld--;
 		}
 	}
 
-	@ObfuscatedName("mx")
+	@ObfuscatedName("gf")
 	@ObfuscatedSignature(
-		descriptor = "(Lcx;ILss;Lsb;)V"
+		descriptor = "(ILcx;)Ldx;"
 	)
-	public static void mx(cx var0, int var1, ss var2, sb var3) {
-		var0.ag_fld.put(var1, var2);
-		var0.az_fld.put(var1, var3);
+	public static dx gf(int var0, cx var1) {
+		return pd.ag(var0, var1);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
-		descriptor = "(Lcx;II)Ldx;"
+		descriptor = "(ILss;Lsb;)V"
 	)
-	public static dx ax(cx var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
+	void bi(int var1, ss var2, sb var3) {
+		this.ag_fld.put(var1, var2);
+		this.az_fld.put(var1, var3);
+	}
+
+	@ObfuscatedName("ek")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;)Ljava/lang/Object;"
+	)
+	public static Object ek(pd var0) {
+		return var0.av_fld == 0 ? null : var0.ag_fld[0].ak_fld;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Ldx;)V"
+	)
+	void aj(dx var1) {
+		if (null != var1) {
+			this.ag_fld.remove(var1.ag_fld);
+			this.az_fld.remove(var1.ag_fld);
+			var1.ar(-1420324143);
+			var1.gy();
+			this.aw_fld -= -989278166;
 		}
+	}
 
-		Iterator var3 = var0.iterator();
+	@ObfuscatedName("ry")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ry(int var1) {
+		dx var2 = this.xg(var1);
+		if (var2 != null) {
+			Callbacks var3 = og.ci_fld.getCallbacks();
+			Iterator var4 = var2.npcs().iterator();
 
-		while (var3.hasNext()) {
-			dx var4 = (dx)(dx)var3.next();
-			if (!var4.ak(-787091592)) {
-				int var5 = var4.ay_fld * 1688390974;
-				int var6 = var4.as_fld;
-				int var7 = var4.ah_fld + var5;
-				int var8 = var4.aw_fld + var6;
-				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
-					return var4;
-				}
+			while (var4.hasNext()) {
+				ds var5 = (ds)(ds)var4.next();
+				var3.post(new NpcDespawned(var5));
 			}
 		}
-
-		return var0.ah_fld;
 	}
 
 	@ObfuscatedName("bm")
@@ -497,23 +474,10 @@ public class cx implements Iterable {
 		if (null != var1) {
 			this.ag_fld.remove(var1.ag_fld);
 			this.az_fld.remove(-1306089865 * var1.ag_fld);
-			dx.cy(var1, -772792383);
-			var1.gy_void();
+			var1.ar(-772792383);
+			var1.gy();
 			this.aw_fld--;
 		}
-	}
-
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;ILss;Lsb;)V"
-	)
-	public static void nx(cx var0, int var1, ss var2, sb var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ag_fld.put(var1, var2);
-		var0.az_fld.put(var1, var3);
 	}
 
 	@ObfuscatedName("bd")
@@ -522,35 +486,6 @@ public class cx implements Iterable {
 	)
 	public dx bd(int var1) {
 		return (dx)(dx)this.ak_fld.ak(var1);
-	}
-
-	@ObfuscatedName("jq")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;IB)V"
-	)
-	public static void jq(cx var0, int var1, byte var2) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ag_fld.remove(var1);
-			var0.az_fld.remove(var1);
-		}
-	}
-
-	@ObfuscatedName("or")
-	@ObfuscatedSignature(
-		descriptor = "(Ldx;)V"
-	)
-	public void or(dx var1) {
-		if (var1 != null) {
-			if (var1.kr_fld != null) {
-				og.ci_fld.getCallbacks().post(new WorldViewUnloaded(var1));
-			}
-
-			if (client.fa_fld != null) {
-				client.fa_fld.despawnWorldView(var1);
-			}
-		}
 	}
 
 	@ObfuscatedName("br")
@@ -570,18 +505,27 @@ public class cx implements Iterable {
 		this.ae_fld = var2;
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("vx")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;I)Lss;"
+	)
+	public static ss vx(cx var0, int var1) {
+		ss var2 = (ss)(ss)var0.ag_fld.get(var1);
+		return null != var2 ? var2 : var0.av_fld;
+	}
+
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ldx;"
 	)
-	dx bj(int var1, int var2) {
+	dx bh(int var1, int var2) {
 		Iterator var3 = this.iterator();
 
 		while (var3.hasNext()) {
 			dx var4 = (dx)(dx)var3.next();
 			if (!var4.ak(-787091592)) {
-				int var5 = var4.ay_fld;
-				int var6 = var4.as_fld;
+				int var5 = var4.as_fld * 1688390974;
+				int var6 = var4.ay_fld;
 				int var7 = var4.ah_fld + var5;
 				int var8 = var4.aw_fld + var6;
 				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
@@ -593,12 +537,80 @@ public class cx implements Iterable {
 		return this.ah_fld;
 	}
 
+	@ObfuscatedName("ga")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;)I"
+	)
+	public static int ga(cx var0) {
+		return var0.aw_fld;
+	}
+
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Iterator;"
+	)
+	public Iterator cc() {
+		return this.ak_fld.iterator();
+	}
+
+	@ObfuscatedName("xg")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ldx;"
+	)
+	public dx xg(int var1) {
+		return this.ae(var1, (byte)-109);
+	}
+
+	@ObfuscatedName("lr")
+	@ObfuscatedSignature(
+		descriptor = "(Ldx;)V"
+	)
+	public void lr(dx var1) {
+		if (var1 != null) {
+			if (var1.vc_fld != null) {
+				og.ci_fld.getCallbacks().post(new WorldViewUnloaded(var1));
+			}
+
+			if (client.bt_fld != null) {
+				client.bt_fld.despawnWorldView(var1);
+			}
+		}
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "()Ldx;"
+	)
+	public dx be() {
+		return this.ah_fld;
+	}
+
 	@ObfuscatedName("by")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lrg;"
 	)
 	public rg by(int var1) {
-		return (rg)(rg)this.ah(-225377813).an_fld.ak(var1);
+		return (rg)(rg)gw(this, -225377813).an_fld.ak(var1);
+	}
+
+	@ObfuscatedName("gw")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;I)Ldx;"
+	)
+	public static dx gw(cx var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ah_fld;
+		}
+	}
+
+	@ObfuscatedName("of")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lss;"
+	)
+	public ss of(int var1) {
+		return this.au(var1, 366728155);
 	}
 
 	@ObfuscatedName("bl")
@@ -606,103 +618,17 @@ public class cx implements Iterable {
 		descriptor = "(I)Lrg;"
 	)
 	public rg bl(int var1) {
-		return (rg)(rg)this.ah(-225377813).an_fld.ak(var1);
-	}
-
-	@ObfuscatedName("xs")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ldx;"
-	)
-	public dx xs(int var1) {
-		return this.ae(var1, (byte)-109);
-	}
-
-	@ObfuscatedName("li")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void li(int var1) {
-		rg var2 = (rg)bw.dk_fld.an_fld.get(var1);
-		if (var2 != null) {
-			client.ii_fld.debug("WorldEntity despawn: {}", var2.ae_fld);
-			og.ci_fld.getCallbacks().post(new WorldEntityDespawned(var2));
-		}
-	}
-
-	@ObfuscatedName("tc")
-	@ObfuscatedSignature(
-		descriptor = "(ILcx;)Ldx;"
-	)
-	public static dx tc(int var0, cx var1) {
-		return kx.ak(var0, var1);
+		return (rg)(rg)gw(this, -225377813).an_fld.ak(var1);
 	}
 
 	@ObfuscatedName("iterator")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Iterator;"
 	)
+	@Export("iterator")
 	@Override
 	public Iterator iterator() {
 		return this.ak_fld.iterator();
-	}
-
-	@ObfuscatedName("bo")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int bo() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void cv() {
-		Iterator var1 = this.ak_fld.iterator();
-
-		while (var1.hasNext()) {
-			dx var2 = (dx)(dx)var1.next();
-			this.av(var2, -886050072);
-		}
-
-		this.ak_fld.az();
-		this.aw_fld = 0;
-		this.ag_fld.clear();
-		this.az_fld.clear();
-		this.av_fld = ss.ag_fld;
-		this.ae_fld = sb.ag_fld;
-		if (this.ah_fld != null) {
-			this.ah_fld.ag(-1187084379);
-			this.ak_fld.ag(this.ah_fld, 0L);
-			this.aw_fld = 1504998661;
-		}
-	}
-
-	@ObfuscatedName("th")
-	@ObfuscatedSignature(
-		descriptor = "(Lcx;I)Lsb;"
-	)
-	public static sb th(cx var0, int var1) {
-		sb var2 = (sb)(sb)var0.az_fld.get(var1);
-		return null != var2 ? var2 : var0.ae_fld;
-	}
-
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(Lss;Lsb;)V"
-	)
-	void bv(ss var1, sb var2) {
-		this.av_fld = var1;
-		this.ae_fld = var2;
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ldx;"
-	)
-	public dx bz(int var1) {
-		return (dx)(dx)this.ak_fld.ak(var1);
 	}
 
 	@ObfuscatedName("bp")
@@ -711,6 +637,15 @@ public class cx implements Iterable {
 	)
 	int bp() {
 		return this.aw_fld;
+	}
+
+	@ObfuscatedName("bn")
+	@ObfuscatedSignature(
+		descriptor = "(ILss;Lsb;)V"
+	)
+	void bn(int var1, ss var2, sb var3) {
+		this.ag_fld.put(var1, var2);
+		this.az_fld.put(var1, var3);
 	}
 
 	@ObfuscatedName("bc")
@@ -731,6 +666,63 @@ public class cx implements Iterable {
 		return null != var2 ? var2 : this.av_fld;
 	}
 
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lsb;"
+	)
+	sb bq(int var1) {
+		sb var2 = (sb)(sb)this.az_fld.get(var1);
+		return null != var2 ? var2 : this.ae_fld;
+	}
+
+	@ObfuscatedName("st")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void st(int var1) {
+		rg var2 = (rg)sq.jx(bw.dk_fld.an_fld, var1);
+		if (var2 != null) {
+			client.logger.debug("WorldEntity despawn: {}", var2.ae_fld);
+			og.ci_fld.getCallbacks().post(new WorldEntityDespawned(var2));
+		}
+	}
+
+	@ObfuscatedName("rx")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;II)Ldx;"
+	)
+	public static dx rx(cx var0, int var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		Iterator var3 = var0.iterator();
+
+		while (var3.hasNext()) {
+			dx var4 = (dx)(dx)var3.next();
+			if (!var4.ak(-787091592)) {
+				int var5 = var4.as_fld;
+				int var6 = var4.ay_fld;
+				int var7 = var4.ah_fld + var5;
+				int var8 = var4.aw_fld + var6;
+				if (var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8) {
+					return var4;
+				}
+			}
+		}
+
+		return var0.ah_fld;
+	}
+
+	@ObfuscatedName("bg")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lsb;"
+	)
+	sb bg(int var1) {
+		sb var2 = (sb)(sb)this.az_fld.get(var1);
+		return null != var2 ? var2 : this.ae_fld;
+	}
+
 	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "(I)Lsb;"
@@ -740,44 +732,34 @@ public class cx implements Iterable {
 		return null != var2 ? var2 : this.ae_fld;
 	}
 
-	@ObfuscatedName("su")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ldx;"
-	)
-	public dx su(int var1, int var2) {
-		return this.aw(var1, var2, -2017518756);
-	}
-
-	@ObfuscatedName("pj")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void pj(int var1) {
-		dx var2 = this.xs(var1);
-		if (var2 != null) {
-			Callbacks var3 = og.ci_fld.getCallbacks();
-			Iterator var4 = var2.npcs().iterator();
-
-			while (var4.hasNext()) {
-				ds var5 = (ds)(ds)var4.next();
-				var3.post(new NpcDespawned(var5));
-			}
-		}
-	}
-
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Lrg;"
 	)
 	public rg ay(int var1, byte var2) {
-		return (rg)(rg)this.ah(-225377813).an_fld.ak(var1);
+		return (rg)(rg)gw(this, -225377813).an_fld.ak(var1);
 	}
 
-	@ObfuscatedName("cc")
+	@ObfuscatedName("lk")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;II)V"
+	)
+	public static void lk(cx var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ry(var1);
+			dx var3 = (dx)var0.ak_fld.ak(var1);
+			var0.av(var3, -1004161645);
+			var0.st(var1);
+		}
+	}
+
+	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Iterator;"
 	)
-	public Iterator cc() {
+	public Iterator cd() {
 		return this.ak_fld.iterator();
 	}
 
@@ -793,7 +775,7 @@ public class cx implements Iterable {
 			this.av(var2, 567044835);
 		}
 
-		this.ak_fld.az();
+		xv.aa(this.ak_fld);
 		this.aw_fld = 0;
 		this.ag_fld.clear();
 		this.az_fld.clear();
@@ -806,9 +788,26 @@ public class cx implements Iterable {
 		}
 	}
 
+	@ObfuscatedName("bu")
+	@ObfuscatedSignature(
+		descriptor = "(ILss;Lsb;)V"
+	)
+	void bu(int var1, ss var2, sb var3) {
+		this.ag_fld.put(var1, var2);
+		this.az_fld.put(var1, var3);
+	}
+
+	@ObfuscatedName("fh")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;)I"
+	)
+	public static int fh(cx var0) {
+		return var0.aw_fld;
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(ILlu;Llu;)Llu;"
+		descriptor = "(ILlu;Llu;B)Llu;"
 	)
 	static lu ar(int var0, lu var1, lu var2) {
 		int var4 = 0;
@@ -827,12 +826,33 @@ public class cx implements Iterable {
 		return var5;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(III)Ldx;"
+		descriptor = "(IIIILer;B)Ldx;"
 	)
-	dx ai(int var1, int var2, int var3) {
-		this.ah_fld = this.ag(0, var1, var2, var3, er.ak_fld, (byte)58);
+	dx ag(int var1, int var2, int var3, int var4, er var5, byte var6) {
+		dx var7 = new dx(var1, var2, var3, var4, var5);
+		this.ak_fld.ar(var7, var1);
+		this.aw_fld++;
+		return var7;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(II)V"
+	)
+	void az(int var1, int var2) {
+		this.st(var1);
+		dx var3 = (dx)this.ak_fld.aw(var1);
+		this.av(var3, -1004161645);
+		this.st(var1);
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ldx;"
+	)
+	public dx ah(int var1) {
 		return this.ah_fld;
 	}
 
@@ -841,8 +861,23 @@ public class cx implements Iterable {
 		descriptor = "(IB)V"
 	)
 	void al(int var1, byte var2) {
-		this.az_fld.remove(var1);
-		this.az_fld.remove(var1);
+		this.ag_fld.remove(var1);
+		this.ag_fld.remove(var1);
+	}
+
+	@ObfuscatedName("cl")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;IIIILer;B)Ldx;"
+	)
+	public static dx cl(cx var0, int var1, int var2, int var3, int var4, er var5, byte var6) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			dx var7 = new dx(var1, var2, var3, var4, var5);
+			var0.ak_fld.ag(var7, var1);
+			var0.aw_fld++;
+			return var7;
+		}
 	}
 
 	@ObfuscatedName("as")
@@ -851,22 +886,5 @@ public class cx implements Iterable {
 	)
 	int as(byte var1) {
 		return this.aw_fld;
-	}
-
-	@ObfuscatedName("ze")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lss;"
-	)
-	public ss ze(int var1) {
-		return this.au(var1, 366728155);
-	}
-
-	@ObfuscatedName("bq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lsb;"
-	)
-	sb bq(int var1) {
-		sb var2 = (sb)(sb)this.az_fld.get(var1);
-		return null != var2 ? var2 : this.ae_fld;
 	}
 }

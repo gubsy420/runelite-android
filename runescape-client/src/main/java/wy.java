@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -35,6 +36,14 @@ public class wy implements wr {
 		return (Integer)this.ak_fld.az(var1, 1811117369);
 	}
 
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/Iterator;"
+	)
+	public Iterator cd() {
+		return null == this.ag_fld ? Collections.emptyList().iterator() : this.ag_fld.values().iterator();
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/Object;I)V"
@@ -62,6 +71,7 @@ public class wy implements wr {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/util/Iterator;"
 	)
+	@Export("iterator")
 	@Override
 	public Iterator iterator() {
 		return null == this.ag_fld ? Collections.emptyList().iterator() : this.ag_fld.values().iterator();
@@ -79,14 +89,6 @@ public class wy implements wr {
 		return null == this.ag_fld ? Collections.emptyList().iterator() : this.ag_fld.values().iterator();
 	}
 
-	@ObfuscatedName("pz")
-	@ObfuscatedSignature(
-		descriptor = "(Lwy;)Ljava/util/Iterator;"
-	)
-	public static Iterator pz(wy var0) {
-		return null == var0.ag_fld ? Collections.emptyList().iterator() : var0.ag_fld.values().iterator();
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IB)I"
@@ -101,31 +103,6 @@ public class wy implements wr {
 		}
 
 		return (Integer)this.ak_fld.az(var1, 1268913925);
-	}
-
-	@ObfuscatedName("wy")
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;III)V"
-	)
-	public static void wy(fn var0, int var1, int var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.yk_fld = new float[var1];
-		var0.vr_fld = new float[var1];
-		var0.qo_fld = new float[var1];
-		var0.ba_fld = new int[var2];
-		var0.bq_fld = new int[var2];
-		var0.bg_fld = new int[var2];
-		var0.bb_fld = new int[var2];
-		var0.cd_fld = new int[var2];
-		var0.cc_fld = new int[var2];
-		if (var3 > 0) {
-			var0.ce_fld = new int[var3];
-			var0.cn_fld = new int[var3];
-			var0.cr_fld = new int[var3];
-		}
 	}
 
 	@ObfuscatedName("av")

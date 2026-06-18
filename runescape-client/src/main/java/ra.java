@@ -25,6 +25,14 @@ public class ra {
 	)
 	static int al_fld;
 
+	@ObfuscatedName("nn")
+	@ObfuscatedSignature(
+		descriptor = "(Lqe;)Ljava/lang/String;"
+	)
+	public static String nn(qe var0) {
+		return var0.aw_fld;
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(ILcx;)Ldx;"
@@ -34,12 +42,12 @@ public class ra {
 
 		while (var2.hasNext()) {
 			dx var3 = (dx)(dx)var2.next();
-			if (var3.ax_fld.ak(var0) != null) {
+			if (var3.ax_fld.ae(var0) != null) {
 				return var3;
 			}
 		}
 
-		return var1.ah(-225377813);
+		return cx.gw(var1, -225377813);
 	}
 
 	@ObfuscatedName("az")
@@ -51,13 +59,13 @@ public class ra {
 
 		while (var2.hasNext()) {
 			dx var3 = (dx)(dx)var2.next();
-			cv var4 = (cv)var3.au_fld.ak(var0);
+			cv var4 = (cv)var3.au_fld.ae(var0);
 			if (var4 != null && !var3.ak(-787091592)) {
 				return var3;
 			}
 		}
 
-		return var1.ah(-225377813);
+		return cx.gw(var1, -225377813);
 	}
 
 	@ObfuscatedName("av")
@@ -69,23 +77,13 @@ public class ra {
 
 		while (var2.hasNext()) {
 			dx var3 = (dx)(dx)var2.next();
-			cv var4 = (cv)var3.au_fld.ak(var0);
+			cv var4 = (cv)var3.au_fld.ae(var0);
 			if (var4 != null && !var3.ak(-787091592)) {
 				return var3;
 			}
 		}
 
-		return var1.ah(-225377813);
-	}
-
-	@ObfuscatedName("rh")
-	@ObfuscatedSignature(
-		descriptor = "(Lgq;)V"
-	)
-	public static void rh(gq var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+		return cx.gw(var1, -225377813);
 	}
 
 	@ObfuscatedName("ah")
@@ -97,12 +95,12 @@ public class ra {
 
 		while (var2.hasNext()) {
 			dx var3 = (dx)(dx)var2.next();
-			if (var3.ax_fld.ak(var0) != null) {
+			if (var3.ax_fld.ae(var0) != null) {
 				return var3;
 			}
 		}
 
-		return var1.ah(-225377813);
+		return cx.gw(var1, -225377813);
 	}
 
 	@ObfuscatedName("ae")
@@ -114,12 +112,12 @@ public class ra {
 
 		while (var2.hasNext()) {
 			dx var3 = (dx)(dx)var2.next();
-			if (var3.ax_fld.ak(var0) != null) {
+			if (var3.ax_fld.ae(var0) != null) {
 				return var3;
 			}
 		}
 
-		return var1.ah(-225377813);
+		return cx.gw(var1, -225377813);
 	}
 
 	ra() throws Throwable {

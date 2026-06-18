@@ -1,5 +1,3 @@
-import java.io.EOFException;
-import java.io.IOException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -21,11 +19,23 @@ public class as {
 	)
 	String az_fld;
 
-	@ObfuscatedName("oj")
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	String ak() {
+		return Integer.toHexString(this.ak_fld) + Integer.toHexString(this.ag_fld) + this.az_fld;
+	}
+
+	as(xi var1) {
+		this(var1.cg(), var1.cg(), xi.at(var1, -420457269));
+	}
+
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Las;)Ljava/lang/String;"
 	)
-	public static String oj(as var0) {
+	public static String aj(as var0) {
 		if (var0 == null) {
 			throw new NullPointerException();
 		} else {
@@ -33,24 +43,16 @@ public class as {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("vq")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(Leb;Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	String az() {
-		return Integer.toHexString(this.ak_fld) + Integer.toHexString(this.ag_fld) + this.az_fld;
-	}
+	public static int vq(eb var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ag() {
-		return this.ag_fld;
-	}
-
-	as(xi var1) {
-		this(var1.cg(), var1.cg(), xi.kc(var1, -420457269));
+		return eb.qz(var0, (rr)var1, (rr)var2, -469467821);
 	}
 
 	as(int var1, int var2, String var3) {
@@ -59,31 +61,11 @@ public class as {
 		this.az_fld = var3;
 	}
 
-	@ObfuscatedName("ok")
-	@ObfuscatedSignature(
-		descriptor = "(Lzu;[B)V"
-	)
-	public static void ok(zu var0, byte[] var1) throws IOException, EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			zu.oa(var0, var1, 0, var1.length, 1535799479);
-		}
-	}
-
-	@ObfuscatedName("av")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int av() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	String ak() {
-		return Integer.toHexString(this.ag_fld) + Integer.toHexString(this.ak_fld) + this.az_fld;
+	int ag() {
+		return this.ak_fld;
 	}
 }

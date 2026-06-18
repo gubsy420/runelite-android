@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -20,26 +21,14 @@ class nd implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ae(Object var1, Object var2) {
-		return rx(this, (nl)var1, (nl)var2, -1401429349);
+		return this.ak((nl)var1, (nl)var2, -1401429349);
 	}
 
-	@ObfuscatedName("ng")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnl;Lnl;)I"
-	)
-	public static int ng(nd var0, nl var1, nl var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1.az_fld.av_fld * -220330603 < var2.az_fld.av_fld * -220330603 ? -1 : (var2.az_fld.av_fld * -220330603 == var1.az_fld.av_fld * -220330603 ? 0 : 1);
-		}
-	}
-
-	@ObfuscatedName("jg")
+	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean jg(Object var1) {
+	public boolean jm(Object var1) {
 		return super.equals(var1);
 	}
 
@@ -49,13 +38,14 @@ class nd implements Comparator {
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return rx(this, (nl)var1, (nl)var2, -1401429349);
+		return this.ak((nl)var1, (nl)var2, -1401429349);
 	}
 
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
@@ -69,35 +59,63 @@ class nd implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ah(Object var1, Object var2) {
-		return rx(this, (nl)var1, (nl)var2, -1401429349);
+		return this.ak((nl)var1, (nl)var2, -1401429349);
 	}
 
-	@ObfuscatedName("jm")
+	@ObfuscatedName("iu")
+	@ObfuscatedSignature(
+		descriptor = "(Lnd;Lnl;Lnl;)I"
+	)
+	public static int iu(nd var0, nl var1, nl var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var1.az_fld.az_fld * -220330603 < var2.az_fld.az_fld * -220330603 ? -1 : (var2.az_fld.az_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
+		}
+	}
+
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
-	public boolean jm(Object var1) {
+	public boolean jg(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("rx")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnl;Lnl;I)I"
+		descriptor = "(Lnl;Lnl;)I"
 	)
-	public static int rx(nd var0, nl var1, nl var2, int var3) {
+	int az(nl var1, nl var2) {
+		return var1.az_fld.az_fld * -220330603 < var2.az_fld.az_fld * -220330603 ? -1 : (var2.az_fld.az_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lnl;Lnl;I)I"
+	)
+	int ak(nl var1, nl var2, int var3) {
+		return var1.az_fld.az_fld * -220330603 < var2.az_fld.az_fld * -220330603 ? -1 : (var2.az_fld.az_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lnl;Lnl;)I"
+	)
+	int ag(nl var1, nl var2) {
+		return var1.az_fld.az_fld * -220330603 < var2.az_fld.az_fld * -220330603 ? -1 : (var2.az_fld.az_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
+	}
+
+	@ObfuscatedName("ej")
+	@ObfuscatedSignature(
+		descriptor = "(Lnd;Ljava/lang/Object;)Z"
+	)
+	public static boolean ej(nd var0, Object var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		return var1.az_fld.av_fld * -220330603 < var2.az_fld.av_fld * -220330603 ? -1 : (var2.az_fld.av_fld * -220330603 == var1.az_fld.av_fld * -220330603 ? 0 : 1);
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jt(Object var1) {
-		return super.equals(var1);
+		return var0.equals(var1);
 	}
 
 	@ObfuscatedName("aw")
@@ -105,12 +123,28 @@ class nd implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int aw(Object var1, Object var2) {
-		return rx(this, (nl)var1, (nl)var2, -1401429349);
+		return this.ak((nl)var1, (nl)var2, -1401429349);
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lnl;Lnl;)I"
+	)
+	int av(nl var1, nl var2) {
+		return var1.az_fld.az_fld * -220330603 < var2.az_fld.az_fld * -220330603 ? -1 : (var2.az_fld.az_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
+	}
+
+	@ObfuscatedName("lw")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;Ljava/lang/String;I)Lzw;"
+	)
+	public static zw lw(zg var0, String var1, int var2) {
+		return zg.hi(var0, var1, var0.ap_fld.size(), var2);
 	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "([J[Ljava/lang/Object;II)V"
+		descriptor = "([J[Ljava/lang/Object;III)V"
 	)
 	public static void au(long[] var0, Object[] var1, int var2, int var3) {
 		if (var2 < var3) {
@@ -142,41 +176,5 @@ class nd implements Comparator {
 			au(var0, (Object[])var1, var2, var6 - 1);
 			au(var0, (Object[])var1, var6 + 1, var3);
 		}
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;)I"
-	)
-	int az(nl var1, nl var2) {
-		return var1.az_fld.ae_fld * -220330603 < var2.az_fld.ae_fld * -220330603 ? -1 : (var2.az_fld.ag_fld * -220330603 == var1.az_fld.ae_fld * -220330603 ? 0 : 1);
-	}
-
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(
-		descriptor = "(Lnd;Lnl;Lnl;)I"
-	)
-	public static int nx(nd var0, nl var1, nl var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var1.az_fld.av_fld * -220330603 < var2.az_fld.av_fld * -220330603 ? -1 : (var2.az_fld.av_fld * -220330603 == var1.az_fld.av_fld * -220330603 ? 0 : 1);
-		}
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;I)I"
-	)
-	int ak(nl var1, nl var2, int var3) {
-		return var1.az_fld.ah_fld * -220330603 < var2.az_fld.ag_fld * -220330603 ? -1 : (var2.az_fld.ah_fld * -220330603 == var1.az_fld.az_fld * -220330603 ? 0 : 1);
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;)I"
-	)
-	int av(nl var1, nl var2) {
-		return var1.az_fld.az_fld * -220330603 < var2.az_fld.ag_fld * -220330603 ? -1 : (var2.az_fld.ah_fld * -220330603 == var1.az_fld.ae_fld * -220330603 ? 0 : 1);
 	}
 }

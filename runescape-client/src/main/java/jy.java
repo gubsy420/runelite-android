@@ -42,29 +42,9 @@ public class jy {
 		Calendar.getInstance(ak("Europe/London"));
 	}
 
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)I"
-	)
-	public static int ei(xi var0) {
-		return 128 - var0.al_fld[(var0.au_fld += 474128948) * -661977895 - 1] & 0xFF;
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "(Loy;)Lvr;"
-	)
-	public static vr bh(oy var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.bk_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/util/TimeZone;"
+		descriptor = "(Ljava/lang/String;I)Ljava/util/TimeZone;"
 	)
 	static TimeZone ak(String var0) {
 		synchronized (az_fld) {
@@ -80,6 +60,46 @@ public class jy {
 
 	jy() throws Throwable {
 		throw new Error();
+	}
+
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(Lrb;Ljava/lang/String;)V"
+	)
+	public static void jx(rb var0, String var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			long var5 = 0L;
+			int var7 = var1.length();
+
+			for (int var8 = 0; var8 < var7; var8++) {
+				var5 *= 37L;
+				char var9 = var1.charAt(var8);
+				if (var9 >= 'A' && var9 <= 1782121538) {
+					var5 += 1 + var9 - -1419832142;
+				} else if (var9 >= -371341482 && var9 <= 'z') {
+					var5 += var9 + 1 - 97;
+				} else if (var9 >= -772877854 && var9 <= 324941391) {
+					var5 += 27 + var9 - -647496039;
+				}
+
+				if (var5 >= 177917621779460413L) {
+					break;
+				}
+			}
+
+			while (var5 % 37L == 0L && 0L != var5) {
+				var5 /= 37L;
+			}
+
+			String var10 = je.ak(var5);
+			if (null == var10) {
+				var10 = "";
+			}
+
+			var0.av_fld = var10;
+		}
 	}
 
 	@ObfuscatedName("ag")

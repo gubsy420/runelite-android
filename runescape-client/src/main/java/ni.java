@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -10,12 +11,12 @@ public class ni implements Comparator {
 		descriptor = "I"
 	)
 	public static int av_fld;
-	@ObfuscatedGetter(
-		intValue = -1588563501
-	)
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1588563501
 	)
 	public static int ax_fld;
 	@ObfuscatedName("ah")
@@ -32,25 +33,13 @@ public class ni implements Comparator {
 		return var1.ak_fld - var2.ak_fld;
 	}
 
-	@ObfuscatedName("yu")
-	@ObfuscatedSignature(
-		descriptor = "(Lni;Ljava/lang/Object;)Z"
-	)
-	public static boolean yu(ni var0, Object var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.equals(var1);
-	}
-
 	@ObfuscatedName("compare")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	@Override
 	public int compare(Object var1, Object var2) {
-		return nr(this, (mp)var1, (mp)var2, (byte)0);
+		return gh(this, (mp)var1, (mp)var2, (byte)0);
 	}
 
 	@ObfuscatedName("ae")
@@ -58,7 +47,7 @@ public class ni implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ae(Object var1, Object var2) {
-		return nr(this, (mp)var1, (mp)var2, (byte)0);
+		return gh(this, (mp)var1, (mp)var2, (byte)0);
 	}
 
 	@ObfuscatedName("ah")
@@ -66,7 +55,15 @@ public class ni implements Comparator {
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ah(Object var1, Object var2) {
-		return nr(this, (mp)var1, (mp)var2, (byte)0);
+		return gh(this, (mp)var1, (mp)var2, (byte)0);
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public int aw(Object var1, Object var2) {
+		return gh(this, (mp)var1, (mp)var2, (byte)0);
 	}
 
 	@ObfuscatedName("jt")
@@ -75,18 +72,6 @@ public class ni implements Comparator {
 	)
 	public boolean jt(Object var1) {
 		return super.equals(var1);
-	}
-
-	@ObfuscatedName("ib")
-	@ObfuscatedSignature(
-		descriptor = "(Lni;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int ib(ni var0, Object var1, Object var2) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return nr(var0, (mp)var1, (mp)var2, (byte)0);
-		}
 	}
 
 	@ObfuscatedName("jm")
@@ -98,6 +83,18 @@ public class ni implements Comparator {
 	}
 
 	ni() {
+	}
+
+	@ObfuscatedName("ws")
+	@ObfuscatedSignature(
+		descriptor = "(Lni;Ljava/lang/Object;)Z"
+	)
+	public static boolean ws(ni var0, Object var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.equals(var1);
 	}
 
 	@ObfuscatedName("ag")
@@ -124,10 +121,23 @@ public class ni implements Comparator {
 		return var1.ak_fld - var2.ak_fld;
 	}
 
+	@ObfuscatedName("gh")
+	@ObfuscatedSignature(
+		descriptor = "(Lni;Lmp;Lmp;B)I"
+	)
+	public static int gh(ni var0, mp var1, mp var2, byte var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var1.ak_fld - var2.ak_fld;
+	}
+
 	@ObfuscatedName("equals")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
@@ -135,7 +145,7 @@ public class ni implements Comparator {
 
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/Object;"
+		descriptor = "(I)[Ljava/lang/Object;"
 	)
 	static Object[] bm() {
 		String var1 = (String)bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525];
@@ -152,39 +162,11 @@ public class ni implements Comparator {
 		return (Object[])var2;
 	}
 
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jg(Object var1) {
-		return super.equals(var1);
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lmp;Lmp;B)I"
 	)
 	int ak(mp var1, mp var2, byte var3) {
 		return var1.ak_fld - var2.ak_fld;
-	}
-
-	@ObfuscatedName("nr")
-	@ObfuscatedSignature(
-		descriptor = "(Lni;Lmp;Lmp;B)I"
-	)
-	public static int nr(ni var0, mp var1, mp var2, byte var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1.ak_fld - var2.ak_fld;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int aw(Object var1, Object var2) {
-		return nr(this, (mp)var1, (mp)var2, (byte)0);
 	}
 }

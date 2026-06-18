@@ -1,6 +1,7 @@
 import java.io.EOFException;
 import net.runelite.api.IterableHashTable;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -9,12 +10,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("pp")
 @Implements({"NPCComposition"})
 public class pp extends vc implements NPCComposition, rl9 {
-	@ObfuscatedGetter(
-		intValue = -1339705085
-	)
 	@ObfuscatedName("ck")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1339705085
 	)
 	public int ck_fld;
 	@ObfuscatedName("ag")
@@ -42,17 +43,17 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Z"
 	)
 	public boolean dj_fld;
-	@ObfuscatedName("dd")
+	@ObfuscatedName("dr")
 	@ObfuscatedSignature(
 		descriptor = "[S"
 	)
-	public short[] dd_fld;
-	@ObfuscatedGetter(
-		intValue = 927763251
-	)
+	public short[] dr_fld;
 	@ObfuscatedName("dm")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 927763251
 	)
 	public int dm_fld;
 	@ObfuscatedName("aq")
@@ -60,12 +61,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "I"
 	)
 	static int aq_fld;
-	@ObfuscatedGetter(
-		intValue = -1598127313
-	)
 	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1598127313
 	)
 	public int cb_fld;
 	@ObfuscatedName("cr")
@@ -73,12 +74,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Liw;"
 	)
 	public static iw cr_fld = new iw(50);
-	@ObfuscatedGetter(
-		intValue = 218377697
-	)
 	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 218377697
 	)
 	public int ca_fld;
 	@ObfuscatedName("cg")
@@ -86,12 +87,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String cg_fld = kh.aj_fld;
-	@ObfuscatedGetter(
-		intValue = 1161975113
-	)
 	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1161975113
 	)
 	public int cw_fld = -1648448263;
 	@ObfuscatedName("cm")
@@ -99,12 +100,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "[I"
 	)
 	int[] cm_fld;
-	@ObfuscatedGetter(
-		intValue = 1758002617
-	)
 	@ObfuscatedName("di")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1758002617
 	)
 	int di_fld;
 	@ObfuscatedName("eg")
@@ -117,76 +118,76 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Lwv;"
 	)
 	public wv ei_fld;
-	@ObfuscatedGetter(
-		intValue = -1478906749
-	)
 	@ObfuscatedName("co")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int co_fld;
 	@ObfuscatedGetter(
-		intValue = -1091792243
+		intValue = -1478906749
 	)
+	public int co_fld;
 	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cu_fld;
 	@ObfuscatedGetter(
-		intValue = -1851976721
+		intValue = -1091792243
 	)
+	public int cu_fld;
 	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ci_fld;
 	@ObfuscatedGetter(
-		intValue = 210253519
+		intValue = -1851976721
 	)
+	public int ci_fld;
 	@ObfuscatedName("cj")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cj_fld;
 	@ObfuscatedGetter(
-		intValue = 607066081
+		intValue = 210253519
 	)
+	public int cj_fld;
 	@ObfuscatedName("ef")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ef_fld;
 	@ObfuscatedGetter(
-		intValue = 1561248409
+		intValue = 607066081
 	)
+	int ef_fld;
 	@ObfuscatedName("dn")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int dn_fld;
 	@ObfuscatedGetter(
-		intValue = -1499633401
+		intValue = 1561248409
 	)
+	int dn_fld;
 	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int cl_fld;
 	@ObfuscatedGetter(
-		intValue = 1388456395
+		intValue = -1499633401
 	)
+	public int cl_fld;
 	@ObfuscatedName("dc")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dc_fld;
 	@ObfuscatedGetter(
-		intValue = 1464675467
+		intValue = 1388456395
 	)
+	public int dc_fld;
 	@ObfuscatedName("dh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1464675467
 	)
 	public int dh_fld;
 	@ObfuscatedName("az")
@@ -194,12 +195,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Lub;"
 	)
 	static ub az_fld;
-	@ObfuscatedGetter(
-		intValue = 741240633
-	)
 	@ObfuscatedName("dz")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 741240633
 	)
 	public int dz_fld;
 	@ObfuscatedName("dy")
@@ -217,30 +218,30 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Z"
 	)
 	public boolean dq_fld;
-	@ObfuscatedGetter(
-		intValue = -1983169887
-	)
 	@ObfuscatedName("du")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int du_fld;
-	@ObfuscatedName("dr")
-	@ObfuscatedSignature(
-		descriptor = "[S"
-	)
-	public short[] dr_fld;
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(
-		descriptor = "[S"
-	)
-	short[] dl_fld;
 	@ObfuscatedGetter(
-		intValue = -255667527
+		intValue = -1983169887
 	)
+	int du_fld;
+	@ObfuscatedName("dd")
+	@ObfuscatedSignature(
+		descriptor = "[S"
+	)
+	public short[] dd_fld;
+	@ObfuscatedName("do")
+	@ObfuscatedSignature(
+		descriptor = "[S"
+	)
+	short[] do_fld;
 	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -255667527
 	)
 	public int ct_fld;
 	@ObfuscatedName("da")
@@ -253,20 +254,20 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Z"
 	)
 	public boolean dk_fld;
-	@ObfuscatedGetter(
-		intValue = 96908317
-	)
 	@ObfuscatedName("dx")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dx_fld;
 	@ObfuscatedGetter(
-		intValue = 1681838787
+		intValue = 96908317
 	)
+	public int dx_fld;
 	@ObfuscatedName("ds")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1681838787
 	)
 	int ds_fld;
 	@ObfuscatedName("ez")
@@ -274,35 +275,35 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "[I"
 	)
 	int[] ez_fld;
-	@ObfuscatedGetter(
-		intValue = 1301033531
-	)
 	@ObfuscatedName("db")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int db_fld;
 	@ObfuscatedGetter(
-		intValue = 1075284735
+		intValue = 1301033531
 	)
+	int db_fld;
 	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dt_fld;
 	@ObfuscatedGetter(
-		intValue = 1919170799
+		intValue = 1075284735
 	)
+	public int dt_fld;
 	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1919170799
+	)
 	public int ch_fld;
-	@ObfuscatedName("do")
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
 		descriptor = "[S"
 	)
-	short[] do_fld;
+	short[] er_fld;
 	@ObfuscatedName("cz")
 	@ObfuscatedSignature(
 		descriptor = "[I"
@@ -318,12 +319,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Z"
 	)
 	public boolean df_fld;
-	@ObfuscatedGetter(
-		intValue = 1678654899
-	)
 	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1678654899
 	)
 	int dg_fld;
 	@ObfuscatedName("dp")
@@ -331,20 +332,20 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Z"
 	)
 	public boolean dp_fld;
-	@ObfuscatedGetter(
-		intValue = 2060519443
-	)
 	@ObfuscatedName("dv")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int dv_fld;
 	@ObfuscatedGetter(
-		intValue = -695561327
+		intValue = 2060519443
 	)
+	public int dv_fld;
 	@ObfuscatedName("es")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -695561327
 	)
 	public int es_fld;
 	@ObfuscatedName("ep")
@@ -362,17 +363,17 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "I"
 	)
 	static int ax_fld;
-	@ObfuscatedName("er")
+	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
 		descriptor = "[S"
 	)
-	short[] er_fld;
-	@ObfuscatedGetter(
-		intValue = 190666337
-	)
+	short[] dl_fld;
 	@ObfuscatedName("en")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 190666337
 	)
 	int en_fld;
 	@ObfuscatedName("af")
@@ -400,12 +401,12 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "Lwn;"
 	)
 	public wn ee_fld;
-	@ObfuscatedGetter(
-		intValue = 30237573
-	)
 	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 30237573
 	)
 	public int dw_fld;
 
@@ -414,67 +415,23 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "()[S"
 	)
 	public short[] cf() {
-		return this.er_fld;
+		return this.dl_fld;
 	}
 
-	@ObfuscatedName("getFootprintSize")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getFootprintSize() {
-		return this.en_fld;
-	}
-
-	@ObfuscatedName("bb")
+	@ObfuscatedName("ca")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean bb() {
-		return this.ez_fld != null && null != this.er_fld;
+	public boolean ca() {
+		return this.ez_fld != null && null != this.dl_fld;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "()Loq;"
 	)
-	public oq ac() {
+	public oq at() {
 		return this.da_fld;
-	}
-
-	@ObfuscatedName("getColorToReplace")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getColorToReplace() {
-		return this.do_fld;
-	}
-
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;)Lpp;"
-	)
-	public static pp ct(pp var0) throws EOFException {
-		try {
-			int var1 = -1;
-			if (var0.di_fld != -1) {
-				var1 = dv.ag(var0.di_fld, (byte)114);
-			} else if (-1 != var0.dn_fld) {
-				var1 = rt.ag_fld[var0.dn_fld];
-			}
-
-			int var2;
-			if (var1 >= 0 && var1 < var0.dy_fld.length - 1) {
-				var2 = var0.dy_fld[var1];
-			} else {
-				var2 = var0.dy_fld[var0.dy_fld.length - 1];
-			}
-
-			return var2 != -1 ? ca.az(var2) : null;
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
-		}
 	}
 
 	@ObfuscatedName("bf")
@@ -518,25 +475,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 						var12 = new eg(var11, var11.length);
 					}
 
-					if (null != this.do_fld) {
-						short[] var7 = this.dr_fld;
-						if (var2 != null && null != var2.av_fld) {
-							var7 = var2.av_fld;
+					if (null != this.er_fld) {
+						short[] var7 = this.dd_fld;
+						if (var2 != null && null != var2.az_fld) {
+							var7 = var2.az_fld;
 						}
 
-						for (int var8 = 0; var8 < this.do_fld.length; var8++) {
-							eg.hm(var12, this.do_fld[var8], var7[var8]);
+						for (int var8 = 0; var8 < this.er_fld.length; var8++) {
+							var12.be(this.er_fld[var8], var7[var8]);
 						}
 					}
 
-					if (this.dl_fld != null) {
-						short[] var13 = this.dd_fld;
-						if (var2 != null && var2.az_fld != null) {
-							var13 = var2.az_fld;
+					if (this.do_fld != null) {
+						short[] var13 = this.dr_fld;
+						if (var2 != null && var2.av_fld != null) {
+							var13 = var2.av_fld;
 						}
 
-						for (int var14 = 0; var14 < this.dl_fld.length; var14++) {
-							var12.bs(this.dl_fld[var14], var13[var14]);
+						for (int var14 = 0; var14 < this.do_fld.length; var14++) {
+							var12.bs(this.do_fld[var14], var13[var14]);
 						}
 					}
 
@@ -546,15 +503,6 @@ public class pp extends vc implements NPCComposition, rl9 {
 		} catch (Throwable var10) {
 			throw new RuntimeException(var10);
 		}
-	}
-
-	@ObfuscatedName("getColorToReplaceWith")
-	@ObfuscatedSignature(
-		descriptor = "()[S"
-	)
-	@Override
-	public short[] getColorToReplaceWith() {
-		return this.dr_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -579,13 +527,13 @@ public class pp extends vc implements NPCComposition, rl9 {
 						return null;
 					}
 
-					var9 = var10.bx(this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
+					var9 = eg.et(var10, this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
 					cr_fld.az(var9, var7);
 				}
 
 				fn var13;
 				if (var1 != null && var3 != null) {
-					var13 = var1.au(var9, var2, var3, var4, 1447139779);
+					var13 = ol.uq(var1, var9, var2, var3, var4);
 				} else if (var1 != null) {
 					var13 = var1.as(var9, var2, (byte)-53);
 				} else if (var3 != null) {
@@ -595,30 +543,13 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 
 				if (128 != this.ds_fld || 128 != this.du_fld) {
-					var13.bp(this.ds_fld, this.du_fld, this.ds_fld);
+					var13.bt(this.ds_fld, this.du_fld, this.ds_fld);
 				}
 
 				return var13;
 			}
 		} catch (Throwable var11) {
 			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lpg;I)Leg;"
-	)
-	public final eg ay(pg var1, int var2) {
-		try {
-			if (null != this.dy_fld) {
-				pp var3 = this.ar((byte)6);
-				return var3 == null ? null : var3.ay(var1, -1098489005);
-			} else {
-				return this.as(this.cz_fld, var1, 2143379765);
-			}
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
 		}
 	}
 
@@ -663,25 +594,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 						var12 = new eg(var11, var11.length);
 					}
 
-					if (null != this.do_fld) {
-						short[] var8 = this.dr_fld;
-						if (var2 != null && null != var2.av_fld) {
-							var8 = var2.av_fld;
+					if (null != this.er_fld) {
+						short[] var8 = this.dd_fld;
+						if (var2 != null && null != var2.az_fld) {
+							var8 = var2.az_fld;
 						}
 
-						for (int var9 = 0; var9 < this.do_fld.length; var9++) {
-							eg.hm(var12, this.do_fld[var9], var8[var9]);
+						for (int var9 = 0; var9 < this.er_fld.length; var9++) {
+							var12.be(this.er_fld[var9], var8[var9]);
 						}
 					}
 
-					if (this.dl_fld != null) {
-						short[] var13 = this.dd_fld;
-						if (var2 != null && var2.az_fld != null) {
-							var13 = var2.az_fld;
+					if (this.do_fld != null) {
+						short[] var13 = this.dr_fld;
+						if (var2 != null && var2.av_fld != null) {
+							var13 = var2.av_fld;
 						}
 
-						for (int var14 = 0; var14 < this.dl_fld.length; var14++) {
-							var12.bs(this.dl_fld[var14], var13[var14]);
+						for (int var14 = 0; var14 < this.do_fld.length; var14++) {
+							var12.bs(this.do_fld[var14], var13[var14]);
 						}
 					}
 
@@ -719,15 +650,6 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("getParams")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/IterableHashTable;"
-	)
-	@Override
-	public IterableHashTable getParams() {
-		return this.ep_fld;
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;II)V"
@@ -735,7 +657,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 	void ah(xi var1, int var2, int var3) {
 		switch (var2) {
 			case 2:
-				this.cg_fld = xi.kc(var1, -2039664907);
+				this.cg_fld = xi.at(var1, -2039664907);
 			case 3:
 			case 4:
 			case 5:
@@ -936,25 +858,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.cw_fld = var1.cg();
 				break;
 			case 13:
-				this.ck_fld = xi.tx(var1, 1703889421);
+				this.ck_fld = var1.cm();
 				break;
 			case 14:
-				this.cu_fld = xi.tx(var1, 405365253);
+				this.cu_fld = var1.cm();
 				break;
 			case 15:
-				this.cb_fld = xi.tx(var1, 1471719492) * -1663466199;
+				this.cb_fld = var1.cm() * -1663466199;
 				break;
 			case 16:
-				this.co_fld = xi.tx(var1, 332229803);
+				this.co_fld = var1.cm();
 				break;
 			case 17:
-				this.cu_fld = xi.tx(var1, 785230181);
-				this.ci_fld = xi.tx(var1, 1357090540);
-				this.cj_fld = xi.tx(var1, 923619796);
-				this.ch_fld = xi.tx(var1, 890126652) * -1050424559;
+				this.cu_fld = var1.cm();
+				this.ci_fld = var1.cm();
+				this.cj_fld = var1.cm();
+				this.ch_fld = var1.cm() * -1050424559;
 				break;
 			case 18:
-				xi.tx(var1, 1463902412);
+				var1.cm();
 				break;
 			case 30:
 			case 31:
@@ -968,26 +890,26 @@ public class pp extends vc implements NPCComposition, rl9 {
 				break;
 			case 40:
 				int var18 = var1.cg();
-				this.do_fld = new short[var18];
-				this.dr_fld = new short[var18];
+				this.er_fld = new short[var18];
+				this.dd_fld = new short[var18];
 
 				for (int var27 = 0; var27 < var18; var27++) {
 					if (var3 == 1027799877) {
 						return;
 					}
 
-					this.do_fld[var27] = (short)xi.tx(var1, 1307186868);
-					this.dr_fld[var27] = (short)xi.tx(var1, 1175282270);
+					this.er_fld[var27] = (short)var1.cm();
+					this.dd_fld[var27] = (short)var1.cm();
 				}
 				break;
 			case 41:
 				int var17 = var1.cg();
-				this.dl_fld = new short[var17];
-				this.dd_fld = new short[var17];
+				this.do_fld = new short[var17];
+				this.dr_fld = new short[var17];
 
 				for (int var26 = 0; var26 < var17; var26++) {
-					this.dl_fld[var26] = (short)xi.tx(var1, 1432056435);
-					this.dd_fld[var26] = (short)xi.tx(var1, 1592307343);
+					this.do_fld[var26] = (short)var1.cm();
+					this.dr_fld[var26] = (short)var1.cm();
 				}
 				break;
 			case 61:
@@ -1011,43 +933,43 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 				break;
 			case 74:
-				this.ec_fld[0] = xi.tx(var1, 1510689872);
+				this.ec_fld[0] = var1.cm();
 				break;
 			case 75:
-				this.ec_fld[1] = xi.tx(var1, 1182084504);
+				this.ec_fld[1] = var1.cm();
 				break;
 			case 76:
-				this.ec_fld[2] = xi.tx(var1, 1732724781);
+				this.ec_fld[2] = var1.cm();
 				break;
 			case 77:
-				this.ec_fld[3] = xi.tx(var1, 1974268664);
+				this.ec_fld[3] = var1.cm();
 				break;
 			case 78:
-				this.ec_fld[4] = xi.tx(var1, 590659900);
+				this.ec_fld[4] = var1.cm();
 				break;
 			case 79:
-				this.ec_fld[5] = xi.tx(var1, 616488743);
+				this.ec_fld[5] = var1.cm();
 				break;
 			case 93:
 				this.dk_fld = false;
 				break;
 			case 95:
-				this.dx_fld = xi.tx(var1, 1216317824);
+				this.dx_fld = var1.cm();
 				break;
 			case 97:
-				this.ds_fld = xi.tx(var1, 2032015976);
+				this.ds_fld = var1.cm();
 				break;
 			case 98:
-				this.du_fld = xi.tx(var1, 1559878729);
+				this.du_fld = var1.cm();
 				break;
 			case 99:
 				this.ek_fld = or.ak_fld;
 				break;
 			case 100:
-				this.db_fld = xi.rp(var1, -1744494497);
+				this.db_fld = var1.cw();
 				break;
 			case 101:
-				this.dg_fld = xi.rp(var1, -61841067) * 381788007;
+				this.dg_fld = var1.cw() * 381788007;
 				break;
 			case 102:
 				int var14 = var1.cg();
@@ -1058,29 +980,29 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 
 				this.ez_fld = new int[var23];
-				this.er_fld = new short[var23];
+				this.dl_fld = new short[var23];
 
 				for (int var31 = 0; var31 < var23; var31++) {
 					if ((var14 & 1 << var31) == 0) {
 						this.ez_fld[var31] = -1;
-						this.er_fld[var31] = -1;
+						this.dl_fld[var31] = -1;
 					} else {
-						this.ez_fld[var31] = var1.do_();
-						this.er_fld[var31] = (short)var1.dt();
+						this.ez_fld[var31] = xi.kt(var1, (byte)-33);
+						this.dl_fld[var31] = (short)xi.in(var1, -1988692648);
 					}
 				}
 				break;
 			case 103:
-				this.dw_fld = xi.tx(var1, 1774768908);
+				this.dw_fld = var1.cm();
 				break;
 			case 106:
 			case 118:
-				this.di_fld = xi.tx(var1, 1362425764);
+				this.di_fld = var1.cm();
 				if (65535 == this.di_fld) {
 					this.di_fld = -374208649;
 				}
 
-				this.dn_fld = xi.tx(var1, 714970155);
+				this.dn_fld = var1.cm();
 				if (65535 == this.dn_fld) {
 					if (var3 == 1027799877) {
 						return;
@@ -1091,7 +1013,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 
 				int var13 = -1;
 				if (118 == var2) {
-					var13 = xi.tx(var1, 989861927);
+					var13 = var1.cm();
 					if (65535 == var13) {
 						var13 = -1;
 					}
@@ -1105,7 +1027,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 						return;
 					}
 
-					this.dy_fld[var29] = xi.tx(var1, 994979660);
+					this.dy_fld[var29] = var1.cm();
 					if (65535 == this.dy_fld[var29]) {
 						this.dy_fld[var29] = -1;
 					}
@@ -1123,22 +1045,22 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.ek_fld = or.az_fld;
 				break;
 			case 114:
-				this.ct_fld = xi.tx(var1, 1789667277);
+				this.ct_fld = var1.cm();
 				break;
 			case 115:
-				this.ct_fld = xi.tx(var1, 572165765);
-				this.cl_fld = xi.tx(var1, 1989118890);
-				this.dc_fld = xi.tx(var1, 1253487147);
-				this.dh_fld = xi.tx(var1, 1582595357);
+				this.ct_fld = var1.cm();
+				this.cl_fld = var1.cm();
+				this.dc_fld = var1.cm();
+				this.dh_fld = var1.cm();
 				break;
 			case 116:
-				this.dv_fld = xi.tx(var1, 1507006050);
+				this.dv_fld = var1.cm();
 				break;
 			case 117:
-				this.dv_fld = xi.tx(var1, 722018108);
-				this.dz_fld = xi.tx(var1, 367851533);
-				this.dt_fld = xi.tx(var1, 1716072089);
-				this.dm_fld = xi.tx(var1, 1582026081);
+				this.dv_fld = var1.cm();
+				this.dz_fld = var1.cm();
+				this.dt_fld = var1.cm();
+				this.dm_fld = var1.cm();
 				break;
 			case 122:
 				this.dp_fld = true;
@@ -1147,10 +1069,10 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.dj_fld = true;
 				break;
 			case 124:
-				this.es_fld = xi.tx(var1, 790983343);
+				this.es_fld = var1.cm();
 				break;
 			case 126:
-				this.en_fld = xi.tx(var1, 1965519617);
+				this.en_fld = var1.cm();
 				break;
 			case 130:
 				this.dq_fld = true;
@@ -1159,15 +1081,15 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.eg_fld = true;
 				break;
 			case 146:
-				this.ef_fld = xi.tx(var1, 688840513);
+				this.ef_fld = var1.cm();
 				break;
 			case 147:
 				this.eq_fld = false;
 				break;
 			case 148:
-				this.ei_fld.ag_fld = xi.tx(var1, 739842939);
-				this.ei_fld.az_fld = var1.cg();
+				this.ei_fld.az_fld = var1.cm();
 				this.ei_fld.ak_fld = var1.cg();
+				this.ei_fld.ag_fld = var1.cg();
 				break;
 			case 149:
 				wh var12 = this.ei_fld.av_fld;
@@ -1179,11 +1101,11 @@ public class pp extends vc implements NPCComposition, rl9 {
 				wh var11 = this.ei_fld.av_fld;
 				int var6 = var1.cg();
 				zm var20 = zm.br_fld[var6];
-				var11.ak(var20, xi.tx(var1, 1999628754));
+				var11.ak(var20, var1.cm());
 				wh var7 = this.ei_fld.av_fld;
 				int var9 = var1.cg();
 				zm var8 = zm.br_fld[var9];
-				var7.ag(var8, xi.tx(var1, 418691697));
+				var7.ag(var8, var1.cm());
 				break;
 			case 151:
 				wv var10 = this.ei_fld;
@@ -1191,15 +1113,15 @@ public class pp extends vc implements NPCComposition, rl9 {
 				var10.ae_fld = (kr)ka.ak(var19, var1.cg());
 				break;
 			case 152:
-				this.ee_fld.ag_fld = xi.tx(var1, 1566509206);
-				this.ee_fld.az_fld = xi.tx(var1, 739945361);
-				this.ei_fld.az_fld = var1.cg();
+				this.ee_fld.ag_fld = var1.cm();
+				this.ee_fld.az_fld = var1.cm();
 				this.ei_fld.ak_fld = var1.cg();
+				this.ei_fld.ag_fld = var1.cg();
 				int var4 = var1.cg();
 				this.ee_fld.ak_fld = new int[var4];
 
 				for (int var5 = 0; var5 < var4; var5++) {
-					this.ee_fld.ak_fld[var5] = xi.tx(var1, 1992620316);
+					this.ee_fld.ak_fld[var5] = var1.cm();
 				}
 				break;
 			case 249:
@@ -1212,15 +1134,57 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)S"
 	)
 	public short ce(int var1) {
-		return null != this.er_fld && var1 < this.er_fld.length ? this.er_fld[var1] : -1;
+		return null != this.dl_fld && var1 < this.dl_fld.length ? this.dl_fld[var1] : -1;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ya")
 	@ObfuscatedSignature(
-		descriptor = "(IJ)J"
+		descriptor = "(Lpp;Lol;ILol;ILpg;)Lfn;"
 	)
-	public long au(int var1, long var2) {
-		return hq.az(this.ep_fld, var1, var2);
+	public static fn ya(pp var0, ol var1, int var2, ol var3, int var4, pg var5) throws EOFException {
+		try {
+			if (var0 == null) {
+				throw new NullPointerException();
+			} else if (var0.dy_fld != null) {
+				pp var12 = var0.ar((byte)6);
+				return null == var12 ? null : var12.aw(var1, var2, var3, var4, var5, 1146691405);
+			} else {
+				long var6 = var0.ca_fld;
+				if (null != var5) {
+					var6 |= var5.ak_fld << 16;
+				}
+
+				fn var8 = (fn)cr_fld.ak(var6);
+				if (var8 == null) {
+					eg var9 = var0.as(var0.cm_fld, var5, 2088851156);
+					if (var9 == null) {
+						return null;
+					}
+
+					var8 = eg.et(var9, var0.db_fld + 64, 850 + var0.dg_fld, -30, -50, -30);
+					cr_fld.az(var8, var6);
+				}
+
+				fn var13;
+				if (var1 != null && var3 != null) {
+					var13 = ol.uq(var1, var8, var2, var3, var4);
+				} else if (var1 != null) {
+					var13 = var1.as(var8, var2, (byte)-108);
+				} else if (var3 != null) {
+					var13 = var3.as(var8, var4, (byte)-45);
+				} else {
+					var13 = var8.ay(true);
+				}
+
+				if (128 != var0.ds_fld || 128 != var0.du_fld) {
+					var13.bt(var0.ds_fld, var0.du_fld, var0.ds_fld);
+				}
+
+				return var13;
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
 	}
 
 	@ObfuscatedName("ap")
@@ -1228,15 +1192,67 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)Z"
 	)
 	public boolean ap(int var1) {
-		return this.ez_fld != null && null != this.er_fld;
+		return this.ez_fld != null && null != this.dl_fld;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)[I"
+		descriptor = "(II)I"
 	)
-	public int[] aa(int var1) {
-		return this.ez_fld;
+	public int ai(int var1, int var2) {
+		return this.ez_fld != null && var1 < this.ez_fld.length ? this.ez_fld[var1] : -1;
+	}
+
+	@ObfuscatedName("hp")
+	@ObfuscatedSignature(
+		descriptor = "()Lpp;"
+	)
+	public pp transform() {
+		try {
+			return this.ar((byte)6);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("zy")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;I)Z"
+	)
+	public static boolean zy(pp var0, int var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (null == var0.dy_fld) {
+				return var0.ei_fld.az_fld * 1077344343 != -1 || null != var0.ee_fld.ak_fld;
+			} else {
+				int[] var2 = var0.dy_fld;
+
+				for (int var3 = 0; var3 < var2.length; var3++) {
+					int var4 = var2[var3];
+					if (var4 != -1) {
+						pp var5 = ca.az(var4);
+						if (-1 != 1077344343 * var5.ei_fld.az_fld || null != var5.ee_fld.ak_fld) {
+							return true;
+						}
+					}
+				}
+
+				return false;
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
+	}
+
+	@ObfuscatedName("fr")
+	@ObfuscatedSignature(
+		descriptor = "()Lpb;"
+	)
+	public pb getOps() {
+		return this.da_fld;
 	}
 
 	@ObfuscatedName("aq")
@@ -1244,14 +1260,14 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)[S"
 	)
 	public short[] aq(int var1) {
-		return this.er_fld;
+		return this.dl_fld;
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
 		descriptor = "()Lpp;"
 	)
-	public final pp bo() {
+	public final pp bl() {
 		try {
 			int var1 = -1;
 			if (this.di_fld != -1) {
@@ -1273,12 +1289,54 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
+	@ObfuscatedName("isMinimapVisible")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isMinimapVisible")
+	@Override
+	public boolean isMinimapVisible() {
+		return this.dk_fld;
+	}
+
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean cn() {
+		return this.ez_fld != null && null != this.dl_fld;
+	}
+
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(S)Z"
 	)
 	public boolean ao(short var1) {
 		return this.eg_fld;
+	}
+
+	@ObfuscatedName("qp")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;IIB)I"
+	)
+	public static int qp(pp var0, int var1, int var2, byte var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return my.ag(var0.ep_fld, var1, var2);
+	}
+
+	@ObfuscatedName("ij")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;B)Loq;"
+	)
+	public static oq ij(pp var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.da_fld;
 	}
 
 	@ObfuscatedName("ab")
@@ -1289,22 +1347,16 @@ public class pp extends vc implements NPCComposition, rl9 {
 		return this.ef_fld;
 	}
 
-	@ObfuscatedName("isMinimapVisible")
+	@ObfuscatedName("mf")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lpp;ILjava/lang/String;B)Ljava/lang/String;"
 	)
-	@Override
-	public boolean isMinimapVisible() {
-		return this.dk_fld;
-	}
+	public static String mf(pp var0, int var1, String var2, byte var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 
-	@ObfuscatedName("getCombatLevel")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getCombatLevel() {
-		return this.dx_fld;
+		return ih.av(var0.ep_fld, var1, var2);
 	}
 
 	@ObfuscatedName("am")
@@ -1312,28 +1364,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(II)S"
 	)
 	public short am(int var1, int var2) {
-		return null != this.er_fld && var1 < this.er_fld.length ? this.er_fld[var1] : -1;
-	}
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		return this.cg_fld;
-	}
-
-	@ObfuscatedName("es")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;B)Loq;"
-	)
-	public static oq es(pp var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.da_fld;
+		return null != this.dl_fld && var1 < this.dl_fld.length ? this.dl_fld[var1] : -1;
 	}
 
 	pp() {
@@ -1369,7 +1400,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 		this.es_fld = -1571720561;
 		this.ec_fld = new int[]{1, 1, 1, 1, 1, 1};
 		this.ez_fld = null;
-		this.er_fld = null;
+		this.dl_fld = null;
 		this.en_fld = -499240353;
 		this.eg_fld = false;
 		this.ef_fld = 1413753748;
@@ -1380,6 +1411,32 @@ public class pp extends vc implements NPCComposition, rl9 {
 		this.da_fld = new pb();
 	}
 
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "()Lpp;"
+	)
+	public final pp bo() {
+		try {
+			int var1 = -1;
+			if (this.di_fld != -1) {
+				var1 = dv.ag(this.di_fld, (byte)114);
+			} else if (-1 != this.dn_fld) {
+				var1 = rt.ag_fld[this.dn_fld];
+			}
+
+			int var2;
+			if (var1 >= 0 && var1 < this.dy_fld.length - 1) {
+				var2 = this.dy_fld[var1];
+			} else {
+				var2 = this.dy_fld[this.dy_fld.length - 1];
+			}
+
+			return var2 != -1 ? ca.az(var2) : null;
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Lub;Lub;)V"
@@ -1387,6 +1444,14 @@ public class pp extends vc implements NPCComposition, rl9 {
 	public static void aj(ub var0, ub var1) {
 		az_fld = var0;
 		av_fld = var1;
+	}
+
+	@ObfuscatedName("wh")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;)Z"
+	)
+	public static boolean wh(cn var0) {
+		return var0.ah_fld;
 	}
 
 	@ObfuscatedName("bm")
@@ -1406,7 +1471,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 					var1.ae(new xi(var2), (byte)14);
 				}
 
-				var1.av((byte)52);
+				mu(var1, (byte)52);
 				cn_fld.az(var1, var0);
 				return var1;
 			}
@@ -1415,13 +1480,62 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("getStats")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "()V"
 	)
+	void bd() {
+		if (this.en_fld == -1) {
+			this.en_fld = (int)(0.4F * (this.cw_fld * -1591040896)) * 1310056002;
+		}
+	}
+
+	@ObfuscatedName("gz")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;)Z"
+	)
+	public static boolean gz(pp var0) throws EOFException {
+		try {
+			if (null == var0.dy_fld) {
+				return true;
+			} else {
+				int var1 = -1;
+				if (-1 != var0.di_fld) {
+					var1 = dv.ag(2004004106 * var0.di_fld, (byte)115);
+				} else if (var0.dn_fld != -1) {
+					var1 = rt.ag_fld[var0.dn_fld];
+				}
+
+				return var1 >= 0 && var1 < var0.dy_fld.length ? -1 != var0.dy_fld[var1] : var0.dy_fld[var0.dy_fld.length - 1] != -1;
+			}
+		} catch (Throwable var3) {
+			throw new RuntimeException(var3);
+		}
+	}
+
+	@ObfuscatedName("getCombatLevel")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCombatLevel")
 	@Override
-	public int[] getStats() {
-		return this.ec_fld;
+	public int getCombatLevel() {
+		return this.dx_fld;
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	void be(xi var1) {
+		while (true) {
+			int var2 = var1.cg();
+			if (0 == var2) {
+				return;
+			}
+
+			this.ah(var1, var2, -1188073907);
+		}
 	}
 
 	@ObfuscatedName("bz")
@@ -1435,16 +1549,28 @@ public class pp extends vc implements NPCComposition, rl9 {
 				return;
 			}
 
-			this.ah(var1, var2, -1188073907);
+			this.ah(var1, var2, 1951738094);
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("getFootprintSize")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;B)Ljava/lang/String;"
+		descriptor = "()I"
 	)
-	public String ax(int var1, String var2, byte var3) {
-		return ih.av(this.ep_fld, var1, var2);
+	@Export("getFootprintSize")
+	@Override
+	public int getFootprintSize() {
+		return this.en_fld;
+	}
+
+	@ObfuscatedName("getChatheadModels")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getChatheadModels")
+	@Override
+	public int[] getChatheadModels() {
+		return this.cz_fld;
 	}
 
 	@ObfuscatedName("bs")
@@ -1454,7 +1580,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 	void bs(xi var1, int var2) {
 		switch (var2) {
 			case 2:
-				this.cg_fld = xi.kc(var1, -858585015);
+				this.cg_fld = xi.at(var1, -858585015);
 			case 3:
 			case 4:
 			case 5:
@@ -1655,25 +1781,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.cw_fld = var1.cg();
 				break;
 			case 13:
-				this.ck_fld = xi.tx(var1, 1626507907) * -1238485656;
+				this.ck_fld = var1.cm() * -1238485656;
 				break;
 			case 14:
-				this.cu_fld = xi.tx(var1, 644201680) * -1305569799;
+				this.cu_fld = var1.cm() * -1305569799;
 				break;
 			case 15:
-				this.cb_fld = xi.tx(var1, 500877984);
+				this.cb_fld = var1.cm();
 				break;
 			case 16:
-				this.co_fld = xi.tx(var1, 748984837);
+				this.co_fld = var1.cm();
 				break;
 			case 17:
-				this.cu_fld = xi.tx(var1, 1159216127) * -1570141641;
-				this.ci_fld = xi.tx(var1, 1492286229) * -2129351237;
-				this.cj_fld = xi.tx(var1, 569856170);
-				this.ch_fld = xi.tx(var1, 1176001650);
+				this.cu_fld = var1.cm() * -1570141641;
+				this.ci_fld = var1.cm() * -2129351237;
+				this.cj_fld = var1.cm();
+				this.ch_fld = var1.cm();
 				break;
 			case 18:
-				xi.tx(var1, 444194730);
+				var1.cm();
 				break;
 			case 30:
 			case 31:
@@ -1687,22 +1813,22 @@ public class pp extends vc implements NPCComposition, rl9 {
 				break;
 			case 40:
 				int var17 = var1.cg();
-				this.do_fld = new short[var17];
-				this.dr_fld = new short[var17];
+				this.er_fld = new short[var17];
+				this.dd_fld = new short[var17];
 
 				for (int var26 = 0; var26 < var17; var26++) {
-					this.do_fld[var26] = (short)xi.tx(var1, 471163921);
-					this.dr_fld[var26] = (short)xi.tx(var1, 2140821395);
+					this.er_fld[var26] = (short)var1.cm();
+					this.dd_fld[var26] = (short)var1.cm();
 				}
 				break;
 			case 41:
 				int var16 = var1.cg();
-				this.dl_fld = new short[var16];
-				this.dd_fld = new short[var16];
+				this.do_fld = new short[var16];
+				this.dr_fld = new short[var16];
 
 				for (int var25 = 0; var25 < var16; var25++) {
-					this.dl_fld[var25] = (short)xi.tx(var1, 1269095088);
-					this.dd_fld[var25] = (short)xi.tx(var1, 2140790204);
+					this.do_fld[var25] = (short)var1.cm();
+					this.dr_fld[var25] = (short)var1.cm();
 				}
 				break;
 			case 61:
@@ -1722,43 +1848,43 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 				break;
 			case 74:
-				this.ec_fld[0] = xi.tx(var1, 722296352);
+				this.ec_fld[0] = var1.cm();
 				break;
 			case 75:
-				this.ec_fld[1] = xi.tx(var1, 1624790427);
+				this.ec_fld[1] = var1.cm();
 				break;
 			case 76:
-				this.ec_fld[2] = xi.tx(var1, 391779299);
+				this.ec_fld[2] = var1.cm();
 				break;
 			case 77:
-				this.ec_fld[3] = xi.tx(var1, 1474133831);
+				this.ec_fld[3] = var1.cm();
 				break;
 			case 78:
-				this.ec_fld[4] = xi.tx(var1, 1229627649);
+				this.ec_fld[4] = var1.cm();
 				break;
 			case 79:
-				this.ec_fld[5] = xi.tx(var1, 1208632570);
+				this.ec_fld[5] = var1.cm();
 				break;
 			case 93:
 				this.dk_fld = false;
 				break;
 			case 95:
-				this.dx_fld = xi.tx(var1, 551984174) * 680010310;
+				this.dx_fld = var1.cm() * 680010310;
 				break;
 			case 97:
-				this.ds_fld = xi.tx(var1, 976195661) * 2102518645;
+				this.ds_fld = var1.cm() * 2102518645;
 				break;
 			case 98:
-				this.du_fld = xi.tx(var1, 828836326);
+				this.du_fld = var1.cm();
 				break;
 			case 99:
 				this.ek_fld = or.ak_fld;
 				break;
 			case 100:
-				this.db_fld = xi.rp(var1, -111041587);
+				this.db_fld = var1.cw();
 				break;
 			case 101:
-				this.dg_fld = xi.rp(var1, -2079328536) * 381788007;
+				this.dg_fld = var1.cw() * 381788007;
 				break;
 			case 102:
 				int var13 = var1.cg();
@@ -1769,36 +1895,36 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 
 				this.ez_fld = new int[var22];
-				this.er_fld = new short[var22];
+				this.dl_fld = new short[var22];
 
 				for (int var30 = 0; var30 < var22; var30++) {
 					if ((var13 & 1 << var30) == 0) {
 						this.ez_fld[var30] = -1;
-						this.er_fld[var30] = -1;
+						this.dl_fld[var30] = -1;
 					} else {
-						this.ez_fld[var30] = var1.do_();
-						this.er_fld[var30] = (short)var1.dt();
+						this.ez_fld[var30] = xi.kt(var1, (byte)-104);
+						this.dl_fld[var30] = (short)xi.in(var1, -2028051803);
 					}
 				}
 				break;
 			case 103:
-				this.dw_fld = xi.tx(var1, 2051943592) * -1218897870;
+				this.dw_fld = var1.cm() * -1218897870;
 				break;
 			case 106:
 			case 118:
-				this.di_fld = xi.tx(var1, 1682769175) * -1518372952;
+				this.di_fld = var1.cm() * -1518372952;
 				if (65535 == this.di_fld) {
 					this.di_fld = -374208649;
 				}
 
-				this.dn_fld = xi.tx(var1, 513532955);
+				this.dn_fld = var1.cm();
 				if (65535 == this.dn_fld) {
 					this.dn_fld = 752303032;
 				}
 
 				int var12 = -1;
 				if (-1027544333 == var2) {
-					var12 = xi.tx(var1, 840412105);
+					var12 = var1.cm();
 					if (-2050713572 == var12) {
 						var12 = -1;
 					}
@@ -1808,7 +1934,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.dy_fld = new int[var21 + 2];
 
 				for (int var28 = 0; var28 <= var21; var28++) {
-					this.dy_fld[var28] = xi.tx(var1, 1477705103);
+					this.dy_fld[var28] = var1.cm();
 					if (-892571703 == this.dy_fld[var28]) {
 						this.dy_fld[var28] = -1;
 					}
@@ -1826,22 +1952,22 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.ek_fld = or.az_fld;
 				break;
 			case 114:
-				this.ct_fld = xi.tx(var1, 1458537722);
+				this.ct_fld = var1.cm();
 				break;
 			case 115:
-				this.ct_fld = xi.tx(var1, 1327256924);
-				this.cl_fld = xi.tx(var1, 1794558436) * 351851246;
-				this.dc_fld = xi.tx(var1, 437525308) * 2055582539;
-				this.dh_fld = xi.tx(var1, 1928459041) * 1362644346;
+				this.ct_fld = var1.cm();
+				this.cl_fld = var1.cm() * 351851246;
+				this.dc_fld = var1.cm() * 2055582539;
+				this.dh_fld = var1.cm() * 1362644346;
 				break;
 			case 116:
-				this.dv_fld = xi.tx(var1, 660609114);
+				this.dv_fld = var1.cm();
 				break;
 			case 117:
-				this.dv_fld = xi.tx(var1, 2025670144) * -1013663717;
-				this.dz_fld = xi.tx(var1, 920563461);
-				this.dt_fld = xi.tx(var1, 551714321) * -122933120;
-				this.dm_fld = xi.tx(var1, 922874915);
+				this.dv_fld = var1.cm() * -1013663717;
+				this.dz_fld = var1.cm();
+				this.dt_fld = var1.cm() * -122933120;
+				this.dm_fld = var1.cm();
 				break;
 			case 122:
 				this.dp_fld = true;
@@ -1850,10 +1976,10 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.dj_fld = true;
 				break;
 			case 124:
-				this.es_fld = xi.tx(var1, 964129439);
+				this.es_fld = var1.cm();
 				break;
 			case 126:
-				this.en_fld = xi.tx(var1, 1768923849) * -1851354911;
+				this.en_fld = var1.cm() * -1851354911;
 				break;
 			case 130:
 				this.dq_fld = true;
@@ -1862,15 +1988,15 @@ public class pp extends vc implements NPCComposition, rl9 {
 				this.eg_fld = true;
 				break;
 			case 146:
-				this.ef_fld = xi.tx(var1, 2070422024) * -1910698853;
+				this.ef_fld = var1.cm() * -1910698853;
 				break;
 			case 147:
 				this.eq_fld = false;
 				break;
 			case 148:
-				this.ei_fld.ag_fld = xi.tx(var1, 1481673743) * 332759252;
-				this.ei_fld.az_fld = var1.cg() * 1455255209;
-				this.ei_fld.ak_fld = var1.cg() * -146390;
+				this.ei_fld.az_fld = var1.cm() * 332759252;
+				this.ei_fld.ak_fld = var1.cg() * 1455255209;
+				this.ei_fld.ag_fld = var1.cg() * -146390;
 				break;
 			case 149:
 				wh var11 = this.ei_fld.av_fld;
@@ -1882,11 +2008,11 @@ public class pp extends vc implements NPCComposition, rl9 {
 				wh var10 = this.ei_fld.av_fld;
 				int var5 = var1.cg();
 				zm var19 = zm.br_fld[var5];
-				var10.ak(var19, xi.tx(var1, 364448040));
+				var10.ak(var19, var1.cm());
 				wh var6 = this.ei_fld.av_fld;
 				int var8 = var1.cg();
 				zm var7 = zm.br_fld[var8];
-				var6.ag(var7, xi.tx(var1, 732342860));
+				var6.ag(var7, var1.cm());
 				break;
 			case 151:
 				wv var9 = this.ei_fld;
@@ -1894,15 +2020,15 @@ public class pp extends vc implements NPCComposition, rl9 {
 				var9.ae_fld = (kr)ka.ak(var18, var1.cg());
 				break;
 			case 152:
-				this.ee_fld.ag_fld = xi.tx(var1, 690378548);
-				this.ee_fld.az_fld = xi.tx(var1, 591102898);
-				this.ei_fld.az_fld = var1.cg();
-				this.ei_fld.ak_fld = var1.cg() * 1104341631;
+				this.ee_fld.ag_fld = var1.cm();
+				this.ee_fld.az_fld = var1.cm();
+				this.ei_fld.ak_fld = var1.cg();
+				this.ei_fld.ag_fld = var1.cg() * 1104341631;
 				int var3 = var1.cg();
 				this.ee_fld.ak_fld = new int[var3];
 
 				for (int var4 = 0; var4 < var3; var4++) {
-					this.ee_fld.ak_fld[var4] = xi.tx(var1, 651587099);
+					this.ee_fld.ak_fld[var4] = var1.cm();
 				}
 				break;
 			case 249:
@@ -1910,67 +2036,31 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("zt")
+	@ObfuscatedName("getStats")
 	@ObfuscatedSignature(
-		descriptor = "()Lpb;"
+		descriptor = "()[I"
 	)
-	public pb getOps() {
-		return this.da_fld;
+	@Export("getStats")
+	@Override
+	public int[] getStats() {
+		return this.ec_fld;
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("getParams")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/IterableHashTable;"
+	)
+	@Export("getParams")
+	@Override
+	public IterableHashTable getParams() {
+		return this.ep_fld;
+	}
+
+	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
 		descriptor = "(Lol;ILol;ILpg;)Lfn;"
 	)
-	public final fn bj(ol var1, int var2, ol var3, int var4, pg var5) {
-		try {
-			if (this.dy_fld != null) {
-				pp var12 = this.ar((byte)6);
-				return null == var12 ? null : var12.aw(var1, var2, var3, var4, var5, 1146691405);
-			} else {
-				long var6 = this.ca_fld;
-				if (null != var5) {
-					var6 |= var5.ak_fld << 16;
-				}
-
-				fn var8 = (fn)cr_fld.ak(var6);
-				if (var8 == null) {
-					eg var9 = this.as(this.cm_fld, var5, 2088851156);
-					if (var9 == null) {
-						return null;
-					}
-
-					var8 = var9.bx(this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
-					cr_fld.az(var8, var6);
-				}
-
-				fn var13;
-				if (var1 != null && var3 != null) {
-					var13 = var1.au(var8, var2, var3, var4, 947991462);
-				} else if (var1 != null) {
-					var13 = var1.as(var8, var2, (byte)-108);
-				} else if (var3 != null) {
-					var13 = var3.as(var8, var4, (byte)-45);
-				} else {
-					var13 = var8.ay(true);
-				}
-
-				if (128 != this.ds_fld || 128 != this.du_fld) {
-					var13.bp(this.ds_fld, this.du_fld, this.ds_fld);
-				}
-
-				return var13;
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;ILol;ILpg;)Lfn;"
-	)
-	public final fn bh(ol var1, int var2, ol var3, int var4, pg var5) {
+	public final fn bk(ol var1, int var2, ol var3, int var4, pg var5) {
 		try {
 			if (this.dy_fld != null) {
 				pp var12 = this.ar((byte)6);
@@ -1988,13 +2078,13 @@ public class pp extends vc implements NPCComposition, rl9 {
 						return null;
 					}
 
-					var8 = var9.bx(this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
+					var8 = eg.et(var9, this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
 					cr_fld.az(var8, var6);
 				}
 
 				fn var13;
 				if (var1 != null && var3 != null) {
-					var13 = var1.au(var8, var2, var3, var4, 854063386);
+					var13 = ol.uq(var1, var8, var2, var3, var4);
 				} else if (var1 != null) {
 					var13 = var1.as(var8, var2, (byte)-100);
 				} else if (var3 != null) {
@@ -2004,7 +2094,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 				}
 
 				if (128 != this.ds_fld || 128 != this.du_fld) {
-					var13.bp(this.ds_fld, this.du_fld, this.ds_fld);
+					var13.bt(this.ds_fld, this.du_fld, this.ds_fld);
 				}
 
 				return var13;
@@ -2012,112 +2102,6 @@ public class pp extends vc implements NPCComposition, rl9 {
 		} catch (Throwable var11) {
 			throw new RuntimeException(var11);
 		}
-	}
-
-	@ObfuscatedName("fs")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;)Z"
-	)
-	public static boolean fs(pp var0) {
-		return var0.ez_fld != null && null != var0.er_fld;
-	}
-
-	@ObfuscatedName("tw")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;I)Z"
-	)
-	public static boolean tw(pp var0, int var1) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			if (null == var0.dy_fld) {
-				return var0.ei_fld.ag_fld * 1077344343 != -1 || null != var0.ee_fld.ak_fld;
-			} else {
-				int[] var2 = var0.dy_fld;
-
-				for (int var3 = 0; var3 < var2.length; var3++) {
-					int var4 = var2[var3];
-					if (var4 != -1) {
-						pp var5 = ca.az(var4);
-						if (-1 != 1077344343 * var5.ei_fld.ag_fld || null != var5.ee_fld.ak_fld) {
-							return true;
-						}
-					}
-				}
-
-				return false;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("getId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getId() {
-		return this.ca_fld;
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(Lol;ILol;ILpg;)Lfn;"
-	)
-	public final fn bk(ol var1, int var2, ol var3, int var4, pg var5) {
-		try {
-			if (this.dy_fld != null) {
-				pp var12 = this.ar((byte)6);
-				return null == var12 ? null : var12.aw(var1, var2, var3, var4, var5, 78304478);
-			} else {
-				long var6 = this.ca_fld;
-				if (null != var5) {
-					var6 |= var5.ak_fld << 16;
-				}
-
-				fn var8 = (fn)cr_fld.ak(var6);
-				if (var8 == null) {
-					eg var9 = this.as(this.cm_fld, var5, 2003918095);
-					if (var9 == null) {
-						return null;
-					}
-
-					var8 = var9.bx(this.db_fld + 64, 850 + this.dg_fld, -30, -50, -30);
-					cr_fld.az(var8, var6);
-				}
-
-				fn var13;
-				if (var1 != null && var3 != null) {
-					var13 = var1.au(var8, var2, var3, var4, 1487244058);
-				} else if (var1 != null) {
-					var13 = var1.as(var8, var2, (byte)-1);
-				} else if (var3 != null) {
-					var13 = var3.as(var8, var4, (byte)-40);
-				} else {
-					var13 = var8.ay(true);
-				}
-
-				if (128 != this.ds_fld || 128 != this.du_fld) {
-					var13.bp(this.ds_fld, this.du_fld, this.ds_fld);
-				}
-
-				return var13;
-			}
-		} catch (Throwable var11) {
-			throw new RuntimeException(var11);
-		}
-	}
-
-	@ObfuscatedName("getChatheadModels")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getChatheadModels() {
-		return this.cz_fld;
 	}
 
 	@ObfuscatedName("bq")
@@ -2128,36 +2112,14 @@ public class pp extends vc implements NPCComposition, rl9 {
 		return ih.av(this.ep_fld, var1, var2);
 	}
 
-	@ObfuscatedName("kt")
+	@ObfuscatedName("getModels")
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;IIB)I"
+		descriptor = "()[I"
 	)
-	public static int kt(pp var0, int var1, int var2, byte var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return my.ag(var0.ep_fld, var1, var2);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean au() {
-		try {
-			return this.an(-1019607204);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;II)I"
-	)
-	public static int jf(pp var0, int var1, int var2) {
-		return my.ag(var0.ep_fld, var1, var2);
+	@Export("getModels")
+	@Override
+	public int[] getModels() {
+		return this.cm_fld;
 	}
 
 	@ObfuscatedName("by")
@@ -2201,25 +2163,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 						var12 = new eg(var11, var11.length);
 					}
 
-					if (null != this.do_fld) {
-						short[] var7 = this.dr_fld;
-						if (var2 != null && null != var2.av_fld) {
-							var7 = var2.av_fld;
+					if (null != this.er_fld) {
+						short[] var7 = this.dd_fld;
+						if (var2 != null && null != var2.az_fld) {
+							var7 = var2.az_fld;
 						}
 
-						for (int var8 = 0; var8 < this.do_fld.length; var8++) {
-							eg.hm(var12, this.do_fld[var8], var7[var8]);
+						for (int var8 = 0; var8 < this.er_fld.length; var8++) {
+							var12.be(this.er_fld[var8], var7[var8]);
 						}
 					}
 
-					if (this.dl_fld != null) {
-						short[] var13 = this.dd_fld;
-						if (var2 != null && var2.az_fld != null) {
-							var13 = var2.az_fld;
+					if (this.do_fld != null) {
+						short[] var13 = this.dr_fld;
+						if (var2 != null && var2.av_fld != null) {
+							var13 = var2.av_fld;
 						}
 
-						for (int var14 = 0; var14 < this.dl_fld.length; var14++) {
-							var12.bs(this.dl_fld[var14], var13[var14]);
+						for (int var14 = 0; var14 < this.do_fld.length; var14++) {
+							var12.bs(this.do_fld[var14], var13[var14]);
 						}
 					}
 
@@ -2231,37 +2193,51 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("yo")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(Lpp;Lol;ILol;ILpg;)Lfn;"
 	)
-	public int[] cq() {
-		return this.ez_fld;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "()Lpp;"
-	)
-	public final pp bx() {
+	public static fn yo(pp var0, ol var1, int var2, ol var3, int var4, pg var5) throws EOFException {
 		try {
-			int var1 = -1;
-			if (this.di_fld != -1) {
-				var1 = dv.ag(this.di_fld, (byte)97);
-			} else if (-1 != this.dn_fld) {
-				var1 = rt.ag_fld[this.dn_fld];
-			}
-
-			int var2;
-			if (var1 >= 0 && var1 < this.dy_fld.length - 1) {
-				var2 = this.dy_fld[var1];
+			if (var0.dy_fld != null) {
+				pp var12 = var0.ar((byte)6);
+				return null == var12 ? null : var12.aw(var1, var2, var3, var4, var5, 78304478);
 			} else {
-				var2 = this.dy_fld[this.dy_fld.length - 1];
-			}
+				long var6 = var0.ca_fld;
+				if (null != var5) {
+					var6 |= var5.ak_fld << 16;
+				}
 
-			return var2 != -1 ? ca.az(var2) : null;
-		} catch (Throwable var4) {
-			throw new RuntimeException(var4);
+				fn var8 = (fn)cr_fld.ak(var6);
+				if (var8 == null) {
+					eg var9 = var0.as(var0.cm_fld, var5, 2003918095);
+					if (var9 == null) {
+						return null;
+					}
+
+					var8 = eg.et(var9, var0.db_fld + 64, 850 + var0.dg_fld, -30, -50, -30);
+					cr_fld.az(var8, var6);
+				}
+
+				fn var13;
+				if (var1 != null && var3 != null) {
+					var13 = ol.uq(var1, var8, var2, var3, var4);
+				} else if (var1 != null) {
+					var13 = var1.as(var8, var2, (byte)-1);
+				} else if (var3 != null) {
+					var13 = var3.as(var8, var4, (byte)-40);
+				} else {
+					var13 = var8.ay(true);
+				}
+
+				if (128 != var0.ds_fld || 128 != var0.du_fld) {
+					var13.bt(var0.ds_fld, var0.du_fld, var0.ds_fld);
+				}
+
+				return var13;
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
 		}
 	}
 
@@ -2288,60 +2264,19 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("getActions")
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/String;"
+		descriptor = "(II)I"
 	)
-	@Override
-	public String[] getActions() {
-		String[] var1 = new String[this.da_fld.ak_fld.size()];
-
-		for (int var2 = 0; var2 < this.da_fld.ak_fld.size(); var2++) {
-			oj var3 = (oj)(oj)this.da_fld.ak_fld.get(var2);
-			if (var3 != null) {
-				var1[var2] = var3.ae_fld;
-			}
-		}
-
-		return var1;
+	public int bv(int var1, int var2) {
+		return my.ag(this.ep_fld, var1, var2);
 	}
 
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean bp() {
-		try {
-			if (null == this.dy_fld) {
-				return true;
-			} else {
-				int var1 = -1;
-				if (-1 != this.di_fld) {
-					var1 = dv.ag(2004004106 * this.di_fld, (byte)115);
-				} else if (this.dn_fld != -1) {
-					var1 = rt.ag_fld[this.dn_fld];
-				}
-
-				return var1 >= 0 && var1 < this.dy_fld.length ? -1 != this.dy_fld[var1] : this.dy_fld[this.dy_fld.length - 1] != -1;
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
-	}
-
-	@ObfuscatedName("bc")
-	@ObfuscatedSignature(
-		descriptor = "(IJ)J"
-	)
-	public long bc(int var1, long var2) {
-		return hq.az(this.ep_fld, var1, var2);
-	}
-
-	@ObfuscatedName("be")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
-	void be(xi var1) {
+	void br(xi var1) {
 		while (true) {
 			int var2 = var1.cg();
 			if (0 == var2) {
@@ -2352,21 +2287,42 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "(IJ)J"
+	)
+	public long bw(int var1, long var2) {
+		return hq.az(this.ep_fld, var1, var2);
+	}
+
+	@ObfuscatedName("getHeightScale")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getHeightScale")
+	@Override
+	public int getHeightScale() {
+		return this.du_fld;
+	}
+
+	@ObfuscatedName("mm")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;I)[I"
+	)
+	public static int[] mm(pp var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ez_fld;
+	}
+
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;)Ljava/lang/String;"
 	)
 	public String ba(int var1, String var2) {
 		return ih.av(this.ep_fld, var1, var2);
-	}
-
-	@ObfuscatedName("getWidthScale")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getWidthScale() {
-		return this.ds_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -2384,14 +2340,53 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("nj")
 	@ObfuscatedSignature(
-		descriptor = "(B)V"
+		descriptor = "(Lpp;IJ)J"
 	)
-	void av(byte var1) {
-		if (this.en_fld == -1) {
-			this.en_fld = (int)(0.4F * (this.cw_fld * -1591040896));
+	public static long nj(pp var0, int var1, long var2) {
+		if (var0 == null) {
+			var0.getClass();
 		}
+
+		return hq.az(var0.ep_fld, var1, var2);
+	}
+
+	@ObfuscatedName("getActions")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/String;"
+	)
+	@Export("getActions")
+	@Override
+	public String[] getActions() {
+		String[] var1 = new String[this.da_fld.ak_fld.size()];
+
+		for (int var2 = 0; var2 < this.da_fld.ak_fld.size(); var2++) {
+			oj var3 = (oj)(oj)this.da_fld.ak_fld.get(var2);
+			if (var3 != null) {
+				var1[var2] = var3.ae_fld;
+			}
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	public int[] cd() {
+		return this.ez_fld;
+	}
+
+	@ObfuscatedName("getColorToReplace")
+	@ObfuscatedSignature(
+		descriptor = "()[S"
+	)
+	@Export("getColorToReplace")
+	@Override
+	public short[] getColorToReplace() {
+		return this.er_fld;
 	}
 
 	@ObfuscatedName("cc")
@@ -2400,34 +2395,6 @@ public class pp extends vc implements NPCComposition, rl9 {
 	)
 	public int[] cc() {
 		return this.ez_fld;
-	}
-
-	@ObfuscatedName("isInteractible")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isInteractible() {
-		return this.df_fld;
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;Lxi;)V"
-	)
-	public static void iu(pp var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		while (true) {
-			int var2 = var1.cg();
-			if (0 == var2) {
-				return;
-			}
-
-			var0.ah(var1, var2, 1951738094);
-		}
 	}
 
 	@ObfuscatedName("ad")
@@ -2454,11 +2421,11 @@ public class pp extends vc implements NPCComposition, rl9 {
 		return this.ez_fld != null && var1 < this.ez_fld.length ? this.ez_fld[var1] : -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "()Loq;"
 	)
-	public oq at() {
+	public oq ac() {
 		return this.da_fld;
 	}
 
@@ -2467,7 +2434,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)S"
 	)
 	public short cx(int var1) {
-		return null != this.er_fld && var1 < this.er_fld.length ? this.er_fld[var1] : -1;
+		return null != this.dl_fld && var1 < this.dl_fld.length ? this.dl_fld[var1] : -1;
 	}
 
 	@ObfuscatedName("cs")
@@ -2475,47 +2442,31 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)S"
 	)
 	public short cs(int var1) {
-		return null != this.er_fld && var1 < this.er_fld.length ? this.er_fld[var1] : -1;
+		return null != this.dl_fld && var1 < this.dl_fld.length ? this.dl_fld[var1] : -1;
 	}
 
-	@ObfuscatedName("getModels")
+	@ObfuscatedName("mu")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(Lpp;B)V"
 	)
-	@Override
-	public int[] getModels() {
-		return this.cm_fld;
-	}
-
-	@ObfuscatedName("getConfigs")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getConfigs() {
-		return this.dy_fld;
-	}
-
-	@ObfuscatedName("sp")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;)V"
-	)
-	public static void sp(pp var0) {
-		if (var0.en_fld == -1) {
-			var0.en_fld = (int)(0.4F * (var0.cw_fld * -1591040896)) * 1310056002;
+	public static void mu(pp var0, byte var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var0.en_fld == -1) {
+				var0.en_fld = (int)(0.4F * (var0.cw_fld * -1591040896));
+			}
 		}
 	}
 
-	@ObfuscatedName("hy")
+	@ObfuscatedName("getColorToReplaceWith")
 	@ObfuscatedSignature(
-		descriptor = "()Lpp;"
+		descriptor = "()[S"
 	)
-	public pp transform() {
-		try {
-			return this.ar((byte)6);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
+	@Export("getColorToReplaceWith")
+	@Override
+	public short[] getColorToReplaceWith() {
+		return this.dd_fld;
 	}
 
 	@ObfuscatedName("cp")
@@ -2523,41 +2474,25 @@ public class pp extends vc implements NPCComposition, rl9 {
 		descriptor = "(I)S"
 	)
 	public short cp(int var1) {
-		return null != this.er_fld && var1 < this.er_fld.length ? this.er_fld[var1] : -1;
+		return null != this.dl_fld && var1 < this.dl_fld.length ? this.dl_fld[var1] : -1;
 	}
 
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int bt(int var1, int var2) {
-		return my.ag(this.ep_fld, var1, var2);
-	}
-
-	@ObfuscatedName("cn")
+	@ObfuscatedName("ug")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean cn() {
+	public boolean ug() {
 		return this.eg_fld;
 	}
 
-	@ObfuscatedName("cr")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int cr() {
-		return this.ef_fld;
-	}
-
-	@ObfuscatedName("ca")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
-	public boolean ca() {
+	public boolean bg() {
 		try {
 			if (null == this.dy_fld) {
-				return this.ei_fld.ag_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
+				return this.ei_fld.az_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
 			} else {
 				int[] var1 = this.dy_fld;
 
@@ -2565,7 +2500,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 					int var3 = var1[var2];
 					if (var3 != -1) {
 						pp var4 = ca.az(var3);
-						if (-1 != 1255646633 * var4.ei_fld.ag_fld || null != var4.ee_fld.ak_fld) {
+						if (-1 != 1255646633 * var4.ei_fld.az_fld || null != var4.ee_fld.ak_fld) {
 							return true;
 						}
 					}
@@ -2576,46 +2511,6 @@ public class pp extends vc implements NPCComposition, rl9 {
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
-	}
-
-	@ObfuscatedName("cg")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean cg() {
-		try {
-			if (null == this.dy_fld) {
-				return this.ei_fld.ag_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
-			} else {
-				int[] var1 = this.dy_fld;
-
-				for (int var2 = 0; var2 < var1.length; var2++) {
-					int var3 = var1[var2];
-					if (var3 != -1) {
-						pp var4 = ca.az(var3);
-						if (-1 != 1077344343 * var4.ei_fld.ag_fld || null != var4.ee_fld.ak_fld) {
-							return true;
-						}
-					}
-				}
-
-				return false;
-			}
-		} catch (Throwable var6) {
-			throw new RuntimeException(var6);
-		}
-	}
-
-	@ObfuscatedName("dc")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;I)I"
-	)
-	public static int dc(pp var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ez_fld != null && var1 < var0.ez_fld.length ? var0.ez_fld[var1] : -1;
 	}
 
 	@ObfuscatedName("cw")
@@ -2625,7 +2520,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 	public boolean cw() {
 		try {
 			if (null == this.dy_fld) {
-				return this.ei_fld.ag_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
+				return this.ei_fld.az_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
 			} else {
 				int[] var1 = this.dy_fld;
 
@@ -2633,7 +2528,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 					int var3 = var1[var2];
 					if (var3 != -1) {
 						pp var4 = ca.az(var3);
-						if (-1 != 1077344343 * var4.ei_fld.ag_fld || null != var4.ee_fld.ak_fld) {
+						if (-1 != 1077344343 * var4.ei_fld.az_fld || null != var4.ee_fld.ak_fld) {
 							return true;
 						}
 					}
@@ -2646,40 +2541,51 @@ public class pp extends vc implements NPCComposition, rl9 {
 		}
 	}
 
-	@ObfuscatedName("getHeightScale")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()Z"
 	)
-	@Override
-	public int getHeightScale() {
-		return this.du_fld;
-	}
+	public boolean bb() {
+		try {
+			if (null == this.dy_fld) {
+				return this.ei_fld.az_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
+			} else {
+				int[] var1 = this.dy_fld;
 
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(
-		descriptor = "(Lxv;)V"
-	)
-	@Override
-	public void us(xv var1) {
-		this.ep_fld = var1;
-	}
+				for (int var2 = 0; var2 < var1.length; var2++) {
+					int var3 = var1[var2];
+					if (var3 != -1) {
+						pp var4 = ca.az(var3);
+						if (-1 != 1077344343 * var4.ei_fld.az_fld || null != var4.ee_fld.ak_fld) {
+							return true;
+						}
+					}
+				}
 
-	@ObfuscatedName("getSize")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getSize() {
-		return this.cw_fld;
+				return false;
+			}
+		} catch (Throwable var6) {
+			throw new RuntimeException(var6);
+		}
 	}
 
 	@ObfuscatedName("isFollower")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("isFollower")
 	@Override
 	public boolean isFollower() {
 		return this.dp_fld;
+	}
+
+	@ObfuscatedName("jh")
+	@ObfuscatedSignature(
+		descriptor = "(Lxv;)V"
+	)
+	@Override
+	public void jh(xv var1) {
+		this.ep_fld = var1;
 	}
 
 	@ObfuscatedName("ak")
@@ -2690,6 +2596,35 @@ public class pp extends vc implements NPCComposition, rl9 {
 		return this.da_fld;
 	}
 
+	@ObfuscatedName("cg")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean cg() {
+		try {
+			return this.an(-1019607204);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lpg;I)Leg;"
+	)
+	public final eg ay(pg var1, int var2) {
+		try {
+			if (null != this.dy_fld) {
+				pp var3 = this.ar((byte)6);
+				return var3 == null ? null : tv(var3, var1, -1098489005);
+			} else {
+				return this.as(this.cm_fld, var1, 2143379765);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)I"
@@ -2698,28 +2633,167 @@ public class pp extends vc implements NPCComposition, rl9 {
 		return my.ag(this.ep_fld, var1, var2);
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(IJ)J"
 	)
-	public int ai(int var1, int var2) {
-		return my.ag(this.ep_fld, var1, var2);
+	public long au(int var1, long var2) {
+		return hq.az(this.ep_fld, var1, var2);
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("getConfigs")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "()[I"
 	)
-	public int bv(int var1, int var2) {
-		return my.ag(this.ep_fld, var1, var2);
+	@Export("getConfigs")
+	@Override
+	public int[] getConfigs() {
+		return this.dy_fld;
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(I)[I"
 	)
-	public int bu(int var1, int var2) {
-		return my.ag(this.ep_fld, var1, var2);
+	public int[] aa(int var1) {
+		return this.ec_fld;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;B)Ljava/lang/String;"
+	)
+	public String ax(int var1, String var2, byte var3) {
+		return ih.av(this.ep_fld, var1, var2);
+	}
+
+	@ObfuscatedName("tv")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;Lpg;I)Leg;"
+	)
+	public static eg tv(pp var0, pg var1, int var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (null != var0.dy_fld) {
+				pp var3 = var0.ar((byte)6);
+				return var3 == null ? null : tv(var3, var1, -1098489005);
+			} else {
+				return var0.as(var0.cz_fld, var1, 2143379765);
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("getSize")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getSize")
+	@Override
+	public int getSize() {
+		return this.cw_fld;
+	}
+
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		return this.cg_fld;
+	}
+
+	@ObfuscatedName("isInteractible")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isInteractible")
+	@Override
+	public boolean isInteractible() {
+		return this.df_fld;
+	}
+
+	@ObfuscatedName("getId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getId")
+	@Override
+	public int getId() {
+		return this.ca_fld;
+	}
+
+	@ObfuscatedName("getWidthScale")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getWidthScale")
+	@Override
+	public int getWidthScale() {
+		return this.ds_fld;
+	}
+
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "(Lol;ILol;ILpg;)Lfn;"
+	)
+	public final fn bh(ol var1, int var2, ol var3, int var4, pg var5) {
+		try {
+			if (this.dy_fld != null) {
+				pp var12 = this.ar((byte)6);
+				return null == var12 ? null : var12.aw(var1, var2, var3, var4, var5, 1146691405);
+			} else {
+				long var6 = this.dv_fld * 218377697;
+				if (null != var5) {
+					var6 |= var5.ak_fld << 16;
+				}
+
+				fn var8 = (fn)cr_fld.ay(var6);
+				if (var8 == null) {
+					eg var9 = this.as(this.ec_fld, var5, 2088851156);
+					if (var9 == null) {
+						return null;
+					}
+
+					var8 = eg.et(var9, this.en_fld + 64, 850 + this.du_fld, -30, -50, -30);
+					cn_fld.at(var8, var6);
+				}
+
+				fn var13;
+				if (var1 != null && var3 != null) {
+					var13 = ol.uq(var1, var8, var2, var3, var4);
+				} else if (var1 != null) {
+					var13 = var1.as(var8, var2, (byte)-108);
+				} else if (var3 != null) {
+					var13 = var3.as(var8, var4, (byte)-45);
+				} else {
+					var13 = var8.ct(true);
+				}
+
+				if (128 != this.ef_fld || 128 != this.ef_fld) {
+					var13.bt(this.db_fld * 1681838787, -1983169887 * this.db_fld, this.du_fld * 1681838787);
+				}
+
+				return var13;
+			}
+		} catch (Throwable var11) {
+			throw new RuntimeException(var11);
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	void av(byte var1) {
+		if (this.ds_fld == -1) {
+			this.dg_fld = (int)(0.4F * (this.dx_fld * -1591040896)) * 499240353;
+		}
 	}
 
 	@ObfuscatedName("af")
@@ -2729,7 +2803,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 	public boolean af(int var1) {
 		try {
 			if (null == this.dy_fld) {
-				return this.ei_fld.ak_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
+				return this.ei_fld.ag_fld * 1077344343 != -1 || null != this.ee_fld.ak_fld;
 			} else {
 				int[] var2 = this.dy_fld;
 
@@ -2737,7 +2811,7 @@ public class pp extends vc implements NPCComposition, rl9 {
 					int var4 = var2[var3];
 					if (var4 != -1) {
 						pp var5 = ca.az(var4);
-						if (-1 != 1077344343 * var5.ei_fld.ak_fld || null != var5.ee_fld.ak_fld) {
+						if (-1 != 1077344343 * var5.ei_fld.az_fld || null != var5.ee_fld.ak_fld) {
 							return true;
 						}
 					}

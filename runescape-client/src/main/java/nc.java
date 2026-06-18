@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,17 +48,25 @@ public class nc {
 	)
 	public static int ap_fld;
 
-	@ObfuscatedName("ci")
+	@ObfuscatedName("dv")
 	@ObfuscatedSignature(
-		descriptor = "(Lzb;)J"
+		descriptor = "(Lnc;Ljava/util/Comparator;ZI)V"
 	)
-	public static long ci(zb var0) throws IOException {
-		return var0.az_fld.length();
+	public static void dv(nc var0, Comparator var1, boolean var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			if (var2) {
+				Collections.sort(var0.ae_fld, var1);
+			} else {
+				Collections.sort(var0.ae_fld, Collections.reverseOrder(var1));
+			}
+		}
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxv;)Lxv;"
+		descriptor = "(Lxi;Lxv;B)Lxv;"
 	)
 	static final xv ak(xi var0, xv var1) {
 		int var3 = var0.cg();
@@ -70,14 +77,14 @@ public class nc {
 
 		for (int var8 = 0; var8 < var3; var8++) {
 			int var5 = var0.cg();
-			int var6 = var0.ck();
+			int var6 = xi.lx(var0, -1188338001);
 			Object var7;
 			if (var5 == 1) {
-				var7 = new uj(xi.kc(var0, 1369579673));
+				var7 = new uj(xi.at(var0, 1369579673));
 			} else if (2 == var5) {
-				var7 = new vk(xi.ob(var0, -582268727));
+				var7 = new vk(var0.cu());
 			} else {
-				var7 = new vl(var0.co());
+				var7 = new vl(var0.co((byte)-72));
 			}
 
 			var1.ag((vw)var7, var6);
@@ -88,7 +95,7 @@ public class nc {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int az(int var0) {
 		return var0 & 0xFF;
@@ -96,22 +103,6 @@ public class nc {
 
 	static {
 		new nm();
-	}
-
-	@ObfuscatedName("ur")
-	@ObfuscatedSignature(
-		descriptor = "(Lnc;Ljava/util/Comparator;ZI)V"
-	)
-	public static void ur(nc var0, Comparator var1, boolean var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var2) {
-			Collections.sort(var0.ae_fld, var1);
-		} else {
-			Collections.sort(var0.ae_fld, Collections.reverseOrder(var1));
-		}
 	}
 
 	@ObfuscatedName("ag")
@@ -138,8 +129,21 @@ public class nc {
 		}
 	}
 
+	@ObfuscatedName("th")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;III)Ldx;"
+	)
+	public static dx th(cx var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ah_fld = cx.cl(var0, 0, var1, var2, var3, er.ak_fld, (byte)30);
+		return var0.ah_fld;
+	}
+
 	public nc(xi var1, boolean var2) {
-		int var3 = xi.tx(var1, 2005475518);
+		int var3 = var1.cm();
 		boolean var4 = var1.cg() == 1;
 		byte var5;
 		if (var4) {
@@ -148,23 +152,11 @@ public class nc {
 			var5 = 0;
 		}
 
-		int var6 = xi.tx(var1, 1687771254);
+		int var6 = var1.cm();
 		this.ae_fld = new ArrayList(var6);
 
 		for (int var7 = 0; var7 < var6; var7++) {
 			this.ae_fld.add(new nl(var1, var5, var3));
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;Z)V"
-	)
-	public void av(Comparator var1, boolean var2) {
-		if (var2) {
-			Collections.sort(this.ae_fld, var1);
-		} else {
-			Collections.sort(this.ae_fld, Collections.reverseOrder(var1));
 		}
 	}
 

@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -33,12 +34,12 @@ public class tl implements KeyListener, FocusListener {
 		descriptor = "Ljava/util/Collection;"
 	)
 	Collection ae_fld;
-	@ObfuscatedGetter(
-		intValue = 16851769
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 16851769
 	)
 	volatile int ah_fld;
 	@ObfuscatedName("az")
@@ -96,14 +97,6 @@ public class tl implements KeyListener, FocusListener {
 		this.ae_fld = new ArrayList(100);
 	}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Lts;I)V"
-	)
-	void ar(ts var1, int var2) {
-		this.az_fld[var2] = var1;
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Component;I)V"
@@ -114,6 +107,42 @@ public class tl implements KeyListener, FocusListener {
 		synchronized (this) {
 			this.av_fld.add(new ta(4, 0));
 		}
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	void ah(byte var1) {
+		this.ah_fld++;
+		this.aw(582496563);
+		Iterator var2 = this.ae_fld.iterator();
+
+		while (var2.hasNext()) {
+			ta var3 = (ta)(ta)var2.next();
+
+			for (int var4 = 0; var4 < this.az_fld.length; var4++) {
+				if (var1 >= 0) {
+					return;
+				}
+
+				if (var3.ak(this.az_fld[var4])) {
+					break;
+				}
+			}
+		}
+
+		this.ae_fld.clear();
+	}
+
+	@ObfuscatedName("pi")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/event/FocusEvent;)V"
+	)
+	public void pi(FocusEvent var1) {
+		FocusChanged var2 = new FocusChanged();
+		var2.setFocused(false);
+		og.ci_fld.getCallbacks().post(var2);
 	}
 
 	@ObfuscatedName("bl")
@@ -140,13 +169,14 @@ public class tl implements KeyListener, FocusListener {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/KeyEvent;)V"
 	)
+	@Export("keyReleased")
 	@Override
 	public final synchronized void keyReleased(KeyEvent var1) {
-		if (!ny(var1)) {
+		if (!vz(var1)) {
 			og.ci_fld.getCallbacks().keyReleased(var1);
 		}
 
-		ta.yg_fld = var1.isConsumed();
+		ta.la_fld = var1.isConsumed();
 		int var4 = var1.getKeyCode();
 		if (var4 >= 0 && var4 < ou.az(1829510242)) {
 			var4 = bn.ag(var4) & -129;
@@ -160,20 +190,21 @@ public class tl implements KeyListener, FocusListener {
 		}
 
 		var1.consume();
-		ta.yg_fld = false;
+		ta.la_fld = false;
 	}
 
 	@ObfuscatedName("keyTyped")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/KeyEvent;)V"
 	)
+	@Export("keyTyped")
 	@Override
 	public final synchronized void keyTyped(KeyEvent var1) {
-		if (!ny(var1)) {
+		if (!vz(var1)) {
 			og.ci_fld.getCallbacks().keyTyped(var1);
 		}
 
-		ta.yg_fld = var1.isConsumed();
+		ta.la_fld = var1.isConsumed();
 		char var4 = var1.getKeyChar();
 		if (0 != var4 && '\uffff' != var4) {
 			boolean var5;
@@ -202,24 +233,17 @@ public class tl implements KeyListener, FocusListener {
 		}
 
 		var1.consume();
-		ta.yg_fld = false;
+		ta.la_fld = false;
 	}
 
 	@ObfuscatedName("focusGained")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/FocusEvent;)V"
 	)
+	@Export("focusGained")
 	@Override
 	public final synchronized void focusGained(FocusEvent var1) {
 		this.av_fld.add(new ta(4, 1));
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ar() {
-		return this.ah_fld;
 	}
 
 	@ObfuscatedName("afl")
@@ -230,13 +254,22 @@ public class tl implements KeyListener, FocusListener {
 		this.av_fld.add(new ta(4, 1));
 	}
 
+	@ObfuscatedName("vz")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/event/KeyEvent;)Z"
+	)
+	public static boolean vz(KeyEvent var0) {
+		return (og.ci_fld.kx() == 10 || og.ci_fld.kx() == 11) && og.ci_fld.getCurrentLoginField() == 1 && !var0.isMetaDown() && !var0.isControlDown();
+	}
+
 	@ObfuscatedName("focusLost")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/FocusEvent;)V"
 	)
+	@Export("focusLost")
 	@Override
 	public final synchronized void focusLost(FocusEvent var1) {
-		this.eb(var1);
+		this.pi(var1);
 
 		for (int var2 = 0; var2 < 112; var2++) {
 			if (this.ag_fld[var2]) {
@@ -246,6 +279,14 @@ public class tl implements KeyListener, FocusListener {
 		}
 
 		this.av_fld.add(new ta(4, 0));
+	}
+
+	@ObfuscatedName("qo")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int qo() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("afz")
@@ -266,14 +307,6 @@ public class tl implements KeyListener, FocusListener {
 		this.av_fld = var1;
 	}
 
-	@ObfuscatedName("to")
-	@ObfuscatedSignature(
-		descriptor = "()[Z"
-	)
-	public boolean[] to() {
-		return this.ag_fld;
-	}
-
 	@ObfuscatedName("afo")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/FocusEvent;)V"
@@ -292,6 +325,14 @@ public class tl implements KeyListener, FocusListener {
 		var1.addFocusListener(this);
 	}
 
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lts;I)V"
+	)
+	void as(ts var1, int var2) {
+		this.az_fld[var2] = var1;
+	}
+
 	@ObfuscatedName("afe")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/FocusEvent;)V"
@@ -305,6 +346,18 @@ public class tl implements KeyListener, FocusListener {
 		}
 
 		this.av_fld.add(new ta(4, 0));
+	}
+
+	@ObfuscatedName("ps")
+	@ObfuscatedSignature(
+		descriptor = "(Ltl;I)Z"
+	)
+	public static boolean ps(tl var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ah_fld <= 1;
+		}
 	}
 
 	@ObfuscatedName("afr")
@@ -322,12 +375,12 @@ public class tl implements KeyListener, FocusListener {
 		this.av_fld.add(new ta(4, 0));
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(Lts;I)V"
 	)
-	boolean az(int var1) {
-		return this.ah_fld <= 1;
+	void ay(ts var1, int var2) {
+		this.az_fld[var2] = var1;
 	}
 
 	@ObfuscatedName("bx")
@@ -365,14 +418,12 @@ public class tl implements KeyListener, FocusListener {
 		this.av_fld.add(new ta(4, 0));
 	}
 
-	@ObfuscatedName("eb")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/event/FocusEvent;)V"
+		descriptor = "()I"
 	)
-	public void eb(FocusEvent var1) {
-		FocusChanged var2 = new FocusChanged();
-		var2.setFocused(false);
-		og.ci_fld.getCallbacks().post(var2);
+	int al() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("au")
@@ -380,6 +431,14 @@ public class tl implements KeyListener, FocusListener {
 		descriptor = "()I"
 	)
 	int au() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ax() {
 		return this.ah_fld;
 	}
 
@@ -412,17 +471,34 @@ public class tl implements KeyListener, FocusListener {
 		this.ae_fld.clear();
 	}
 
+	@ObfuscatedName("oy")
+	@ObfuscatedSignature(
+		descriptor = "()[Z"
+	)
+	public boolean[] oy() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lts;II)V"
+	)
+	void ak(ts var1, int var2, int var3) {
+		this.az_fld[var2] = var1;
+	}
+
 	@ObfuscatedName("keyPressed")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/KeyEvent;)V"
 	)
+	@Export("keyPressed")
 	@Override
 	public final synchronized void keyPressed(KeyEvent var1) {
-		if (!ny(var1)) {
+		if (!vz(var1)) {
 			og.ci_fld.getCallbacks().keyPressed(var1);
 		}
 
-		ta.yg_fld = var1.isConsumed();
+		ta.la_fld = var1.isConsumed();
 		int var4 = var1.getKeyCode();
 		if (var4 >= 0 && var4 < ou.az(-1964848360)) {
 			var4 = bn.ag(var4);
@@ -443,31 +519,19 @@ public class tl implements KeyListener, FocusListener {
 		}
 
 		var1.consume();
-		ta.yg_fld = false;
+		ta.la_fld = false;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Component;)V"
 	)
-	synchronized void ab(Component var1) {
+	synchronized void ac(Component var1) {
 		var1.removeKeyListener(this);
 		var1.removeFocusListener(this);
 		synchronized (this) {
 			this.av_fld.add(new ta(4, 0));
 		}
-	}
-
-	@ObfuscatedName("wr")
-	@ObfuscatedSignature(
-		descriptor = "(Ltl;Lts;I)V"
-	)
-	public static void wr(tl var0, ts var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.az_fld[var2] = var1;
 	}
 
 	@ObfuscatedName("ad")
@@ -510,18 +574,6 @@ public class tl implements KeyListener, FocusListener {
 		return this.ah_fld <= 1;
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;)V"
-	)
-	synchronized void ac(Component var1) {
-		var1.removeKeyListener(this);
-		var1.removeFocusListener(this);
-		synchronized (this) {
-			this.av_fld.add(new ta(4, 0));
-		}
-	}
-
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Component;)V"
@@ -534,50 +586,16 @@ public class tl implements KeyListener, FocusListener {
 		}
 	}
 
-	@ObfuscatedName("vm")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ltl;B)V"
+		descriptor = "(Ljava/awt/Component;)V"
 	)
-	public static void vm(tl var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ah_fld++;
-			var0.aw(582496563);
-			Iterator var2 = var0.ae_fld.iterator();
-
-			while (var2.hasNext()) {
-				ta var3 = (ta)(ta)var2.next();
-
-				for (int var4 = 0; var4 < var0.az_fld.length; var4++) {
-					if (var1 >= 0) {
-						return;
-					}
-
-					if (var3.ak(var0.az_fld[var4])) {
-						break;
-					}
-				}
-			}
-
-			var0.ae_fld.clear();
+	synchronized void ab(Component var1) {
+		var1.removeKeyListener(this);
+		var1.removeFocusListener(this);
+		synchronized (this) {
+			this.av_fld.add(new ta(4, 0));
 		}
-	}
-
-	@ObfuscatedName("ny")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/event/KeyEvent;)Z"
-	)
-	public static boolean ny(KeyEvent var0) {
-		return (og.ci_fld.oq() == 10 || og.ci_fld.oq() == 11) && og.ci_fld.getCurrentLoginField() == 1 && !var0.isMetaDown() && !var0.isControlDown();
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Lts;I)V"
-	)
-	void af(ts var1, int var2) {
-		this.az_fld[var2] = var1;
 	}
 
 	@ObfuscatedName("bm")
@@ -681,6 +699,16 @@ public class tl implements KeyListener, FocusListener {
 	)
 	boolean ai() {
 		return this.ah_fld <= 1;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Component;)V"
+	)
+	void aq(Component var1) {
+		var1.setFocusTraversalKeysEnabled(false);
+		var1.addKeyListener(this);
+		var1.addFocusListener(this);
 	}
 
 	@ObfuscatedName("bo")
@@ -788,37 +816,11 @@ public class tl implements KeyListener, FocusListener {
 		this.av_fld.add(new ta(4, 0));
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)V"
+		descriptor = "(I)Z"
 	)
-	void ah(byte var1) {
-		this.ah_fld++;
-		this.aw(582496563);
-		Iterator var2 = this.av_fld.iterator();
-
-		while (var2.hasNext()) {
-			ta var3 = (ta)(ta)var2.next();
-
-			for (int var4 = 0; var4 < this.az_fld.length; var4++) {
-				if (var1 >= 0) {
-					return;
-				}
-
-				if (var3.ak(this.az_fld[var4])) {
-					break;
-				}
-			}
-		}
-
-		this.ae_fld.clear();
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lts;II)V"
-	)
-	void ak(ts var1, int var2, int var3) {
-		this.az_fld[var2] = var1;
+	boolean az(int var1) {
+		return this.ah_fld <= 1;
 	}
 }

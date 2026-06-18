@@ -37,23 +37,10 @@ public class qj {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(B)Ljava/lang/String;"
 	)
 	String ak() {
 		return this.az_fld;
-	}
-
-	@ObfuscatedName("zv")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	public static void zv(da var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.dm_fld = 0;
-		var0.dr_fld = 0;
 	}
 
 	@ObfuscatedName("ak")
@@ -122,10 +109,10 @@ public class qj {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Ljava/lang/String;Ljava/lang/String;)[Lyc;"
+		descriptor = "(Lub;Ljava/lang/String;Ljava/lang/String;B)[Lyc;"
 	)
 	public static yc[] ah(ub var0, String var1, String var2) throws EOFException {
-		if (!ub.mo(var0, var1, var2, (byte)-81)) {
+		if (!var0.ck(var1, var2, (byte)-81)) {
 			return null;
 		} else {
 			int var4 = var0.cm(var1, (byte)1);
@@ -147,6 +134,14 @@ public class qj {
 		descriptor = "()Ljava/lang/String;"
 	)
 	String av() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	String ae() {
 		return this.az_fld;
 	}
 

@@ -32,17 +32,33 @@ public class dm implements Callable {
 		return var2;
 	}
 
-	dm() {
+	@ObfuscatedName("zk")
+	@ObfuscatedSignature(
+		descriptor = "(Ldm;)Ljava/lang/Object;"
+	)
+	public static Object zk(dm var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			SecureRandom var2 = new SecureRandom();
+			var2.nextInt();
+			return var2;
+		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("sq")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/Object;"
+		descriptor = "(Lct;)Z"
 	)
-	public Object ak() {
-		SecureRandom var2 = new SecureRandom();
-		var2.nextInt();
-		return var2;
+	public static boolean sq(ct var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return (wu.aj_fld.ag(1414491458) & var0.au_fld) != 0;
+		}
+	}
+
+	dm() {
 	}
 
 	@ObfuscatedName("call")

@@ -20,11 +20,11 @@ public abstract class fh extends yu {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedName("tf")
+	@ObfuscatedName("pj")
 	@ObfuscatedSignature(
 		descriptor = "Lnet/runelite/api/Rasterizer;"
 	)
-	public static Rasterizer tf_fld = new rl13();
+	public static Rasterizer pj_fld = new rl13();
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -61,6 +61,32 @@ public abstract class fh extends yu {
 	)
 	fo ar_fld;
 
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFFFFFFIII)V"
+	)
+	void ay(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+		byte var13 = this.ar_fld.au_fld.ae_fld;
+		if (var13 > 0) {
+			byte var14 = this.ar_fld.au_fld.ag_fld;
+			byte var15 = this.ar_fld.au_fld.az_fld;
+			byte var16 = this.ar_fld.au_fld.av_fld;
+			var10 = ak(var10, var14, var15, var16, var13);
+			var11 = ak(var11, var14, var15, var16, var13);
+			var12 = ak(var12, var14, var15, var16, var13);
+		}
+
+		this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFFFFFFI)V"
+	)
+	public static void fj(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9) {
+		fc.ab(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IBBBB)I"
@@ -83,14 +109,6 @@ public abstract class fh extends yu {
 		}
 
 		return (var5 << 10 | var6 << 7 | var7) & 65535;
-	}
-
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V"
-	)
-	public static void bm(int var0, int var1, int var2, int var3) {
-		yu.ew(var0, var1, var2, var3);
 	}
 
 	@ObfuscatedName("ag")
@@ -116,12 +134,24 @@ public abstract class fh extends yu {
 		return aw_fld;
 	}
 
-	@ObfuscatedName("qj")
+	@ObfuscatedName("df")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(Lfh;FFFFFFFFFIII)V"
 	)
-	public static void qj() {
-		fc.ai();
+	public static void df(
+		fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12
+	) {
+		byte var13 = var0.ar_fld.au_fld.ae_fld;
+		if (var13 > 0) {
+			byte var14 = var0.ar_fld.au_fld.ag_fld;
+			byte var15 = var0.ar_fld.au_fld.az_fld;
+			byte var16 = var0.ar_fld.au_fld.av_fld;
+			var10 = ak(var10, var14, var15, var16, var13);
+			var11 = ak(var11, var14, var15, var16, var13);
+			var12 = ak(var12, var14, var15, var16, var13);
+		}
+
+		var0.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
 	}
 
 	@ObfuscatedName("bm")
@@ -142,20 +172,46 @@ public abstract class fh extends yu {
 		av(var1);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFFFFFFIII)V"
+	)
+	void bk(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+		byte var13 = this.ar_fld.au_fld.ae_fld;
+		if (var13 > 0) {
+			byte var14 = this.ar_fld.au_fld.ag_fld;
+			byte var15 = this.ar_fld.au_fld.az_fld;
+			byte var16 = this.ar_fld.au_fld.av_fld;
+			var10 = ak(var10, var14, var15, var16, var13);
+			var11 = ak(var11, var14, var15, var16, var13);
+			var12 = ak(var12, var14, var15, var16, var13);
+		}
+
+		this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
+	}
+
+	@ObfuscatedName("kf")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V"
+	)
+	public static void kf(int var0, int var1, int var2, int var3, int var4, int var5) {
+		yu.dp(var0, var1, var2, var3, var4, var5);
+	}
+
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "([III[F)V"
 	)
-	void aw(int[] var1, int var2, int var3, float[] var4) {
+	void bh(int[] var1, int var2, int var3, float[] var4) {
 		du(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("rg")
+	@ObfuscatedName("uz")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
+		descriptor = "()V"
 	)
-	public static void rg(int var0, int var1, int var2, int var3, int var4) {
-		yu.de(var0, var1, var2, var3, var4);
+	public static void uz() {
+		fc.ai();
 	}
 
 	@ObfuscatedName("av")
@@ -166,26 +222,47 @@ public abstract class fh extends yu {
 		aw_fld = var0;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("qw")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFI)V"
+		descriptor = "()V"
 	)
-	void as(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10) {
-		byte var11 = this.ar_fld.au_fld.ae_fld;
-		if (var11 > 0) {
-			int var12 = ak(var10, this.ar_fld.au_fld.ag_fld, this.ar_fld.au_fld.az_fld, this.ar_fld.au_fld.av_fld, this.ar_fld.au_fld.ae_fld);
-			var10 = this.as_fld[var12];
-		}
-
-		this.af(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+	public static void qw() {
+		et.qj_fld.lt();
 	}
 
-	@ObfuscatedName("sm")
+	@ObfuscatedName("si")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFI)V"
+		descriptor = "(FFFFFFFFFIIIIIIIIIIIII)V"
 	)
-	public static void sm(float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9) {
-		fc.ab(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
+	public static void si(
+		float var0,
+		float var1,
+		float var2,
+		float var3,
+		float var4,
+		float var5,
+		float var6,
+		float var7,
+		float var8,
+		int var9,
+		int var10,
+		int var11,
+		int var12,
+		int var13,
+		int var14,
+		int var15,
+		int var16,
+		int var17,
+		int var18,
+		int var19,
+		int var20,
+		int var21
+	) throws EOFException {
+		try {
+			fc.at(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
+		} catch (Throwable var23) {
+			throw new RuntimeException(var23);
+		}
 	}
 
 	@ObfuscatedName("bt")
@@ -194,50 +271,63 @@ public abstract class fh extends yu {
 	)
 	abstract void bt(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10);
 
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(Ltu;FFF)V"
-	)
-	public static void kv(tu var0, float var1, float var2, float var3) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ay_fld = var1;
-			var0.as_fld = var2;
-			var0.ar_fld = var3;
-		}
-	}
-
-	@ObfuscatedName("yy")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFIII)V"
-	)
-	public static void yy(
-		float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11
-	) {
-		fc.ao(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
-	}
-
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFFFFFFI)V"
 	)
 	abstract void af(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10);
 
-	@ObfuscatedName("xt")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V"
+		descriptor = "(FFFFFFFFFIII)V"
 	)
-	public static void xt(int var0, int var1, int var2, int var3) {
-		yu.eo(var0, var1, var2, var3);
-	}
+	abstract void bx(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12);
 
-	@ObfuscatedName("xo")
+	@ObfuscatedName("ir")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIII)V"
 	)
-	public static void xo(int var0, int var1, int var2, int var3, int var4, int var5) {
+	public static void ir(int var0, int var1, int var2, int var3, int var4, int var5) {
 		yu.et(var0, var1, var2, var3, var4, var5);
+	}
+
+	@ObfuscatedName("hn")
+	@ObfuscatedSignature(
+		descriptor = "(Lfh;FFFFFFFFFI)V"
+	)
+	public static void hn(fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		byte var11 = var0.ar_fld.au_fld.ae_fld;
+		if (var11 > 0) {
+			int var12 = ak(var10, var0.ar_fld.au_fld.ag_fld, var0.ar_fld.au_fld.az_fld, var0.ar_fld.au_fld.av_fld, var0.ar_fld.au_fld.ae_fld);
+			var10 = var0.as_fld[var12];
+		}
+
+		var0.af(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+	}
+
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(Lev;III)V"
+	)
+	public static void hh(ev var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var2 += var0.qr_fld;
+		var3 += var0.qr_fld;
+		int var4 = var0.dj(var1, var2, var3);
+		if (var0.hz(var4)) {
+			en var5 = var0.oy_fld[var4];
+			var0.oy_fld[var4] = null;
+			var0.pg_fld[var4] = var0.pg_fld[var4] & -12289;
+			rl17 var6 = var0.rx_fld[var2 >> 3][var3 >> 3];
+			var6.ol_fld.remove(var5);
+		}
 	}
 
 	@ObfuscatedName("bl")
@@ -245,37 +335,6 @@ public abstract class fh extends yu {
 		descriptor = "(FFFFFFFFFIII)V"
 	)
 	abstract void bl(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12);
-
-	@ObfuscatedName("xy")
-	@ObfuscatedSignature(
-		descriptor = "(III[I[I)V"
-	)
-	public static void xy(int var0, int var1, int var2, int[] var3, int[] var4) {
-		yu.ei(var0, var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("bo")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFIII)V"
-	)
-	abstract void bo(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12);
-
-	@ObfuscatedName("qc")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V"
-	)
-	public static void qc(int var0, int var1, int var2, int var3) {
-		yu.dg(var0, var1, var2, var3);
-	}
-
-	@ObfuscatedName("ra")
-	@ObfuscatedSignature(
-		descriptor = "(F)F"
-	)
-	public static float ra(float var0) {
-		var0 = (var0 - 75.0F) * 1.0100503F;
-		return 1.0100503F + 150.75377F / var0;
-	}
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
@@ -337,20 +396,28 @@ public abstract class fh extends yu {
 		return (var0 & 65408) + var1;
 	}
 
-	@ObfuscatedName("mu")
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V"
+	)
+	public static void an(int var0, int var1, int var2, int var3) {
+		yu.dg(var0, var1, var2, var3);
+	}
+
+	@ObfuscatedName("tm")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V"
 	)
-	public static void mu(int var0, int var1, int var2, int var3, int var4) {
-		yu.ec(var0, var1, var2, var3, var4);
+	public static void tm(int var0, int var1, int var2, int var3, int var4) {
+		yu.ez(var0, var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("sw")
+	@ObfuscatedName("km")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(IIII)V"
 	)
-	public boolean sw() {
-		return this.ah();
+	public static void km(int var0, int var1, int var2, int var3) {
+		yu.ew(var0, var1, var2, var3);
 	}
 
 	@ObfuscatedName("aq")
@@ -368,47 +435,12 @@ public abstract class fh extends yu {
 		return (var0 & 65408) + var1;
 	}
 
-	@ObfuscatedName("yl")
+	@ObfuscatedName("ol")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFIIIIIIIIIIIII)V"
+		descriptor = "(IIIII)V"
 	)
-	public static void yl(
-		float var0,
-		float var1,
-		float var2,
-		float var3,
-		float var4,
-		float var5,
-		float var6,
-		float var7,
-		float var8,
-		int var9,
-		int var10,
-		int var11,
-		int var12,
-		int var13,
-		int var14,
-		int var15,
-		int var16,
-		int var17,
-		int var18,
-		int var19,
-		int var20,
-		int var21
-	) throws EOFException {
-		try {
-			fc.at(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, var20, var21);
-		} catch (Throwable var23) {
-			throw new RuntimeException(var23);
-		}
-	}
-
-	@ObfuscatedName("tw")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public static void tw() {
-		et.qj_fld.uc();
+	public static void ol(int var0, int var1, int var2, int var3, int var4) {
+		yu.de(var0, var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("am")
@@ -426,38 +458,6 @@ public abstract class fh extends yu {
 		return (var0 & 65408) + var1;
 	}
 
-	@ObfuscatedName("tj")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	public static void tj(int var0, int var1, int var2, int var3, int var4) {
-		yu.dj(var0, var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("re")
-	@ObfuscatedSignature(
-		descriptor = "(Lfh;FFFFFFFFFIII)V"
-	)
-	public static void re(
-		fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12
-	) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			byte var13 = var0.ar_fld.au_fld.ae_fld;
-			if (var13 > 0) {
-				byte var14 = var0.ar_fld.au_fld.ag_fld;
-				byte var15 = var0.ar_fld.au_fld.az_fld;
-				byte var16 = var0.ar_fld.au_fld.av_fld;
-				var10 = ak(var10, var14, var15, var16, var13);
-				var11 = ak(var11, var14, var15, var16, var13);
-				var12 = ak(var12, var14, var15, var16, var13);
-			}
-
-			var0.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
-		}
-	}
-
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -466,32 +466,12 @@ public abstract class fh extends yu {
 		return aw_fld;
 	}
 
-	@ObfuscatedName("hh")
+	@ObfuscatedName("js")
 	@ObfuscatedSignature(
-		descriptor = "(Lfh;FFFFFFFFFIII)V"
+		descriptor = "(IIIIIIII)V"
 	)
-	public static void hh(
-		fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12
-	) {
-		byte var13 = var0.ar_fld.au_fld.ae_fld;
-		if (var13 > 0) {
-			byte var14 = var0.ar_fld.au_fld.ag_fld;
-			byte var15 = var0.ar_fld.au_fld.az_fld;
-			byte var16 = var0.ar_fld.au_fld.av_fld;
-			var10 = ak(var10, var14, var15, var16, var13);
-			var11 = ak(var11, var14, var15, var16, var13);
-			var12 = ak(var12, var14, var15, var16, var13);
-		}
-
-		var0.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
-	}
-
-	@ObfuscatedName("fz")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	public static void fz(int var0, int var1, int var2, int var3, int var4) {
-		yu.ez(var0, var1, var2, var3, var4);
+	public static void js(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		yu.ep(var0, var1, var2, var3, var4, var5, var6, var7);
 	}
 
 	@ObfuscatedName("ao")
@@ -502,32 +482,29 @@ public abstract class fh extends yu {
 		return aw_fld;
 	}
 
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(Lfh;FFFFFFFFFIII)V"
-	)
-	public static void nu(
-		fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12
-	) {
-		byte var13 = var0.ar_fld.au_fld.ae_fld;
-		if (var13 > 0) {
-			byte var14 = var0.ar_fld.au_fld.ag_fld;
-			byte var15 = var0.ar_fld.au_fld.az_fld;
-			byte var16 = var0.ar_fld.au_fld.av_fld;
-			var10 = ak(var10, var14, var15, var16, var13);
-			var11 = ak(var11, var14, var15, var16, var13);
-			var12 = ak(var12, var14, var15, var16, var13);
-		}
-
-		var0.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
-	}
-
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
 	static void ab(int var0) {
 		aw_fld = var0;
+	}
+
+	@ObfuscatedName("lz")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V"
+	)
+	public static void lz(int var0, int var1, int var2, int var3) {
+		yu.eo(var0, var1, var2, var3);
+	}
+
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "(F)F"
+	)
+	public static float hg(float var0) {
+		var0 = (var0 - 75.0F) * 1.0100503F;
+		return 1.0100503F + 150.75377F / var0;
 	}
 
 	@ObfuscatedName("ap")
@@ -555,6 +532,14 @@ public abstract class fh extends yu {
 		av(var1);
 	}
 
+	@ObfuscatedName("kc")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public static void kc() {
+		yu.db();
+	}
+
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
@@ -562,6 +547,14 @@ public abstract class fh extends yu {
 	static void aj(int var0) {
 		int var1 = var0 * 210;
 		av(var1);
+	}
+
+	@ObfuscatedName("us")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	public static void us(int var0, int var1, int var2, int var3, int var4) {
+		yu.ec(var0, var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("an")
@@ -597,20 +590,6 @@ public abstract class fh extends yu {
 		av(var1);
 	}
 
-	@ObfuscatedName("je")
-	@ObfuscatedSignature(
-		descriptor = "(Lfh;FFFFFFFFFI)V"
-	)
-	public static void je(fh var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10) {
-		byte var11 = var0.ar_fld.au_fld.ae_fld;
-		if (var11 > 0) {
-			int var12 = ak(var10, var0.ar_fld.au_fld.ag_fld, var0.ar_fld.au_fld.az_fld, var0.ar_fld.au_fld.av_fld, var0.ar_fld.au_fld.ae_fld);
-			var10 = var0.as_fld[var12];
-		}
-
-		var0.af(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
-	}
-
 	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
@@ -618,6 +597,14 @@ public abstract class fh extends yu {
 	static void bz(int var0) {
 		int var1 = var0 * 210;
 		av(var1);
+	}
+
+	@ObfuscatedName("je")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean je() {
+		return this.ah();
 	}
 
 	@ObfuscatedName("bv")
@@ -632,12 +619,12 @@ public abstract class fh extends yu {
 	)
 	abstract boolean be();
 
-	@ObfuscatedName("dp")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V"
+		descriptor = "([III[F)V"
 	)
-	public static void dp(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		yu.ep(var0, var1, var2, var3, var4, var5, var6, var7);
+	void aw(int[] var1, int var2, int var3, float[] var4) {
+		du(var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("bs")
@@ -645,14 +632,6 @@ public abstract class fh extends yu {
 		descriptor = "([III[F)V"
 	)
 	void bs(int[] var1, int var2, int var3, float[] var4) {
-		du(var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "([III[F)V"
-	)
-	void bh(int[] var1, int var2, int var3, float[] var4) {
 		du(var1, var2, var3, var4);
 	}
 
@@ -700,15 +679,7 @@ public abstract class fh extends yu {
 			var12 = ak(var12, var14, var15, var16, var13);
 		}
 
-		this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
-	}
-
-	@ObfuscatedName("ek")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	public static void ek(int var0, int var1, int var2, int var3, int var4) {
-		yu.ex(var0, var1, var2, var3, var4);
+		this.bl(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
 	}
 
 	@ObfuscatedName("au")
@@ -740,11 +711,33 @@ public abstract class fh extends yu {
 		int var22
 	) throws EOFException;
 
-	@ObfuscatedName("bx")
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "(III[I[I)V"
+	)
+	public static void bq(int var0, int var1, int var2, int[] var3, int[] var4) {
+		yu.ei(var0, var1, var2, var3, var4);
+	}
+
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "(FFFFFFFFFI)V"
+	)
+	void by(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10) {
+		byte var11 = this.ar_fld.au_fld.ae_fld;
+		if (var11 > 0) {
+			int var12 = ak(var10, this.ar_fld.au_fld.ag_fld, this.ar_fld.au_fld.az_fld, this.ar_fld.au_fld.av_fld, this.ar_fld.au_fld.ae_fld);
+			var10 = this.as_fld[var12];
+		}
+
+		this.af(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+	}
+
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFFFFFFIII)V"
 	)
-	abstract void bx(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12);
+	abstract void bo(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12);
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
@@ -759,6 +752,14 @@ public abstract class fh extends yu {
 	static void br(int var0) {
 		int var1 = var0 * 210;
 		av(var1);
+	}
+
+	@ObfuscatedName("mq")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	public static void mq(int var0, int var1, int var2, int var3, int var4) {
+		yu.dj(var0, var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("ah")
@@ -776,6 +777,14 @@ public abstract class fh extends yu {
 		descriptor = "(FFFFFFFFFI)V"
 	)
 	abstract void bi(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10);
+
+	@ObfuscatedName("sa")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	public static void sa(int var0, int var1, int var2, int var3, int var4) {
+		yu.ex(var0, var1, var2, var3, var4);
+	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -806,12 +815,22 @@ public abstract class fh extends yu {
 		int var22
 	) throws EOFException;
 
-	@ObfuscatedName("wm")
+	@ObfuscatedName("gr")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V"
+		descriptor = "(FFFFFFFFFIII)V"
 	)
-	public static void wm(int var0, int var1, int var2, int var3, int var4, int var5) {
-		yu.dp(var0, var1, var2, var3, var4, var5);
+	public static void gr(
+		float var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, int var9, int var10, int var11
+	) {
+		fc.ao(var0, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11);
+	}
+
+	@ObfuscatedName("jc")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V"
+	)
+	public static void jc(int var0, int var1, int var2, int var3, int var4) {
+		yu.ed(var0, var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("bn")
@@ -843,22 +862,6 @@ public abstract class fh extends yu {
 		int var22
 	) throws EOFException;
 
-	@ObfuscatedName("oa")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
-	)
-	public static void oa(int var0, int var1, int var2, int var3, int var4) {
-		yu.ed(var0, var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("te")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public static void te() {
-		yu.db();
-	}
-
 	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "(FFFFFFFFFIIIIIIIIIIIII)V"
@@ -888,21 +891,17 @@ public abstract class fh extends yu {
 		int var22
 	) throws EOFException;
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFFFFFFIII)V"
+		descriptor = "(FFFFFFFFFI)V"
 	)
-	void ay(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10, int var11, int var12) {
-		byte var13 = this.ar_fld.au_fld.av_fld;
-		if (var13 > 0) {
-			byte var14 = this.ar_fld.au_fld.ae_fld;
-			byte var15 = this.ar_fld.au_fld.av_fld;
-			byte var16 = this.ar_fld.au_fld.ae_fld;
-			var10 = an(var10, var14, var15, var16, var13);
-			var11 = ax(var11, var14, var15, var16, var13);
-			var12 = ax(var12, var14, var15, var16, var13);
+	void as(float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, float var9, int var10) {
+		byte var11 = this.ar_fld.au_fld.az_fld;
+		if (var11 > 0) {
+			int var12 = an(var10, this.ar_fld.au_fld.av_fld, this.ar_fld.au_fld.ag_fld, this.ar_fld.au_fld.av_fld, this.ar_fld.au_fld.ag_fld);
+			var10 = this.as_fld[var12];
 		}
 
-		this.bo(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
+		this.bv(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
 	}
 }

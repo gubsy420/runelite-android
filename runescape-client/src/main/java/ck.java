@@ -26,7 +26,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ai() {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -47,9 +47,9 @@ public class ck extends dr {
 				if (null == var2) {
 					this.ax_fld = true;
 				} else {
-					int var3 = 1077344343 * this.ar_fld.ag_fld;
-					dr.xf(this, var2.ei_fld, var2.ee_fld, -1937441824);
-					if (var3 != this.ar_fld.ag_fld * 1077344343) {
+					int var3 = 1077344343 * this.ar_fld.az_fld;
+					this.ab(var2.ei_fld, var2.ee_fld, -1937441824);
+					if (var3 != this.ar_fld.az_fld * 1077344343) {
 						if (var1 == -996111700) {
 							return;
 						}
@@ -69,7 +69,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ag(int var1) {
-		return this.ak_fld.bo_fld * -1254596105;
+		return this.ak_fld.bi_fld * -1254596105;
 	}
 
 	ck(ds var1) throws EOFException {
@@ -78,7 +78,7 @@ public class ck extends dr {
 		if (null != var1.ah_fld.dy_fld) {
 			pp var2 = var1.ah_fld.ar((byte)6);
 			if (null != var2) {
-				dr.xf(this, var2.ei_fld, var2.ee_fld, -1937441824);
+				this.ab(var2.ei_fld, var2.ee_fld, -1937441824);
 			}
 		}
 	}
@@ -89,7 +89,18 @@ public class ck extends dr {
 	)
 	@Override
 	int av(byte var1) {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
+	}
+
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "(Lev;III)V"
+	)
+	public static void dv(ev var0, int var1, int var2, int var3) {
+		ei var4 = var0.bl_fld[var1][var2][var3];
+		if (var4 != null) {
+			var4.ai_fld = null;
+		}
 	}
 
 	@ObfuscatedName("am")
@@ -98,7 +109,7 @@ public class ck extends dr {
 	)
 	@Override
 	int am() {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -116,9 +127,9 @@ public class ck extends dr {
 					if (null == var1) {
 						this.ax_fld = true;
 					} else {
-						int var2 = 1077344343 * this.ar_fld.ag_fld;
-						dr.xf(this, var1.ei_fld, var1.ee_fld, -1937441824);
-						if (var2 != this.ar_fld.ag_fld * 1077344343) {
+						int var2 = 1077344343 * this.ar_fld.az_fld;
+						this.ab(var1.ei_fld, var1.ee_fld, -1937441824);
+						if (var2 != this.ar_fld.az_fld * 1077344343) {
 							this.ax_fld = true;
 						}
 					}
@@ -144,9 +155,9 @@ public class ck extends dr {
 					if (null == var1) {
 						this.ax_fld = true;
 					} else {
-						int var2 = 1077344343 * this.ar_fld.ag_fld;
-						dr.xf(this, var1.ei_fld, var1.ee_fld, -1937441824);
-						if (var2 != this.ar_fld.ag_fld * 1077344343) {
+						int var2 = 1077344343 * this.ar_fld.az_fld;
+						this.ab(var1.ei_fld, var1.ee_fld, -1937441824);
+						if (var2 != this.ar_fld.az_fld * 1077344343) {
 							this.ax_fld = true;
 						}
 					}
@@ -163,7 +174,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ae(int var1) {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("as")
@@ -172,7 +183,7 @@ public class ck extends dr {
 	)
 	@Override
 	int as() {
-		return this.ak_fld.bo_fld * -1254596105;
+		return this.ak_fld.bi_fld * -1254596105;
 	}
 
 	@ObfuscatedName("ar")
@@ -181,7 +192,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ar() {
-		return this.ak_fld.bo_fld * -1254596105;
+		return this.ak_fld.bi_fld * -1254596105;
 	}
 
 	@ObfuscatedName("af")
@@ -190,7 +201,7 @@ public class ck extends dr {
 	)
 	@Override
 	int af() {
-		return this.ak_fld.bo_fld * -1254596105;
+		return this.ak_fld.bi_fld * -1254596105;
 	}
 
 	@ObfuscatedName("al")
@@ -199,7 +210,7 @@ public class ck extends dr {
 	)
 	@Override
 	int al() {
-		return this.ak_fld.bo_fld * -317542311;
+		return this.ak_fld.bi_fld * -317542311;
 	}
 
 	@ObfuscatedName("au")
@@ -208,7 +219,7 @@ public class ck extends dr {
 	)
 	@Override
 	int au() {
-		return this.ak_fld.bo_fld * -1453489211;
+		return this.ak_fld.bi_fld * -1453489211;
 	}
 
 	@ObfuscatedName("ax")
@@ -217,7 +228,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ax() {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -226,7 +237,7 @@ public class ck extends dr {
 	)
 	@Override
 	int an() {
-		return -84459444 * this.ak_fld.bp_fld;
+		return -84459444 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("aq")
@@ -235,7 +246,7 @@ public class ck extends dr {
 	)
 	@Override
 	int aq() {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -244,7 +255,7 @@ public class ck extends dr {
 	)
 	@Override
 	int ay() {
-		return this.ak_fld.bo_fld * -1818112678;
+		return this.ak_fld.bi_fld * -1818112678;
 	}
 
 	@ObfuscatedName("az")
@@ -253,7 +264,7 @@ public class ck extends dr {
 	)
 	@Override
 	int az(int var1) {
-		return this.ak_fld.bo_fld * -1254596105;
+		return this.ak_fld.bi_fld * -1254596105;
 	}
 
 	@ObfuscatedName("aa")
@@ -262,7 +273,7 @@ public class ck extends dr {
 	)
 	@Override
 	int aa() {
-		return -1009984759 * this.ak_fld.bp_fld;
+		return -1009984759 * this.ak_fld.dm_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -276,7 +287,7 @@ public class ck extends dr {
 			var10[var2][var3][var4] = 0;
 
 			while (true) {
-				int var11 = xi.tx(var1, 1675093771);
+				int var11 = var1.cm();
 				if (var11 == 0) {
 					if (0 == var2) {
 						if (var8 <= -116346001) {
@@ -321,7 +332,7 @@ public class ck extends dr {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;II)[Lyc;"
+		descriptor = "(Lub;III)[Lyc;"
 	)
 	public static yc[] ak(ub var0, int var1, int var2) throws EOFException {
 		try {

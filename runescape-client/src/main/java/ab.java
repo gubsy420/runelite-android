@@ -1,3 +1,4 @@
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -14,12 +15,12 @@ public class ab implements Runnable {
 		descriptor = "Luv;"
 	)
 	static uv hu_fld;
-	@ObfuscatedGetter(
-		intValue = -334119141
-	)
 	@ObfuscatedName("jx")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -334119141
 	)
 	static int jx_fld;
 	@ObfuscatedName("ak")
@@ -45,7 +46,7 @@ public class ab implements Runnable {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIILyv;Lkp;I)V"
+		descriptor = "(IIIIIILyv;Lkp;IB)V"
 	)
 	static final void aw(int var0, int var1, int var2, int var3, int var4, int var5, yv var6, kp var7, int var8) {
 		if (null != var6) {
@@ -64,7 +65,7 @@ public class ab implements Runnable {
 				int var20 = var16 - var18 / 2;
 				int var21 = var6.aw_fld / 2;
 				int var22 = var6.ay_fld / 2;
-				var6.br(var19, var20, var17, var18, var21, var22, var5, var8 * 256, var0, var1, var7.av_fld, var7.az_fld);
+				var6.br(var19, var20, var17, var18, var21, var22, var5, var8 * 256, var0, var1, var7.az_fld, var7.av_fld);
 			}
 		}
 	}
@@ -73,15 +74,16 @@ public class ab implements Runnable {
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("run")
 	@Override
 	public void run() {
-		this.ak();
+		this.ag();
 
 		try {
 			for (int var1 = 0; var1 < 2; var1++) {
 				ao var2 = this.ak_fld[var1];
 				if (null != var2) {
-					var2.av(-1631142743);
+					var2.ah(-1631142743);
 				}
 			}
 		} catch (Exception var3) {
@@ -94,19 +96,11 @@ public class ab implements Runnable {
 		descriptor = "()V"
 	)
 	public void ak() {
-		Thread.currentThread().setName("Sound Engine");
-	}
-
-	@ObfuscatedName("kx")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void kx() {
 		try {
 			for (int var1 = 0; var1 < 2; var1++) {
 				ao var2 = this.ak_fld[var1];
 				if (null != var2) {
-					var2.av(154766016);
+					var2.ah(154766016);
 				}
 			}
 		} catch (Exception var3) {
@@ -126,7 +120,7 @@ public class ab implements Runnable {
 			for (int var1 = 0; var1 < 2; var1++) {
 				ao var2 = this.ak_fld[var1];
 				if (null != var2) {
-					var2.av(-1884862404);
+					var2.ah(-1884862404);
 				}
 			}
 		} catch (Exception var3) {
@@ -134,37 +128,16 @@ public class ab implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("hk")
-	@ObfuscatedSignature(
-		descriptor = "(Lab;)V"
-	)
-	public static void hk(ab var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		try {
-			for (int var1 = 0; var1 < 2; var1++) {
-				ao var2 = var0.ak_fld[var1];
-				if (null != var2) {
-					var2.av(-639671172);
-				}
-			}
-		} catch (Exception var3) {
-			gl.ak(null, var3);
-		}
-	}
-
-	@ObfuscatedName("az")
+	@ObfuscatedName("dn")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void az() {
+	public void dn() {
 		try {
 			for (int var1 = 0; var1 < 2; var1++) {
 				ao var2 = this.ak_fld[var1];
 				if (null != var2) {
-					var2.av(1628677911);
+					var2.ah(1628677911);
 				}
 			}
 		} catch (Exception var3) {
@@ -184,7 +157,40 @@ public class ab implements Runnable {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "()V"
+	)
+	public void ag() {
+		Thread.currentThread().setName("Sound Engine");
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void az() {
+		try {
+			for (int var1 = 0; var1 < 2; var1++) {
+				ao var2 = this.ak_fld[var1];
+				if (null != var2) {
+					var2.ah(-639671172);
+				}
+			}
+		} catch (Exception var3) {
+			gl.ak(null, var3);
+		}
+	}
+
+	@ObfuscatedName("su")
+	@ObfuscatedSignature(
+		descriptor = "(Laax;)Ljava/lang/String;"
+	)
+	public static String su(aax var0) {
+		return var0.ag_fld;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
 	)
 	public static int ag(int var0) {
 		return wo.ak_fld[var0 << 1 | 1];

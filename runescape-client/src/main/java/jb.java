@@ -435,12 +435,12 @@ public class jb implements jn {
 		descriptor = "Ljb;"
 	)
 	public static jb do_fld = new jb(85, 4);
-	@ObfuscatedGetter(
-		intValue = 1994455597
-	)
 	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1994455597
 	)
 	int eq_fld;
 	@ObfuscatedName("dl")
@@ -593,12 +593,12 @@ public class jb implements jn {
 		descriptor = "Ljb;"
 	)
 	public static jb eg_fld = new jb(116, -1);
-	@ObfuscatedGetter(
-		intValue = -1740426857
-	)
 	@ObfuscatedName("ef")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1740426857
 	)
 	int ef_fld;
 	@ObfuscatedName("ct")
@@ -607,9 +607,22 @@ public class jb implements jn {
 	)
 	public static jb ct_fld = new jb(76, 4);
 
+	@ObfuscatedName("lo")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;Ljava/lang/String;)Lyb;"
+	)
+	public static yb lo(yb var0, String var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.af_fld = var1;
+		return var0;
+	}
+
 	@ObfuscatedName("db")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V"
+		descriptor = "(IIIIIII)V"
 	)
 	static void db(int var0, int var1, int var2, int var3, int var4, int var5) throws EOFException {
 		bg.dg(hk.mt_fld, var0, var1, var2, var3, var4, var5);

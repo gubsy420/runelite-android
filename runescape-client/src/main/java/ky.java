@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import net.runelite.api.annotations.ObfuscatedGetter;
@@ -26,12 +27,12 @@ public class ky implements xm {
 		descriptor = "Lky;"
 	)
 	public static ky ak_fld = new ky(-1);
-	@ObfuscatedGetter(
-		intValue = -1864824283
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1864824283
 	)
 	int ae_fld;
 	@ObfuscatedName("bc")
@@ -62,7 +63,7 @@ public class ky implements xm {
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/ArrayList;"
+		descriptor = "(I)Ljava/util/ArrayList;"
 	)
 	static ArrayList al() {
 		ArrayList var1 = new ArrayList();
@@ -87,13 +88,13 @@ public class ky implements xm {
 
 	@ObfuscatedName("fl")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZI)I"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZII)I"
 	)
-	static final int fl(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) {
+	static final int fl(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) throws EOFException {
 		if (client.ng_fld) {
 			return -1;
 		} else {
-			return !in.fn(var8, var2) ? -1 : client.nr_fld.al(var0, var1, var2, var3, var4, var5, var6, var7, var8, 1956687884);
+			return !in.fn(var8, var2) ? -1 : wz.xy(client.nr_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8);
 		}
 	}
 
@@ -121,19 +122,19 @@ public class ky implements xm {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V"
+		descriptor = "(Ljava/lang/String;II)V"
 	)
 	static final void ah(String var0, int var1) {
-		jm var3 = gi.ak(jb.cv_fld, client.aq_fld.av_fld);
-		var3.ay_fld.bc(iq.bu(var0) + 1);
-		var3.ay_fld.bc(var1);
-		var3.ay_fld.cc(var0, -950722843);
-		client.aq_fld.az(var3);
+		jm var3 = gi.ak(jb.cv_fld, client.appletStub.av_fld);
+		var3.ay_fld.ea(iq.bu(var0) + 1);
+		var3.ay_fld.ea(var1);
+		xi.ph(var3.ay_fld, var0, -950722843);
+		client.appletStub.az(var3);
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)I"
 	)
 	static int ak() {
 		return (cz.av_fld += -1373160227) * 846166901 - 1;
@@ -150,7 +151,7 @@ public class ky implements xm {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;Ljava/lang/Object;II)I"
+		descriptor = "(Lsl;Ljava/lang/Object;III)I"
 	)
 	public static int ag(sl var0, Object var1, int var2, int var3) {
 		if (var2 < 0) {
@@ -171,7 +172,7 @@ public class ky implements xm {
 				}
 			}
 		} else if (yq.ag_fld == var0.ag_fld) {
-			long[] var9 = var0.ag();
+			long[] var9 = sl.ob(var0, 1570937139);
 			long var11 = (Long)var1;
 
 			for (int var8 = var2; var8 < var3; var8++) {

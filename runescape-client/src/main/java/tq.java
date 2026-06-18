@@ -10,14 +10,22 @@ public abstract class tq extends tc implements aaj {
 	)
 	static int ah_fld;
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/Object;"
 	)
 	@Override
-	public Object ay(int var1) throws EOFException {
+	public Object ar(int var1) throws EOFException {
 		td var2 = this.ak(var1, (byte)-9);
-		return null != var2 && td.le(var2, (byte)32) ? var2.aw() : null;
+		return null != var2 && td.wf(var2, (byte)32) ? var2.aw() : null;
+	}
+
+	@ObfuscatedName("ge")
+	@ObfuscatedSignature(
+		descriptor = "(Lyz;)Z"
+	)
+	public static boolean ge(yz var0) {
+		return var0.ak_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -26,6 +34,26 @@ public abstract class tq extends tc implements aaj {
 	)
 	protected abstract td ae(int var1) throws EOFException;
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int ag() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("hj")
+	@ObfuscatedSignature(
+		descriptor = "(Ltq;)I"
+	)
+	public static int hj(tq var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/lang/Object;"
@@ -33,24 +61,24 @@ public abstract class tq extends tc implements aaj {
 	@Override
 	public Object az(int var1, int var2) throws EOFException {
 		td var3 = this.ak(var1, (byte)-1);
-		return null != var3 && td.le(var3, (byte)-77) ? var3.aw() : null;
+		return null != var3 && td.wf(var3, (byte)-77) ? var3.aw() : null;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;)Laaq;"
+		descriptor = "(Lxi;I)Laaq;"
 	)
 	public aaq av(xi var1) throws EOFException {
-		int var3 = xi.tx(var1, 1615959243);
+		int var3 = var1.cm();
 		td var4 = this.ak(var3, (byte)-90);
 		aaq var5 = new aaq(var3);
 		Class var6 = var4.ak_fld.aw_fld;
 		if (var6 == Integer.class) {
-			var5.ag_fld = var1.co();
+			var5.ag_fld = var1.co((byte)-33);
 		} else if (Long.class == var6) {
-			var5.ag_fld = xi.ob(var1, -1469718697);
+			var5.ag_fld = var1.cu();
 		} else if (String.class == var6) {
-			var5.ag_fld = var1.cl();
+			var5.ag_fld = var1.ct();
 		} else {
 			if (!xd.class.isAssignableFrom(var6)) {
 				throw new IllegalStateException();
@@ -74,39 +102,103 @@ public abstract class tq extends tc implements aaj {
 	)
 	protected abstract td ak(int var1, byte var2) throws EOFException;
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ah() {
-		return this.ak_fld;
+	protected tq(ju var1, xh var2, int var3) {
+		super(var1, var2, var3);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ls")
 	@ObfuscatedSignature(
-		descriptor = "(Lzv;Ljava/lang/String;IIIII[I)V"
+		descriptor = "(Ltq;)I"
 	)
-	public static void az(zv var0, String var1, int var2, int var3, int var4, int var5, int var6, int[] var7) {
-		if (var0 == null) {
-			var0.getClass();
+	public static int ls(tq var0) {
+		return var0.ak_fld;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/Object;"
+	)
+	@Override
+	public Object ay(int var1) throws EOFException {
+		td var2 = this.ak(var1, (byte)-104);
+		return null != var2 && td.wf(var2, (byte)-41) ? var2.aw() : null;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)Laaq;"
+	)
+	public aaq af(xi var1) throws EOFException {
+		int var2 = var1.cm();
+		td var3 = this.ak(var2, (byte)-54);
+		aaq var4 = new aaq(var2);
+		Class var5 = var3.ak_fld.aw_fld;
+		if (var5 == Integer.class) {
+			var4.ag_fld = var1.co((byte)-60);
+		} else if (Long.class == var5) {
+			var4.ag_fld = var1.cu();
+		} else if (String.class == var5) {
+			var4.ag_fld = var1.ct();
+		} else {
+			if (!xd.class.isAssignableFrom(var5)) {
+				throw new IllegalStateException();
+			}
+
+			try {
+				xd var6 = (xd)(xd)var5.newInstance();
+				var6.ak(var1, 621095146);
+				var4.ag_fld = var6;
+			} catch (InstantiationException var7) {
+			} catch (IllegalAccessException var8) {
+			}
 		}
 
-		if (var1 != null) {
-			zv.es(var0, var4, var5);
-			int[] var8 = null;
-			if (var7 != null) {
-				var8 = zv.uv(var0, var7, var1.length());
+		return var4;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/Object;"
+	)
+	@Override
+	public Object as(int var1) throws EOFException {
+		td var2 = this.ak(var1, (byte)-46);
+		return null != var2 && td.wf(var2, (byte)34) ? var2.aw() : null;
+	}
+
+	@ObfuscatedName("vu")
+	@ObfuscatedSignature(
+		descriptor = "(Ltq;Lxi;)Laaq;"
+	)
+	public static aaq vu(tq var0, xi var1) throws EOFException {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			int var2 = var1.cm();
+			td var3 = var0.ak(var2, (byte)-6);
+			aaq var4 = new aaq(var2);
+			Class var5 = var3.ak_fld.aw_fld;
+			if (var5 == Integer.class) {
+				var4.ag_fld = var1.co((byte)-99);
+			} else if (Long.class == var5) {
+				var4.ag_fld = var1.cu();
+			} else if (String.class == var5) {
+				var4.ag_fld = var1.ct();
+			} else {
+				if (!xd.class.isAssignableFrom(var5)) {
+					throw new IllegalStateException();
+				}
+
+				try {
+					xd var6 = (xd)(xd)var5.newInstance();
+					var6.ak(var1, 621095146);
+					var4.ag_fld = var6;
+				} catch (InstantiationException var7) {
+				} catch (IllegalAccessException var8) {
+				}
 			}
 
-			int[] var9 = new int[var1.length()];
-			int[] var10 = new int[var1.length()];
-
-			for (int var11 = 0; var11 < var1.length(); var11++) {
-				var9[var11] = (int)(Math.sin(var11 / 5.0 + var6 / 5.0) * 5.0);
-				var10[var11] = (int)(Math.sin(var11 / 3.0 + var6 / 5.0) * 5.0);
-			}
-
-			zv.xy(var0, var1, var2 - var0.an(var1) / 2, var3, var8, var9, var10);
+			return var4;
 		}
 	}
 
@@ -118,77 +210,19 @@ public abstract class tq extends tc implements aaj {
 		return this.ak_fld;
 	}
 
-	protected tq(ju var1, xh var2, int var3) {
-		super(var1, var2, var3);
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/Object;"
-	)
-	@Override
-	public Object as(int var1) throws EOFException {
-		td var2 = this.ak(var1, (byte)-104);
-		return null != var2 && td.le(var2, (byte)-41) ? var2.aw() : null;
-	}
-
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)Laaq;"
 	)
 	public aaq al(xi var1) throws EOFException {
-		int var2 = xi.tx(var1, 1693883716);
-		td var3 = this.ak(var2, (byte)-6);
-		aaq var4 = new aaq(var2);
-		Class var5 = var3.ak_fld.aw_fld;
-		if (var5 == Integer.class) {
-			var4.ag_fld = var1.co();
-		} else if (Long.class == var5) {
-			var4.ag_fld = xi.ob(var1, -886322298);
-		} else if (String.class == var5) {
-			var4.ag_fld = var1.cl();
-		} else {
-			if (!xd.class.isAssignableFrom(var5)) {
-				throw new IllegalStateException();
-			}
-
-			try {
-				xd var6 = (xd)(xd)var5.newInstance();
-				var6.ak(var1, 621095146);
-				var4.ag_fld = var6;
-			} catch (InstantiationException var7) {
-			} catch (IllegalAccessException var8) {
-			}
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("pc")
-	@ObfuscatedSignature(
-		descriptor = "(Ltq;I)I"
-	)
-	public static int pc(tq var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)Laaq;"
-	)
-	public aaq af(xi var1) throws EOFException {
-		int var2 = xi.tx(var1, 1879302353);
+		int var2 = var1.dq();
 		td var3 = this.ak(var2, (byte)-54);
 		aaq var4 = new aaq(var2);
 		Class var5 = var3.ak_fld.aw_fld;
 		if (var5 == Integer.class) {
-			var4.ag_fld = var1.co();
+			var4.ag_fld = var1.cg();
 		} else if (Long.class == var5) {
-			var4.ag_fld = xi.ob(var1, -531840553);
+			var4.ag_fld = var1.cu();
 		} else if (String.class == var5) {
 			var4.ag_fld = var1.cl();
 		} else {
@@ -206,23 +240,5 @@ public abstract class tq extends tc implements aaj {
 		}
 
 		return var4;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/Object;"
-	)
-	@Override
-	public Object ar(int var1) throws EOFException {
-		td var2 = this.ak(var1, (byte)-46);
-		return null != var2 && td.le(var2, (byte)34) ? var2.aw() : null;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int ag(int var1) {
-		return this.ak_fld;
 	}
 }

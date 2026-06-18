@@ -29,12 +29,12 @@ public class kr implements xm {
 		descriptor = "Lkr;"
 	)
 	public static kr az_fld = new kr(2, 2);
-	@ObfuscatedGetter(
-		intValue = 1792596829
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1792596829
 	)
 	public int av_fld;
 	@ObfuscatedName("ba")
@@ -42,12 +42,12 @@ public class kr implements xm {
 		descriptor = "I"
 	)
 	static int ba_fld;
-	@ObfuscatedGetter(
-		intValue = 1819709731
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1819709731
 	)
 	int ae_fld;
 

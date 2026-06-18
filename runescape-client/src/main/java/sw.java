@@ -5,27 +5,15 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 public class sw {
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;"
+		descriptor = "(Ltf;Ljava/lang/String;[Ljava/lang/Object;B)Ljava/lang/Object;"
 	)
 	public static Object az(tf var0, String var1, Object[] var2) throws Throwable {
 		throw new NoSuchMethodError("sanitized: dead bytecode referenced nonexistent symbol");
 	}
 
-	@ObfuscatedName("sg")
-	@ObfuscatedSignature(
-		descriptor = "(Lyz;)I"
-	)
-	public static int sg(yz var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ah_fld;
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/lang/String;)V"
+		descriptor = "(Ltf;Ljava/lang/String;I)V"
 	)
 	public static void ak(tf var0, String var1) throws Throwable {
 		throw new NoSuchMethodError("sanitized: dead bytecode referenced nonexistent symbol");
@@ -77,7 +65,7 @@ public class sw {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/lang/String;)Ljava/lang/Object;"
+		descriptor = "(Ltf;Ljava/lang/String;I)Ljava/lang/Object;"
 	)
 	public static Object ag(tf var0, String var1) throws Throwable {
 		throw new NoSuchMethodError("sanitized: dead bytecode referenced nonexistent symbol");
@@ -91,12 +79,30 @@ public class sw {
 		throw new NoSuchMethodError("sanitized: dead bytecode referenced nonexistent symbol");
 	}
 
+	@ObfuscatedName("gh")
+	@ObfuscatedSignature(
+		descriptor = "(Lli;)V"
+	)
+	public static void gh(li var0) {
+		var0.ap(0, var0.am_fld.ae());
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Ltf;Ljava/lang/String;)Ljava/lang/Object;"
 	)
 	public static Object ay(tf var0, String var1) throws Throwable {
 		throw new NoSuchMethodError("sanitized: dead bytecode referenced nonexistent symbol");
+	}
+
+	@ObfuscatedName("rj")
+	@ObfuscatedSignature(
+		descriptor = "(Lnj;)V"
+	)
+	public static void rj(nj var0) {
+		while (var0.ak_fld.fn_vc != var0.ak_fld) {
+			var0.ak_fld.fn_vc.vi();
+		}
 	}
 
 	@ObfuscatedName("af")

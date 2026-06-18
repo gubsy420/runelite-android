@@ -172,7 +172,7 @@ public class vi {
 		descriptor = "(Lvv;IIII)Z"
 	)
 	public static boolean aa(vv var0, int var1, int var2, int var3, int var4) {
-		int var6 = var0.aw();
+		int var6 = vv.dh(var0, -600710061);
 		int var7 = var0.ae();
 		int var8 = var0.ah();
 		int var9 = Math.max(var1, Math.min(var7, var3));
@@ -187,13 +187,13 @@ public class vi {
 		descriptor = "(Lgu;Lvr;)Luf;"
 	)
 	public static uf al(gu var0, vr var1) {
-		int var2 = var1.al_fld;
-		int var3 = var1.af_fld;
-		int var4 = var1.au_fld;
-		int var5 = var1.aa_fld;
-		int var6 = var0.av();
-		int var7 = var0.ah();
-		int var8 = gu.ns(var0, 1487510086);
+		int var2 = var1.ar_fld;
+		int var3 = var1.aa_fld;
+		int var4 = var1.af_fld;
+		int var5 = var1.an_fld;
+		int var6 = gu.rg(var0, (byte)-56);
+		int var7 = var0.ak();
+		int var8 = var0.az();
 		double var9 = hx.av(var6);
 		double var11 = pw.az(var6);
 		int var13 = (int)(var9 * var2 - var11 * var3);
@@ -225,7 +225,7 @@ public class vi {
 			} else {
 				uf.az_fld--;
 				uf.ak_fld[uf.az_fld].ag(var27, var29);
-				uf.uo(uf.ak_fld[uf.az_fld], var32, var33);
+				uf.ak_fld[uf.az_fld].az(var32, var33);
 				var31 = uf.ak_fld[uf.az_fld];
 			}
 
@@ -238,13 +238,13 @@ public class vi {
 		descriptor = "(Lgu;Lvr;)Luf;"
 	)
 	public static uf au(gu var0, vr var1) {
-		int var2 = var1.al_fld;
-		int var3 = var1.af_fld;
-		int var4 = var1.au_fld;
-		int var5 = var1.aa_fld;
-		int var6 = var0.av();
-		int var7 = var0.ah();
-		int var8 = gu.ns(var0, -1671749195);
+		int var2 = var1.ar_fld;
+		int var3 = var1.aa_fld;
+		int var4 = var1.af_fld;
+		int var5 = var1.an_fld;
+		int var6 = gu.rg(var0, (byte)-77);
+		int var7 = var0.ak();
+		int var8 = var0.az();
 		double var9 = hx.av(var6);
 		double var11 = pw.az(var6);
 		int var13 = (int)(var9 * var2 - var11 * var3);
@@ -276,7 +276,7 @@ public class vi {
 			} else {
 				uf.az_fld--;
 				uf.ak_fld[uf.az_fld].ag(var27, var29);
-				uf.uo(uf.ak_fld[uf.az_fld], var32, var33);
+				uf.ak_fld[uf.az_fld].az(var32, var33);
 				var31 = uf.ak_fld[uf.az_fld];
 			}
 
@@ -289,13 +289,13 @@ public class vi {
 		descriptor = "(Lgu;Lvr;)Luf;"
 	)
 	public static uf ax(gu var0, vr var1) {
-		int var2 = var1.al_fld * 1499763475;
-		int var3 = -653380344 * var1.af_fld;
-		int var4 = 2085566558 * var1.au_fld;
-		int var5 = 1088759129 * var1.aa_fld;
-		int var6 = var0.av();
-		int var7 = var0.ah();
-		int var8 = gu.ns(var0, 465593566);
+		int var2 = var1.ar_fld * 1499763475;
+		int var3 = -653380344 * var1.aa_fld;
+		int var4 = 2085566558 * var1.af_fld;
+		int var5 = 1088759129 * var1.an_fld;
+		int var6 = gu.rg(var0, (byte)-10);
+		int var7 = var0.ak();
+		int var8 = var0.az();
 		double var9 = hx.av(var6);
 		double var11 = pw.az(var6);
 		int var13 = (int)(var9 * var2 - var11 * var3);
@@ -327,7 +327,7 @@ public class vi {
 			} else {
 				uf.az_fld -= -860078199;
 				uf.ak_fld[826555153 * uf.az_fld].ag(var27, var29);
-				uf.uo(uf.ak_fld[-410407659 * uf.az_fld], var32, var33);
+				uf.ak_fld[-410407659 * uf.az_fld].az(var32, var33);
 				var31 = uf.ak_fld[uf.az_fld * -675775974];
 			}
 
@@ -340,7 +340,7 @@ public class vi {
 		descriptor = "(Lvv;IIII)Z"
 	)
 	public static boolean an(vv var0, int var1, int var2, int var3, int var4) {
-		int var6 = var0.aw();
+		int var6 = vv.dh(var0, -1284959808);
 		int var7 = var0.ae();
 		int var8 = var0.ah();
 		int var9 = Math.max(var1, Math.min(var7, var3));

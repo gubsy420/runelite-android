@@ -19,20 +19,20 @@ public class lf implements xm {
 		descriptor = "Llf;"
 	)
 	public static lf az_fld = new lf(2, 2);
-	@ObfuscatedGetter(
-		intValue = 1722430509
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
 	@ObfuscatedGetter(
-		intValue = 124918021
+		intValue = 1722430509
 	)
+	int ah_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 124918021
 	)
 	public int ae_fld;
 	@ObfuscatedName("ak")
@@ -45,6 +45,14 @@ public class lf implements xm {
 		descriptor = "I"
 	)
 	public static int bq_fld;
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lgf;)I"
+	)
+	public static int ab(gf var0) {
+		return 2115450829 * var0.ay_fld.ak_fld;
+	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(

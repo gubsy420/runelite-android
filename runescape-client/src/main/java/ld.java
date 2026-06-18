@@ -53,33 +53,17 @@ public class ld {
 	)
 	static yv au_fld;
 
-	@ObfuscatedName("uy")
+	@ObfuscatedName("xz")
 	@ObfuscatedSignature(
-		descriptor = "(Lhg;II)I"
+		descriptor = "(Lds;)[S"
 	)
-	public static int uy(hg var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (9 == var2) {
-			var1 = var1 + 1 & 3;
-		}
-
-		if (var2 == 10) {
-			var1 = 3 + var1 & 3;
-		}
-
-		if (11 == var2) {
-			var1 = 3 + var1 & 3;
-		}
-
-		return var1;
+	public static short[] xz(ds var0) {
+		return var0.ar_fld != null ? xu.dp(var0.ar_fld, (byte)43) : var0.ah_fld.aq(-1910412766);
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;I)Lsp;"
+		descriptor = "(Lub;Lub;II)Lsp;"
 	)
 	public static sp ak(ub var0, ub var1, int var2) throws EOFException {
 		boolean var4 = pl.ag(var0, var1, var2);
@@ -97,6 +81,14 @@ public class ld {
 				return null;
 			}
 		}
+	}
+
+	@ObfuscatedName("ev")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;II)I"
+	)
+	public static int ev(pp var0, int var1, int var2) {
+		return my.ag(var0.ep_fld, var1, var2);
 	}
 
 	ld() {

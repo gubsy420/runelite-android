@@ -35,19 +35,32 @@ class sx implements Callable {
 	)
 	static int by_fld;
 
+	@ObfuscatedName("nc")
+	@ObfuscatedSignature(
+		descriptor = "(Lyb;I)Lyb;"
+	)
+	public static yb nc(yb var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			var0.as_fld = var1;
+			return var0;
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/Object;"
+	)
+	public Object ag() {
+		sp.lp(this.this$0, this.val$p, this.val$version, -311023463);
+		return null;
+	}
+
 	sx(sp var1, xi var2, int var3) {
 		this.this$0 = var1;
 		this.val$p = var2;
 		this.val$version = var3;
-	}
-
-	@ObfuscatedName("mk")
-	@ObfuscatedSignature(
-		descriptor = "(Lsx;)Ljava/lang/Object;"
-	)
-	public static Object mk(sx var0) {
-		var0.this$0.az(var0.val$p, var0.val$version, -311023463);
-		return null;
 	}
 
 	@ObfuscatedName("ak")
@@ -55,13 +68,13 @@ class sx implements Callable {
 		descriptor = "()Ljava/lang/Object;"
 	)
 	public Object ak() {
-		this.this$0.az(this.val$p, this.val$version, 517336930);
+		sp.lp(this.this$0, this.val$p, this.val$version, 517336930);
 		return null;
 	}
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;II)V"
+		descriptor = "(Lsl;IIB)V"
 	)
 	public static void ab(sl var0, int var1, int var2) {
 		om.ap(var0, null, true, (byte)0);
@@ -78,19 +91,39 @@ class sx implements Callable {
 		}
 	}
 
+	@ObfuscatedName("sx")
+	@ObfuscatedSignature(
+		descriptor = "(Lvo;Ljava/lang/String;)V"
+	)
+	public static void sx(vo var0, String var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			String[] var2 = var1.split("\\.");
+
+			try {
+				var0.ae_fld = Integer.parseInt(var2[1]);
+				var2 = var2[2].split("_");
+				var0.ah_fld = Integer.parseInt(var2[0]);
+				var0.av_fld = Integer.parseInt(var2[1]);
+			} catch (Exception var4) {
+			}
+		}
+	}
+
 	@ObfuscatedName("call")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
 	)
 	@Override
 	public Object call() {
-		this.this$0.az(this.val$p, this.val$version, 1656466740);
+		sp.lp(this.this$0, this.val$p, this.val$version, 1656466740);
 		return null;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(IIB)V"
 	)
 	public static void av(int var0, int var1) {
 		cw.af(var0, var1, 0, 0);
@@ -102,7 +135,7 @@ class sx implements Callable {
 			while (var5.hasNext()) {
 				me var4 = (me)(me)var5.next();
 				if (var4 != null) {
-					var4.af_fld.au();
+					var4.af_fld.av();
 					var4.af_fld.ar();
 					var4.af_fld.ak(0);
 					var4.af_fld.aw_fld = 0;

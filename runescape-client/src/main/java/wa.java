@@ -19,23 +19,55 @@ public class wa {
 	)
 	public static wa ak_fld = new wa(new wm());
 
+	@ObfuscatedName("xe")
+	@ObfuscatedSignature(
+		descriptor = "(Lwa;S)I"
+	)
+	public static int xe(wa var0, short var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.az_fld.ak(-481710513).as_fld * 1278114781;
+		}
+	}
+
 	wa(xw var1) {
 		this.az_fld = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ya")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lgu;)I"
 	)
-	public int ak() {
-		return this.az_fld.ak(-481710513).as_fld * 1278114781;
+	public static int ya(gu var0) {
+		return var0.ag_fld >> 7;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("xv")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lgu;I)V"
 	)
-	public int ag() {
-		return this.az_fld.ak(-605228756).as_fld * 1278114781;
+	public static void xv(gu var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.av_fld = var1;
+	}
+
+	@ObfuscatedName("mr")
+	@ObfuscatedSignature(
+		descriptor = "(Lwa;)I"
+	)
+	public static int mr(wa var0) {
+		return var0.az_fld.ak(-605228756).as_fld * 1278114781;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(S)I"
+	)
+	public int ak(short var1) {
+		return this.az_fld.ak(-481710513).as_fld * 1278114781;
 	}
 }

@@ -64,11 +64,11 @@ public interface po {
 	)
 	void an();
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
-	void bm(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
+	void aj(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -92,7 +92,7 @@ public interface po {
 	@ObfuscatedSignature(
 		descriptor = "(Llu;B)V"
 	)
-	void az(lu var1, byte var2);
+	void az(lu var1, byte var2) throws EOFException;
 
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
@@ -110,13 +110,13 @@ public interface po {
 	@ObfuscatedSignature(
 		descriptor = "(Llu;)V"
 	)
-	void aq(lu var1);
+	void aq(lu var1) throws EOFException;
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(Llu;)V"
 	)
-	void am(lu var1);
+	void am(lu var1) throws EOFException;
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
@@ -128,7 +128,7 @@ public interface po {
 	@ObfuscatedSignature(
 		descriptor = "(Llu;)V"
 	)
-	void ao(lu var1);
+	void ao(lu var1) throws EOFException;
 
 	@ObfuscatedName("br")
 	@ObfuscatedSignature(
@@ -142,11 +142,11 @@ public interface po {
 	)
 	void ap(int var1, int var2, int var3, int var4, String var5) throws EOFException;
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
-	void aj(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
+	void bd(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
@@ -160,11 +160,11 @@ public interface po {
 	)
 	void ay(int var1, int var2, byte var3) throws EOFException;
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
-	void bd(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
+	void bm(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException;
 
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
@@ -206,7 +206,7 @@ public interface po {
 	@ObfuscatedSignature(
 		descriptor = "(Llu;)V"
 	)
-	void ad(lu var1);
+	void ad(lu var1) throws EOFException;
 
 	@ObfuscatedName("bt")
 	@ObfuscatedSignature(

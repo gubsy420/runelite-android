@@ -8,12 +8,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("kf")
 public class kf implements xm {
-	@ObfuscatedGetter(
-		intValue = -2009746737
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2009746737
 	)
 	int ah_fld;
 	@ObfuscatedName("az")
@@ -76,7 +76,7 @@ public class kf implements xm {
 	)
 	static final void ag(lu var0, int var1, int var2, int var3) throws EOFException {
 		up.br();
-		kp var4 = var0.aa(cf.cg_fld, false, 15790320);
+		kp var4 = lu.qv(var0, cf.cg_fld, false, 15790320);
 		if (var4 != null) {
 			yu.dg(var1, var2, var4.ak_fld + var1, var2 + var4.ag_fld);
 			if (bx.ar_fld != 2 && 5 != bx.ar_fld) {
@@ -87,7 +87,7 @@ public class kf implements xm {
 				int var5 = client.js_fld & 2047;
 				int var6 = client.nw_fld / 32 + 48;
 				int var7 = 464 - client.nd_fld / 32;
-				bx.aw_fld.br(var1, var2, var4.ak_fld, var4.ag_fld, var6, var7, var5, 256, var1, var2, var4.av_fld, var4.az_fld);
+				bx.aw_fld.br(var1, var2, var4.ak_fld, var4.ag_fld, var6, var7, var5, 256, var1, var2, var4.az_fld, var4.av_fld);
 
 				for (int var8 = 0; var8 < bx.aa_fld; var8++) {
 					int var9 = bx.ai_fld[var8] * 4 + 2 - client.nw_fld / 32;
@@ -99,19 +99,19 @@ public class kf implements xm {
 				ce.av(bw.dk_fld, var1, var2, var5, var4, 1446845849);
 				dx var19 = bw.dk_fld;
 
-				for (int var20 = 0; var20 < var19.am_fld.az(); var20++) {
+				for (int var20 = 0; var20 < var19.ad_fld.az(); var20++) {
 					if (var3 <= -1241937258) {
 						return;
 					}
 
-					rg var25 = (rg)var19.an_fld.ak(var19.am_fld.ag(var20));
+					rg var25 = (rg)var19.an_fld.ak(yw.wk(var19.ad_fld, var20, (byte)78));
 					if (var25 != null) {
 						int var11 = var25.dp(-755274204) / 32 - client.nw_fld / 32;
 						int var12 = var25.dj(189745805) / 32 - client.nd_fld / 32;
-						yv var13 = oy.uj(var25.aw_fld, 693675935);
+						yv var13 = var25.aw_fld.an(693675935);
 						byte var14 = 1;
 						if (!var25.av(-1393757046)) {
-							ab.aw(var1, var2, var11, var12, var5, 2047 - var25.ah(-53338672) + 1024, var13, var4, var14);
+							ab.aw(var1, var2, var11, var12, var5, 2047 - rg.es(var25, -53338672) + 1024, var13, var4, var14);
 							gj.az(var25.ah_fld, var1, var2, var5, var4);
 							ce.av(var25.ah_fld, var1, var2, var5, var4, 2038136659);
 							if_.ae(var25.ah_fld, var1, var2, var5, var4, (byte)20);
@@ -121,14 +121,14 @@ public class kf implements xm {
 
 				if_.ae(bw.dk_fld, var1, var2, var5, var4, (byte)-20);
 				if (client.le_fld.ag() && client.dv_fld % 20 < 10) {
-					int var21 = ku.id(client.le_fld, -858871586);
+					int var21 = ku.jy(client.le_fld, -858871586);
 					dx var26 = bw.dk_fld;
 					if (1 == var21) {
 						if (var3 <= -1241937258) {
 							return;
 						}
 
-						int var38 = ku.og(client.le_fld, 205903255);
+						int var38 = ku.ve(client.le_fld, 205903255);
 						cx var43 = client.da_fld;
 						Iterator var51 = var43.iterator();
 
@@ -140,7 +140,7 @@ public class kf implements xm {
 								}
 
 								dx var54 = (dx)(dx)var51.next();
-								ds var57 = (ds)var54.ax_fld.ak(var38);
+								ds var57 = (ds)var54.ax_fld.ae(var38);
 								if (null == var57) {
 									continue;
 								}
@@ -154,23 +154,23 @@ public class kf implements xm {
 						}
 
 						if (var32 != null) {
-							ry.ay(var32.eb((byte)-38), var32.bo_fld, var32.bp_fld, var1, var2, var5, ia.af_fld[1], var4, 1344406951);
+							ry.ay(da.lm(var32, (byte)-38), var32.bi_fld, var32.dm_fld, var1, var2, var5, ia.af_fld[1], var4, 1344406951);
 						}
 					} else if (var21 == 2) {
-						dx var31 = client.da_fld.aw(ku.ph(client.le_fld, 1122789851), client.le_fld.ah(), -2024303745);
-						int var37 = kj.aw(ku.ph(client.le_fld, 1122789851) - var31.ay_fld) + client.le_fld.aw();
-						int var42 = kj.aw(client.le_fld.ah() - var31.as_fld) + ku.pj(client.le_fld, 1955653013);
+						dx var31 = client.da_fld.aw(client.le_fld.ay(1122789851), client.le_fld.az(), -2024303745);
+						int var37 = kj.aw(client.le_fld.ay(1122789851) - var31.as_fld) + client.le_fld.ah();
+						int var42 = kj.aw(client.le_fld.az() - var31.ay_fld) + client.le_fld.av();
 						ry.ay(var31, var37, var42, var1, var2, var5, ia.af_fld[1], var4, -2121503089);
 					} else if (3 != var21) {
 						if (4 == var21) {
-							int var30 = ku.og(client.le_fld, 205903255);
+							int var30 = ku.ve(client.le_fld, 205903255);
 							rg var36 = (rg)bw.dk_fld.an_fld.ak(var30);
 							if (var36 != null) {
 								ry.ay(bw.dk_fld, var36.dp(-1041570270), var36.dj(189745805), var1, var2, var5, ia.af_fld[1], var4, 1774204230);
 							}
 						}
 					} else {
-						int var35 = ku.og(client.le_fld, 205903255);
+						int var35 = ku.ve(client.le_fld, 205903255);
 						cx var41 = client.da_fld;
 						cv var50 = null;
 						Iterator var15 = var41.iterator();
@@ -179,7 +179,7 @@ public class kf implements xm {
 						while (true) {
 							if (var15.hasNext()) {
 								dx var16 = (dx)(dx)var15.next();
-								cv var17 = (cv)var16.au_fld.ak(var35);
+								cv var17 = (cv)var16.au_fld.ae(var35);
 								if (null == var17) {
 									continue;
 								}
@@ -198,7 +198,7 @@ public class kf implements xm {
 						}
 
 						if (null != var29) {
-							ry.ay(var29.eb((byte)9), var29.bo_fld, var29.bp_fld, var1, var2, var5, ia.af_fld[1], var4, -322217251);
+							ry.ay(da.lm(var29, (byte)9), var29.bi_fld, var29.dm_fld, var1, var2, var5, ia.af_fld[1], var4, -322217251);
 						}
 					}
 				}
@@ -216,7 +216,7 @@ public class kf implements xm {
 
 					int var23 = var1 + var4.ak_fld / 2;
 					int var28 = var2 + var4.ag_fld / 2;
-					if (kp.uz(var4, tj.ae_fld - var1, tj.ah_fld - var2)) {
+					if (var4.ak(tj.ae_fld - var1, tj.ah_fld - var2)) {
 						int var33 = ce.ga(var1, var2, var4);
 						yv var39 = ia.af_fld[2];
 						int var44 = var33 * 128;
@@ -227,7 +227,7 @@ public class kf implements xm {
 						int var58 = var28 + (int)(hx.av(var44) * var52);
 						int var60 = Math.max(var39.aw_fld, var39.ay_fld);
 						int var18 = var60 / 2;
-						var39.jf(var55 - var18, var58 - var18, var39.aw_fld, var39.ay_fld, var39.aw_fld / 2, var39.ay_fld / 2, of.ak(var44), 256);
+						var39.be(var55 - var18, var58 - var18, var39.aw_fld, var39.ay_fld, var39.aw_fld / 2, var39.ay_fld / 2, of.ak(var44), 256);
 					}
 
 					if (client.oz_fld > 0) {
@@ -241,7 +241,7 @@ public class kf implements xm {
 						int var59 = var28 + (int)(hx.av(var47) * var53);
 						int var61 = Math.max(var40.aw_fld, var40.ay_fld);
 						int var62 = var61 / 2;
-						var40.jf(var56 - var62, var59 - var62, var40.aw_fld, var40.ay_fld, var40.aw_fld / 2, var40.ay_fld / 2, of.ak(var47), 256);
+						var40.be(var56 - var62, var59 - var62, var40.aw_fld, var40.ay_fld, var40.aw_fld / 2, var40.ay_fld / 2, of.ak(var47), 256);
 					}
 				}
 
@@ -256,7 +256,7 @@ public class kf implements xm {
 					}
 				}
 			} else {
-				yu.ei(var1, var2, 0, var4.av_fld, var4.az_fld);
+				yu.ei(var1, var2, 0, var4.az_fld, var4.av_fld);
 			}
 		}
 	}
@@ -276,7 +276,7 @@ public class kf implements xm {
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;II)V"
+		descriptor = "(Llu;III)V"
 	)
 	public static final void af(lu var0, int var1, int var2) throws EOFException {
 		if (bx.ar_fld == 0 || bx.ar_fld == 3) {
@@ -284,55 +284,55 @@ public class kf implements xm {
 				int var4 = tj.ay_fld;
 				if (var4 == 0) {
 					int var5 = client.ky_fld;
-					if (client.xb_fld && var5 != 0) {
+					if (client.oa_fld && var5 != 0) {
 						boolean var6 = tj.ae_fld >= var1 && tj.ah_fld >= var2 && tj.ae_fld < var1 + var0.getWidth() && tj.ah_fld < var2 + var0.getHeight();
 						if (var6) {
-							double var7 = client.td_double + -var5 * 0.25;
-							client.td_double = Doubles.constrainToRange(var7, 2.0, 8.0);
+							double var7 = client.iq_fld + -var5 * 0.25;
+							client.iq_fld = Doubles.constrainToRange(var7, 2.0, 8.0);
 						}
 					}
 				} else {
-					kp var19 = var0.zu(cf.cg_fld, true);
+					kp var19 = var0.dm(cf.cg_fld, true);
 					if (var19 == null) {
 						return;
 					}
 
 					int var20 = tj.as_fld - var1;
 					int var22 = tj.ar_fld - var2;
-					if (!var19.ch(var20, var22)) {
+					if (!var19.pd(var20, var22)) {
 						return;
 					}
 
 					if (var4 == 1 || !gu.hh_fld && var4 == 4) {
-						ss var8 = client.da_fld.ze(-1);
+						ss var8 = client.da_fld.of(-1);
 						if (var8 == ss.ag_fld) {
-							var20 -= var19.fa() / 2;
-							var22 -= var19.de() / 2;
+							var20 -= var19.qh() / 2;
+							var22 -= var19.cp() / 2;
 							int var9 = client.js_fld & 2047;
 							int var10 = Perspective.SINE[var9];
 							int var11 = Perspective.COSINE[var9];
 							int var12 = var11 * var20 + var10 * var22 >> 16;
 							int var13 = var11 * var22 - var10 * var20 >> 16;
-							float var14 = (float)client.td_double / 128.0F;
+							float var14 = (float)client.iq_fld / 128.0F;
 							int var15 = (int)(var12 / var14);
 							int var16 = (int)(var13 / var14);
 							int var17 = client.nw_fld + var15 >> 7;
 							int var18 = client.nd_fld - var16 >> 7;
-							client.xj(var17, var18, var20, var22);
+							client.um(var17, var18, var20, var22);
 						} else if (var8 == ss.az_fld) {
-							int var24 = var1 + var19.fa() / 2;
-							int var25 = var2 + var19.de() / 2;
+							int var24 = var1 + var19.qh() / 2;
+							int var25 = var2 + var19.cp() / 2;
 							int var26 = tj.ae_fld - var24;
 							int var27 = tj.ah_fld - var25;
-							int var28 = client.ik(Math.atan2(var27, var26)) - 512;
+							int var28 = client.gv(Math.atan2(var27, var26)) - 512;
 							var28 -= client.js_fld;
 							int var30 = (var28 + 64 & 2047) / 128;
 							client.op_fld = var30;
 							client.oz_fld = 30;
-							client.qo(var30);
+							client.kl_void(var30);
 						}
 					} else if (var4 == 2) {
-						client.td_double = 4.0;
+						client.iq_fld = 4.0;
 						tj.ay_fld = 0;
 					}
 				}

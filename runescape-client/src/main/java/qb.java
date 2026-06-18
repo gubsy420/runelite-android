@@ -1,5 +1,6 @@
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -27,12 +28,34 @@ public class qb implements ThreadFactory {
 	)
 	AtomicInteger ag_fld;
 
+	@ObfuscatedName("vp")
+	@ObfuscatedSignature(
+		descriptor = "(Lqb;Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public static Thread vp(qb var0, Runnable var1) {
+		Thread var2 = new Thread(var0.ak_fld, var1, var0.this$0.ak_fld + "-rest-request-" + var0.ag_fld.getAndIncrement(), 0L);
+		var2.setDaemon(true);
+		var2.setPriority(5);
+		return var2;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
 	public Thread az(Runnable var1) {
 		Thread var2 = new Thread(this.ak_fld, var1, this.this$0.ak_fld + "-rest-request-" + this.ag_fld.getAndIncrement(), 0L);
+		var2.setDaemon(true);
+		var2.setPriority(5);
+		return var2;
+	}
+
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "(Lqb;Ljava/lang/Runnable;)Ljava/lang/Thread;"
+	)
+	public static Thread la(qb var0, Runnable var1) {
+		Thread var2 = new Thread(var0.ak_fld, var1, var0.this$0.ak_fld + "-rest-request-" + var0.ag_fld.getAndIncrement(), 0L);
 		var2.setDaemon(true);
 		var2.setPriority(5);
 		return var2;
@@ -60,21 +83,11 @@ public class qb implements ThreadFactory {
 		return var2;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public Thread ag(Runnable var1) {
-		Thread var2 = new Thread(this.ak_fld, var1, this.this$0.ak_fld + "-rest-request-" + this.ag_fld.getAndIncrement(), 0L);
-		var2.setDaemon(true);
-		var2.setPriority(5);
-		return var2;
-	}
-
 	@ObfuscatedName("newThread")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
 	)
+	@Export("newThread")
 	@Override
 	public Thread newThread(Runnable var1) {
 		Thread var2 = new Thread(this.ak_fld, var1, this.this$0.ak_fld + "-rest-request-" + this.ag_fld.getAndIncrement(), 0L);
@@ -88,16 +101,5 @@ public class qb implements ThreadFactory {
 		this.ag_fld = new AtomicInteger(1);
 		SecurityManager var2 = System.getSecurityManager();
 		this.ak_fld = null != var2 ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-	)
-	public Thread ae(Runnable var1) {
-		Thread var2 = new Thread(this.ak_fld, var1, this.this$0.ak_fld + "-rest-request-" + this.ag_fld.getAndIncrement(), 0L);
-		var2.setDaemon(true);
-		var2.setPriority(5);
-		return var2;
 	}
 }

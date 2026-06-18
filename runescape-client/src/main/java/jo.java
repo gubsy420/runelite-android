@@ -3,19 +3,6 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("jo")
 public interface jo {
-	@ObfuscatedName("iv")
-	@ObfuscatedSignature(
-		descriptor = "(Lcn;I)V"
-	)
-	static void iv(cn var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ax_fld = var1;
-		og.ag();
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(B)[Lyc;"
@@ -33,14 +20,6 @@ public interface jo {
 		descriptor = "(I)Lyv;"
 	)
 	yv az(int var1);
-
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "(Lsl;)[Ljava/lang/Object;"
-	)
-	static Object[] kt(sl var0) {
-		return (Object[])var0.as_fld;
-	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(

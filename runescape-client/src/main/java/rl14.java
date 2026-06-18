@@ -1,64 +1,44 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("rl14")
 class rl14 implements Iterator {
 	// $VF: synthetic field
-	@ObfuscatedName("xu")
+	@ObfuscatedName("ka")
 	@ObfuscatedSignature(
 		descriptor = "Lxz;"
 	)
-	public xz xu_fld;
-	@ObfuscatedName("yi")
-	@ObfuscatedSignature(
-		descriptor = "Lvw;"
-	)
-	public vw yi_fld;
-	@ObfuscatedName("ry")
+	public xz ka_fld;
+	@ObfuscatedName("zq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ry_fld;
-
-	@ObfuscatedName("hasNext")
+	public int zq_fld;
+	@ObfuscatedName("lc")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "Lvw;"
 	)
-	@Override
-	public boolean hasNext() {
-		if (this.ry_fld > 0 && this.xu_fld.ag_fld[this.ry_fld - 1] != this.yi_fld) {
-			return true;
-		} else {
-			for (int var1 = this.ry_fld; var1 < this.xu_fld.ak_fld; var1++) {
-				vw var2 = this.xu_fld.ag_fld[var1];
-				vw var3 = var2.getNext();
-				if (var2 != var3) {
-					return true;
-				}
-			}
+	public vw lc_fld;
 
-			return false;
-		}
-	}
-
-	@ObfuscatedName("xn")
+	@ObfuscatedName("mf")
 	@ObfuscatedSignature(
 		descriptor = "()Lvw;"
 	)
 	public vw next() {
 		try {
-			if (this.ry_fld > 0 && this.xu_fld.ag_fld[this.ry_fld - 1] != this.yi_fld) {
-				vw var5 = this.yi_fld;
-				this.yi_fld = var5.getNext();
+			if (this.zq_fld > 0 && this.ka_fld.ag_fld[this.zq_fld - 1] != this.lc_fld) {
+				vw var5 = this.lc_fld;
+				this.lc_fld = var5.getNext();
 				return var5;
 			} else {
-				while (this.ry_fld < this.xu_fld.ak_fld) {
-					vw var1 = this.xu_fld.ag_fld[this.ry_fld++];
+				while (this.zq_fld < this.ka_fld.ak_fld) {
+					vw var1 = this.ka_fld.ag_fld[this.zq_fld++];
 					vw var2 = var1.getNext();
 					if (var1 != var2) {
-						this.yi_fld = var2.getNext();
+						this.lc_fld = var2.getNext();
 						return var2;
 					}
 				}
@@ -70,7 +50,29 @@ class rl14 implements Iterator {
 		}
 	}
 
+	@ObfuscatedName("hasNext")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("hasNext")
+	@Override
+	public boolean hasNext() {
+		if (this.zq_fld > 0 && this.ka_fld.ag_fld[this.zq_fld - 1] != this.lc_fld) {
+			return true;
+		} else {
+			for (int var1 = this.zq_fld; var1 < this.ka_fld.ak_fld; var1++) {
+				vw var2 = this.ka_fld.ag_fld[var1];
+				vw var3 = var2.getNext();
+				if (var2 != var3) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+	}
+
 	public rl14(xz var1) {
-		this.xu_fld = var1;
+		this.ka_fld = var1;
 	}
 }

@@ -30,9 +30,17 @@ public class mv {
 	)
 	static int ab_fld;
 
+	@ObfuscatedName("ir")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)Lgf;"
+	)
+	public static gf ir(wl var0) {
+		return var0.ac_fld;
+	}
+
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void ab() {
 		boolean var1;
@@ -71,49 +79,49 @@ public class mv {
 			client.ct_fld = var0.as((short)2048);
 			boolean var2 = var0.as((short)2048);
 			if (var2 != ux.dq_fld) {
-				og.do_fld.vh();
-				og.dd_fld.vh();
-				og.dl_fld.vh();
+				og.do_fld.av();
+				og.dd_fld.av();
+				og.dl_fld.av();
 				ux.dq_fld = var2;
 			}
 		}
 
-		if (client.gt_fld != var0.al_fld) {
-			ap.aw(gz.hy_fld, var0.al_fld);
+		if (client.gt_fld != var0.au_fld) {
+			ap.aw(gz.hy_fld, var0.au_fld);
 		}
 
-		hk.ik_fld = var0.ax_fld;
-		client.ch_fld = var0.af_fld * 210462851;
-		client.gt_fld = var0.al_fld * 169743169;
-		bb.jj_fld = var0.aq_fld;
+		hk.ik_fld = var0.aq_fld;
+		client.ch_fld = var0.aa_fld * 210462851;
+		client.gt_fld = var0.au_fld * 169743169;
+		bb.jj_fld = var0.an_fld;
 		int var10001;
 		if (client.gu_fld == 0) {
 			if (var1 <= -1106363349) {
-				client.ed();
+				client.ep();
 				return;
 			}
 
 			var10001 = 43594;
 		} else {
-			var10001 = 40000 + var0.af_fld;
+			var10001 = 40000 + var0.aa_fld;
 		}
 
 		bb.ij_fld = 405029405 * var10001;
 		int var10000;
 		if (0 == client.gu_fld) {
 			if (var1 <= -1106363349) {
-				client.ed();
+				client.ep();
 				return;
 			}
 
 			var10000 = 443;
 		} else {
-			var10000 = 50000 + var0.af_fld;
+			var10000 = 50000 + var0.aa_fld;
 		}
 
 		bo.id_fld = var10000 * 1378194077;
 		ha.ih_fld = bb.ij_fld;
-		client.ed();
+		client.ep();
 	}
 
 	mv() throws Throwable {

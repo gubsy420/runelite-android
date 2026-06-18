@@ -3,11 +3,11 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("vy")
 public interface vy {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()Lvu;"
 	)
-	vu aw();
+	vu ae();
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -15,15 +15,15 @@ public interface vy {
 	)
 	vu ak(int var1);
 
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "()Lvu;"
-	)
-	vu ae();
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()Lvu;"
 	)
 	vu ah();
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()Lvu;"
+	)
+	vu aw();
 }

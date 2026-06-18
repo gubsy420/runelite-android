@@ -134,12 +134,12 @@ public class zm implements xm {
 		descriptor = "Lzm;"
 	)
 	static zm aj_fld = new zm(25, 25);
-	@ObfuscatedGetter(
-		intValue = -1993632925
-	)
 	@ObfuscatedName("be")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1993632925
 	)
 	int be_fld;
 	@ObfuscatedName("bd")
@@ -147,12 +147,12 @@ public class zm implements xm {
 		descriptor = "Lzm;"
 	)
 	static zm bd_fld = new zm(27, 27);
-	@ObfuscatedGetter(
-		intValue = 878213953
-	)
 	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 878213953
 	)
 	int bz_fld;
 	@ObfuscatedName("aw")
@@ -270,14 +270,6 @@ public class zm implements xm {
 	@Override
 	public int ag(int var1) {
 		return this.be_fld;
-	}
-
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "(Loo;I)I"
-	)
-	public static int lk(oo var0, int var1) {
-		return var1 == 0 ? var0.as_fld : var0.ar_fld;
 	}
 
 	@ObfuscatedName("ay")
@@ -487,6 +479,14 @@ public class zm implements xm {
 			zm var3 = var1[var2];
 			br_fld[var3.be_fld] = var3;
 		}
+	}
+
+	@ObfuscatedName("qr")
+	@ObfuscatedSignature(
+		descriptor = "(Lma;)Lmx;"
+	)
+	public static mx qr(ma var0) {
+		return var0.ar_fld;
 	}
 
 	@ObfuscatedName("af")

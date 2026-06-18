@@ -528,14 +528,6 @@ public class ww {
 		}
 	}
 
-	@ObfuscatedName("cd")
-	@ObfuscatedSignature(
-		descriptor = "(Lqw;)Ljava/lang/String;"
-	)
-	public static String cd(qw var0) {
-		return var0.ag_fld;
-	}
-
 	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "([J[Ljava/lang/Object;II)V"

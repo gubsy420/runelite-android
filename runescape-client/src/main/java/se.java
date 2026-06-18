@@ -20,12 +20,12 @@ public class se implements xm {
 		descriptor = "Lse;"
 	)
 	static se ak_fld = new se(0, 0, null, 0);
-	@ObfuscatedGetter(
-		intValue = 1469985043
-	)
 	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1469985043
 	)
 	static int bi_fld;
 	@ObfuscatedName("ae")
@@ -38,30 +38,30 @@ public class se implements xm {
 		descriptor = "I"
 	)
 	static int ao_fld;
-	@ObfuscatedGetter(
-		intValue = 1111452169
-	)
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int as_fld;
-	@ObfuscatedGetter(
-		intValue = -2055513329
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = -1325068223
+		intValue = 1111452169
 	)
+	int aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -2055513329
+	)
 	int ay_fld;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1325068223
+	)
+	int as_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lse;"
@@ -83,16 +83,12 @@ public class se implements xm {
 	)
 	static int bj_fld;
 
-	@ObfuscatedName("hg")
+	@ObfuscatedName("qn")
 	@ObfuscatedSignature(
-		descriptor = "(Ldw;Loo;)V"
+		descriptor = "(Lli;)I"
 	)
-	public static void hg(dw var0, oo var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.as_fld = var1;
+	public static int qn(li var0) {
+		return var0.bd_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -101,15 +97,15 @@ public class se implements xm {
 	)
 	@Override
 	public int ae() {
-		return this.aw_fld;
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	int ak() {
-		return this.ay_fld;
+		return this.as_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -118,7 +114,7 @@ public class se implements xm {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.aw_fld;
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -127,13 +123,13 @@ public class se implements xm {
 	)
 	@Override
 	public int av() {
-		return this.aw_fld;
+		return this.ay_fld;
 	}
 
 	se(int var1, int var2, String var3, int var4) {
-		this.as_fld = var1;
-		this.aw_fld = var2;
-		this.ay_fld = var4;
+		this.aw_fld = var1;
+		this.ay_fld = var2;
+		this.as_fld = var4;
 	}
 
 	@ObfuscatedName("ah")
@@ -142,15 +138,27 @@ public class se implements xm {
 	)
 	@Override
 	public int ah() {
-		return this.aw_fld;
+		return this.ay_fld;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int ay() {
-		return this.ay_fld;
+	int az() {
+		return this.as_fld;
+	}
+
+	@ObfuscatedName("ot")
+	@ObfuscatedSignature(
+		descriptor = "(Les;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int ot(es var0, Object var1, Object var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return es.dl(var0, (rr)var1, (rr)var2, (byte)-58);
 	}
 
 	@ObfuscatedName("aw")
@@ -158,7 +166,7 @@ public class se implements xm {
 		descriptor = "()I"
 	)
 	int aw() {
-		return this.ay_fld;
+		return this.as_fld;
 	}
 
 	@ObfuscatedName("ar")
@@ -173,7 +181,7 @@ public class se implements xm {
 				return;
 			}
 
-			int var9 = ev.dk(var6, var0, var1, var2, var7);
+			int var9 = var6.cx(var0, var1, var2, var7);
 			int var10 = var9 >> 6 & 3;
 			int var11 = var9 & 31;
 			int var12 = var3;
@@ -190,7 +198,7 @@ public class se implements xm {
 				if (var17 != null) {
 					int var18 = (var16.cb_fld - var17.az_fld) / 2;
 					int var19 = (var16.co_fld - var17.av_fld) / 2;
-					var17.ad(var18 + var1 * 4 + 48, 48 + 4 * (104 - var2 - var16.co_fld) + var19);
+					var17.ae(var18 + var1 * 4 + 48, 48 + 4 * (104 - var2 - var16.co_fld) + var19);
 				}
 			} else {
 				if (var11 == 0 || 2 == var11) {
@@ -287,9 +295,9 @@ public class se implements xm {
 			}
 		}
 
-		var7 = ev.ml(var6, var0, var1, var2);
+		var7 = var6.cq(var0, var1, var2);
 		if (var7 != 0L) {
-			int var22 = ev.dk(var6, var0, var1, var2, var7);
+			int var22 = var6.cx(var0, var1, var2, var7);
 			int var24 = var22 >> 6 & 3;
 			int var26 = var22 & 31;
 			int var28 = bj.ae(var7);
@@ -299,7 +307,7 @@ public class se implements xm {
 				if (null != var32) {
 					int var34 = (var30.cb_fld - var32.az_fld) / 2;
 					int var36 = (var30.co_fld - var32.av_fld) / 2;
-					var32.ad(48 + var1 * 4 + var34, 4 * (104 - var2 - var30.co_fld) + 48 + var36);
+					var32.ae(48 + var1 * 4 + var34, 4 * (104 - var2 - var30.co_fld) + 48 + var36);
 				}
 			} else if (var26 == 9) {
 				int var33 = 15658734;
@@ -336,7 +344,7 @@ public class se implements xm {
 				if (null != var27) {
 					int var29 = (var25.cb_fld - var27.az_fld) / 2;
 					int var31 = (var25.co_fld - var27.av_fld) / 2;
-					var27.ad(4 * var1 + 48 + var29, var31 + 4 * (104 - var2 - var25.co_fld) + 48);
+					var27.ae(4 * var1 + 48 + var29, var31 + 4 * (104 - var2 - var25.co_fld) + 48);
 				}
 			}
 		}

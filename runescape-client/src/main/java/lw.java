@@ -11,36 +11,36 @@ public class lw {
 		descriptor = "Liw;"
 	)
 	iw af_fld;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lub;"
-	)
-	ub ah_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lub;"
 	)
 	ub ag_fld;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lub;"
+	)
+	ub az_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "Lry;"
 	)
 	ry ax_fld;
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lub;"
-	)
-	ub av_fld;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "[Z"
-	)
-	boolean[] ak_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lub;"
 	)
 	ub ae_fld;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "[Z"
+	)
+	boolean[] ak_fld;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lub;"
+	)
+	ub ah_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/util/Map;"
@@ -71,11 +71,41 @@ public class lw {
 		descriptor = "Lry;"
 	)
 	ry au_fld;
-	@ObfuscatedName("az")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lub;"
 	)
-	ub az_fld;
+	ub av_fld;
+
+	@ObfuscatedName("dn")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;IB)V"
+	)
+	public static void dn(lw var0, int var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (-1 != var1) {
+			if (var0.ak_fld[var1]) {
+				var0.ag_fld.ca(var1, 1703208281);
+				if (var0.aw_fld[var1] != null) {
+					for (int var3 = 0; var3 < var0.aw_fld[var1].length; var3++) {
+						if (var0.aw_fld[var1][var3] != null) {
+							if (var2 == 6) {
+								return;
+							}
+
+							var0.aw_fld[var1][var3] = null;
+						}
+					}
+
+					var0.aw_fld[var1] = null;
+					var0.ak_fld[var1] = false;
+				}
+			}
+		}
+	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
@@ -98,12 +128,12 @@ public class lw {
 		this.ax_fld = new ry(10, qd.ak_fld);
 		int var6 = 0;
 		if (null != var1) {
-			this.ah_fld = var1;
-			this.az_fld = var2;
-			this.av_fld = var3;
-			this.ae_fld = var4;
-			this.ag_fld = var5;
-			var6 = ub.sn(this.ah_fld, (byte)110);
+			this.ag_fld = var1;
+			this.av_fld = var2;
+			this.ae_fld = var3;
+			this.ah_fld = var4;
+			this.az_fld = var5;
+			var6 = this.ag_fld.cn((byte)110);
 		}
 
 		this.aw_fld = new lu[var6][];
@@ -112,16 +142,16 @@ public class lw {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	public boolean az(int var1) throws EOFException {
 		if (var1 >= 0 && var1 < this.aw_fld.length) {
 			if (this.ak_fld[var1]) {
 				return true;
-			} else if (!this.ah_fld.cv(var1, -1881767706)) {
+			} else if (!this.ag_fld.dz(var1, -1881767706)) {
 				return false;
 			} else {
-				int var3 = rl1.ei(this.ah_fld, var1);
+				int var3 = this.ag_fld.ce(var1, 223092882);
 				if (0 == var3) {
 					this.ak_fld[var1] = true;
 					return true;
@@ -132,7 +162,7 @@ public class lw {
 
 					for (int var4 = 0; var4 < var3; var4++) {
 						if (this.aw_fld[var1][var4] == null) {
-							byte[] var5 = this.ah_fld.bb(var1, var4, 584982574);
+							byte[] var5 = this.ag_fld.bb(var1, var4, 584982574);
 							if (var5 != null) {
 								lu var6 = new lu();
 								this.aw_fld[var1][var4] = var6;
@@ -143,8 +173,8 @@ public class lw {
 									var6.av(new xi(var5), -1894614222);
 								}
 
-								if (this.ag_fld != null) {
-									byte[] var7 = this.ag_fld.bb(var1, var4, 584982574);
+								if (this.az_fld != null) {
+									byte[] var7 = this.az_fld.bb(var1, var4, 584982574);
 									if (var7 != null && var7.length > 0) {
 										var6.ah(new xi(var7), 153573090);
 										this.ay_fld.put(var6.bl_fld, var1);
@@ -177,43 +207,15 @@ public class lw {
 		}
 	}
 
-	@ObfuscatedName("mw")
-	@ObfuscatedSignature(
-		descriptor = "(Llw;IB)V"
-	)
-	public static void mw(lw var0, int var1, byte var2) {
-		if (var0 == null) {
-			var0.getClass();
-		} else if (-1 != var1) {
-			if (var0.ak_fld[var1]) {
-				var0.ah_fld.ca(var1, 1703208281);
-				if (var0.aw_fld[var1] != null) {
-					for (int var3 = 0; var3 < var0.aw_fld[var1].length; var3++) {
-						if (var0.aw_fld[var1][var3] != null) {
-							if (var2 == 6) {
-								return;
-							}
-
-							var0.aw_fld[var1][var3] = null;
-						}
-					}
-
-					var0.aw_fld[var1] = null;
-					var0.ak_fld[var1] = false;
-				}
-			}
-		}
-	}
-
 	@ObfuscatedName("eb")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIII)Z"
+		descriptor = "(IIIIIIII)Z"
 	)
 	static boolean eb(int var0, int var1, int var2, int var3, int var4, int var5, int var6) throws EOFException {
-		ev.zf(var0, var1, var2, var3, var4, var5, var6);
+		ev.jj(var0, var1, var2, var3, var4, var5, var6);
 		ev var8 = hk.mt_fld.az_fld;
 		if (var5 == ka.ak_fld.ae_fld) {
-			fs var9 = ev.ay(var8, var0, var1, var2);
+			fs var9 = ev.zr(var8, var0, var1, var2);
 			if (null != var9) {
 				int var10 = bj.ae(var9.az_fld);
 				if (var3 == kn.az_fld.at_fld) {
@@ -223,11 +225,11 @@ public class lw {
 					var9.ak_fld = new dz(hk.mt_fld, var10, var3, var4, var0, var1, var2, var6, false, var9.ak_fld);
 				}
 
-				ev.jt(var0, var1, var2, var3, var4, var5, var6);
+				ev.ge(var0, var1, var2, var3, var4, var5, var6);
 				return true;
 			}
 		} else if (ka.ag_fld.ae_fld == var5) {
-			fv var11 = var8.bq(var0, var1, var2);
+			fv var11 = ev.tn(var8, var0, var1, var2);
 			if (var11 != null) {
 				int var14 = bj.ae(var11.az_fld);
 				if (kn.ah_fld.at_fld == var3 || kn.aw_fld.at_fld == var3) {
@@ -241,48 +243,31 @@ public class lw {
 					var11.ag_fld = new dz(hk.mt_fld, var14, 4, 4 + (var4 + 2 & 3), var0, var1, var2, var6, false, var11.ag_fld);
 				}
 
-				ev.jt(var0, var1, var2, var3, var4, var5, var6);
+				ev.ge(var0, var1, var2, var3, var4, var5, var6);
 				return true;
 			}
 		} else if (ka.az_fld.ae_fld == var5) {
-			fj var12 = ev.cn(var8, var0, var1, var2);
+			fj var12 = var8.bg(var0, var1, var2);
 			if (var3 == kn.ab_fld.at_fld) {
 				var3 = kn.ao_fld.at_fld;
 			}
 
 			if (null != var12) {
 				var12.ak_fld = new dz(hk.mt_fld, bj.ae(var12.az_fld), var3, var4, var0, var1, var2, var6, false, var12.ak_fld);
-				ev.jt(var0, var1, var2, var3, var4, var5, var6);
+				ev.ge(var0, var1, var2, var3, var4, var5, var6);
 				return true;
 			}
 		} else if (ka.av_fld.ae_fld == var5) {
-			ef var13 = ev.oy(var8, var0, var1, var2);
+			ef var13 = var8.bb(var0, var1, var2);
 			if (null != var13) {
 				var13.ak_fld = new dz(hk.mt_fld, bj.ae(var13.ag_fld), 22, var4, var0, var1, var2, var6, false, var13.ak_fld);
-				ev.jt(var0, var1, var2, var3, var4, var5, var6);
+				ev.ge(var0, var1, var2, var3, var4, var5, var6);
 				return true;
 			}
 		}
 
-		ev.jt(var0, var1, var2, var3, var4, var5, var6);
+		ev.ge(var0, var1, var2, var3, var4, var5, var6);
 		return false;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu aw(int var1) throws EOFException {
-		int var2 = var1 >> 16;
-		int var3 = var1 & 65535;
-		if (this.aw_fld[var2] == null || this.aw_fld[var2][var3] == null) {
-			boolean var4 = this.az(var2);
-			if (!var4) {
-				return null;
-			}
-		}
-
-		return this.aw_fld[var2][var3];
 	}
 
 	@ObfuscatedName("ah")
@@ -302,41 +287,11 @@ public class lw {
 		return this.aw_fld[var2][var3];
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(III)Llu;"
-	)
-	public lu ag(int var1, int var2, int var3) throws EOFException {
-		lu var4 = this.ak(var1);
-		if (-1 == var2) {
-			return var4;
-		} else {
-			return null != var4 && var4.ge_fld != null && var2 < var4.ge_fld.length ? var4.ge_fld[var2] : null;
-		}
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu ay(int var1) throws EOFException {
-		int var2 = var1 >> 16;
-		int var3 = var1 & 65535;
-		if (this.aw_fld[var2] == null || this.aw_fld[var2][var3] == null) {
-			boolean var4 = this.az(var2);
-			if (!var4) {
-				return null;
-			}
-		}
-
-		return this.aw_fld[var2][var3];
-	}
-
-	@ObfuscatedName("be")
+	@ObfuscatedName("il")
 	@ObfuscatedSignature(
 		descriptor = "(Llw;I)Z"
 	)
-	public static boolean be(lw var0, int var1) throws EOFException {
+	public static boolean il(lw var0, int var1) throws EOFException {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -344,10 +299,10 @@ public class lw {
 		if (var1 >= 0 && var1 < var0.aw_fld.length) {
 			if (var0.ak_fld[var1]) {
 				return true;
-			} else if (!var0.ah_fld.cv(var1, -1226664010)) {
+			} else if (!var0.ag_fld.dz(var1, -1226664010)) {
 				return false;
 			} else {
-				int var2 = rl1.ei(var0.ah_fld, var1);
+				int var2 = var0.ag_fld.ce(var1, 1081898903);
 				if (0 == var2) {
 					var0.ak_fld[var1] = true;
 					return true;
@@ -358,7 +313,7 @@ public class lw {
 
 					for (int var3 = 0; var3 < var2; var3++) {
 						if (var0.aw_fld[var1][var3] == null) {
-							byte[] var4 = var0.ah_fld.bb(var1, var3, 584982574);
+							byte[] var4 = var0.ag_fld.bb(var1, var3, 584982574);
 							if (var4 != null) {
 								lu var5 = new lu();
 								var0.aw_fld[var1][var3] = var5;
@@ -369,8 +324,8 @@ public class lw {
 									var5.av(new xi(var4), -1894614222);
 								}
 
-								if (var0.ag_fld != null) {
-									byte[] var6 = var0.ag_fld.bb(var1, var3, 584982574);
+								if (var0.az_fld != null) {
+									byte[] var6 = var0.az_fld.bb(var1, var3, 584982574);
 									if (var6 != null && var6.length > 0) {
 										var5.ah(new xi(var6), 153573090);
 										var0.ay_fld.put(var5.bl_fld, var1);
@@ -403,9 +358,39 @@ public class lw {
 		}
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(III)Llu;"
+	)
+	public lu ag(int var1, int var2) throws EOFException {
+		lu var4 = this.ak(var1);
+		if (-1 == var2) {
+			return var4;
+		} else {
+			return null != var4 && var4.ge_fld != null && var2 < var4.ge_fld.length ? var4.ge_fld[var2] : null;
+		}
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu ay(int var1) throws EOFException {
+		int var2 = var1 >> 16;
+		int var3 = var1 & 65535;
+		if (this.aw_fld[var2] == null || this.aw_fld[var2][var3] == null) {
+			boolean var4 = this.az(var2);
+			if (!var4) {
+				return null;
+			}
+		}
+
+		return this.aw_fld[var2][var3];
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(JI)V"
+		descriptor = "(JIB)V"
 	)
 	static final void ar(long var0, int var2) {
 		if (ej.cq_fld[ej.cd_fld] != Integer.MAX_VALUE && ej.cc_fld[ej.cd_fld] != var0) {
@@ -417,89 +402,39 @@ public class lw {
 		ej.cq_fld[ej.cd_fld] = Math.min(ej.cq_fld[ej.cd_fld], var2);
 	}
 
-	@ObfuscatedName("kt")
+	@ObfuscatedName("or")
 	@ObfuscatedSignature(
-		descriptor = "(Llw;I)Z"
+		descriptor = "(Llw;I)Llu;"
 	)
-	public static boolean kt(lw var0, int var1) throws EOFException {
+	public static lu or(lw var0, int var1) throws EOFException {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		if (var1 >= 0 && var1 < var0.aw_fld.length) {
-			if (var0.ak_fld[var1]) {
-				return true;
-			} else if (!var0.ah_fld.cv(var1, -1707092027)) {
-				return false;
-			} else {
-				int var2 = rl1.ei(var0.ah_fld, var1);
-				if (0 == var2) {
-					var0.ak_fld[var1] = true;
-					return true;
-				} else {
-					if (var0.aw_fld[var1] == null) {
-						var0.aw_fld[var1] = new lu[var2];
-					}
-
-					for (int var3 = 0; var3 < var2; var3++) {
-						if (var0.aw_fld[var1][var3] == null) {
-							byte[] var4 = var0.ah_fld.bb(var1, var3, 584982574);
-							if (var4 != null) {
-								lu var5 = new lu();
-								var0.aw_fld[var1][var3] = var5;
-								var5.bf_fld = 1265887489 * ((var1 << 16) + var3);
-								if (var4[0] == -1) {
-									var5.ae(new xi(var4), 54069187);
-								} else {
-									var5.av(new xi(var4), -1894614222);
-								}
-
-								if (var0.ag_fld != null) {
-									byte[] var6 = var0.ag_fld.bb(var1, var3, 584982574);
-									if (var6 != null && var6.length > 0) {
-										var5.ah(new xi(var6), 153573090);
-										var0.ay_fld.put(var5.bl_fld, var1);
-									}
-								}
-							}
-						}
-					}
-
-					for (int var7 = 0; var7 < var2; var7++) {
-						lu var8 = var0.aw_fld[var1][var7];
-						if (var8 != null && -1 != var8.cv_fld) {
-							lu var9 = var0.aw_fld[var1][var8.cv_fld & -1849308348];
-							if (var7 > var9.cs_fld) {
-								var9.cs_fld = var7;
-							}
-
-							if (var7 < var9.cx_fld) {
-								var9.cx_fld = var7;
-							}
-						}
-					}
-
-					var0.ak_fld[var1] = true;
-					return true;
-				}
+		int var2 = var1 >> 16;
+		int var3 = var1 & 65535;
+		if (var0.aw_fld[var2] == null || var0.aw_fld[var2][var3] == null) {
+			boolean var4 = var0.az(var2);
+			if (!var4) {
+				return null;
 			}
-		} else {
-			return false;
 		}
+
+		return var0.aw_fld[var2][var3];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
-	public boolean al(int var1) throws EOFException {
+	public boolean af(int var1) throws EOFException {
 		if (var1 >= 0 && var1 < this.aw_fld.length) {
 			if (this.ak_fld[var1]) {
 				return true;
-			} else if (!this.ah_fld.cv(var1, -1140465611)) {
+			} else if (!this.ag_fld.dz(var1, -1707092027)) {
 				return false;
 			} else {
-				int var2 = rl1.ei(this.ah_fld, var1);
+				int var2 = this.ag_fld.ce(var1, -1016730929);
 				if (0 == var2) {
 					this.ak_fld[var1] = true;
 					return true;
@@ -510,7 +445,82 @@ public class lw {
 
 					for (int var3 = 0; var3 < var2; var3++) {
 						if (this.aw_fld[var1][var3] == null) {
-							byte[] var4 = this.ah_fld.bb(var1, var3, 584982574);
+							byte[] var4 = this.ag_fld.bb(var1, var3, 584982574);
+							if (var4 != null) {
+								lu var5 = new lu();
+								this.aw_fld[var1][var3] = var5;
+								var5.bf_fld = 1265887489 * ((var1 << 16) + var3);
+								if (var4[0] == -1) {
+									var5.ae(new xi(var4), 54069187);
+								} else {
+									var5.av(new xi(var4), -1894614222);
+								}
+
+								if (this.az_fld != null) {
+									byte[] var6 = this.az_fld.bb(var1, var3, 584982574);
+									if (var6 != null && var6.length > 0) {
+										var5.ah(new xi(var6), 153573090);
+										this.ay_fld.put(var5.bl_fld, var1);
+									}
+								}
+							}
+						}
+					}
+
+					for (int var7 = 0; var7 < var2; var7++) {
+						lu var8 = this.aw_fld[var1][var7];
+						if (var8 != null && -1 != var8.cv_fld) {
+							lu var9 = this.aw_fld[var1][var8.cv_fld & -1849308348];
+							if (var7 > var9.cs_fld) {
+								var9.cs_fld = var7;
+							}
+
+							if (var7 < var9.cx_fld) {
+								var9.cx_fld = var7;
+							}
+						}
+					}
+
+					this.ak_fld[var1] = true;
+					return true;
+				}
+			}
+		} else {
+			return false;
+		}
+	}
+
+	@ObfuscatedName("lg")
+	@ObfuscatedSignature(
+		descriptor = "(I)Llu;"
+	)
+	public lu lg(int var1) throws EOFException {
+		return this.ak(var1);
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	public boolean al(int var1) throws EOFException {
+		if (var1 >= 0 && var1 < this.aw_fld.length) {
+			if (this.ak_fld[var1]) {
+				return true;
+			} else if (!this.ag_fld.dz(var1, -1140465611)) {
+				return false;
+			} else {
+				int var2 = this.ag_fld.ce(var1, -288445752);
+				if (0 == var2) {
+					this.ak_fld[var1] = true;
+					return true;
+				} else {
+					if (this.aw_fld[var1] == null) {
+						this.aw_fld[var1] = new lu[var2];
+					}
+
+					for (int var3 = 0; var3 < var2; var3++) {
+						if (this.aw_fld[var1][var3] == null) {
+							byte[] var4 = this.ag_fld.bb(var1, var3, 584982574);
 							if (var4 != null) {
 								lu var5 = new lu();
 								this.aw_fld[var1][var3] = var5;
@@ -521,8 +531,8 @@ public class lw {
 									var5.av(new xi(var4), -1894614222);
 								}
 
-								if (this.ag_fld != null) {
-									byte[] var6 = this.ag_fld.bb(var1, var3, 584982574);
+								if (this.az_fld != null) {
+									byte[] var6 = this.az_fld.bb(var1, var3, 584982574);
 									if (var6 != null && var6.length > 0) {
 										var5.ah(new xi(var6), 153573090);
 										this.ay_fld.put(var5.bl_fld, var1);
@@ -555,14 +565,14 @@ public class lw {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void ae(int var1) {
+	public void ax(int var1) {
 		if (-1 != var1) {
 			if (this.ak_fld[var1]) {
-				this.ah_fld.ca(var1, 1348856680);
+				this.ag_fld.ca(var1, 1348856680);
 				if (this.aw_fld[var1] != null) {
 					for (int var2 = 0; var2 < this.aw_fld[var1].length; var2++) {
 						if (this.aw_fld[var1][var2] != null) {
@@ -575,6 +585,36 @@ public class lw {
 				}
 			}
 		}
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ae(int var1) {
+		if (-1 != var1) {
+			if (this.ak_fld[var1]) {
+				this.ag_fld.ca(var1, 1217136120);
+				if (this.aw_fld[var1] != null) {
+					for (int var2 = 0; var2 < this.aw_fld[var1].length; var2++) {
+						if (this.aw_fld[var1][var2] != null) {
+							this.aw_fld[var1][var2] = null;
+						}
+					}
+
+					this.aw_fld[var1] = null;
+					this.ak_fld[var1] = false;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("kw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	public boolean kw(int var1) throws EOFException {
+		return this.az(var1);
 	}
 
 	@ObfuscatedName("au")
@@ -584,29 +624,7 @@ public class lw {
 	public void au(int var1) {
 		if (-1 != var1) {
 			if (this.ak_fld[var1]) {
-				this.ah_fld.ca(var1, 1217136120);
-				if (this.aw_fld[var1] != null) {
-					for (int var2 = 0; var2 < this.aw_fld[var1].length; var2++) {
-						if (this.aw_fld[var1][var2] != null) {
-							this.aw_fld[var1][var2] = null;
-						}
-					}
-
-					this.aw_fld[var1] = null;
-					this.ak_fld[var1] = false;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void ax(int var1) {
-		if (-1 != var1) {
-			if (this.ak_fld[var1]) {
-				this.ah_fld.ca(var1, 2145638876);
+				this.ag_fld.ca(var1, 2145638876);
 				if (this.aw_fld[var1] != null) {
 					for (int var2 = 0; var2 < this.aw_fld[var1].length; var2++) {
 						if (this.aw_fld[var1][var2] != null) {
@@ -623,34 +641,18 @@ public class lw {
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
-	public void an() {
-		this.as_fld.vh();
-		this.ar_fld.vh();
-		this.af_fld.vh();
-		this.al_fld.vh();
-	}
-
-	@ObfuscatedName("qw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	public boolean qw(int var1) throws EOFException {
-		return this.az(var1);
-	}
-
-	@ObfuscatedName("fg")
-	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
-	)
-	public lu fg(int var1) throws EOFException {
-		return this.ak(var1);
+	public void an(int var1) {
+		this.as_fld.av();
+		this.ar_fld.av();
+		this.af_fld.av();
+		this.al_fld.av();
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llu;"
+		descriptor = "(IB)Llu;"
 	)
 	public lu ak(int var1) throws EOFException {
 		int var3 = var1 >> 16;
@@ -672,7 +674,7 @@ public class lw {
 	public void av(int var1, byte var2) {
 		if (-1 != var1) {
 			if (this.ak_fld[var1]) {
-				this.ae_fld.ca(var1, 1703208281);
+				this.az_fld.ca(var1, 1703208281);
 				if (this.aw_fld[var1] != null) {
 					for (int var3 = 0; var3 < this.aw_fld[var1].length; var3++) {
 						if (this.aw_fld[var1][var3] != null) {

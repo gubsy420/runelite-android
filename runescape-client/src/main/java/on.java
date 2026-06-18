@@ -52,12 +52,12 @@ public class on {
 		descriptor = "Lon;"
 	)
 	static on ak_fld = new on(0);
-	@ObfuscatedGetter(
-		intValue = -974014265
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -974014265
 	)
 	int ar_fld;
 	@ObfuscatedName("kb")
@@ -82,7 +82,7 @@ public class on {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void ak() {
 		as_fld = new int[7];
@@ -97,7 +97,7 @@ public class on {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(IB)I"
 	)
 	public static int ag(int var0) {
 		if (null == as_fld) {
@@ -122,22 +122,9 @@ public class on {
 		as_fld[-574393321 * aw_fld.ar_fld] = 635252603 * of.af_fld.aa_fld;
 	}
 
-	@ObfuscatedName("ef")
-	@ObfuscatedSignature(
-		descriptor = "(Lyb;I)Lyb;"
-	)
-	public static yb ef(yb var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.av_fld = var1;
-		return var0;
-	}
-
 	@ObfuscatedName("cy")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int cy(int var0, ba var1, boolean var2) {
 		if (var0 == 7108) {
@@ -180,18 +167,18 @@ public class on {
 
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void bw() throws EOFException {
 		int var1 = client.db_fld.al_fld;
-		int[] var2 = client.db_fld.az_fld;
+		int[] var2 = client.db_fld.ar_fld;
 		Iterator var3 = client.da_fld.iterator();
 
 		while (var3.hasNext()) {
 			dx var4 = (dx)(dx)var3.next();
 
 			for (int var5 = 0; var5 < var1; var5++) {
-				cv var6 = (cv)var4.au_fld.ak(var2[var5]);
+				cv var6 = (cv)var4.au_fld.ae(var2[var5]);
 				if (null != var6) {
 					ec.bg(var4, var6, 1, -572279513);
 				}
@@ -201,18 +188,18 @@ public class on {
 
 	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
-		descriptor = "()Lrx;"
+		descriptor = "(B)Lrx;"
 	)
 	static rx eq() {
-		return di.bh(client.db_fld, client.dj_fld, (byte)76);
+		return client.db_fld.ak(client.dj_fld);
 	}
 
 	@ObfuscatedName("ee")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	static int ee() {
 		cv var1 = ot.ef();
-		return var1 != null ? var1.ap_fld : 0;
+		return var1 != null ? var1.ac_fld : 0;
 	}
 }

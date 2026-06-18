@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.AmbientSoundEffect;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -18,12 +19,12 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "Z"
 	)
 	boolean ax_fld = false;
-	@ObfuscatedGetter(
-		intValue = -1900148803
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1900148803
 	)
 	int ay_fld;
 	@ObfuscatedName("as")
@@ -36,12 +37,12 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "Lwv;"
 	)
 	wv ar_fld;
-	@ObfuscatedGetter(
-		intValue = 1078879895
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1078879895
 	)
 	int aw_fld;
 	@ObfuscatedName("al")
@@ -49,20 +50,20 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "Lwn;"
 	)
 	wn al_fld;
-	@ObfuscatedGetter(
-		intValue = 1180923923
-	)
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int au_fld;
 	@ObfuscatedGetter(
-		intValue = -1148991295
+		intValue = 1180923923
 	)
+	int au_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1148991295
 	)
 	int ah_fld;
 	@ObfuscatedName("aa")
@@ -91,7 +92,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "(I)V"
 	)
 	void bm(int var1) {
-		an_fld.av(this);
+		an_fld.az(this);
 	}
 
 	@ObfuscatedName("ba")
@@ -102,133 +103,36 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZI)V"
-	)
-	void ao(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9) {
-		try {
-			int var10 = ua.gp();
-			if (this.ax_fld) {
-				if (this.ad(-1339903940)) {
-					this.ax_fld = false;
-				}
-			} else {
-				if (this.ar_fld.ag_fld * 1077344343 == -1 && this.al_fld != null) {
-					if (var9 <= -20746246) {
-						return;
-					}
-
-					if (this.al_fld.ak_fld == null) {
-						if (var9 <= -20746246) {
-							return;
-						}
-
-						return;
-					}
-				}
-
-				if (var10 != 0 && var8) {
-					int var13 = 0;
-					if (var1 < var3) {
-						var13 += var3 - var1;
-					} else if (var1 > var5) {
-						var13 += var1 - var5;
-					}
-
-					if (var2 < var4) {
-						var13 += var4 - var2;
-					} else if (var2 > var6) {
-						var13 += var2 - var6;
-					}
-
-					var13 = Math.max(var13 - 64, 0);
-					if (var13 > this.aw_fld) {
-						if (var9 > -20746246) {
-							this.ac((byte)19);
-						}
-					} else {
-						double var22;
-						if (this.ay_fld < this.aw_fld) {
-							var22 = nl.az(this.aw_fld - var13, this.aw_fld - this.ay_fld, wh.pw(this.ar_fld.av_fld, 1677900357));
-						} else {
-							var22 = 1.0;
-						}
-
-						int var15 = (int)Math.ceil(var22 * var10);
-						if (null != this.as_fld) {
-							this.at(this.as_fld, var15, var10, -638431472);
-						} else if (1077344343 * this.ar_fld.ag_fld >= 0 && var15 > 0) {
-							this.as_fld = this.ap(1077344343 * this.ar_fld.ag_fld, var15, -1, 2117450433);
-						}
-
-						if (null != this.af_fld && wj.yt(this.af_fld, -1620373830) != null) {
-							this.at(this.af_fld, var15, var10, 444968042);
-						} else if (null != this.al_fld && this.al_fld.ak_fld != null && (this.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var15 > 0) {
-							int var16 = this.al_fld.ak_fld[(int)(Math.random() * this.al_fld.ak_fld.length)];
-							this.af_fld = this.ap(var16, var15, 0, 1700505195);
-							if (this.af_fld != null) {
-								this.af_fld.ag(var15, var10, this.ar_fld.av_fld.aw(), wh.wa(this.ar_fld.av_fld, (byte)1));
-								wj.nc(this.af_fld, 1937995242);
-							}
-
-							int var18 = this.al_fld.ag_fld * -239181913;
-							int var19 = this.al_fld.az_fld * -1441812743;
-							int var17 = var18 + (int)(Math.random() * (var19 - var18));
-							this.au_fld = var17;
-						}
-					}
-				} else {
-					if (this.as_fld != null) {
-						this.as_fld.ag(0, var10, 150, ai_fld);
-						wj.nc(this.as_fld, 1958165728);
-					}
-
-					if (null != this.af_fld) {
-						this.af_fld.ag(0, var10, 150, ai_fld);
-						wj.nc(this.af_fld, 2085056904);
-					}
-				}
-			}
-		} catch (Throwable var20) {
-			throw new RuntimeException(var20);
-		}
-	}
-
-	@ObfuscatedName("xf")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;Lwv;Lwn;I)V"
-	)
-	public static void xf(dr var0, wv var1, wn var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var1 != null) {
-				var0.ar_fld = var1;
-				var0.aw_fld = kj.aw(var1.az_fld);
-				var0.ay_fld = kj.aw(var1.ak_fld);
-			}
-
-			if (null != var2) {
-				var0.al_fld = var2;
-			}
-		}
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
 	abstract void ak(int var1) throws EOFException;
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lwv;Lwn;I)V"
+	)
+	void ab(wv var1, wn var2, int var3) {
+		if (var1 != null) {
+			this.ar_fld = var1;
+			this.aw_fld = kj.aw(var1.ak_fld);
+			this.ay_fld = kj.aw(var1.ag_fld);
+		}
+
+		if (null != var2) {
+			this.al_fld = var2;
+		}
+	}
+
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "(Lwj;II)V"
 	)
-	void bo(wj var1, int var2, int var3) {
-		wj.nc(var1, 1958165222);
-		wj.il(var1, var2, var3, this.ar_fld.av_fld);
-		wj.nc(var1, 2096117682);
+	void bp(wj var1, int var2, int var3) {
+		wj.lm(var1, 1958165222);
+		var1.ak(var2, var3, this.ar_fld.av_fld);
+		wj.lm(var1, 2096117682);
 	}
 
 	@ObfuscatedName("at")
@@ -236,21 +140,9 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "(Lwj;III)V"
 	)
 	void at(wj var1, int var2, int var3, int var4) {
-		wj.nc(var1, 1964132903);
-		wj.il(var1, var2, var3, this.ar_fld.av_fld);
-		wj.nc(var1, 1971771280);
-	}
-
-	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-		descriptor = "(Lec;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int ba(ec var0, Object var1, Object var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak((rr)var1, (rr)var2);
+		wj.lm(var1, 1964132903);
+		var1.ak(var2, var3, this.ar_fld.av_fld);
+		wj.lm(var1, 1971771280);
 	}
 
 	@ObfuscatedName("ac")
@@ -261,8 +153,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		if (this.ar_fld != null) {
 			wh var2 = this.ar_fld.av_fld;
 			if (this.as_fld != null) {
-				this.as_fld.ag(0, this.as_fld.av(), var2.ae(), var2.ay());
-				wj.nc(this.as_fld, 1927707527);
+				wj.uv(this.as_fld, 0, this.as_fld.av(), var2.aw(), var2.ah(-1897016173));
+				wj.lm(this.as_fld, 1927707527);
 			}
 
 			if (this.af_fld != null) {
@@ -270,8 +162,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 					return;
 				}
 
-				this.af_fld.ag(0, this.af_fld.av(), var2.ae(), var2.ay());
-				wj.nc(this.af_fld, 2119738904);
+				wj.uv(this.af_fld, 0, this.af_fld.av(), var2.aw(), var2.ah(-1897016173));
+				wj.lm(this.af_fld, 2119738904);
 			}
 		}
 	}
@@ -281,8 +173,36 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "(Lwj;B)V"
 	)
 	void aj(wj var1, byte var2) {
-		if (var1 != null && wj.yt(var1, -1041602392) != null) {
-			ny.km_fld.au(wj.yt(var1, -1726973551));
+		if (var1 != null && var1.ae() != null) {
+			ny.km_fld.ag(var1.ae());
+		}
+	}
+
+	@ObfuscatedName("cv")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int cv() {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(B)I"
+	)
+	int bd(byte var1) {
+		return this.ar_fld != null ? 1077344343 * this.ar_fld.az_fld : -1;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ai_void() {
+		try {
+			this.ak(-1343383056);
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
 		}
 	}
 
@@ -306,19 +226,23 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int av(byte var1);
 
+	@ObfuscatedName("ga")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;I)I"
+	)
+	public static int ga(dr var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ah_fld;
+		}
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	abstract int ae(int var1);
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int bz(int var1) {
-		return this.ah_fld;
-	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
@@ -326,13 +250,21 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int as();
 
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int bz(int var1) {
+		return this.aw_fld;
+	}
+
 	@ObfuscatedName("gx")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	@Override
 	public void gx() {
-		super.gy_void();
+		super.gy();
 	}
 
 	@ObfuscatedName("gy")
@@ -340,28 +272,16 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "()V"
 	)
 	@Override
-	public void gy_void() {
-		super.gy_void();
+	public void gy() {
+		super.gy();
 	}
 
-	@ObfuscatedName("cc")
+	@ObfuscatedName("gq")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "()Ljava/lang/String;"
 	)
-	int cc() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("fw")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;I)I"
-	)
-	public static int fw(dr var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.aw_fld;
+	public String gq() {
+		return super.toString();
 	}
 
 	@ObfuscatedName("ax")
@@ -388,20 +308,34 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int ay();
 
+	@ObfuscatedName("wt")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;)Z"
+	)
+	public static boolean wt(dr var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ac((byte)19);
+		if (var0.as_fld != null && var0.as_fld.av() == 0) {
+			var0.aj(var0.as_fld, (byte)64);
+			var0.as_fld = null;
+		}
+
+		if (null != var0.af_fld && var0.af_fld.av() == 0) {
+			var0.aj(var0.af_fld, (byte)3);
+			var0.af_fld = null;
+		}
+
+		return var0.as_fld == null && var0.af_fld == null;
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	abstract int az(int var1);
-
-	@ObfuscatedName("getBackgroundSoundEffectIds")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getBackgroundSoundEffectIds() {
-		return this.al_fld.ak_fld;
-	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
@@ -409,21 +343,21 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int ar();
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bc")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bt() {
+	void bc() {
 		if (this.ar_fld != null) {
 			wh var1 = this.ar_fld.av_fld;
 			if (this.as_fld != null) {
-				this.as_fld.ag(0, this.as_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.as_fld, 2123317989);
+				wj.uv(this.as_fld, 0, this.as_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.as_fld, 2123317989);
 			}
 
 			if (this.af_fld != null) {
-				this.af_fld.ag(0, this.af_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.af_fld, 2118779313);
+				wj.uv(this.af_fld, 0, this.af_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.af_fld, 2118779313);
 			}
 		}
 	}
@@ -434,48 +368,14 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int al();
 
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;B)I"
-	)
-	public static int bk(dr var0, byte var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ar_fld != null ? 1077344343 * var0.ar_fld.ag_fld : -1;
-	}
-
 	@ObfuscatedName("toString")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		return super.toString();
-	}
-
-	@ObfuscatedName("qh")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;)Z"
-	)
-	public static boolean qh(dr var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ac((byte)19);
-		if (var0.as_fld != null && var0.as_fld.av() == 0) {
-			var0.aj(var0.as_fld, (byte)-89);
-			var0.as_fld = null;
-		}
-
-		if (null != var0.af_fld && var0.af_fld.av() == 0) {
-			var0.aj(var0.af_fld, (byte)62);
-			var0.af_fld = null;
-		}
-
-		return var0.as_fld == null && var0.af_fld == null;
 	}
 
 	@ObfuscatedName("an")
@@ -484,20 +384,25 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int an();
 
+	@ObfuscatedName("qa")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;Lwj;)V"
+	)
+	public static void qa(dr var0, wj var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1 != null && var1.ae() != null) {
+			ny.km_fld.ag(var1.ae());
+		}
+	}
+
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	abstract int ai();
-
-	@ObfuscatedName("getSoundEffectId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getSoundEffectId() {
-		return this.ar_fld.ag_fld * 1077344343;
-	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
@@ -505,11 +410,39 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	abstract int aq();
 
+	@ObfuscatedName("getSoundEffectId")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getSoundEffectId")
+	@Override
+	public int getSoundEffectId() {
+		return this.ar_fld.az_fld * 1077344343;
+	}
+
+	@ObfuscatedName("vg")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;)I"
+	)
+	public static int vg(dr var0) {
+		return var0.ay_fld;
+	}
+
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	abstract int am();
+
+	@ObfuscatedName("getBackgroundSoundEffectIds")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getBackgroundSoundEffectIds")
+	@Override
+	public int[] getBackgroundSoundEffectIds() {
+		return this.al_fld.ak_fld;
+	}
 
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
@@ -530,52 +463,263 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		return this.as_fld == null && this.af_fld == null;
 	}
 
-	@ObfuscatedName("getPlane")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getPlane() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("bh")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean bh() {
-		this.ac((byte)19);
-		if (this.as_fld != null && this.as_fld.av() == 0) {
-			this.aj(this.as_fld, (byte)64);
-			this.as_fld = null;
-		}
-
-		if (null != this.af_fld && this.af_fld.av() == 0) {
-			this.aj(this.af_fld, (byte)3);
-			this.af_fld = null;
-		}
-
-		return this.as_fld == null && this.af_fld == null;
-	}
-
-	@ObfuscatedName("gq")
+	@ObfuscatedName("gi")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
-	public String gq() {
+	public String gi() {
 		return super.toString();
 	}
 
-	@ObfuscatedName("mj")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(Ldr;)Ljava/lang/String;"
+		descriptor = "(IIIIIIIZ)V"
 	)
-	public static String mj(dr var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	void bj(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8) {
+		try {
+			int var9 = ua.gp();
+			if (this.ax_fld) {
+				if (bf(this, 890302620)) {
+					this.ax_fld = false;
+				}
+			} else if (this.ar_fld.az_fld * -1963866393 != -1 || this.al_fld == null || this.al_fld.ak_fld != null) {
+				if (var9 != 0 && var8) {
+					int var12 = 0;
+					if (var1 < var3) {
+						var12 += var3 - var1;
+					} else if (var1 > var5) {
+						var12 += var1 - var5;
+					}
 
-		return var0.toString();
+					if (var2 < var4) {
+						var12 += var4 - var2;
+					} else if (var2 > var6) {
+						var12 += var2 - var6;
+					}
+
+					var12 = Math.max(var12 - -612050350, 0);
+					if (var12 > this.aw_fld) {
+						this.ac((byte)19);
+					} else {
+						double var22;
+						if (this.ay_fld < this.aw_fld) {
+							var22 = nl.az(this.aw_fld - var12, this.aw_fld - this.ay_fld, wh.qx(this.ar_fld.av_fld, 1274463752));
+						} else {
+							var22 = 1.0;
+						}
+
+						int var14 = (int)Math.ceil(var22 * var9);
+						if (null != this.as_fld) {
+							this.at(this.as_fld, var14, var9, 2008582370);
+						} else if (262609440 * this.ar_fld.az_fld >= 0 && var14 > 0) {
+							this.as_fld = this.ap(1077344343 * this.ar_fld.az_fld, var14, -1, 1755536092);
+						}
+
+						if (null != this.af_fld && this.af_fld.ae() != null) {
+							this.at(this.af_fld, var14, var9, 692705462);
+						} else if (null != this.al_fld && this.al_fld.ak_fld != null && (this.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var14 > 0) {
+							int var15 = this.al_fld.ak_fld[(int)(Math.random() * this.al_fld.ak_fld.length)];
+							this.af_fld = this.ap(var15, var14, 0, 2053998499);
+							if (this.af_fld != null) {
+								wj.uv(this.af_fld, var14, var9, this.ar_fld.av_fld.ae(), this.ar_fld.av_fld.av());
+								wj.lm(this.af_fld, 2032456014);
+							}
+
+							int var17 = this.al_fld.ag_fld * -2106074171;
+							int var18 = this.al_fld.az_fld * -1441812743;
+							int var16 = var17 + (int)(Math.random() * (var18 - var17));
+							this.au_fld = 1378576309 * var16;
+						}
+					}
+				} else {
+					if (this.as_fld != null) {
+						wj.uv(this.as_fld, 0, var9, 150, ai_fld);
+						wj.lm(this.as_fld, 2109617425);
+					}
+
+					if (null != this.af_fld) {
+						wj.uv(this.af_fld, 0, var9, 150, ai_fld);
+						wj.lm(this.af_fld, 2129816507);
+					}
+				}
+			}
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
+		}
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIZ)V"
+	)
+	void bf(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8) {
+		try {
+			int var9 = ua.gp();
+			if (this.ax_fld) {
+				if (bf(this, 1127862873)) {
+					this.ax_fld = false;
+				}
+			} else if (this.ar_fld.az_fld * 889205548 != -1 || this.al_fld == null || this.al_fld.ak_fld != null) {
+				if (var9 != 0 && var8) {
+					int var12 = 0;
+					if (var1 < var3) {
+						var12 += var3 - var1;
+					} else if (var1 > var5) {
+						var12 += var1 - var5;
+					}
+
+					if (var2 < var4) {
+						var12 += var4 - var2;
+					} else if (var2 > var6) {
+						var12 += var2 - var6;
+					}
+
+					var12 = Math.max(var12 - -820150965, 0);
+					if (var12 > this.aw_fld) {
+						this.ac((byte)19);
+					} else {
+						double var22;
+						if (this.ay_fld < this.aw_fld) {
+							var22 = nl.az(this.aw_fld - var12, this.aw_fld - this.ay_fld, wh.qx(this.ar_fld.av_fld, 766893278));
+						} else {
+							var22 = 1.0;
+						}
+
+						int var14 = (int)Math.ceil(var22 * var9);
+						if (null != this.as_fld) {
+							this.at(this.as_fld, var14, var9, -1183853430);
+						} else if (1077344343 * this.ar_fld.az_fld >= 0 && var14 > 0) {
+							this.as_fld = this.ap(1077344343 * this.ar_fld.az_fld, var14, -1, 1952490267);
+						}
+
+						if (null != this.af_fld && this.af_fld.ae() != null) {
+							this.at(this.af_fld, var14, var9, 737018670);
+						} else if (null != this.al_fld && this.al_fld.ak_fld != null && (this.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var14 > 0) {
+							int var15 = this.al_fld.ak_fld[(int)(Math.random() * this.al_fld.ak_fld.length)];
+							this.af_fld = this.ap(var15, var14, 0, 2080061205);
+							if (this.af_fld != null) {
+								wj.uv(this.af_fld, var14, var9, this.ar_fld.av_fld.ae(), this.ar_fld.av_fld.av());
+								wj.lm(this.af_fld, 2009036760);
+							}
+
+							int var17 = this.al_fld.ag_fld * 2044933640;
+							int var18 = this.al_fld.az_fld * 107401070;
+							int var16 = var17 + (int)(Math.random() * (var18 - var17));
+							this.au_fld = var16;
+						}
+					}
+				} else {
+					if (this.as_fld != null) {
+						wj.uv(this.as_fld, 0, var9, -195204504, ai_fld);
+						wj.lm(this.as_fld, 2040718643);
+					}
+
+					if (null != this.af_fld) {
+						wj.uv(this.af_fld, 0, var9, 150, ai_fld);
+						wj.lm(this.af_fld, 1981456558);
+					}
+				}
+			}
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
+		}
+	}
+
+	@ObfuscatedName("pm")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;IIIIIIIZI)V"
+	)
+	public static void pm(dr var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			int var10 = ua.gp();
+			if (var0.ax_fld) {
+				if (bf(var0, -1339903940)) {
+					var0.ax_fld = false;
+				}
+			} else {
+				if (var0.ar_fld.az_fld * 1077344343 == -1 && var0.al_fld != null) {
+					if (var9 <= -20746246) {
+						return;
+					}
+
+					if (var0.al_fld.ak_fld == null) {
+						if (var9 <= -20746246) {
+							return;
+						}
+
+						return;
+					}
+				}
+
+				if (var10 != 0 && var8) {
+					int var13 = 0;
+					if (var1 < var3) {
+						var13 += var3 - var1;
+					} else if (var1 > var5) {
+						var13 += var1 - var5;
+					}
+
+					if (var2 < var4) {
+						var13 += var4 - var2;
+					} else if (var2 > var6) {
+						var13 += var2 - var6;
+					}
+
+					var13 = Math.max(var13 - 64, 0);
+					if (var13 > var0.aw_fld) {
+						if (var9 > -20746246) {
+							var0.ac((byte)19);
+						}
+					} else {
+						double var22;
+						if (var0.ay_fld < var0.aw_fld) {
+							var22 = nl.az(var0.aw_fld - var13, var0.aw_fld - var0.ay_fld, wh.qx(var0.ar_fld.av_fld, 1677900357));
+						} else {
+							var22 = 1.0;
+						}
+
+						int var15 = (int)Math.ceil(var22 * var10);
+						if (null != var0.as_fld) {
+							var0.at(var0.as_fld, var15, var10, -638431472);
+						} else if (1077344343 * var0.ar_fld.az_fld >= 0 && var15 > 0) {
+							var0.as_fld = var0.ap(1077344343 * var0.ar_fld.az_fld, var15, -1, 2117450433);
+						}
+
+						if (null != var0.af_fld && var0.af_fld.ae() != null) {
+							var0.at(var0.af_fld, var15, var10, 444968042);
+						} else if (null != var0.al_fld && var0.al_fld.ak_fld != null && (var0.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var15 > 0) {
+							int var16 = var0.al_fld.ak_fld[(int)(Math.random() * var0.al_fld.ak_fld.length)];
+							var0.af_fld = var0.ap(var16, var15, 0, 1700505195);
+							if (var0.af_fld != null) {
+								wj.uv(var0.af_fld, var15, var10, var0.ar_fld.av_fld.ae(), var0.ar_fld.av_fld.av());
+								wj.lm(var0.af_fld, 1937995242);
+							}
+
+							int var18 = var0.al_fld.ag_fld * -239181913;
+							int var19 = var0.al_fld.az_fld * -1441812743;
+							int var17 = var18 + (int)(Math.random() * (var19 - var18));
+							var0.au_fld = var17;
+						}
+					}
+				} else {
+					if (var0.as_fld != null) {
+						wj.uv(var0.as_fld, 0, var10, 150, ai_fld);
+						wj.lm(var0.as_fld, 1958165728);
+					}
+
+					if (null != var0.af_fld) {
+						wj.uv(var0.af_fld, 0, var10, 150, ai_fld);
+						wj.lm(var0.af_fld, 2085056904);
+					}
+				}
+			}
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
+		}
 	}
 
 	@ObfuscatedName("by")
@@ -585,8 +729,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	void by(wv var1, wn var2) {
 		if (var1 != null) {
 			this.ar_fld = var1;
-			this.aw_fld = kj.aw(516285339 * var1.az_fld);
-			this.ay_fld = kj.aw(var1.ak_fld * -172444611) * -490981082;
+			this.aw_fld = kj.aw(516285339 * var1.ak_fld);
+			this.ay_fld = kj.aw(var1.ag_fld * -172444611) * -490981082;
 		}
 
 		if (null != var2) {
@@ -601,8 +745,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	void bl(wv var1, wn var2) {
 		if (var1 != null) {
 			this.ar_fld = var1;
-			this.aw_fld = kj.aw(-1425620074 * var1.az_fld) * -35833803;
-			this.ay_fld = kj.aw(var1.ak_fld) * 849463182;
+			this.aw_fld = kj.aw(-1425620074 * var1.ak_fld) * -35833803;
+			this.ay_fld = kj.aw(var1.ag_fld) * 849463182;
 		}
 
 		if (null != var2) {
@@ -617,8 +761,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	void bx(wv var1, wn var2) {
 		if (var1 != null) {
 			this.ar_fld = var1;
-			this.aw_fld = kj.aw(var1.az_fld) * 1157841275;
-			this.ay_fld = kj.aw(var1.ak_fld);
+			this.aw_fld = kj.aw(var1.ak_fld) * 1157841275;
+			this.ay_fld = kj.aw(var1.ag_fld);
 		}
 
 		if (null != var2) {
@@ -628,7 +772,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 
 	dr(int var1, wv var2, wn var3) {
 		this.ah_fld = var1;
-		xf(this, var2, var3, -1937441824);
+		this.ab(var2, var3, -1937441824);
 		if (null != this.al_fld && this.al_fld.ak_fld != null) {
 			int var6 = var3.ag_fld;
 			int var7 = var3.az_fld;
@@ -637,14 +781,14 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(Lwj;II)V"
 	)
-	void bp(wj var1, int var2, int var3) {
-		wj.nc(var1, 1984894269);
-		wj.il(var1, var2, var3, this.ar_fld.av_fld);
-		wj.nc(var1, 2034308613);
+	void bo(wj var1, int var2, int var3) {
+		wj.lm(var1, 1984894269);
+		var1.ak(var2, var3, this.ar_fld.av_fld);
+		wj.lm(var1, 2034308613);
 	}
 
 	@ObfuscatedName("ap")
@@ -653,12 +797,12 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	wj ap(int var1, int var2, int var3, int var4) {
 		try {
-			int var5 = rl1.ei(do_.ha_fld, var1) - 1;
+			int var5 = do_.ha_fld.ce(var1, -249106916) - 1;
 			af var6 = af.ag(do_.ha_fld, var1, var5);
 			if (var6 != null) {
 				al var7;
 				if (0 == var5) {
-					var7 = var6.az(cx.kq_fld.bl(-604134089));
+					var7 = var6.az(cx.kq_fld.aw(-604134089));
 				} else {
 					if (var5 != 1) {
 						return null;
@@ -668,10 +812,10 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 				}
 
 				wj var8 = new wj(var7, var2, var3);
-				if (wj.yt(var8, 162394440) == null) {
+				if (var8.ae() == null) {
 					return null;
 				} else {
-					ny.km_fld.ax(wj.yt(var8, -2104964373));
+					ny.km_fld.ak(var8.ae());
 					return var8;
 				}
 			} else {
@@ -682,35 +826,33 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		}
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "()Z"
 	)
-	void bi() {
-		if (this.ar_fld != null) {
-			wh var1 = this.ar_fld.av_fld;
-			if (this.as_fld != null) {
-				this.as_fld.ag(0, this.as_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.as_fld, 2020766691);
-			}
-
-			if (this.af_fld != null) {
-				this.af_fld.ag(0, this.af_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.af_fld, 2032295927);
-			}
+	boolean bk() {
+		this.ac((byte)19);
+		if (this.as_fld != null && this.as_fld.av() == 0) {
+			this.aj(this.as_fld, (byte)-89);
+			this.as_fld = null;
 		}
+
+		if (null != this.af_fld && this.af_fld.av() == 0) {
+			this.aj(this.af_fld, (byte)62);
+			this.af_fld = null;
+		}
+
+		return this.as_fld == null && this.af_fld == null;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("getPlane")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "()I"
 	)
-	public void am_void() {
-		try {
-			this.ak(-1343383056);
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
+	@Export("getPlane")
+	@Override
+	public int getPlane() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("bu")
@@ -721,23 +863,42 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		if (this.ar_fld != null) {
 			wh var1 = this.ar_fld.av_fld;
 			if (this.as_fld != null) {
-				this.as_fld.ag(0, this.as_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.as_fld, 2066028319);
+				wj.uv(this.as_fld, 0, this.as_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.as_fld, 2020766691);
 			}
 
 			if (this.af_fld != null) {
-				this.af_fld.ag(0, this.af_fld.av(), var1.ae(), var1.ay());
-				wj.nc(this.af_fld, 1947509024);
+				wj.uv(this.af_fld, 0, this.af_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.af_fld, 2032295927);
 			}
 		}
 	}
 
-	@ObfuscatedName("bc")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void bc() {
-		an_fld.av(this);
+	void bt() {
+		if (this.ar_fld != null) {
+			wh var1 = this.ar_fld.av_fld;
+			if (this.as_fld != null) {
+				wj.uv(this.as_fld, 0, this.as_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.as_fld, 2066028319);
+			}
+
+			if (this.af_fld != null) {
+				wj.uv(this.af_fld, 0, this.af_fld.av(), var1.aw(), var1.ah(-1897016173));
+				wj.lm(this.af_fld, 1947509024);
+			}
+		}
+	}
+
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void bi() {
+		an_fld.az(this);
 	}
 
 	@ObfuscatedName("cq")
@@ -764,120 +925,12 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z"
-	)
-	boolean ad(int var1) {
-		this.ac((byte)19);
-		if (this.as_fld != null && this.as_fld.av() == 0) {
-			this.aj(this.as_fld, (byte)42);
-			this.as_fld = null;
-		}
-
-		if (null != this.af_fld && this.af_fld.av() == 0) {
-			this.aj(this.af_fld, (byte)-9);
-			this.af_fld = null;
-		}
-
-		return this.as_fld == null && this.af_fld == null;
-	}
-
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	int bw() {
-		return this.ar_fld != null ? 1077344343 * this.ar_fld.ag_fld : -1;
-	}
-
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;IIIIIIIZ)V"
-	)
-	public static void lf(dr var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			} else {
-				int var9 = ua.gp();
-				if (var0.ax_fld) {
-					if (var0.ad(1127862873)) {
-						var0.ax_fld = false;
-					}
-				} else if (var0.ar_fld.ag_fld * 889205548 != -1 || var0.al_fld == null || var0.al_fld.ak_fld != null) {
-					if (var9 != 0 && var8) {
-						int var12 = 0;
-						if (var1 < var3) {
-							var12 += var3 - var1;
-						} else if (var1 > var5) {
-							var12 += var1 - var5;
-						}
-
-						if (var2 < var4) {
-							var12 += var4 - var2;
-						} else if (var2 > var6) {
-							var12 += var2 - var6;
-						}
-
-						var12 = Math.max(var12 - -820150965, 0);
-						if (var12 > var0.aw_fld) {
-							var0.ac((byte)19);
-						} else {
-							double var22;
-							if (var0.ay_fld < var0.aw_fld) {
-								var22 = nl.az(var0.aw_fld - var12, var0.aw_fld - var0.ay_fld, wh.pw(var0.ar_fld.av_fld, 766893278));
-							} else {
-								var22 = 1.0;
-							}
-
-							int var14 = (int)Math.ceil(var22 * var9);
-							if (null != var0.as_fld) {
-								var0.at(var0.as_fld, var14, var9, -1183853430);
-							} else if (1077344343 * var0.ar_fld.ag_fld >= 0 && var14 > 0) {
-								var0.as_fld = var0.ap(1077344343 * var0.ar_fld.ag_fld, var14, -1, 1952490267);
-							}
-
-							if (null != var0.af_fld && wj.yt(var0.af_fld, -756567273) != null) {
-								var0.at(var0.af_fld, var14, var9, 737018670);
-							} else if (null != var0.al_fld && var0.al_fld.ak_fld != null && (var0.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var14 > 0) {
-								int var15 = var0.al_fld.ak_fld[(int)(Math.random() * var0.al_fld.ak_fld.length)];
-								var0.af_fld = var0.ap(var15, var14, 0, 2080061205);
-								if (var0.af_fld != null) {
-									var0.af_fld.ag(var14, var9, var0.ar_fld.av_fld.aw(), wh.wa(var0.ar_fld.av_fld, (byte)1));
-									wj.nc(var0.af_fld, 2009036760);
-								}
-
-								int var17 = var0.al_fld.ag_fld * 2044933640;
-								int var18 = var0.al_fld.az_fld * 107401070;
-								int var16 = var17 + (int)(Math.random() * (var18 - var17));
-								var0.au_fld = var16;
-							}
-						}
-					} else {
-						if (var0.as_fld != null) {
-							var0.as_fld.ag(0, var9, -195204504, ai_fld);
-							wj.nc(var0.as_fld, 2040718643);
-						}
-
-						if (null != var0.af_fld) {
-							var0.af_fld.ag(0, var9, 150, ai_fld);
-							wj.nc(var0.af_fld, 1981456558);
-						}
-					}
-				}
-			}
-		} catch (Throwable var20) {
-			throw new RuntimeException(var20);
-		}
-	}
-
-	@ObfuscatedName("cd")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int cd() {
-		return this.aw_fld;
+		return this.ar_fld != null ? 1077344343 * this.ar_fld.az_fld : -1;
 	}
 
 	@ObfuscatedName("bg")
@@ -899,14 +952,6 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "(B)I"
 	)
 	int be(byte var1) {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int cy() {
 		return this.ay_fld;
 	}
 
@@ -946,7 +991,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	@Override
 	public void gz() {
-		super.gy_void();
+		super.gy();
 	}
 
 	@ObfuscatedName("ge")
@@ -954,8 +999,8 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		descriptor = "()V"
 	)
 	@Override
-	public void ge_void() {
-		super.gy_void();
+	public void ge() {
+		super.gy();
 	}
 
 	@ObfuscatedName("gw")
@@ -964,7 +1009,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 	)
 	@Override
 	public void gw() {
-		super.gy_void();
+		super.gy();
 	}
 
 	@ObfuscatedName("aa")
@@ -975,7 +1020,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lsn;F)F"
+		descriptor = "(Lsn;FI)F"
 	)
 	static float ak(sn var0, float var1) {
 		if (var0 == null || var0.as() == 0) {
@@ -986,7 +1031,7 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 			} else if (var0.ag_fld) {
 				return var0.ae_fld[0].ag_fld;
 			} else {
-				sj var3 = var0.ay(var1);
+				sj var3 = sn.tz(var0, var1, -264126881);
 				boolean var4 = false;
 				boolean var5 = false;
 				if (var3 == null) {
@@ -1127,103 +1172,91 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lwv;Lwn;I)V"
+		descriptor = "(IIIIIIIZI)V"
 	)
-	void ab(wv var1, wn var2, int var3) {
-		if (var1 != null) {
-			this.ar_fld = var1;
-			this.ay_fld = kj.aw(193667497 * var1.ak_fld) * 1108834599;
-			this.au_fld = kj.ah(var1.az_fld * 1259083063) * 111668117;
-		}
-
-		if (null != var2) {
-			this.al_fld = var2;
-		}
-	}
-
-	@ObfuscatedName("bd")
-	@ObfuscatedSignature(
-		descriptor = "(B)I"
-	)
-	int bd(byte var1) {
-		return this.ar_fld != null ? 1077344343 * this.ar_fld.ak_fld : -1;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(Ldr;IIIIIIIZ)V"
-	)
-	public static void bx(dr var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8) throws EOFException {
+	void ao(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9) {
 		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			int var9 = ua.gp();
-			if (var0.ax_fld) {
-				if (var0.ad(890302620)) {
-					var0.ax_fld = false;
+			int var10 = ua.gp();
+			if (this.ax_fld) {
+				if (bf(this, -1339903940)) {
+					this.ax_fld = false;
 				}
-			} else if (var0.ar_fld.ag_fld * -1963866393 != -1 || var0.al_fld == null || var0.al_fld.ak_fld != null) {
-				if (var9 != 0 && var8) {
-					int var12 = 0;
+			} else {
+				if (this.ar_fld.az_fld * 1077344343 == -1 && this.al_fld != null) {
+					if (var9 <= -20746246) {
+						return;
+					}
+
+					if (this.al_fld.ak_fld == null) {
+						if (var9 <= -20746246) {
+							return;
+						}
+
+						return;
+					}
+				}
+
+				if (var10 != 0 && var8) {
+					int var13 = 0;
 					if (var1 < var3) {
-						var12 += var3 - var1;
+						var13 += var3 - var1;
 					} else if (var1 > var5) {
-						var12 += var1 - var5;
+						var13 += var1 - var5;
 					}
 
 					if (var2 < var4) {
-						var12 += var4 - var2;
+						var13 += var4 - var2;
 					} else if (var2 > var6) {
-						var12 += var2 - var6;
+						var13 += var2 - var6;
 					}
 
-					var12 = Math.max(var12 - -612050350, 0);
-					if (var12 > var0.aw_fld) {
-						var0.ac((byte)19);
+					var13 = Math.max(var13 - 64, 0);
+					if (var13 > this.au_fld) {
+						if (var9 > -20746246) {
+							this.ac((byte)19);
+						}
 					} else {
 						double var22;
-						if (var0.ay_fld < var0.aw_fld) {
-							var22 = nl.az(var0.aw_fld - var12, var0.aw_fld - var0.ay_fld, wh.pw(var0.ar_fld.av_fld, 1274463752));
+						if (this.ay_fld < this.ay_fld) {
+							var22 = nl.az(this.ay_fld - var13, this.au_fld - this.au_fld, wh.qx(this.ar_fld.av_fld, 1677900357));
 						} else {
 							var22 = 1.0;
 						}
 
-						int var14 = (int)Math.ceil(var22 * var9);
-						if (null != var0.as_fld) {
-							var0.at(var0.as_fld, var14, var9, 2008582370);
-						} else if (262609440 * var0.ar_fld.ag_fld >= 0 && var14 > 0) {
-							var0.as_fld = var0.ap(1077344343 * var0.ar_fld.ag_fld, var14, -1, 1755536092);
+						int var15 = (int)Math.ceil(var22 * var10);
+						if (null != this.af_fld) {
+							this.at(this.af_fld, var15, var10, -638431472);
+						} else if (1077344343 * this.ar_fld.ak_fld >= 0 && var15 > 0) {
+							this.as_fld = this.ap(1077344343 * this.ar_fld.ak_fld, var15, -1, 2117450433);
 						}
 
-						if (null != var0.af_fld && wj.yt(var0.af_fld, -154913105) != null) {
-							var0.at(var0.af_fld, var14, var9, 692705462);
-						} else if (null != var0.al_fld && var0.al_fld.ak_fld != null && (var0.au_fld -= var7 * -355790309) * 1180923923 <= 0 && var14 > 0) {
-							int var15 = var0.al_fld.ak_fld[(int)(Math.random() * var0.al_fld.ak_fld.length)];
-							var0.af_fld = var0.ap(var15, var14, 0, 2053998499);
-							if (var0.af_fld != null) {
-								var0.af_fld.ag(var14, var9, var0.ar_fld.av_fld.aw(), wh.wa(var0.ar_fld.av_fld, (byte)1));
-								wj.nc(var0.af_fld, 2032456014);
+						if (null != this.as_fld && this.af_fld.ae() != null) {
+							this.at(this.as_fld, var15, var10, 444968042);
+						} else if (null != this.al_fld && this.al_fld.ak_fld != null && (this.ay_fld = this.au_fld - var7 * -355790309) * 1180923923 <= 0 && var15 > 0) {
+							int var16 = this.al_fld.ak_fld[(int)(Math.random() * this.al_fld.ak_fld.length)];
+							this.as_fld = this.ap(var16, var15, 0, 1700505195);
+							if (this.as_fld != null) {
+								wj.uv(this.as_fld, var15, var10, this.ar_fld.av_fld.aw(), this.ar_fld.av_fld.av());
+								wj.lm(this.as_fld, 1937995242);
 							}
 
-							int var17 = var0.al_fld.ag_fld * -2106074171;
-							int var18 = var0.al_fld.az_fld * -1441812743;
-							int var16 = var17 + (int)(Math.random() * (var18 - var17));
-							var0.au_fld = 1378576309 * var16;
+							int var18 = this.al_fld.az_fld * -239181913;
+							int var19 = this.al_fld.az_fld * -1441812743;
+							int var17 = var18 + (int)(Math.random() * (var19 - var18));
+							this.ay_fld = -355790309 * var17;
 						}
 					}
 				} else {
-					if (var0.as_fld != null) {
-						var0.as_fld.ag(0, var9, 150, ai_fld);
-						wj.nc(var0.as_fld, 2109617425);
+					if (this.as_fld != null) {
+						wj.uv(this.as_fld, 0, var10, 150, ai_fld);
+						wj.lm(this.af_fld, 1958165728);
 					}
 
-					if (null != var0.af_fld) {
-						var0.af_fld.ag(0, var9, 150, ai_fld);
-						wj.nc(var0.af_fld, 2129816507);
+					if (null != this.as_fld) {
+						wj.uv(this.af_fld, 0, var10, 150, ai_fld);
+						wj.lm(this.af_fld, 2085056904);
 					}
 				}
 			}
@@ -1240,30 +1273,53 @@ public abstract class dr extends vw implements AmbientSoundEffect {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("gi")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "()I"
 	)
-	public String gi() {
-		return super.toString();
+	int cc() {
+		return this.aw_fld;
 	}
 
-	@ObfuscatedName("bk")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Ldr;I)Z"
 	)
-	boolean bk() {
+	public static boolean bf(dr var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ac((byte)19);
+		if (var0.as_fld != null && var0.as_fld.av() == 0) {
+			var0.aj(var0.as_fld, (byte)42);
+			var0.as_fld = null;
+		}
+
+		if (null != var0.af_fld && var0.af_fld.av() == 0) {
+			var0.aj(var0.af_fld, (byte)-9);
+			var0.af_fld = null;
+		}
+
+		return var0.as_fld == null && var0.af_fld == null;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean ad(int var1) {
 		this.ac((byte)19);
-		if (this.af_fld != null && this.af_fld.av() == 0) {
-			this.aj(this.as_fld, (byte)64);
+		if (this.as_fld != null && this.af_fld.av() == 0) {
+			this.aj(this.af_fld, (byte)42);
 			this.as_fld = null;
 		}
 
-		if (null != this.af_fld && this.as_fld.av() == 0) {
-			this.aj(this.af_fld, (byte)3);
+		if (null != this.as_fld && this.as_fld.av() == 0) {
+			this.aj(this.as_fld, (byte)-9);
 			this.as_fld = null;
 		}
 
-		return this.as_fld == null && this.af_fld == null;
+		return this.as_fld == null && this.as_fld == null;
 	}
 }

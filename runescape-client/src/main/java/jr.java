@@ -51,7 +51,7 @@ public class jr {
 
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;)Lsl;"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)Lsl;"
 	)
 	public static sl ai(String var0, String var1) {
 		if (null != var1 && !var1.isEmpty()) {

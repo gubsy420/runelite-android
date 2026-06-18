@@ -6,12 +6,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("wf")
 class wf implements xw {
-	@ObfuscatedGetter(
-		intValue = 241587713
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 241587713
 	)
 	public static int ae_fld;
 	@ObfuscatedName("ag")
@@ -20,31 +20,23 @@ class wf implements xw {
 	)
 	static int ag_fld;
 
-	@ObfuscatedName("cu")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;)Ljava/lang/String;"
-	)
-	public static String cu(nl var0) {
-		return var0.av_fld;
-	}
-
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
 	@Override
-	public xs ag() {
+	public xs az() {
 		return xs.aw_fld;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;II)Lyv;"
+		descriptor = "(Lub;III)Lyv;"
 	)
 	public static yv av(ub var0, int var1, int var2) throws EOFException {
-		SpritePixels var4 = (SpritePixels)(SpritePixels)client.vf_fld.get(var1);
+		SpritePixels var4 = (SpritePixels)(SpritePixels)client.ho_fld.get(var1);
 		if (var4 != null) {
-			return ((yv)var4).rd();
+			return ((yv)var4).bo();
 		} else {
 			int var8 = -447891562;
 			yv var10000;
@@ -60,12 +52,12 @@ class wf implements xw {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()Lxs;"
 	)
 	@Override
-	public xs az() {
+	public xs ag() {
 		return xs.aw_fld;
 	}
 

@@ -61,7 +61,10 @@ void main() {
     vec3 mul = (1.f - textureLightMode) * vec3(light) + textureLightMode * fColor.rgb;
     c = textureColor * vec4(mul, fColor.a);
   } else {
-    vec3 hsl = vec3(int(fHsl) >> 10 & 63, int(fHsl) >> 7 & 7, int(fHsl) & 127);
+    // Explicit float() per-arg — Mali drivers reject the implicit int→float promotion
+    // in vec3(int, int, int) and refuse to compile the shader. See vert.glsl for full
+    // context.
+    vec3 hsl = vec3(float(int(fHsl) >> 10 & 63), float(int(fHsl) >> 7 & 7), float(int(fHsl) & 127));
     vec3 rgb = mix(fColor.rgb, hslToRgb(hsl), smoothBanding);
     c = vec4(rgb, fColor.a);
   }

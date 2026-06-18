@@ -51,14 +51,6 @@ public class zc {
 		return ak_fld[var0];
 	}
 
-	@ObfuscatedName("op")
-	@ObfuscatedSignature(
-		descriptor = "(Lsn;)I"
-	)
-	public static int op(sn var0) {
-		return var0.ao_fld;
-	}
-
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(I)J"

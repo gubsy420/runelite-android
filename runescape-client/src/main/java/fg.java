@@ -15,43 +15,35 @@ public class fg {
 		descriptor = "I"
 	)
 	static int cy_fld;
-	@ObfuscatedGetter(
-		intValue = -695506525
-	)
 	@ObfuscatedName("rw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int rw_fld;
-
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "(Lcl;I)V"
+	@ObfuscatedGetter(
+		intValue = -695506525
 	)
-	public static void bp(cl var0, int var1) {
-		var0.az_fld.ak_fld = var1;
-	}
+	static int rw_fld;
 
 	@ObfuscatedName("es")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;IIIIIIIIIZ)V"
+		descriptor = "(Ldx;IIIIIIIIIZB)V"
 	)
 	static void es(dx var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, boolean var10) throws EOFException {
 		dw var12 = new dw();
-		var12.ag_fld = var4;
+		var12.ah_fld = var4;
 		int var10001 = var5 * -1329750057;
-		var12.iq(var5 * -1329750057 * -1736653849);
-		var12.az_fld = var10001;
+		var12.tc(var5 * -1329750057 * -1736653849);
+		var12.ay_fld = var10001;
 		var12.ak(var6, 317035601);
-		var12.av_fld = 1511522651 * (client.gw_fld + var7);
-		var12.ae_fld = 1785931029 * (client.gw_fld + var8);
-		var12.ah_fld = var9;
+		var12.az_fld = 1511522651 * (client.gw_fld + var7);
+		var12.ag_fld = 1785931029 * (client.gw_fld + var8);
+		var12.av_fld = var9;
 		var12.aw_fld = var10;
 		if (var0.aa_fld[var1][var2][var3] == null) {
 			var0.aa_fld[var1][var2][var3] = new na();
 		}
 
-		var0.aa_fld[var1][var2][var3].av(var12);
+		var0.aa_fld[var1][var2][var3].az(var12);
 		xh.en(var0, var1, var2, var3, 632922540);
 	}
 
@@ -104,6 +96,14 @@ public class fg {
 		return var0 * var2 - var1 * var3;
 	}
 
+	@ObfuscatedName("hb")
+	@ObfuscatedSignature(
+		descriptor = "(Lse;)I"
+	)
+	public static int hb(se var0) {
+		return var0.as_fld;
+	}
+
 	fg() throws Throwable {
 		throw new Error();
 	}
@@ -134,9 +134,22 @@ public class fg {
 		return var1 / 14925.0F / 1.0100503F;
 	}
 
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "(Ldh;IF)V"
+	)
+	public static void ku(dh var0, int var1, float var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var3 = var0.aw(var1, var2, 127);
+		var0.ah_fld = -1198010238 * dh.av_fld[var3];
+	}
+
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	static int ba(int var0) {
 		return (int)((Math.log(var0) / bp.as_fld - 7.0) * 256.0);

@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -648,24 +649,24 @@ public class sz {
 		}
 	}
 
-	@ObfuscatedName("et")
-	@ObfuscatedSignature(
-		descriptor = "(Lcs;I)V"
-	)
-	public static void et(cs var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.an_fld = var1;
-	}
-
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	static int as() {
 		return dd_fld.length;
+	}
+
+	@ObfuscatedName("wb")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;)I"
+	)
+	public static int wb(da var0) throws EOFException {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.cg_fld.ah_fld * 1149746715;
+		}
 	}
 
 	@ObfuscatedName("ah")
@@ -710,6 +711,18 @@ public class sz {
 		return dd_fld[var0];
 	}
 
+	@ObfuscatedName("gy")
+	@ObfuscatedSignature(
+		descriptor = "(Lqg;Lyz;)V"
+	)
+	public static void gy(qg var0, yz var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		no.dx(var0.ak_fld, var1);
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
@@ -726,18 +739,6 @@ public class sz {
 		return 0 != (var0 & 128);
 	}
 
-	@ObfuscatedName("su")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)Z"
-	)
-	public static boolean su(li var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return li.vk(var0, (byte)40) && var0.ab_fld % 60 < 30;
-	}
-
 	@ObfuscatedName("du")
 	@ObfuscatedSignature(
 		descriptor = "(Ldx;IIIIII)V"
@@ -749,8 +750,8 @@ public class sz {
 				return;
 			}
 
-			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)var7.as()) {
-				if (var8.ag_fld == var4) {
+			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)na.iy(var7)) {
+				if (var8.ah_fld == var4) {
 					if (var6 >= -1997329263) {
 						return;
 					}

@@ -29,12 +29,12 @@ public class hc {
 		descriptor = "Lhc;"
 	)
 	public static hc ae_fld = new hc("labels", -1);
-	@ObfuscatedGetter(
-		intValue = -2093553943
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2093553943
 	)
 	public int aw_fld;
 	@ObfuscatedName("az")
@@ -57,6 +57,14 @@ public class hc {
 		descriptor = "I"
 	)
 	static int au_fld;
+
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "(Lsl;)[J"
+	)
+	public static long[] ce(sl var0) {
+		return var0.ay_fld;
+	}
 
 	hc(String var1, int var2) {
 		this.ah_fld = var1;

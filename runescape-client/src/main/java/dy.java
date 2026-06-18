@@ -46,12 +46,12 @@ class dy implements kk {
 		descriptor = "I"
 	)
 	static int cd_fld;
-	@ObfuscatedGetter(
-		intValue = 585749103
-	)
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 585749103
 	)
 	static int bh_fld;
 
@@ -62,27 +62,8 @@ class dy implements kk {
 	@Override
 	public void av() {
 		if (this.val$item.bn((byte)-42).ah_fld != null) {
-			yz var1 = tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-46).ah_fld, 1792998551).ax(883809753);
+			yz var1 = yb.vn(tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-46).ah_fld, 1792998551), 883809753);
 			client.cz_fld.ak(var1);
-		}
-	}
-
-	@ObfuscatedName("ft")
-	@ObfuscatedSignature(
-		descriptor = "(Lwl;)Lhr;"
-	)
-	public static hr ft(wl var0) {
-		if (var0.cs_fld == null) {
-			return null;
-		} else {
-			while (var0.cs_fld.hasNext()) {
-				hr var1 = (hr)(hr)var0.cs_fld.next();
-				if (var1.ag(-561698242) != -1) {
-					return var1;
-				}
-			}
-
-			return null;
 		}
 	}
 
@@ -93,14 +74,14 @@ class dy implements kk {
 	@Override
 	public void ak(int var1) {
 		if (this.val$item.bn((byte)-95).ah_fld != null) {
-			yz var2 = tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-46).ah_fld, 1385244206).ax(-1495180622);
+			yz var2 = yb.vn(tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-46).ah_fld, 1385244206), -1495180622);
 			client.cz_fld.ak(var2);
 		}
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "([B)Z"
+		descriptor = "([BB)Z"
 	)
 	static boolean ar(byte[] var0) throws EOFException {
 		return kq.af(var0, 0, 0, 63, 63);
@@ -110,6 +91,14 @@ class dy implements kk {
 		this.val$item = var1;
 	}
 
+	@ObfuscatedName("nx")
+	@ObfuscatedSignature(
+		descriptor = "(Lyw;I)V"
+	)
+	public static void nx(yw var0, int var1) {
+		var0.ak_fld[(var0.ag_fld += 215542381) * -201871515 - 1] = var1;
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()V"
@@ -117,7 +106,7 @@ class dy implements kk {
 	@Override
 	public void ag() {
 		if (this.val$item.bn((byte)-5).ah_fld != null) {
-			yz var1 = tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-29).ah_fld, 1051424257).ax(-1998785509);
+			yz var1 = yb.vn(tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-29).ah_fld, 1051424257), -1998785509);
 			client.cz_fld.ak(var1);
 		}
 	}
@@ -129,14 +118,14 @@ class dy implements kk {
 	@Override
 	public void ae() {
 		if (this.val$item.bn((byte)-113).ah_fld != null) {
-			yz var1 = tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-2).ah_fld, 2003324141).ax(-541514239);
+			yz var1 = yb.vn(tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)-2).ah_fld, 2003324141), -541514239);
 			client.cz_fld.ak(var1);
 		}
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;II[BI)I"
+		descriptor = "(Ljava/lang/CharSequence;II[BII)I"
 	)
 	public static int av(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
 		int var6 = var2 - var1;
@@ -211,7 +200,7 @@ class dy implements kk {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "([BII)Ljava/lang/String;"
+		descriptor = "([BIII)Ljava/lang/String;"
 	)
 	static String ag(byte[] var0, int var1, int var2) {
 		StringBuilder var4 = new StringBuilder();
@@ -243,7 +232,7 @@ class dy implements kk {
 	@Override
 	public void az() {
 		if (this.val$item.bn((byte)-74).ah_fld != null) {
-			yz var1 = tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)3).ah_fld, 2039099572).ax(-373727828);
+			yz var1 = yb.vn(tu.ak(this.val$item).av((Object[])this.val$item.bn((byte)3).ah_fld, 2039099572), -373727828);
 			client.cz_fld.ak(var1);
 		}
 	}

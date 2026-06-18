@@ -1,39 +1,40 @@
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ye")
 public class ye {
-	@ObfuscatedGetter(
-		intValue = -2045262503
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -126719159
+		intValue = -2045262503
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -716222557
+		intValue = -126719159
 	)
+	int az_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
 	@ObfuscatedGetter(
-		intValue = 1769993935
+		intValue = -716222557
 	)
+	int ak_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1769993935
 	)
 	int av_fld;
 
@@ -66,6 +67,7 @@ public class ye {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		byte var1 = 10;
@@ -78,12 +80,40 @@ public class ye {
 		return "    Size: " + this.ak_fld + var5 + "Created: " + this.ag_fld + var7 + "Total used: " + this.az_fld + var6 + "Max-In-Use: " + this.av_fld;
 	}
 
-	@ObfuscatedName("gm")
+	@ObfuscatedName("zk")
 	@ObfuscatedSignature(
-		descriptor = "(Lba;I)J"
+		descriptor = "(Lye;)Ljava/lang/String;"
 	)
-	public static long gm(ba var0, int var1) {
-		return var0.aw_fld[var1];
+	public static String zk(ye var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			byte var1 = 10;
+			int var2 = 10 - Integer.toString(var0.ak_fld).length();
+			int var3 = 10 - Integer.toString(var0.az_fld).length();
+			int var4 = 10 - Integer.toString(var0.ag_fld).length();
+			String var5 = "          ".substring(10 - var2);
+			String var6 = "          ".substring(10 - var3);
+			String var7 = "          ".substring(10 - var4);
+			return "    Size: " + var0.ak_fld + var5 + "Created: " + var0.ag_fld + var7 + "Total used: " + var0.az_fld + var6 + "Max-In-Use: " + var0.av_fld;
+		}
+	}
+
+	ye() throws Throwable {
+		throw new Error();
+	}
+
+	@ObfuscatedName("md")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;)I"
+	)
+	public static int md(fn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ap();
+		return var0.ck_fld;
 	}
 
 	@ObfuscatedName("gi")
@@ -92,16 +122,22 @@ public class ye {
 	)
 	public String gi() {
 		byte var1 = 10;
-		int var2 = 10 - Integer.toString(this.ak_fld).length();
+		int var2 = 10 - Integer.toString(this.ag_fld * -716222557).length();
 		int var3 = 10 - Integer.toString(this.az_fld).length();
-		int var4 = 10 - Integer.toString(this.ag_fld).length();
+		int var4 = 10 - Integer.toString(this.av_fld * -2045262503).length();
 		String var5 = "          ".substring(10 - var2);
 		String var6 = "          ".substring(10 - var3);
 		String var7 = "          ".substring(10 - var4);
-		return "    Size: " + this.ak_fld + var5 + "Created: " + this.ag_fld + var7 + "Total used: " + this.az_fld + var6 + "Max-In-Use: " + this.av_fld;
-	}
-
-	ye() throws Throwable {
-		throw new Error();
+		return "    Size: "
+			+ this.ak_fld
+			+ var5
+			+ "Created: "
+			+ -2045262503 * this.ak_fld
+			+ var7
+			+ "Total used: "
+			+ -126719159 * this.ag_fld
+			+ var6
+			+ "Max-In-Use: "
+			+ this.ak_fld * 1769993935;
 	}
 }

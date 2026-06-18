@@ -1,4 +1,5 @@
 import net.runelite.api.SceneTileModel;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -30,6 +31,11 @@ public class fl implements SceneTileModel {
 		{1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3},
 		{1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5}
 	};
+	@ObfuscatedName("ca")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int ca_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "[F"
@@ -40,16 +46,16 @@ public class fl implements SceneTileModel {
 		descriptor = "[I"
 	)
 	int[] aq_fld;
+	@ObfuscatedName("ec")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int ec_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "[F"
 	)
 	static float[] ae_fld = new float[6];
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int cv_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "[I"
@@ -65,11 +71,6 @@ public class fl implements SceneTileModel {
 		descriptor = "[I"
 	)
 	int[] al_fld;
-	@ObfuscatedName("zc")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int zc_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "[I"
@@ -139,6 +140,11 @@ public class fl implements SceneTileModel {
 		{1, 3, 5, 7, 11, 12},
 		{1, 3, 5, 7, 13, 14}
 	};
+	@ObfuscatedName("lx")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int lx_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[F"
@@ -154,21 +160,137 @@ public class fl implements SceneTileModel {
 		descriptor = "I"
 	)
 	int ab_fld;
-	@ObfuscatedName("jm")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	public int jm_fld;
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	int ap_fld;
 
+	@ObfuscatedName("getVertexZ")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getVertexZ")
+	@Override
+	public int[] getVertexZ() {
+		return this.af_fld;
+	}
+
+	@ObfuscatedName("setBufferOffset")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setBufferOffset")
+	@Override
+	public void setBufferOffset(int var1) {
+		this.ca_fld = var1;
+	}
+
+	@ObfuscatedName("getTriangleColorB")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getTriangleColorB")
+	@Override
+	public int[] getTriangleColorB() {
+		return this.au_fld;
+	}
+
+	@ObfuscatedName("getModelUnderlay")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getModelUnderlay")
+	@Override
+	public int getModelUnderlay() {
+		return this.ab_fld;
+	}
+
+	@ObfuscatedName("getFaceX")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getFaceX")
+	@Override
+	public int[] getFaceX() {
+		return this.an_fld;
+	}
+
+	@ObfuscatedName("getBufferOffset")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getBufferOffset")
+	@Override
+	public int getBufferOffset() {
+		return this.ca_fld;
+	}
+
+	@ObfuscatedName("getVertexY")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getVertexY")
+	@Override
+	public int[] getVertexY() {
+		return this.ar_fld;
+	}
+
+	@ObfuscatedName("getRotation")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getRotation")
+	@Override
+	public int getRotation() {
+		return this.ao_fld;
+	}
+
+	@ObfuscatedName("getFaceZ")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getFaceZ")
+	@Override
+	public int[] getFaceZ() {
+		return this.ai_fld;
+	}
+
+	@ObfuscatedName("setBufferLen")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setBufferLen")
+	@Override
+	public void setBufferLen(int var1) {
+		this.lx_fld = var1;
+	}
+
+	@ObfuscatedName("getModelOverlay")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getModelOverlay")
+	@Override
+	public int getModelOverlay() {
+		return this.ap_fld;
+	}
+
+	@ObfuscatedName("getVertexX")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getVertexX")
+	@Override
+	public int[] getVertexX() {
+		return this.as_fld;
+	}
+
 	@ObfuscatedName("getShape")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getShape")
 	@Override
 	public int getShape() {
 		return this.ad_fld;
@@ -178,180 +300,80 @@ public class fl implements SceneTileModel {
 	@ObfuscatedSignature(
 		descriptor = "()[I"
 	)
+	@Export("getTriangleColorA")
 	@Override
 	public int[] getTriangleColorA() {
 		return this.al_fld;
-	}
-
-	@ObfuscatedName("setBufferLen")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setBufferLen(int var1) {
-		this.zc_fld = var1;
-	}
-
-	@ObfuscatedName("getBufferLen")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getBufferLen() {
-		return this.zc_fld;
-	}
-
-	@ObfuscatedName("isFlat")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	public boolean isFlat() {
-		return this.am_fld;
-	}
-
-	@ObfuscatedName("getTriangleTextureId")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getTriangleTextureId() {
-		return this.aq_fld;
-	}
-
-	@ObfuscatedName("getVertexZ")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getVertexZ() {
-		return this.af_fld;
-	}
-
-	@ObfuscatedName("getTriangleColorC")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getTriangleColorC() {
-		return this.ax_fld;
-	}
-
-	@ObfuscatedName("getModelOverlay")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelOverlay() {
-		return this.ap_fld;
-	}
-
-	@ObfuscatedName("setBufferOffset")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setBufferOffset(int var1) {
-		this.jm_fld = var1;
-	}
-
-	@ObfuscatedName("setUvBufferOffset")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	@Override
-	public void setUvBufferOffset(int var1) {
-		this.cv_fld = var1;
-	}
-
-	@ObfuscatedName("getModelUnderlay")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getModelUnderlay() {
-		return this.ab_fld;
-	}
-
-	@ObfuscatedName("getFaceZ")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getFaceZ() {
-		return this.ai_fld;
 	}
 
 	@ObfuscatedName("getUvBufferOffset")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getUvBufferOffset")
 	@Override
 	public int getUvBufferOffset() {
-		return this.cv_fld;
+		return this.ec_fld;
 	}
 
-	@ObfuscatedName("getVertexY")
+	@ObfuscatedName("setUvBufferOffset")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	@Export("setUvBufferOffset")
+	@Override
+	public void setUvBufferOffset(int var1) {
+		this.ec_fld = var1;
+	}
+
+	@ObfuscatedName("getTriangleColorC")
 	@ObfuscatedSignature(
 		descriptor = "()[I"
 	)
+	@Export("getTriangleColorC")
 	@Override
-	public int[] getVertexY() {
-		return this.ar_fld;
+	public int[] getTriangleColorC() {
+		return this.ax_fld;
 	}
 
 	@ObfuscatedName("getFaceY")
 	@ObfuscatedSignature(
 		descriptor = "()[I"
 	)
+	@Export("getFaceY")
 	@Override
 	public int[] getFaceY() {
 		return this.aa_fld;
 	}
 
-	@ObfuscatedName("getBufferOffset")
+	@ObfuscatedName("getTriangleTextureId")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getTriangleTextureId")
+	@Override
+	public int[] getTriangleTextureId() {
+		return this.aq_fld;
+	}
+
+	@ObfuscatedName("isFlat")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Export("isFlat")
+	@Override
+	public boolean isFlat() {
+		return this.am_fld;
+	}
+
+	@ObfuscatedName("getBufferLen")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getBufferLen")
 	@Override
-	public int getBufferOffset() {
-		return this.jm_fld;
-	}
-
-	@ObfuscatedName("getVertexX")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getVertexX() {
-		return this.as_fld;
-	}
-
-	@ObfuscatedName("getRotation")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRotation() {
-		return this.ao_fld;
-	}
-
-	@ObfuscatedName("getTriangleColorB")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getTriangleColorB() {
-		return this.au_fld;
-	}
-
-	@ObfuscatedName("getFaceX")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getFaceX() {
-		return this.an_fld;
+	public int getBufferLen() {
+		return this.lx_fld;
 	}
 
 	fl(

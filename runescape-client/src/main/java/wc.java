@@ -22,6 +22,25 @@ public abstract class wc {
 		return (var0 & var1.ag(-1107763154)) != 0;
 	}
 
+	@ObfuscatedName("sx")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)Lhr;"
+	)
+	public static hr sx(wl var0) {
+		if (var0.cs_fld == null) {
+			return null;
+		} else {
+			while (var0.cs_fld.hasNext()) {
+				hr var1 = (hr)(hr)var0.cs_fld.next();
+				if (var1.ag(1491536057) != -1) {
+					return var1;
+				}
+			}
+
+			return null;
+		}
+	}
+
 	wc() throws Throwable {
 		throw new Error();
 	}

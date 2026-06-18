@@ -24,12 +24,12 @@ public class ng {
 		descriptor = "[I"
 	)
 	static int[] av_fld;
-	@ObfuscatedGetter(
-		intValue = 359913435
-	)
 	@ObfuscatedName("ir")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 359913435
 	)
 	static int ir_fld;
 
@@ -182,13 +182,13 @@ public class ng {
 			client.or_fld = var1;
 			int var9 = var3 & 65535;
 			int var10 = var3 >> 16;
-			jm var11 = gi.ak(jb.ai_fld, client.aq_fld.av_fld);
-			var11.ay_fld.di(var6 + var0);
-			var11.ay_fld.di(var7 + var1);
-			var11.ay_fld.bc(client.ej_fld.ay(82) ? 1 : 0);
-			xi.si(var11.ay_fld, var9);
-			xi.rs(var11.ay_fld, var10);
-			client.aq_fld.az(var11);
+			jm var11 = gi.ak(jb.ai_fld, client.appletStub.av_fld);
+			var11.ay_fld.ek(var6 + var0);
+			var11.ay_fld.ek(var7 + var1);
+			var11.ay_fld.ea(client.ej_fld.as(82) ? 1 : 0);
+			var11.ay_fld.ca(var9);
+			var11.ay_fld.cx(var10);
+			client.appletStub.az(var11);
 		}
 
 		if (var2 == 19) {
@@ -200,13 +200,13 @@ public class ng {
 			client.or_fld = var1;
 			int var12 = var3 & 65535;
 			int var16 = var3 >> 16;
-			jm var20 = gi.ak(jb.at_fld, client.aq_fld.av_fld);
-			var20.ay_fld.dy(var16);
-			var20.ay_fld.di(var0 + var6);
-			var20.ay_fld.di(var12);
-			xi.rs(var20.ay_fld, client.ej_fld.ay(82) ? 1 : 0);
-			xi.be(var20.ay_fld, var7 + var1);
-			client.aq_fld.az(var20);
+			jm var20 = gi.ak(jb.at_fld, client.appletStub.av_fld);
+			var20.ay_fld.bq(var16);
+			var20.ay_fld.ek(var0 + var6);
+			var20.ay_fld.ek(var12);
+			var20.ay_fld.cx(client.ej_fld.as(82) ? 1 : 0);
+			var20.ay_fld.ba(var7 + var1);
+			client.appletStub.az(var20);
 		}
 
 		if (20 == var2) {
@@ -218,13 +218,13 @@ public class ng {
 			client.or_fld = var1;
 			int var13 = var3 & 65535;
 			int var17 = var3 >> 16;
-			jm var21 = gi.ak(jb.ab_fld, client.aq_fld.av_fld);
-			xi.be(var21.ay_fld, var0 + var6);
-			xi.si(var21.ay_fld, var7 + var1);
-			var21.ay_fld.dy(client.ej_fld.ay(82) ? 1 : 0);
-			xi.rs(var21.ay_fld, var17);
-			var21.ay_fld.bw(var13);
-			client.aq_fld.az(var21);
+			jm var21 = gi.ak(jb.ab_fld, client.appletStub.av_fld);
+			var21.ay_fld.ba(var0 + var6);
+			var21.ay_fld.ca(var7 + var1);
+			var21.ay_fld.bq(client.ej_fld.as(82) ? 1 : 0);
+			var21.ay_fld.cx(var17);
+			xi.vy(var21.ay_fld, var13);
+			client.appletStub.az(var21);
 		}
 
 		if (21 == var2) {
@@ -240,13 +240,13 @@ public class ng {
 			client.or_fld = var1;
 			int var14 = var3 & 65535;
 			int var18 = var3 >> 16;
-			jm var22 = gi.ak(jb.cq_fld, client.aq_fld.av_fld);
-			var22.ay_fld.di(var1 + var7);
-			var22.ay_fld.dy(client.ej_fld.ay(82) ? 1 : 0);
-			var22.ay_fld.bc(var18);
-			var22.ay_fld.bw(var0 + var6);
-			xi.be(var22.ay_fld, var14);
-			client.aq_fld.az(var22);
+			jm var22 = gi.ak(jb.cq_fld, client.appletStub.av_fld);
+			var22.ay_fld.ek(var1 + var7);
+			var22.ay_fld.bq(client.ej_fld.as(82) ? 1 : 0);
+			var22.ay_fld.ea(var18);
+			xi.vy(var22.ay_fld, var0 + var6);
+			var22.ay_fld.ba(var14);
+			client.appletStub.az(var22);
 		}
 
 		if (var2 == 22) {
@@ -262,18 +262,30 @@ public class ng {
 			client.or_fld = var1;
 			int var15 = var3 & 65535;
 			int var19 = var3 >> 16;
-			jm var23 = gi.ak(jb.dj_fld, client.aq_fld.av_fld);
-			var23.ay_fld.ek(var19);
-			var23.ay_fld.ek(client.ej_fld.ay(82) ? 1 : 0);
-			var23.ay_fld.bw(var15);
-			xi.si(var23.ay_fld, var7 + var1);
-			xi.be(var23.ay_fld, var0 + var6);
-			client.aq_fld.az(var23);
+			jm var23 = gi.ak(jb.dj_fld, client.appletStub.av_fld);
+			var23.ay_fld.di(var19);
+			var23.ay_fld.di(client.ej_fld.as(82) ? 1 : 0);
+			xi.vy(var23.ay_fld, var15);
+			var23.ay_fld.ca(var7 + var1);
+			var23.ay_fld.ba(var0 + var6);
+			client.appletStub.az(var23);
 		}
 	}
 
 	ng() throws Throwable {
 		throw new Error();
+	}
+
+	@ObfuscatedName("hw")
+	@ObfuscatedSignature(
+		descriptor = "(Ldr;)I"
+	)
+	public static int hw(dr var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.aw_fld;
+		}
 	}
 
 	@ObfuscatedName("aw")
@@ -313,7 +325,7 @@ public class ng {
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void aw() {
 		bg.ak_fld = new xz(32);

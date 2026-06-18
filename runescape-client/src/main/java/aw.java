@@ -3,23 +3,22 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("aw")
 public interface aw {
-	@ObfuscatedName("pb")
+	@ObfuscatedName("wn")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)Z"
+		descriptor = "(Los;Lxi;)V"
 	)
-	static boolean pb(uk var0) {
-		return var0.ae_fld;
-	}
-
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)V"
-	)
-	static void fe(li var0) {
+	static void wn(os var0, xi var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.bf_fld = Math.max(0, var0.bf_fld - zg.ae(var0.am_fld, 1917156394));
+		while (true) {
+			int var2 = var1.cg();
+			if (0 == var2) {
+				return;
+			}
+
+			var0.az(var1, var2, (short)-8085);
+		}
 	}
 }

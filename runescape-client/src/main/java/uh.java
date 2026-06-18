@@ -85,6 +85,14 @@ public class uh {
 		return ae_fld[var0 & 16383];
 	}
 
+	@ObfuscatedName("tu")
+	@ObfuscatedSignature(
+		descriptor = "(Loy;)Lkt;"
+	)
+	public static kt tu(oy var0) {
+		return var0.bl_fld;
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)F"
@@ -134,17 +142,6 @@ public class uh {
 		return ae_fld[var0 & 16383];
 	}
 
-	@ObfuscatedName("rs")
-	@ObfuscatedSignature(
-		descriptor = "(Lzg;I)V"
-	)
-	public static void rs(zg var0, int var1) {
-		if (var1 != var0.ad_fld) {
-			var0.ad_fld = var1;
-			zg.vf(var0, (byte)0);
-		}
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
@@ -155,7 +152,7 @@ public class uh {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lpc;"
+		descriptor = "(II)Lpc;"
 	)
 	public static pc ak(int var0) {
 		return var0 >= 0 && var0 < lq.ae_fld.length && lq.ae_fld[var0] != null ? lq.ae_fld[var0] : new pc(var0);

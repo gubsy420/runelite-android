@@ -33,26 +33,6 @@ public class zq {
 		throw new Error();
 	}
 
-	@ObfuscatedName("uv")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)I"
-	)
-	public static int uv(li var0) {
-		return var0.bd_fld;
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(Lla;Ljava/lang/Runnable;I)Llv;"
-	)
-	public static lv iu(la var0, Runnable var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return la.se(var0, 2, var2, 0, var1);
-	}
-
 	static {
 		Calendar.getInstance();
 	}

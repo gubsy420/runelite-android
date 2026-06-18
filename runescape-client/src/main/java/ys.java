@@ -66,10 +66,10 @@ public class ys {
 		descriptor = "(ILjava/lang/String;Lxh;I)Ljm;"
 	)
 	public static jm az(int var0, String var1, xh var2, int var3) {
-		jm var4 = gi.ak(jb.ck_fld, client.aq_fld.av_fld);
-		var4.ay_fld.bc(0);
+		jm var4 = gi.ak(jb.ck_fld, client.appletStub.av_fld);
+		var4.ay_fld.ea(0);
 		int var5 = var4.ay_fld.au_fld * -661977895;
-		var4.ay_fld.bc(var0);
+		var4.ay_fld.ea(var0);
 		String var6 = var1.toLowerCase();
 		int var7 = 0;
 		byte[] var8 = null;
@@ -139,20 +139,20 @@ public class ys {
 			var1 = var1.substring(kh.iu_fld.length());
 		}
 
-		var4.ay_fld.bc(var7);
-		var4.ay_fld.bc(var9);
+		var4.ay_fld.ea(var7);
+		var4.ay_fld.ea(var9);
 		if (var8 != null) {
 			for (int var10 = 0; var10 < var8.length; var10++) {
-				var4.ay_fld.bc(var8[var10]);
+				var4.ay_fld.ea(var8[var10]);
 			}
 		}
 
 		jj.ak(var4.ay_fld, var1);
 		if (var0 == kf.av_fld.ag(-1197140574)) {
-			var4.ay_fld.bc(var3);
+			var4.ay_fld.ea(var3);
 		}
 
-		var4.ay_fld.cp(var4.ay_fld.au_fld * 372501927 - var5);
+		var4.ay_fld.ce(var4.ay_fld.au_fld * 372501927 - var5);
 		return var4;
 	}
 
@@ -202,24 +202,8 @@ public class ys {
 		}
 	}
 
-	@ObfuscatedName("fj")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
-	)
-	public static void fj(pi var0) {
-		var0.aa_fld = var0.az_fld;
-	}
-
 	ys() throws Throwable {
 		throw new Error();
-	}
-
-	@ObfuscatedName("os")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)I"
-	)
-	public static int os(da var0) {
-		return var0.cg_fld.ae_fld * 974676213;
 	}
 
 	@ObfuscatedName("cf")
@@ -230,10 +214,10 @@ public class ys {
 		client.em_fld = 0L;
 		if (var0 >= 2) {
 			client.el_fld = true;
-			client.ms(-1);
+			client.sv();
 		} else {
 			client.el_fld = false;
-			client.ms(-1);
+			client.sv();
 		}
 
 		if (xy.cy() == 1) {
@@ -247,12 +231,12 @@ public class ys {
 				return;
 			}
 
-			if (null != client.aq_fld && null != client.aq_fld.av_fld) {
-				jm var2 = gi.ak(jb.bv_fld, client.aq_fld.av_fld);
-				var2.ay_fld.bc(xy.cy());
-				var2.ay_fld.bw(pf.qw_fld);
-				var2.ay_fld.bw(bc.qx_fld);
-				client.aq_fld.az(var2);
+			if (null != client.appletStub && null != client.appletStub.av_fld) {
+				jm var2 = gi.ak(jb.bv_fld, client.appletStub.av_fld);
+				var2.ay_fld.ea(xy.cy());
+				xi.vy(var2.ay_fld, pf.qw_fld);
+				xi.vy(var2.ay_fld, bc.qx_fld);
+				client.appletStub.az(var2);
 			}
 		}
 	}

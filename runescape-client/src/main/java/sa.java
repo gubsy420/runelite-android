@@ -77,7 +77,7 @@ public class sa {
 			} else if (var0.ag_fld) {
 				return var0.ae_fld[0].ag_fld;
 			} else {
-				sj var2 = var0.ay(var1);
+				sj var2 = sn.tz(var0, var1, 775483294);
 				boolean var3 = false;
 				boolean var4 = false;
 				if (var2 == null) {
@@ -231,7 +231,7 @@ public class sa {
 			} else if (var0.ag_fld) {
 				return var0.ae_fld[0].ag_fld;
 			} else {
-				sj var2 = var0.ay(var1);
+				sj var2 = sn.tz(var0, var1, -1386375084);
 				boolean var3 = false;
 				boolean var4 = false;
 				if (var2 == null) {
@@ -385,7 +385,7 @@ public class sa {
 			} else if (var0.ag_fld) {
 				return var0.ae_fld[0].ag_fld;
 			} else {
-				sj var2 = var0.ay(var1);
+				sj var2 = sn.tz(var0, var1, 1073294355);
 				boolean var3 = false;
 				boolean var4 = false;
 				if (var2 == null) {
@@ -804,7 +804,7 @@ public class sa {
 			} else if (var0.ag_fld) {
 				return var0.ae_fld[0].ag_fld;
 			} else {
-				sj var2 = var0.ay(var1);
+				sj var2 = sn.tz(var0, var1, -380514716);
 				boolean var3 = false;
 				boolean var4 = false;
 				if (var2 == null) {

@@ -149,18 +149,6 @@ public class nq {
 		}
 	}
 
-	@ObfuscatedName("vp")
-	@ObfuscatedSignature(
-		descriptor = "(Lcv;)V"
-	)
-	public static void vp(cv var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.bd_fld = rw.ak_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(J)Ljava/lang/String;"

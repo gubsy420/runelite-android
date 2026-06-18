@@ -306,87 +306,31 @@ public class au {
 	)
 	int[][] as_fld;
 
-	@ObfuscatedName("wo")
-	@ObfuscatedSignature(
-		descriptor = "(Lau;Lbh;[Lbd;)Lbs;"
-	)
-	public static bs wo(au var0, bh var1, bd[] var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		boolean var3 = var1.av() != 0;
-		if (!var3) {
-			return new bs(var0, false, null, null, null);
-		} else {
-			bs var4 = new bs(var0, true, null, null, null);
-			int var5 = var0.az_fld.length;
-			if (var4.az_fld == null || var4.az_fld.length < var5) {
-				var4.az_fld = new int[var5];
-				var4.av_fld = new int[var5];
-				var4.ae_fld = new boolean[var5];
-			}
-
-			for (int var6 = 0; var6 < var5; var6++) {
-				var4.az_fld[var6] = var0.az_fld[var6];
-			}
-
-			int var17 = ak_fld[var0.av_fld - 1];
-			int var7 = gb.as(var17 - 1);
-			var4.av_fld[0] = var1.ak(var7, 767547982);
-			var4.av_fld[1] = var1.ak(var7, 160981257);
-			int var8 = 2;
-
-			for (int var9 = 0; var9 < var0.ae_fld.length; var9++) {
-				int var10 = var0.ae_fld[var9];
-				int var11 = var0.ah_fld[var10];
-				int var12 = var0.aw_fld[var10];
-				int var13 = (1 << var12) - 1;
-				int var14 = 0;
-				if (var12 > 0) {
-					var14 = var2[var0.ay_fld[var10]].az(var1);
-				}
-
-				for (int var15 = 0; var15 < var11; var15++) {
-					int var16 = var0.as_fld[var10][var14 & var13];
-					var14 >>>= var12;
-					var4.av_fld[var8++] = var16 >= 0 ? var2[var16].az(var1) : 0;
-				}
-			}
-
-			return var4;
-		}
-	}
-
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(Lau;[II)I"
-	)
-	public static int ka(au var0, int[] var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var1[var2];
-		int var4 = -1;
-		int var5 = Integer.MAX_VALUE;
-
-		for (int var6 = 0; var6 < var2; var6++) {
-			int var7 = var1[var6];
-			if (var7 > var3 && var7 < var5) {
-				var4 = var6;
-				var5 = var7;
-			}
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("as")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "([II)I"
 	)
-	int as(int[] var1, int var2) {
+	int aw(int[] var1, int var2) {
+		int var3 = var1[var2];
+		int var4 = -1;
+		int var5 = Integer.MIN_VALUE;
+
+		for (int var6 = 0; var6 < var2; var6++) {
+			int var7 = var1[var6];
+			if (var7 < var3 && var7 > var5) {
+				var4 = var6;
+				var5 = var7;
+			}
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "([II)I"
+	)
+	int ag(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
 		int var5 = Integer.MAX_VALUE;
@@ -400,6 +344,78 @@ public class au {
 		}
 
 		return var4;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "([II)I"
+	)
+	int ak(int[] var1, int var2) {
+		int var3 = var1[var2];
+		int var4 = -1;
+		int var5 = Integer.MAX_VALUE;
+
+		for (int var6 = 0; var6 < var2; var6++) {
+			int var7 = var1[var6];
+			if (var7 > var3 && var7 < var5) {
+				var4 = var6;
+				var5 = var7;
+			}
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("se")
+	@ObfuscatedSignature(
+		descriptor = "(Lau;Lbh;[Lbd;)Lbs;"
+	)
+	public static bs se(au var0, bh var1, bd[] var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			boolean var3 = var1.ag() != 0;
+			if (!var3) {
+				return new bs(var0, false, null, null, null);
+			} else {
+				bs var4 = new bs(var0, true, null, null, null);
+				int var5 = var0.az_fld.length;
+				if (var4.av_fld == null || var4.av_fld.length < var5) {
+					var4.av_fld = new int[var5];
+					var4.az_fld = new int[var5];
+					var4.ae_fld = new boolean[var5];
+				}
+
+				for (int var6 = 0; var6 < var5; var6++) {
+					var4.av_fld[var6] = var0.az_fld[var6];
+				}
+
+				int var17 = ak_fld[var0.av_fld - 1];
+				int var7 = gb.as(var17 - 1);
+				var4.az_fld[0] = var1.ak(var7, -1840670303);
+				var4.az_fld[1] = var1.ak(var7, -44977184);
+				int var8 = 2;
+
+				for (int var9 = 0; var9 < var0.ae_fld.length; var9++) {
+					int var10 = var0.ae_fld[var9];
+					int var11 = var0.ah_fld[var10];
+					int var12 = var0.aw_fld[var10];
+					int var13 = (1 << var12) - 1;
+					int var14 = 0;
+					if (var12 > 0) {
+						var14 = pg.hm(var2[var0.ay_fld[var10]], var1);
+					}
+
+					for (int var15 = 0; var15 < var11; var15++) {
+						int var16 = var0.as_fld[var10][var14 & var13];
+						var14 >>>= var12;
+						var4.az_fld[var8++] = var16 >= 0 ? pg.hm(var2[var16], var1) : 0;
+					}
+				}
+
+				return var4;
+			}
+		}
 	}
 
 	au(bh var1) {
@@ -468,26 +484,26 @@ public class au {
 		descriptor = "(Lbh;[Lbd;)Lbs;"
 	)
 	bs ae(bh var1, bd[] var2) {
-		boolean var3 = var1.av() != 0;
+		boolean var3 = var1.ag() != 0;
 		if (!var3) {
 			return new bs(this, false, null, null, null);
 		} else {
 			bs var4 = new bs(this, true, null, null, null);
 			int var5 = this.az_fld.length;
-			if (var4.az_fld == null || var4.az_fld.length < var5) {
-				var4.az_fld = new int[var5];
+			if (var4.av_fld == null || var4.av_fld.length < var5) {
 				var4.av_fld = new int[var5];
+				var4.az_fld = new int[var5];
 				var4.ae_fld = new boolean[var5];
 			}
 
 			for (int var6 = 0; var6 < var5; var6++) {
-				var4.az_fld[var6] = this.az_fld[var6];
+				var4.av_fld[var6] = this.az_fld[var6];
 			}
 
 			int var17 = ak_fld[this.av_fld - 1];
 			int var7 = gb.as(var17 - 1);
-			var4.av_fld[0] = var1.ak(var7, -603062082);
-			var4.av_fld[1] = var1.ak(var7, -867512992);
+			var4.az_fld[0] = var1.ak(var7, -603062082);
+			var4.az_fld[1] = var1.ak(var7, -867512992);
 			int var8 = 2;
 
 			for (int var9 = 0; var9 < this.ae_fld.length; var9++) {
@@ -497,13 +513,13 @@ public class au {
 				int var13 = (1 << var12) - 1;
 				int var14 = 0;
 				if (var12 > 0) {
-					var14 = var2[this.ay_fld[var10]].az(var1);
+					var14 = pg.hm(var2[this.ay_fld[var10]], var1);
 				}
 
 				for (int var15 = 0; var15 < var11; var15++) {
 					int var16 = this.as_fld[var10][var14 & var13];
 					var14 >>>= var12;
-					var4.av_fld[var8++] = var16 >= 0 ? var2[var16].az(var1) : 0;
+					var4.az_fld[var8++] = var16 >= 0 ? pg.hm(var2[var16], var1) : 0;
 				}
 			}
 
@@ -511,100 +527,11 @@ public class au {
 		}
 	}
 
-	@ObfuscatedName("qq")
+	@ObfuscatedName("ce")
 	@ObfuscatedSignature(
 		descriptor = "(Lau;[II)I"
 	)
-	public static int qq(au var0, int[] var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var1[var2];
-		int var4 = -1;
-		int var5 = Integer.MIN_VALUE;
-
-		for (int var6 = 0; var6 < var2; var6++) {
-			int var7 = var1[var6];
-			if (var7 < var3 && var7 > var5) {
-				var4 = var6;
-				var5 = var7;
-			}
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("eq")
-	@ObfuscatedSignature(
-		descriptor = "(Lau;[II)I"
-	)
-	public static int eq(au var0, int[] var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var3 = var1[var2];
-		int var4 = -1;
-		int var5 = Integer.MIN_VALUE;
-
-		for (int var6 = 0; var6 < var2; var6++) {
-			int var7 = var1[var6];
-			if (var7 < var3 && var7 > var5) {
-				var4 = var6;
-				var5 = var7;
-			}
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)I"
-	)
-	int ax(int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var4 - var2;
-		int var7 = var3 - var1;
-		int var8 = var6 < 0 ? -var6 : var6;
-		int var9 = var8 * (var5 - var1);
-		int var10 = var9 / var7;
-		return var6 < 0 ? var2 - var10 : var2 + var10;
-	}
-
-	@ObfuscatedName("yo")
-	@ObfuscatedSignature(
-		descriptor = "(Log;)Z"
-	)
-	public static boolean yo(og var0) {
-		return var0.dg_fld != null;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "([II)I"
-	)
-	int aw(int[] var1, int var2) {
-		int var3 = var1[var2];
-		int var4 = -1;
-		int var5 = Integer.MIN_VALUE;
-
-		for (int var6 = 0; var6 < var2; var6++) {
-			int var7 = var1[var6];
-			if (var7 < var3 && var7 > var5) {
-				var4 = var6;
-				var5 = var7;
-			}
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("na")
-	@ObfuscatedSignature(
-		descriptor = "(Lau;[II)I"
-	)
-	public static int na(au var0, int[] var1, int var2) {
+	public static int ce(au var0, int[] var1, int var2) {
 		if (var0 == null) {
 			throw new NullPointerException();
 		} else {
@@ -624,18 +551,18 @@ public class au {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "([II)I"
 	)
-	int ag(int[] var1, int var2) {
+	int af(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
-		int var5 = Integer.MAX_VALUE;
+		int var5 = Integer.MIN_VALUE;
 
 		for (int var6 = 0; var6 < var2; var6++) {
 			int var7 = var1[var6];
-			if (var7 > var3 && var7 < var5) {
+			if (var7 < var3 && var7 > var5) {
 				var4 = var6;
 				var5 = var7;
 			}
@@ -644,74 +571,52 @@ public class au {
 		return var4;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIII[FI)V"
+		descriptor = "(Lbh;[Lbd;)Lbs;"
 	)
-	void av(int var1, int var2, int var3, int var4, float[] var5, int var6) {
-		int var7 = var4 - var2;
-		int var8 = var3 - var1;
-		int var9 = var7 < 0 ? -var7 : var7;
-		int var10 = var7 / var8;
-		int var11 = var2;
-		int var12 = 0;
-		int var13 = var7 < 0 ? var10 - 1 : var10 + 1;
-		var9 -= (var10 < 0 ? -var10 : var10) * var8;
-		var5[var1] *= ag_fld[var2];
-		if (var3 > var6) {
-			var3 = var6;
-		}
-
-		for (int var14 = var1 + 1; var14 < var3; var14++) {
-			var12 += var9;
-			if (var12 >= var8) {
-				var12 -= var8;
-				var11 += var13;
-			} else {
-				var11 += var10;
+	bs aq(bh var1, bd[] var2) {
+		boolean var3 = var1.ag() != 0;
+		if (!var3) {
+			return new bs(this, false, null, null, null);
+		} else {
+			bs var4 = new bs(this, true, null, null, null);
+			int var5 = this.az_fld.length;
+			if (var4.av_fld == null || var4.av_fld.length < var5) {
+				var4.av_fld = new int[var5];
+				var4.az_fld = new int[var5];
+				var4.ae_fld = new boolean[var5];
 			}
 
-			var5[var14] *= ag_fld[var11];
+			for (int var6 = 0; var6 < var5; var6++) {
+				var4.av_fld[var6] = this.az_fld[var6];
+			}
+
+			int var17 = ak_fld[this.av_fld - 1];
+			int var7 = gb.as(var17 - 1);
+			var4.az_fld[0] = var1.ak(var7, 767547982);
+			var4.az_fld[1] = var1.ak(var7, 160981257);
+			int var8 = 2;
+
+			for (int var9 = 0; var9 < this.ae_fld.length; var9++) {
+				int var10 = this.ae_fld[var9];
+				int var11 = this.ah_fld[var10];
+				int var12 = this.aw_fld[var10];
+				int var13 = (1 << var12) - 1;
+				int var14 = 0;
+				if (var12 > 0) {
+					var14 = pg.hm(var2[this.ay_fld[var10]], var1);
+				}
+
+				for (int var15 = 0; var15 < var11; var15++) {
+					int var16 = this.as_fld[var10][var14 & var13];
+					var14 >>>= var12;
+					var4.az_fld[var8++] = var16 >= 0 ? pg.hm(var2[var16], var1) : 0;
+				}
+			}
+
+			return var4;
 		}
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)I"
-	)
-	int au(int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var4 - var2;
-		int var7 = var3 - var1;
-		int var8 = var6 < 0 ? -var6 : var6;
-		int var9 = var8 * (var5 - var1);
-		int var10 = var9 / var7;
-		return var6 < 0 ? var2 - var10 : var2 + var10;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)I"
-	)
-	int az(int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var4 - var2;
-		int var7 = var3 - var1;
-		int var8 = var6 < 0 ? -var6 : var6;
-		int var9 = var8 * (var5 - var1);
-		int var10 = var9 / var7;
-		return var6 < 0 ? var2 - var10 : var2 + var10;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)I"
-	)
-	int al(int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var4 - var2;
-		int var7 = var3 - var1;
-		int var8 = var6 < 0 ? -var6 : var6;
-		int var9 = var8 * (var5 - var1);
-		int var10 = var9 / var7;
-		return var6 < 0 ? var2 - var10 : var2 + var10;
 	}
 
 	@ObfuscatedName("an")
@@ -745,51 +650,97 @@ public class au {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lbh;[Lbd;)Lbs;"
+		descriptor = "(IIIII)I"
 	)
-	bs aa(bh var1, bd[] var2) {
-		boolean var3 = var1.av() != 0;
-		if (!var3) {
-			return new bs(this, false, null, null, null);
+	int al(int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var4 - var2;
+		int var7 = var3 - var1;
+		int var8 = var6 < 0 ? -var6 : var6;
+		int var9 = var8 * (var5 - var1);
+		int var10 = var9 / var7;
+		return var6 < 0 ? var2 - var10 : var2 + var10;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)I"
+	)
+	int ax(int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var4 - var2;
+		int var7 = var3 - var1;
+		int var8 = var6 < 0 ? -var6 : var6;
+		int var9 = var8 * (var5 - var1);
+		int var10 = var9 / var7;
+		return var6 < 0 ? var2 - var10 : var2 + var10;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)I"
+	)
+	int az(int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var4 - var2;
+		int var7 = var3 - var1;
+		int var8 = var6 < 0 ? -var6 : var6;
+		int var9 = var8 * (var5 - var1);
+		int var10 = var9 / var7;
+		return var6 < 0 ? var2 - var10 : var2 + var10;
+	}
+
+	@ObfuscatedName("nn")
+	@ObfuscatedSignature(
+		descriptor = "(Lau;[II)I"
+	)
+	public static int nn(au var0, int[] var1, int var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
 		} else {
-			bs var4 = new bs(this, true, null, null, null);
-			int var5 = this.az_fld.length;
-			if (var4.az_fld == null || var4.az_fld.length < var5) {
-				var4.az_fld = new int[var5];
-				var4.av_fld = new int[var5];
-				var4.ae_fld = new boolean[var5];
-			}
+			int var3 = var1[var2];
+			int var4 = -1;
+			int var5 = Integer.MAX_VALUE;
 
-			for (int var6 = 0; var6 < var5; var6++) {
-				var4.az_fld[var6] = this.az_fld[var6];
-			}
-
-			int var17 = ak_fld[this.av_fld - 1];
-			int var7 = gb.as(var17 - 1);
-			var4.av_fld[0] = var1.ak(var7, -1840670303);
-			var4.av_fld[1] = var1.ak(var7, -44977184);
-			int var8 = 2;
-
-			for (int var9 = 0; var9 < this.ae_fld.length; var9++) {
-				int var10 = this.ae_fld[var9];
-				int var11 = this.ah_fld[var10];
-				int var12 = this.aw_fld[var10];
-				int var13 = (1 << var12) - 1;
-				int var14 = 0;
-				if (var12 > 0) {
-					var14 = var2[this.ay_fld[var10]].az(var1);
-				}
-
-				for (int var15 = 0; var15 < var11; var15++) {
-					int var16 = this.as_fld[var10][var14 & var13];
-					var14 >>>= var12;
-					var4.av_fld[var8++] = var16 >= 0 ? var2[var16].az(var1) : 0;
+			for (int var6 = 0; var6 < var2; var6++) {
+				int var7 = var1[var6];
+				if (var7 > var3 && var7 < var5) {
+					var4 = var6;
+					var5 = var7;
 				}
 			}
 
 			return var4;
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(IIII[FI)V"
+	)
+	void av(int var1, int var2, int var3, int var4, float[] var5, int var6) {
+		int var7 = var4 - var2;
+		int var8 = var3 - var1;
+		int var9 = var7 < 0 ? -var7 : var7;
+		int var10 = var7 / var8;
+		int var11 = var2;
+		int var12 = 0;
+		int var13 = var7 < 0 ? var10 - 1 : var10 + 1;
+		var9 -= (var10 < 0 ? -var10 : var10) * var8;
+		var5[var1] *= ag_fld[var2];
+		if (var3 > var6) {
+			var3 = var6;
+		}
+
+		for (int var14 = var1 + 1; var14 < var3; var14++) {
+			var12 += var9;
+			if (var12 >= var8) {
+				var12 -= var8;
+				var11 += var13;
+			} else {
+				var11 += var10;
+			}
+
+			var5[var14] *= ag_fld[var11];
 		}
 	}
 
@@ -798,26 +749,26 @@ public class au {
 		descriptor = "(Lbh;[Lbd;)Lbs;"
 	)
 	bs ai(bh var1, bd[] var2) {
-		boolean var3 = var1.av() != 0;
+		boolean var3 = var1.ag() != 0;
 		if (!var3) {
 			return new bs(this, false, null, null, null);
 		} else {
 			bs var4 = new bs(this, true, null, null, null);
 			int var5 = this.az_fld.length;
-			if (var4.az_fld == null || var4.az_fld.length < var5) {
-				var4.az_fld = new int[var5];
+			if (var4.av_fld == null || var4.av_fld.length < var5) {
 				var4.av_fld = new int[var5];
+				var4.az_fld = new int[var5];
 				var4.ae_fld = new boolean[var5];
 			}
 
 			for (int var6 = 0; var6 < var5; var6++) {
-				var4.az_fld[var6] = this.az_fld[var6];
+				var4.av_fld[var6] = this.az_fld[var6];
 			}
 
 			int var17 = ak_fld[this.av_fld - 1];
 			int var7 = gb.as(var17 - 1);
-			var4.av_fld[0] = var1.ak(var7, 404523564);
-			var4.av_fld[1] = var1.ak(var7, -1797054070);
+			var4.az_fld[0] = var1.ak(var7, 404523564);
+			var4.az_fld[1] = var1.ak(var7, -1797054070);
 			int var8 = 2;
 
 			for (int var9 = 0; var9 < this.ae_fld.length; var9++) {
@@ -827,13 +778,13 @@ public class au {
 				int var13 = (1 << var12) - 1;
 				int var14 = 0;
 				if (var12 > 0) {
-					var14 = var2[this.ay_fld[var10]].az(var1);
+					var14 = pg.hm(var2[this.ay_fld[var10]], var1);
 				}
 
 				for (int var15 = 0; var15 < var11; var15++) {
 					int var16 = this.as_fld[var10][var14 & var13];
 					var14 >>>= var12;
-					var4.av_fld[var8++] = var16 >= 0 ? var2[var16].az(var1) : 0;
+					var4.az_fld[var8++] = var16 >= 0 ? pg.hm(var2[var16], var1) : 0;
 				}
 			}
 
@@ -841,11 +792,11 @@ public class au {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "([II)I"
 	)
-	int af(int[] var1, int var2) {
+	int as(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
 		int var5 = Integer.MAX_VALUE;
@@ -861,11 +812,11 @@ public class au {
 		return var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "([II)I"
 	)
-	int ak(int[] var1, int var2) {
+	int ay(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
 		int var5 = Integer.MIN_VALUE;
@@ -873,6 +824,43 @@ public class au {
 		for (int var6 = 0; var6 < var2; var6++) {
 			int var7 = var1[var6];
 			if (var7 < var3 && var7 > var5) {
+				var4 = var6;
+				var5 = var7;
+			}
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("sq")
+	@ObfuscatedSignature(
+		descriptor = "(Lau;IIIII)I"
+	)
+	public static int sq(au var0, int var1, int var2, int var3, int var4, int var5) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var6 = var4 - var2;
+		int var7 = var3 - var1;
+		int var8 = var6 < 0 ? -var6 : var6;
+		int var9 = var8 * (var5 - var1);
+		int var10 = var9 / var7;
+		return var6 < 0 ? var2 - var10 : var2 + var10;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "([II)I"
+	)
+	int ar(int[] var1, int var2) {
+		int var3 = var1[var2];
+		int var4 = -1;
+		int var5 = Integer.MAX_VALUE;
+
+		for (int var6 = 0; var6 < var2; var6++) {
+			int var7 = var1[var6];
+			if (var7 > var3 && var7 < var5) {
 				var4 = var6;
 				var5 = var7;
 			}

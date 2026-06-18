@@ -4,40 +4,40 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("rn")
 public class rn extends ri {
-	@ObfuscatedGetter(
-		intValue = 479728603
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = -540899961
+		intValue = 479728603
 	)
+	int ae_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	static int ak_fld = client.eu_fld + -1595320961;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lgu;"
-	)
-	gu az_fld;
 	@ObfuscatedGetter(
-		intValue = -1138659955
+		intValue = -540899961
 	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int av_fld;
+	static int ak_fld = client.eu_fld + -1595320961;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lgu;"
 	)
-	gu ag_fld = new gu();
+	gu ag_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1138659955
+	)
+	int av_fld;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lgu;"
+	)
+	gu az_fld = new gu();
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "[[S"
@@ -55,191 +55,23 @@ public class rn extends ri {
 	)
 	@Override
 	void az(int var1, int var2, int var3) {
-		gu.ry(this.ag_fld, var1, var2);
-		gu.ry(this.az_fld, var1, var2);
+		gu.tt(this.az_fld, var1, var2);
+		gu.tt(this.ag_fld, var1, var2);
 	}
 
 	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	static boolean ct() {
 		return (client.ez_fld & 4) != 0;
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;III)Z"
-	)
-	@Override
-	boolean ag(gu var1, int var2, int var3, int var4) {
-		if (this.av_fld >= this.ae_fld) {
-			var1.ay(this.az_fld);
-			return true;
-		} else {
-			float var5 = pd.au(var2, this.av_fld, this.ae_fld);
-			gu var6 = this.ag_fld;
-			gu var7 = this.az_fld;
-			float var9 = Math.max(0.0F, Math.min(var5, 1.0F));
-			int var10 = var7.ah() - var6.ah();
-			int var11 = gu.ns(var7, -1552758794) - gu.ns(var6, 614872534);
-			var10 = (int)(var9 * var10);
-			var11 = (int)(var9 * var11);
-			gu.yu(var1, var6.ah() + var10, gu.ns(var6, -1046990635) + var11, (byte)-115);
-			int var12 = gj.ae(var6.av(), var7.av());
-			var12 = (int)(var9 * var12);
-			var1.aw(var6.av() + var12);
-			return var5 >= 1.0F;
-		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	@Override
-	boolean aw(gu var1, int var2, int var3) {
-		if (this.av_fld >= this.ae_fld) {
-			var1.ay(this.az_fld);
-			return true;
-		} else {
-			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
-			gu var5 = this.ag_fld;
-			gu var6 = this.az_fld;
-			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
-			int var9 = var6.ah() - var5.ah();
-			int var10 = gu.ns(var6, 53899029) - gu.ns(var5, -1216378181);
-			var9 = (int)(var8 * var9);
-			var10 = (int)(var8 * var10);
-			gu.yu(var1, var5.ah() + var9, gu.ns(var5, -1703014429) + var10, (byte)-84);
-			int var11 = gj.ae(var5.av(), var6.av());
-			var11 = (int)(var8 * var11);
-			var1.aw(var5.av() + var11);
-			return var4 >= 1.0F;
-		}
-	}
-
-	rn() {
-		this.az_fld = new gu();
-		this.av_fld = 0;
-		this.ae_fld = 0;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;Lrk;I)V"
-	)
-	@Override
-	void ae(gu var1, rk var2, int var3) {
-		this.ag_fld.ay(var1);
-		this.az_fld.ay(var2.ak_fld);
-		this.av_fld = var3 - 1;
-		this.ae_fld = ak_fld + var2.ag_fld;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;Lrk;I)V"
-	)
-	@Override
-	void av(gu var1, rk var2, int var3) {
-		this.ag_fld.ay(var1);
-		this.az_fld.ay(var2.ak_fld);
-		this.av_fld = var3 - 1;
-		this.ae_fld = ak_fld + var2.ag_fld;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	@Override
-	boolean as(gu var1, int var2, int var3) {
-		if (this.av_fld >= this.ae_fld) {
-			var1.ay(this.az_fld);
-			return true;
-		} else {
-			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
-			gu var5 = this.ag_fld;
-			gu var6 = this.az_fld;
-			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
-			int var9 = var6.ah() - var5.ah();
-			int var10 = gu.ns(var6, -1917035823) - gu.ns(var5, -521631237);
-			var9 = (int)(var8 * var9);
-			var10 = (int)(var8 * var10);
-			gu.yu(var1, var5.ah() + var9, gu.ns(var5, 1299677348) + var10, (byte)-116);
-			int var11 = gj.ae(var5.av(), var6.av());
-			var11 = (int)(var8 * var11);
-			var1.aw(var5.av() + var11);
-			return var4 >= 1.0F;
-		}
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	@Override
-	boolean ah(gu var1, int var2, int var3) {
-		if (this.av_fld >= this.ae_fld) {
-			var1.ay(this.az_fld);
-			return true;
-		} else {
-			float var4 = pd.au(var2, -1233097342 * this.av_fld, this.ae_fld);
-			gu var5 = this.ag_fld;
-			gu var6 = this.az_fld;
-			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
-			int var9 = var6.ah() - var5.ah();
-			int var10 = gu.ns(var6, 1426773909) - gu.ns(var5, 1553457825);
-			var9 = (int)(var8 * var9);
-			var10 = (int)(var8 * var10);
-			gu.yu(var1, var5.ah() + var9, gu.ns(var5, 1460658813) + var10, (byte)-35);
-			int var11 = gj.ae(var5.av(), var6.av());
-			var11 = (int)(var8 * var11);
-			var1.aw(var5.av() + var11);
-			return var4 >= 1.0F;
-		}
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;II)Z"
-	)
-	@Override
-	boolean ay(gu var1, int var2, int var3) {
-		if (this.av_fld >= this.ae_fld) {
-			var1.ay(this.az_fld);
-			return true;
-		} else {
-			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
-			gu var5 = this.ag_fld;
-			gu var6 = this.az_fld;
-			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
-			int var9 = var6.ah() - var5.ah();
-			int var10 = gu.ns(var6, 1295995826) - gu.ns(var5, 2045398048);
-			var9 = (int)(var8 * var9);
-			var10 = (int)(var8 * var10);
-			gu.yu(var1, var5.ah() + var9, gu.ns(var5, 1661354444) + var10, (byte)-77);
-			int var11 = gj.ae(var5.av(), var6.av());
-			var11 = (int)(var8 * var11);
-			var1.aw(var5.av() + var11);
-			return var4 >= 1.0F;
-		}
-	}
-
-	@ObfuscatedName("su")
-	@ObfuscatedSignature(
-		descriptor = "(DII)D"
-	)
-	public static double su(double var0, int var2, int var3) {
-		return (var0 - var2) / (var3 - var2);
-	}
-
-	@ObfuscatedName("ja")
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;Lgu;DLgu;)V"
 	)
-	public static void ja(gu var0, gu var1, double var2, gu var4) {
+	public static void er(gu var0, gu var1, double var2, gu var4) {
 		if (var2 < 0.0) {
 			var2 = 0.0;
 		}
@@ -263,14 +95,182 @@ public class rn extends ri {
 		var4.ak_fld = var0.ak_fld + var7 & 2047;
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;III)Z"
+	)
+	@Override
+	boolean ag(gu var1, int var2, int var3, int var4) {
+		if (this.av_fld >= this.ae_fld) {
+			var1.ay(this.ag_fld);
+			return true;
+		} else {
+			float var5 = pd.au(var2, this.av_fld, this.ae_fld);
+			gu var6 = this.az_fld;
+			gu var7 = this.ag_fld;
+			float var9 = Math.max(0.0F, Math.min(var5, 1.0F));
+			int var10 = var7.ak() - var6.ak();
+			int var11 = var7.az() - var6.az();
+			var10 = (int)(var9 * var10);
+			var11 = (int)(var9 * var11);
+			var1.as(var6.ak() + var10, var6.az() + var11);
+			int var12 = gj.ae(gu.rg(var6, (byte)-125), gu.rg(var7, (byte)-116));
+			var12 = (int)(var9 * var12);
+			var1.aw(gu.rg(var6, (byte)-109) + var12);
+			return var5 >= 1.0F;
+		}
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	@Override
+	boolean ah(gu var1, int var2, int var3) {
+		if (this.av_fld >= this.ae_fld) {
+			var1.ay(this.ag_fld);
+			return true;
+		} else {
+			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
+			gu var5 = this.az_fld;
+			gu var6 = this.ag_fld;
+			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
+			int var9 = var6.ak() - var5.ak();
+			int var10 = var6.az() - var5.az();
+			var9 = (int)(var8 * var9);
+			var10 = (int)(var8 * var10);
+			var1.as(var5.ak() + var9, var5.az() + var10);
+			int var11 = gj.ae(gu.rg(var5, (byte)-122), gu.rg(var6, (byte)-41));
+			var11 = (int)(var8 * var11);
+			var1.aw(gu.rg(var5, (byte)-47) + var11);
+			return var4 >= 1.0F;
+		}
+	}
+
+	@ObfuscatedName("vy")
+	@ObfuscatedSignature(
+		descriptor = "(DII)D"
+	)
+	public static double vy(double var0, int var2, int var3) {
+		return (var0 - var2) / (var3 - var2);
+	}
+
+	rn() {
+		this.ag_fld = new gu();
+		this.av_fld = 0;
+		this.ae_fld = 0;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;Lrk;I)V"
+	)
+	@Override
+	void ae(gu var1, rk var2, int var3) {
+		this.az_fld.ay(var1);
+		this.ag_fld.ay(var2.ak_fld);
+		this.av_fld = var3 - 1;
+		this.ae_fld = ak_fld + var2.ag_fld;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;Lrk;I)V"
+	)
+	@Override
+	void av(gu var1, rk var2, int var3) {
+		this.az_fld.ay(var1);
+		this.ag_fld.ay(var2.ak_fld);
+		this.av_fld = var3 - 1;
+		this.ae_fld = ak_fld + var2.ag_fld;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	@Override
+	boolean aw(gu var1, int var2, int var3) {
+		if (this.av_fld >= this.ae_fld) {
+			var1.ay(this.ag_fld);
+			return true;
+		} else {
+			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
+			gu var5 = this.az_fld;
+			gu var6 = this.ag_fld;
+			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
+			int var9 = var6.ak() - var5.ak();
+			int var10 = var6.az() - var5.az();
+			var9 = (int)(var8 * var9);
+			var10 = (int)(var8 * var10);
+			var1.as(var5.ak() + var9, var5.az() + var10);
+			int var11 = gj.ae(gu.rg(var5, (byte)-97), gu.rg(var6, (byte)-100));
+			var11 = (int)(var8 * var11);
+			var1.aw(gu.rg(var5, (byte)-82) + var11);
+			return var4 >= 1.0F;
+		}
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	@Override
+	boolean ay(gu var1, int var2, int var3) {
+		if (this.av_fld >= this.ae_fld) {
+			var1.ay(this.ag_fld);
+			return true;
+		} else {
+			float var4 = pd.au(var2, -1233097342 * this.av_fld, this.ae_fld);
+			gu var5 = this.az_fld;
+			gu var6 = this.ag_fld;
+			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
+			int var9 = var6.ak() - var5.ak();
+			int var10 = var6.az() - var5.az();
+			var9 = (int)(var8 * var9);
+			var10 = (int)(var8 * var10);
+			var1.as(var5.ak() + var9, var5.az() + var10);
+			int var11 = gj.ae(gu.rg(var5, (byte)-69), gu.rg(var6, (byte)-107));
+			var11 = (int)(var8 * var11);
+			var1.aw(gu.rg(var5, (byte)-18) + var11);
+			return var4 >= 1.0F;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;II)Z"
+	)
+	@Override
+	boolean as(gu var1, int var2, int var3) {
+		if (this.av_fld >= this.ae_fld) {
+			var1.ay(this.ag_fld);
+			return true;
+		} else {
+			float var4 = pd.au(var2, this.av_fld, this.ae_fld);
+			gu var5 = this.az_fld;
+			gu var6 = this.ag_fld;
+			float var8 = Math.max(0.0F, Math.min(var4, 1.0F));
+			int var9 = var6.ak() - var5.ak();
+			int var10 = var6.az() - var5.az();
+			var9 = (int)(var8 * var9);
+			var10 = (int)(var8 * var10);
+			var1.as(var5.ak() + var9, var5.az() + var10);
+			int var11 = gj.ae(gu.rg(var5, (byte)-121), gu.rg(var6, (byte)-122));
+			var11 = (int)(var8 * var11);
+			var1.aw(gu.rg(var5, (byte)-98) + var11);
+			return var4 >= 1.0F;
+		}
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
 	)
 	@Override
 	void ar(int var1, int var2) {
-		gu.ry(this.ag_fld, var1, var2);
-		gu.ry(this.az_fld, var1, var2);
+		gu.tt(this.az_fld, var1, var2);
+		gu.tt(this.ag_fld, var1, var2);
 	}
 
 	@ObfuscatedName("af")
@@ -279,8 +279,8 @@ public class rn extends ri {
 	)
 	@Override
 	void af(int var1, int var2) {
-		gu.ry(this.ag_fld, var1, var2);
-		gu.ry(this.az_fld, var1, var2);
+		gu.tt(this.az_fld, var1, var2);
+		gu.tt(this.ag_fld, var1, var2);
 	}
 
 	@ObfuscatedName("al")
@@ -289,8 +289,8 @@ public class rn extends ri {
 	)
 	@Override
 	void al(int var1, int var2) {
-		gu.ry(this.ag_fld, var1, var2);
-		gu.ry(this.az_fld, var1, var2);
+		gu.tt(this.az_fld, var1, var2);
+		gu.tt(this.ag_fld, var1, var2);
 	}
 
 	@ObfuscatedName("ak")
@@ -299,24 +299,24 @@ public class rn extends ri {
 	)
 	@Override
 	void ak(gu var1, rk var2, int var3, int var4) {
-		this.ag_fld.ay(var1);
-		this.az_fld.ay(var2.ak_fld);
+		this.az_fld.ay(var1);
+		this.ag_fld.ay(var2.ak_fld);
 		this.av_fld = var3 - 1;
 		this.ae_fld = ak_fld + var2.ag_fld;
 	}
 
-	@ObfuscatedName("dz")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
 		descriptor = "(Lgu;DI)Z"
 	)
 	@Override
-	public boolean dz(gu var1, double var2, int var4) {
+	public boolean kj(gu var1, double var2, int var4) {
 		if (this.av_fld >= this.ae_fld) {
-			zh.fo(var1, this.az_fld);
+			rl2.fp(var1, this.ag_fld);
 			return true;
 		} else {
-			double var5 = su(var2, this.av_fld, this.ae_fld);
-			ja(this.ag_fld, this.az_fld, var5, var1);
+			double var5 = vy(var2, this.av_fld, this.ae_fld);
+			er(this.az_fld, this.ag_fld, var5, var1);
 			return var5 >= 1.0;
 		}
 	}

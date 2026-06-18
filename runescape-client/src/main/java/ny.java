@@ -40,29 +40,103 @@ public class ny extends vc {
 		descriptor = "Liw;"
 	)
 	public static iw av_fld = new iw(64);
-	@ObfuscatedGetter(
-		intValue = 508058309
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 508058309
+	)
 	public int ae_fld = 0;
+
+	@ObfuscatedName("qw")
+	@ObfuscatedSignature(
+		descriptor = "(Lny;Lxi;I)V"
+	)
+	public static void qw(ny var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		switch (var2) {
+			case 2:
+				var0.ae_fld = var1.cm();
+				break;
+			case 249:
+				var0.ah_fld = nc.ak(var1, var0.ah_fld);
+		}
+	}
 
 	ny() {
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("jk")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;II)V"
+		descriptor = "(Lwl;Z)V"
 	)
-	void az(xi var1, int var2, int var3) {
-		switch (var2) {
-			case 2:
-				this.ae_fld = xi.tx(var1, 623419993);
-				break;
-			case 249:
-				this.ah_fld = nc.ak(var1, this.ah_fld);
+	public static void jk(wl var0, boolean var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.cy_fld = !var1;
+	}
+
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(Lny;III)I"
+	)
+	public static int jf(ny var0, int var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return my.ag(var0.ah_fld, var1, var2);
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(Log;ILoo;)Z"
+	)
+	public static boolean hs(og var0, int var1, oo var2) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			int var3 = var0.fp_fld;
+			int var4 = var0.fx_fld * -1833383098;
+			int var5 = var0.fc_fld * -519574538;
+			if (1 == var1) {
+				var3 = 670677883 * var0.fj_fld;
+				var4 = var0.fb_fld;
+				var5 = var0.fh_fld;
+			}
+
+			if (var2 != null && var2.av(var1, -1275057540)) {
+				var3 = var2.ah(var1, -1345698668);
+			}
+
+			if (-1 == var3) {
+				return true;
+			} else {
+				boolean var6 = true;
+				if (!bl.dm_fld.cc(var3, 0, -1760202119)) {
+					var6 = false;
+				}
+
+				if (var4 != -1 && !bl.dm_fld.cc(var4, 0, -526884827)) {
+					var6 = false;
+				}
+
+				if (var5 != -1 && !bl.dm_fld.cc(var5, 0, -1084017841)) {
+					var6 = false;
+				}
+
+				return var6;
+			}
+		} catch (Throwable var8) {
+			throw new RuntimeException(var8);
 		}
 	}
 
@@ -79,7 +153,7 @@ public class ny extends vc {
 				byte[] var2 = az_fld.bb(5, var0, 584982574);
 				var1 = new ny();
 				if (var2 != null) {
-					bf(var1, new xi(var2), -1888355235);
+					var1.as(new xi(var2), -1888355235);
 				}
 
 				av_fld.az(var1, var0);
@@ -92,7 +166,7 @@ public class ny extends vc {
 
 	@ObfuscatedName("hf")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(Lxi;IB)V"
 	)
 	static void hf(xi var0, int var1) {
 		byte[] var3 = var0.al_fld;
@@ -102,40 +176,6 @@ public class ny extends vc {
 
 		ya.ak(var3, var1, client.lr_fld, 0, 24);
 		ln.ah(var0, var1);
-	}
-
-	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-		descriptor = "(Lal;)Z"
-	)
-	public static boolean cf(al var0) {
-		return var0.ah_fld;
-	}
-
-	@ObfuscatedName("xc")
-	@ObfuscatedSignature(
-		descriptor = "(Lny;Lxi;I)V"
-	)
-	public static void xc(ny var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			switch (var2) {
-				case 2:
-					var0.ae_fld = xi.tx(var1, 803492838) * -1132612789;
-					break;
-				case 249:
-					var0.ah_fld = nc.ak(var1, var0.ah_fld);
-			}
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(III)I"
-	)
-	public int av(int var1, int var2, int var3) {
-		return my.ag(this.ah_fld, var1, var2);
 	}
 
 	@ObfuscatedName("ah")
@@ -151,7 +191,7 @@ public class ny extends vc {
 				byte[] var2 = az_fld.bb(5, var0, 584982574);
 				var1 = new ny();
 				if (var2 != null) {
-					bf(var1, new xi(var2), 464188095);
+					var1.as(new xi(var2), 464188095);
 				}
 
 				av_fld.az(var1, var0);
@@ -159,6 +199,32 @@ public class ny extends vc {
 			}
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int ax(int var1, int var2) {
+		return my.ag(this.ah_fld, var1, var2);
+	}
+
+	@ObfuscatedName("xn")
+	@ObfuscatedSignature(
+		descriptor = "(Lny;Lxi;II)V"
+	)
+	public static void xn(ny var0, xi var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		switch (var2) {
+			case 2:
+				var0.ae_fld = var1.cm();
+				break;
+			case 249:
+				var0.ah_fld = nc.ak(var1, var0.ah_fld);
 		}
 	}
 
@@ -173,30 +239,21 @@ public class ny extends vc {
 				return;
 			}
 
-			this.az(var1, var2, -1739734606);
+			xn(this, var1, var2);
 		}
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lny;Lxi;I)V"
+		descriptor = "(Lxi;I)V"
 	)
-	public static void bf(ny var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		while (true) {
-			int var3 = var1.cg();
-			if (0 == var3) {
-				if (var2 == 276792336) {
-					return;
-				} else {
-					return;
-				}
-			}
-
-			var0.az(var1, var3, -1739734606);
+	void ar(xi var1, int var2) {
+		switch (var2) {
+			case 2:
+				this.ae_fld = var1.cm() * -1132612789;
+				break;
+			case 249:
+				this.ah_fld = nc.ak(var1, this.ah_fld);
 		}
 	}
 
@@ -208,30 +265,53 @@ public class ny extends vc {
 		return my.ag(this.ah_fld, var1, var2);
 	}
 
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	void ag(xi var1, int var2) {
+		switch (var2) {
+			case 2:
+				this.ae_fld = var1.cm();
+				break;
+			case 249:
+				this.ah_fld = nc.ak(var1, this.ah_fld);
+		}
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int al(int var1, int var2) {
+		return my.ag(this.ah_fld, var1, var2);
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;I)V"
+	)
+	void as(xi var1, int var2) {
+		while (true) {
+			int var3 = var1.cg();
+			if (0 == var3) {
+				if (var2 == 276792336) {
+					return;
+				}
+
+				return;
+			}
+
+			xn(this, var1, var3);
+		}
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)Ljava/lang/String;"
+		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;"
 	)
 	public String ae(int var1, String var2) {
 		return ih.av(this.ah_fld, var1, var2);
-	}
-
-	@ObfuscatedName("yu")
-	@ObfuscatedSignature(
-		descriptor = "(Lny;Lxi;I)V"
-	)
-	public static void yu(ny var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		switch (var2) {
-			case 2:
-				var0.ae_fld = xi.tx(var1, 628047992);
-				break;
-			case 249:
-				var0.ah_fld = nc.ak(var1, var0.ah_fld);
-		}
 	}
 
 	@ObfuscatedName("an")
@@ -242,36 +322,33 @@ public class ny extends vc {
 		return ih.av(this.ah_fld, var1, var2);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(ILjava/lang/String;)Ljava/lang/String;"
 	)
-	void ag(xi var1, int var2) {
+	public String aa(int var1, String var2) {
+		return ih.av(this.ah_fld, var1, var2);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;II)V"
+	)
+	void az(xi var1, int var2, int var3) {
 		switch (var2) {
 			case 2:
-				this.ae_fld = xi.tx(var1, 378822567);
+				this.ae_fld = var1.kz(623419993);
 				break;
 			case 249:
 				this.ah_fld = nc.ak(var1, this.ah_fld);
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(III)I"
 	)
-	void af(xi var1, int var2) {
-		while (true) {
-			int var3 = var1.ec();
-			if (0 == var3) {
-				if (var2 == 276792336) {
-					return;
-				}
-
-				return;
-			}
-
-			this.az(var1, var3, -1739734606);
-		}
+	public int av(int var1, int var2, int var3) {
+		return my.ag(this.ah_fld, var1, var2);
 	}
 }

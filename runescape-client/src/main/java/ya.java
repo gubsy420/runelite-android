@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.util.Random;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -1979,12 +1980,12 @@ public class ya {
 		}
 	}
 
-	@ObfuscatedName("et")
+	@ObfuscatedName("oz")
 	@ObfuscatedSignature(
-		descriptor = "(Laq;)I"
+		descriptor = "(Llp;)V"
 	)
-	public static int et(aq var0) {
-		return var0.ao_fld;
+	public static void oz(lp var0) throws EOFException {
+		var0.az(var0.ar_fld, var0.af_fld, var0.al_fld, var0.ax_fld, var0.an_fld, 1540294160);
 	}
 
 	@ObfuscatedName("bw")

@@ -23,16 +23,36 @@ public class te extends yx implements MainBufferProvider {
 		descriptor = "Ljava/awt/Image;"
 	)
 	Image ak_fld;
-	@ObfuscatedName("rm")
+	@ObfuscatedName("ln")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/awt/Graphics;"
 	)
-	public Graphics rm_fld;
+	public Graphics ln_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/awt/Component;"
 	)
 	Component ag_fld;
+
+	@ObfuscatedName("zu")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Component;"
+	)
+	public Component zu() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Graphics;II)V"
+	)
+	final void af(Graphics var1, int var2, int var3) {
+		try {
+			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
+		} catch (Exception var5) {
+			this.ag_fld.repaint();
+		}
+	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
@@ -42,55 +62,30 @@ public class te extends yx implements MainBufferProvider {
 		this.ag_fld = var1;
 	}
 
-	@ObfuscatedName("yv")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;)I"
-	)
-	public static int yv(gf var0) {
-		return var0.av_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(III)V"
 	)
 	@Override
 	public final void ag(int var1, int var2, int var3) {
-		if (this.rm_fld == null) {
-			Canvas var4 = (Canvas)this.fj();
-			this.rm_fld = var4.getGraphics();
+		if (this.ln_fld == null) {
+			Canvas var4 = (Canvas)this.zu();
+			this.ln_fld = var4.getGraphics();
 		}
 
-		og.ci_fld.getCallbacks().draw(this, this.rm_fld, var1, var2);
+		og.ci_fld.getCallbacks().draw(this, this.ln_fld, var1, var2);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("di")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;II)V"
+		descriptor = "(Lzv;Ljava/lang/String;I)I"
 	)
-	@Export("DrawFull0")
-	final void ar(Graphics var1, int var2, int var3) {
-		try {
-			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
-		} catch (Exception var5) {
-			this.ag_fld.repaint();
-		}
-	}
-
-	@ObfuscatedName("fh")
-	@ObfuscatedSignature(
-		descriptor = "(Lte;Ljava/awt/Graphics;II)V"
-	)
-	public static void fh(te var0, Graphics var1, int var2, int var3) {
+	public static int di(zv var0, String var1, int var2) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		try {
-			var1.drawImage(var0.ak_fld, var2, var3, var0.ag_fld);
-		} catch (Exception var5) {
-			var0.ag_fld.repaint();
-		}
+		return zv.sh(var0, var1, new int[]{var2}, zv.ab_fld);
 	}
 
 	@ObfuscatedName("av")
@@ -118,12 +113,12 @@ public class te extends yx implements MainBufferProvider {
 		this.az(this.ag_fld.getGraphics(), var1, var2, -1465142547);
 	}
 
-	@ObfuscatedName("fj")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Component;"
+		descriptor = "(Ljava/awt/Image;)V"
 	)
-	public Component fj() {
-		return this.ag_fld;
+	public void ay(Image var1) {
+		this.ak_fld = var1;
 	}
 
 	@ObfuscatedName("ah")
@@ -133,15 +128,6 @@ public class te extends yx implements MainBufferProvider {
 	@Override
 	public final void ah(int var1, int var2) {
 		this.az(this.ag_fld.getGraphics(), var1, var2, -1527618013);
-	}
-
-	@ObfuscatedName("getImage")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/awt/Image;"
-	)
-	@Override
-	public Image getImage() {
-		return this.ak_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -156,43 +142,21 @@ public class te extends yx implements MainBufferProvider {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("getImage")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/awt/Image;"
+	)
+	@Export("getImage")
+	@Override
+	public Image getImage() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Graphics;II)V"
 	)
-	final void as(Graphics var1, int var2, int var3) {
-		try {
-			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
-		} catch (Exception var5) {
-			this.ag_fld.repaint();
-		}
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;II)V"
-	)
-	final void al(Graphics var1, int var2, int var3) {
-		try {
-			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
-		} catch (Exception var5) {
-			this.ag_fld.repaint();
-		}
-	}
-
-	@ObfuscatedName("vg")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Image;)V"
-	)
-	public void vg(Image var1) {
-		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Graphics;II)V"
-	)
-	final void af(Graphics var1, int var2, int var3) {
+	final void ay(Graphics var1, int var2, int var3) {
 		try {
 			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
 		} catch (Exception var5) {
@@ -220,14 +184,14 @@ public class te extends yx implements MainBufferProvider {
 		WritableRaster var8 = Raster.createWritableRaster(var7.createCompatibleSampleModel(super.av_fld, super.ae_fld), var6, null);
 		this.ak_fld = new BufferedImage(var7, var8, false, new Hashtable());
 		this.ag_fld = var3;
-		this.uc();
+		this.lt();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Graphics;II)V"
 	)
-	final void ay(Graphics var1, int var2, int var3) {
+	final void al(Graphics var1, int var2, int var3) {
 		try {
 			var1.drawImage(this.ak_fld, var2, var3, this.ag_fld);
 		} catch (Exception var5) {

@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("xs")
 public class xs {
-	@ObfuscatedGetter(
-		intValue = 1278114781
-	)
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1278114781
 	)
 	public int as_fld;
 	@ObfuscatedName("ag")
@@ -47,34 +47,21 @@ public class xs {
 		descriptor = "Lxs;"
 	)
 	static xs ae_fld = new xs(4, 3);
-	@ObfuscatedGetter(
-		intValue = -1892281921
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1892281921
+	)
 	int ay_fld;
 
-	@ObfuscatedName("kd")
+	@ObfuscatedName("ly")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;II)V"
+		descriptor = "(Lli;)V"
 	)
-	public static void kd(da var0, int var1, int var2) {
-		bb.jx(var0.cg_fld, var1, var2, -1106240719);
-	}
-
-	@ObfuscatedName("yi")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)I"
-	)
-	public static int yi(xi var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.au_fld += 3;
-		return (var0.al_fld[var0.au_fld - 2] & -1571238554) + ((var0.al_fld[var0.au_fld - 1] & 0xFF) << 8) + ((var0.al_fld[var0.au_fld - 3] & -296256641) << 16);
+	public static void ly(li var0) {
+		var0.bf_fld = Math.max(0, var0.bf_fld - zg.kd(var0.am_fld, 1917156394));
 	}
 
 	xs(int var1, int var2) {

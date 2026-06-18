@@ -34,23 +34,17 @@ public interface fx {
 	)
 	boolean ap(int var1);
 
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int am(int var1);
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int aq(int var1);
-
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	int ai(int var1);
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int am(int var1);
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
@@ -58,25 +52,31 @@ public interface fx {
 	)
 	int ad(int var1);
 
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int aq(int var1);
+
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean ao(int var1);
 
-	@ObfuscatedName("tx")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	default int tx(int var1) {
-		return this.av(var1, (byte)-49);
-	}
-
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z"
 	)
 	boolean ab(int var1);
+
+	@ObfuscatedName("tt")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	default int tt(int var1) {
+		return this.av(var1, (byte)-49);
+	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(

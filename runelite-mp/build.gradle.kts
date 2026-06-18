@@ -120,7 +120,7 @@ configurations.configureEach {
 // --------------------------------------------------------------------------------------
 val desugarStringConcat = if (androidSdkAvailable) {
     tasks.register<DesugarStringConcatTask>("desugarStringConcat") {
-        inputJar.set(rootProject.file("data/runelite-1.12.27-injected-26504454311.147-mixed.jar"))
+        inputJar.set(rootProject.file("data/runelite-1.12.28-injected-26877631509.154-mixed.jar"))
         outputJar.set(layout.buildDirectory.file("desugared/injected-client.jar"))
         helperOwner.set("net/runelite/mp/util/IndyConcat")
     }

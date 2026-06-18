@@ -1,3 +1,4 @@
+import java.awt.event.FocusEvent;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -87,7 +88,7 @@ public class yu extends vc {
 				int var10 = (al_fld[var12] >> 8 & 0xFF) * var5;
 				int var11 = (al_fld[var12] & 0xFF) * var5;
 				int var14 = (var6 + var9 >> 8 << 16) + (var7 + var10 >> 8 << 8) + (var8 + var11 >> 8);
-				client.vb(al_fld, var12++, var14, var4);
+				client.no(al_fld, var12++, var14, var4);
 			}
 		}
 	}
@@ -550,7 +551,7 @@ public class yu extends vc {
 						int var10 = (al_fld[var22] >> 8 & 0xFF) * var5;
 						int var11 = (al_fld[var22] & 0xFF) * var5;
 						int var24 = (var6 + var9 >> 8 << 16) + (var7 + var10 >> 8 << 8) + (var8 + var11 >> 8);
-						client.vb(al_fld, var22++, var24, var4);
+						client.no(al_fld, var22++, var24, var4);
 					}
 
 					var14++;
@@ -586,7 +587,7 @@ public class yu extends vc {
 						int var26 = (al_fld[var35] >> 8 & 0xFF) * var5;
 						int var27 = (al_fld[var35] & 0xFF) * var5;
 						int var37 = (var6 + var25 >> 8 << 16) + (var7 + var26 >> 8 << 8) + (var8 + var27 >> 8);
-						client.vb(al_fld, var35++, var37, var4);
+						client.no(al_fld, var35++, var37, var4);
 					}
 
 					var14++;
@@ -628,7 +629,7 @@ public class yu extends vc {
 			for (int var10 = -var2; var10 < 0; var10++) {
 				int var11 = al_fld[var8];
 				var11 = ((var11 & 16711935) * var6 >> 8 & 16711935) + ((var11 & 0xFF00) * var6 >> 8 & 0xFF00);
-				client.vb(al_fld, var8++, var4 + var11, var5);
+				client.no(al_fld, var8++, var4 + var11, var5);
 			}
 
 			var8 += var7;
@@ -829,7 +830,7 @@ public class yu extends vc {
 						for (int var25 = -var2; var25 < 0; var25++) {
 							int var26 = var13[var17];
 							var26 = ((var26 & 16711935) * var23 >> 8 & 16711935) + (var23 * (var26 & 0xFF00) >> 8 & 0xFF00);
-							client.vb(var13, var17++, var24 + var26, var21);
+							client.no(var13, var17++, var24 + var26, var21);
 						}
 
 						var17 += var16;
@@ -842,7 +843,7 @@ public class yu extends vc {
 
 	@ObfuscatedName("eb")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII[BI)V"
+		descriptor = "(IIIIII[BIZ)V"
 	)
 	public static void eb(int var0, int var1, int var2, int var3, int var4, int var5, byte[] var6, int var7) {
 		int var9 = au_fld;
@@ -982,7 +983,7 @@ public class yu extends vc {
 							int var26 = var11[var18];
 							int var27 = ((var23 & 16711935) * var24 + (var26 & 16711935) * var25 & -16711936) + (var24 * (var23 & 0xFF00) + var25 * (var26 & 0xFF00) & 0xFF0000)
 								>> 8;
-							client.vb(var11, var18++, var27, var24);
+							client.no(var11, var18++, var27, var24);
 						}
 
 						var18 += var15;
@@ -1064,6 +1065,19 @@ public class yu extends vc {
 		if (ai_fld > var3) {
 			ai_fld = var3;
 		}
+	}
+
+	@ObfuscatedName("ss")
+	@ObfuscatedSignature(
+		descriptor = "(Ltf;Ljava/awt/event/FocusEvent;)V"
+	)
+	public static void ss(tf var0, FocusEvent var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		tf.rl_fld = true;
+		var0.si_fld = true;
 	}
 
 	@ObfuscatedName("eo")
@@ -1498,7 +1512,7 @@ public class yu extends vc {
 				int var10 = (al_fld[var12] >> 8 & 0xFF) * var5;
 				int var11 = (al_fld[var12] & 0xFF) * var5;
 				int var14 = (var6 + var9 >> 8 << 16) + (var7 + var10 >> 8 << 8) + (var8 + var11 >> 8);
-				client.vb(al_fld, var12, var14, var4);
+				client.no(al_fld, var12, var14, var4);
 				var12 += au_fld;
 			}
 		}
@@ -1641,14 +1655,6 @@ public class yu extends vc {
 				}
 			}
 		}
-	}
-
-	@ObfuscatedName("wb")
-	@ObfuscatedSignature(
-		descriptor = "(Lei;)Lef;"
-	)
-	public static ef wb(ei var0) {
-		return var0.ai_fld;
 	}
 
 	@ObfuscatedName("gl")
@@ -3370,6 +3376,14 @@ public class yu extends vc {
 				ew(var5, var1, var6 - var5 + 1, var4);
 			}
 		}
+	}
+
+	@ObfuscatedName("xv")
+	@ObfuscatedSignature(
+		descriptor = "(Lda;II)V"
+	)
+	public static void xv(da var0, int var1, int var2) {
+		var0.cg_fld.ae(var1, var2, -1106240719);
 	}
 
 	@ObfuscatedName("ff")

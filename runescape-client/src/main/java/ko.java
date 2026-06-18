@@ -6,12 +6,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ko")
 public class ko implements xm {
-	@ObfuscatedGetter(
-		intValue = 968075377
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 968075377
 	)
 	int ae_fld;
 	@ObfuscatedName("ak")
@@ -24,12 +24,12 @@ public class ko implements xm {
 		descriptor = "Lko;"
 	)
 	public static ko ag_fld = new ko(1, 1);
-	@ObfuscatedGetter(
-		intValue = -1292139797
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1292139797
 	)
 	int av_fld;
 	@ObfuscatedName("az")
@@ -66,6 +66,34 @@ public class ko implements xm {
 		return this.ae_fld;
 	}
 
+	@ObfuscatedName("rq")
+	@ObfuscatedSignature(
+		descriptor = "(Lev;IIIIZ)Z"
+	)
+	public static boolean rq(ev var0, int var1, int var2, int var3, int var4, boolean var5) {
+		return var0.cj(var0.ex_fld, var1, var2, var3, var4, var5);
+	}
+
+	@ObfuscatedName("rc")
+	@ObfuscatedSignature(
+		descriptor = "(Lgu;)I"
+	)
+	public static int rc(gu var0) {
+		return var0.az_fld;
+	}
+
+	@ObfuscatedName("wy")
+	@ObfuscatedSignature(
+		descriptor = "(Llu;[Ljava/lang/Object;)[Ljava/lang/Object;"
+	)
+	public static Object[] wy(lu var0, Object[] var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return (Object[])(null != var1 ? Arrays.copyOf((Object[])var1, var1.length) : null);
+	}
+
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -77,7 +105,7 @@ public class ko implements xm {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Loe;"
+		descriptor = "(II)Loe;"
 	)
 	public static oe az(int var0) throws EOFException {
 		synchronized (oe.cq_fld) {
@@ -95,7 +123,7 @@ public class ko implements xm {
 				}
 
 				var6.ae(-2056921320);
-				if (var6.ct_fld) {
+				if (var6.db_fld) {
 					var6.cu_fld = 0;
 					var6.ci_fld = false;
 				}
@@ -105,22 +133,6 @@ public class ko implements xm {
 			}
 
 			return var10000;
-		}
-	}
-
-	@ObfuscatedName("xo")
-	@ObfuscatedSignature(
-		descriptor = "(Lcl;[Ljava/lang/String;)V"
-	)
-	public static void xo(cl var0, String[] var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.aw_fld = (String[])(String[])Arrays.copyOf(var1, var1.length);
-
-		for (int var2 = 0; var2 < var0.ak_fld.size(); var2++) {
-			((cv)var0.ak_fld.get(var2)).aw_fld = (String[])(String[])Arrays.copyOf(var1, var1.length);
 		}
 	}
 

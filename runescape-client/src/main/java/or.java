@@ -34,14 +34,37 @@ public class or {
 	)
 	static int dv_fld;
 
-	@ObfuscatedName("ot")
-	@ObfuscatedSignature(
-		descriptor = "(Lgy;)I"
-	)
-	public static int ot(gy var0) {
-		return var0.av_fld;
+	or() {
 	}
 
-	or() {
+	@ObfuscatedName("gk")
+	@ObfuscatedSignature(
+		descriptor = "(Lwz;II)I"
+	)
+	public static int gk(wz var0, int var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (int var3 = 0; var3 < var0.ot_fld; var3++) {
+			int var4 = 15 * (var0.ot_fld - 1 - var3) + var0.ax_fld + 14;
+			if (var0.ak_fld) {
+				var4 += 17;
+			}
+
+			if (var1 > var0.au_fld && var1 < var0.an_fld + var0.au_fld && var2 > var4 - 13 && var2 < var4 + 3) {
+				return var3;
+			}
+		}
+
+		return -1;
+	}
+
+	@ObfuscatedName("uj")
+	@ObfuscatedSignature(
+		descriptor = "(Lclient;)Z"
+	)
+	public static boolean uj(client var0) {
+		return 1 == var0.qc_fld;
 	}
 }

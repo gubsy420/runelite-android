@@ -1,20 +1,33 @@
 import java.awt.Component;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("tg")
 public class tg implements lh, MouseWheelListener {
-	@ObfuscatedGetter(
-		intValue = -652520411
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -652520411
+	)
 	int ak_fld = 0;
+
+	@ObfuscatedName("lv")
+	@ObfuscatedSignature(
+		descriptor = "(Ltg;Ljava/awt/Component;)V"
+	)
+	public static void lv(tg var0, Component var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var1.removeMouseWheelListener(var0);
+	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -38,14 +51,6 @@ public class tg implements lh, MouseWheelListener {
 		return var1;
 	}
 
-	@ObfuscatedName("pv")
-	@ObfuscatedSignature(
-		descriptor = "(Lrr;)I"
-	)
-	public static int pv(rr var0) {
-		return var0.ae_fld;
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Component;I)V"
@@ -58,20 +63,13 @@ public class tg implements lh, MouseWheelListener {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/event/MouseWheelEvent;)V"
 	)
+	@Export("mouseWheelMoved")
 	@Override
 	public synchronized void mouseWheelMoved(MouseWheelEvent var1) {
 		var1 = og.ci_fld.getCallbacks().mouseWheelMoved(var1);
 		if (!var1.isConsumed()) {
 			this.ak_fld = this.ak_fld + var1.getWheelRotation() * -824924243;
 		}
-	}
-
-	@ObfuscatedName("dj")
-	@ObfuscatedSignature(
-		descriptor = "(Lgn;III)V"
-	)
-	public static void dj(gn var0, int var1, int var2, int var3) {
-		var0.as(var1 - var0.by_fld, var2 - var0.bl_fld, var3, 1178493659);
 	}
 
 	@ObfuscatedName("ak")
@@ -96,22 +94,6 @@ public class tg implements lh, MouseWheelListener {
 		return var1;
 	}
 
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;)V"
-	)
-	void af(Component var1) {
-		var1.removeMouseWheelListener(this);
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;)V"
-	)
-	void ar(Component var1) {
-		var1.removeMouseWheelListener(this);
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -123,12 +105,36 @@ public class tg implements lh, MouseWheelListener {
 		return var1;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("mo")
+	@ObfuscatedSignature(
+		descriptor = "(Lwz;)V"
+	)
+	public static void mo(wz var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.af((short)23418);
+	}
+
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/awt/Component;)V"
 	)
-	void as(Component var1) {
+	void ay(Component var1) {
 		var1.addMouseWheelListener(this);
+	}
+
+	@ObfuscatedName("mq")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;)Z"
+	)
+	public static boolean mq(cn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.aw_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -140,13 +146,5 @@ public class tg implements lh, MouseWheelListener {
 	}
 
 	tg() {
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;)V"
-	)
-	void ay(Component var1) {
-		var1.addMouseWheelListener(this);
 	}
 }

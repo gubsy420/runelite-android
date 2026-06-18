@@ -95,6 +95,7 @@ import net.runelite.api.Projection;
 import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.TextureProvider;
+import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.WorldView;
 import net.runelite.api.events.GameStateChanged;
@@ -185,6 +186,13 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		final int sizeX, sizeZ;
 		Zone[][] zones;
 
+		// Entity projection captured at preSceneDraw. Used by drawDynamic/drawTemp
+		// to seal each entity's VAO range under the right projection, and by the
+		// PRE_PASS_ALPHA handler to re-arm uniEntityProj before static alpha
+		// geometry draws. Identity for the toplevel scene (its geometry is already
+		// in world coords); the WorldEntity-to-world matrix for a sub-WorldView.
+		final float[] projection = Mat4.identity();
+
 		int cameraX, cameraY, cameraZ;
 		int minLevel, level, maxLevel;
 		java.util.Set<Integer> hideRoofIds = java.util.Collections.emptySet();
@@ -273,6 +281,69 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private int uniUiAlphaOverlay, uniUiColorblindIntensity;
 
 	private static Projection lastProjection;
+
+	// TEMP DEBUG — once-per-second-per-sub-WV-per-callback throttle so we can see what fires.
+	private static final java.util.HashMap<String, Long> debugSubWvLastLog = new java.util.HashMap<>();
+	private static void debugSubWvCallback(String which, int wvId, int zx, int zz)
+	{
+		String key = which + ":" + wvId;
+		long now = System.currentTimeMillis();
+		Long prev = debugSubWvLastLog.get(key);
+		if (prev != null && now - prev < 1000) return;
+		debugSubWvLastLog.put(key, now);
+		Log.i(TAG, "SUBWV " + which + " wv=" + wvId + " zone=(" + zx + "," + zz + ")");
+	}
+
+	// TEMP DEBUG — track drawDynamic/drawTemp call volume + biggest model per second.
+	private static long debugWindowStart = 0;
+	private static int debugDynamicCount = 0;
+	private static int debugTempCount = 0;
+	private static int debugBiggestFaces = 0;
+	private static String debugBiggestInfo = "";
+
+	private static void debugTrackDraw(String which, int faces, Model m, Scene scene,
+		int x, int y, int z, int plane)
+	{
+		long now = System.currentTimeMillis();
+		if (debugWindowStart == 0) debugWindowStart = now;
+		if ("drawDynamic".equals(which)) debugDynamicCount++;
+		else debugTempCount++;
+		// Log EVERY entity with > 1500 faces individually so we can see what's reaching
+		// the callback. Throttle per-unique-position so we don't spam, but always log
+		// at least once per second per unique entity.
+		if (faces > 1500)
+		{
+			String posKey = which + ":" + x + "," + y + "," + z + "," + faces;
+			Long prev = debugBigSeen.get(posKey);
+			if (prev == null || now - prev >= 1500)
+			{
+				debugBigSeen.put(posKey, now);
+				Log.i(TAG, "BIG " + which + " faces=" + faces + " verts=" + m.getVerticesCount()
+					+ " trans=" + (m.getFaceTransparencies() != null) + " wv=" + scene.getWorldViewId()
+					+ " pos=(" + x + "," + y + "," + z + ") plane=" + plane);
+			}
+		}
+		if (faces > debugBiggestFaces)
+		{
+			debugBiggestFaces = faces;
+			debugBiggestInfo = which + " faces=" + faces + " verts=" + m.getVerticesCount()
+				+ " trans=" + (m.getFaceTransparencies() != null) + " wv=" + scene.getWorldViewId()
+				+ " pos=(" + x + "," + y + "," + z + ") plane=" + plane;
+		}
+		if (now - debugWindowStart >= 1000)
+		{
+			Log.i(TAG, "DRAW/s dyn=" + debugDynamicCount + " temp=" + debugTempCount
+				+ " biggest{" + debugBiggestInfo + "}");
+			debugWindowStart = now;
+			debugDynamicCount = 0;
+			debugTempCount = 0;
+			debugBiggestFaces = 0;
+			debugBiggestInfo = "";
+			// Trim old entries
+			debugBigSeen.entrySet().removeIf(e -> now - e.getValue() > 5000);
+		}
+	}
+	private static final java.util.HashMap<String, Long> debugBigSeen = new java.util.HashMap<>();
 
 	/** Update the entity-projection uniform if it changed. Static so VAO can call
 	 *  during batched draws; mirrors desktop GpuPlugin.updateEntityProjection. */
@@ -824,45 +895,80 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 
-		for (int x = 0; x < ctx.sizeX; ++x)
+		// Clamp to the actual scene tile-array dims. The root SceneContext is sized to
+		// NUM_ZONES (23, sized for an EXTENDED 184-tile toplevel scene), but the
+		// meteor-mp client serves instance toplevel scenes as plain 104-tile arrays.
+		// Iterating to NUM_ZONES would AIOOBE inside SceneUploader.zoneSize for every
+		// zone past index 12 — the surrounding try/catch keeps the render thread
+		// alive but leaves those zones un-built, so all static geometry past x=12
+		// (and any dynamic entity hosted on top of it, e.g. the Giant Gemstone Crab)
+		// has no zone backing and never renders.
+		final Tile[][][] tiles = scene.getExtendedTiles();
+		final int maxX = Math.min(ctx.sizeX, tiles[0].length >> 3);
+		final int maxZ = Math.min(ctx.sizeZ, tiles[0][0].length >> 3);
+
+		for (int x = 0; x < maxX; ++x)
 		{
-			for (int z = 0; z < ctx.sizeZ; ++z)
+			for (int z = 0; z < maxZ; ++z)
 			{
 				Zone zone = ctx.zones[x][z];
 				if (!zone.invalidate) continue;
 
-				zone.free();
-				zone = ctx.zones[x][z] = new Zone();
-
-				clientUploader.zoneSize(scene, zone, x, z);
-
-				VBO o = null, a = null;
-				int sz = zone.sizeO * Zone.VERT_SIZE * 3;
-				if (sz > 0)
+				// Defense in depth: an exception inside one zone's upload (oversize
+				// model, GL buffer alloc failure, anything) used to kill the entire
+				// rebuild loop — every remaining zone in the scene was then left
+				// invalidated-but-unbuilt until the next swapScene. A user reported
+				// "crash on region reload"; this catch keeps the rest of the scene
+				// building so one bad object can only blank one zone.
+				try
 				{
-					o = new VBO(sz);
-					o.init(GLES20.GL_STATIC_DRAW);
-					o.map();
+					rebuildOneZone(scene, ctx, x, z);
 				}
-
-				sz = zone.sizeA * Zone.VERT_SIZE * 3;
-				if (sz > 0)
+				catch (Throwable t)
 				{
-					a = new VBO(sz);
-					a.init(GLES20.GL_STATIC_DRAW);
-					a.map();
+					Log.w(TAG, "zone rebuild failed at (" + x + "," + z + "): " + t, t);
+					// Re-arm invalidate so a subsequent swapScene can retry; the
+					// zone slot now contains whatever partial state we left it in,
+					// but free() at the top of the next attempt will clean up.
+					ctx.zones[x][z].invalidate = true;
 				}
-
-				zone.init(o, a);
-
-				clientUploader.uploadZone(scene, zone, x, z);
-
-				zone.unmap();
-				zone.initialized = true;
-				zone.invalidate = false;
-				zone.dirty = true;
 			}
 		}
+	}
+
+	private void rebuildOneZone(Scene scene, SceneContext ctx, int x, int z)
+	{
+		Zone zone = ctx.zones[x][z];
+		zone.free();
+		zone = ctx.zones[x][z] = new Zone();
+
+		clientUploader.zoneSize(scene, zone, x, z);
+
+		VBO o = null, a = null;
+		int sz = zone.sizeO * Zone.VERT_SIZE * 3;
+		if (sz > 0)
+		{
+			o = new VBO(sz);
+			o.init(GLES20.GL_STATIC_DRAW);
+			o.map();
+		}
+
+		sz = zone.sizeA * Zone.VERT_SIZE * 3;
+		if (sz > 0)
+		{
+			a = new VBO(sz);
+			a.init(GLES20.GL_STATIC_DRAW);
+			a.map();
+		}
+
+		zone.init(o, a);
+
+		clientUploader.uploadZone(scene, zone, x, z);
+
+		zone.unmap();
+		zone.initialized = true;
+		zone.invalidate = false;
+		zone.dirty = true;
 	}
 
 	@Override
@@ -872,18 +978,55 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		// preSceneDraw via the invalidate flag.
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
-		for (int x = 0; x < ctx.sizeX; ++x)
-			for (int z = 0; z < ctx.sizeZ; ++z)
+		final Tile[][][] tiles = scene.getExtendedTiles();
+		final int maxX = Math.min(ctx.sizeX, tiles[0].length >> 3);
+		final int maxZ = Math.min(ctx.sizeZ, tiles[0][0].length >> 3);
+		for (int x = 0; x < maxX; ++x)
+			for (int z = 0; z < maxZ; ++z)
 				ctx.zones[x][z].invalidate = true;
+	}
+
+	@Subscribe
+	public void onWorldEntitySpawned(net.runelite.api.events.WorldEntitySpawned ev)
+	{
+		net.runelite.api.WorldEntity we = ev.getWorldEntity();
+		net.runelite.api.WorldView wv = we.getWorldView();
+		Log.i(TAG, "WorldEntitySpawned id=" + (we != null ? "yes" : "null")
+			+ " wv=" + (wv != null ? wv.getId() : "null")
+			+ " wvSizeX=" + (wv != null ? wv.getSizeX() : -1)
+			+ " wvSizeY=" + (wv != null ? wv.getSizeY() : -1));
+	}
+
+	@Subscribe
+	public void onWorldEntityDespawned(net.runelite.api.events.WorldEntityDespawned ev)
+	{
+		Log.i(TAG, "WorldEntityDespawned");
+	}
+
+	@Subscribe
+	public void onWorldViewLoaded(net.runelite.api.events.WorldViewLoaded ev)
+	{
+		net.runelite.api.WorldView wv = ev.getWorldView();
+		Log.i(TAG, "WorldViewLoaded id=" + (wv != null ? wv.getId() : "null")
+			+ " sizeX=" + (wv != null ? wv.getSizeX() : -1)
+			+ " sizeY=" + (wv != null ? wv.getSizeY() : -1));
+	}
+
+	@Subscribe
+	public void onWorldViewUnloaded(net.runelite.api.events.WorldViewUnloaded ev)
+	{
+		Log.i(TAG, "WorldViewUnloaded");
 	}
 
 	@Override
 	public void loadScene(WorldView wv, Scene scene)
 	{
 		int id = wv.getId();
+		Log.i(TAG, "loadScene(WV) id=" + id + " sizeX=" + wv.getSizeX() + " sizeY=" + wv.getSizeY()
+			+ " sceneWvId=" + scene.getWorldViewId());
 		if (id != WorldView.TOPLEVEL && subs[id] == null)
 		{
-			subs[id] = new SceneContext(NUM_ZONES, NUM_ZONES);
+			subs[id] = new SceneContext(wv.getSizeX() >> 3, wv.getSizeY() >> 3);
 		}
 		loadScene(scene);
 	}
@@ -939,13 +1082,18 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 		// Cheap fast path: bail out of the EGL/GL section entirely when nothing changed
-		// this tick. The dirty flag is set during the tick itself; sweeping zones to
-		// find any dirty one is O(256) ints which is fine.
+		// this tick. Clamped to the scene's real tile dims so we don't pick up stale
+		// invalidate=true on zones beyond the scene bounds (otherwise we'd trip the
+		// dirty check every tick and re-enter rebuild() which would just skip them
+		// again — wasted GL section every tick).
+		final Tile[][][] tiles = scene.getExtendedTiles();
+		final int maxX = Math.min(ctx.sizeX, tiles[0].length >> 3);
+		final int maxZ = Math.min(ctx.sizeZ, tiles[0][0].length >> 3);
 		boolean anyDirty = false;
 		outer:
-		for (int x = 0; x < ctx.sizeX; ++x)
+		for (int x = 0; x < maxX; ++x)
 		{
-			for (int z = 0; z < ctx.sizeZ; ++z)
+			for (int z = 0; z < maxZ; ++z)
 			{
 				if (ctx.zones[x][z].invalidate) { anyDirty = true; break outer; }
 			}
@@ -966,7 +1114,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	}
 
 	@Override
-	public void preSceneDraw(Scene scene,
+	public void preSceneDraw(Scene scene, Projection entityProjection,
 		float cameraX, float cameraY, float cameraZ, float cameraPitch, float cameraYaw,
 		int minLevel, int level, int maxLevel, java.util.Set<Integer> hideRoofIds)
 	{
@@ -991,11 +1139,27 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		}
 		else
 		{
-			Scene toplevel = client.getScene();
-			vaoO.addRange(null, toplevel);
-			vaoPO.addRange(null, toplevel);
-			glUniform4i(uniEntityTint, scene.getOverrideHue(), scene.getOverrideSaturation(),
-				scene.getOverrideLuminance(), scene.getOverrideAmount());
+			Log.i(TAG, "preSceneDraw SUB-WV wvId=" + scene.getWorldViewId() + " ctxNull=" + (ctx == null)
+				+ " entProj=" + (entityProjection != null ? entityProjection.getClass().getSimpleName() : "null"));
+			if (ctx != null)
+			{
+				// Capture the WorldEntity's entity-to-world matrix so drawDynamic/drawTemp
+				// can seal each sub-WV entity's VAO range under it, drawZone* sees the
+				// right uniEntityProj for static alpha, and PRE_PASS_ALPHA can re-arm it
+				// before static alpha geometry draws.
+				if (entityProjection instanceof FloatProjection)
+				{
+					System.arraycopy(((FloatProjection) entityProjection).getProjection(), 0, ctx.projection, 0, 16);
+				}
+				else
+				{
+					System.arraycopy(Mat4.identity(), 0, ctx.projection, 0, 16);
+				}
+				glUniformMatrix4fv(uniEntityProj, 1, false, ctx.projection, 0);
+				lastProjection = entityProjection;
+				glUniform4i(uniEntityTint, scene.getOverrideHue(), scene.getOverrideSaturation(),
+					scene.getOverrideLuminance(), scene.getOverrideAmount());
+			}
 		}
 	}
 
@@ -1152,6 +1316,11 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 
+		if (scene.getWorldViewId() != WorldView.TOPLEVEL)
+		{
+			debugSubWvCallback("drawZoneOpaque", scene.getWorldViewId(), zx, zz);
+		}
+
 		Zone z = ctx.zones[zx][zz];
 		if (!z.initialized) return;
 
@@ -1166,6 +1335,11 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	{
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
+
+		if (scene.getWorldViewId() != WorldView.TOPLEVEL)
+		{
+			debugSubWvCallback("drawZoneAlpha", scene.getWorldViewId(), zx, zz);
+		}
 
 		vaoA.unmap();
 
@@ -1198,6 +1372,11 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 
+		if (scene.getWorldViewId() != WorldView.TOPLEVEL)
+		{
+			debugSubWvCallback("drawPass" + pass, scene.getWorldViewId(), 0, 0);
+		}
+
 		updateEntityProjection(projection);
 
 		if (pass == DrawCallbacks.PASS_OPAQUE)
@@ -1225,6 +1404,20 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 					vao.reset();
 				}
 			}
+		}
+		else if (pass == DrawCallbacks.PRE_PASS_ALPHA)
+		{
+			// PRE_PASS_ALPHA fires once per scene right before the alpha zone loop.
+			// Its job is to re-arm uniEntityProj so static alpha geometry (drawn by
+			// Zone.renderAlpha via the static elementBuffer) gets the right entity
+			// transform. Used to fall through to the PASS_ALPHA branch below, which
+			// at TOPLEVEL prematurely unmapped+drew vaoA before drawZoneAlpha ran —
+			// so any dynamic alpha registered after this point landed in an empty
+			// VAO and never reached the screen.
+			glUniformMatrix4fv(uniEntityProj, 1, false, ctx.projection, 0);
+			lastProjection = projection;
+			glUniform4i(uniEntityTint, scene.getOverrideHue(), scene.getOverrideSaturation(),
+				scene.getOverrideLuminance(), scene.getOverrideAmount());
 		}
 		else // PASS_ALPHA
 		{
@@ -1263,65 +1456,138 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	public void drawDynamic(Projection worldProjection, Scene scene, TileObject tileObject,
 		Renderable r, Model m, int orient, int x, int y, int z)
 	{
-		uploadDynamicModel(worldProjection, scene, m, orient, x, y, z, false);
+		SceneContext ctx = context(scene);
+		if (ctx == null) return;
+		if (m == null) return;
+		final int faceCount = m.getFaceCount();
+		if (faceCount <= 0) return;
+
+		debugTrackDraw("drawDynamic", faceCount, m, scene, x, y, z, tileObject.getPlane());
+
+		if (!renderCallbackManager.drawObject(scene, tileObject))
+		{
+			if (faceCount >= 1500)
+			{
+				Log.i(TAG, "CB-DROP drawDynamic faces=" + faceCount + " pos=(" + x + "," + y + "," + z + ")");
+			}
+			return;
+		}
+
+		final int size = faceCount * 3 * VAO.VERT_SIZE;
+		if (m.getFaceTransparencies() == null)
+		{
+			// Opaque-only fast path: uploadTempModel has no near-clip (p[2] < 50)
+			// or MAX_DIAMETER bail, so large NPCs like the Giant Gemstone Crab
+			// render even when the camera is close to or inside the bounding
+			// cylinder. Routing everything through uploadSortedModel like before
+			// silently dropped these.
+			VAO o = vaoO.get(size);
+			clientUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb);
+			// Seal this entity's range under the current scene's projection so the
+			// later vaoO.draw() rebinds uniEntityProj to it before glDrawArrays.
+			// Without this, sub-WV entities (the crab) drew under whatever projection
+			// the next drawPass(PASS_OPAQUE) supplied — which is the *enclosing*
+			// toplevel projection — so their entity-local vertices ended up at the
+			// wrong world position (typically far off-screen).
+			o.addRange(worldProjection, scene);
+			return;
+		}
+
+		VAO o = vaoO.get(size);
+		VAO a = vaoA.get(size);
+		int aStart = a.vbo.vb.position();
+		try
+		{
+			m.calculateBoundsCylinder();
+			facePrioritySorter.uploadSortedModel(worldProjection, m, orient, x, y, z,
+				o.vbo.vb, a.vbo.vb, false);
+		}
+		catch (Throwable t)
+		{
+			// Match desktop: log + skip. Keeps a single bad model from killing
+			// the render thread. WARN (not DEBUG) — filtered-out DEBUG used to
+			// hide "why doesn't NPC X render" investigations.
+			Log.w(TAG, "uploadSortedModel failed: " + t, t);
+		}
+
+		o.addRange(worldProjection, scene);
+
+		int aEnd = a.vbo.vb.position();
+		if (aEnd > aStart)
+		{
+			int offset = scene.getWorldViewId() == WorldView.TOPLEVEL ? (SCENE_OFFSET >> 3) : 0;
+			int zx = (x >> 10) + offset;
+			int zz = (z >> 10) + offset;
+			if (zx >= 0 && zx < ctx.sizeX && zz >= 0 && zz < ctx.sizeZ)
+			{
+				Zone zone = ctx.zones[zx][zz];
+				int plane = Math.min(ctx.maxLevel, tileObject.getPlane());
+				zone.addTempAlphaModel(a.vao, aStart, aEnd, plane, x & 1023, y, z & 1023);
+			}
+		}
 	}
 
 	@Override
 	public void drawTemp(Projection worldProjection, Scene scene, GameObject gameObject,
 		Model m, int orient, int x, int y, int z)
 	{
-		uploadDynamicModel(worldProjection, scene, m, orient, x, y, z, true);
-	}
-
-	/**
-	 * Allocate space in vaoO + vaoA and run uploadSortedModel. Matches the
-	 * desktop drawDynamic shape: opaque faces accumulate into vaoO, alpha faces
-	 * into vaoA; if any alpha faces were written we register the model with the
-	 * containing zone so the later alpha pass picks it up.
-	 *
-	 * Errors here are non-fatal — a malformed model shouldn't bring down the
-	 * whole render. The desktop swallows them the same way.
-	 */
-	private void uploadDynamicModel(Projection proj, Scene scene, Model model, int orient,
-		int x, int y, int z, boolean isTemp)
-	{
-		if (model == null) return;
-		int faceCount = model.getFaceCount();
+		SceneContext ctx = context(scene);
+		if (ctx == null) return;
+		if (m == null) return;
+		final int faceCount = m.getFaceCount();
 		if (faceCount <= 0) return;
 
+		debugTrackDraw("drawTemp", faceCount, m, scene, x, y, z, gameObject.getPlane());
+
+		if (!renderCallbackManager.drawObject(scene, gameObject))
+		{
+			if (faceCount >= 1500)
+			{
+				Log.i(TAG, "CB-DROP drawTemp faces=" + faceCount + " pos=(" + x + "," + y + "," + z + ")");
+			}
+			return;
+		}
+
+		final Renderable renderable = gameObject.getRenderable();
+		final int renderMode = renderable.getRenderMode();
 		final int size = faceCount * 3 * VAO.VERT_SIZE;
+
+		if (renderMode != Renderable.RENDERMODE_SORTED_NO_DEPTH && m.getFaceTransparencies() == null)
+		{
+			VAO o = vaoO.get(size);
+			clientUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb);
+			o.addRange(worldProjection, scene);
+			return;
+		}
+
 		VAO o = vaoO.get(size);
 		VAO a = vaoA.get(size);
 		int aStart = a.vbo.vb.position();
-
 		try
 		{
-			model.calculateBoundsCylinder();
-			facePrioritySorter.uploadSortedModel(proj, model, orient, x, y, z,
-				o.vbo.vb, a.vbo.vb, !isTemp);
+			m.calculateBoundsCylinder();
+			facePrioritySorter.uploadSortedModel(worldProjection, m, orient, x, y, z,
+				o.vbo.vb, a.vbo.vb, renderMode == Renderable.RENDERMODE_SORTED_NO_DEPTH);
 		}
 		catch (Throwable t)
 		{
-			// Match desktop GpuPlugin behaviour: log + skip. Keeps a single bad
-			// model from crashing the entire render thread.
-			Log.d(TAG, "uploadSortedModel failed: " + t);
+			Log.w(TAG, "uploadSortedModel failed: " + t, t);
 		}
+
+		o.addRange(worldProjection, scene);
 
 		int aEnd = a.vbo.vb.position();
 		if (aEnd > aStart)
 		{
-			SceneContext ctx = context(scene);
-			if (ctx != null)
+			int offset = scene.getWorldViewId() == WorldView.TOPLEVEL ? (SCENE_OFFSET >> 3) : 0;
+			int zx = (gameObject.getX() >> 10) + offset;
+			int zz = (gameObject.getY() >> 10) + offset;
+			if (zx >= 0 && zx < ctx.sizeX && zz >= 0 && zz < ctx.sizeZ)
 			{
-				int offset = scene.getWorldViewId() == WorldView.TOPLEVEL ? (SCENE_OFFSET >> 3) : 0;
-				int zx = (x >> 10) + offset;
-				int zz = (z >> 10) + offset;
-				if (zx >= 0 && zx < ctx.sizeX && zz >= 0 && zz < ctx.sizeZ)
-				{
-					Zone zone = ctx.zones[zx][zz];
-					int plane = Math.min(ctx.maxLevel, 0);
-					zone.addTempAlphaModel(a.vao, aStart, aEnd, plane, x & 1023, y, z & 1023);
-				}
+				Zone zone = ctx.zones[zx][zz];
+				int plane = Math.min(ctx.maxLevel, gameObject.getPlane());
+				// y is offset by getModelHeight so players draw on top of locs (matches desktop).
+				zone.addTempAlphaModel(a.vao, aStart, aEnd, plane, x & 1023, y - renderable.getModelHeight(), z & 1023);
 			}
 		}
 	}

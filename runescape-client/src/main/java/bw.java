@@ -29,12 +29,12 @@ public class bw {
 		descriptor = "Ldx;"
 	)
 	public static dx dk_fld;
-	@ObfuscatedGetter(
-		intValue = 1257830513
-	)
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1257830513
 	)
 	static int bn_fld;
 	@ObfuscatedName("ag")
@@ -50,14 +50,14 @@ public class bw {
 	static void dp(dx var0, int var1, int var2, int var3, int var4, int var5, int var6) throws EOFException {
 		na var7 = var0.aa_fld[var1][var2][var3];
 		if (var7 != null) {
-			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)var7.as()) {
-				if (var8.ag_fld == var4) {
+			for (dw var8 = (dw)var7.aw(); null != var8; var8 = (dw)na.iy(var7)) {
+				if (var8.ah_fld == var4) {
 					if (var6 == 2043223777) {
 						return;
 					}
 
-					if (var5 == var8.az_fld) {
-						var8.gy_void();
+					if (var5 == var8.ay_fld) {
+						var8.gy();
 						break;
 					}
 				}
@@ -73,28 +73,37 @@ public class bw {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	void ak() {
 		this.ak_fld.shutdown();
 		this.ak_fld = null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ud")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lbw;)Ljava/security/SecureRandom;"
 	)
-	boolean ag() {
-		return this.ag_fld.isDone();
+	public static SecureRandom ud(bw var0) {
+		try {
+			return (SecureRandom)(SecureRandom)var0.ag_fld.get();
+		} catch (Exception var4) {
+			SecureRandom var3 = new SecureRandom();
+			var3.nextInt();
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("sm")
+	@ObfuscatedName("wk")
 	@ObfuscatedSignature(
-		descriptor = "(Lbw;)V"
+		descriptor = "(Lbw;I)Z"
 	)
-	public static void sm(bw var0) {
-		var0.ak_fld.shutdown();
-		var0.ak_fld = null;
+	public static boolean wk(bw var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ag_fld.isDone();
 	}
 
 	bw() {
@@ -102,7 +111,7 @@ public class bw {
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Ljava/lang/String;"
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;"
 	)
 	public static String ax(String var0) {
 		StringBuilder var2 = new StringBuilder(var0.length());
@@ -138,7 +147,16 @@ public class bw {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZIZ)V"
+		descriptor = "()V"
+	)
+	void ae() {
+		this.ak_fld.shutdown();
+		this.ak_fld = null;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZIZI)V"
 	)
 	static void ae(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
 		if (var0 < var1) {
@@ -183,51 +201,12 @@ public class bw {
 		}
 	}
 
-	@ObfuscatedName("hp")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;II)I"
-	)
-	public static int hp(pp var0, int var1, int var2) {
-		return my.ag(var0.ep_fld, var1, var2);
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void aw() {
-		this.ak_fld.shutdown();
-		this.ak_fld = null;
-	}
-
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	boolean ay() {
 		return this.ag_fld.isDone();
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean as() {
-		return this.ag_fld.isDone();
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/SecureRandom;"
-	)
-	SecureRandom af() {
-		try {
-			return (SecureRandom)(SecureRandom)this.ag_fld.get();
-		} catch (Exception var4) {
-			SecureRandom var3 = new SecureRandom();
-			var3.nextInt();
-			return var3;
-		}
 	}
 
 	@ObfuscatedName("ar")
@@ -244,36 +223,43 @@ public class bw {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/security/SecureRandom;"
+		descriptor = "(Lbw;B)Ljava/security/SecureRandom;"
 	)
-	SecureRandom az() {
-		try {
-			return (SecureRandom)(SecureRandom)this.ag_fld.get();
-		} catch (Exception var5) {
-			SecureRandom var4 = new SecureRandom();
-			var4.nextInt();
-			return var4;
+	public static SecureRandom bv(bw var0, byte var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			try {
+				return (SecureRandom)(SecureRandom)var0.ag_fld.get();
+			} catch (Exception var5) {
+				SecureRandom var4 = new SecureRandom();
+				var4.nextInt();
+				return var4;
+			}
 		}
 	}
 
-	@ObfuscatedName("lb")
-	@ObfuscatedSignature(
-		descriptor = "(Lbw;)V"
-	)
-	public static void lb(bw var0) {
-		var0.ak_fld.shutdown();
-		var0.ak_fld = null;
-	}
-
-	@ObfuscatedName("av")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void av() {
+	void ah() {
 		this.ak_fld.shutdown();
 		this.ak_fld = null;
+	}
+
+	@ObfuscatedName("mf")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public static int mf(nm var0, Object var1, Object var2) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ak((nl)var1, (nl)var2, 673321348);
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -295,13 +281,35 @@ public class bw {
 				;
 			}
 		} else {
-			if (cx.kq_fld.at(-370499304) != null) {
-				bn.ba_fld = cx.kq_fld.at(203396870);
-				client.lq();
+			if (cn.xx(cx.kq_fld, -370499304) != null) {
+				bn.ba_fld = cn.xx(cx.kq_fld, 203396870);
+				client.og();
 				client.dq_fld = true;
 			} else {
 				client.dq_fld = false;
 			}
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean ag(int var1) {
+		return this.ag_fld.isDone();
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/security/SecureRandom;"
+	)
+	SecureRandom az(byte var1) {
+		try {
+			return (SecureRandom)(SecureRandom)this.ag_fld.get();
+		} catch (Exception var5) {
+			SecureRandom var4 = new SecureRandom();
+			var4.nextInt();
+			return var4;
 		}
 	}
 }

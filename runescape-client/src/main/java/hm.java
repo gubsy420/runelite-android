@@ -6,12 +6,12 @@ import net.runelite.api.events.PostAnimation;
 
 @ObfuscatedName("hm")
 public class hm {
-	@ObfuscatedGetter(
-		longValue = -3411117556647375765L
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -3411117556647375765L
 	)
 	public long aw_fld = 156454735285780413L;
 	@ObfuscatedName("al")
@@ -39,12 +39,12 @@ public class hm {
 		descriptor = "I"
 	)
 	static int av_fld;
-	@ObfuscatedGetter(
-		longValue = -1682551826835208773L
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = -1682551826835208773L
 	)
 	long ah_fld;
 	@ObfuscatedName("ay")
@@ -52,12 +52,12 @@ public class hm {
 		descriptor = "Lno;"
 	)
 	no ay_fld = new no();
-	@ObfuscatedGetter(
-		intValue = -228100845
-	)
 	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -228100845
 	)
 	static int bb_fld;
 	@ObfuscatedName("ag")
@@ -65,12 +65,12 @@ public class hm {
 		descriptor = "I"
 	)
 	static int ag_fld;
-	@ObfuscatedGetter(
-		intValue = 331481291
-	)
 	@ObfuscatedName("oa")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 331481291
 	)
 	static int oa_fld;
 
@@ -79,7 +79,7 @@ public class hm {
 		descriptor = "(Lib;)V"
 	)
 	public void ah(ib var1) {
-		if (var1.hc_fld == this.ah_fld && this.aw_fld == var1.ag_fld) {
+		if (var1.hc_long == this.ah_fld && this.aw_fld == var1.ag_fld) {
 			for (ho var2 = (ho)this.ay_fld.ah(); null != var2; var2 = (ho)this.ay_fld.ay()) {
 				var2.ag(var1, (byte)97);
 			}
@@ -95,8 +95,8 @@ public class hm {
 		descriptor = "(Lxi;I)V"
 	)
 	void ak(xi var1, int var2) {
-		this.ah_fld = xi.ob(var1, 703249075);
-		this.aw_fld = xi.ob(var1, 1195921260);
+		this.ah_fld = var1.cu();
+		this.aw_fld = var1.cu();
 
 		for (int var3 = var1.cg(); var3 != 0; var3 = var1.cg()) {
 			if (var2 != 65280) {
@@ -125,44 +125,53 @@ public class hm {
 			}
 
 			((ho)var4).ak(var1, 142218418);
-			this.ay_fld.az((vw)var4);
+			no.dx(this.ay_fld, (vw)var4);
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("hj")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;B)V"
+		descriptor = "(Lhm;Lib;)V"
 	)
-	public void ag(ib var1, byte var2) {
-		if (var1.hc_fld == this.ah_fld) {
-			if (var2 >= 16) {
-				return;
+	public static void hj(hm var0, ib var1) {
+		if (var1.hc_long == var0.ah_fld && var0.aw_fld == var1.ag_fld) {
+			for (ho var2 = (ho)var0.ay_fld.ah(); null != var2; var2 = (ho)var0.ay_fld.ay()) {
+				var2.ag(var1, (byte)62);
 			}
 
-			if (this.aw_fld == var1.ag_fld) {
-				for (ho var3 = (ho)this.ay_fld.ah(); null != var3; var3 = (ho)this.ay_fld.ay()) {
-					var3.ag(var1, (byte)74);
-				}
-
-				var1.ag_fld++;
-				return;
-			}
+			var1.ag_fld++;
+		} else {
+			throw new RuntimeException("");
 		}
-
-		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("hk")
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lib;)V"
+	)
+	public void ae(ib var1) {
+		if (var1.hc_long == this.ah_fld && this.aw_fld == var1.ag_fld) {
+			for (ho var2 = (ho)this.ay_fld.ah(); null != var2; var2 = (ho)this.ay_fld.ay()) {
+				var2.ag(var1, (byte)21);
+			}
+
+			var1.ag_fld++;
+		} else {
+			throw new RuntimeException("");
+		}
+	}
+
+	@ObfuscatedName("nk")
 	@ObfuscatedSignature(
 		descriptor = "(Lhm;Lxi;)V"
 	)
-	public static void hk(hm var0, xi var1) {
+	public static void nk(hm var0, xi var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.ah_fld = xi.ob(var1, -1510627834);
-		var0.aw_fld = xi.ob(var1, 685603954);
+		var0.ah_fld = var1.cu();
+		var0.aw_fld = var1.cu();
 
 		for (int var2 = var1.cg(); var2 != 0; var2 = var1.cg()) {
 			Object var3;
@@ -183,31 +192,7 @@ public class hm {
 			}
 
 			((ho)var3).ak(var1, 142218418);
-			var0.ay_fld.az((vw)var3);
-		}
-	}
-
-	@ObfuscatedName("ex")
-	@ObfuscatedSignature(
-		descriptor = "(Ltv;I)I"
-	)
-	public static int ex(tv var0, int var1) throws EOFException {
-		return var0.ak_fld.ak(var1, (byte)11);
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;)V"
-	)
-	public void ay(ib var1) {
-		if (var1.hc_fld == this.ah_fld && this.aw_fld == var1.ag_fld) {
-			for (ho var2 = (ho)this.ay_fld.ah(); null != var2; var2 = (ho)this.ay_fld.ay()) {
-				var2.ag(var1, (byte)21);
-			}
-
-			var1.ag_fld++;
-		} else {
-			throw new RuntimeException("");
+			no.dx(var0.ay_fld, (vw)var3);
 		}
 	}
 
@@ -216,8 +201,8 @@ public class hm {
 		descriptor = "(Lxi;)V"
 	)
 	void av(xi var1) {
-		this.ah_fld = xi.ob(var1, 630697536);
-		this.aw_fld = xi.ob(var1, -174172998);
+		this.ah_fld = var1.cu();
+		this.aw_fld = var1.cu();
 
 		for (int var2 = var1.cg(); var2 != 0; var2 = var1.cg()) {
 			Object var3;
@@ -238,13 +223,13 @@ public class hm {
 			}
 
 			((ho)var3).ak(var1, 142218418);
-			this.ay_fld.az((vw)var3);
+			no.dx(this.ay_fld, (vw)var3);
 		}
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(IB)I"
 	)
 	public static int ag(int var0) {
 		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
@@ -260,7 +245,7 @@ public class hm {
 		descriptor = "(Lib;)V"
 	)
 	public void aw(ib var1) {
-		if (var1.hc_fld == this.ah_fld && this.aw_fld == var1.ag_fld) {
+		if (var1.hc_long == this.ah_fld && this.aw_fld == var1.ag_fld) {
 			for (ho var2 = (ho)this.ay_fld.ah(); null != var2; var2 = (ho)this.ay_fld.ay()) {
 				var2.ag(var1, (byte)46);
 			}
@@ -271,25 +256,36 @@ public class hm {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("yy")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;)V"
+		descriptor = "(Lhm;Lib;B)V"
 	)
-	public void ae(ib var1) {
-		if (var1.hc_fld == this.ah_fld && this.aw_fld == var1.ag_fld) {
-			for (ho var2 = (ho)this.ay_fld.ah(); null != var2; var2 = (ho)this.ay_fld.ay()) {
-				var2.ag(var1, (byte)62);
+	public static void yy(hm var0, ib var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1.hc_long == var0.ah_fld) {
+			if (var2 >= 16) {
+				return;
 			}
 
-			var1.ag_fld++;
-		} else {
-			throw new RuntimeException("");
+			if (var0.aw_fld == var1.ag_fld) {
+				for (ho var3 = (ho)var0.ay_fld.ah(); null != var3; var3 = (ho)var0.ay_fld.ay()) {
+					var3.ag(var1, (byte)74);
+				}
+
+				var1.ag_fld++;
+				return;
+			}
 		}
+
+		throw new RuntimeException("");
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lol;"
+		descriptor = "(II)Lol;"
 	)
 	public static ol ak(int var0) throws EOFException {
 		synchronized (ol.aj_fld) {
@@ -303,7 +299,7 @@ public class hm {
 				var7 = new ol();
 				var7.bq_fld = var0;
 				if (null != var8) {
-					var7.bi(new xi(var8), 692305388);
+					var7.ah(new xi(var8), 692305388);
 				}
 
 				var7.ay((byte)1);
@@ -312,8 +308,8 @@ public class hm {
 			}
 
 			ol var3 = var10000;
-			if (var3.yl_fld == -1) {
-				var3.yl_fld = var0;
+			if (var3.gt_fld == -1) {
+				var3.gt_fld = var0;
 				og.ci_fld.getCallbacks().post(new PostAnimation(var3));
 			}
 
@@ -323,5 +319,28 @@ public class hm {
 
 	public hm(xi var1) {
 		this.ak(var1, 65280);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lib;B)V"
+	)
+	public void ag(ib var1, byte var2) {
+		if (var1.hc_long == this.ah_fld) {
+			if (var2 >= 16) {
+				return;
+			}
+
+			if (this.aw_fld == var1.ag_fld) {
+				for (ho var3 = (ho)this.ay_fld.be(); null != var3; var3 = (ho)this.ay_fld.be()) {
+					var3.ag(var1, (byte)74);
+				}
+
+				var1.ag_fld++;
+				return;
+			}
+		}
+
+		throw new RuntimeException("");
 	}
 }

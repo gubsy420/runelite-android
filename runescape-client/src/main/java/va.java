@@ -18,10 +18,31 @@ public class va extends ws {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lyz;)V"
+		descriptor = "(Lyz;I)V"
 	)
 	public static void ak(yz var0) throws EOFException {
 		pm.ag(var0, 500000, 475000);
+	}
+
+	@ObfuscatedName("xq")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;)V"
+	)
+	public static void xq(fn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.cm_fld = 0;
+		var0.cj_fld = null;
+	}
+
+	@ObfuscatedName("nm")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;)I"
+	)
+	public static int nm(pi var0) {
+		return var0.as_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -37,7 +58,7 @@ public class va extends ws {
 				var2--;
 			} else if (var3.ak((short)24244)) {
 				if (var3.ay()) {
-					this.al(var3.ar());
+					ws.dx(this, ws.hs(var3, 1710733461), (byte)-7);
 					this.ak_fld.clear();
 					return true;
 				}
@@ -74,7 +95,7 @@ public class va extends ws {
 				var1--;
 			} else if (var2.ak((short)-2370)) {
 				if (var2.ay()) {
-					this.al(var2.ar());
+					ws.dx(this, ws.hs(var2, 2062521036), (byte)-6);
 					this.ak_fld.clear();
 					return true;
 				}

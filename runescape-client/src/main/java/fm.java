@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.AABB;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,28 +9,28 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("fm")
 @Implements({"AABB"})
 public class fm implements AABB {
-	@ObfuscatedGetter(
-		intValue = -1776166105
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -1009472673
+		intValue = -1776166105
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -2112914411
+		intValue = -1009472673
 	)
+	int az_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -2112914411
 	)
 	int ae_fld;
 	@ObfuscatedName("ay")
@@ -37,47 +38,38 @@ public class fm implements AABB {
 		descriptor = "Lfm;"
 	)
 	fm ay_fld;
-	@ObfuscatedGetter(
-		intValue = 23001249
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = -1481949517
+		intValue = 23001249
 	)
+	int av_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
 	@ObfuscatedGetter(
-		intValue = 1999164469
+		intValue = -1481949517
 	)
+	int ah_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = 1634242191
+		intValue = 1999164469
 	)
+	int aw_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
-
-	@ObfuscatedName("getCenterY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
+	@ObfuscatedGetter(
+		intValue = 1634242191
 	)
-	@Override
-	public int getCenterY() {
-		return this.az_fld;
-	}
+	int ak_fld;
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -87,11 +79,29 @@ public class fm implements AABB {
 		return this.av_fld - this.aw_fld;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int ak(int var1) {
+		return this.ag_fld - this.ae_fld;
+	}
+
+	@ObfuscatedName("getCenterY")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int aw() {
+	@Export("getCenterY")
+	@Override
+	public int getCenterY() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int af() {
 		return this.av_fld - this.aw_fld;
 	}
 
@@ -103,6 +113,26 @@ public class fm implements AABB {
 		this.ae_fld = var5;
 		this.ah_fld = var6;
 		this.aw_fld = var7;
+	}
+
+	@ObfuscatedName("getExtremeY")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getExtremeY")
+	@Override
+	public int getExtremeY() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("getCenterX")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getCenterX")
+	@Override
+	public int getCenterX() {
+		return this.ag_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -160,18 +190,19 @@ public class fm implements AABB {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int au() {
-		return this.aw_fld + this.av_fld;
+	int aa() {
+		return this.ag_fld - this.ae_fld;
 	}
 
 	@ObfuscatedName("getCenterZ")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getCenterZ")
 	@Override
 	public int getCenterZ() {
 		return this.av_fld;
@@ -185,29 +216,14 @@ public class fm implements AABB {
 		return this.ag_fld - this.ae_fld;
 	}
 
-	@ObfuscatedName("fh")
-	@ObfuscatedSignature(
-		descriptor = "(Lfm;)I"
-	)
-	public static int fh(fm var0) {
-		return var0.az_fld - var0.ah_fld;
-	}
-
-	@ObfuscatedName("getExtremeZ")
+	@ObfuscatedName("getExtremeX")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getExtremeX")
 	@Override
-	public int getExtremeZ() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int al() {
-		return this.ag_fld - this.ae_fld;
+	public int getExtremeX() {
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -218,6 +234,14 @@ public class fm implements AABB {
 		return this.ag_fld + this.ae_fld;
 	}
 
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int aw() {
+		return this.az_fld - this.ah_fld;
+	}
+
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(B)I"
@@ -226,75 +250,28 @@ public class fm implements AABB {
 		return this.az_fld + this.ah_fld;
 	}
 
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ao() {
-		return this.az_fld - this.ah_fld;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ax() {
-		return this.az_fld - this.ah_fld;
-	}
-
-	@ObfuscatedName("getExtremeX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getExtremeX() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int af() {
-		return this.az_fld - this.ah_fld;
-	}
-
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	int ad() {
+		return this.az_fld - this.ah_fld;
+	}
+
+	@ObfuscatedName("ns")
+	@ObfuscatedSignature(
+		descriptor = "(Lfm;)I"
+	)
+	public static int ns(fm var0) {
+		return var0.az_fld - var0.ah_fld;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ay() {
 		return this.az_fld + this.ah_fld;
-	}
-
-	@ObfuscatedName("getCenterX")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getCenterX() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("getExtremeY")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getExtremeY() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("lx")
-	@ObfuscatedSignature(
-		descriptor = "(Lfm;I)I"
-	)
-	public static int lx(fm var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ag_fld - var0.ae_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -305,28 +282,58 @@ public class fm implements AABB {
 		return this.az_fld - this.ah_fld;
 	}
 
-	@ObfuscatedName("om")
+	@ObfuscatedName("dc")
 	@ObfuscatedSignature(
 		descriptor = "(Lfm;)I"
 	)
-	public static int om(fm var0) {
-		return var0.ag_fld - var0.ae_fld;
+	public static int dc(fm var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.az_fld - var0.ah_fld;
+		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int ay() {
-		return this.aw_fld + this.av_fld;
+	int aq() {
+		return this.av_fld - this.aw_fld;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	int aa() {
+	int ar() {
 		return this.aw_fld + this.av_fld;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int au() {
+		return this.aw_fld + this.av_fld;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int as() {
+		return this.aw_fld + this.av_fld;
+	}
+
+	@ObfuscatedName("getExtremeZ")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getExtremeZ")
+	@Override
+	public int getExtremeZ() {
+		return this.aw_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -337,11 +344,11 @@ public class fm implements AABB {
 		return this.aw_fld + this.av_fld;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "()I"
 	)
-	int ak(int var1) {
-		return this.ag_fld - this.ae_fld;
+	int ai() {
+		return this.ah_fld - this.ag_fld;
 	}
 }

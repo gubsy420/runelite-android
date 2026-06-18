@@ -4,148 +4,148 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("eh")
 public class eh {
-	@ObfuscatedGetter(
-		intValue = 1436839769
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = -36494669
+		intValue = 1436839769
 	)
+	int aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
 	@ObfuscatedGetter(
-		intValue = -2013936001
+		intValue = -36494669
 	)
+	int ay_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -937649509
+		intValue = -2013936001
 	)
+	int ag_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = -1309058627
+		intValue = -937649509
 	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 1279172147
+		intValue = -1309058627
 	)
+	int ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
 	@ObfuscatedGetter(
-		intValue = -1915460767
+		intValue = 1279172147
 	)
+	int ah_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
 	@ObfuscatedGetter(
-		intValue = 2094881381
+		intValue = -1915460767
 	)
+	int ak_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int af_fld;
 	@ObfuscatedGetter(
-		intValue = 803950911
+		intValue = 2094881381
 	)
+	int af_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int as_fld;
 	@ObfuscatedGetter(
-		intValue = -1425297727
+		intValue = 803950911
 	)
+	int as_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = 525603807
+		intValue = -1425297727
 	)
+	int ar_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -116346001
+		intValue = 525603807
 	)
+	int az_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int al_fld;
 	@ObfuscatedGetter(
-		intValue = 2057227127
+		intValue = -116346001
 	)
+	int al_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int au_fld;
 	@ObfuscatedGetter(
-		intValue = 1526989493
+		intValue = 2057227127
 	)
+	int au_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ax_fld;
 	@ObfuscatedGetter(
-		intValue = -210112885
+		intValue = 1526989493
 	)
+	int ax_fld;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int an_fld;
 	@ObfuscatedGetter(
-		intValue = 1144925503
+		intValue = -210112885
 	)
+	int an_fld;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aa_fld;
 	@ObfuscatedGetter(
-		intValue = -1628135513
+		intValue = 1144925503
 	)
+	int aa_fld;
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ai_fld;
 	@ObfuscatedGetter(
-		intValue = -1466983103
+		intValue = -1628135513
 	)
+	int ai_fld;
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1466983103
 	)
 	int aq_fld;
 	@ObfuscatedName("cf")
@@ -156,7 +156,7 @@ public class eh {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([BILjava/lang/CharSequence;)I"
+		descriptor = "([BILjava/lang/CharSequence;I)I"
 	)
 	public static int ak(byte[] var0, int var1, CharSequence var2) {
 		int var4 = var2.length();
@@ -181,7 +181,7 @@ public class eh {
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(III)V"
 	)
 	static void an(int var0, int var1) {
 		int[] var3 = new int[ev.af_fld];
@@ -194,12 +194,12 @@ public class eh {
 			var3[var4] = var8 * var7 >> 16;
 		}
 
-		bw.dk_fld.az_fld.js(var3, 500, 800, var0 * 334 / var1, 334);
+		bw.dk_fld.az_fld.dh(var3, 500, 800, var0 * 334 / var1, 334);
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/Object;)Lsl;"
+		descriptor = "(ILjava/lang/Object;I)Lsl;"
 	)
 	static sl av(int var0, Object var1) {
 		sl var3 = (sl)var1;
@@ -212,7 +212,7 @@ public class eh {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ag(int var0) {
 		return var0 >> 8;

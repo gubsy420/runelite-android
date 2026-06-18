@@ -54,9 +54,34 @@ public class jw {
 	)
 	public static int aa_fld;
 
+	@ObfuscatedName("id")
+	@ObfuscatedSignature(
+		descriptor = "(Lnj;)Lvc;"
+	)
+	public static vc id(nj var0) {
+		vc var1 = var0.ak_fld.fn_vc;
+		if (var1 == var0.ak_fld) {
+			return null;
+		} else {
+			var1.vi();
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("nw")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;I)V"
+	)
+	public static void nw(zg var0, int var1) {
+		if (var0.at_fld != var1) {
+			var0.at_fld = var1 * 806471629;
+			var0.bj();
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)Z"
+		descriptor = "(IIIIIIIII)Z"
 	)
 	public static boolean ak(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
 		return !nh.ag(var0, var1, var2, var3, var4, var5) ? false : nh.ag(var0, var1, var4, var5, var6, var7);
@@ -68,7 +93,7 @@ public class jw {
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(C)Z"
+		descriptor = "(CI)Z"
 	)
 	public static boolean al(char var0) {
 		return var0 >= '0' && var0 <= '9';

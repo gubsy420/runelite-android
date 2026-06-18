@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.MidiRequest;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,38 +9,38 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("me")
 @Implements({"MidiRequest"})
 public class me implements MidiRequest {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean ay_fld;
-	@ObfuscatedGetter(
-		intValue = -2020637421
-	)
+	public boolean ar_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ag_fld = 1881600741;
 	@ObfuscatedGetter(
-		intValue = 1016349043
+		intValue = -2020637421
 	)
+	public int ag_fld = 1881600741;
+	@ObfuscatedName("fv")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public boolean fv_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int az_fld = -1165675451;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public boolean as_fld;
 	@ObfuscatedGetter(
-		intValue = 1153128559
+		intValue = 1016349043
 	)
+	public int az_fld = -1165675451;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1153128559
 	)
 	public int av_fld = 0;
 	@ObfuscatedName("ae")
@@ -47,36 +48,36 @@ public class me implements MidiRequest {
 		descriptor = "F"
 	)
 	public float ae_fld = 0.0F;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public boolean ah_fld = false;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean aw_fld = false;
-	@ObfuscatedName("ej")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public boolean ej_fld;
+	public boolean aw_fld;
 	@ObfuscatedName("hz")
 	@ObfuscatedSignature(
 		descriptor = "Luv;"
 	)
 	static uv hz_fld;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean ar_fld = false;
+	public boolean as_fld = false;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "Lap;"
 	)
 	public ap al_fld;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean ah_fld;
+	public boolean ay_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lml;"
@@ -93,175 +94,218 @@ public class me implements MidiRequest {
 	)
 	public ub ak_fld;
 
-	public me(ub var1, String var2, String var3, int var4, boolean var5) {
-		this.ay_fld = false;
-		this.ag_fld = var1.cm(var2, (byte)1);
-		this.az_fld = var1.cz(this.ag_fld, var3, -1157701189);
-		jg(this, var1, this.ag_fld, this.az_fld, var4, var5, (byte)-74);
-	}
-
-	public me(ub var1, int var2, int var3, int var4, boolean var5) {
-		this.ay_fld = false;
-		jg(this, var1, var2, var3, var4, var5, (byte)-78);
-	}
-
 	@ObfuscatedName("getArchiveId")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
+	@Export("getArchiveId")
 	@Override
 	public int getArchiveId() {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("isJingle")
+	@ObfuscatedName("xw")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lcn;Z)V"
 	)
-	@Override
-	public boolean isJingle() {
-		return this.as_fld;
+	public static void xw(cn var0, boolean var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ad_fld = var1;
+		og.ag();
+	}
+
+	public me(ub var1, String var2, String var3, int var4, boolean var5) {
+		this.ar_fld = false;
+		this.ag_fld = var1.cm(var2, (byte)1);
+		this.az_fld = var1.cz(this.ag_fld, var3, -1157701189);
+		this.ak(var1, this.ag_fld, this.az_fld, var4, var5, (byte)-74);
+	}
+
+	public me(ub var1, int var2, int var3, int var4, boolean var5) {
+		this.ar_fld = false;
+		this.ak(var1, var2, var3, var4, var5, (byte)-78);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lub;IIIZB)V"
+	)
+	void ak(ub var1, int var2, int var3, int var4, boolean var5, byte var6) {
+		this.cb(var1, var2, var3, var4, var5);
+		this.ak_fld = var1;
+		this.ag_fld = var2;
+		this.az_fld = var3;
+		this.av_fld = var4;
+		this.ah_fld = var5;
+	}
+
+	@ObfuscatedName("cb")
+	@ObfuscatedSignature(
+		descriptor = "(Lub;IIIZ)V"
+	)
+	public void cb(ub var1, int var2, int var3, int var4, boolean var5) {
+		uv var6 = (uv)var1;
+		this.fv_fld = var6.dy() == 11;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lub;IIIZ)V"
+	)
+	void ag(ub var1, int var2, int var3, int var4, boolean var5) {
+		this.ak_fld = var1;
+		this.ag_fld = var2;
+		this.az_fld = var3;
+		this.av_fld = var4;
+		this.ah_fld = var5;
 	}
 
 	@ObfuscatedName("fi")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;IIII)V"
+		descriptor = "(Lcv;IIIII)V"
 	)
-	static final void fi(cv var0, int var1, int var2, int var3, int var4) {
-		boolean var6 = ev.jb(var0, false);
-		if (var6) {
-			int var11 = var4;
-			int var10 = var3;
-			int var9 = var2;
-			int var8 = var1;
-			cv var7 = var0;
-			int var12 = -2132635665;
-			if (client.dj_fld != var0.bx_fld && client.nr_fld.ag_fld < 400) {
-				int var13 = sq.ei();
-				int var14 = on.ee();
-				String var15;
-				if (var0.as_fld == 0) {
-					String var16 = var0.aw_fld[0] + var0.az_fld + var0.aw_fld[1];
-					int var18 = var0.ay_fld;
-					int var19 = var13 - var18;
-					String var17;
-					if (var19 < -9) {
-						var17 = gd.ag(16711680, -1940547058);
-					} else if (var19 < -6) {
+	static final void fi(cv var0, int var1, int var2, int var3, int var4) throws EOFException {
+		try {
+			boolean var6 = ev.ti(var0, false);
+			if (var6) {
+				int var11 = var4;
+				int var10 = var3;
+				int var9 = var2;
+				int var8 = var1;
+				cv var7 = var0;
+				int var12 = -2132635665;
+				if (client.dj_fld != var0.bq_fld && client.nr_fld.ot_fld < 400) {
+					int var13 = sq.ei();
+					int var14 = on.ee();
+					String var15;
+					if (var0.au_fld == 0) {
+						String var16 = var0.aw_fld[0] + var0.az_fld + var0.aw_fld[1];
+						int var18 = var0.ad_fld;
+						int var19 = var13 - var18;
+						String var17;
+						if (var19 < -9) {
+							var17 = gd.ag(16711680, -1940547058);
+						} else if (var19 < -6) {
+							if (var12 >= -2009633436) {
+								return;
+							}
+
+							var17 = gd.ag(16723968, -1940547058);
+						} else if (var19 < -3) {
+							var17 = gd.ag(16740352, -1940547058);
+						} else if (var19 < 0) {
+							var17 = gd.ag(16756736, -1940547058);
+						} else if (var19 > 9) {
+							var17 = gd.ag(65280, -1940547058);
+						} else if (var19 > 6) {
+							var17 = gd.ag(4259584, -1940547058);
+						} else if (var19 > 3) {
+							var17 = gd.ag(8453888, -1940547058);
+						} else if (var19 > 0) {
+							var17 = gd.ag(12648192, -1940547058);
+						} else {
+							var17 = gd.ag(16776960, -1940547058);
+						}
+
+						var15 = var16 + var17 + " " + db.av_fld + kh.hk_fld + var0.ad_fld + db.ae_fld + var0.aw_fld[2];
+					} else {
+						var15 = var0.aw_fld[0] + var0.az_fld + var0.aw_fld[1] + " " + db.av_fld + kh.hi_fld + var0.au_fld + db.ae_fld + var0.aw_fld[2];
+					}
+
+					if (1 == client.ee_fld) {
 						if (var12 >= -2009633436) {
 							return;
 						}
 
-						var17 = gd.ag(16723968, -1940547058);
-					} else if (var19 < -3) {
-						var17 = gd.ag(16740352, -1940547058);
-					} else if (var19 < 0) {
-						var17 = gd.ag(16756736, -1940547058);
-					} else if (var19 > 9) {
-						var17 = gd.ag(65280, -1940547058);
-					} else if (var19 > 6) {
-						var17 = gd.ag(4259584, -1940547058);
-					} else if (var19 > 3) {
-						var17 = gd.ag(8453888, -1940547058);
-					} else if (var19 > 0) {
-						var17 = gd.ag(12648192, -1940547058);
+						ky.fl(kh.hj_fld, client.it_fld + " " + db.ah_fld + " " + gd.ag(16777215, -1940547058) + var15, 14, var1, var2, var3, -1, false, var4);
+					} else if (client.nk_fld) {
+						if (8 == (ms.ne_fld & 8)) {
+							ky.fl(client.om_fld, client.oh_fld + " " + db.ah_fld + " " + gd.ag(16777215, -1940547058) + var15, 15, var1, var2, var3, -1, false, var4);
+						}
 					} else {
-						var17 = gd.ag(16776960, -1940547058);
-					}
-
-					var15 = var16 + var17 + " " + db.av_fld + kh.hk_fld + var0.ay_fld + db.ae_fld + var0.aw_fld[2];
-				} else {
-					var15 = var0.aw_fld[0] + var0.az_fld + var0.aw_fld[1] + " " + db.av_fld + kh.hi_fld + var0.as_fld + db.ae_fld + var0.aw_fld[2];
-				}
-
-				if (1 == client.ee_fld) {
-					if (var12 >= -2009633436) {
-						return;
-					}
-
-					ky.fl(kh.hj_fld, client.it_fld + " " + db.ah_fld + " " + gd.ag(16777215, -1940547058) + var15, 14, var1, var2, var3, -1, false, var4);
-				} else if (client.nk_fld) {
-					if (8 == (ms.ne_fld & 8)) {
-						ky.fl(client.om_fld, client.oh_fld + " " + db.ah_fld + " " + gd.ag(16777215, -1940547058) + var15, 15, var1, var2, var3, -1, false, var4);
-					}
-				} else {
-					for (int var20 = 7; var20 >= 0; var20--) {
-						if (null != client.nl_fld[var20]) {
-							short var22 = 0;
-							if (client.nl_fld[var20].equalsIgnoreCase(kh.hb_fld)) {
-								if (ca.av_fld == client.lb_fld) {
-									continue;
-								}
-
-								label173: {
-									if (ca.ag_fld != client.lb_fld) {
-										if (var12 >= -2009633436) {
-											return;
-										}
-
-										if (ca.ak_fld != client.lb_fld) {
-											break label173;
-										}
-
-										if (var12 >= -2009633436) {
-											return;
-										}
-
-										if (var7.ay_fld <= var13) {
-											break label173;
-										}
-
-										if (var12 >= -2009633436) {
-											return;
-										}
+						for (int var21 = 7; var21 >= 0; var21--) {
+							if (null != client.nl_fld[var21]) {
+								short var23 = 0;
+								if (client.nl_fld[var21].equalsIgnoreCase(kh.hb_fld)) {
+									if (ca.av_fld == client.lb_fld) {
+										continue;
 									}
 
-									var22 = 2000;
-								}
+									label195: {
+										if (ca.ag_fld != client.lb_fld) {
+											if (var12 >= -2009633436) {
+												return;
+											}
 
-								if (0 != var14 && 0 != var7.ap_fld) {
-									if (var14 == var7.ap_fld) {
-										var22 = 2000;
-									} else {
-										var22 = 0;
+											if (ca.ak_fld != client.lb_fld) {
+												break label195;
+											}
+
+											if (var12 >= -2009633436) {
+												return;
+											}
+
+											if (var7.ad_fld <= var13) {
+												break label195;
+											}
+
+											if (var12 >= -2009633436) {
+												return;
+											}
+										}
+
+										var23 = 2000;
 									}
-								} else if (client.lb_fld == ca.ae_fld && cv.fj(var7, -725743415)) {
+
+									if (0 != var14 && 0 != var7.ac_fld) {
+										if (var14 == var7.ac_fld) {
+											var23 = 2000;
+										} else {
+											var23 = 0;
+										}
+									} else if (client.lb_fld == ca.ae_fld && var7.at(-725743415)) {
+										if (var12 >= -2009633436) {
+											return;
+										}
+
+										var23 = 2000;
+									}
+								} else if (client.nz_fld[var21]) {
 									if (var12 >= -2009633436) {
 										return;
 									}
 
-									var22 = 2000;
-								}
-							} else if (client.nz_fld[var20]) {
-								if (var12 >= -2009633436) {
-									return;
+									var23 = 2000;
 								}
 
-								var22 = 2000;
+								boolean var24 = false;
+								int var25 = client.cx_fld[var21] + var23;
+								ky.fl(client.nl_fld[var21], gd.ag(16777215, -1940547058) + var15, var25, var8, var9, var10, -1, false, var11);
 							}
-
-							boolean var23 = false;
-							int var24 = client.cx_fld[var20] + var22;
-							ky.fl(client.nl_fld[var20], gd.ag(16777215, -1940547058) + var15, var24, var8, var9, var10, -1, false, var11);
 						}
 					}
-				}
 
-				for (int var21 = 0; var21 < client.nr_fld.ag_fld; var21++) {
-					if (client.nr_fld.ae_fld[var21] == 23) {
-						if (var12 < -2009633436) {
-							client.nr_fld.ar_fld[var21] = gd.ag(16777215, -1940547058) + var15;
+					for (int var22 = 0; var22 < client.nr_fld.ot_fld; var22++) {
+						if (client.nr_fld.ae_fld[var22] == 23) {
+							if (var12 < -2009633436) {
+								client.nr_fld.ar_fld[var22] = gd.ag(16777215, -1940547058) + var15;
+							}
+							break;
 						}
-						break;
 					}
 				}
 			}
+		} catch (Throwable var20) {
+			throw new RuntimeException(var20);
 		}
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(CLxh;)I"
+		descriptor = "(CLxh;I)I"
 	)
 	static int av(char var0, xh var1) {
 		int var3 = var0 << 4;
@@ -279,14 +323,14 @@ public class me implements MidiRequest {
 
 	@ObfuscatedName("ha")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lyo;"
+		descriptor = "(II)Lyo;"
 	)
 	static yo ha(int var0) throws EOFException {
 		try {
 			yo var2 = (yo)client.kj_fld.ak(var0);
 			if (null == var2) {
 				var2 = new yo(wo.iq_fld, var0);
-				if (!yo.ms(var2, (short)-10087)) {
+				if (!var2.ak()) {
 					return null;
 				}
 
@@ -299,51 +343,19 @@ public class me implements MidiRequest {
 		}
 	}
 
-	@ObfuscatedName("nd")
+	@ObfuscatedName("isJingle")
 	@ObfuscatedSignature(
-		descriptor = "(Lme;Lub;IIIZ)V"
+		descriptor = "()Z"
 	)
-	public static void nd(me var0, ub var1, int var2, int var3, int var4, boolean var5) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ak_fld = var1;
-		var0.ag_fld = var2;
-		var0.az_fld = var3;
-		var0.av_fld = var4;
-		var0.aw_fld = var5;
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Lme;Lub;IIIZB)V"
-	)
-	public static void jg(me var0, ub var1, int var2, int var3, int var4, boolean var5, byte var6) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.fd(var1, var2, var3, var4, var5);
-		var0.ak_fld = var1;
-		var0.ag_fld = var2;
-		var0.az_fld = var3;
-		var0.av_fld = var4;
-		var0.aw_fld = var5;
-	}
-
-	@ObfuscatedName("fd")
-	@ObfuscatedSignature(
-		descriptor = "(Lub;IIIZ)V"
-	)
-	public void fd(ub var1, int var2, int var3, int var4, boolean var5) {
-		uv var6 = (uv)var1;
-		this.as_fld = var6.uv() == 11;
+	@Export("isJingle")
+	@Override
+	public boolean isJingle() {
+		return this.fv_fld;
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	public static boolean ag(int var0) {
 		return 18 == var0;
@@ -358,24 +370,24 @@ public class me implements MidiRequest {
 	)
 	static void az(yz var0, ba var1, int var2, int var3, int var4) throws EOFException {
 		try {
-			client.lr(var1);
-			if (og.ci_fld.dk_fld > var2) {
-				var2 = og.ci_fld.dk_fld;
+			client.zt(var1);
+			if (og.ci_fld.bb_fld > var2) {
+				var2 = og.ci_fld.bb_fld;
 			}
 
-			if (var3 > 0 && og.ci_fld.ux_fld > var3) {
-				var3 = og.ci_fld.ux_fld;
+			if (var3 > 0 && og.ci_fld.sr_fld > var3) {
+				var3 = og.ci_fld.sr_fld;
 			}
 
 			int var6 = var2;
 			ba var5 = var1;
 			yz var33 = var0;
 			int var8 = 16711935;
-			Object[] var9 = (Object[])yz.hw(var0, 1697120891);
+			Object[] var9 = (Object[])var0.az(1697120891);
 			gz.ax_fld = 0;
 			db.aa_fld = 0;
 			ef.aq_fld = 0;
-			client.ok_fld = -1;
+			client.xq_fld = -1;
 			int var10 = -1;
 			int[] var11 = var1.av_fld;
 			int[] var12 = var1.ae_fld;
@@ -406,7 +418,7 @@ public class me implements MidiRequest {
 									}
 
 									if (var19 == -2147483646) {
-										var19 = yz.wa(var33, 669757382);
+										var19 = var33.aw(669757382);
 									}
 
 									if (-2147483645 == var19) {
@@ -414,7 +426,7 @@ public class me implements MidiRequest {
 									}
 
 									if (-2147483644 == var19) {
-										var19 = var33.ay(-1913812904);
+										var19 = yz.xl(var33, -1913812904);
 									}
 
 									if (var19 == -2147483643) {
@@ -423,13 +435,13 @@ public class me implements MidiRequest {
 
 									if (-2147483642 == var19) {
 										int var10000;
-										if (yz.wa_lu(var33, 1366347087) != null) {
+										if (var33.as(1366347087) != null) {
 											if (var8 != 16711935) {
 												var29 = false;
 												return;
 											}
 
-											var10000 = yz.wa_lu(var33, 691457602).bf_fld * 1461045985;
+											var10000 = var33.as(691457602).bf_fld * 1461045985;
 										} else {
 											var10000 = -1;
 										}
@@ -438,7 +450,7 @@ public class me implements MidiRequest {
 									}
 
 									if (var19 == -2147483641) {
-										var19 = yz.wa_lu(var33, 129647742) != null ? yz.wa_lu(var33, 2088338282).by_fld * -2140649577 : -1;
+										var19 = var33.as(129647742) != null ? var33.as(2088338282).by_fld * -2140649577 : -1;
 									}
 
 									if (var19 == -2147483640) {
@@ -456,7 +468,7 @@ public class me implements MidiRequest {
 											return;
 										}
 
-										var19 = var33.af(1665838759);
+										var19 = yz.qi(var33, 1665838759);
 									}
 
 									if (var19 == -2147483638) {
@@ -467,7 +479,7 @@ public class me implements MidiRequest {
 								} else if (var9[var18] instanceof String) {
 									String var53 = (String)var9[var18];
 									if (var53.equals("event_opbase")) {
-										var53 = var33.au(1764760548);
+										var53 = yz.qf(var33, 1764760548);
 									}
 
 									bp.al_fld[var36++] = var53;
@@ -479,7 +491,7 @@ public class me implements MidiRequest {
 								}
 							}
 
-							bp.br_fld = yz.ri(var33, (short)-4929);
+							bp.br_fld = var33.ax((short)-4929);
 
 							while (true) {
 								bp.ao_fld++;
@@ -493,9 +505,9 @@ public class me implements MidiRequest {
 								}
 
 								do {
-									client.ok_fld = ++var10;
+									client.xq_fld = ++var10;
 									var13 = var11[var10];
-								} while (client.po(var13));
+								} while (client.kk(var13));
 
 								if (var13 < 100) {
 									if (var8 != 16711935) {
@@ -511,7 +523,7 @@ public class me implements MidiRequest {
 									} else if (var13 == 2) {
 										int var51 = var12[var10];
 										rt.ag_fld[var51] = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
-										client.un(var51);
+										client.sc(var51);
 										ns.gk(var51, (byte)94);
 									} else if (var13 == 3) {
 										if (var8 != 16711935) {
@@ -526,7 +538,7 @@ public class me implements MidiRequest {
 											return;
 										}
 
-										var10 = client.ok_fld = var10 + var12[var10];
+										var10 = client.xq_fld = var10 + var12[var10];
 									} else if (var13 == 7) {
 										gz.ax_fld -= 2;
 										if (bp.au_fld[gz.ax_fld + 1] != bp.au_fld[gz.ax_fld]) {
@@ -535,7 +547,7 @@ public class me implements MidiRequest {
 												return;
 											}
 
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 8) {
 										gz.ax_fld -= 2;
@@ -545,27 +557,27 @@ public class me implements MidiRequest {
 												return;
 											}
 
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 9) {
 										gz.ax_fld -= 2;
 										if (bp.au_fld[gz.ax_fld] < bp.au_fld[1 + gz.ax_fld]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 10) {
 										gz.ax_fld -= 2;
 										if (bp.au_fld[gz.ax_fld] > bp.au_fld[gz.ax_fld + 1]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 68) {
 										db.aa_fld -= 2;
 										if (bp.an_fld[db.aa_fld] != bp.an_fld[1 + db.aa_fld]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (69 == var13) {
 										db.aa_fld -= 2;
 										if (bp.an_fld[db.aa_fld] == bp.an_fld[1 + db.aa_fld]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (70 == var13) {
 										if (var8 != 16711935) {
@@ -575,12 +587,12 @@ public class me implements MidiRequest {
 
 										db.aa_fld -= 2;
 										if (bp.an_fld[db.aa_fld] < bp.an_fld[db.aa_fld + 1]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 71) {
 										db.aa_fld -= 2;
 										if (bp.an_fld[db.aa_fld] > bp.an_fld[1 + db.aa_fld]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (21 == var13) {
 										if (bp.am_fld == 0) {
@@ -590,11 +602,11 @@ public class me implements MidiRequest {
 
 										bj var49 = bp.ad_fld[(bp.am_fld -= -1774771793) * -991242929];
 										ba var91 = var49.ak_fld;
-										client.lr(var49.ak_fld);
+										client.zt(var49.ak_fld);
 										var5 = var91;
 										var11 = var5.av_fld;
 										var12 = var5.ae_fld;
-										var10 = client.ok_fld = var49.ag_fld;
+										var10 = client.xq_fld = var49.ag_fld;
 										ie.ar_fld = var49.az_fld;
 										bp.al_fld = (Object[])var49.av_fld;
 										jq.af_fld = var49.ae_fld;
@@ -612,17 +624,17 @@ public class me implements MidiRequest {
 									} else if (var13 == 31) {
 										gz.ax_fld -= 2;
 										if (bp.au_fld[gz.ax_fld] <= bp.au_fld[gz.ax_fld + 1]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 32) {
 										gz.ax_fld -= 2;
 										if (bp.au_fld[gz.ax_fld] >= bp.au_fld[1 + gz.ax_fld]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (72 == var13) {
 										db.aa_fld -= 2;
 										if (bp.an_fld[db.aa_fld] <= bp.an_fld[db.aa_fld + 1]) {
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 73) {
 										db.aa_fld -= 2;
@@ -632,7 +644,7 @@ public class me implements MidiRequest {
 												return;
 											}
 
-											var10 = client.ok_fld = var10 + var12[var10];
+											var10 = client.xq_fld = var10 + var12[var10];
 										}
 									} else if (var13 == 33) {
 										bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = ie.ar_fld[var12[var10]];
@@ -688,17 +700,17 @@ public class me implements MidiRequest {
 										var23.av_fld = (Object[])bp.al_fld;
 										var23.ae_fld = jq.af_fld;
 										bp.ad_fld[(bp.am_fld += -1774771793) * -991242929 - 1] = var23;
-										client.lr(var61);
+										client.zt(var61);
 										var5 = var61;
 										var11 = var61.av_fld;
 										var12 = var61.ae_fld;
-										client.ok_fld = -1;
+										client.xq_fld = -1;
 										var10 = -1;
 										ie.ar_fld = var64;
 										bp.al_fld = (Object[])var21;
 										jq.af_fld = var22;
 									} else if (var13 == 42) {
-										bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = ob.ek_fld.ag(var12[var10]);
+										bp.au_fld[(gz.ax_fld += -1684678759) * -776631127 - 1] = dn.dd(ob.ek_fld, var12[var10]);
 									} else if (43 == var13) {
 										if (var8 != 16711935) {
 											var29 = false;
@@ -719,7 +731,7 @@ public class me implements MidiRequest {
 											return;
 										}
 
-										dn.lq(ob.ek_fld, var12[var10], bp.an_fld[(db.aa_fld -= 432101741) * 867932261]);
+										dn.xt(ob.ek_fld, var12[var10], bp.an_fld[(db.aa_fld -= 432101741) * 867932261]);
 									} else if (44 == var13) {
 										int var44 = var12[var10] >> 16;
 										int var60 = var12[var10] & 65535;
@@ -780,10 +792,10 @@ public class me implements MidiRequest {
 											var39.az()[var58] = bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525];
 										}
 									} else if (var13 == 49) {
-										String var40 = dn.vd(ob.ek_fld, var12[var10], (byte)82);
+										String var40 = ob.ek_fld.ah(var12[var10]);
 										bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = var40;
 									} else if (var13 == 50) {
-										ob.ek_fld.ae(var12[var10], (String)bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525]);
+										dn.dd(ob.ek_fld, var12[var10], (String)bp.ai_fld[(ef.aq_fld -= -211521517) * -836183525]);
 									} else if (var13 == 60) {
 										if (var8 != 16711935) {
 											var29 = false;
@@ -793,7 +805,7 @@ public class me implements MidiRequest {
 										xv var41 = var5.ag_fld[var12[var10]];
 										vl var59 = (vl)var41.ak(bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127]);
 										if (null != var59) {
-											var10 = client.ok_fld = var10 + var59.ak_fld;
+											var10 = client.xq_fld = var10 + var59.ak_fld;
 										}
 									} else if (63 == var13) {
 										bp.ai_fld[(ef.aq_fld += -211521517) * -836183525 - 1] = null;
@@ -806,7 +818,7 @@ public class me implements MidiRequest {
 									} else if (67 == var13) {
 										jq.af_fld[var12[var10]] = bp.an_fld[(db.aa_fld -= 432101741) * 867932261];
 									} else if (var13 == 74) {
-										Integer var42 = ik.nd(gt.be_fld, var12[var10]);
+										Integer var42 = gt.be_fld.ae(var12[var10], 26770159);
 										if (null == var42) {
 											if (var8 != 16711935) {
 												var29 = false;
@@ -855,10 +867,10 @@ public class me implements MidiRequest {
 					} catch (Exception var30) {
 						var14 = true;
 						StringBuilder var16 = new StringBuilder(30);
-						var16.append("").append(var5.hc_fld).append(" ");
+						var16.append("").append(var5.hc_long).append(" ");
 
 						for (int var17 = bp.am_fld - 1; var17 >= 0; var17--) {
-							var16.append("").append(bp.ad_fld[var17].ak_fld.hc_fld).append(" ");
+							var16.append("").append(bp.ad_fld[var17].ak_fld.hc_long).append(" ");
 						}
 
 						var16.append("").append(var13);
@@ -869,7 +881,7 @@ public class me implements MidiRequest {
 						if (var29) {
 							while (!bp.bz_fld.isEmpty()) {
 								dg var25 = (dg)(dg)bp.bz_fld.remove(0);
-								nt.fc(var25.ak(), dg.cl(var25, -650569595), dg.ed(var25, 321737442), dg.zi(var25, (byte)63), "", -1914465086);
+								nt.fc(var25.ag(), var25.az(), var25.ak(), var25.av(), "", -1914465086);
 							}
 
 							if (bp.bm_fld) {
@@ -903,7 +915,7 @@ public class me implements MidiRequest {
 
 					while (!bp.bz_fld.isEmpty()) {
 						dg var20 = (dg)(dg)bp.bz_fld.remove(0);
-						nt.fc(var20.ak(), dg.cl(var20, 59538952), dg.ed(var20, 321737442), dg.zi(var20, (byte)56), "", -1789236422);
+						nt.fc(var20.ag(), var20.az(), var20.ak(), var20.av(), "", -1789236422);
 					}
 
 					if (bp.bm_fld) {
@@ -920,7 +932,7 @@ public class me implements MidiRequest {
 
 				while (!bp.bz_fld.isEmpty()) {
 					dg var50 = (dg)(dg)bp.bz_fld.remove(0);
-					nt.fc(var50.ak(), dg.cl(var50, 565072436), dg.ed(var50, 321737442), dg.zi(var50, (byte)23), "", -1001745078);
+					nt.fc(var50.ag(), var50.az(), var50.ak(), var50.av(), "", -1001745078);
 				}
 
 				if (bp.bm_fld) {
@@ -937,7 +949,7 @@ public class me implements MidiRequest {
 
 			while (!bp.bz_fld.isEmpty()) {
 				dg var15 = (dg)(dg)bp.bz_fld.remove(0);
-				nt.fc(var15.ak(), dg.cl(var15, 539520910), dg.ed(var15, 321737442), dg.zi(var15, (byte)33), "", -1883035552);
+				nt.fc(var15.ag(), var15.az(), var15.ak(), var15.av(), "", -1883035552);
 			}
 
 			if (bp.bm_fld) {
@@ -955,22 +967,9 @@ public class me implements MidiRequest {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ak(int var0) {
 		return var0 != 0 && var0 != 1 ? -1 : 0;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lub;IIIZB)V"
-	)
-	void ak(ub var1, int var2, int var3, int var4, boolean var5, byte var6) {
-		this.fd(var1, var2, var3, var4, var5);
-		this.ak_fld = var1;
-		this.av_fld = -1881600741 * var2;
-		this.av_fld = 1165675451 * var3;
-		this.ag_fld = var4 * -1968634225;
-		this.ah_fld = var5;
 	}
 }

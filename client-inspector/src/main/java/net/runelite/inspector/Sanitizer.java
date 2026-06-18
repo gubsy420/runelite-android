@@ -121,6 +121,16 @@ public final class Sanitizer
 		// detection would silently miss (leaving `da.do_` field still colliding with class `do_`).
 		Remapper remapper = combine(plan.dups, RESERVED_REMAPPER);
 
+		// Pass 1m: build the @Export-driven rename plan. For every EXPORT_TABLE entry,
+		// rewrite the bytecode member name to its friendly form AND propagate to all
+		// in-jar hierarchy-related classes that declare the same (name, desc) so
+		// override dispatch and call sites stay consistent. Apply BEFORE the duplicate
+		// renamer because EXPORT_TABLE keys use pre-rename names — once an export
+		// rename fires (e.g. `dk`→`abortRoute`), the duplicate renamer's `_fld`/`_int`
+		// disambiguation for the original name becomes moot.
+		ExportRenamePlan exportPlan = buildExportRenamePlan(in, stats);
+		remapper = combine(exportPlan.remapper(), remapper);
+
 		// Pass 1b: find fields that the obfuscator declared ACC_FINAL but writes to from outside
 		// <clinit>/<init>. Bytecode allows this; javac rejects it.
 		Set<String> mutableFinalFields = findMutableFinalFields(in);
@@ -312,9 +322,15 @@ public final class Sanitizer
 								// override-compatibility check at recompile. The wrap converts
 								// any escaping checked into RuntimeException, so the throws
 								// declaration is unnecessary there.
-								boolean willBeBodyWrapped = classesNeedingBodyWrap.contains(cn.name)
-									&& (mn.access & (org.objectweb.asm.Opcodes.ACC_STATIC | org.objectweb.asm.Opcodes.ACC_ABSTRACT | org.objectweb.asm.Opcodes.ACC_NATIVE | org.objectweb.asm.Opcodes.ACC_SYNTHETIC | org.objectweb.asm.Opcodes.ACC_BRIDGE)) == 0
-									&& !"<init>".equals(mn.name) && !"<clinit>".equals(mn.name);
+								// <clinit> can't declare throws in Java source even though the
+								// bytecode permits it — so we always wrap clinit bodies that
+								// propagate checked exceptions, regardless of class. Treat clinit
+								// as "will be wrapped" here to suppress the throws-add step.
+								boolean isClinit = "<clinit>".equals(mn.name);
+								boolean willBeBodyWrapped = isClinit
+									|| (classesNeedingBodyWrap.contains(cn.name)
+										&& (mn.access & (org.objectweb.asm.Opcodes.ACC_STATIC | org.objectweb.asm.Opcodes.ACC_ABSTRACT | org.objectweb.asm.Opcodes.ACC_NATIVE | org.objectweb.asm.Opcodes.ACC_SYNTHETIC | org.objectweb.asm.Opcodes.ACC_BRIDGE)) == 0
+										&& !"<init>".equals(mn.name));
 								// Synthetic/bridge methods in external-impl classes MUST stay
 								// throws-clean: javac generates them as covariant-return bridges
 								// over the external interface method, and adding throws makes the
@@ -403,16 +419,17 @@ public final class Sanitizer
 								// bodies as before.
 								boolean wrapEligible = mustThrow != null && !mustThrow.isEmpty()
 									&& (mn.access & (org.objectweb.asm.Opcodes.ACC_ABSTRACT | org.objectweb.asm.Opcodes.ACC_NATIVE | org.objectweb.asm.Opcodes.ACC_SYNTHETIC | org.objectweb.asm.Opcodes.ACC_BRIDGE)) == 0
-									&& !"<init>".equals(mn.name) && !"<clinit>".equals(mn.name);
+									&& !"<init>".equals(mn.name);
 								// Wrap when: (a) class implements an external interface
 								// (Widget, Runnable, SSLSocket subclass, …) — adding throws to
 								// the signature would break the override; OR (b) the method
 								// itself is used as a method-reference somewhere — adding throws
 								// would make the method-ref's target functional-interface SAM
-								// reject it. Both cases require the wrap to absorb the checked
-								// exceptions at the body boundary.
+								// reject it; OR (c) it's a <clinit> — Java source can't declare
+								// throws on static initializers even though bytecode allows it,
+								// so the wrap is the only way to absorb checked exceptions.
 								if (wrapEligible
-									&& (classesNeedingBodyWrap.contains(cn.name) || isMethodRefTarget))
+									&& (classesNeedingBodyWrap.contains(cn.name) || isMethodRefTarget || isClinit))
 								{
 									if (wrapMethodBodyInTryCatch(mn))
 									{
@@ -707,6 +724,12 @@ public final class Sanitizer
 			System.out.println("stripped trailing garbage parameter from " + unusedParameters.strippedMethodSignatures() + " method signature(s) "
 				+ "and " + unusedParameters.rewrittenCallSites() + " call site(s); "
 				+ "rejected " + unusedParameters.candidatesRejectedByDynamicCallSite() + " candidate(s) with dynamic argument expressions (UnusedParameters port)");
+		}
+		if (stats.exportMethodsRenamed + stats.exportFieldsRenamed > 0)
+		{
+			System.out.println("renamed " + stats.exportMethodsRenamed + " method declaration(s) and "
+				+ stats.exportFieldsRenamed + " field declaration(s) to their @Export friendly names"
+				+ (stats.exportCollisions > 0 ? " (" + stats.exportCollisions + " collision(s) reported on stderr)" : ""));
 		}
 		if (stats.stampedObfuscatedAnnotations > 0)
 		{
@@ -1077,6 +1100,9 @@ public final class Sanitizer
 		long elidedIllegalStateThrows;
 		long droppedRuntimeExceptionHandlers;
 		long stampedObfuscatedAnnotations;
+		long exportMethodsRenamed;
+		long exportFieldsRenamed;
+		long exportCollisions;
 		final Map<String, Long> droppedByType = new TreeMap<>();
 		final Map<String, Long> unloadable = new TreeMap<>();
 	}
@@ -2131,6 +2157,23 @@ public final class Sanitizer
 		t.put("java/io/RandomAccessFile#close()V", ioex);
 		t.put("java/io/RandomAccessFile#<init>(Ljava/lang/String;Ljava/lang/String;)V", java.util.Collections.singleton("java/io/FileNotFoundException"));
 		t.put("java/io/RandomAccessFile#<init>(Ljava/io/File;Ljava/lang/String;)V", java.util.Collections.singleton("java/io/FileNotFoundException"));
+		// HTTP networking — declared on HttpURLConnection, but call sites usually see
+		// HttpsURLConnection (or another subclass) as the static-type owner, so we list
+		// both. setRequestMethod throws ProtocolException (an IOException subclass).
+		t.put("java/net/HttpURLConnection#setRequestMethod(Ljava/lang/String;)V", java.util.Collections.singleton("java/net/ProtocolException"));
+		t.put("javax/net/ssl/HttpsURLConnection#setRequestMethod(Ljava/lang/String;)V", java.util.Collections.singleton("java/net/ProtocolException"));
+		// URL/URLConnection IO surface — all openConnection / open IO entry points
+		// throw IOException.
+		t.put("java/net/URL#openConnection()Ljava/net/URLConnection;", ioex);
+		t.put("java/net/URL#openConnection(Ljava/net/Proxy;)Ljava/net/URLConnection;", ioex);
+		t.put("java/net/URL#openStream()Ljava/io/InputStream;", ioex);
+		t.put("java/net/URLConnection#getOutputStream()Ljava/io/OutputStream;", ioex);
+		t.put("java/net/URLConnection#getInputStream()Ljava/io/InputStream;", ioex);
+		t.put("java/net/URLConnection#connect()V", ioex);
+		t.put("java/net/HttpURLConnection#getResponseCode()I", ioex);
+		t.put("java/net/HttpURLConnection#getResponseMessage()Ljava/lang/String;", ioex);
+		t.put("javax/net/ssl/HttpsURLConnection#getResponseCode()I", ioex);
+		t.put("javax/net/ssl/HttpsURLConnection#getResponseMessage()Ljava/lang/String;", ioex);
 		return t;
 	}
 
@@ -2444,6 +2487,75 @@ public final class Sanitizer
 		EXPORT_TABLE.put("vu#cv:Ljava/lang/String;", "processName");
 		EXPORT_TABLE.put("vu#cy:Ljava/lang/String;", "parentProcessName");
 		EXPORT_TABLE.put("vu#cw:Ljava/lang/String;", "jvmArgsPrefix");
+
+		// Hand-curated additions based on native symbol verification (symbols.txt +
+		// osclient-216-mac Mach-O binary). Each entry was checked against a unique
+		// signature target on the C++ side and against the surrounding Java context
+		// for body-level confirmation. The match_natives.py tool surfaces
+		// candidates; the source-tree inspection rules out false positives.
+		EXPORT_TABLE.put("client#us:Lorg/slf4j/Logger;", "logger");
+		// bq.ag(int, int) reads bq.ag_fld[index] returning a chat line — matches
+		// jag::oldscape::ChatHistory::GetLine(int, int) unique-signature.
+		EXPORT_TABLE.put("bq#ag(II)Lco;", "getLine");
+		// client.ae(8-arg returning fn) is the entity-overlay scripted path —
+		// distinctive 8-arg sig matches jag::oldscape::Client::GdmEntityOverlayScripted.
+		EXPORT_TABLE.put("client#ae(Lev;Lev;Loe;IIIII)Lfn;", "gdmEntityOverlayScripted");
+		// client.od(int x, int y, int w, int h, bool drawBars) — letterboxing
+		// window-size calc matches jag::oldscape::Client::GdmCalcWindowSize.
+		EXPORT_TABLE.put("client#od(IIIIZ)V", "gdmCalcWindowSize");
+		// da.dk(byte) zeros ce_fld (route point count) and bg_fld — matches
+		// jag::oldscape::ClientEntity::AbortRoute() which writes 0 to its
+		// equivalent fields at +0x1b8 and +0x21c. The UnusedMethods pass shows
+		// dk(B)V has 7 callers (client#no/nr/nu + da#vl) while the no-arg
+		// twins fi/fz/fr each have zero callers — so dk(B)V is the real method
+		// and the byte param is a Jagex garbage param. Verified via disasm
+		// (data/disasm-ClientEntity.txt) and call-graph (UnusedMethods).
+		EXPORT_TABLE.put("da#dk(B)V", "abortRoute");
+		// Not a real friendly name — a structural workaround. xl.hw()I is an
+		// obfuscated interface method (unknown semantic). The duplicate-renamer's
+		// existing pass renames da.hw():I -> hw_int() (because da's subclass cv
+		// declares hw():V), but doesn't propagate to the xl interface
+		// declaration or to other implementers (rg, xp). Our export rename pass
+		// DOES propagate, so anchoring the rename here via EXPORT_TABLE makes
+		// xl/da/rg/xp all line up consistently. Replace with a real friendly
+		// name once one is identified.
+		EXPORT_TABLE.put("xl#hw()I", "hw_int");
+
+		// Bulk-derived entries: every runelite-api interface @Override method we
+		// detected in a prior source-tree pass, expressed as obf-name+desc keys so the
+		// sanitizer can re-stamp @Export across future syncSources/regenerations. The
+		// TSV is bundled as a classpath resource.
+		try (java.io.InputStream is = Sanitizer.class.getResourceAsStream("/exports-derived.tsv"))
+		{
+			if (is != null)
+			{
+				try (java.io.BufferedReader br = new java.io.BufferedReader(
+					new java.io.InputStreamReader(is, java.nio.charset.StandardCharsets.UTF_8)))
+				{
+					String line;
+					int loaded = 0;
+					while ((line = br.readLine()) != null)
+					{
+						if (line.isEmpty() || line.startsWith("#")) continue;
+						int tab = line.indexOf('\t');
+						if (tab <= 0 || tab == line.length() - 1) continue;
+						String key = line.substring(0, tab);
+						String friendly = line.substring(tab + 1);
+						// Manual entries above win on conflict.
+						EXPORT_TABLE.putIfAbsent(key, friendly);
+						loaded++;
+					}
+					if (loaded > 0)
+					{
+						System.err.println("Sanitizer: loaded " + loaded + " derived EXPORT_TABLE entries");
+					}
+				}
+			}
+		}
+		catch (java.io.IOException e)
+		{
+			throw new RuntimeException("failed to load exports-derived.tsv", e);
+		}
 	}
 
 	private static int stampObfuscatedAnnotations(ClassNode cn)
@@ -3896,6 +4008,300 @@ public final class Sanitizer
 			this.bridgesToDrop = bridgesToDrop;
 			this.bridgesNeedingCheckcast = bridgesNeedingCheckcast;
 		}
+	}
+
+	/**
+	 * Output of {@link #buildExportRenamePlan} — a per-class map of "name\0desc"
+	 * keys to friendly target names, plus the super-name chain so the Remapper
+	 * can resolve inherited-member references at call sites whose static-type
+	 * owner doesn't directly declare the renamed member.
+	 */
+	static final class ExportRenamePlan
+	{
+		final Map<String, Map<String, String>> methodRenames;
+		final Map<String, Map<String, String>> fieldRenames;
+		final Map<String, String> superNames;
+		int methodsRenamed;
+		int fieldsRenamed;
+		int collisions;
+
+		ExportRenamePlan(Map<String, Map<String, String>> methodRenames,
+			Map<String, Map<String, String>> fieldRenames,
+			Map<String, String> superNames)
+		{
+			this.methodRenames = methodRenames;
+			this.fieldRenames = fieldRenames;
+			this.superNames = superNames;
+		}
+
+		Remapper remapper()
+		{
+			return new Remapper()
+			{
+				@Override
+				public String mapMethodName(String owner, String name, String descriptor)
+				{
+					if ("<init>".equals(name) || "<clinit>".equals(name)) return name;
+					String key = name + "\0" + descriptor;
+					// Direct lookup on the static-type owner first.
+					Map<String, String> m = methodRenames.get(owner);
+					if (m != null)
+					{
+						String r = m.get(key);
+						if (r != null) return r;
+					}
+					// Inherited reference: walk up the super-class chain. (Interface
+					// inheritance is already accounted for during plan construction
+					// — every interface that declares the (name, desc) has its own
+					// entry in methodRenames, so the static-type owner's entry will
+					// match if the caller used the interface as the receiver type.)
+					String walker = superNames.get(owner);
+					while (walker != null)
+					{
+						Map<String, String> mm = methodRenames.get(walker);
+						if (mm != null)
+						{
+							String r = mm.get(key);
+							if (r != null) return r;
+						}
+						walker = superNames.get(walker);
+					}
+					return name;
+				}
+
+				@Override
+				public String mapFieldName(String owner, String name, String descriptor)
+				{
+					String key = name + "\0" + descriptor;
+					String walker = owner;
+					while (walker != null)
+					{
+						Map<String, String> m = fieldRenames.get(walker);
+						if (m != null)
+						{
+							String r = m.get(key);
+							if (r != null) return r;
+						}
+						walker = superNames.get(walker);
+					}
+					return name;
+				}
+			};
+		}
+	}
+
+	/**
+	 * Walk the jar once to learn every class's declared methods+fields, then for
+	 * every EXPORT_TABLE entry compute the set of in-jar classes that need the
+	 * same rename so polymorphic dispatch and call sites stay consistent. A
+	 * method-rename propagates up through super-classes and implemented
+	 * interfaces to any ancestor that declares the same (name, desc), and down
+	 * through subtypes to any descendant that overrides it. Field renames don't
+	 * propagate (fields are non-polymorphic in Java).
+	 */
+	private static ExportRenamePlan buildExportRenamePlan(Path jarPath, Stats stats) throws IOException
+	{
+		// 1. Inventory: per-class declared methods + fields + supertype edges.
+		Map<String, Set<String>> methodsByClass = new HashMap<>();
+		Map<String, Set<String>> fieldsByClass = new HashMap<>();
+		Map<String, String> superNames = new HashMap<>();
+		Map<String, List<String>> interfacesOf = new HashMap<>();
+		Map<String, Set<String>> subtypesOf = new HashMap<>();
+
+		try (JarFile jar = new JarFile(jarPath.toFile()))
+		{
+			Iterator<JarEntry> it = jar.stream().iterator();
+			while (it.hasNext())
+			{
+				JarEntry e = it.next();
+				if (!e.getName().endsWith(".class")) continue;
+				try (InputStream is = jar.getInputStream(e))
+				{
+					ClassNode cn = new ClassNode();
+					new ClassReader(is).accept(cn,
+						ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+					Set<String> msigs = new java.util.HashSet<>();
+					if (cn.methods != null)
+					{
+						for (MethodNode mn : cn.methods)
+						{
+							msigs.add(mn.name + "\0" + mn.desc);
+						}
+					}
+					methodsByClass.put(cn.name, msigs);
+					Set<String> fsigs = new java.util.HashSet<>();
+					if (cn.fields != null)
+					{
+						for (FieldNode fn : cn.fields)
+						{
+							fsigs.add(fn.name + "\0" + fn.desc);
+						}
+					}
+					fieldsByClass.put(cn.name, fsigs);
+					if (cn.superName != null)
+					{
+						superNames.put(cn.name, cn.superName);
+						subtypesOf.computeIfAbsent(cn.superName, k -> new java.util.HashSet<>()).add(cn.name);
+					}
+					if (cn.interfaces != null && !cn.interfaces.isEmpty())
+					{
+						interfacesOf.put(cn.name, new ArrayList<>(cn.interfaces));
+						for (String iface : cn.interfaces)
+						{
+							subtypesOf.computeIfAbsent(iface, k -> new java.util.HashSet<>()).add(cn.name);
+						}
+					}
+				}
+			}
+		}
+
+		// 2. For each EXPORT_TABLE entry, expand to all in-jar classes that share
+		// the (name, desc) along the owner's hierarchy connectivity.
+		Map<String, Map<String, String>> methodRenames = new HashMap<>();
+		Map<String, Map<String, String>> fieldRenames = new HashMap<>();
+		int methodCount = 0;
+		int fieldCount = 0;
+		int collisions = 0;
+
+		for (Map.Entry<String, String> e : EXPORT_TABLE.entrySet())
+		{
+			String key = e.getKey();
+			String friendly = e.getValue();
+			int hash = key.indexOf('#');
+			if (hash < 0) continue;
+			String owner = key.substring(0, hash);
+			String tail = key.substring(hash + 1);
+			int paren = tail.indexOf('(');
+			int colon = tail.indexOf(':');
+			boolean isMethod = paren > 0 && (colon < 0 || paren < colon);
+			if (isMethod)
+			{
+				String name = tail.substring(0, paren);
+				String desc = tail.substring(paren);
+				String sig = name + "\0" + desc;
+				// Idempotency: if the owner doesn't declare this exact (name, desc),
+				// the EXPORT_TABLE entry is stale — either already applied in a
+				// previous sanitize, or pointing at a non-existent method.
+				Set<String> ownerMethods = methodsByClass.get(owner);
+				if (ownerMethods == null || !ownerMethods.contains(sig))
+				{
+					continue;
+				}
+				Set<String> related = expandMethodHierarchy(
+					owner, sig, methodsByClass, superNames, interfacesOf, subtypesOf);
+				for (String c : related)
+				{
+					// A real clash is when SAME (name, desc) appears as a different
+					// existing method on this class. Method overloads (same name,
+					// different descriptors) are legal Java — don't flag them.
+					Set<String> declared = methodsByClass.get(c);
+					boolean clash = false;
+					if (declared != null)
+					{
+						String wouldBe = friendly + "\0" + desc;
+						if (declared.contains(wouldBe) && !sig.equals(wouldBe))
+						{
+							System.err.println("EXPORT skipping " + c + "#" + name + desc
+								+ " -> " + friendly + ": already a different method "
+								+ friendly + desc + " on this class");
+							collisions++;
+							clash = true;
+						}
+					}
+					if (clash) continue;
+					Map<String, String> per = methodRenames.computeIfAbsent(c, k -> new HashMap<>());
+					String existing = per.put(sig, friendly);
+					if (existing != null && !existing.equals(friendly))
+					{
+						System.err.println("EXPORT conflicting rename targets on " + c
+							+ "#" + name + desc + ": " + existing + " vs " + friendly
+							+ " — keeping " + friendly);
+						collisions++;
+					}
+					methodCount++;
+				}
+			}
+			else if (colon > 0)
+			{
+				String name = tail.substring(0, colon);
+				String desc = tail.substring(colon + 1);
+				String sig = name + "\0" + desc;
+				Set<String> ownerFields = fieldsByClass.get(owner);
+				if (ownerFields == null || !ownerFields.contains(sig))
+				{
+					continue;
+				}
+				Map<String, String> per = fieldRenames.computeIfAbsent(owner, k -> new HashMap<>());
+				per.put(sig, friendly);
+				fieldCount++;
+			}
+		}
+
+		ExportRenamePlan plan = new ExportRenamePlan(methodRenames, fieldRenames, superNames);
+		plan.methodsRenamed = methodCount;
+		plan.fieldsRenamed = fieldCount;
+		plan.collisions = collisions;
+		stats.exportMethodsRenamed = methodCount;
+		stats.exportFieldsRenamed = fieldCount;
+		stats.exportCollisions = collisions;
+		return plan;
+	}
+
+	private static Set<String> expandMethodHierarchy(String start, String sig,
+		Map<String, Set<String>> methodsByClass,
+		Map<String, String> superNames,
+		Map<String, List<String>> interfacesOf,
+		Map<String, Set<String>> subtypesOf)
+	{
+		Set<String> result = new java.util.HashSet<>();
+		java.util.ArrayDeque<String> stack = new java.util.ArrayDeque<>();
+		stack.push(start);
+		while (!stack.isEmpty())
+		{
+			String c = stack.pop();
+			if (!result.add(c)) continue;
+			// Walk up: super class + interfaces. Skip ancestors that don't declare
+			// (sig) — but still descend further up looking for one that does
+			// (an abstract method may be inherited through an intermediate concrete
+			// class that doesn't redeclare it).
+			String sup = superNames.get(c);
+			while (sup != null)
+			{
+				Set<String> sm = methodsByClass.get(sup);
+				if (sm != null && sm.contains(sig))
+				{
+					stack.push(sup);
+					break;
+				}
+				sup = superNames.get(sup);
+			}
+			List<String> ifaces = interfacesOf.get(c);
+			if (ifaces != null)
+			{
+				for (String iface : ifaces)
+				{
+					Set<String> im = methodsByClass.get(iface);
+					if (im != null && im.contains(sig))
+					{
+						stack.push(iface);
+					}
+				}
+			}
+			// Walk down: every subtype that declares (sig).
+			Set<String> subs = subtypesOf.get(c);
+			if (subs != null)
+			{
+				for (String sub : subs)
+				{
+					Set<String> sm2 = methodsByClass.get(sub);
+					if (sm2 != null && sm2.contains(sig))
+					{
+						stack.push(sub);
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 	private static String descriptorSuffix(String desc)

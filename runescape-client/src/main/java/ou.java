@@ -48,17 +48,37 @@ public class ou extends vc {
 		return sz.dd_fld.length;
 	}
 
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;Lvd;)V"
+	)
+	public static void ku(qk var0, vd var1) {
+		if (!var0.ae_fld) {
+			if (null == var1) {
+				var0.ag_fld.ah("Content-Type", (byte)-64);
+				var0.av_fld = null;
+			} else {
+				var0.av_fld = var1;
+				if (var0.av_fld.ak(1557254738) != null) {
+					var0.ag_fld.ay(var0.av_fld.ak(1557254738));
+				} else {
+					qt.mz(var0.ag_fld, 1777388989);
+				}
+			}
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	public static void ag() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lot;"
+		descriptor = "(II)Lot;"
 	)
 	public static ot ak(int var0) throws EOFException {
 		try {
@@ -70,7 +90,7 @@ public class ou extends vc {
 				var2 = new ot();
 				var2.an_fld = var0;
 				if (var3 != null) {
-					ot.du(var2, new xi(var3), (byte)17);
+					var2.az(new xi(var3));
 				}
 
 				ot.au_fld.az(var2, var0);
@@ -86,10 +106,18 @@ public class ou extends vc {
 		descriptor = "()V"
 	)
 	public static void az() {
-		ak_fld.vh();
+		ak_fld.av();
 	}
 
 	ou() throws Throwable {
 		throw new Error();
+	}
+
+	@ObfuscatedName("sw")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;)I"
+	)
+	public static int sw(zg var0) {
+		return var0.at_fld;
 	}
 }

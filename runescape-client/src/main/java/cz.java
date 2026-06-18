@@ -32,12 +32,12 @@ public class cz {
 		descriptor = "Ljava/lang/String;"
 	)
 	static String aw_fld;
-	@ObfuscatedGetter(
-		intValue = -924828279
-	)
 	@ObfuscatedName("jt")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -924828279
 	)
 	static int jt_fld;
 	@ObfuscatedName("ak")
@@ -137,7 +137,7 @@ public class cz {
 	)
 	static co ad(int var0, int var1) {
 		bq var2 = (bq)(bq)ak_fld.get(var0);
-		return var2.ag(var1, -1734639500);
+		return bq.oj(var2, var1);
 	}
 
 	@ObfuscatedName("ao")
@@ -176,10 +176,10 @@ public class cz {
 			ak_fld.put(var0, var4);
 		}
 
-		co var5 = var4.ak(var0, var1, var2, var3, 731125247);
+		co var5 = bq.hw(var4, var0, var1, var2, var3);
 		ag_fld.ag(var5, var5.ak_fld);
-		az_fld.az(var5);
-		pi.gx(client.ck_fld, 1432304497);
+		az_fld.jr(var5);
+		pi.ac(client.ck_fld, 1432304497);
 	}
 
 	@ObfuscatedName("ac")
@@ -197,10 +197,10 @@ public class cz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void ak() {
-		ou.ak_fld.vh();
+		ou.ak_fld.av();
 	}
 
 	@ObfuscatedName("bm")
@@ -240,10 +240,10 @@ public class cz {
 			ak_fld.put(var0, var4);
 		}
 
-		co var5 = var4.ak(var0, var1, var2, var3, -424755973);
+		co var5 = bq.hw(var4, var0, var1, var2, var3);
 		ag_fld.ag(var5, var5.ak_fld);
-		az_fld.az(var5);
-		pi.gx(client.ck_fld, -802964037);
+		az_fld.jr(var5);
+		pi.ac(client.ck_fld, -802964037);
 	}
 
 	@ObfuscatedName("aj")
@@ -307,7 +307,7 @@ public class cz {
 		if (null == var1) {
 			return -1;
 		} else {
-			return az_fld.ak_fld == var1.fn_fld ? -1 : ((co)var1.fn_fld).ak_fld * 1492045231;
+			return az_fld.ak_fld == var1.fn_vc ? -1 : ((co)var1.fn_vc).ak_fld * 1492045231;
 		}
 	}
 
@@ -362,9 +362,9 @@ public class cz {
 			ak_fld.put(var0, var4);
 		}
 
-		co var5 = var4.ak(var0, var1, var2, var3, 1919854407);
+		co var5 = bq.hw(var4, var0, var1, var2, var3);
 		ag_fld.ag(var5, var5.ak_fld);
-		az_fld.az(var5);
-		pi.gx(client.ck_fld, 1217960286);
+		az_fld.jr(var5);
+		pi.ac(client.ck_fld, 1217960286);
 	}
 }

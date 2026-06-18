@@ -20,12 +20,12 @@ public class lq {
 		descriptor = "Lmj;"
 	)
 	mj this$0;
-	@ObfuscatedGetter(
-		intValue = -1409372513
-	)
 	@ObfuscatedName("ry")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1409372513
 	)
 	static int ry_fld;
 	@ObfuscatedName("as")
@@ -51,10 +51,18 @@ public class lq {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I"
+		descriptor = "(Ljava/lang/CharSequence;II)I"
 	)
 	public static int ae(CharSequence var0, int var1) {
 		return jt.ah(var0, var1, true);
+	}
+
+	@ObfuscatedName("gg")
+	@ObfuscatedSignature(
+		descriptor = "(Ldj;)Ljava/lang/String;"
+	)
+	public static String gg(dj var0) {
+		return var0.az_fld.toString();
 	}
 
 	lq(mj var1) {

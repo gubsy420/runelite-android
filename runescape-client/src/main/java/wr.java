@@ -16,12 +16,12 @@ public interface wr extends Iterable {
 	)
 	int ak(int var1, byte var2) throws EOFException;
 
-	@ObfuscatedName("si")
+	@ObfuscatedName("fy")
 	@ObfuscatedSignature(
-		descriptor = "(Lds;)Lpg;"
+		descriptor = "(Lli;)I"
 	)
-	static pg si(ds var0) {
-		return var0.af_fld;
+	static int fy(li var0) {
+		return var0.bd_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -41,27 +41,6 @@ public interface wr extends Iterable {
 		descriptor = "(ILjava/lang/Object;)V"
 	)
 	void ae(int var1, Object var2);
-
-	@ObfuscatedName("fm")
-	@ObfuscatedSignature(
-		descriptor = "(Ldf;)V"
-	)
-	static void fm(df var0) {
-		var0.ak_fld.ag();
-		var0.af_fld = 0;
-	}
-
-	@ObfuscatedName("vo")
-	@ObfuscatedSignature(
-		descriptor = "(Luo;Llu;)Z"
-	)
-	static boolean vo(uo var0, lu var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ac_fld == var1;
-		}
-	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(

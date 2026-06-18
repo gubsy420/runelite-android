@@ -11,38 +11,38 @@ public class is extends ht {
 		descriptor = "Lia;"
 	)
 	ia this$0;
-	@ObfuscatedGetter(
-		intValue = 1825776087
-	)
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int ak_fld;
-	@ObfuscatedGetter(
-		intValue = 1600177927
-	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int av_fld;
-	@ObfuscatedGetter(
-		intValue = 901694199
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 1186569163
+		intValue = 1825776087
 	)
+	int ag_fld;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1600177927
+	)
+	int ak_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 901694199
+	)
 	int az_fld;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1186569163
+	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -60,10 +60,10 @@ public class is extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.av_fld = var1.co();
-		this.az_fld = var1.co() * 1137832857;
-		this.ak_fld = var1.cg() * -785209092;
-		this.ag_fld = var1.cg() * -675516204;
+		this.ak_fld = var1.co((byte)-75);
+		this.av_fld = var1.co((byte)-120) * 1137832857;
+		this.ag_fld = var1.cg() * -785209092;
+		this.az_fld = var1.cg() * -675516204;
 	}
 
 	@ObfuscatedName("ak")
@@ -72,10 +72,10 @@ public class is extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.av_fld = var1.co();
-		this.az_fld = var1.co();
-		this.ak_fld = var1.cg();
+		this.ak_fld = var1.co((byte)-99);
+		this.av_fld = var1.co((byte)-59);
 		this.ag_fld = var1.cg();
+		this.az_fld = var1.cg();
 	}
 
 	is(ia var1) {
@@ -84,7 +84,7 @@ public class is extends ht {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ILlu;IIIII[F)Llu;"
+		descriptor = "(ILlu;IIIII[FI)Llu;"
 	)
 	static lu ak(int var0, lu var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
 		lu var9 = new lu();
@@ -114,13 +114,13 @@ public class is extends ht {
 			dx var2 = (dx)(dx)var1.next();
 
 			for (int var3 = 0; var3 < client.db_fld.al_fld; var3++) {
-				cv var4 = (cv)var2.au_fld.ak(client.db_fld.az_fld[var3]);
+				cv var4 = (cv)var2.au_fld.ae(client.db_fld.ar_fld[var3]);
 				if (null != var4) {
 					if (var0 >= -581757754) {
 						return;
 					}
 
-					var4.aw((byte)98);
+					cv.xo(var4, (byte)98);
 				}
 			}
 		}
@@ -131,24 +131,16 @@ public class is extends ht {
 		}
 	}
 
-	@ObfuscatedName("yz")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;)I"
-	)
-	public static int yz(rg var0) {
-		return var0.ah_fld.ah_fld * 491640768 + oy.ad(var0.aw_fld, -654080199);
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
 	void ae(xi var1) {
-		this.av_fld = var1.co();
-		this.az_fld = var1.co();
-		this.ak_fld = var1.cg();
+		this.ak_fld = var1.co((byte)-124);
+		this.av_fld = var1.co((byte)-57);
 		this.ag_fld = var1.cg();
+		this.az_fld = var1.cg();
 	}
 
 	@ObfuscatedName("ah")
@@ -157,7 +149,7 @@ public class is extends ht {
 	)
 	@Override
 	void ah(ik var1) {
-		var1.ai(this.av_fld, this.az_fld, this.ak_fld, this.ag_fld, (byte)82);
+		ik.no(var1, this.ak_fld, this.av_fld, this.ag_fld, this.az_fld, (byte)82);
 	}
 
 	@ObfuscatedName("aw")
@@ -166,7 +158,7 @@ public class is extends ht {
 	)
 	@Override
 	void aw(ik var1) {
-		var1.ai(this.av_fld, -1921346754 * this.az_fld, this.ak_fld, 1914155279 * this.ag_fld, (byte)82);
+		ik.no(var1, this.ak_fld, -1921346754 * this.av_fld, this.ag_fld, 1914155279 * this.az_fld, (byte)82);
 	}
 
 	@ObfuscatedName("ay")
@@ -175,7 +167,7 @@ public class is extends ht {
 	)
 	@Override
 	void ay(ik var1) {
-		var1.ai(this.av_fld, this.az_fld, this.ak_fld, this.ag_fld, (byte)82);
+		ik.no(var1, this.ak_fld, this.av_fld, this.ag_fld, this.az_fld, (byte)82);
 	}
 
 	@ObfuscatedName("ag")
@@ -184,7 +176,7 @@ public class is extends ht {
 	)
 	@Override
 	void ag(ik var1, int var2) {
-		var1.ai(this.av_fld, this.az_fld, this.ak_fld, this.ag_fld, (byte)82);
+		ik.no(var1, this.ak_fld, this.av_fld, this.ag_fld, this.az_fld, (byte)82);
 	}
 
 	@ObfuscatedName("az")
@@ -193,15 +185,15 @@ public class is extends ht {
 	)
 	@Override
 	void az(xi var1) {
-		this.av_fld = var1.co();
-		this.az_fld = var1.co();
-		this.ak_fld = var1.cg();
+		this.ak_fld = var1.co((byte)-81);
+		this.av_fld = var1.co((byte)-84);
 		this.ag_fld = var1.cg();
+		this.az_fld = var1.cg();
 	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IZ)Ljava/lang/String;"
+		descriptor = "(IZB)Ljava/lang/String;"
 	)
 	public static String ay(int var0, boolean var1) {
 		return var1 && var0 >= 0 ? gl.as(var0, 10, var1) : Integer.toString(var0);

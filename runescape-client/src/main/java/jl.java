@@ -41,29 +41,27 @@ public class jl {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Ljq;"
+		descriptor = "(I)[Ljq;"
 	)
 	public static jq[] ak() {
 		return new jq[]{jq.av_fld, jq.ak_fld, jq.az_fld, jq.ag_fld};
 	}
 
-	@ObfuscatedName("ye")
+	@ObfuscatedName("qs")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Ljava/lang/String;)I"
+		descriptor = "(Les;Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	public static int ye(ub var0, String var1) {
+	public static int qs(es var0, Object var1, Object var2) {
 		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			var1 = var1.toLowerCase();
-			int var2 = var0.bf_fld.ak(ov.ar(var1));
-			return var0.ar(var2, -8656200);
+			var0.getClass();
 		}
+
+		return es.dl(var0, (rr)var1, (rr)var2, (byte)-115);
 	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	public static void au() {
 		yh.av_fld = null;
@@ -72,6 +70,22 @@ public class jl {
 		yh.aw_fld = null;
 		yh.ay_fld = null;
 		yo.as_fld = null;
+	}
+
+	@ObfuscatedName("pc")
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)Z"
+	)
+	public static boolean pc(uk var0) {
+		return null != var0.ak_fld;
+	}
+
+	@ObfuscatedName("yi")
+	@ObfuscatedSignature(
+		descriptor = "(Loo;)Z"
+	)
+	public static boolean yi(oo var0) {
+		return var0.ah_fld != null;
 	}
 
 	jl() throws Throwable {

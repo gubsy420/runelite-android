@@ -6,20 +6,20 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("zl")
 public class zl implements qy {
-	@ObfuscatedGetter(
-		intValue = 1054648031
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
 	@ObfuscatedGetter(
-		intValue = -1168198235
+		intValue = 1054648031
 	)
+	int az_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1168198235
 	)
 	int ag_fld;
 	@ObfuscatedName("ae")
@@ -38,23 +38,29 @@ public class zl implements qy {
 	)
 	dx ak_fld;
 
-	@ObfuscatedName("na")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Ldx;IIZ)V"
 	)
-	public void na(dx var1, int var2, int var3, boolean var4) {
-		this.av(var1, var2, var3, var4);
+	public void ah(dx var1, int var2, int var3, boolean var4) {
+		this.ak_fld = var1;
+		this.ag_fld = var2;
+		this.az_fld = var3;
+		this.av_fld = var4;
 	}
 
-	@ObfuscatedName("wz")
+	@ObfuscatedName("rb")
 	@ObfuscatedSignature(
-		descriptor = "(Lzl;)V"
+		descriptor = "(Lzl;Ldx;IIZ)V"
 	)
-	public static void wz(zl var0) {
+	public static void rb(zl var0, dx var1, int var2, int var3, boolean var4) {
 		if (var0 == null) {
 			var0.getClass();
 		} else {
-			var0.ak_fld = null;
+			var0.ak_fld = var1;
+			var0.ag_fld = var2;
+			var0.az_fld = var3;
+			var0.av_fld = var4;
 		}
 	}
 
@@ -62,12 +68,44 @@ public class zl implements qy {
 		this.ae_fld = var1;
 	}
 
-	@ObfuscatedName("gn")
+	@ObfuscatedName("yj")
+	@ObfuscatedSignature(
+		descriptor = "(Ldx;IIZ)V"
+	)
+	public void yj(dx var1, int var2, int var3, boolean var4) {
+		this.av(var1, var2, var3, var4);
+	}
+
+	@ObfuscatedName("ed")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void gn() {
-		this.ae(2084058832);
+	public void ed() {
+		this.ae();
+	}
+
+	@ObfuscatedName("en")
+	@ObfuscatedSignature(
+		descriptor = "(Lsc;C)I"
+	)
+	public static int en(sc var0, char var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var0.ar(var1) ? var0.ay_fld[var1] : 0;
+		}
+	}
+
+	@ObfuscatedName("gp")
+	@ObfuscatedSignature(
+		descriptor = "(Lzl;)V"
+	)
+	public static void gp(zl var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ak_fld = null;
+		}
 	}
 
 	@ObfuscatedName("ak")
@@ -133,21 +171,6 @@ public class zl implements qy {
 					}
 				}
 			}
-		}
-	}
-
-	@ObfuscatedName("qr")
-	@ObfuscatedSignature(
-		descriptor = "(Lzl;Ldx;IIZ)V"
-	)
-	public static void qr(zl var0, dx var1, int var2, int var3, boolean var4) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ak_fld = var1;
-			var0.ag_fld = var2;
-			var0.az_fld = var3;
-			var0.av_fld = var4;
 		}
 	}
 
@@ -220,68 +243,15 @@ public class zl implements qy {
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void ae(int var1) {
+	public void ae() {
 		this.ak_fld = null;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;IIZ)V"
+		descriptor = "(Ldx;IIZI)V"
 	)
 	public void av(dx var1, int var2, int var3, boolean var4) {
-		this.ak_fld = var1;
-		this.ag_fld = var2;
-		this.az_fld = var3;
-		this.av_fld = var4;
-	}
-
-	@ObfuscatedName("gk")
-	@ObfuscatedSignature(
-		descriptor = "(Lzv;Ljava/lang/String;IIIII)V"
-	)
-	public static void gk(zv var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1 != null) {
-			zv.es(var0, var4, var5);
-			zv.ao_fld.setSeed(var6);
-			zv.as_fld = 192 + (zv.ao_fld.nextInt() & 31);
-			int[] var7 = new int[var1.length()];
-			int var8 = 0;
-
-			for (int var9 = 0; var9 < var1.length(); var9++) {
-				var7[var9] = var8;
-				if ((zv.ao_fld.nextInt() & 3) == 0) {
-					var8++;
-				}
-			}
-
-			zv.xy(var0, var1, var2, var3, null, var7, null);
-		}
-	}
-
-	@ObfuscatedName("rr")
-	@ObfuscatedSignature(
-		descriptor = "(Lzv;Ljava/lang/String;IIII)V"
-	)
-	public static void rr(zv var0, String var1, int var2, int var3, int var4, int var5) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var1 != null) {
-			zv.es(var0, var4, var5);
-			var0.bl(var1, var2 - var0.an(var1), var3);
-		}
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Ldx;IIZ)V"
-	)
-	public void aw(dx var1, int var2, int var3, boolean var4) {
 		this.ak_fld = var1;
 		this.ag_fld = var2;
 		this.az_fld = var3;
@@ -338,12 +308,12 @@ public class zl implements qy {
 		}
 	}
 
-	@ObfuscatedName("qv")
+	@ObfuscatedName("da")
 	@ObfuscatedSignature(
 		descriptor = "(Lol;I)V"
 	)
 	@Override
-	public void qv(ol var1, int var2) {
+	public void da(ol var1, int var2) {
 		this.ak(var1, var2, -411593668);
 	}
 }

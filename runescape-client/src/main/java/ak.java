@@ -1,9 +1,28 @@
-import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ak")
 public class ak implements az {
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lak;Lxi;Lxi;)V"
+	)
+	public static void ak(ak var0, xi var1, xi var2) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			as var3 = new as(var1);
+			ae var4 = new ae(var3);
+			long var5 = 0L;
+
+			while (!var4.az(yx.jy(var3), var3.ak(), var5)) {
+				var5++;
+			}
+
+			var2.ft(var5);
+		}
+	}
+
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)Lxi;"
@@ -11,8 +30,28 @@ public class ak implements az {
 	@Override
 	public xi av(xi var1) {
 		xi var2 = new xi(100);
-		this.ag(var1, var2);
+		ak(this, var1, var2);
 		return var2;
+	}
+
+	@ObfuscatedName("bb")
+	@ObfuscatedSignature(
+		descriptor = "(Lak;Lxi;Lxi;)V"
+	)
+	public static void bb(ak var0, xi var1, xi var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		as var3 = new as(var1);
+		ae var4 = new ae(var3);
+		long var5 = 0L;
+
+		while (!var4.az(yx.jy(var3), var3.ak(), var5)) {
+			var5++;
+		}
+
+		var2.ft(var5);
 	}
 
 	@ObfuscatedName("ak")
@@ -22,36 +61,28 @@ public class ak implements az {
 	@Override
 	public xi ak(xi var1) {
 		xi var2 = new xi(100);
-		this.ag(var1, var2);
+		ak(this, var1, var2);
 		return var2;
 	}
 
-	@ObfuscatedName("cd")
+	@ObfuscatedName("ie")
 	@ObfuscatedSignature(
-		descriptor = "(Lbt;I)V"
+		descriptor = "(Lak;Lxi;Lxi;)V"
 	)
-	public static void cd(bt var0, int var1) throws EOFException {
+	public static void ie(ak var0, xi var1, xi var2) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			var0.jl(var1);
 		}
-	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;)V"
-	)
-	void ag(xi var1, xi var2) {
 		as var3 = new as(var1);
 		ae var4 = new ae(var3);
 		long var5 = 0L;
 
-		while (!var4.az(var3.ag(), as.oj(var3), var5)) {
+		while (!var4.az(yx.jy(var3), var3.ak(), var5)) {
 			var5++;
 		}
 
-		var2.fn(var5);
+		var2.ft(var5);
 	}
 
 	@ObfuscatedName("az")
@@ -61,40 +92,8 @@ public class ak implements az {
 	@Override
 	public xi az(xi var1) {
 		xi var2 = new xi(100);
-		this.ag(var1, var2);
+		ak(this, var1, var2);
 		return var2;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;)V"
-	)
-	void ah(xi var1, xi var2) {
-		as var3 = new as(var1);
-		ae var4 = new ae(var3);
-		long var5 = 0L;
-
-		while (!var4.az(var3.ag(), as.oj(var3), var5)) {
-			var5++;
-		}
-
-		var2.fn(var5);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;Lxi;)V"
-	)
-	void ae(xi var1, xi var2) {
-		as var3 = new as(var1);
-		ae var4 = new ae(var3);
-		long var5 = 0L;
-
-		while (!var4.az(var3.ag(), as.oj(var3), var5)) {
-			var5++;
-		}
-
-		var2.fn(var5);
 	}
 
 	public ak() {
@@ -109,10 +108,26 @@ public class ak implements az {
 		ae var4 = new ae(var3);
 		long var5 = 0L;
 
-		while (!var4.az(var3.ag(), as.oj(var3), var5)) {
+		while (!var4.az(yx.jy(var3), var3.ak(), var5)) {
 			var5++;
 		}
 
-		var2.fn(var5);
+		var2.ft(var5);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;Lxi;)V"
+	)
+	void ag(xi var1, xi var2) {
+		as var3 = new as(var1);
+		ae var4 = new ae(var3);
+		long var5 = 0L;
+
+		while (!var4.ax(yx.jy(var3), var3.ak(), var5)) {
+			var5++;
+		}
+
+		var2.fd(var5);
 	}
 }

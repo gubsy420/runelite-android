@@ -1,54 +1,28 @@
-import java.util.Map;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("zw")
 public class zw {
-	@ObfuscatedGetter(
-		intValue = -664632441
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -664632441
+	)
 	int ak_fld;
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("je")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lzw;B)I"
 	)
-	public int ak() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("xe")
-	@ObfuscatedSignature(
-		descriptor = "(Lqx;)Ljava/util/Map;"
-	)
-	public static Map xe(qx var0) {
-		return var0.az_fld;
-	}
-
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "(Lmj;)V"
-	)
-	public static void jf(mj var0) {
+	public static int je(zw var0, byte var1) {
 		if (var0 == null) {
-			var0.getClass();
+			throw new NullPointerException();
+		} else {
+			return var0.ak_fld;
 		}
-
-		var0.as_fld = null;
-		var0.ah_fld[0] = 0.0F;
-		var0.ah_fld[1] = 0.0F;
-		var0.ah_fld[2] = 1.0F;
-		var0.ah_fld[3] = 1.0F;
-		var0.az_fld.clear();
-		var0.av_fld.clear();
-		var0.ag_fld.clear();
-		var0.ay_fld.clear();
-		var0.aw_fld.clear();
 	}
 
 	@ObfuscatedName("av")
@@ -59,12 +33,21 @@ public class zw {
 		return this.ak_fld;
 	}
 
-	@ObfuscatedName("ci")
+	@ObfuscatedName("xx")
 	@ObfuscatedSignature(
-		descriptor = "(Lvv;)I"
+		descriptor = "(Lxi;I)V"
 	)
-	public static int ci(vv var0) {
-		return var0.av_fld;
+	public static void xx(xi var0, int var1) {
+		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)var1;
+		var0.al_fld[(var0.au_fld += 1920715481) * -126086269 - 1] = (byte)(var1 >> 8);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int ag() {
+		return this.ak_fld;
 	}
 
 	zw(int var1, boolean var2) {
@@ -76,6 +59,14 @@ public class zw {
 		descriptor = "()I"
 	)
 	public int az() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(B)I"
+	)
+	public int ak(byte var1) {
 		return this.ak_fld;
 	}
 }

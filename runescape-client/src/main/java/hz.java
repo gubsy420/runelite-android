@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -14,12 +15,12 @@ public class hz extends ho {
 		descriptor = "B"
 	)
 	byte ag_fld;
-	@ObfuscatedGetter(
-		intValue = -90535051
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -90535051
 	)
 	int ak_fld;
 	@ObfuscatedName("av")
@@ -38,29 +39,14 @@ public class hz extends ho {
 		descriptor = "I"
 	)
 	static int bd_fld;
-	@ObfuscatedGetter(
-		intValue = 644442307
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int az_fld;
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
+	@ObfuscatedGetter(
+		intValue = 644442307
 	)
-	@Override
-	void ae(xi var1) {
-		var1.cg();
-		this.ak_fld = xi.tx(var1, 1683487437);
-		this.ag_fld = xi.rp(var1, 1226203759);
-		this.az_fld = xi.tx(var1, 1667524459);
-		xi.ob(var1, 640194980);
-		this.av_fld = xi.kc(var1, -640532537);
-		var1.cg();
-	}
+	int az_fld;
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -69,12 +55,50 @@ public class hz extends ho {
 	@Override
 	void az(xi var1) {
 		var1.cg();
-		this.ak_fld = xi.tx(var1, 1238525998);
-		this.ag_fld = xi.rp(var1, -1891131071);
-		this.az_fld = xi.tx(var1, 1516083799);
-		xi.ob(var1, 605628788);
-		this.av_fld = xi.kc(var1, -1768111407);
+		this.ak_fld = var1.cm();
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cm();
+		var1.cu();
+		this.av_fld = xi.at(var1, -640532537);
 		var1.cg();
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lxi;)V"
+	)
+	@Override
+	void av(xi var1) {
+		var1.cg();
+		this.ak_fld = var1.cm();
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cm();
+		var1.cu();
+		this.av_fld = xi.at(var1, -1768111407);
+		var1.cg();
+	}
+
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "(Lbt;I)V"
+	)
+	public static void fp(bt var0, int var1) throws EOFException {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			if (!var0.ak(2073859330)) {
+				jm.kr_fld.av(var0.ak_fld, var0.av_fld, var0.ae_fld, false);
+				int var2 = cf.ak(var0.ay_fld, var1, jm.kr_fld);
+				jm.kr_fld.ae();
+				if ((var2 & 1) != 0) {
+					qa.gr(var0.ay_fld, 444761018);
+				}
+			}
+		} catch (Throwable var4) {
+			throw new RuntimeException(var4);
+		}
 	}
 
 	@ObfuscatedName("ag")
@@ -89,14 +113,6 @@ public class hz extends ho {
 		var3.az_fld = new aax(this.av_fld);
 	}
 
-	@ObfuscatedName("zw")
-	@ObfuscatedSignature(
-		descriptor = "(Lwh;)I"
-	)
-	public static int zw(wh var0) {
-		return var0.aw_fld;
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;I)V"
@@ -104,11 +120,11 @@ public class hz extends ho {
 	@Override
 	void ak(xi var1, int var2) {
 		var1.cg();
-		this.ak_fld = xi.tx(var1, 386463001);
-		this.ag_fld = xi.rp(var1, -504519723);
-		this.az_fld = xi.tx(var1, 835300434);
-		xi.ob(var1, -1839298949);
-		this.av_fld = xi.kc(var1, -1276049740);
+		this.ak_fld = var1.cm();
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cm();
+		var1.cu();
+		this.av_fld = xi.at(var1, -1276049740);
 		var1.cg();
 	}
 
@@ -124,18 +140,18 @@ public class hz extends ho {
 		var2.az_fld = new aax(this.av_fld);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
-	void av(xi var1) {
+	void ae(xi var1) {
 		var1.cg();
-		this.ak_fld = xi.tx(var1, 977035492) * -63086165;
-		this.ag_fld = xi.rp(var1, -1120546285);
-		this.az_fld = xi.tx(var1, 1699529235);
-		xi.ob(var1, 371891125);
-		this.av_fld = xi.kc(var1, 991464915);
+		this.ak_fld = var1.cm() * -63086165;
+		this.ag_fld = var1.cw();
+		this.az_fld = var1.cm();
+		var1.cu();
+		this.av_fld = xi.at(var1, 991464915);
 		var1.cg();
 	}
 
@@ -170,7 +186,7 @@ public class hz extends ho {
 
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;B)V"
 	)
 	static void aj(String var0) {
 		bn.ct_fld = rj.ae(var0);

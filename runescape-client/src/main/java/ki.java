@@ -24,12 +24,12 @@ public class ki implements xm {
 		descriptor = "Lki;"
 	)
 	static ki av_fld = new ki(3, 2, false, false, true);
-	@ObfuscatedGetter(
-		intValue = -308601617
-	)
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -308601617
 	)
 	public int aq_fld;
 	@ObfuscatedName("ax")
@@ -72,12 +72,12 @@ public class ki implements xm {
 		descriptor = "Lki;"
 	)
 	static ki au_fld = new ki(12, 46, false, false, true);
-	@ObfuscatedGetter(
-		intValue = 213069055
-	)
 	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 213069055
 	)
 	static int bq_fld;
 	@ObfuscatedName("an")
@@ -110,12 +110,12 @@ public class ki implements xm {
 		descriptor = "Z"
 	)
 	public boolean ad_fld;
-	@ObfuscatedGetter(
-		intValue = -1334624161
-	)
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1334624161
 	)
 	int ao_fld;
 	@ObfuscatedName("ah")

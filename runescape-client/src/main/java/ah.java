@@ -5,12 +5,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ah")
 public class ah implements xm {
-	@ObfuscatedGetter(
-		intValue = 43614233
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 43614233
 	)
 	public int ag_fld;
 	@ObfuscatedName("ak")
@@ -18,12 +18,12 @@ public class ah implements xm {
 		descriptor = "Lah;"
 	)
 	static ah ak_fld = new ah(0, 0);
-	@ObfuscatedGetter(
-		intValue = -1591339213
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1591339213
 	)
 	int az_fld;
 	@ObfuscatedName("am")
@@ -55,16 +55,6 @@ public class ah implements xm {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("zv")
-	@ObfuscatedSignature(
-		descriptor = "(Loh;)V"
-	)
-	public static void zv(oh var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()[Lah;"
@@ -80,7 +70,7 @@ public class ah implements xm {
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIIILcx;)Ltu;"
+		descriptor = "(IIIILcx;B)Ltu;"
 	)
 	static tu ay(int var0, int var1, int var2, int var3, cx var4) throws EOFException {
 		tu var6 = null;
@@ -91,15 +81,15 @@ public class ah implements xm {
 			if (ux.ak(var0)) {
 				int var10 = qs.ag(var0);
 				var7 = pd.ag(var10, var4);
-				var9 = (da)var7.ax_fld.ak(var10);
+				var9 = (da)var7.ax_fld.ae(var10);
 			} else {
 				int var17 = -var0 - 1;
 				var7 = kx.ak(var17, var4);
-				var9 = dx.ii(var7, var17);
+				var9 = dx.pe(var7, var17);
 			}
 
 			if (null != var9) {
-				kj var18 = ((da)var9).es(var7, (byte)73);
+				kj var18 = da.vo((da)var9, var7, (byte)73);
 				tu var11;
 				synchronized (tu.ae_fld) {
 					if (0 == tu.aw_fld) {
@@ -111,32 +101,32 @@ public class ah implements xm {
 				}
 
 				var6 = var11;
-				var11.ay_fld = var18.ag_fld;
-				var11.ar_fld = var18.az_fld;
+				var11.ar_fld = var18.ak_fld;
+				var11.as_fld = var18.ag_fld;
 			}
 		}
 
 		if (null == var6) {
 			var7 = var4.aw(var1, var2, -2091588016);
-			int var16 = var1 - var7.ay_fld;
-			int var19 = var2 - var7.as_fld;
-			rg var20 = (rg)var4.ah(-225377813).an_fld.ak(var7.ag_fld);
+			int var16 = var1 - var7.as_fld;
+			int var19 = var2 - var7.ay_fld;
+			rg var20 = (rg)cx.gw(var4, -225377813).an_fld.ak(var7.ag_fld);
 			if (var20 != null) {
-				var6 = rg.ql(var20, kj.as(var16), kj.as(var19));
+				var6 = var20.ap(kj.as(var16), kj.as(var19), -1733054998);
 			} else {
 				var6 = sh.ak(kj.as(var16), 0.0F, kj.as(var19));
 			}
 		}
 
-		int var21 = (int)var6.ay_fld;
-		int var22 = (int)var6.ar_fld;
+		int var21 = (int)var6.ar_fld;
+		int var22 = (int)var6.as_fld;
 		int var13 = jf.dv(var7, var21, var22, var3);
 		rg var14 = (rg)bw.dk_fld.an_fld.ak(var7.ag_fld);
 		if (null != var14) {
 			var13 += jf.dv(bw.dk_fld, var14.dp(-850860381), var14.dj(189745805), var14.ak(-1672997243));
 		}
 
-		var6.as_fld = var13;
+		var6.ay_fld = var13;
 		return var6;
 	}
 
@@ -151,7 +141,7 @@ public class ah implements xm {
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void al() throws EOFException {
 		if (bw.dk_fld.ae_fld != bx.an_fld) {
@@ -160,9 +150,21 @@ public class ah implements xm {
 		}
 	}
 
+	@ObfuscatedName("sx")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;)Z"
+	)
+	public static boolean sx(cn var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ay_fld;
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	public static void ay() {
 		mb.ay_fld.clear();
@@ -181,7 +183,7 @@ public class ah implements xm {
 	@ObfuscatedSignature(
 		descriptor = "(Llu;I)V"
 	)
-	static final void ff(lu var0, int var1) {
+	static final void ff(lu var0, int var1) throws EOFException {
 		if (var0.bo_fld == 1) {
 			if (var1 == 878041371) {
 				return;
@@ -227,7 +229,7 @@ public class ah implements xm {
 					return;
 				}
 
-				int var3 = uo.sa(cf.cg_fld, var0, 1673637537);
+				int var3 = uo.xd(cf.cg_fld, var0, 1673637537);
 				boolean var9 = (var3 >> 21 & 1) != 0;
 				if (var9 && (ms.ne_fld & 32) == 32) {
 					if (var1 == 878041371) {
@@ -274,7 +276,7 @@ public class ah implements xm {
 					}
 				}
 
-				int var14 = uo.sa(cf.cg_fld, var0, -343116807);
+				int var14 = uo.xd(cf.cg_fld, var0, -343116807);
 				boolean var11 = 0 != (var14 & 1);
 				if (var11) {
 					je.fe(kh.at_fld, "", 30, 0, var0.by_fld, var0.bf_fld);

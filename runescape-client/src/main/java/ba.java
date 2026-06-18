@@ -1,5 +1,6 @@
 import java.io.EOFException;
 import net.runelite.api.Script;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -8,12 +9,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("ba")
 @Implements({"Script"})
 public class ba extends vc implements Script {
-	@ObfuscatedGetter(
-		intValue = 788537341
-	)
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 788537341
 	)
 	int au_fld;
 	@ObfuscatedName("ag")
@@ -46,36 +47,36 @@ public class ba extends vc implements Script {
 		descriptor = "Liw;"
 	)
 	static iw ak_fld = new iw(128);
-	@ObfuscatedGetter(
-		intValue = 1909888467
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
 	@ObfuscatedGetter(
-		intValue = 868762583
+		intValue = 1909888467
 	)
+	int ay_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int as_fld;
 	@ObfuscatedGetter(
-		intValue = 1406253939
+		intValue = 868762583
 	)
+	int as_fld;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = -1265180517
+		intValue = 1406253939
 	)
+	int ar_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1265180517
 	)
 	int af_fld;
 	@ObfuscatedName("aw")
@@ -83,22 +84,21 @@ public class ba extends vc implements Script {
 		descriptor = "[J"
 	)
 	long[] aw_fld;
-	@ObfuscatedGetter(
-		intValue = -844495777
-	)
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -844495777
+	)
 	int al_fld;
 
-	@ObfuscatedName("getIntOperands")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()[I"
+		descriptor = "(II)[Lxv;"
 	)
-	@Override
-	public int[] getIntOperands() {
-		return this.ae_fld;
+	xv[] ay(int var1, int var2) {
+		return new xv[var1];
 	}
 
 	@ObfuscatedName("ae")
@@ -117,9 +117,29 @@ public class ba extends vc implements Script {
 		return this.aw_fld[var1];
 	}
 
+	@ObfuscatedName("yw")
+	@ObfuscatedSignature(
+		descriptor = "(Lba;I)[Lxv;"
+	)
+	public static xv[] yw(ba var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return new xv[var1];
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)J"
+	)
+	long am(int var1) {
+		return this.aw_fld[var1];
+	}
+
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lba;"
+		descriptor = "(II)Lba;"
 	)
 	static ba au(int var0) throws EOFException {
 		try {
@@ -132,7 +152,7 @@ public class ba extends vc implements Script {
 				if (var4 == -1) {
 					return null;
 				} else {
-					byte[] var5 = ub.ae(bj.ib_fld, var4, (byte)91);
+					byte[] var5 = ub.xk(bj.ib_fld, var4, (byte)91);
 					if (var5 != null) {
 						if (var5.length <= 1) {
 							return null;
@@ -151,6 +171,26 @@ public class ba extends vc implements Script {
 		} catch (Throwable var7) {
 			throw new RuntimeException(var7);
 		}
+	}
+
+	@ObfuscatedName("getInstructions")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getInstructions")
+	@Override
+	public int[] getInstructions() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getIntOperands")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	@Export("getIntOperands")
+	@Override
+	public int[] getIntOperands() {
+		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ar")
@@ -175,6 +215,14 @@ public class ba extends vc implements Script {
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(I)J"
+	)
+	long ad(int var1) {
+		return this.aw_fld[var1];
 	}
 
 	@ObfuscatedName("al")
@@ -229,24 +277,12 @@ public class ba extends vc implements Script {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;"
 	)
-	String aq(int var1) {
+	String ai(int var1) {
 		return this.ah_fld[var1];
-	}
-
-	@ObfuscatedName("nm")
-	@ObfuscatedSignature(
-		descriptor = "(Lba;I)[Lxv;"
-	)
-	public static xv[] nm(ba var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return new xv[var1];
-		}
 	}
 
 	@ObfuscatedName("an")
@@ -257,35 +293,35 @@ public class ba extends vc implements Script {
 		ba var1 = new ba();
 		xi var2 = new xi(var0);
 		var2.au_fld = (var2.al_fld.length - 2) * 1429891718;
-		int var3 = xi.tx(var2, 941069911);
+		int var3 = var2.cm();
 		int var4 = var2.al_fld.length - 2 - var3 - 16;
 		var2.au_fld = var4 * -2092488358;
-		int var5 = var2.co();
-		var1.ay_fld = xi.tx(var2, 1835440034) * 963448258;
-		var1.ar_fld = xi.tx(var2, 440383225);
-		var1.as_fld = xi.tx(var2, 1823704537);
-		var1.af_fld = xi.tx(var2, 357605984);
-		var1.al_fld = xi.tx(var2, 1378059923);
-		var1.au_fld = xi.tx(var2, 2025284688) * 1303578791;
+		int var5 = var2.co((byte)-44);
+		var1.ay_fld = var2.cm() * 963448258;
+		var1.ar_fld = var2.cm();
+		var1.as_fld = var2.cm();
+		var1.af_fld = var2.cm();
+		var1.al_fld = var2.cm();
+		var1.au_fld = var2.cm() * 1303578791;
 		int var6 = var2.cg();
 		if (var6 > 0) {
-			var1.ag_fld = nm(var1, var6);
+			var1.ag_fld = var1.ay(var6, 773309226);
 
 			for (int var7 = 0; var7 < var6; var7++) {
-				int var8 = xi.tx(var2, 553132186);
+				int var8 = var2.cm();
 				xv var9 = new xv(var8 > 0 ? wp.ay(var8) : 1);
 				var1.ag_fld[var7] = var9;
 
 				while (var8-- > 0) {
-					int var10 = var2.co();
-					int var11 = var2.co();
+					int var10 = var2.co((byte)-100);
+					int var11 = var2.co((byte)-99);
 					var9.ag(new vl(var11), var10);
 				}
 			}
 		}
 
 		var2.au_fld = 0;
-		var1.az_fld = var2.ch();
+		var1.az_fld = var2.cl();
 		var1.av_fld = new int[var5];
 		var1.ae_fld = new int[var5];
 		var1.ah_fld = new String[var5];
@@ -293,10 +329,10 @@ public class ba extends vc implements Script {
 		int var12 = 0;
 
 		while (var2.au_fld < var4) {
-			int var13 = xi.tx(var2, 1975214339);
+			int var13 = var2.cm();
 			switch (var13) {
 				case 3:
-					var1.ah_fld[var12] = xi.kc(var2, 323867160);
+					var1.ah_fld[var12] = xi.at(var2, 323867160);
 					break;
 				case 21:
 				case 38:
@@ -306,11 +342,11 @@ public class ba extends vc implements Script {
 					var1.ae_fld[var12] = var2.cg();
 					break;
 				case 61:
-					var1.aw_fld[var12] = xi.ob(var2, -1617345846);
+					var1.aw_fld[var12] = var2.cu();
 					break;
 				default:
 					if (var13 <= 1447053690) {
-						var1.ae_fld[var12] = var2.co();
+						var1.ae_fld[var12] = var2.co((byte)-32);
 					} else {
 						var1.ae_fld[var12] = var2.cg();
 					}
@@ -330,35 +366,35 @@ public class ba extends vc implements Script {
 		ba var1 = new ba();
 		xi var2 = new xi(var0);
 		var2.au_fld = var2.al_fld.length - 2;
-		int var3 = xi.tx(var2, 751450971);
+		int var3 = var2.cm();
 		int var4 = var2.al_fld.length - 2 - var3 - 16;
 		var2.au_fld = var4;
-		int var5 = var2.co();
-		var1.ay_fld = xi.tx(var2, 2052384642);
-		var1.ar_fld = xi.tx(var2, 1770694691);
-		var1.as_fld = xi.tx(var2, 1657737234);
-		var1.af_fld = xi.tx(var2, 2006807556);
-		var1.al_fld = xi.tx(var2, 1128183038);
-		var1.au_fld = xi.tx(var2, 420673366);
+		int var5 = var2.co((byte)-33);
+		var1.ay_fld = var2.cm();
+		var1.ar_fld = var2.cm();
+		var1.as_fld = var2.cm();
+		var1.af_fld = var2.cm();
+		var1.al_fld = var2.cm();
+		var1.au_fld = var2.cm();
 		int var6 = var2.cg();
 		if (var6 > 0) {
-			var1.ag_fld = nm(var1, var6);
+			var1.ag_fld = var1.ay(var6, -798264994);
 
 			for (int var7 = 0; var7 < var6; var7++) {
-				int var8 = xi.tx(var2, 983877881);
+				int var8 = var2.cm();
 				xv var9 = new xv(var8 > 0 ? wp.ay(var8) : 1);
 				var1.ag_fld[var7] = var9;
 
 				while (var8-- > 0) {
-					int var10 = var2.co();
-					int var11 = var2.co();
+					int var10 = var2.co((byte)-66);
+					int var11 = var2.co((byte)2);
 					var9.ag(new vl(var11), var10);
 				}
 			}
 		}
 
 		var2.au_fld = 0;
-		var1.az_fld = var2.ch();
+		var1.az_fld = var2.cl();
 		var1.av_fld = new int[var5];
 		var1.ae_fld = new int[var5];
 		var1.ah_fld = new String[var5];
@@ -366,10 +402,10 @@ public class ba extends vc implements Script {
 		int var12 = 0;
 
 		while (var2.au_fld < var4) {
-			int var13 = xi.tx(var2, 794740586);
+			int var13 = var2.cm();
 			switch (var13) {
 				case 3:
-					var1.ah_fld[var12] = xi.kc(var2, -658291494);
+					var1.ah_fld[var12] = xi.at(var2, -658291494);
 					break;
 				case 21:
 				case 38:
@@ -379,11 +415,11 @@ public class ba extends vc implements Script {
 					var1.ae_fld[var12] = var2.cg();
 					break;
 				case 61:
-					var1.aw_fld[var12] = xi.ob(var2, 1217170723);
+					var1.aw_fld[var12] = var2.cu();
 					break;
 				default:
 					if (var13 <= 99) {
-						var1.ae_fld[var12] = var2.co();
+						var1.ae_fld[var12] = var2.co((byte)-4);
 					} else {
 						var1.ae_fld[var12] = var2.cg();
 					}
@@ -398,11 +434,11 @@ public class ba extends vc implements Script {
 	ba() {
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;"
 	)
-	String ai(int var1) {
+	String aq(int var1) {
 		return this.ah_fld[var1];
 	}
 
@@ -446,35 +482,35 @@ public class ba extends vc implements Script {
 		ba var1 = new ba();
 		xi var2 = new xi(var0);
 		var2.au_fld = (var2.al_fld.length - 2) * -1328305860;
-		int var3 = xi.tx(var2, 1635442887);
+		int var3 = var2.cm();
 		int var4 = var2.al_fld.length - 2 - var3 - 16;
 		var2.au_fld = var4 * -801157169;
-		int var5 = var2.co();
-		var1.ay_fld = xi.tx(var2, 2108046566);
-		var1.ar_fld = xi.tx(var2, 985101608) * 498138877;
-		var1.as_fld = xi.tx(var2, 641237411) * -564170261;
-		var1.af_fld = xi.tx(var2, 721519865);
-		var1.al_fld = xi.tx(var2, 1121269007) * -676922296;
-		var1.au_fld = xi.tx(var2, 1971023226);
+		int var5 = var2.co((byte)-85);
+		var1.ay_fld = var2.cm();
+		var1.ar_fld = var2.cm() * 498138877;
+		var1.as_fld = var2.cm() * -564170261;
+		var1.af_fld = var2.cm();
+		var1.al_fld = var2.cm() * -676922296;
+		var1.au_fld = var2.cm();
 		int var6 = var2.cg();
 		if (var6 > 0) {
-			var1.ag_fld = nm(var1, var6);
+			var1.ag_fld = var1.ay(var6, 1001596917);
 
 			for (int var7 = 0; var7 < var6; var7++) {
-				int var8 = xi.tx(var2, 822026552);
+				int var8 = var2.cm();
 				xv var9 = new xv(var8 > 0 ? wp.ay(var8) : 1);
 				var1.ag_fld[var7] = var9;
 
 				while (var8-- > 0) {
-					int var10 = var2.co();
-					int var11 = var2.co();
+					int var10 = var2.co((byte)-64);
+					int var11 = var2.co((byte)-107);
 					var9.ag(new vl(var11), var10);
 				}
 			}
 		}
 
 		var2.au_fld = 0;
-		var1.az_fld = var2.ch();
+		var1.az_fld = var2.cl();
 		var1.av_fld = new int[var5];
 		var1.ae_fld = new int[var5];
 		var1.ah_fld = new String[var5];
@@ -482,10 +518,10 @@ public class ba extends vc implements Script {
 		int var12 = 0;
 
 		while (var2.au_fld < var4) {
-			int var13 = xi.tx(var2, 1160133006);
+			int var13 = var2.cm();
 			switch (var13) {
 				case 3:
-					var1.ah_fld[var12] = xi.kc(var2, -566644445);
+					var1.ah_fld[var12] = xi.at(var2, -566644445);
 					break;
 				case 21:
 				case 38:
@@ -495,11 +531,11 @@ public class ba extends vc implements Script {
 					var1.ae_fld[var12] = var2.cg();
 					break;
 				case 61:
-					var1.aw_fld[var12] = xi.ob(var2, -1225638416);
+					var1.aw_fld[var12] = var2.cu();
 					break;
 				default:
 					if (var13 <= 99) {
-						var1.ae_fld[var12] = var2.co();
+						var1.ae_fld[var12] = var2.co((byte)-38);
 					} else {
 						var1.ae_fld[var12] = var2.cg();
 					}
@@ -516,15 +552,7 @@ public class ba extends vc implements Script {
 		descriptor = "()V"
 	)
 	static void ab() {
-		ak_fld.vh();
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lxv;"
-	)
-	xv[] at(int var1) {
-		return new xv[var1];
+		ak_fld.av();
 	}
 
 	@ObfuscatedName("ap")
@@ -535,29 +563,12 @@ public class ba extends vc implements Script {
 		return new xv[var1];
 	}
 
-	@ObfuscatedName("getInstructions")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	@Override
-	public int[] getInstructions() {
-		return this.av_fld;
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	public static void ag() {
-		ot.au_fld.vh();
-		ot.ax_fld.vh();
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(II)[Lxv;"
-	)
-	xv[] ay(int var1, int var2) {
-		return new xv[var1];
+		ot.au_fld.av();
+		ot.ax_fld.av();
 	}
 }

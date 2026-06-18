@@ -23,12 +23,12 @@ public class qk {
 		descriptor = "Lqt;"
 	)
 	qt ag_fld;
-	@ObfuscatedGetter(
-		intValue = 474696075
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 474696075
 	)
 	int aw_fld;
 	@ObfuscatedName("av")
@@ -36,16 +36,16 @@ public class qk {
 		descriptor = "Lvd;"
 	)
 	vd av_fld;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	boolean ah_fld = false;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
 	boolean ae_fld = false;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	boolean ah_fld = false;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "Lqe;"
@@ -56,9 +56,34 @@ public class qk {
 		this(var1, var2, new qt(), var3);
 	}
 
+	@ObfuscatedName("dl")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;)Z"
+	)
+	public static boolean dl(qk var0) throws IOException, ProtocolException, UnsupportedEncodingException {
+		if (!var0.ae_fld) {
+			ct(var0, (byte)29);
+		}
+
+		var0.ak_fld.connect();
+		return var0.ak_fld.getResponseCode() == -1;
+	}
+
+	@ObfuscatedName("ua")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;I)Lqt;"
+	)
+	public static qt ua(qk var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ag_fld;
+	}
+
 	public qk(URL var1, qe var2, qt var3, boolean var4) throws IOException, UnsupportedEncodingException {
 		this.aw_fld = 1211463584;
-		if (!var2.aw()) {
+		if (!var2.ak(1876125894)) {
 			throw new UnsupportedEncodingException("Unsupported request method used " + var2.az());
 		} else {
 			this.ak_fld = (HttpsURLConnection)var1.openConnection();
@@ -71,201 +96,118 @@ public class qk {
 		}
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lvd;)V"
-	)
-	public void ag(vd var1) {
-		if (!this.ah_fld) {
-			if (null == var1) {
-				this.ag_fld.av("Content-Type", (byte)-95);
-				this.av_fld = null;
-			} else {
-				this.av_fld = var1;
-				if (this.av_fld.ak(1557254738) != null) {
-					this.ag_fld.ay(this.av_fld.ak(1557254738));
-				} else {
-					this.ag_fld.as();
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void az() throws ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.ak_fld.setRequestMethod(this.az_fld.az());
-			this.ag_fld.ak(this.ak_fld);
-			if (this.az_fld.ak(1891548638) && null != this.av_fld) {
-				this.ak_fld.setDoOutput(true);
-				ByteArrayOutputStream var2 = new ByteArrayOutputStream();
-
-				try {
-					var2.write(this.av_fld.ag(857916643));
-					var2.writeTo(this.ak_fld.getOutputStream());
-				} catch (IOException var12) {
-					var12.printStackTrace();
-				} finally {
-					try {
-						var2.close();
-					} catch (IOException var11) {
-						var11.printStackTrace();
-					}
-				}
-			}
-
-			this.ak_fld.setConnectTimeout(this.aw_fld);
-			this.ak_fld.setInstanceFollowRedirects(this.ae_fld);
-			this.ah_fld = true;
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean av() throws IOException, ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.az();
-		}
-
-		this.ak_fld.connect();
-		return this.ak_fld.getResponseCode() == -1;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "()Lqx;"
-	)
-	qx ae() {
-		try {
-			if (!this.ah_fld || this.ak_fld.getResponseCode() == -1) {
-				return new qx("No REST response has been received yet.");
-			}
-		} catch (IOException var11) {
-			this.ak_fld.disconnect();
-			return new qx("Error decoding REST response code: " + var11.getMessage());
-		}
-
-		qx var4;
-		try {
-			return new qx(this.ak_fld);
-		} catch (IOException var9) {
-			var4 = new qx("Error decoding REST response: " + var9.getMessage());
-		} finally {
-			this.ak_fld.disconnect();
-		}
-
-		return var4;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lqg;)Lyz;"
-	)
-	public static yz ae(qg var0) {
-		return (yz)(yz)var0.az_fld.ae();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()Lqt;"
-	)
-	public qt ah() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lvd;)V"
-	)
-	public void ay(vd var1) {
-		if (!this.ah_fld) {
-			if (null == var1) {
-				this.ag_fld.av("Content-Type", (byte)-6);
-				this.av_fld = null;
-			} else {
-				this.av_fld = var1;
-				if (this.av_fld.ak(1557254738) != null) {
-					this.ag_fld.ay(this.av_fld.ak(1557254738));
-				} else {
-					this.ag_fld.as();
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(Lvd;)V"
-	)
-	public void as(vd var1) {
-		if (!this.ah_fld) {
-			if (null == var1) {
-				this.ag_fld.av("Content-Type", (byte)-76);
-				this.av_fld = null;
-			} else {
-				this.av_fld = var1;
-				if (this.av_fld.ak(1557254738) != null) {
-					this.ag_fld.ay(this.av_fld.ak(1557254738));
-				} else {
-					this.ag_fld.as();
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("un")
+	@ObfuscatedName("kz")
 	@ObfuscatedSignature(
 		descriptor = "(Lqk;)Z"
 	)
-	public static boolean un(qk var0) throws IOException, ProtocolException, UnsupportedEncodingException {
-		if (!var0.ah_fld) {
-			var0.az();
+	public static boolean kz(qk var0) throws IOException, ProtocolException, UnsupportedEncodingException {
+		if (!var0.ae_fld) {
+			ct(var0, (byte)-27);
 		}
 
 		var0.ak_fld.connect();
 		return var0.ak_fld.getResponseCode() == -1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lvd;)V"
+		descriptor = "()Lqt;"
 	)
-	public void af(vd var1) {
-		if (!this.ah_fld) {
+	public qt aw() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("it")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;I)Lqx;"
+	)
+	public static qx it(qk var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			try {
+				if (!var0.ae_fld || var0.ak_fld.getResponseCode() == -1) {
+					return new qx("No REST response has been received yet.");
+				}
+			} catch (IOException var11) {
+				var0.ak_fld.disconnect();
+				return new qx("Error decoding REST response code: " + var11.getMessage());
+			}
+
+			qx var4;
+			try {
+				return new qx(var0.ak_fld);
+			} catch (IOException var9) {
+				var4 = new qx("Error decoding REST response: " + var9.getMessage());
+			} finally {
+				var0.ak_fld.disconnect();
+			}
+
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lvd;I)V"
+	)
+	public void ag(vd var1) {
+		if (!this.ae_fld) {
 			if (null == var1) {
-				this.ag_fld.av("Content-Type", (byte)-71);
+				this.ag_fld.ah("Content-Type", (byte)-95);
 				this.av_fld = null;
 			} else {
 				this.av_fld = var1;
 				if (this.av_fld.ak(1557254738) != null) {
 					this.ag_fld.ay(this.av_fld.ak(1557254738));
 				} else {
-					this.ag_fld.as();
+					qt.mz(this.ag_fld, -3986505);
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "()Z"
 	)
-	void al() throws ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.ak_fld.setRequestMethod(this.az_fld.az());
-			this.ag_fld.ak(this.ak_fld);
-			if (this.az_fld.ak(1504764354) && null != this.av_fld) {
-				this.ak_fld.setDoOutput(true);
+	boolean an() throws IOException, ProtocolException, UnsupportedEncodingException {
+		if (!this.ae_fld) {
+			ct(this, (byte)74);
+		}
+
+		this.ak_fld.connect();
+		return this.ak_fld.getResponseCode() == -1;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z"
+	)
+	boolean av() throws IOException, ProtocolException, UnsupportedEncodingException {
+		if (!this.ae_fld) {
+			ct(this, (byte)75);
+		}
+
+		this.ak_fld.connect();
+		return this.ak_fld.getResponseCode() == -1;
+	}
+
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;)V"
+	)
+	public static void my(qk var0) throws ProtocolException, UnsupportedEncodingException {
+		if (!var0.ae_fld) {
+			var0.ak_fld.setRequestMethod(var0.az_fld.az());
+			var0.ag_fld.ak(var0.ak_fld);
+			if (var0.az_fld.aw() && null != var0.av_fld) {
+				var0.ak_fld.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
 				try {
-					var1.write(this.av_fld.ag(1486071840));
-					var1.writeTo(this.ak_fld.getOutputStream());
+					var1.write(var0.av_fld.ag(1486071840));
+					var1.writeTo(var0.ak_fld.getOutputStream());
 				} catch (IOException var11) {
 					var11.printStackTrace();
 				} finally {
@@ -277,23 +219,89 @@ public class qk {
 				}
 			}
 
-			this.ak_fld.setConnectTimeout(this.aw_fld);
-			this.ak_fld.setInstanceFollowRedirects(this.ae_fld);
-			this.ah_fld = true;
+			var0.ak_fld.setConnectTimeout(var0.aw_fld);
+			var0.ak_fld.setInstanceFollowRedirects(var0.ah_fld);
+			var0.ae_fld = true;
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Lvd;)V"
 	)
-	boolean au() throws IOException, ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.az();
+	public void ay(vd var1) {
+		if (!this.ae_fld) {
+			if (null == var1) {
+				this.ag_fld.ah("Content-Type", (byte)-6);
+				this.av_fld = null;
+			} else {
+				this.av_fld = var1;
+				if (this.av_fld.ak(1557254738) != null) {
+					this.ag_fld.ay(this.av_fld.ak(1557254738));
+				} else {
+					qt.mz(this.ag_fld, -443012565);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lvd;)V"
+	)
+	public void as(vd var1) {
+		if (!this.ae_fld) {
+			if (null == var1) {
+				this.ag_fld.ah("Content-Type", (byte)-76);
+				this.av_fld = null;
+			} else {
+				this.av_fld = var1;
+				if (this.av_fld.ak(1557254738) != null) {
+					this.ag_fld.ay(this.av_fld.ak(1557254738));
+				} else {
+					qt.mz(this.ag_fld, -716847042);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Lvd;)V"
+	)
+	public void af(vd var1) {
+		if (!this.ae_fld) {
+			if (null == var1) {
+				this.ag_fld.ah("Content-Type", (byte)-71);
+				this.av_fld = null;
+			} else {
+				this.av_fld = var1;
+				if (this.av_fld.ak(1557254738) != null) {
+					this.ag_fld.ay(this.av_fld.ak(1557254738));
+				} else {
+					qt.mz(this.ag_fld, 1499229479);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("yn")
+	@ObfuscatedSignature(
+		descriptor = "(Lox;Lxi;)V"
+	)
+	public static void yn(ox var0, xi var1) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
 		}
 
-		this.ak_fld.connect();
-		return this.ak_fld.getResponseCode() == -1;
+		while (true) {
+			int var2 = var1.cg();
+			if (0 == var2) {
+				return;
+			}
+
+			var0.az(var1, var2);
+		}
 	}
 
 	@ObfuscatedName("ax")
@@ -301,29 +309,8 @@ public class qk {
 		descriptor = "()Z"
 	)
 	boolean ax() throws IOException, ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.az();
-		}
-
-		this.ak_fld.connect();
-		return this.ak_fld.getResponseCode() == -1;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()Lqt;"
-	)
-	public qt ak() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean aa() throws IOException, ProtocolException, UnsupportedEncodingException {
-		if (!this.ah_fld) {
-			this.az();
+		if (!this.ae_fld) {
+			ct(this, (byte)60);
 		}
 
 		this.ak_fld.connect();
@@ -336,7 +323,7 @@ public class qk {
 	)
 	static void fv(int var0, String var1, int var2) {
 		int var3 = client.db_fld.al_fld;
-		int[] var4 = client.db_fld.az_fld;
+		int[] var4 = client.db_fld.ar_fld;
 		boolean var5 = false;
 		aax var6 = new aax(var1, fr.gv_fld);
 		dx var7 = client.da_fld.ae(client.es_fld, (byte)-46);
@@ -347,32 +334,32 @@ public class qk {
 			}
 		} else {
 			for (int var9 = 0; var9 < var3; var9++) {
-				cv var10 = (cv)var8.au_fld.ak(var4[var9]);
-				if (var10 != null && client.dj_fld != var10.bx_fld && null != var10.az_fld && var10.az_fld.equals(var6)) {
+				cv var10 = (cv)var8.au_fld.ae(var4[var9]);
+				if (var10 != null && client.dj_fld != var10.bq_fld && null != var10.az_fld && var10.az_fld.equals(var6)) {
 					if (var0 == 1) {
-						jm var11 = gi.ak(jb.ca_fld, client.aq_fld.av_fld);
-						var11.ay_fld.dy(0);
-						var11.ay_fld.di(var4[var9]);
-						client.aq_fld.az(var11);
+						jm var11 = gi.ak(jb.ca_fld, client.appletStub.av_fld);
+						var11.ay_fld.bq(0);
+						var11.ay_fld.ek(var4[var9]);
+						client.appletStub.az(var11);
 					} else if (4 == var0) {
-						jm var12 = gi.ak(jb.aj_fld, client.aq_fld.av_fld);
-						var12.ay_fld.bc(0);
-						var12.ay_fld.bw(var4[var9]);
-						client.aq_fld.az(var12);
+						jm var12 = gi.ak(jb.aj_fld, client.appletStub.av_fld);
+						var12.ay_fld.ea(0);
+						xi.vy(var12.ay_fld, var4[var9]);
+						client.appletStub.az(var12);
 					} else if (6 == var0) {
-						jm var13 = gi.ak(jb.db_fld, client.aq_fld.av_fld);
-						var13.ay_fld.di(var4[var9]);
-						var13.ay_fld.bc(0);
-						client.aq_fld.az(var13);
+						jm var13 = gi.ak(jb.db_fld, client.appletStub.av_fld);
+						var13.ay_fld.ek(var4[var9]);
+						var13.ay_fld.ea(0);
+						client.appletStub.az(var13);
 					} else if (var0 == 7) {
 						if (var2 != 966695779) {
 							return;
 						}
 
-						jm var14 = gi.ak(jb.bp_fld, client.aq_fld.av_fld);
-						xi.rs(var14.ay_fld, 0);
-						xi.be(var14.ay_fld, var4[var9]);
-						client.aq_fld.az(var14);
+						jm var14 = gi.ak(jb.bp_fld, client.appletStub.av_fld);
+						var14.ay_fld.cx(0);
+						var14.ay_fld.ba(var4[var9]);
+						client.appletStub.az(var14);
 					}
 
 					var5 = true;
@@ -390,13 +377,49 @@ public class qk {
 		}
 	}
 
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "(Lqk;B)V"
+	)
+	public static void ct(qk var0, byte var1) throws ProtocolException, UnsupportedEncodingException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (!var0.ae_fld) {
+			var0.ak_fld.setRequestMethod(var0.az_fld.az());
+			var0.ag_fld.ak(var0.ak_fld);
+			if (var0.az_fld.aw() && null != var0.av_fld) {
+				var0.ak_fld.setDoOutput(true);
+				ByteArrayOutputStream var2 = new ByteArrayOutputStream();
+
+				try {
+					var2.write(var0.av_fld.ag(857916643));
+					var2.writeTo(var0.ak_fld.getOutputStream());
+				} catch (IOException var12) {
+					var12.printStackTrace();
+				} finally {
+					try {
+						var2.close();
+					} catch (IOException var11) {
+						var11.printStackTrace();
+					}
+				}
+			}
+
+			var0.ak_fld.setConnectTimeout(var0.aw_fld);
+			var0.ak_fld.setInstanceFollowRedirects(var0.ah_fld);
+			var0.ae_fld = true;
+		}
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "()Lqx;"
 	)
 	qx aq() {
 		try {
-			if (!this.ah_fld || this.ak_fld.getResponseCode() == -1) {
+			if (!this.ae_fld || this.ak_fld.getResponseCode() == -1) {
 				return new qx("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
@@ -416,33 +439,13 @@ public class qk {
 		return var3;
 	}
 
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Lqk;Lvd;)V"
-	)
-	public static void aj(qk var0, vd var1) {
-		if (!var0.ah_fld) {
-			if (null == var1) {
-				var0.ag_fld.av("Content-Type", (byte)-64);
-				var0.av_fld = null;
-			} else {
-				var0.av_fld = var1;
-				if (var0.av_fld.ak(1557254738) != null) {
-					var0.ag_fld.ay(var0.av_fld.ak(1557254738));
-				} else {
-					var0.ag_fld.as();
-				}
-			}
-		}
-	}
-
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "()Lqx;"
 	)
 	qx am() {
 		try {
-			if (!this.ah_fld || this.ak_fld.getResponseCode() == -1) {
+			if (!this.ae_fld || this.ak_fld.getResponseCode() == -1) {
 				return new qx("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
@@ -470,8 +473,8 @@ public class qk {
 		if (client.ee_fld == 0 && !client.nk_fld) {
 			int var5 = var0 - var2;
 			int var6 = var1 - var3;
-			int[] var7 = new int[cx.lv(client.da_fld, (byte)-2)];
-			float[] var8 = new float[cx.lv(client.da_fld, (byte)44)];
+			int[] var7 = new int[cx.as(client.da_fld, (byte)-2)];
+			float[] var8 = new float[cx.as(client.da_fld, (byte)44)];
 			int var9 = 0;
 
 			for (Iterator var10 = client.da_fld.iterator(); var10.hasNext(); var9++) {
@@ -520,7 +523,7 @@ public class qk {
 							var17 = null;
 						} else {
 							tu var28 = sh.ak(var20, var21, var22);
-							tu var29 = sh.ak(var28.ay_fld, var28.as_fld - var19, var28.ar_fld);
+							tu var29 = sh.ak(var28.ar_fld, var28.ay_fld - var19, var28.as_fld);
 							float var30 = -da.az(var24, var29) / var25;
 							var24.ah();
 							if (var30 < 0.0F) {
@@ -534,12 +537,12 @@ public class qk {
 									if (tu.aw_fld == 0) {
 										var33 = new tu(var28);
 									} else {
-										tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var28);
+										tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var28, -1645983469);
 										var33 = tu.ae_fld[tu.aw_fld];
 									}
 								}
 
-								tu.dk(var33, var31, (byte)-84);
+								var33.au(var31);
 								var31.ah();
 								var29.ah();
 								var28.ah();
@@ -554,7 +557,7 @@ public class qk {
 								if (0 == tu.aw_fld) {
 									var26 = new tu(var66);
 								} else {
-									tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465].ay(var66);
+									tu.fu(tu.ae_fld[(tu.aw_fld -= 1568129921) * 234126465], var66, -1645983469);
 									var26 = tu.ae_fld[tu.aw_fld];
 								}
 							}
@@ -615,16 +618,16 @@ public class qk {
 							return;
 						}
 
-						var67 = var64.aw_fld.ay((byte)16);
+						var67 = oy.ib(var64.aw_fld, (byte)16);
 					} else {
 						rg var70 = dx.eg();
 						if (var70 != null) {
 							dx var76 = var70.ah_fld;
-							if (var76.ae_fld == var70.aw_fld.ay((byte)28)) {
+							if (var76.ae_fld == oy.ib(var70.aw_fld, (byte)28)) {
 								if (var62 == 0) {
 									var67 = var70.ak(-1254551839);
 								} else {
-									var67 = var64.aw_fld.ay((byte)46);
+									var67 = oy.ib(var64.aw_fld, (byte)46);
 								}
 							}
 						}
@@ -637,14 +640,14 @@ public class qk {
 								return;
 							}
 
-							if (ev.dk(var63.az_fld, var67, var52, var56, var45) >= 0) {
+							if (var63.az_fld.cx(var67, var52, var56, var45) >= 0) {
 								if (var4 != 25) {
 									return;
 								}
 
 								oe var71 = ko.az(var61);
 								if (var71.dy_fld != null) {
-									var71 = var71.ax((byte)102);
+									var71 = oe.bm(var71, (byte)102);
 								}
 
 								if (var71 == null) {
@@ -653,7 +656,7 @@ public class qk {
 
 								cs var77 = null;
 
-								for (cs var85 = (cs)var63.ai_fld.aw(); null != var85; var85 = (cs)var63.ai_fld.as()) {
+								for (cs var85 = (cs)var63.ai_fld.aw(); null != var85; var85 = (cs)na.iy(var63.ai_fld)) {
 									if (var67 == var85.ag_fld && var85.av_fld == var54 && var85.ae_fld == var56 && var85.as_fld == var61) {
 										var77 = var85;
 										break;
@@ -667,17 +670,17 @@ public class qk {
 										ky.fl(client.om_fld, client.oh_fld + " " + db.ah_fld + " " + gd.ag(65535, -1940547058) + var71.cg_fld, 2, var61, var54, var56, -1, false, var62);
 									}
 								} else {
-									if (oe.nb(var71, (byte)27).as(-1156672079)) {
+									if (var71.ak((byte)27).ak(-1156672079)) {
 										for (int var86 = 4; var86 >= 0; var86--) {
 											if (!on.kb_fld) {
 												if (var4 != 25) {
 													return;
 												}
 
-												if (var77 == null || var77.av(var86)) {
-													String var94 = oe.nb(var71, (byte)86).ae(var86, rt.ag_fld, 1899227782);
-													if (null != var77 && var77.az(var86, -2141842470)) {
-														var94 = cs.wz(var77, var86, (byte)-13);
+												if (var77 == null || var77.az(var86)) {
+													String var94 = var71.ak((byte)86).ae(var86, rt.ag_fld, 1899227782);
+													if (null != var77 && var77.av(var86)) {
+														var94 = var77.ae(var86);
 													}
 
 													if (client.cp_fld) {
@@ -711,7 +714,7 @@ public class qk {
 														}
 
 														int var105 = ky.fl(var94, gd.ag(65535, -1940547058) + var71.cg_fld, var100, var61, var54, var56, -1, false, var62);
-														pg.fs(var105, oe.nb(var71, (byte)72), var86, gd.ag(65535, -1940547058) + var71.cg_fld, var100, var61, var54, var56, var62, -1355642205);
+														pg.fs(var105, var71.ak((byte)72), var86, gd.ag(65535, -1940547058) + var71.cg_fld, var100, var61, var54, var56, var62, -1355642205);
 													}
 												}
 											}
@@ -724,35 +727,35 @@ public class qk {
 						}
 
 						if (1 == var58) {
-							ds var72 = (ds)var63.ax_fld.ak(var61);
+							ds var72 = (ds)var63.ax_fld.ae(var61);
 							if (var72 == null) {
 								continue;
 							}
 
-							if (1 == var72.ah_fld.cw_fld * 1161975113 && 64 == (var72.bo_fld & 127) && 64 == (var72.bp_fld & 127)) {
-								for (int var78 = 0; var78 < var63.ad_fld.az(); var78++) {
-									ds var87 = (ds)var63.ax_fld.ak(var63.ad_fld.ag(var78));
+							if (1 == var72.ah_fld.cw_fld * 1161975113 && 64 == (var72.bi_fld & 127) && 64 == (var72.dm_fld & 127)) {
+								for (int var78 = 0; var78 < var63.am_fld.az(); var78++) {
+									ds var87 = (ds)var63.ax_fld.ae(yw.wk(var63.am_fld, var78, (byte)85));
 									if (null != var87) {
 										if (var4 != 25) {
 											return;
 										}
 
-										if (var72 != var87 && var87.ah_fld.cw_fld * 1161975113 == 1 && var87.bo_fld == var72.bo_fld && var72.bp_fld == var87.bp_fld) {
-											hy.fu(var87, var87.bx_fld, var54, var56, var62);
+										if (var72 != var87 && var87.ah_fld.cw_fld * 1161975113 == 1 && var87.bi_fld == var72.bi_fld && var72.dm_fld == var87.dm_fld) {
+											hy.fu(var87, var87.bq_fld, var54, var56, var62);
 										}
 									}
 								}
 
 								int var79 = client.db_fld.al_fld;
-								int[] var88 = client.db_fld.az_fld;
+								int[] var88 = client.db_fld.ar_fld;
 
 								for (int var95 = 0; var95 < var79; var95++) {
 									if (var4 != 25) {
 										return;
 									}
 
-									cv var101 = (cv)var63.au_fld.ak(var88[var95]);
-									if (var101 != null && var72.bo_fld == var101.bo_fld && var101.bp_fld == var72.bp_fld) {
+									cv var101 = (cv)var63.au_fld.ae(var88[var95]);
+									if (var101 != null && var72.bi_fld == var101.bi_fld && var101.dm_fld == var72.dm_fld) {
 										me.fi(var101, var88[var95], var54, var56, var62);
 									}
 								}
@@ -762,7 +765,7 @@ public class qk {
 						}
 
 						if (var58 == 0) {
-							cv var73 = (cv)var63.au_fld.ak(var61);
+							cv var73 = (cv)var63.au_fld.ae(var61);
 							if (null == var73) {
 								if (var4 != 25) {
 									return;
@@ -770,29 +773,29 @@ public class qk {
 								continue;
 							}
 
-							if ((var73.bo_fld & 127) == 64) {
+							if ((var73.bi_fld & 127) == 64) {
 								if (var4 != 25) {
 									return;
 								}
 
-								if ((var73.bp_fld & 127) == 64) {
-									for (int var80 = 0; var80 < var63.ad_fld.az(); var80++) {
-										ds var89 = (ds)var63.ax_fld.ak(var63.ad_fld.ag(var80));
-										if (var89 != null && 1 == var89.ah_fld.cw_fld * 1161975113 && var89.bo_fld == var73.bo_fld && var89.bp_fld == var73.bp_fld) {
-											hy.fu(var89, var63.ad_fld.ag(var80), var54, var56, var62);
+								if ((var73.dm_fld & 127) == 64) {
+									for (int var80 = 0; var80 < var63.am_fld.az(); var80++) {
+										ds var89 = (ds)var63.ax_fld.ae(yw.wk(var63.am_fld, var80, (byte)3));
+										if (var89 != null && 1 == var89.ah_fld.cw_fld * 1161975113 && var89.bi_fld == var73.bi_fld && var89.dm_fld == var73.dm_fld) {
+											hy.fu(var89, yw.wk(var63.am_fld, var80, (byte)34), var54, var56, var62);
 										}
 									}
 
 									int var81 = client.db_fld.al_fld;
-									int[] var90 = client.db_fld.az_fld;
+									int[] var90 = client.db_fld.ar_fld;
 
 									for (int var96 = 0; var96 < var81; var96++) {
 										if (var4 != 25) {
 											return;
 										}
 
-										cv var102 = (cv)var63.au_fld.ak(var90[var96]);
-										if (var102 != null && var102 != var73 && var73.bo_fld == var102.bo_fld && var73.bp_fld == var102.bp_fld) {
+										cv var102 = (cv)var63.au_fld.ae(var90[var96]);
+										if (var102 != null && var102 != var73 && var73.bi_fld == var102.bi_fld && var73.dm_fld == var102.dm_fld) {
 											me.fi(var102, var90[var96], var54, var56, var62);
 										}
 									}
@@ -811,10 +814,10 @@ public class qk {
 							na var74 = var63.aa_fld[var67][var54][var56];
 							if (var74 != null) {
 								for (dw var82 = (dw)var74.ay(); null != var82; var82 = (dw)var74.ar()) {
-									og var91 = kb.ag(var82.ag_fld, -1752383175);
+									og var91 = kb.ag(var82.ah_fld, -1752383175);
 									if (!lj.li_fld && client.ee_fld == 1) {
 										ky.fl(
-											kh.hj_fld, client.it_fld + " " + db.ah_fld + " " + gd.ag(16748608, -1940547058) + var91.dx_fld, 16, var82.ag_fld, var54, var56, -1, false, var62
+											kh.hj_fld, client.it_fld + " " + db.ah_fld + " " + gd.ag(16748608, -1940547058) + var91.dx_fld, 16, var82.ah_fld, var54, var56, -1, false, var62
 										);
 									} else if (client.nk_fld) {
 										if (!lj.li_fld && 1 == (ms.ne_fld & 1)) {
@@ -822,7 +825,7 @@ public class qk {
 												client.om_fld,
 												client.oh_fld + " " + db.ah_fld + " " + gd.ag(16748608, -1940547058) + var91.dx_fld,
 												17,
-												var82.ag_fld,
+												var82.ah_fld,
 												var54,
 												var56,
 												-1,
@@ -833,7 +836,7 @@ public class qk {
 									} else {
 										for (int var97 = 4; var97 >= 0; var97--) {
 											if (!lj.li_fld && var82.ag(var97, (short)-10883)) {
-												String var103 = var91.ak(-2139788883).ae(var97, rt.ag_fld, 1899227782);
+												String var103 = og.tk(var91, -2139788883).ae(var97, rt.ag_fld, 1899227782);
 												if (client.cp_fld) {
 													var103 = hp.be(var103, var97);
 												}
@@ -868,13 +871,15 @@ public class qk {
 														var106 = 22;
 													}
 
-													int var108 = ky.fl(var103, gd.ag(16748608, -1940547058) + var91.dx_fld, var106, var82.ag_fld, var54, var56, -1, false, var62);
-													pg.fs(var108, var91.ak(-2139788883), var97, gd.ag(16748608, -1940547058) + var91.dx_fld, var106, var82.ag_fld, var54, var56, var62, -1355642205);
+													int var108 = ky.fl(var103, gd.ag(16748608, -1940547058) + var91.dx_fld, var106, var82.ah_fld, var54, var56, -1, false, var62);
+													pg.fs(
+														var108, og.tk(var91, -2139788883), var97, gd.ag(16748608, -1940547058) + var91.dx_fld, var106, var82.ah_fld, var54, var56, var62, -1355642205
+													);
 												}
 											}
 										}
 
-										ky.fl(kh.hp_fld, gd.ag(16748608, -1940547058) + var91.dx_fld, 1004, var82.ag_fld, var54, var56, -1, false, var62);
+										ky.fl(kh.hp_fld, gd.ag(16748608, -1940547058) + var91.dx_fld, 1004, var82.ah_fld, var54, var56, -1, false, var62);
 									}
 								}
 							}
@@ -950,7 +955,7 @@ public class qk {
 				}
 
 				dx var59 = (dx)(dx)var57.next();
-				cv var60 = (cv)var59.au_fld.ak(var51);
+				cv var60 = (cv)var59.au_fld.ae(var51);
 				if (var60 != null) {
 					if (!var59.ak(-787091592)) {
 						var50 = var60;
@@ -977,7 +982,7 @@ public class qk {
 	)
 	qx ai() {
 		try {
-			if (!this.ah_fld || this.ak_fld.getResponseCode() == -1) {
+			if (!this.ae_fld || this.ak_fld.getResponseCode() == -1) {
 				return new qx("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
@@ -995,5 +1000,79 @@ public class qk {
 		}
 
 		return var3;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(B)V"
+	)
+	void az(byte var1) throws ProtocolException, UnsupportedEncodingException {
+		if (!this.ah_fld) {
+			this.ak_fld.setRequestMethod(this.az_fld.az());
+			this.ag_fld.ak(this.ak_fld);
+			if (this.az_fld.aw() && null != this.av_fld) {
+				this.ak_fld.setDoOutput(true);
+				ByteArrayOutputStream var2 = new ByteArrayOutputStream();
+
+				try {
+					var2.write(this.av_fld.ag(857916643));
+					var2.writeTo(this.ak_fld.getOutputStream());
+				} catch (IOException var12) {
+					var12.printStackTrace();
+				} finally {
+					try {
+						var2.close();
+					} catch (IOException var11) {
+						var11.printStackTrace();
+					}
+				}
+			}
+
+			this.ak_fld.setConnectTimeout(this.aw_fld);
+			this.ak_fld.setInstanceFollowRedirects(this.ae_fld);
+			this.ae_fld = true;
+		}
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqx;"
+	)
+	qx ae(int var1) {
+		try {
+			if (!this.ah_fld || this.ak_fld.getResponseCode() == -1) {
+				return new qx("No REST response has been received yet.");
+			}
+		} catch (IOException var11) {
+			this.ak_fld.disconnect();
+			return new qx("Error decoding REST response code: " + var11.getMessage());
+		}
+
+		qx var4;
+		try {
+			return new qx(this.ak_fld);
+		} catch (IOException var9) {
+			var4 = new qx("Error decoding REST response: " + var9.getMessage());
+		} finally {
+			this.ak_fld.disconnect();
+		}
+
+		return var4;
+	}
+
+	@ObfuscatedName("fw")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;Lcv;)V"
+	)
+	public static void fw(cl var0, cv var1) {
+		var0.ak_fld.remove(var1);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqt;"
+	)
+	public qt ak(int var1) {
+		return this.ag_fld;
 	}
 }

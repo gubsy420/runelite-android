@@ -1,4 +1,5 @@
 import net.runelite.api.ParamHolder;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -8,35 +9,37 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 public interface rl9 extends ParamHolder {
 	@ObfuscatedName("setValue")
 	@ObfuscatedSignature(
-		descriptor = "(II)V"
+		descriptor = "(ILjava/lang/String;)V"
 	)
+	@Export("setValue")
 	@Override
-	default void setValue(int var1, int var2) {
+	default void setValue(int var1, String var2) {
 		try {
-			this.zv(var1, new vl(var2));
+			this.te(var1, new uj(var2));
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
 	}
 
-	@ObfuscatedName("getStringValue")
+	@ObfuscatedName("getIntValue")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;"
+		descriptor = "(I)I"
 	)
+	@Export("getIntValue")
 	@Override
-	default String getStringValue(int var1) {
+	default int getIntValue(int var1) {
 		try {
-			vw var2 = this.bd(var1);
+			vw var2 = this.ag(var1);
 			if (var2 != null) {
-				uj var7 = (uj)var2;
-				return (String)(String)var7.gb();
+				vl var7 = (vl)var2;
+				return var7.getValue();
 			} else {
-				px var3 = og.ci_fld.pn(var1);
-				yq var4 = yq.jw(var3.ah_fld);
-				if (var4 != yq.az_fld) {
-					throw new IllegalArgumentException("trying to get string from " + var4 + " param");
+				px var3 = og.ci_fld.hr(var1);
+				yq var4 = yq.nm(var3.ah_fld);
+				if (var4 != yq.ak_fld) {
+					throw new IllegalArgumentException("trying to get int from " + var4 + " param");
 				} else {
-					return var3.qg();
+					return var3.an();
 				}
 			}
 		} catch (Throwable var6) {
@@ -44,37 +47,33 @@ public interface rl9 extends ParamHolder {
 		}
 	}
 
-	@ObfuscatedName("setValue")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IJ)V"
+		descriptor = "(I)Lvw;"
 	)
-	@Override
-	default void setValue(int var1, long var2) {
-		try {
-			this.zv(var1, new vk(var2));
-		} catch (Throwable var5) {
-			throw new RuntimeException(var5);
-		}
+	default vw ag(int var1) {
+		return this.getParams() == null ? null : (vw)this.getParams().get(var1);
 	}
 
 	@ObfuscatedName("getLongValue")
 	@ObfuscatedSignature(
 		descriptor = "(I)J"
 	)
+	@Export("getLongValue")
 	@Override
 	default long getLongValue(int var1) {
 		try {
-			vw var2 = this.bd(var1);
+			vw var2 = this.ag(var1);
 			if (var2 != null) {
 				uj var7 = (uj)var2;
-				return (Long)var7.gb();
+				return (Long)var7.ht();
 			} else {
-				px var3 = og.ci_fld.pn(var1);
-				yq var4 = yq.jw(var3.ah_fld);
+				px var3 = og.ci_fld.hr(var1);
+				yq var4 = yq.nm(var3.ah_fld);
 				if (var4 != yq.ag_fld) {
 					throw new IllegalArgumentException("trying to get long from " + var4 + " param");
 				} else {
-					return var3.qp();
+					return var3.eg();
 				}
 			}
 		} catch (Throwable var6) {
@@ -82,14 +81,20 @@ public interface rl9 extends ParamHolder {
 		}
 	}
 
-	@ObfuscatedName("zv")
+	@ObfuscatedName("jh")
+	@ObfuscatedSignature(
+		descriptor = "(Lxv;)V"
+	)
+	void jh(xv var1);
+
+	@ObfuscatedName("te")
 	@ObfuscatedSignature(
 		descriptor = "(ILvw;)V"
 	)
-	default void zv(int var1, vw var2) {
+	default void te(int var1, vw var2) {
 		try {
-			px var3 = og.ci_fld.pn(var1);
-			yq var4 = yq.jw(var3.ah_fld);
+			px var3 = og.ci_fld.hr(var1);
+			yq var4 = yq.nm(var3.ah_fld);
 			if (var2 instanceof vl && var4 != yq.ak_fld) {
 				throw new IllegalArgumentException("trying to put int into " + var4 + " param");
 			} else if (var2 instanceof vk && var4 != yq.ag_fld) {
@@ -98,7 +103,7 @@ public interface rl9 extends ParamHolder {
 				throw new IllegalArgumentException("trying to put string into " + var4 + " param");
 			} else {
 				if (this.getParams() == null) {
-					this.us(new xv(16));
+					this.jh(new xv(16));
 				}
 
 				this.getParams().put(var2, var1);
@@ -110,53 +115,55 @@ public interface rl9 extends ParamHolder {
 
 	@ObfuscatedName("setValue")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;)V"
+		descriptor = "(II)V"
 	)
+	@Export("setValue")
 	@Override
-	default void setValue(int var1, String var2) {
+	default void setValue(int var1, int var2) {
 		try {
-			this.zv(var1, new uj(var2));
+			this.te(var1, new vl(var2));
 		} catch (Throwable var4) {
 			throw new RuntimeException(var4);
 		}
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("setValue")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lvw;"
+		descriptor = "(IJ)V"
 	)
-	default vw bd(int var1) {
-		return this.getParams() == null ? null : (vw)this.getParams().get(var1);
+	@Export("setValue")
+	@Override
+	default void setValue(int var1, long var2) {
+		try {
+			this.te(var1, new vk(var2));
+		} catch (Throwable var5) {
+			throw new RuntimeException(var5);
+		}
 	}
 
-	@ObfuscatedName("getIntValue")
+	@ObfuscatedName("getStringValue")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(I)Ljava/lang/String;"
 	)
+	@Export("getStringValue")
 	@Override
-	default int getIntValue(int var1) {
+	default String getStringValue(int var1) {
 		try {
-			vw var2 = this.bd(var1);
+			vw var2 = this.ag(var1);
 			if (var2 != null) {
-				vl var7 = (vl)var2;
-				return var7.getValue();
+				uj var7 = (uj)var2;
+				return (String)(String)var7.ht();
 			} else {
-				px var3 = og.ci_fld.pn(var1);
-				yq var4 = yq.jw(var3.ah_fld);
-				if (var4 != yq.ak_fld) {
-					throw new IllegalArgumentException("trying to get int from " + var4 + " param");
+				px var3 = og.ci_fld.hr(var1);
+				yq var4 = yq.nm(var3.ah_fld);
+				if (var4 != yq.az_fld) {
+					throw new IllegalArgumentException("trying to get string from " + var4 + " param");
 				} else {
-					return var3.zw();
+					return var3.mq();
 				}
 			}
 		} catch (Throwable var6) {
 			throw new RuntimeException(var6);
 		}
 	}
-
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(
-		descriptor = "(Lxv;)V"
-	)
-	void us(xv var1);
 }

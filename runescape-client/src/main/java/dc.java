@@ -53,12 +53,12 @@ public class dc {
 	static BigInteger al_fld = new BigInteger(
 		"7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683"
 	);
-	@ObfuscatedGetter(
-		intValue = 729179861
-	)
 	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 729179861
 	)
 	static int bp_fld;
 	@ObfuscatedName("ai")
@@ -98,7 +98,7 @@ public class dc {
 				int var5 = var3.read(var4.al_fld, var4.au_fld, 1000 - var4.au_fld);
 				if (var5 == -1) {
 					var4.au_fld = 0;
-					return xi.ob(var4, -971008302);
+					return var4.cu();
 				}
 
 				var4.au_fld += 1082446384 * var5;
@@ -119,50 +119,50 @@ public class dc {
 		xi var4 = new xi(128);
 		xi var5 = new xi(128);
 		int[] var6 = new int[]{var3.nextInt(), var3.nextInt(), (int)(var0 >> 32), (int)var0};
-		var4.bc(10);
+		var4.ea(10);
 
 		for (int var7 = 0; var7 < 4; var7++) {
-			xi.ld(var4, var3.nextInt(), (byte)83);
+			var4.eb(var3.nextInt());
 		}
 
-		xi.ld(var4, var6[0], (byte)106);
-		xi.ld(var4, var6[1], (byte)85);
-		var4.fn(var0);
-		var4.fn(0L);
+		var4.eb(var6[0]);
+		var4.eb(var6[1]);
+		var4.ft(var0);
+		var4.ft(0L);
 
 		for (int var20 = 0; var20 < 4; var20++) {
-			xi.ld(var4, var3.nextInt(), (byte)110);
+			var4.eb(var3.nextInt());
 		}
 
-		var4.db(af_fld, al_fld);
-		var5.bc(10);
+		xi.fq(var4, af_fld, al_fld, (byte)0);
+		var5.ea(10);
 
 		for (int var21 = 0; var21 < 3; var21++) {
-			xi.ld(var5, var3.nextInt(), (byte)111);
+			var5.eb(var3.nextInt());
 		}
 
-		var5.fn(var3.nextLong());
+		var5.ft(var3.nextLong());
 		var5.bb(var3.nextLong());
 		qm.hh(var5);
-		var5.fn(var3.nextLong());
-		var5.db(af_fld, al_fld);
+		var5.ft(var3.nextLong());
+		xi.fq(var5, af_fld, al_fld, (byte)0);
 		int var22 = iq.bu(var2);
 		if (var22 % 8 != 0) {
 			var22 += 8 - var22 % 8;
 		}
 
 		xi var8 = new xi(var22);
-		var8.cc(var2, -771596936);
+		xi.ph(var8, var2, -771596936);
 		var8.au_fld = var22;
-		var8.dk(var6, (byte)45);
+		xi.ix(var8, var6, (byte)45);
 		xi var9 = new xi(var8.au_fld + var5.au_fld + var4.au_fld + 5);
-		var9.bc(2);
-		var9.bc(var4.au_fld);
-		xi.pm(var9, var4.al_fld, 0, var4.au_fld);
-		var9.bc(var5.au_fld);
-		xi.pm(var9, var5.al_fld, 0, var5.au_fld);
-		var9.bw(var8.au_fld);
-		xi.pm(var9, var8.al_fld, 0, var8.au_fld);
+		var9.ea(2);
+		var9.ea(var4.au_fld);
+		var9.cy(var4.al_fld, 0, var4.au_fld);
+		var9.ea(var5.au_fld);
+		var9.cy(var5.al_fld, 0, var5.au_fld);
+		xi.vy(var9, var8.au_fld);
+		var9.cy(var8.al_fld, 0, var8.au_fld);
 		String var10 = ha.ak(var9.al_fld);
 
 		try {
@@ -192,7 +192,7 @@ public class dc {
 					} else if (var24.startsWith("Not permitted for social network accounts.")) {
 						return 6;
 					} else {
-						xi.qd(var9, var6, (byte)-7);
+						var9.dx(var6, (byte)-7);
 
 						while (var9.au_fld > 0 && 0 == var9.al_fld[var9.au_fld - 1]) {
 							var9.au_fld--;
@@ -243,50 +243,50 @@ public class dc {
 		xi var4 = new xi(128);
 		xi var5 = new xi(128);
 		int[] var6 = new int[]{var3.nextInt(), var3.nextInt(), (int)(var0 >> -1802439536), (int)var0};
-		var4.bc(10);
+		var4.ea(10);
 
 		for (int var7 = 0; var7 < 4; var7++) {
-			xi.ld(var4, var3.nextInt(), (byte)110);
+			var4.eb(var3.nextInt());
 		}
 
-		xi.ld(var4, var6[0], (byte)110);
-		xi.ld(var4, var6[1], (byte)105);
-		var4.fn(var0);
-		var4.fn(0L);
+		var4.eb(var6[0]);
+		var4.eb(var6[1]);
+		var4.ft(var0);
+		var4.ft(0L);
 
 		for (int var20 = 0; var20 < 4; var20++) {
-			xi.ld(var4, var3.nextInt(), (byte)107);
+			var4.eb(var3.nextInt());
 		}
 
-		var4.db(af_fld, al_fld);
-		var5.bc(10);
+		xi.fq(var4, af_fld, al_fld, (byte)0);
+		var5.ea(10);
 
 		for (int var21 = 0; var21 < 3; var21++) {
-			xi.ld(var5, var3.nextInt(), (byte)82);
+			var5.eb(var3.nextInt());
 		}
 
-		var5.fn(var3.nextLong());
+		var5.ft(var3.nextLong());
 		var5.bb(var3.nextLong());
 		qm.hh(var5);
-		var5.fn(var3.nextLong());
-		var5.db(af_fld, al_fld);
+		var5.ft(var3.nextLong());
+		xi.fq(var5, af_fld, al_fld, (byte)0);
 		int var22 = iq.bu(var2);
 		if (var22 % 8 != 0) {
 			var22 += 8 - var22 % 8;
 		}
 
 		xi var8 = new xi(var22);
-		var8.cc(var2, 632242378);
+		xi.ph(var8, var2, 632242378);
 		var8.au_fld = 1796813368 * var22;
-		var8.dk(var6, (byte)45);
+		xi.ix(var8, var6, (byte)45);
 		xi var9 = new xi(var8.au_fld + var5.au_fld + var4.au_fld + 5);
-		var9.bc(2);
-		var9.bc(var4.au_fld);
-		xi.pm(var9, var4.al_fld, 0, var4.au_fld);
-		var9.bc(var5.au_fld);
-		xi.pm(var9, var5.al_fld, 0, var5.au_fld * -564194369);
-		var9.bw(var8.au_fld);
-		xi.pm(var9, var8.al_fld, 0, var8.au_fld);
+		var9.ea(2);
+		var9.ea(var4.au_fld);
+		var9.cy(var4.al_fld, 0, var4.au_fld);
+		var9.ea(var5.au_fld);
+		var9.cy(var5.al_fld, 0, var5.au_fld * -564194369);
+		xi.vy(var9, var8.au_fld);
+		var9.cy(var8.al_fld, 0, var8.au_fld);
 		String var10 = ha.ak(var9.al_fld);
 
 		try {
@@ -316,7 +316,7 @@ public class dc {
 					} else if (var24.startsWith("Not permitted for social network accounts.")) {
 						return 6;
 					} else {
-						xi.qd(var9, var6, (byte)-27);
+						var9.dx(var6, (byte)-27);
 
 						while (var9.au_fld * -1068987096 > 0 && 0 == var9.al_fld[var9.au_fld - 1]) {
 							var9.au_fld--;
@@ -358,14 +358,6 @@ public class dc {
 		}
 	}
 
-	@ObfuscatedName("ci")
-	@ObfuscatedSignature(
-		descriptor = "(Lqg;Lyz;)V"
-	)
-	public static void ci(qg var0, yz var1) {
-		var0.ag_fld.az(var1);
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(JLjava/lang/String;)I"
@@ -375,50 +367,50 @@ public class dc {
 		xi var4 = new xi(-318454224);
 		xi var5 = new xi(-282869985);
 		int[] var6 = new int[]{var3.nextInt(), var3.nextInt(), (int)(var0 >> 1655194482), (int)var0};
-		var4.bc(10);
+		var4.ea(10);
 
 		for (int var7 = 0; var7 < 4; var7++) {
-			xi.ld(var4, var3.nextInt(), (byte)103);
+			var4.eb(var3.nextInt());
 		}
 
-		xi.ld(var4, var6[0], (byte)114);
-		xi.ld(var4, var6[1], (byte)124);
-		var4.fn(var0);
-		var4.fn(0L);
+		var4.eb(var6[0]);
+		var4.eb(var6[1]);
+		var4.ft(var0);
+		var4.ft(0L);
 
 		for (int var20 = 0; var20 < 4; var20++) {
-			xi.ld(var4, var3.nextInt(), (byte)127);
+			var4.eb(var3.nextInt());
 		}
 
-		var4.db(af_fld, al_fld);
-		var5.bc(10);
+		xi.fq(var4, af_fld, al_fld, (byte)0);
+		var5.ea(10);
 
 		for (int var21 = 0; var21 < 3; var21++) {
-			xi.ld(var5, var3.nextInt(), (byte)114);
+			var5.eb(var3.nextInt());
 		}
 
-		var5.fn(var3.nextLong());
+		var5.ft(var3.nextLong());
 		var5.bb(var3.nextLong());
 		qm.hh(var5);
-		var5.fn(var3.nextLong());
-		var5.db(af_fld, al_fld);
+		var5.ft(var3.nextLong());
+		xi.fq(var5, af_fld, al_fld, (byte)0);
 		int var22 = iq.bu(var2);
 		if (var22 % 8 != 0) {
 			var22 += 8 - var22 % 8;
 		}
 
 		xi var8 = new xi(var22);
-		var8.cc(var2, 1728626938);
+		xi.ph(var8, var2, 1728626938);
 		var8.au_fld = 2006221945 * var22;
-		var8.dk(var6, (byte)45);
+		xi.ix(var8, var6, (byte)45);
 		xi var9 = new xi(var8.au_fld + var5.au_fld + var4.au_fld + 5);
-		var9.bc(2);
-		var9.bc(var4.au_fld * 170021627);
-		xi.pm(var9, var4.al_fld, 0, var4.au_fld);
-		var9.bc(var5.au_fld);
-		xi.pm(var9, var5.al_fld, 0, var5.au_fld * -594621279);
-		var9.bw(1387584782 * var8.au_fld);
-		xi.pm(var9, var8.al_fld, 0, var8.au_fld);
+		var9.ea(2);
+		var9.ea(var4.au_fld * 170021627);
+		var9.cy(var4.al_fld, 0, var4.au_fld);
+		var9.ea(var5.au_fld);
+		var9.cy(var5.al_fld, 0, var5.au_fld * -594621279);
+		xi.vy(var9, 1387584782 * var8.au_fld);
+		var9.cy(var8.al_fld, 0, var8.au_fld);
 		String var10 = ha.ak(var9.al_fld);
 
 		try {
@@ -448,7 +440,7 @@ public class dc {
 					} else if (var24.startsWith("Not permitted for social network accounts.")) {
 						return 6;
 					} else {
-						xi.qd(var9, var6, (byte)-5);
+						var9.dx(var6, (byte)-5);
 
 						while (var9.au_fld * -205434704 > 0 && 0 == var9.al_fld[var9.au_fld - 1]) {
 							var9.au_fld -= -1198759154;
@@ -499,50 +491,50 @@ public class dc {
 		xi var4 = new xi(128);
 		xi var5 = new xi(128);
 		int[] var6 = new int[]{var3.nextInt(), var3.nextInt(), (int)(var0 >> 32), (int)var0};
-		var4.bc(10);
+		var4.ea(10);
 
 		for (int var7 = 0; var7 < 4; var7++) {
-			xi.ld(var4, var3.nextInt(), (byte)98);
+			var4.eb(var3.nextInt());
 		}
 
-		xi.ld(var4, var6[0], (byte)127);
-		xi.ld(var4, var6[1], (byte)125);
-		var4.fn(var0);
-		var4.fn(0L);
+		var4.eb(var6[0]);
+		var4.eb(var6[1]);
+		var4.ft(var0);
+		var4.ft(0L);
 
 		for (int var20 = 0; var20 < 4; var20++) {
-			xi.ld(var4, var3.nextInt(), (byte)90);
+			var4.eb(var3.nextInt());
 		}
 
-		var4.db(af_fld, al_fld);
-		var5.bc(10);
+		xi.fq(var4, af_fld, al_fld, (byte)0);
+		var5.ea(10);
 
 		for (int var21 = 0; var21 < 3; var21++) {
-			xi.ld(var5, var3.nextInt(), (byte)113);
+			var5.eb(var3.nextInt());
 		}
 
-		var5.fn(var3.nextLong());
+		var5.ft(var3.nextLong());
 		var5.bb(var3.nextLong());
 		qm.hh(var5);
-		var5.fn(var3.nextLong());
-		var5.db(af_fld, al_fld);
+		var5.ft(var3.nextLong());
+		xi.fq(var5, af_fld, al_fld, (byte)0);
 		int var22 = iq.bu(var2);
 		if (var22 % 8 != 0) {
 			var22 += 8 - var22 % 8;
 		}
 
 		xi var8 = new xi(var22);
-		var8.cc(var2, 1368129735);
+		xi.ph(var8, var2, 1368129735);
 		var8.au_fld = var22;
-		var8.dk(var6, (byte)45);
+		xi.ix(var8, var6, (byte)45);
 		xi var9 = new xi(var8.au_fld + var5.au_fld + var4.au_fld + 5);
-		var9.bc(2);
-		var9.bc(var4.au_fld);
-		xi.pm(var9, var4.al_fld, 0, var4.au_fld);
-		var9.bc(var5.au_fld);
-		xi.pm(var9, var5.al_fld, 0, var5.au_fld);
-		var9.bw(var8.au_fld);
-		xi.pm(var9, var8.al_fld, 0, var8.au_fld);
+		var9.ea(2);
+		var9.ea(var4.au_fld);
+		var9.cy(var4.al_fld, 0, var4.au_fld);
+		var9.ea(var5.au_fld);
+		var9.cy(var5.al_fld, 0, var5.au_fld);
+		xi.vy(var9, var8.au_fld);
+		var9.cy(var8.al_fld, 0, var8.au_fld);
 		String var10 = ha.ak(var9.al_fld);
 
 		try {
@@ -572,7 +564,7 @@ public class dc {
 					} else if (var24.startsWith("Not permitted for social network accounts.")) {
 						return 6;
 					} else {
-						xi.qd(var9, var6, (byte)-74);
+						var9.dx(var6, (byte)-74);
 
 						while (var9.au_fld > 0 && 0 == var9.al_fld[var9.au_fld - 1]) {
 							var9.au_fld--;
@@ -614,25 +606,6 @@ public class dc {
 		}
 	}
 
-	@ObfuscatedName("yh")
-	@ObfuscatedSignature(
-		descriptor = "(Lga;Lyv;Lop;)I"
-	)
-	public static int yh(ga var0, yv var1, op var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		switch (var2.av_fld) {
-			case 1:
-				return -var1.ay_fld / 2;
-			case 2:
-				return 0;
-			default:
-				return -var1.ay_fld;
-		}
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()J"
@@ -655,7 +628,7 @@ public class dc {
 				int var5 = var3.read(var4.al_fld, var4.au_fld, 1000 - var4.au_fld);
 				if (var5 == -1) {
 					var4.au_fld = 0;
-					return xi.ob(var4, 806434105);
+					return var4.cu();
 				}
 
 				var4.au_fld += 228932457 * var5;

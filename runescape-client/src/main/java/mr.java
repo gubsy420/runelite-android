@@ -9,12 +9,12 @@ public class mr {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = -1260311563
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1260311563
 	)
 	public int ah_fld;
 	@ObfuscatedName("ae")
@@ -27,20 +27,20 @@ public class mr {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String av_fld;
-	@ObfuscatedGetter(
-		intValue = -924642055
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int aw_fld;
 	@ObfuscatedGetter(
-		intValue = 654440985
+		intValue = -924642055
 	)
+	public int aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 654440985
 	)
 	public int ay_fld;
 	// $VF: synthetic field

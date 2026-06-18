@@ -27,33 +27,9 @@ public class jp {
 	)
 	public static int aa_fld;
 
-	@ObfuscatedName("ff")
-	@ObfuscatedSignature(
-		descriptor = "(Lik;IIII)I"
-	)
-	public static int ff(ik var0, int var1, int var2, int var3, int var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		int var5 = (1 << var3) - 1;
-		int var6 = 1480549735 == var4 ? -1 : (1 << var4 + 1) - 1;
-		int var7 = var6 ^ var5;
-		var2 <<= var3;
-		var2 &= var7;
-		int var8 = var0.be_fld[var1];
-		if (var2 == (var8 & var7)) {
-			return -1;
-		} else {
-			var8 &= ~var7;
-			var0.be_fld[var1] = var8 | var2;
-			return var1;
-		}
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static void aw() {
 		Iterator var1 = cz.ag_fld.iterator();
@@ -69,7 +45,7 @@ public class jp {
 		descriptor = "(II)V"
 	)
 	static void ao(int var0, int var1) throws FileNotFoundException, EOFException {
-		client.zy_void(var0);
+		client.kv(var0);
 		if (56 != var0 && 57 != var0) {
 			jk.af(10, (byte)35);
 			jz.ac(9);
@@ -214,17 +190,9 @@ public class jp {
 		}
 	}
 
-	@ObfuscatedName("ri")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;I)V"
-	)
-	public static void ri(li var0, int var1) {
-		var0.am_fld.ar(var1);
-	}
-
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	public static int ak(int var0, int var1) {
 		return var1 + (var0 << 8);

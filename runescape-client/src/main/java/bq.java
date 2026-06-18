@@ -1,6 +1,7 @@
 import java.util.List;
 import net.runelite.api.ChatLineBuffer;
 import net.runelite.api.MessageNode;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -19,18 +20,12 @@ public class bq implements ChatLineBuffer {
 		descriptor = "I"
 	)
 	static int ax_fld;
-	// $VF: synthetic field
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "Z"
-	)
-	public static boolean bz_fld = !bq.class.desiredAssertionStatus();
-	@ObfuscatedGetter(
-		intValue = 708301057
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 708301057
 	)
 	int az_fld;
 	@ObfuscatedName("ab")
@@ -48,17 +43,23 @@ public class bq implements ChatLineBuffer {
 		descriptor = "Ljava/util/List;"
 	)
 	static List fz_fld;
+	// $VF: synthetic field
+	@ObfuscatedName("xd")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public static boolean xd_fld = !bq.class.desiredAssertionStatus();
 	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	public static int ct_fld;
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lco;"
 	)
-	co ae(int var1, String var2, String var3, String var4) {
+	co av(int var1, String var2, String var3, String var4) {
 		co var5 = this.ag_fld[99];
 
 		for (int var6 = this.az_fld; var6 > 0; var6--) {
@@ -70,8 +71,8 @@ public class bq implements ChatLineBuffer {
 		if (null == var5) {
 			var5 = new co(var1, var2, var4, var3);
 		} else {
-			var5.gy_void();
-			var5.mq_void();
+			var5.gy();
+			var5.vi();
 			var5.ak(var1, var2, var4, var3, (byte)1);
 		}
 
@@ -91,12 +92,202 @@ public class bq implements ChatLineBuffer {
 		return var1 >= 0 && var1 < this.az_fld ? this.ag_fld[var1] : null;
 	}
 
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lco;"
+	)
+	co ah(int var1) {
+		return var1 >= 0 && var1 < this.az_fld ? this.ag_fld[var1] : null;
+	}
+
+	bq() {
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	int az(int var1) {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lco;"
+	)
+	co ae(int var1, String var2, String var3, String var4) {
+		co var5 = this.ag_fld[99];
+
+		for (int var6 = this.az_fld; var6 > 0; var6--) {
+			if (-1316849950 != var6) {
+				this.ag_fld[var6] = this.ag_fld[var6 - 1];
+			}
+		}
+
+		if (null == var5) {
+			var5 = new co(var1, var2, var4, var3);
+		} else {
+			var5.gy();
+			var5.vi();
+			var5.ak(var1, var2, var4, var3, (byte)1);
+		}
+
+		this.ag_fld[0] = var5;
+		if (this.az_fld < 2115436567) {
+			this.az_fld++;
+		}
+
+		return var5;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int ar() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	int as() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("agi")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z"
+	)
+	protected static final boolean agi() {
+		return tl.ps(tf.rc_fld, 1894849788);
+	}
+
+	@ObfuscatedName("removeMessageNode")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/MessageNode;)V"
+	)
+	@Export("removeMessageNode")
+	@Override
+	public void removeMessageNode(MessageNode var1) {
+		MessageNode[] var2 = this.getLines();
+		int var3 = this.getLength();
+		int var4 = -1;
+
+		for (int var5 = 0; var5 < var3; var5++) {
+			if (var2[var5] == var1) {
+				var4 = var5;
+				break;
+			}
+		}
+
+		if (var4 != -1) {
+			if (!xd_fld && var3 - 1 < var4) {
+				throw new AssertionError();
+			} else {
+				System.arraycopy(var2, var4 + 1, var2, var4, var3 - 1 - var4);
+				var2[var3 - 1] = null;
+				this.tq(var3 - 1);
+				vc var6 = (vc)var1;
+				var6.pz_void();
+				var6.me();
+			}
+		}
+	}
+
+	@ObfuscatedName("getLines")
+	@ObfuscatedSignature(
+		descriptor = "()[Lnet/runelite/api/MessageNode;"
+	)
+	@Export("getLines")
+	@Override
+	public MessageNode[] getLines() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("hw")
+	@ObfuscatedSignature(
+		descriptor = "(Lbq;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lco;"
+	)
+	public static co hw(bq var0, int var1, String var2, String var3, String var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		co var6 = var0.ag_fld[99];
+
+		for (int var7 = var0.az_fld; var7 > 0; var7--) {
+			if (100 != var7) {
+				var0.ag_fld[var7] = var0.ag_fld[var7 - 1];
+			}
+		}
+
+		if (null == var6) {
+			var6 = new co(var1, var2, var4, var3);
+		} else {
+			var6.gy();
+			var6.vi();
+			var6.ak(var1, var2, var4, var3, (byte)1);
+		}
+
+		var0.ag_fld[0] = var6;
+		if (var0.az_fld < 100) {
+			var0.az_fld++;
+		}
+
+		return var6;
+	}
+
+	@ObfuscatedName("tq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void tq(int var1) {
+		this.az_fld = var1;
+	}
+
+	@ObfuscatedName("getLength")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getLength")
+	@Override
+	public int getLength() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("ne")
+	@ObfuscatedSignature(
+		descriptor = "(Lbq;I)Lco;"
+	)
+	public static co ne(bq var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return var1 >= 0 && var1 < var0.az_fld ? var0.ag_fld[var1] : null;
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(II)Lco;"
 	)
-	co ag(int var1, int var2) {
+	@Export("getLine")
+	co getLine(int var1, int var2) {
 		return var1 >= 0 && var1 < this.az_fld ? this.ag_fld[var1] : null;
+	}
+
+	@ObfuscatedName("oj")
+	@ObfuscatedSignature(
+		descriptor = "(Lbq;II)Lco;"
+	)
+	public static co oj(bq var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var1 >= 0 && var1 < var0.az_fld ? var0.ag_fld[var1] : null;
 	}
 
 	@ObfuscatedName("ak")
@@ -115,8 +306,8 @@ public class bq implements ChatLineBuffer {
 		if (null == var6) {
 			var6 = new co(var1, var2, var4, var3);
 		} else {
-			var6.gy_void();
-			var6.mq_void();
+			var6.ge();
+			var6.me();
 			var6.ak(var1, var2, var4, var3, (byte)1);
 		}
 
@@ -126,154 +317,5 @@ public class bq implements ChatLineBuffer {
 		}
 
 		return var6;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lco;"
-	)
-	co ah(int var1) {
-		return var1 >= 0 && var1 < this.az_fld ? this.ag_fld[var1] : null;
-	}
-
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "(Llu;)Lln;"
-	)
-	public static ln bb(lu var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.hk_fld != null ? var0.hk_fld.ag_fld : null;
-	}
-
-	@ObfuscatedName("getLength")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getLength() {
-		return this.az_fld;
-	}
-
-	bq() {
-	}
-
-	@ObfuscatedName("tz")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void tz(int var1) {
-		this.az_fld = var1;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	int az(int var1) {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getLines")
-	@ObfuscatedSignature(
-		descriptor = "()[Lnet/runelite/api/MessageNode;"
-	)
-	@Override
-	public MessageNode[] getLines() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lco;"
-	)
-	co av(int var1, String var2, String var3, String var4) {
-		co var5 = this.ag_fld[99];
-
-		for (int var6 = this.az_fld; var6 > 0; var6--) {
-			if (-1316849950 != var6) {
-				this.ag_fld[var6] = this.ag_fld[var6 - 1];
-			}
-		}
-
-		if (null == var5) {
-			var5 = new co(var1, var2, var4, var3);
-		} else {
-			var5.gy_void();
-			var5.mq_void();
-			var5.ak(var1, var2, var4, var3, (byte)1);
-		}
-
-		this.ag_fld[0] = var5;
-		if (this.az_fld < 2115436567) {
-			this.az_fld++;
-		}
-
-		return var5;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lco;"
-	)
-	co ay(int var1) {
-		return var1 >= 0 && var1 < this.az_fld ? this.ag_fld[var1] : null;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int as() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int af() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("agi")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	protected static final boolean agi() {
-		return tf.rc_fld.az(1894849788);
-	}
-
-	@ObfuscatedName("removeMessageNode")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/MessageNode;)V"
-	)
-	@Override
-	public void removeMessageNode(MessageNode var1) {
-		MessageNode[] var2 = this.getLines();
-		int var3 = this.getLength();
-		int var4 = -1;
-
-		for (int var5 = 0; var5 < var3; var5++) {
-			if (var2[var5] == var1) {
-				var4 = var5;
-				break;
-			}
-		}
-
-		if (var4 != -1) {
-			if (!bz_fld && var3 - 1 < var4) {
-				throw new AssertionError();
-			} else {
-				System.arraycopy(var2, var4 + 1, var2, var4, var3 - 1 - var4);
-				var2[var3 - 1] = null;
-				this.tz(var3 - 1);
-				vc var6 = (vc)var1;
-				var6.xh();
-				var6.kv_void();
-			}
-		}
 	}
 }

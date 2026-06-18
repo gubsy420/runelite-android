@@ -29,6 +29,18 @@ public abstract class ws {
 	)
 	boolean ay_fld;
 
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(Lws;I)Ljava/lang/String;"
+	)
+	public static String hs(ws var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return "Error in task: " + var0.aw_fld + ", Error message: " + var0.ah_fld;
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
@@ -37,11 +49,32 @@ public abstract class ws {
 		return "Error in task: " + this.aw_fld + ", Error message: " + this.ah_fld;
 	}
 
+	@ObfuscatedName("dx")
+	@ObfuscatedSignature(
+		descriptor = "(Lws;Ljava/lang/String;B)V"
+	)
+	public static void dx(ws var0, String var1, byte var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ay_fld = true;
+		var0.ah_fld = var1;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(S)Z"
 	)
 	public abstract boolean ak(short var1);
+
+	@ObfuscatedName("ij")
+	@ObfuscatedSignature(
+		descriptor = "(Lws;)Z"
+	)
+	public static boolean ij(ws var0) {
+		return var0.av_fld;
+	}
 
 	ws(ws var1) {
 		this.ae_fld = var1;
@@ -49,18 +82,10 @@ public abstract class ws {
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	public boolean as() {
 		return this.av_fld;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String ar() {
-		return "Error in task: " + this.aw_fld + ", Error message: " + this.ah_fld;
 	}
 
 	@ObfuscatedName("am")
@@ -69,15 +94,6 @@ public abstract class ws {
 	)
 	public String am() {
 		return "Error in task: " + this.aw_fld + ", Error message: " + this.ah_fld;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	void al(String var1) {
-		this.ay_fld = true;
-		this.ah_fld = var1;
 	}
 
 	@ObfuscatedName("ag")
@@ -113,7 +129,7 @@ public abstract class ws {
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()Lws;"
+		descriptor = "(I)Lws;"
 	)
 	public ws af() {
 		return this.ae_fld;
@@ -135,17 +151,17 @@ public abstract class ws {
 		return "Error in task: " + this.aw_fld + ", Error message: " + this.ah_fld;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "()Lws;"
 	)
-	public ws ab() {
+	public ws ao() {
 		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(B)Z"
 	)
 	public boolean ay() {
 		return this.ay_fld;
@@ -153,7 +169,7 @@ public abstract class ws {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lzo;)I"
+		descriptor = "(Lzo;B)I"
 	)
 	static final int ak(zo var0) {
 		if (null == var0) {
@@ -166,5 +182,22 @@ public abstract class ws {
 					return 12;
 			}
 		}
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;"
+	)
+	public String ar(int var1) {
+		return "Error in task: " + this.aw_fld + ", Error message: " + this.aw_fld;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V"
+	)
+	void al(String var1, byte var2) {
+		this.ay_fld = true;
+		this.aw_fld = var1;
 	}
 }

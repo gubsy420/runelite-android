@@ -24,10 +24,22 @@ public class bm {
 	)
 	int[] av_fld;
 
+	@ObfuscatedName("ip")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;)V"
+	)
+	public static void ip(qa var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ah_fld = 0;
+	}
+
 	bm(bh var1) {
 		var1.ak(16, 481890397);
-		this.ak_fld = var1.av() != 0 ? var1.ak(4, -697089758) + 1 : 1;
-		if (var1.av() != 0) {
+		this.ak_fld = var1.ag() != 0 ? var1.ak(4, -697089758) + 1 : 1;
+		if (var1.ag() != 0) {
 			var1.ak(8, 771755356);
 		}
 

@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -32,18 +33,22 @@ public class jx {
 	jx(int var1) {
 	}
 
-	@ObfuscatedName("na")
+	@ObfuscatedName("rn")
 	@ObfuscatedSignature(
-		descriptor = "(Lwz;)V"
+		descriptor = "(Ldn;)V"
 	)
-	public static void na(wz var0) {
-		if (var0.aa_fld != -1) {
-			if (var0.af_fld[var0.aa_fld] != null) {
-				var0.af_fld[var0.aa_fld].ar(1167085109);
-			}
-
-			var0.aa_fld = -176008309;
+	public static void rn(dn var0) throws FileNotFoundException {
+		if (var0.ae_fld && var0.ah_fld < lz.ak() - 60000L) {
+			var0.as((byte)108);
 		}
+	}
+
+	@ObfuscatedName("up")
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)Llu;"
+	)
+	public static lu up(uk var0) {
+		return var0.ak_fld;
 	}
 
 	static {

@@ -25,37 +25,50 @@ public class jf implements xm {
 		descriptor = "I"
 	)
 	static int ax_fld;
-	@ObfuscatedGetter(
-		intValue = -238867033
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Z"
+	@ObfuscatedGetter(
+		intValue = -238867033
 	)
-	public boolean aw_fld;
+	int ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
 	public boolean ah_fld;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Z"
+	)
+	public boolean aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Ljf;"
 	)
 	public static jf ay_fld = az_fld;
-	@ObfuscatedGetter(
-		intValue = -1972210161
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1972210161
+	)
 	int av_fld;
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "(Lcn;Ljava/lang/String;)V"
+	)
+	public static void ba(cn var0, String var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.aa_fld = var1;
+			og.ag();
+		}
+	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -69,8 +82,16 @@ public class jf implements xm {
 	jf(int var1, int var2, boolean var3, boolean var4) {
 		this.av_fld = var1;
 		this.ae_fld = var2;
-		this.aw_fld = var3;
-		this.ah_fld = var4;
+		this.ah_fld = var3;
+		this.aw_fld = var4;
+	}
+
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;)Lol;"
+	)
+	public static ol bs(qa var0) {
+		return var0.az_fld;
 	}
 
 	@ObfuscatedName("av")
@@ -110,7 +131,7 @@ public class jf implements xm {
 
 	@ObfuscatedName("dv")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;III)I"
+		descriptor = "(Ldx;IIIB)I"
 	)
 	static final int dv(dx var0, int var1, int var2, int var3) throws EOFException {
 		return var0.an(var1, var2, var3, 1764729525);
@@ -118,7 +139,7 @@ public class jf implements xm {
 
 	@ObfuscatedName("dj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIZ)V"
+		descriptor = "(IIIIIIIIIZB)V"
 	)
 	static void dj(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) throws EOFException {
 		fg.es(hk.mt_fld, var0, var1, var2, var3, var4, var5, var6, var7, var8, var9);
@@ -126,7 +147,7 @@ public class jf implements xm {
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(IIB)I"
 	)
 	static final int ad(int var0, int var1) {
 		if (-1 == var0) {

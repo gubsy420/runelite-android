@@ -19,12 +19,12 @@ public class sf implements xm {
 		descriptor = "Lsf;"
 	)
 	static sf as_fld = new sf(8, 8, null, 7, 3);
-	@ObfuscatedGetter(
-		intValue = -1779061245
-	)
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1779061245
 	)
 	int aq_fld;
 	@ObfuscatedName("aa")
@@ -67,12 +67,12 @@ public class sf implements xm {
 		descriptor = "Lsf;"
 	)
 	static sf au_fld = new sf(12, 12, null, 2, 7);
-	@ObfuscatedGetter(
-		intValue = -1346238153
-	)
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1346238153
 	)
 	int ad_fld;
 	@ObfuscatedName("ax")
@@ -95,12 +95,12 @@ public class sf implements xm {
 		descriptor = "Lsf;"
 	)
 	static sf ai_fld = new sf(16, 16, null, 0, 5);
-	@ObfuscatedGetter(
-		intValue = -1235493835
-	)
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1235493835
 	)
 	int am_fld;
 	@ObfuscatedName("av")
@@ -134,7 +134,7 @@ public class sf implements xm {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	int az() {
 		return this.ad_fld;
@@ -161,14 +161,6 @@ public class sf implements xm {
 	@Override
 	public int ah() {
 		return this.am_fld;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)I"
-	)
-	public static int ap(li var0) {
-		return var0.am_fld.bd();
 	}
 
 	@ObfuscatedName("av")
@@ -198,13 +190,5 @@ public class sf implements xm {
 		}
 
 		return var2;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int as() {
-		return this.ad_fld;
 	}
 }

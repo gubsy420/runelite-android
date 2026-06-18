@@ -1,5 +1,4 @@
 import java.io.ByteArrayInputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -19,6 +18,14 @@ class qq implements TlsAuthentication {
 		descriptor = "Lqi;"
 	)
 	qi this$2;
+
+	@ObfuscatedName("sr")
+	@ObfuscatedSignature(
+		descriptor = "(Lrg;)I"
+	)
+	public static int sr(rg var0) {
+		return var0.ah_fld.ah_fld * 491640768 + var0.aw_fld.as(-654080199);
+	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
@@ -99,14 +106,6 @@ class qq implements TlsAuthentication {
 		}
 	}
 
-	@ObfuscatedName("fc")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;)Lko;"
-	)
-	public static ko fc(rg var0) {
-		return var0.af_fld;
-	}
-
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lorg/bouncycastle/crypto/tls/Certificate;)V"
@@ -149,43 +148,8 @@ class qq implements TlsAuthentication {
 		}
 	}
 
-	@ObfuscatedName("vv")
-	@ObfuscatedSignature(
-		descriptor = "(Lai;)Lal;"
-	)
-	public static al vv(ai var0) {
-		if (null != var0.ak_fld) {
-			var0.ak_fld.az_fld.lock();
-
-			al var1;
-			try {
-				var1 = var0.av();
-			} finally {
-				var0.ak_fld.az_fld.unlock();
-			}
-
-			return var1;
-		} else {
-			return null;
-		}
-	}
-
 	qq(qi var1) {
 		this.this$2 = var1;
-	}
-
-	@ObfuscatedName("ft")
-	@ObfuscatedSignature(
-		descriptor = "(Lgc;ILuo;I)V"
-	)
-	public static void ft(gc var0, int var1, uo var2, int var3) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (var2.az(var1)) {
-			var0.al(var2.aw_fld[var1], 0, var2.aw_fld[var1].length - 1, -1, -1, var2, var3, -844182513);
-		}
 	}
 
 	@ObfuscatedName("ah")

@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -24,33 +25,37 @@ public class iz {
 	)
 	static int ah_fld;
 
-	@ObfuscatedName("xd")
-	@ObfuscatedSignature(
-		descriptor = "(Lpn;)I"
-	)
-	public static int xd(pn var0) {
-		return var0.ay_fld.length;
-	}
-
 	iz() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("tg")
+	@ObfuscatedName("il")
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;)V"
+		descriptor = "(Lqh;Lqm;Luo;)V"
 	)
-	public static void tg(cv var0) {
+	public static void il(qh var0, qm var1, uo var2) throws EOFException {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.bm_fld = rw.ak_fld;
+		if (var2.aa_fld != -1) {
+			var0.ar(var2.aa_fld, var1, var2, -379261936);
+		}
+	}
+
+	@ObfuscatedName("gb")
+	@ObfuscatedSignature(
+		descriptor = "(Lml;III)V"
+	)
+	public static void gb(ml var0, int var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)I"
+		descriptor = "(Ljava/lang/String;I)I"
 	)
 	static int ag(String var0) {
 		if (var0.equals("centre")) {

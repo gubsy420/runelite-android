@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -15,11 +16,11 @@ class nm implements Comparator {
 	)
 	static int bi_fld;
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lnl;Lnl;)I"
 	)
-	int ag(nl var1, nl var2) {
+	int az(nl var1, nl var2) {
 		return var1.ak_fld < var2.ak_fld ? -1 : (var1.ak_fld == var2.ak_fld ? 0 : 1);
 	}
 
@@ -44,6 +45,7 @@ class nm implements Comparator {
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;)Z"
 	)
+	@Export("equals")
 	@Override
 	public boolean equals(Object var1) {
 		return super.equals(var1);
@@ -58,14 +60,6 @@ class nm implements Comparator {
 	}
 
 	nm() {
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;)Z"
-	)
-	public boolean jt(Object var1) {
-		return super.equals(var1);
 	}
 
 	@ObfuscatedName("ak")
@@ -84,27 +78,11 @@ class nm implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;)I"
-	)
-	int az(nl var1, nl var2) {
-		return var1.ak_fld < var2.ak_fld ? -1 : (var1.ak_fld == var2.ak_fld ? 0 : 1);
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int ah(Object var1, Object var2) {
-		return this.ak((nl)var1, (nl)var2, 673321348);
-	}
-
-	@ObfuscatedName("ne")
+	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
 		descriptor = "(Lnm;Ljava/lang/Object;)Z"
 	)
-	public static boolean ne(nm var0, Object var1) {
+	public static boolean dl(nm var0, Object var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
@@ -118,5 +96,13 @@ class nm implements Comparator {
 	)
 	public boolean jm(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lnl;Lnl;)I"
+	)
+	int ag(nl var1, nl var2) {
+		return var1.ak_fld < var2.ak_fld ? -1 : (var1.ak_fld == var2.ak_fld ? 0 : 1);
 	}
 }

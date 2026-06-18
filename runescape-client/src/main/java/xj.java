@@ -7,12 +7,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("xj")
 @Implements({"PacketBuffer"})
 public class xj extends xi implements PacketBuffer {
-	@ObfuscatedGetter(
-		intValue = -1399532557
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1399532557
 	)
 	int az_fld;
 	@ObfuscatedName("ak")
@@ -60,6 +60,18 @@ public class xj extends xi implements PacketBuffer {
 	)
 	yk ag_fld;
 
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;II)I"
+	)
+	public static int mv(xj var0, int var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return 8 * var1 - var0.az_fld;
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
@@ -79,11 +91,25 @@ public class xj extends xi implements PacketBuffer {
 		this.ag_fld = new yk(var1);
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;[BIII)V"
+	)
+	public static void hh(xj var0, byte[] var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		for (int var5 = 0; var5 < var3; var5++) {
+			var1[var2 + var5] = (byte)(var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] - var0.ag_fld.ak());
+		}
+	}
+
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void as(int var1) {
+	public void af(int var1) {
 		this.au_fld = 228932457 * ((this.az_fld + 7) / 8);
 	}
 
@@ -115,6 +141,14 @@ public class xj extends xi implements PacketBuffer {
 		return var2 >= 128;
 	}
 
+	@ObfuscatedName("iv")
+	@ObfuscatedSignature(
+		descriptor = "(Lwl;)Z"
+	)
+	public static boolean iv(wl var0) {
+		return var0.bd_fld.av();
+	}
+
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(B)I"
@@ -122,16 +156,6 @@ public class xj extends xi implements PacketBuffer {
 	public int aw(byte var1) {
 		int var2 = this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak() & 0xFF;
 		return var2 < 128 ? var2 : (var2 - 128 << 8) + (this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak() & 0xFF);
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)V"
-	)
-	public void ay(byte[] var1, int var2, int var3, int var4) {
-		for (int var5 = 0; var5 < var3; var5++) {
-			var1[var2 + var5] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
-		}
 	}
 
 	@ObfuscatedName("bz")
@@ -166,22 +190,6 @@ public class xj extends xi implements PacketBuffer {
 		return var5;
 	}
 
-	@ObfuscatedName("wc")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)I"
-	)
-	public static int wc(xj var0) {
-		return var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] - var0.ag_fld.ak() & 0xFF;
-	}
-
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void bl() {
-		this.au_fld = 228932457 * ((this.az_fld + 7) / 8);
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
@@ -190,11 +198,11 @@ public class xj extends xi implements PacketBuffer {
 		this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 + this.ag_fld.ak());
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void ap(int var1) {
+	public void as(int var1) {
 		this.az_fld = this.au_fld * 1682216984;
 	}
 
@@ -207,6 +215,18 @@ public class xj extends xi implements PacketBuffer {
 		super.ak(-1569172296);
 		this.ag_fld = null;
 		this.az_fld = 0;
+	}
+
+	@ObfuscatedName("uo")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;Lyk;I)V"
+	)
+	public static void uo(xj var0, yk var1, int var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ag_fld = var1;
 	}
 
 	@ObfuscatedName("an")
@@ -231,12 +251,12 @@ public class xj extends xi implements PacketBuffer {
 		this.az_fld = 0;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lyk;)V"
+		descriptor = "(I)V"
 	)
-	public void ao(yk var1) {
-		this.ag_fld = var1;
+	public void ap(int var1) {
+		this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 + this.ag_fld.ak());
 	}
 
 	@ObfuscatedName("am")
@@ -247,19 +267,19 @@ public class xj extends xi implements PacketBuffer {
 		this.ag_fld = new yk(var1);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int aj() {
+		return this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak() & 0xFF;
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Lyk;)V"
 	)
-	public void ab(yk var1) {
-		this.ag_fld = var1;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lyk;I)V"
-	)
-	public void az(yk var1, int var2) {
+	public void ao(yk var1) {
 		this.ag_fld = var1;
 	}
 
@@ -271,11 +291,19 @@ public class xj extends xi implements PacketBuffer {
 		return this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak() & 0xFF;
 	}
 
-	@ObfuscatedName("bh")
+	@ObfuscatedName("ed")
+	@ObfuscatedSignature(
+		descriptor = "(Lxj;I)I"
+	)
+	public static int ed(xj var0, int var1) {
+		return var1 - var0.au_fld;
+	}
+
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "([BII)V"
 	)
-	public void bh(byte[] var1, int var2, int var3) {
+	public void bs(byte[] var1, int var2, int var3) {
 		for (int var4 = 0; var4 < var3; var4++) {
 			var1[var2 + var4] = (byte)(this.al_fld[(this.au_fld += -1875446162) * -661977895 - 1] - this.ag_fld.ak());
 		}
@@ -292,56 +320,20 @@ public class xj extends xi implements PacketBuffer {
 		this.az_fld = 0;
 	}
 
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	public boolean bm() {
-		int var1 = this.al_fld[this.au_fld] - this.ag_fld.ag() & 0xFF;
-		return var1 >= 128;
-	}
-
-	@ObfuscatedName("go")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)I"
-	)
-	public static int go(xj var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return 8 * var1 - var0.az_fld;
-		}
-	}
-
-	@ObfuscatedName("oh")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)V"
-	)
-	public static void oh(xj var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 + var0.ag_fld.ak());
-	}
-
-	@ObfuscatedName("on")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	public static void on(xj var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.au_fld = 228932457 * ((var0.az_fld + 7) / 8);
-	}
-
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	public boolean bd() {
+		int var1 = this.al_fld[this.au_fld] - this.ag_fld.ag() & 0xFF;
+		return var1 >= 128;
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean bm() {
 		int var1 = this.al_fld[this.au_fld] - this.ag_fld.ag() & 0xFF;
 		return var1 >= 128;
 	}
@@ -354,19 +346,11 @@ public class xj extends xi implements PacketBuffer {
 		return this.al_fld[(this.au_fld += 228932457) * 160485274 - 1] - this.ag_fld.ak() & 0xFF;
 	}
 
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int au(int var1, int var2) {
-		return var1 - this.au_fld;
-	}
-
-	@ObfuscatedName("bk")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "([BII)V"
 	)
-	public void bk(byte[] var1, int var2, int var3) {
+	public void br(byte[] var1, int var2, int var3) {
 		for (int var4 = 0; var4 < var3; var4++) {
 			var1[var2 + var4] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
 		}
@@ -382,24 +366,52 @@ public class xj extends xi implements PacketBuffer {
 		}
 	}
 
-	@ObfuscatedName("nd")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lxj;I)I"
+		descriptor = "(II)I"
 	)
-	public static int nd(xj var0, int var1) {
-		int var2 = var0.az_fld >> 3;
-		int var3 = 8 - (var0.az_fld & 7);
+	public int au(int var1, int var2) {
+		return var1 - this.au_fld;
+	}
+
+	@ObfuscatedName("bh")
+	@ObfuscatedSignature(
+		descriptor = "([BII)V"
+	)
+	public void bh(byte[] var1, int var2, int var3) {
+		for (int var4 = 0; var4 < var3; var4++) {
+			var1[var2 + var4] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
+		}
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "([BII)V"
+	)
+	public void bk(byte[] var1, int var2, int var3) {
+		for (int var4 = 0; var4 < var3; var4++) {
+			var1[var2 + var4] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
+		}
+	}
+
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public int bj(int var1) {
+		int var2 = this.az_fld >> 3;
+		int var3 = 8 - (this.az_fld & 7);
 		int var4 = 0;
 
-		for (var0.az_fld += var1 * -1512768197; var1 > var3; var3 = 8) {
-			var4 += (var0.al_fld[var2++] & ak_fld[var3]) << var1 - var3;
+		for (this.az_fld += var1 * -1512768197; var1 > var3; var3 = 8) {
+			var4 += (this.al_fld[var2++] & ak_fld[var3]) << var1 - var3;
 			var1 -= var3;
 		}
 
 		if (var3 == var1) {
-			var4 += var0.al_fld[var2] & ak_fld[var3];
+			var4 += this.al_fld[var2] & ak_fld[var3];
 		} else {
-			var4 += var0.al_fld[var2] >> var3 - var1 & ak_fld[var1];
+			var4 += this.al_fld[var2] >> var3 - var1 & ak_fld[var1];
 		}
 
 		return var4;
@@ -428,28 +440,32 @@ public class xj extends xi implements PacketBuffer {
 		return var4;
 	}
 
-	@ObfuscatedName("tq")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "()V"
 	)
-	public static void tq(xi var0, int var1) {
-		var0.al_fld[(var0.au_fld += -447286140) * -661977895 - 1] = (byte)(-125502212 + var1);
-	}
-
-	@ObfuscatedName("yo")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
-	)
-	public static void yo(xj var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.au_fld = 228932457 * ((var0.az_fld + 7) / 8);
+	public void bx() {
+		this.au_fld = -1605633594 * ((this.az_fld + 7) / 8);
 	}
 
 	public xj(int var1) {
 		super(var1);
+	}
+
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void bo() {
+		this.au_fld = 228932457 * ((this.az_fld + 7) / 8);
+	}
+
+	@ObfuscatedName("by")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void by() {
+		this.au_fld = 228932457 * ((this.az_fld + 7) / 8);
 	}
 
 	@ObfuscatedName("bp")
@@ -460,71 +476,44 @@ public class xj extends xi implements PacketBuffer {
 		return var1 - this.au_fld;
 	}
 
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public int bt(int var1) {
-		return var1 - this.au_fld;
-	}
-
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(II)I"
 	)
 	public int al(int var1, int var2) {
-		return var1 - this.au_fld;
-	}
+		int var3 = this.az_fld >> 3;
+		int var4 = 8 - (this.az_fld & 7);
+		int var5 = 0;
 
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void af(int var1) {
-		this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] = (byte)(var1 + this.ag_fld.ak());
-	}
-
-	@ObfuscatedName("gb")
-	@ObfuscatedSignature(
-		descriptor = "(Lxj;[BII)V"
-	)
-	public static void gb(xj var0, byte[] var1, int var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
+		for (this.az_fld += var1 * -1512768197; var1 > var4; var4 = 8) {
+			var5 += (this.al_fld[var3++] & ak_fld[var4]) << var1 - var4;
+			var1 -= var4;
 		}
 
-		for (int var4 = 0; var4 < var3; var4++) {
-			var1[var2 + var4] = (byte)(var0.al_fld[(var0.au_fld += 228932457) * -661977895 - 1] - var0.ag_fld.ak());
+		if (var4 == var1) {
+			var5 += this.al_fld[var3] & ak_fld[var4];
+		} else {
+			var5 += this.al_fld[var3] >> var4 - var1 & ak_fld[var1];
 		}
+
+		return var5;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "([BII)V"
+		descriptor = "([BIII)V"
 	)
-	public void bs(byte[] var1, int var2, int var3) {
-		for (int var4 = 0; var4 < var3; var4++) {
-			var1[var2 + var4] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
+	public void ay(byte[] var1, int var2, int var3, int var4) {
+		for (int var5 = 0; var5 < var3; var5++) {
+			var1[var2 + var5] = (byte)(this.al_fld[(this.au_fld += 228932457) * -661977895 - 1] - this.ag_fld.ak());
 		}
 	}
 
-	@ObfuscatedName("zr")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lrg;I)V"
+		descriptor = "(Lyk;I)V"
 	)
-	public static void zr(rg var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.al_fld = var1;
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void bx() {
-		this.au_fld = 228932457 * ((this.az_fld + 7) / 8);
+	public void az(yk var1, int var2) {
+		this.ag_fld = var1;
 	}
 }

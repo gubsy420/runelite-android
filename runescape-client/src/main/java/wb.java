@@ -1,18 +1,19 @@
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("wb")
 class wb implements Iterator {
-	@ObfuscatedGetter(
-		intValue = 539058003
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 539058003
 	)
 	int ak_fld;
 	// $VF: synthetic field
@@ -31,6 +32,7 @@ class wb implements Iterator {
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("remove")
 	@Override
 	public void remove() {
 		throw new UnsupportedOperationException();
@@ -44,10 +46,23 @@ class wb implements Iterator {
 		throw new UnsupportedOperationException();
 	}
 
+	@ObfuscatedName("ht")
+	@ObfuscatedSignature(
+		descriptor = "(Lwb;)V"
+	)
+	public static void ht(wb var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		throw new UnsupportedOperationException();
+	}
+
 	@ObfuscatedName("next")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
 	)
+	@Export("next")
 	@Override
 	public Object next() {
 		try {
@@ -85,52 +100,37 @@ class wb implements Iterator {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("tj")
-	@ObfuscatedSignature(
-		descriptor = "(Lwb;)V"
-	)
-	public static void tj(wb var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		throw new UnsupportedOperationException();
-	}
-
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	public boolean ar() {
-		return this.ak_fld < tq.pc(this.this$0, -214397640);
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void af() {
-		throw new UnsupportedOperationException();
+		return this.ak_fld < this.this$0.ag();
 	}
 
 	@ObfuscatedName("hasNext")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("hasNext")
 	@Override
 	public boolean hasNext() {
-		return this.ak_fld < tq.pc(this.this$0, -214397640);
+		return this.ak_fld < this.this$0.ag();
 	}
 
-	@ObfuscatedName("zo")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lwb;)V"
+		descriptor = "()V"
 	)
-	public static void zo(wb var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	public void au() {
+		throw new UnsupportedOperationException();
+	}
 
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public void ax() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -155,7 +155,7 @@ class wb implements Iterator {
 	public static void az(xi var0, int var1, int var2) {
 		ze var3 = new ze();
 		var3.ag_fld = var0.cg();
-		var3.ak_fld = var0.co();
+		var3.ak_fld = var0.co((byte)-80);
 		var3.az_fld = new int[var3.ag_fld];
 		var3.av_fld = new int[var3.ag_fld];
 		var3.ae_fld = new Field[var3.ag_fld];
@@ -172,8 +172,8 @@ class wb implements Iterator {
 							continue;
 						}
 
-						String var26 = xi.kc(var0, 2084180116);
-						String var27 = xi.kc(var0, 1389993284);
+						String var26 = xi.at(var0, 2084180116);
+						String var27 = xi.at(var0, 1389993284);
 						int var28 = var0.cg();
 						String[] var9 = new String[var28];
 
@@ -182,10 +182,10 @@ class wb implements Iterator {
 								return;
 							}
 
-							var9[var10] = xi.kc(var0, 539592259);
+							var9[var10] = xi.at(var0, 539592259);
 						}
 
-						String var29 = xi.kc(var0, 432676317);
+						String var29 = xi.at(var0, 432676317);
 						byte[][] var11 = new byte[var28][];
 						if (var5 == 3) {
 							if (var2 <= -281354914) {
@@ -193,9 +193,9 @@ class wb implements Iterator {
 							}
 
 							for (int var12 = 0; var12 < var28; var12++) {
-								int var13 = var0.co();
+								int var13 = var0.co((byte)3);
 								var11[var12] = new byte[var13];
-								xi.xp(var0, var11[var12], 0, var13, (byte)8);
+								var0.dh(var11[var12], 0, var13);
 							}
 						}
 
@@ -260,11 +260,11 @@ class wb implements Iterator {
 					}
 				}
 
-				String var6 = xi.kc(var0, -986668804);
-				String var7 = xi.kc(var0, -1029148514);
+				String var6 = xi.at(var0, -986668804);
+				String var7 = xi.at(var0, -1029148514);
 				int var8 = 0;
 				if (var5 == 1) {
-					var8 = var0.co();
+					var8 = var0.co((byte)-30);
 				}
 
 				var3.az_fld[var4] = var5;
@@ -287,6 +287,6 @@ class wb implements Iterator {
 			}
 		}
 
-		za.ak_fld.az(var3);
+		no.dx(za.ak_fld, var3);
 	}
 }

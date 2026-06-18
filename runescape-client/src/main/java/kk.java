@@ -21,6 +21,14 @@ public interface kk {
 	)
 	void az();
 
+	@ObfuscatedName("ki")
+	@ObfuscatedSignature(
+		descriptor = "(Luf;)I"
+	)
+	static int ki(uf var0) {
+		return var0.av_fld + var0.ah_fld;
+	}
+
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()V"

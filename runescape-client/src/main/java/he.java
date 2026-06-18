@@ -10,35 +10,35 @@ public class he extends hr {
 		descriptor = "I"
 	)
 	static int bb_fld;
-	@ObfuscatedGetter(
-		intValue = 430291693
-	)
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "I"
-	)
-	int av_fld;
-	@ObfuscatedGetter(
-		intValue = -1060847225
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 430291693
+	)
 	int az_fld;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1060847225
+	)
+	int ak_fld;
 	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
 	)
 	static String cq_fld;
-	@ObfuscatedGetter(
-		intValue = 698419181
-	)
-	@ObfuscatedName("ak")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
+	@ObfuscatedGetter(
+		intValue = 698419181
+	)
+	int av_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lgw;"
@@ -51,7 +51,7 @@ public class he extends hr {
 	)
 	@Override
 	int ax() {
-		return this.az_fld;
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -60,7 +60,7 @@ public class he extends hr {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.ak_fld;
+		return this.av_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -69,6 +69,57 @@ public class he extends hr {
 	)
 	@Override
 	gw az(int var1) {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	@Override
+	int ae(int var1) {
+		return this.ak_fld;
+	}
+
+	he(kj var1, kj var2, int var3, gw var4) throws EOFException {
+		super(var1, var2);
+		this.av_fld = var3;
+		this.ag_fld = var4;
+		pc var5 = uh.ak(this.ag(-879858868));
+		yv var6 = var5.ae(false, -1933745851);
+		if (var6 != null) {
+			this.ak_fld = var6.aw_fld;
+			this.az_fld = var6.ay_fld;
+		} else {
+			this.ak_fld = 0;
+			this.az_fld = 0;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	public int as() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Override
+	int an() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "()Lgw;"
+	)
+	@Override
+	gw af() {
 		return this.ag_fld;
 	}
 
@@ -81,47 +132,6 @@ public class he extends hr {
 		return this.az_fld;
 	}
 
-	he(kj var1, kj var2, int var3, gw var4) throws EOFException {
-		super(var1, var2);
-		this.ak_fld = var3;
-		this.ag_fld = var4;
-		pc var5 = uh.ak(this.ag(-879858868));
-		yv var6 = var5.ae(false, -1933745851);
-		if (var6 != null) {
-			this.az_fld = var6.aw_fld;
-			this.av_fld = var6.ay_fld;
-		} else {
-			this.az_fld = 0;
-			this.av_fld = 0;
-		}
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int ar() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	int an() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("qh")
-	@ObfuscatedSignature(
-		descriptor = "(Lmw;I)V"
-	)
-	public static void qh(mw var0, int var1) {
-		var0.aw_fld.au_fld = var0.al_fld[var1];
-	}
-
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()Lgw;"
@@ -131,13 +141,13 @@ public class he extends hr {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "()I"
 	)
 	@Override
-	int ae(int var1) {
-		return this.av_fld;
+	int aa() {
+		return this.az_fld;
 	}
 
 	@ObfuscatedName("al")
@@ -149,36 +159,18 @@ public class he extends hr {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
 	@Override
-	int aa() {
+	public int ar() {
 		return this.av_fld;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()Lgw;"
-	)
-	@Override
-	gw af() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int as() {
-		return this.ak_fld;
 	}
 
 	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/Object;"
+		descriptor = "(II)Ljava/lang/Object;"
 	)
 	static Object cg(int var0) {
 		return var0 == -1 ? null : um.ca((yq)ka.ak(yq.ak(), var0));

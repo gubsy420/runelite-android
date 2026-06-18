@@ -30,12 +30,12 @@ public class jq {
 		descriptor = "Ljava/lang/String;"
 	)
 	public String ae_fld;
-	@ObfuscatedGetter(
-		intValue = 1606619025
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1606619025
 	)
 	public int ah_fld;
 	@ObfuscatedName("az")
@@ -58,12 +58,12 @@ public class jq {
 		descriptor = "Ljava/lang/String;"
 	)
 	static String at_fld;
-	@ObfuscatedGetter(
-		intValue = -432591133
-	)
 	@ObfuscatedName("pa")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -432591133
 	)
 	static int pa_fld;
 
@@ -78,6 +78,14 @@ public class jq {
 	jq(String var1, int var2) {
 		this.ae_fld = var1;
 		this.ah_fld = var2;
+	}
+
+	@ObfuscatedName("nw")
+	@ObfuscatedSignature(
+		descriptor = "(Lgf;)I"
+	)
+	public static int nw(gf var0) {
+		return 2115450829 * var0.ay_fld.ak_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -109,8 +117,8 @@ public class jq {
 		descriptor = "(Lku;Ldx;IIII)V"
 	)
 	static final void az(ku var0, dx var1, int var2, int var3, int var4, int var5) throws EOFException {
-		if (ku.id(var0, -1349895106) == 4) {
-			rg var6 = (rg)var1.an_fld.ak(ku.og(var0, 205903255));
+		if (ku.jy(var0, -1349895106) == 4) {
+			rg var6 = (rg)var1.an_fld.ak(ku.ve(var0, 205903255));
 			if (null == var6) {
 				if (var5 > 402689221) {
 					;
@@ -118,9 +126,9 @@ public class jq {
 			} else {
 				int var7 = var6.ah_fld.ah_fld * 491640768;
 				int var8 = var6.ah_fld.aw_fld * -558426560;
-				id.as(var6.ah_fld, var7, var8, var0.as() * 2, 0, 932373278);
+				id.as(var6.ah_fld, var7, var8, var0.ae() * 2, 0, 932373278);
 				if (ch.at_fld > -1 && var4 % 20 < 10) {
-					do_.ar_fld[0].ab(var2 + ch.at_fld - 12, var3 + ch.ac_fld - 28);
+					yv.aj(do_.ar_fld[0], var2 + ch.at_fld - 12, var3 + ch.ac_fld - 28);
 				}
 			}
 		}
@@ -131,13 +139,13 @@ public class jq {
 		descriptor = "(II)V"
 	)
 	static void ah(int var0, int var1) {
-		bg var2 = (bg)bg.ak_fld.ak(var0);
+		bg var2 = (bg)xz.tw(bg.ak_fld, var0);
 		if (var2 == null) {
 			if (var1 == -1944102319) {
 				;
 			}
 		} else {
-			var2.gy_void();
+			var2.gy();
 		}
 	}
 }

@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ep")
 public class ep extends rz {
-	@ObfuscatedGetter(
-		intValue = 780228781
-	)
 	@ObfuscatedName("ex")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 780228781
 	)
 	static int ex_fld;
 	@ObfuscatedName("as")
@@ -40,15 +40,38 @@ public class ep extends rz {
 		}
 	}
 
+	@ObfuscatedName("sj")
+	@ObfuscatedSignature(
+		descriptor = "(Leu;D)V"
+	)
+	public static void sj(eu var0, double var1) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ae_fld = var1;
+			eu.bu(var0, (byte)68);
+		}
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
+		descriptor = "(Lrr;Lrr;B)I"
 	)
 	int ak(rr var1, rr var2) {
 		if (var1.ae_fld != 0 && var2.ae_fld != 0) {
 			return this.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
 		} else {
 			return this.as(var1, var2, 1467583490);
+		}
+	}
+
+	@ObfuscatedName("pk")
+	@ObfuscatedSignature(
+		descriptor = "(Lyl;)V"
+	)
+	public static void pk(yl var0) {
+		if (var0 == null) {
+			var0.getClass();
 		}
 	}
 
@@ -61,35 +84,11 @@ public class ep extends rz {
 		return this.ak((rr)var1, (rr)var2);
 	}
 
-	@ObfuscatedName("io")
-	@ObfuscatedSignature(
-		descriptor = "(Lep;Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public static int io(ep var0, Object var1, Object var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.ak((rr)var1, (rr)var2);
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
-	)
-	int az(rr var1, rr var2) {
-		if (var1.ae_fld != 0 && var2.ae_fld != 0) {
-			return this.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
-		} else {
-			return this.as(var1, var2, 1010372860);
-		}
-	}
-
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
-	public int aw(Object var1, Object var2) {
+	public int ae(Object var1, Object var2) {
 		return this.ak((rr)var1, (rr)var2);
 	}
 
@@ -109,19 +108,35 @@ public class ep extends rz {
 		this.ak_fld = var1;
 	}
 
+	@ObfuscatedName("wj")
+	@ObfuscatedSignature(
+		descriptor = "(Lep;Lrr;Lrr;)I"
+	)
+	public static int wj(ep var0, rr var1, rr var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1.ae_fld != 0 && var2.ae_fld != 0) {
+			return var0.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
+		} else {
+			return var0.as(var1, var2, 1010372860);
+		}
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
+	)
+	public int aw(Object var1, Object var2) {
+		return this.ak((rr)var1, (rr)var2);
+	}
+
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
 	)
 	public int ah(Object var1, Object var2) {
-		return this.ak((rr)var1, (rr)var2);
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)I"
-	)
-	public int ae(Object var1, Object var2) {
 		return this.ak((rr)var1, (rr)var2);
 	}
 }

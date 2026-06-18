@@ -29,7 +29,7 @@ public class dk implements po {
 		client.nr_fld.ae_fld[0] = 1006;
 		client.nr_fld.al_fld[0] = false;
 		client.nr_fld.af_fld[0] = null;
-		client.nr_fld.ag_fld = 1120518047;
+		client.nr_fld.ot_fld = 1120518047;
 	}
 
 	@ObfuscatedName("ak")
@@ -45,8 +45,8 @@ public class dk implements po {
 		client.nr_fld.ae_fld[0] = 1006;
 		client.nr_fld.al_fld[0] = false;
 		client.nr_fld.af_fld[0] = null;
-		client.nr_fld.ag_fld = 1120518047;
-		client.nr_fld.yf(-1);
+		client.nr_fld.ot_fld = 1120518047;
+		client.nr_fld.dr(-1);
 	}
 
 	@ObfuscatedName("ag")
@@ -65,9 +65,9 @@ public class dk implements po {
 	@Override
 	public void bc(lu var1) {
 		if (var1 == null) {
-			fu.xp(client.fy_fld, -1217093185);
+			client.fy_fld.az(-1217093185);
 		} else {
-			li var2 = lu.bv(var1, -1406236923);
+			li var2 = lu.ax(var1, -1406236923);
 			if (null != var2 && var2.bg()) {
 				client.fy_fld.ag(var1, 114546440);
 				var2.ag(true);
@@ -93,12 +93,12 @@ public class dk implements po {
 		ls.fj(var1, var2, var3, var4, var5, var6, -1659592859);
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
 	@Override
-	public void bd(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
+	public void bm(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
 		ls.fj(var1, var2, var3, var4, var5, var6, -1328032089);
 	}
 
@@ -162,15 +162,15 @@ public class dk implements po {
 	)
 	@Override
 	public void bt(lu var1, lu var2) throws EOFException {
-		if (null != var2 && cf.cg_fld.ac(var1) != null) {
-			jm var3 = gi.ak(jb.bb_fld, client.aq_fld.av_fld);
-			var3.ay_fld.ea(var1.bf_fld);
-			var3.ay_fld.di(var1.by_fld);
-			xi.ld(var3.ay_fld, var2.bf_fld, (byte)98);
-			var3.ay_fld.di(var1.ga_fld);
-			xi.si(var3.ay_fld, var2.ga_fld);
-			xi.be(var3.ay_fld, var2.by_fld);
-			client.aq_fld.az(var3);
+		if (null != var2 && uo.kl(cf.cg_fld, var1, -446176385) != null) {
+			jm var3 = gi.ak(jb.bb_fld, client.appletStub.av_fld);
+			var3.ay_fld.et(var1.bf_fld);
+			var3.ay_fld.ek(var1.by_fld);
+			var3.ay_fld.eb(var2.bf_fld);
+			var3.ay_fld.ek(var1.ga_fld);
+			var3.ay_fld.ca(var2.ga_fld);
+			var3.ay_fld.ba(var2.by_fld);
+			client.appletStub.az(var3);
 		}
 	}
 
@@ -181,18 +181,6 @@ public class dk implements po {
 	@Override
 	public void ax(int var1, int var2, int var3) throws EOFException {
 		hx.fm(var1, var2);
-	}
-
-	@ObfuscatedName("ew")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)I"
-	)
-	public static int ew(ql var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return 0;
 	}
 
 	@ObfuscatedName("an")
@@ -208,15 +196,15 @@ public class dk implements po {
 		client.nr_fld.ae_fld[0] = 1006;
 		client.nr_fld.al_fld[0] = false;
 		client.nr_fld.af_fld[0] = null;
-		client.nr_fld.ag_fld = 1120518047;
+		client.nr_fld.ot_fld = 1120518047;
 	}
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
 	@Override
-	public void bm(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
+	public void aj(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
 		ls.fj(var1, var2, var3, var4, var5, var6, 731772337);
 	}
 
@@ -243,7 +231,7 @@ public class dk implements po {
 		descriptor = "(Llu;)V"
 	)
 	@Override
-	public void am(lu var1) {
+	public void am(lu var1) throws EOFException {
 		ah.ff(var1, 1795657678);
 	}
 
@@ -252,7 +240,7 @@ public class dk implements po {
 		descriptor = "(Llu;)V"
 	)
 	@Override
-	public void ad(lu var1) {
+	public void ad(lu var1) throws EOFException {
 		ah.ff(var1, -146448236);
 	}
 
@@ -261,7 +249,7 @@ public class dk implements po {
 		descriptor = "(Llu;)V"
 	)
 	@Override
-	public void ao(lu var1) {
+	public void ao(lu var1) throws EOFException {
 		ah.ff(var1, 19905529);
 	}
 
@@ -288,7 +276,7 @@ public class dk implements po {
 		descriptor = "(Llu;)V"
 	)
 	@Override
-	public void aq(lu var1) {
+	public void aq(lu var1) throws EOFException {
 		ah.ff(var1, -1254136907);
 	}
 
@@ -303,19 +291,19 @@ public class dk implements po {
 				return;
 			}
 
-			if (cf.cg_fld.ac(var1) != null) {
+			if (uo.kl(cf.cg_fld, var1, -446176385) != null) {
 				if (var3 <= 681955997) {
 					return;
 				}
 
-				jm var4 = gi.ak(jb.bb_fld, client.aq_fld.av_fld);
-				var4.ay_fld.ea(var1.bf_fld);
-				var4.ay_fld.di(var1.by_fld);
-				xi.ld(var4.ay_fld, var2.bf_fld, (byte)120);
-				var4.ay_fld.di(var1.ga_fld);
-				xi.si(var4.ay_fld, var2.ga_fld);
-				xi.be(var4.ay_fld, var2.by_fld);
-				client.aq_fld.az(var4);
+				jm var4 = gi.ak(jb.bb_fld, client.appletStub.av_fld);
+				var4.ay_fld.et(var1.bf_fld);
+				var4.ay_fld.ek(var1.by_fld);
+				var4.ay_fld.eb(var2.bf_fld);
+				var4.ay_fld.ek(var1.ga_fld);
+				var4.ay_fld.ca(var2.ga_fld);
+				var4.ay_fld.ba(var2.by_fld);
+				client.appletStub.az(var4);
 			}
 		}
 	}
@@ -332,12 +320,12 @@ public class dk implements po {
 	dk() {
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;)V"
 	)
 	@Override
-	public void aj(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
+	public void bd(int var1, int var2, int var3, int var4, String var5, String var6) throws EOFException {
 		ls.fj(var1, var2, var3, var4, var5, var6, 55852907);
 	}
 
@@ -346,7 +334,7 @@ public class dk implements po {
 		descriptor = "(Llu;B)V"
 	)
 	@Override
-	public void az(lu var1, byte var2) {
+	public void az(lu var1, byte var2) throws EOFException {
 		ah.ff(var1, 832859991);
 	}
 
@@ -374,26 +362,26 @@ public class dk implements po {
 	)
 	@Override
 	public void af(lu var1, byte var2) {
-		if (var1 != null && var1.bx_ma(2006632790) != null) {
-			mx.xa(ma.gb(var1.bx_ma(1057783637), -436173791), 1, var1.bx_ma(2064352836).ax());
+		if (var1 != null && var1.bx(2006632790) != null) {
+			var1.bx(1057783637).ak().ag(1, var1.bx(2064352836).ax());
 			switch (var1.bj(-1760983287)) {
 				case 0:
-					by.ak(lu.ar(var1, 1021960398));
+					by.ak(var1.by(1021960398));
 					break;
 				case 1:
-					int var4 = uo.sa(cf.cg_fld, var1, -442481562);
+					int var4 = uo.xd(cf.cg_fld, var1, -442481562);
 					boolean var3 = (var4 >> 22 & 1) != 0;
 					if (var3) {
 						int[] var5 = var1.bl(679355698);
 						if (var5 != null) {
-							jm var6 = gi.ak(jb.aw_fld, client.aq_fld.av_fld);
-							var6.ay_fld.ee(var5[1]);
-							var6.ay_fld.ea(lu.em(var1, (short)-10676));
-							xi.ld(var6.ay_fld, var5[2], (byte)95);
-							var6.ay_fld.di(var1.by_fld);
-							var6.ay_fld.ea(var1.bf_fld);
-							xi.ld(var6.ay_fld, var5[0], (byte)116);
-							client.aq_fld.az(var6);
+							jm var6 = gi.ak(jb.aw_fld, client.appletStub.av_fld);
+							var6.ay_fld.cp(var5[1]);
+							var6.ay_fld.et(var1.bf((short)-10676));
+							var6.ay_fld.eb(var5[2]);
+							var6.ay_fld.ek(var1.by_fld);
+							var6.ay_fld.et(var1.bf_fld);
+							var6.ay_fld.eb(var5[0]);
+							client.appletStub.az(var6);
 						}
 					}
 			}
@@ -478,26 +466,26 @@ public class dk implements po {
 	)
 	@Override
 	public void bp(lu var1) {
-		if (var1 != null && var1.bx_ma(2123543202) != null) {
-			mx.xa(ma.gb(var1.bx_ma(768543345), -816896867), 1, var1.bx_ma(1595595690).ax());
+		if (var1 != null && var1.bx(2123543202) != null) {
+			var1.bx(768543345).ak().ag(1, var1.bx(1595595690).ax());
 			switch (var1.bj(526903060)) {
 				case 0:
-					by.ak(lu.ar(var1, 1021960398));
+					by.ak(var1.by(1021960398));
 					break;
 				case 1:
-					int var3 = uo.sa(cf.cg_fld, var1, -769695449);
+					int var3 = uo.xd(cf.cg_fld, var1, -769695449);
 					boolean var2 = (var3 >> 22 & 1) != 0;
 					if (var2) {
 						int[] var4 = var1.bl(679355698);
 						if (var4 != null) {
-							jm var5 = gi.ak(jb.aw_fld, client.aq_fld.av_fld);
-							var5.ay_fld.ee(var4[1]);
-							var5.ay_fld.ea(lu.em(var1, (short)2942));
-							xi.ld(var5.ay_fld, var4[2], (byte)115);
-							var5.ay_fld.di(var1.by_fld * -731957991);
-							var5.ay_fld.ea(var1.bf_fld * 1862044542);
-							xi.ld(var5.ay_fld, var4[0], (byte)111);
-							client.aq_fld.az(var5);
+							jm var5 = gi.ak(jb.aw_fld, client.appletStub.av_fld);
+							var5.ay_fld.cp(var4[1]);
+							var5.ay_fld.et(var1.bf((short)2942));
+							var5.ay_fld.eb(var4[2]);
+							var5.ay_fld.ek(var1.by_fld * -731957991);
+							var5.ay_fld.et(var1.bf_fld * 1862044542);
+							var5.ay_fld.eb(var4[0]);
+							client.appletStub.az(var5);
 						}
 					}
 			}
@@ -511,9 +499,9 @@ public class dk implements po {
 	@Override
 	public void al(lu var1, byte var2) {
 		if (var1 == null) {
-			fu.xp(client.fy_fld, -1812476833);
+			client.fy_fld.az(-1812476833);
 		} else {
-			li var3 = lu.bv(var1, -494977130);
+			li var3 = lu.ax(var1, -494977130);
 			if (null != var3 && var3.bg()) {
 				client.fy_fld.ag(var1, 114546440);
 				var3.ag(true);
@@ -527,15 +515,15 @@ public class dk implements po {
 	)
 	@Override
 	public void bv(lu var1, lu var2) throws EOFException {
-		if (null != var2 && cf.cg_fld.ac(var1) != null) {
-			jm var3 = gi.ak(jb.bb_fld, client.aq_fld.av_fld);
-			var3.ay_fld.ea(var1.bf_fld);
-			var3.ay_fld.di(var1.by_fld);
-			xi.ld(var3.ay_fld, var2.bf_fld, (byte)124);
-			var3.ay_fld.di(var1.ga_fld * -1332560746);
-			xi.si(var3.ay_fld, var2.ga_fld);
-			xi.be(var3.ay_fld, var2.by_fld);
-			client.aq_fld.az(var3);
+		if (null != var2 && uo.kl(cf.cg_fld, var1, -446176385) != null) {
+			jm var3 = gi.ak(jb.bb_fld, client.appletStub.av_fld);
+			var3.ay_fld.et(var1.bf_fld);
+			var3.ay_fld.ek(var1.by_fld);
+			var3.ay_fld.eb(var2.bf_fld);
+			var3.ay_fld.ek(var1.ga_fld * -1332560746);
+			var3.ay_fld.ca(var2.ga_fld);
+			var3.ay_fld.ba(var2.by_fld);
+			client.appletStub.az(var3);
 		}
 	}
 
@@ -545,15 +533,15 @@ public class dk implements po {
 	)
 	@Override
 	public void bi(lu var1, lu var2) throws EOFException {
-		if (null != var2 && cf.cg_fld.ac(var1) != null) {
-			jm var3 = gi.ak(jb.bb_fld, client.aq_fld.av_fld);
-			var3.ay_fld.ea(var1.bf_fld);
-			var3.ay_fld.di(var1.by_fld);
-			xi.ld(var3.ay_fld, var2.bf_fld, (byte)90);
-			var3.ay_fld.di(var1.ga_fld);
-			xi.si(var3.ay_fld, var2.ga_fld);
-			xi.be(var3.ay_fld, var2.by_fld);
-			client.aq_fld.az(var3);
+		if (null != var2 && uo.kl(cf.cg_fld, var1, -446176385) != null) {
+			jm var3 = gi.ak(jb.bb_fld, client.appletStub.av_fld);
+			var3.ay_fld.et(var1.bf_fld);
+			var3.ay_fld.ek(var1.by_fld);
+			var3.ay_fld.eb(var2.bf_fld);
+			var3.ay_fld.ek(var1.ga_fld);
+			var3.ay_fld.ca(var2.ga_fld);
+			var3.ay_fld.ba(var2.by_fld);
+			client.appletStub.az(var3);
 		}
 	}
 
@@ -573,9 +561,9 @@ public class dk implements po {
 	@Override
 	public void bn(lu var1) {
 		if (var1 == null) {
-			fu.xp(client.fy_fld, -869234753);
+			client.fy_fld.az(-869234753);
 		} else {
-			li var2 = lu.bv(var1, -1263362483);
+			li var2 = lu.ax(var1, -1263362483);
 			if (null != var2 && var2.bg()) {
 				client.fy_fld.ag(var1, 114546440);
 				var2.ag(true);
@@ -599,9 +587,9 @@ public class dk implements po {
 	@Override
 	public void bw(lu var1) {
 		if (var1 == null) {
-			fu.xp(client.fy_fld, -1440486595);
+			client.fy_fld.az(-1440486595);
 		} else {
-			li var2 = lu.bv(var1, -1754659732);
+			li var2 = lu.ax(var1, -1754659732);
 			if (null != var2 && var2.bg()) {
 				client.fy_fld.ag(var1, 114546440);
 				var2.ag(true);
@@ -611,7 +599,7 @@ public class dk implements po {
 
 	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZS)I"
 	)
 	static int bl(int var0, ba var1, boolean var2) {
 		return 2;
@@ -628,15 +616,15 @@ public class dk implements po {
 
 	@ObfuscatedName("dd")
 	@ObfuscatedSignature(
-		descriptor = "(Lxj;)V"
+		descriptor = "(Lxj;B)V"
 	)
 	static final void dd(xj var0) throws ExecutionException, InterruptedException, EOFException {
-		client.gv(var0);
+		client.qn(var0);
 		boolean var2 = var0.cg() == 1;
-		int var3 = xi.tx(var0, 1642511750);
-		int var4 = xi.oh(var0, (byte)127);
+		int var3 = var0.cm();
+		int var4 = var0.ex();
 		client.qf_fld.as(var0);
 		of.dl(client.qf_fld, var3, var4, var2);
-		client.ft(var0);
+		client.ec(var0);
 	}
 }

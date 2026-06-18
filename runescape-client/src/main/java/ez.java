@@ -9,12 +9,12 @@ public class ez implements xm {
 		descriptor = "Lez;"
 	)
 	public static ez az_fld = new ez(0, 2);
-	@ObfuscatedGetter(
-		intValue = 858506829
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 858506829
 	)
 	int aw_fld;
 	@ObfuscatedName("ab")
@@ -32,12 +32,12 @@ public class ez implements xm {
 		descriptor = "Lez;"
 	)
 	public static ez ae_fld = new ez(4, 4);
-	@ObfuscatedGetter(
-		intValue = 839071497
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 839071497
 	)
 	public int ah_fld;
 	@ObfuscatedName("ag")
@@ -60,26 +60,12 @@ public class ez implements xm {
 		return this.aw_fld;
 	}
 
-	@ObfuscatedName("ej")
+	@ObfuscatedName("ib")
 	@ObfuscatedSignature(
-		descriptor = "(Lxq;Lrl;Lrl;)I"
+		descriptor = "(Loy;)I"
 	)
-	public static int ej(xq var0, rl var1, rl var2) {
-		return var0.ak_fld ? var1.ap(-1939318074).av(var2.ap(-1939318074), 978535660) : var2.ap(-1939318074).av(var1.ap(-1939318074), 450860119);
-	}
-
-	@ObfuscatedName("sp")
-	@ObfuscatedSignature(
-		descriptor = "(Lpw;Lxi;I)V"
-	)
-	public static void sp(pw var0, xi var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (249 == var2) {
-				var0.az_fld = nc.ak(var1, var0.az_fld);
-			}
-		}
+	public static int ib(oy var0) {
+		return var0.by_fld;
 	}
 
 	@ObfuscatedName("ag")

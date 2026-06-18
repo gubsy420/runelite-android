@@ -10,14 +10,6 @@ public class it extends ig {
 	)
 	SoftReference ak_fld;
 
-	@ObfuscatedName("bm")
-	@ObfuscatedSignature(
-		descriptor = "(Lda;Lbb;)V"
-	)
-	public static void bm(da var0, bb var1) {
-		var0.cg_fld.ag(var1);
-	}
-
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
@@ -36,12 +28,12 @@ public class it extends ig {
 		return this.ak_fld.get();
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
-	boolean ag() {
+	boolean ah() {
 		return true;
 	}
 
@@ -68,21 +60,33 @@ public class it extends ig {
 		return this.ak_fld.get();
 	}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	@Override
-	boolean ah() {
-		return true;
-	}
-
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
 	@Override
 	boolean aw() {
+		return true;
+	}
+
+	@ObfuscatedName("jk")
+	@ObfuscatedSignature(
+		descriptor = "(Lqx;)I"
+	)
+	public static int jk(qx var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ak_fld;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	@Override
+	boolean ag() {
 		return true;
 	}
 }

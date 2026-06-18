@@ -1,4 +1,5 @@
 import net.runelite.api.PendingLogin;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -17,66 +18,76 @@ public class rd extends uq implements PendingLogin {
 		descriptor = "Laax;"
 	)
 	public aax ag_fld;
-	@ObfuscatedGetter(
-		intValue = 1618242095
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = 1618242095
+	)
 	public int ak_fld = (int)(lz.ak() / 1000L);
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		return this.ej().ah();
-	}
-
-	@ObfuscatedName("ej")
-	@ObfuscatedSignature(
-		descriptor = "()Laax;"
-	)
-	public aax ej() {
-		return this.ag_fld;
-	}
 
 	@ObfuscatedName("getWorld")
 	@ObfuscatedSignature(
 		descriptor = "()S"
 	)
+	@Export("getWorld")
 	@Override
 	public short getWorld() {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("ps")
+	@ObfuscatedName("hb")
 	@ObfuscatedSignature(
-		descriptor = "(Laax;I)V"
+		descriptor = "(Lgf;)I"
 	)
-	public void ps(aax var1, int var2) {
-		this.ak_fld = this.ak_fld * 1618242095 + 5;
+	public static int hb(gf var0) {
+		return var0.ay_fld.av_fld * -1248031143;
 	}
 
 	rd(aax var1, int var2) {
 		this.ag_fld = var1;
 		this.az_fld = (short)var2;
-		this.ps(var1, var2);
+		this.ez(var1, var2);
 	}
 
-	@ObfuscatedName("ko")
+	@ObfuscatedName("ws")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)Z"
+		descriptor = "(Lds;)Lpg;"
 	)
-	public static boolean ko(da var0) {
-		return var0.cm_fld.av() && var0.ck_fld * -1696106360 == 0;
+	public static pg ws(ds var0) {
+		return var0.al_fld;
+	}
+
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		return this.nw().cl();
+	}
+
+	@ObfuscatedName("nw")
+	@ObfuscatedSignature(
+		descriptor = "()Laax;"
+	)
+	public aax nw() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("ez")
+	@ObfuscatedSignature(
+		descriptor = "(Laax;I)V"
+	)
+	public void ez(aax var1, int var2) {
+		this.ak_fld = this.ak_fld * 1618242095 + 5;
 	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Luv;Ljava/lang/String;)V"
+		descriptor = "(Luv;Ljava/lang/String;I)V"
 	)
 	static void al(uv var0, String var1) {
 		dq var3 = new dq(var0, var1);

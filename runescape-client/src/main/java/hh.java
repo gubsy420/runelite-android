@@ -1,4 +1,6 @@
 import java.io.EOFException;
+import java.util.HashSet;
+import java.util.Iterator;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -20,18 +22,18 @@ public class hh {
 		descriptor = "I"
 	)
 	static int bx_fld;
-	@ObfuscatedGetter(
-		intValue = -672151393
-	)
 	@ObfuscatedName("pg")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -672151393
 	)
 	static int pg_fld;
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(ILba;Z)I"
+		descriptor = "(ILba;ZI)I"
 	)
 	static int ax(int var0, ba var1, boolean var2) throws EOFException {
 		lu var4;
@@ -77,20 +79,20 @@ public class hh {
 		} else if (1202 == var0) {
 			var4.dm_fld = -1107510263;
 			cv var11 = ot.ef();
-			var4.dq_fld = var11 != null ? var11.av_fld.al(2035269373) : -1;
+			var4.dq_fld = var11 != null ? lp.ls(var11.av_fld, 2035269373) : -1;
 			return 1;
 		} else if (1207 == var0) {
 			boolean var10 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127] == 1;
 			cv var14 = ot.ef();
 			lp var16 = var14 != null ? var14.av_fld : null;
-			lu.wo(var4, var16, var10, 1705960674);
+			var4.ba(var16, var10, 1705960674);
 			return 1;
 		} else if (1208 == var0) {
 			int var9 = bp.au_fld[(gz.ax_fld -= -1684678759) * -776631127];
 			if (null == var4.dy_fld) {
 				throw new RuntimeException("");
 			} else {
-				var4.dy_fld.ai(var9, (byte)0);
+				var4.dy_fld.aw(var9, (byte)0);
 				return 1;
 			}
 		} else if (1209 == var0) {
@@ -110,7 +112,7 @@ public class hh {
 			} else {
 				cv var6 = ot.ef();
 				int var7 = var6 != null ? 1953147203 * var6.av_fld.ax_fld : 0;
-				lp.ub(var4.dy_fld, var7, var5, 1742298493);
+				lp.yo(var4.dy_fld, var7, var5, 1742298493);
 				return 1;
 			}
 		} else if (1214 == var0) {
@@ -126,13 +128,42 @@ public class hh {
 		}
 	}
 
+	@ObfuscatedName("ny")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;I)Ldx;"
+	)
+	public static dx ny(cx var0, int var1) {
+		return (dx)(dx)var0.ak_fld.ak(var1);
+	}
+
+	@ObfuscatedName("hq")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;Ljava/util/HashSet;II)V"
+	)
+	public static void hq(ga var0, HashSet var1, int var2, int var3) throws EOFException {
+		Iterator var4 = var0.ax_fld.values().iterator();
+
+		while (var4.hasNext()) {
+			hr var5 = (hr)(hr)var4.next();
+			if (var5.aq((byte)105)) {
+				int var6 = var5.ag(1455480072);
+				if (var1.contains(var6)) {
+					pc var7 = uh.ak(var6);
+					ga.lk(var0, var7, var5.ar_fld, var5.as_fld, var2, var3, -2047673427);
+				}
+			}
+		}
+
+		var0.at(var1, var2, var3, (byte)41);
+	}
+
 	hh() throws Throwable {
 		throw new Error();
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(I)Z"
 	)
 	static boolean ar() {
 		if ((client.gt_fld & wu.aj_fld.ag(744655113)) != 0) {
@@ -170,7 +201,7 @@ public class hh {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Loy;"
+		descriptor = "(II)Loy;"
 	)
 	public static oy ag(int var0) throws EOFException {
 		oy var2 = (oy)oy.ap_fld.ak(var0);
@@ -190,18 +221,9 @@ public class hh {
 		}
 	}
 
-	@ObfuscatedName("mu")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;Z)V"
-	)
-	public static void mu(li var0, boolean var1) {
-		ve var2 = var0.cu(var0.bm_fld);
-		li.mb(var0, (Integer)var2.ag_fld, var1, (short)-13522);
-	}
-
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void bm() {
 		nz.ad_fld = null;

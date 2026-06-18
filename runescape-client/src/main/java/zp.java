@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("zp")
 public class zp {
-	@ObfuscatedGetter(
-		intValue = 2024908617
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 2024908617
 	)
 	int az_fld;
 	@ObfuscatedName("ag")
@@ -27,6 +27,14 @@ public class zp {
 		descriptor = "I"
 	)
 	static int an_fld;
+
+	@ObfuscatedName("xb")
+	@ObfuscatedSignature(
+		descriptor = "(Lib;)I"
+	)
+	public static int xb(ib var0) {
+		return var0.ak_fld.size();
+	}
 
 	zp(int var1) {
 		this.az_fld = var1;

@@ -52,7 +52,7 @@ public class tk extends td {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "([FIF)F"
+		descriptor = "([FIFI)F"
 	)
 	static float ag(float[] var0, int var1, float var2) {
 		float var4 = var0[var1];

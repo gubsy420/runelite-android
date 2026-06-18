@@ -42,12 +42,12 @@ public class kx implements xm {
 		descriptor = "I"
 	)
 	public static int aw_fld;
-	@ObfuscatedGetter(
-		intValue = -402696271
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -402696271
 	)
 	int ae_fld;
 
@@ -83,12 +83,12 @@ public class kx implements xm {
 		descriptor = "(S)V"
 	)
 	static final void ab(short var0) throws EOFException, UnsupportedEncodingException {
-		client.aq_fld.ae();
+		client.appletStub.ae();
 		pd.aj((byte)1);
 		client.da_fld.an((byte)103);
-		client.ds_fld.ag();
-		di.lk(client.db_fld, 1824358557);
-		fu.xp(client.fy_fld, -148723630);
+		na.mh(client.ds_fld);
+		client.db_fld.an();
+		client.fy_fld.az(-148723630);
 		System.gc();
 		sx.av(0, 0);
 		ah.ay();
@@ -101,15 +101,15 @@ public class kx implements xm {
 			}
 
 			dx var2 = (dx)(dx)var1.next();
-			dx.cy(var2, -2012012193);
+			var2.ar(-2012012193);
 		}
 
 		client.kd_fld.az(true, 1796016238);
 		jk.af(10, (byte)-58);
 		client.gw_fld = 0;
 		byte var10000 = -1;
-		client.tt_void();
-		mx.iv(cf.ak(), (short)180);
+		client.wj();
+		cf.ak().ae();
 		cf.ak().ah();
 	}
 
@@ -138,14 +138,6 @@ public class kx implements xm {
 		return new kx[]{ag_fld, ak_fld, av_fld, az_fld};
 	}
 
-	@ObfuscatedName("ld")
-	@ObfuscatedSignature(
-		descriptor = "(Lqe;)Ljava/lang/String;"
-	)
-	public static String ld(qe var0) {
-		return var0.aw_fld;
-	}
-
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "()[Lkx;"
@@ -160,19 +152,19 @@ public class kx implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ILcx;)Ldx;"
+		descriptor = "(ILcx;I)Ldx;"
 	)
 	public static dx ak(int var0, cx var1) {
 		Iterator var3 = var1.iterator();
 
 		while (var3.hasNext()) {
 			dx var4 = (dx)(dx)var3.next();
-			cv var5 = (cv)var4.au_fld.ak(var0);
+			cv var5 = (cv)var4.au_fld.ae(var0);
 			if (var5 != null && !var4.ak(-787091592)) {
 				return var4;
 			}
 		}
 
-		return var1.ah(-225377813);
+		return cx.gw(var1, -225377813);
 	}
 }

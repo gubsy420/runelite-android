@@ -9,12 +9,12 @@ public class pj {
 		descriptor = "I"
 	)
 	public static int as_fld;
-	@ObfuscatedGetter(
-		intValue = 1733271787
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1733271787
 	)
 	int ag_fld;
 	@ObfuscatedName("dq")
@@ -28,12 +28,17 @@ public class pj {
 	)
 	Object ak_fld;
 
-	@ObfuscatedName("ow")
+	@ObfuscatedName("cw")
 	@ObfuscatedSignature(
-		descriptor = "(Lrs;)I"
+		descriptor = "(Lce;III)I"
 	)
-	public static int ow(rs var0) {
-		return var0.ag_fld;
+	public static int cw(ce var0, int var1, int var2, int var3) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		int var4 = 256 - var3;
+		return (var4 * (var1 & 0xFF00) + var3 * (var2 & 0xFF00) & 0xFF0000) + ((var2 & 16711935) * var3 + (var1 & 16711935) * var4 & -16711936) >> 8;
 	}
 
 	pj(Object var1, int var2) {

@@ -54,7 +54,7 @@ public class kb {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()Lyv;"
+		descriptor = "(I)Lyv;"
 	)
 	yv ak() {
 		if (this.ag_fld == null && null != this.ak_fld && this.ak_fld.ak()) {
@@ -89,22 +89,6 @@ public class kb {
 		descriptor = "()Lyv;"
 	)
 	yv az() {
-		if (this.ag_fld == null && null != this.ak_fld && this.ak_fld.ak()) {
-			if (this.ak_fld.ag() != null) {
-				this.ag_fld = qd.ak(this.ak_fld.ag());
-			}
-
-			this.ak_fld = null;
-		}
-
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()Lyv;"
-	)
-	yv av() {
 		if (this.ag_fld == null && null != this.ak_fld && this.ak_fld.ak()) {
 			if (this.ak_fld.ag() != null) {
 				this.ag_fld = qd.ak(this.ak_fld.ag());
@@ -156,7 +140,7 @@ public class kb {
 				var2.ah(new xi(var3), 82289904);
 			}
 
-			var2.ae(1771536038);
+			og.hh(var2, 1771536038);
 			if (-1 != var2.eg_fld) {
 				var2.ay(ag(var2.eg_fld, -1752383175), ag(var2.en_fld, -1752383175), (byte)-13);
 			}
@@ -166,7 +150,7 @@ public class kb {
 			}
 
 			if (-1 != var2.fa_fld) {
-				var2.ar(ag(var2.fa_fld, -1752383175), ag(var2.fy_fld, -1752383175), (byte)54);
+				og.mw(var2, ag(var2.fa_fld, -1752383175), ag(var2.fy_fld, -1752383175), (byte)54);
 			}
 
 			if (!ux.dq_fld && var2.et_fld) {
@@ -196,10 +180,10 @@ public class kb {
 				if (null != var2.ey_fld) {
 					boolean var8 = false;
 
-					for (vw var5 = af.cn(var2.ey_fld); null != var5; var5 = var2.ey_fld.av()) {
-						px var6 = ag_px((int)var5.hc_fld, -147159662);
+					for (vw var5 = eb.kn(var2.ey_fld); null != var5; var5 = var2.ey_fld.ae()) {
+						px var6 = ag_px((int)var5.hc_long, -147159662);
 						if (var6.ar_fld) {
-							var5.gy_void();
+							var5.gy();
 						} else {
 							var8 = true;
 						}
@@ -214,6 +198,22 @@ public class kb {
 			og.do_fld.az(var2, var0);
 			return var2;
 		}
+	}
+
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;)Lyv;"
+	)
+	public static yv cx(kb var0) {
+		if (var0.ag_fld == null && null != var0.ak_fld && var0.ak_fld.ak()) {
+			if (var0.ak_fld.ag() != null) {
+				var0.ag_fld = qd.ak(var0.ak_fld.ag());
+			}
+
+			var0.ak_fld = null;
+		}
+
+		return var0.ag_fld;
 	}
 
 	@ObfuscatedName("ae")

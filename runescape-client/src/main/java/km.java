@@ -25,12 +25,12 @@ public class km {
 		descriptor = "Lkm;"
 	)
 	public static km ak_fld = new km(0);
-	@ObfuscatedGetter(
-		intValue = 598830903
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 598830903
 	)
 	public int ah_fld;
 	@ObfuscatedName("bj")
@@ -51,7 +51,7 @@ public class km {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;II)[Lyv;"
+		descriptor = "(Lub;III)[Lyv;"
 	)
 	public static yv[] az(ub var0, int var1, int var2) throws EOFException {
 		if (!ms.ar(var0, var1, var2)) {
@@ -84,10 +84,32 @@ public class km {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(I)V"
 	)
 	static final void ag() {
 		xh.ak(kh.hy_fld);
+	}
+
+	@ObfuscatedName("uk")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
+	public static void uk(qt var0) {
+		var0.av_fld.remove("Content-Type");
+	}
+
+	@ObfuscatedName("ts")
+	@ObfuscatedSignature(
+		descriptor = "(Lnj;)V"
+	)
+	public static void ts(nj var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			while (var0.ak_fld.fn_vc != var0.ak_fld) {
+				var0.ak_fld.fn_vc.vi();
+			}
+		}
 	}
 
 	km(int var1) {
@@ -96,7 +118,7 @@ public class km {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	static final boolean ak(int var0) {
 		return 1 == var0 || var0 == 2 || var0 >= 3 && var0 <= 6 || var0 == 1001;

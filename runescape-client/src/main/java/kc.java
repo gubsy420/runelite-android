@@ -24,20 +24,20 @@ public class kc implements xm {
 		descriptor = "Lkc;"
 	)
 	static kc av_fld = new kc(3, 3);
-	@ObfuscatedGetter(
-		intValue = 1895191005
-	)
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int ae_fld;
 	@ObfuscatedGetter(
-		intValue = 864241853
+		intValue = 1895191005
 	)
+	public int ae_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 864241853
 	)
 	int ah_fld;
 	@ObfuscatedName("by")
@@ -113,7 +113,7 @@ public class kc implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;II)Ljava/lang/String;"
+		descriptor = "([Ljava/lang/Object;III)Ljava/lang/String;"
 	)
 	public static String ak(Object[] var0, int var1, int var2) {
 		if (var2 == 0) {

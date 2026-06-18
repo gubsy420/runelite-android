@@ -20,18 +20,26 @@ class yi implements yn {
 	)
 	@Override
 	public Object aw(xi var1) {
-		return xi.ob(var1, 203143117);
+		return var1.cu();
+	}
+
+	@ObfuscatedName("qt")
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)Z"
+	)
+	public static boolean qt(uk var0) {
+		return var0.ay_fld;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Lxh;I)Ljm;"
+		descriptor = "(ILjava/lang/String;Lxh;II)Ljm;"
 	)
 	public static jm ak(int var0, String var1, xh var2, int var3) {
-		jm var5 = gi.ak(jb.ck_fld, client.aq_fld.av_fld);
-		var5.ay_fld.bc(0);
+		jm var5 = gi.ak(jb.ck_fld, client.appletStub.av_fld);
+		var5.ay_fld.ea(0);
 		int var6 = var5.ay_fld.au_fld * -661977895;
-		var5.ay_fld.bc(var0);
+		var5.ay_fld.ea(var0);
 		String var7 = var1.toLowerCase();
 		int var8 = 0;
 		byte[] var9 = null;
@@ -101,33 +109,21 @@ class yi implements yn {
 			var1 = var1.substring(kh.iu_fld.length());
 		}
 
-		var5.ay_fld.bc(var8);
-		var5.ay_fld.bc(var10);
+		var5.ay_fld.ea(var8);
+		var5.ay_fld.ea(var10);
 		if (var9 != null) {
 			for (int var11 = 0; var11 < var9.length; var11++) {
-				var5.ay_fld.bc(var9[var11]);
+				var5.ay_fld.ea(var9[var11]);
 			}
 		}
 
 		jj.ak(var5.ay_fld, var1);
 		if (var0 == kf.av_fld.ag(-1652958600)) {
-			var5.ay_fld.bc(var3);
+			var5.ay_fld.ea(var3);
 		}
 
-		var5.ay_fld.cp(var5.ay_fld.au_fld * -661977895 - var6);
+		var5.ay_fld.ce(var5.ay_fld.au_fld * -661977895 - var6);
 		return var5;
-	}
-
-	@ObfuscatedName("cm")
-	@ObfuscatedSignature(
-		descriptor = "(Lyi;Ljava/lang/Long;Lxi;I)V"
-	)
-	public static void cm(yi var0, Long var1, xi var2, int var3) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var2.fn(var1);
-		}
 	}
 
 	@ObfuscatedName("ag")
@@ -136,26 +132,10 @@ class yi implements yn {
 	)
 	@Override
 	public Object ag(xi var1, int var2) {
-		return xi.ob(var1, 186640615);
+		return var1.cu();
 	}
 
 	yi() {
-	}
-
-	@ObfuscatedName("vh")
-	@ObfuscatedSignature(
-		descriptor = "(Lev;IIII)Z"
-	)
-	public static boolean vh(ev var0, int var1, int var2, int var3, int var4) {
-		return var0.ci(var0.ex_fld, var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Long;Lxi;)V"
-	)
-	void av(Long var1, xi var2) {
-		var2.fn(var1);
 	}
 
 	@ObfuscatedName("ae")
@@ -163,7 +143,7 @@ class yi implements yn {
 		descriptor = "(Ljava/lang/Long;Lxi;)V"
 	)
 	void ae(Long var1, xi var2) {
-		var2.fn(var1);
+		var2.ft(var1);
 	}
 
 	@ObfuscatedName("ah")
@@ -172,7 +152,7 @@ class yi implements yn {
 	)
 	@Override
 	public Object ah(xi var1) {
-		return xi.ob(var1, -1929308636);
+		return var1.cu();
 	}
 
 	@ObfuscatedName("az")
@@ -181,7 +161,7 @@ class yi implements yn {
 	)
 	@Override
 	public void az(Object var1, xi var2, byte var3) {
-		cm(this, (Long)var1, var2, -2097605185);
+		this.ak((Long)var1, var2);
 	}
 
 	@ObfuscatedName("ay")
@@ -190,7 +170,7 @@ class yi implements yn {
 	)
 	@Override
 	public void ay(Object var1, xi var2) {
-		cm(this, (Long)var1, var2, -1184964057);
+		this.ak((Long)var1, var2);
 	}
 
 	@ObfuscatedName("as")
@@ -199,14 +179,14 @@ class yi implements yn {
 	)
 	@Override
 	public void as(Object var1, xi var2) {
-		cm(this, (Long)var1, var2, 1322177405);
+		this.ak((Long)var1, var2);
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Long;Lxi;I)V"
 	)
-	void ak(Long var1, xi var2, int var3) {
-		var2.fl(var1);
+	void ak(Long var1, xi var2) {
+		var2.ft(var1);
 	}
 }

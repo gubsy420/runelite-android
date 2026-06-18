@@ -1,3 +1,4 @@
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -5,6 +6,7 @@ import java.security.cert.Certificate;
 import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
@@ -35,10 +37,18 @@ class qf extends SSLSocket {
 	)
 	qz this$0;
 
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void am(boolean var1) {
+	}
+
 	@ObfuscatedName("getInputStream")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/io/InputStream;"
 	)
+	@Export("getInputStream")
 	@Override
 	public InputStream getInputStream() throws IOException {
 		return this.val$tlsClientProtocol.getInputStream();
@@ -48,6 +58,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/io/OutputStream;"
 	)
+	@Export("getOutputStream")
 	@Override
 	public OutputStream getOutputStream() throws IOException {
 		return this.val$tlsClientProtocol.getOutputStream();
@@ -57,6 +68,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("close")
 	@Override
 	public synchronized void close() throws IOException {
 		this.val$tlsClientProtocol.close();
@@ -72,6 +84,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("getEnableSessionCreation")
 	@Override
 	public boolean getEnableSessionCreation() {
 		return false;
@@ -81,6 +94,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "(Z)V"
 	)
+	@Export("setEnableSessionCreation")
 	@Override
 	public void setEnableSessionCreation(boolean var1) {
 	}
@@ -89,6 +103,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getEnabledCipherSuites")
 	@Override
 	public String[] getEnabledCipherSuites() {
 		return null;
@@ -98,6 +113,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/String;)V"
 	)
+	@Export("setEnabledCipherSuites")
 	@Override
 	public void setEnabledCipherSuites(String[] var1) {
 	}
@@ -106,6 +122,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("getWantClientAuth")
 	@Override
 	public boolean getWantClientAuth() {
 		return false;
@@ -115,6 +132,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "(Z)V"
 	)
+	@Export("setUseClientMode")
 	@Override
 	public void setUseClientMode(boolean var1) {
 	}
@@ -123,6 +141,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("getNeedClientAuth")
 	@Override
 	public boolean getNeedClientAuth() {
 		return false;
@@ -132,6 +151,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "(Z)V"
 	)
+	@Export("setNeedClientAuth")
 	@Override
 	public void setNeedClientAuth(boolean var1) {
 	}
@@ -140,6 +160,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Ljavax/net/ssl/SSLSession;"
 	)
+	@Export("getSession")
 	@Override
 	public SSLSession getSession() {
 		return new ql(this);
@@ -157,6 +178,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getSupportedCipherSuites")
 	@Override
 	public String[] getSupportedCipherSuites() {
 		return null;
@@ -166,6 +188,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()Z"
 	)
+	@Export("getUseClientMode")
 	@Override
 	public boolean getUseClientMode() {
 		return false;
@@ -179,10 +202,19 @@ class qf extends SSLSocket {
 		return false;
 	}
 
+	@ObfuscatedName("bl")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/String;"
+	)
+	public String[] bl() {
+		return null;
+	}
+
 	@ObfuscatedName("getSupportedProtocols")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getSupportedProtocols")
 	@Override
 	public String[] getSupportedProtocols() {
 		return null;
@@ -196,10 +228,27 @@ class qf extends SSLSocket {
 		return false;
 	}
 
+	@ObfuscatedName("ll")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;)V"
+	)
+	public static void ll(qf var0) throws IOException, Exception {
+		try {
+			if (var0 == null) {
+				var0.getClass();
+			}
+
+			var0.val$tlsClientProtocol.connect(new qi(var0));
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
+	}
+
 	@ObfuscatedName("startHandshake")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
+	@Export("startHandshake")
 	@Override
 	public void startHandshake() throws IOException {
 		try {
@@ -209,36 +258,24 @@ class qf extends SSLSocket {
 		}
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/io/InputStream;"
-	)
-	public InputStream ag() throws IOException {
-		return this.val$tlsClientProtocol.getInputStream();
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/io/InputStream;"
-	)
-	public InputStream ak() throws IOException {
-		return this.val$tlsClientProtocol.getInputStream();
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/io/OutputStream;"
-	)
-	public OutputStream az() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream();
-	}
-
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/io/OutputStream;"
 	)
 	public OutputStream av() throws IOException {
 		return this.val$tlsClientProtocol.getOutputStream();
+	}
+
+	@ObfuscatedName("nc")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;)V"
+	)
+	public static void nc(qf var0) throws IOException, Exception {
+		try {
+			var0.val$tlsClientProtocol.connect(new qi(var0));
+		} catch (Throwable var2) {
+			throw new RuntimeException(var2);
+		}
 	}
 
 	@ObfuscatedName("ae")
@@ -272,12 +309,27 @@ class qf extends SSLSocket {
 	public void be(boolean var1) {
 	}
 
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
+	)
+	public void as(HandshakeCompletedListener var1) {
+	}
+
 	@ObfuscatedName("removeHandshakeCompletedListener")
 	@ObfuscatedSignature(
 		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
 	)
+	@Export("removeHandshakeCompletedListener")
 	@Override
 	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
+	)
+	public void al(HandshakeCompletedListener var1) {
 	}
 
 	@ObfuscatedName("au")
@@ -287,12 +339,14 @@ class qf extends SSLSocket {
 	public void au(HandshakeCompletedListener var1) {
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("fq")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(Ltf;Ljava/awt/event/WindowEvent;)V"
 	)
-	public boolean ax() {
-		return false;
+	public static void fq(tf var0, WindowEvent var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
 	}
 
 	@ObfuscatedName("bn")
@@ -311,19 +365,18 @@ class qf extends SSLSocket {
 		return null;
 	}
 
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void ai(boolean var1) {
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Z)V"
 	)
 	public void aq(boolean var1) {
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/String;"
-	)
-	public String[] ap() {
-		return null;
 	}
 
 	@ObfuscatedName("ad")
@@ -338,15 +391,9 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/String;)V"
 	)
+	@Export("setEnabledProtocols")
 	@Override
 	public void setEnabledProtocols(String[] var1) {
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;)V"
-	)
-	public void ab(String[] var1) {
 	}
 
 	@ObfuscatedName("ar")
@@ -360,16 +407,9 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
 	)
+	@Export("getEnabledProtocols")
 	@Override
 	public String[] getEnabledProtocols() {
-		return null;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/String;"
-	)
-	public String[] ac() {
 		return null;
 	}
 
@@ -378,14 +418,6 @@ class qf extends SSLSocket {
 		descriptor = "([Ljava/lang/String;)V"
 	)
 	public void aj(String[] var1) {
-	}
-
-	@ObfuscatedName("zd")
-	@ObfuscatedSignature(
-		descriptor = "(Lpn;)Lwn;"
-	)
-	public static wn zd(pn var0) {
-		return var0.as_fld;
 	}
 
 	@ObfuscatedName("aa")
@@ -400,6 +432,7 @@ class qf extends SSLSocket {
 	@ObfuscatedSignature(
 		descriptor = "(Z)V"
 	)
+	@Export("setWantClientAuth")
 	@Override
 	public void setWantClientAuth(boolean var1) {
 	}
@@ -412,27 +445,13 @@ class qf extends SSLSocket {
 		return false;
 	}
 
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "(Z)V"
-	)
-	public void br(boolean var1) {
-	}
-
 	@ObfuscatedName("addHandshakeCompletedListener")
 	@ObfuscatedSignature(
 		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
 	)
+	@Export("addHandshakeCompletedListener")
 	@Override
 	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "()Ljavax/net/ssl/SSLSession;"
-	)
-	public SSLSession bs() {
-		return new ql(this);
 	}
 
 	@ObfuscatedName("bh")
@@ -451,6 +470,14 @@ class qf extends SSLSocket {
 		return null;
 	}
 
+	@ObfuscatedName("bx")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	public boolean bx() {
+		return false;
+	}
+
 	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "()[Ljava/lang/String;"
@@ -467,6 +494,14 @@ class qf extends SSLSocket {
 		return null;
 	}
 
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "()[Ljava/lang/String;"
+	)
+	public String[] ao() {
+		return null;
+	}
+
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
@@ -480,6 +515,13 @@ class qf extends SSLSocket {
 	)
 	public boolean bo() {
 		return false;
+	}
+
+	@ObfuscatedName("bp")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void bp(boolean var1) {
 	}
 
 	@ObfuscatedName("bt")
@@ -504,18 +546,6 @@ class qf extends SSLSocket {
 		return false;
 	}
 
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;)V"
-	)
-	public static void ae(qf var0) throws IOException, Exception {
-		try {
-			var0.val$tlsClientProtocol.connect(new qi(var0));
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
 	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -531,6 +561,25 @@ class qf extends SSLSocket {
 	public void ba(HandshakeCompletedListener var1) {
 	}
 
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "(Z)V"
+	)
+	public void bc(boolean var1) {
+	}
+
+	@ObfuscatedName("fv")
+	@ObfuscatedSignature(
+		descriptor = "(Lqf;)Ljavax/net/ssl/SSLSession;"
+	)
+	public static SSLSession fv(qf var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return new ql(var0);
+	}
+
 	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
 		descriptor = "(Ljavax/net/ssl/HandshakeCompletedListener;)V"
@@ -538,11 +587,11 @@ class qf extends SSLSocket {
 	public void bw(HandshakeCompletedListener var1) {
 	}
 
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public void bq() throws IOException {
+	public void bb() throws IOException {
 		try {
 			this.val$tlsClientProtocol.connect(new qi(this));
 		} catch (Throwable var2) {
@@ -568,25 +617,5 @@ class qf extends SSLSocket {
 	)
 	public boolean bm() {
 		return false;
-	}
-
-	@ObfuscatedName("cd")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	public void cd() throws IOException {
-		try {
-			this.val$tlsClientProtocol.connect(new qi(this));
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "()[Ljava/lang/String;"
-	)
-	public String[] ao() {
-		return null;
 	}
 }

@@ -1,16 +1,15 @@
-import java.util.Arrays;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ip")
 public class ip extends ht {
-	@ObfuscatedGetter(
-		intValue = -1211288735
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1211288735
 	)
 	int ak_fld;
 	// $VF: synthetic field
@@ -35,45 +34,9 @@ public class ip extends ht {
 	)
 	static int au_fld;
 
-	@ObfuscatedName("qi")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;Lko;)V"
-	)
-	public static void qi(rg var0, ko var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.af_fld = var1;
-	}
-
-	@ObfuscatedName("na")
-	@ObfuscatedSignature(
-		descriptor = "(Lla;Ljava/lang/Runnable;I)Llv;"
-	)
-	public static lv na(la var0, Runnable var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return la.se(var0, 2, var2, 0, var1);
-	}
-
 	ip(ia var1) {
 		this.this$0 = var1;
 		this.ak_fld = -950055073;
-	}
-
-	@ObfuscatedName("mz")
-	@ObfuscatedSignature(
-		descriptor = "(Lli;)I"
-	)
-	public static int mz(li var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var0.bf_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -82,7 +45,7 @@ public class ip extends ht {
 	)
 	@Override
 	void ak(xi var1, int var2) {
-		this.ak_fld = xi.tx(var1, 966200787);
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("ag")
@@ -94,29 +57,38 @@ public class ip extends ht {
 		var1.ay(this.ak_fld, (short)-20638);
 	}
 
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;)Ljava/lang/Object;"
+	)
+	public static Object ai(pd var0) {
+		if (0 == var0.av_fld) {
+			return null;
+		} else {
+			var0.ae_fld += 2023104386;
+			Object var1 = var0.ag_fld[0].ak_fld;
+			var0.az_fld.remove(var1);
+			var0.av_fld--;
+			if (1238153755 * var0.av_fld == 0) {
+				var0.ag_fld[var0.av_fld] = null;
+			} else {
+				var0.ag_fld[0] = var0.ag_fld[var0.av_fld];
+				var0.ag_fld[0].ag_fld = 0;
+				var0.ag_fld[-680165016 * var0.av_fld] = null;
+				pd.pz(var0, 0, -2114691761);
+			}
+
+			return var1;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Lxi;)V"
 	)
 	@Override
 	void az(xi var1) {
-		this.ak_fld = xi.tx(var1, 1034981764);
-	}
-
-	@ObfuscatedName("rp")
-	@ObfuscatedSignature(
-		descriptor = "(Lle;I)V"
-	)
-	public static void rp(le var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			if (var0.ae_fld == var0.ah_fld.length) {
-				var0.ah_fld = Arrays.copyOf(var0.ah_fld, var0.ah_fld.length * 2);
-			}
-
-			var0.ah_fld[(var0.ae_fld += -131739243) * 384561597 - 1] = var1;
-		}
+		this.ak_fld = var1.cm();
 	}
 
 	@ObfuscatedName("av")
@@ -125,7 +97,7 @@ public class ip extends ht {
 	)
 	@Override
 	void av(xi var1) {
-		this.ak_fld = xi.tx(var1, 757841802) * -726371141;
+		this.ak_fld = var1.cm() * -726371141;
 	}
 
 	@ObfuscatedName("ae")
@@ -134,7 +106,7 @@ public class ip extends ht {
 	)
 	@Override
 	void ae(xi var1) {
-		this.ak_fld = xi.tx(var1, 1704500069) * -1383762984;
+		this.ak_fld = var1.cm() * -1383762984;
 	}
 
 	@ObfuscatedName("aw")
@@ -164,9 +136,17 @@ public class ip extends ht {
 		var1.ay(this.ak_fld, (short)-13036);
 	}
 
+	@ObfuscatedName("wz")
+	@ObfuscatedSignature(
+		descriptor = "(Lrr;)I"
+	)
+	public static int wz(rr var0) {
+		return var0.ae_fld;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	public static int ak() {
 		return ej.cd_fld + 1;

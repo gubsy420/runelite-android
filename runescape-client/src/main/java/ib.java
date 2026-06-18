@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -18,12 +19,12 @@ public class ib extends vw implements ClanChannel {
 		descriptor = "Z"
 	)
 	boolean aw_fld;
-	@ObfuscatedGetter(
-		longValue = 89774674213838977L
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "J"
+	)
+	@ObfuscatedGetter(
+		longValue = 89774674213838977L
 	)
 	public long ag_fld;
 	@ObfuscatedName("az")
@@ -62,12 +63,32 @@ public class ib extends vw implements ClanChannel {
 	)
 	public byte av_fld;
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("se")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(Lib;)I"
 	)
-	public int al() {
-		return this.ak_fld.size();
+	public static int se(ib var0) {
+		return var0.ak_fld.size();
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)[I"
+	)
+	public int[] ak(int var1) {
+		if (null == this.ay_fld) {
+			String[] var2 = new String[this.ak_fld.size()];
+			this.ay_fld = new int[this.ak_fld.size()];
+
+			for (int var3 = 0; var3 < this.ak_fld.size(); this.ay_fld[var3] = var3++) {
+				var2[var3] = aax.xq(((hx)this.ak_fld.get(var3)).az_fld, -120170284);
+			}
+
+			int[] var4 = this.ay_fld;
+			mf.az(var2, var4, 0, var2.length - 1);
+		}
+
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("ag")
@@ -77,72 +98,7 @@ public class ib extends vw implements ClanChannel {
 	void ag(hx var1, int var2) {
 		this.ak_fld.add(var1);
 		this.ay_fld = null;
-		this.pl(var1);
-	}
-
-	@ObfuscatedName("findMember")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Lnet/runelite/api/clan/ClanChannelMember;"
-	)
-	@Override
-	public ClanChannelMember findMember(String var1) {
-		aax var2 = new aax(var1, fr.gv_fld);
-		var1 = var2.gq();
-		if (var1 == null) {
-			return null;
-		} else {
-			List var3 = this.getMembers();
-			int[] var4 = this.pd();
-			int var5 = 0;
-			int var6 = var4.length - 1;
-
-			while (var5 <= var6) {
-				int var7 = var5 + var6 >>> 1;
-				int var8 = var4[var7];
-				hx var9 = (hx)(hx)var3.get(var8);
-				int var10 = var9.hn().gq().compareTo(var1);
-				if (var10 < 0) {
-					var5 = var7 + 1;
-				} else {
-					if (var10 <= 0) {
-						return var9;
-					}
-
-					var6 = var7 - 1;
-				}
-			}
-
-			return null;
-		}
-	}
-
-	@ObfuscatedName("getMembers")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/List;"
-	)
-	@Override
-	public List getMembers() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("om")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;)I"
-	)
-	public static int om(ib var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return var0.ak_fld.size();
-		}
-	}
-
-	@ObfuscatedName("pd")
-	@ObfuscatedSignature(
-		descriptor = "()[I"
-	)
-	public int[] pd() {
-		return vh(this, 585672594);
+		this.jc(var1);
 	}
 
 	@ObfuscatedName("az")
@@ -150,17 +106,9 @@ public class ib extends vw implements ClanChannel {
 		descriptor = "(II)V"
 	)
 	void az(int var1, int var2) {
-		this.ni(var1);
+		this.wq(var1);
 		this.ak_fld.remove(var1);
 		this.ay_fld = null;
-	}
-
-	@ObfuscatedName("pl")
-	@ObfuscatedSignature(
-		descriptor = "(Lhx;)V"
-	)
-	public void pl(hx var1) {
-		og.ci_fld.getCallbacks().post(new ClanMemberJoined(this, var1));
 	}
 
 	@ObfuscatedName("av")
@@ -180,26 +128,22 @@ public class ib extends vw implements ClanChannel {
 		this.ay_fld = null;
 	}
 
-	@ObfuscatedName("ey")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;Lxi;B)V"
+		descriptor = "(Lxi;B)V"
 	)
-	public static void ey(ib var0, xi var1, byte var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
+	void ah(xi var1, byte var2) {
 		int var3 = var1.cg();
 		if (0 != (var3 & 1)) {
 			if (var2 >= 15) {
 				return;
 			}
 
-			var0.ah_fld = true;
+			this.ah_fld = true;
 		}
 
 		if (0 != (var3 & 2)) {
-			var0.aw_fld = true;
+			this.aw_fld = true;
 		}
 
 		int var4 = 2;
@@ -207,89 +151,81 @@ public class ib extends vw implements ClanChannel {
 			var4 = var1.cg();
 		}
 
-		var0.hc_fld = xi.ob(var1, -1842374787);
-		var0.ag_fld = xi.ob(var1, 537191439);
-		var0.az_fld = xi.kc(var1, -347123913);
-		var1.dw();
-		var0.ae_fld = xi.rp(var1, -339466647);
-		var0.av_fld = xi.rp(var1, -2132926196);
-		int var5 = xi.tx(var1, 357625833);
+		this.hc_long = var1.cu();
+		this.ag_fld = var1.cu();
+		this.az_fld = xi.at(var1, -347123913);
+		var1.cj();
+		this.ae_fld = var1.cw();
+		this.av_fld = var1.cw();
+		int var5 = var1.cm();
 		if (var5 > 0) {
 			if (var2 >= 15) {
 				return;
 			}
 
-			var0.ak_fld = new ArrayList(var5);
+			this.ak_fld = new ArrayList(var5);
 
 			for (int var6 = 0; var6 < var5; var6++) {
 				hx var7 = new hx();
-				if (var0.ah_fld) {
-					xi.ob(var1, -1707916904);
+				if (this.ah_fld) {
+					var1.cu();
 				}
 
-				if (var0.aw_fld) {
-					var7.az_fld = new aax(xi.kc(var1, -1550465849));
+				if (this.aw_fld) {
+					var7.az_fld = new aax(xi.at(var1, -1550465849));
 				}
 
-				var7.ak_fld = xi.rp(var1, 697605653);
-				var7.ag_fld = xi.tx(var1, 1320424859);
+				var7.ak_fld = var1.cw();
+				var7.ag_fld = var1.cm() * 1009140281;
 				if (var4 >= 3) {
-					var1.dw();
+					var1.cj();
 				}
 
-				var0.ak_fld.add(var6, var7);
+				this.ak_fld.add(var6, var7);
 			}
-		}
-	}
-
-	@ObfuscatedName("vh")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;I)[I"
-	)
-	public static int[] vh(ib var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (null == var0.ay_fld) {
-			String[] var2 = new String[var0.ak_fld.size()];
-			var0.ay_fld = new int[var0.ak_fld.size()];
-
-			for (int var3 = 0; var3 < var0.ak_fld.size(); var0.ay_fld[var3] = var3++) {
-				var2[var3] = ((hx)var0.ak_fld.get(var3)).az_fld.ag(-120170284);
-			}
-
-			int[] var4 = var0.ay_fld;
-			mf.az(var2, var4, 0, var2.length - 1);
-		}
-
-		return var0.ay_fld;
-	}
-
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;Ljava/lang/String;)I"
-	)
-	public static int kz(ib var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (!var0.aw_fld) {
-			throw new RuntimeException("Displaynames not available");
-		} else {
-			for (int var2 = 0; var2 < var0.ak_fld.size(); var2++) {
-				if (((hx)var0.ak_fld.get(var2)).az_fld.ak(1633470833).equalsIgnoreCase(var1)) {
-					return var2;
-				}
-			}
-
-			return -1;
 		}
 	}
 
 	static {
 		new BitSet(65536);
+	}
+
+	@ObfuscatedName("jc")
+	@ObfuscatedSignature(
+		descriptor = "(Lhx;)V"
+	)
+	public void jc(hx var1) {
+		og.ci_fld.getCallbacks().post(new ClanMemberJoined(this, var1));
+	}
+
+	@ObfuscatedName("wq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void wq(int var1) {
+		List var2 = this.getMembers();
+		hx var3 = (hx)(hx)var2.get(var1);
+		og.ci_fld.getCallbacks().post(new ClanMemberLeft(this, var3));
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "()[I"
+	)
+	public int[] aw() {
+		if (null == this.ay_fld) {
+			String[] var1 = new String[this.ak_fld.size()];
+			this.ay_fld = new int[this.ak_fld.size()];
+
+			for (int var2 = 0; var2 < this.ak_fld.size(); this.ay_fld[var2] = var2++) {
+				var1[var2] = aax.xq(((hx)this.ak_fld.get(var2)).az_fld, 1311152590);
+			}
+
+			int[] var3 = this.ay_fld;
+			mf.az(var1, var3, 0, var1.length - 1);
+		}
+
+		return this.ay_fld;
 	}
 
 	@ObfuscatedName("an")
@@ -311,30 +247,30 @@ public class ib extends vw implements ClanChannel {
 			var3 = var1.cg();
 		}
 
-		this.hc_fld = xi.ob(var1, -1684915550);
-		this.ag_fld = xi.ob(var1, 1043933345);
-		this.az_fld = xi.kc(var1, 1579531551);
-		var1.dw();
-		this.ae_fld = xi.rp(var1, -1536963227);
-		this.av_fld = xi.rp(var1, -1578753919);
-		int var4 = xi.tx(var1, 1531756397);
+		this.hc_long = var1.cu();
+		this.ag_fld = var1.cu();
+		this.az_fld = xi.at(var1, 1579531551);
+		var1.cj();
+		this.ae_fld = var1.cw();
+		this.av_fld = var1.cw();
+		int var4 = var1.cm();
 		if (var4 > 0) {
 			this.ak_fld = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; var5++) {
 				hx var6 = new hx();
 				if (this.ah_fld) {
-					xi.ob(var1, 648095204);
+					var1.cu();
 				}
 
 				if (this.aw_fld) {
-					var6.az_fld = new aax(xi.kc(var1, -871510959));
+					var6.az_fld = new aax(xi.at(var1, -871510959));
 				}
 
-				var6.ak_fld = xi.rp(var1, 1046219842);
-				var6.ag_fld = xi.tx(var1, 513651907);
+				var6.ak_fld = var1.cw();
+				var6.ag_fld = var1.cm() * 1009140281;
 				if (var3 >= 3) {
-					var1.dw();
+					var1.cj();
 				}
 
 				this.ak_fld.add(var5, var6);
@@ -342,50 +278,82 @@ public class ib extends vw implements ClanChannel {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("findMember")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)Lnet/runelite/api/clan/ClanChannelMember;"
+	)
+	@Export("findMember")
+	@Override
+	public ClanChannelMember findMember(String var1) {
+		aax var2 = new aax(var1, fr.gv_fld);
+		var1 = var2.vg();
+		if (var1 == null) {
+			return null;
+		} else {
+			List var3 = this.getMembers();
+			int[] var4 = this.lm();
+			int var5 = 0;
+			int var6 = var4.length - 1;
+
+			while (var5 <= var6) {
+				int var7 = var5 + var6 >>> 1;
+				int var8 = var4[var7];
+				hx var9 = (hx)(hx)var3.get(var8);
+				int var10 = var9.pf().vg().compareTo(var1);
+				if (var10 < 0) {
+					var5 = var7 + 1;
+				} else {
+					if (var10 <= 0) {
+						return var9;
+					}
+
+					var6 = var7 - 1;
+				}
+			}
+
+			return null;
+		}
+	}
+
+	@ObfuscatedName("iu")
+	@ObfuscatedSignature(
+		descriptor = "(Lxz;J)Lvw;"
+	)
+	public static vw iu(xz var0, long var1) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			return xz.tw(var0, var1);
+		}
+	}
+
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	void ar(int var1) {
+	void as(int var1) {
 		this.ak_fld.remove(var1);
 		this.ay_fld = null;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int af() {
-		return this.ak_fld.size();
 	}
 
 	@ObfuscatedName("getName")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getName")
 	@Override
 	public String getName() {
 		return this.az_fld;
 	}
 
-	@ObfuscatedName("jw")
+	@ObfuscatedName("getMembers")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;)[I"
+		descriptor = "()Ljava/util/List;"
 	)
-	public static int[] jw(ib var0) {
-		if (null == var0.ay_fld) {
-			String[] var1 = new String[var0.ak_fld.size()];
-			var0.ay_fld = new int[var0.ak_fld.size()];
-
-			for (int var2 = 0; var2 < var0.ak_fld.size(); var0.ay_fld[var2] = var2++) {
-				var1[var2] = ((hx)var0.ak_fld.get(var2)).az_fld.ag(1311152590);
-			}
-
-			int[] var3 = var0.ay_fld;
-			mf.az(var1, var3, 0, var1.length - 1);
-		}
-
-		return var0.ay_fld;
+	@Export("getMembers")
+	@Override
+	public List getMembers() {
+		return this.ak_fld;
 	}
 
 	@ObfuscatedName("ae")
@@ -406,96 +374,43 @@ public class ib extends vw implements ClanChannel {
 		}
 	}
 
+	@ObfuscatedName("sf")
+	@ObfuscatedSignature(
+		descriptor = "(Lib;I)V"
+	)
+	public static void sf(ib var0, int var1) {
+		var0.ak_fld.remove(var1);
+		var0.ay_fld = null;
+	}
+
 	public ib(xi var1) {
 		this.aw_fld = true;
-		ey(this, var1, (byte)-44);
+		this.ah(var1, (byte)-44);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("lm")
 	@ObfuscatedSignature(
-		descriptor = "(I)[I"
+		descriptor = "()[I"
 	)
-	public int[] ak(int var1) {
-		if (null == this.ay_fld) {
-			String[] var2 = new String[this.ak_fld.size()];
-			this.ay_fld = new int[this.ak_fld.size()];
-
-			for (int var3 = 0; var3 < this.ak_fld.size(); this.ay_fld[var3] = var3++) {
-				var2[var3] = ((hx)this.ak_fld.get(var3)).az_fld.ak(-120170284);
-			}
-
-			int[] var4 = this.ay_fld;
-			mf.az(var2, var4, 0, var2.length - 1);
-		}
-
-		return this.ay_fld;
+	public int[] lm() {
+		return this.ak(585672594);
 	}
 
-	@ObfuscatedName("ni")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(Ljava/lang/String;)I"
 	)
-	public void ni(int var1) {
-		List var2 = this.getMembers();
-		hx var3 = (hx)(hx)var2.get(var1);
-		og.ci_fld.getCallbacks().post(new ClanMemberLeft(this, var3));
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;B)V"
-	)
-	void ah(xi var1, byte var2) {
-		int var3 = var1.dz();
-		if (0 != (var3 & 1)) {
-			if (var2 >= 15) {
-				return;
+	public int ax(String var1) {
+		if (!this.aw_fld) {
+			throw new RuntimeException("Displaynames not available");
+		} else {
+			for (int var2 = 0; var2 < this.ak_fld.size(); var2++) {
+				if (((hx)this.ak_fld.get(var2)).az_fld.ak(1633470833).equalsIgnoreCase(var1)) {
+					return var2;
+				}
 			}
 
-			this.ah_fld = true;
-		}
-
-		if (0 != (var3 & 2)) {
-			this.ah_fld = true;
-		}
-
-		int var4 = 2;
-		if ((var3 & 4) != 0) {
-			var4 = var1.cg();
-		}
-
-		this.hc_fld = xi.ob(var1, -1842374787);
-		this.ag_fld = xi.ob(var1, 537191439);
-		this.az_fld = xi.kc(var1, -347123913);
-		var1.cj();
-		this.ae_fld = xi.rp(var1, -339466647);
-		this.av_fld = xi.rp(var1, -2132926196);
-		int var5 = xi.tx(var1, 357625833);
-		if (var5 > 0) {
-			if (var2 >= 15) {
-				return;
-			}
-
-			this.ak_fld = new ArrayList(var5);
-
-			for (int var6 = 0; var6 < var5; var6++) {
-				hx var7 = new hx();
-				if (this.aw_fld) {
-					xi.ob(var1, -1707916904);
-				}
-
-				if (this.aw_fld) {
-					var7.az_fld = new aax(xi.kc(var1, -1550465849));
-				}
-
-				var7.ak_fld = xi.rp(var1, 697605653);
-				var7.ag_fld = xi.tx(var1, 1320424859);
-				if (var4 >= 3) {
-					var1.dw();
-				}
-
-				this.ak_fld.add(var6, var7);
-			}
+			return -1;
 		}
 	}
 }

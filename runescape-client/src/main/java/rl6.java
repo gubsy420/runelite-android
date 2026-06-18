@@ -6,148 +6,140 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 @ObfuscatedName("rl6")
 class rl6 {
 	// $VF: synthetic field
-	@ObfuscatedName("dg")
+	@ObfuscatedName("jd")
 	@ObfuscatedSignature(
 		descriptor = "[I"
 	)
-	public static int[] dg_fld = new int[MenuAction.values().length];
-
-	@ObfuscatedName("sp")
-	@ObfuscatedSignature(
-		descriptor = "(Lrg;)I"
-	)
-	public static int sp(rg var0) {
-		return var0.av_fld.ag();
-	}
+	public static int[] jd_fld = new int[MenuAction.values().length];
 
 	static {
 		try {
-			dg_fld[MenuAction.WIDGET_TARGET.ordinal()] = 1;
+			jd_fld[MenuAction.WIDGET_TARGET.ordinal()] = 1;
 		} catch (NoSuchFieldError var26) {
 		}
 
 		try {
-			dg_fld[MenuAction.WIDGET_TARGET_ON_WIDGET.ordinal()] = 2;
+			jd_fld[MenuAction.WIDGET_TARGET_ON_WIDGET.ordinal()] = 2;
 		} catch (NoSuchFieldError var25) {
 		}
 
 		try {
-			dg_fld[MenuAction.WIDGET_CONTINUE.ordinal()] = 3;
+			jd_fld[MenuAction.WIDGET_CONTINUE.ordinal()] = 3;
 		} catch (NoSuchFieldError var24) {
 		}
 
 		try {
-			dg_fld[MenuAction.CC_OP.ordinal()] = 4;
+			jd_fld[MenuAction.CC_OP.ordinal()] = 4;
 		} catch (NoSuchFieldError var23) {
 		}
 
 		try {
-			dg_fld[MenuAction.CC_OP_LOW_PRIORITY.ordinal()] = 5;
+			jd_fld[MenuAction.CC_OP_LOW_PRIORITY.ordinal()] = 5;
 		} catch (NoSuchFieldError var22) {
 		}
 
 		try {
-			dg_fld[MenuAction.RUNELITE_WIDGET.ordinal()] = 6;
+			jd_fld[MenuAction.RUNELITE_WIDGET.ordinal()] = 6;
 		} catch (NoSuchFieldError var21) {
 		}
 
 		try {
-			dg_fld[MenuAction.ITEM_USE_ON_NPC.ordinal()] = 7;
+			jd_fld[MenuAction.ITEM_USE_ON_NPC.ordinal()] = 7;
 		} catch (NoSuchFieldError var20) {
 		}
 
 		try {
-			dg_fld[MenuAction.WIDGET_TARGET_ON_NPC.ordinal()] = 8;
+			jd_fld[MenuAction.WIDGET_TARGET_ON_NPC.ordinal()] = 8;
 		} catch (NoSuchFieldError var19) {
 		}
 
 		try {
-			dg_fld[MenuAction.NPC_FIRST_OPTION.ordinal()] = 9;
+			jd_fld[MenuAction.NPC_FIRST_OPTION.ordinal()] = 9;
 		} catch (NoSuchFieldError var18) {
 		}
 
 		try {
-			dg_fld[MenuAction.NPC_SECOND_OPTION.ordinal()] = 10;
+			jd_fld[MenuAction.NPC_SECOND_OPTION.ordinal()] = 10;
 		} catch (NoSuchFieldError var17) {
 		}
 
 		try {
-			dg_fld[MenuAction.NPC_THIRD_OPTION.ordinal()] = 11;
+			jd_fld[MenuAction.NPC_THIRD_OPTION.ordinal()] = 11;
 		} catch (NoSuchFieldError var16) {
 		}
 
 		try {
-			dg_fld[MenuAction.NPC_FOURTH_OPTION.ordinal()] = 12;
+			jd_fld[MenuAction.NPC_FOURTH_OPTION.ordinal()] = 12;
 		} catch (NoSuchFieldError var15) {
 		}
 
 		try {
-			dg_fld[MenuAction.NPC_FIFTH_OPTION.ordinal()] = 13;
+			jd_fld[MenuAction.NPC_FIFTH_OPTION.ordinal()] = 13;
 		} catch (NoSuchFieldError var14) {
 		}
 
 		try {
-			dg_fld[MenuAction.EXAMINE_NPC.ordinal()] = 14;
+			jd_fld[MenuAction.EXAMINE_NPC.ordinal()] = 14;
 		} catch (NoSuchFieldError var13) {
 		}
 
 		try {
-			dg_fld[MenuAction.WALK.ordinal()] = 15;
+			jd_fld[MenuAction.WALK.ordinal()] = 15;
 		} catch (NoSuchFieldError var12) {
 		}
 
 		try {
-			dg_fld[MenuAction.ITEM_USE_ON_PLAYER.ordinal()] = 16;
+			jd_fld[MenuAction.ITEM_USE_ON_PLAYER.ordinal()] = 16;
 		} catch (NoSuchFieldError var11) {
 		}
 
 		try {
-			dg_fld[MenuAction.WIDGET_TARGET_ON_PLAYER.ordinal()] = 17;
+			jd_fld[MenuAction.WIDGET_TARGET_ON_PLAYER.ordinal()] = 17;
 		} catch (NoSuchFieldError var10) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_FIRST_OPTION.ordinal()] = 18;
+			jd_fld[MenuAction.PLAYER_FIRST_OPTION.ordinal()] = 18;
 		} catch (NoSuchFieldError var9) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_SECOND_OPTION.ordinal()] = 19;
+			jd_fld[MenuAction.PLAYER_SECOND_OPTION.ordinal()] = 19;
 		} catch (NoSuchFieldError var8) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_THIRD_OPTION.ordinal()] = 20;
+			jd_fld[MenuAction.PLAYER_THIRD_OPTION.ordinal()] = 20;
 		} catch (NoSuchFieldError var7) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_FOURTH_OPTION.ordinal()] = 21;
+			jd_fld[MenuAction.PLAYER_FOURTH_OPTION.ordinal()] = 21;
 		} catch (NoSuchFieldError var6) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_FIFTH_OPTION.ordinal()] = 22;
+			jd_fld[MenuAction.PLAYER_FIFTH_OPTION.ordinal()] = 22;
 		} catch (NoSuchFieldError var5) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_SIXTH_OPTION.ordinal()] = 23;
+			jd_fld[MenuAction.PLAYER_SIXTH_OPTION.ordinal()] = 23;
 		} catch (NoSuchFieldError var4) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_SEVENTH_OPTION.ordinal()] = 24;
+			jd_fld[MenuAction.PLAYER_SEVENTH_OPTION.ordinal()] = 24;
 		} catch (NoSuchFieldError var3) {
 		}
 
 		try {
-			dg_fld[MenuAction.PLAYER_EIGHTH_OPTION.ordinal()] = 25;
+			jd_fld[MenuAction.PLAYER_EIGHTH_OPTION.ordinal()] = 25;
 		} catch (NoSuchFieldError var2) {
 		}
 
 		try {
-			dg_fld[MenuAction.RUNELITE_PLAYER.ordinal()] = 26;
+			jd_fld[MenuAction.RUNELITE_PLAYER.ordinal()] = 26;
 		} catch (NoSuchFieldError var1) {
 		}
 	}

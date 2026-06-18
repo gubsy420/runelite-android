@@ -2,6 +2,7 @@ import java.io.EOFException;
 import net.runelite.api.FriendsChatManager;
 import net.runelite.api.FriendsChatMember;
 import net.runelite.api.FriendsChatRank;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -12,11 +13,11 @@ import net.runelite.api.events.FriendsChatMemberLeft;
 @ObfuscatedName("rb")
 @Implements({"FriendsChatManager"})
 public class rb extends rc implements FriendsChatManager {
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
 	)
-	public String av_fld;
+	public String ae_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -32,12 +33,12 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "Lzo;"
 	)
 	zo ag_fld;
-	@ObfuscatedGetter(
-		intValue = 1114562991
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1114562991
 	)
 	public int aw_fld;
 	@ObfuscatedName("ah")
@@ -45,16 +46,26 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "B"
 	)
 	public byte ah_fld;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
 	)
-	public String ae_fld = null;
+	public String av_fld = null;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	int ay_fld;
+
+	@ObfuscatedName("getMyRank")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/FriendsChatRank;"
+	)
+	@Export("getMyRank")
+	@Override
+	public FriendsChatRank getMyRank() {
+		return FriendsChatRank.valueOf(this.kz());
+	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
@@ -95,16 +106,16 @@ public class rb extends rc implements FriendsChatManager {
 			var11 = "";
 		}
 
-		this.av_fld = var11;
+		this.ae_fld = var11;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void bs() {
+	public final void bh() {
 		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
-			((rh)rc.sc(this, var1)).av(678568415);
+			rh.lr((rh)this.bw(var1, -1971799124), 678568415);
 		}
 	}
 
@@ -165,7 +176,15 @@ public class rb extends rc implements FriendsChatManager {
 			var11 = "";
 		}
 
-		this.ae_fld = var11;
+		this.av_fld = var11;
+	}
+
+	@ObfuscatedName("np")
+	@ObfuscatedSignature(
+		descriptor = "(Lpp;IJ)J"
+	)
+	public static long np(pp var0, int var1, long var2) {
+		return hq.az(var0.ep_fld, var1, var2);
 	}
 
 	@ObfuscatedName("aa")
@@ -174,7 +193,7 @@ public class rb extends rc implements FriendsChatManager {
 	)
 	public final void aa(byte var1) {
 		for (int var2 = 0; var2 < this.bl(-1440239599); var2++) {
-			((rh)rc.sc(this, var2)).av(-1345752389);
+			rh.lr((rh)this.bw(var2, -2100438239), -1345752389);
 		}
 	}
 
@@ -211,10 +230,10 @@ public class rb extends rc implements FriendsChatManager {
 			}
 
 			var1.av_fld.ar(jf.dv(var0, var1.dp(1631658729), var1.dj(189745805), var0.ae_fld));
-			var1.ah_fld.az_fld.dx(client.dv_fld);
-			var1.az(var2, -751402843);
+			var1.ah_fld.az_fld.qe(client.dv_fld);
+			rg.gx(var1, var2, -751402843);
 			boolean var13 = var0.az_fld
-				.bj(var0.ae_fld, var1.dp(483526315), var1.dj(189745805), var1.ae(-576143203), 60, var1.ah_fld.az_fld, var1.ah(575532640), var5, false);
+				.bj(var0.ae_fld, var1.dp(483526315), var1.dj(189745805), rg.si(var1, -576143203), 60, var1.ah_fld.az_fld, rg.es(var1, 575532640), var5, false);
 			if (var13 && !var2) {
 				dx var10 = var1.ah_fld;
 				if (client.ec_fld) {
@@ -222,7 +241,7 @@ public class rb extends rc implements FriendsChatManager {
 				}
 
 				dx var11 = var1.ah_fld;
-				if (client.nq_fld >= 0 && var11.au_fld.ak(client.nq_fld) != null) {
+				if (client.nq_fld >= 0 && var11.au_fld.ae(client.nq_fld) != null) {
 					hb.cw(var11, client.nq_fld, false, (byte)13);
 				}
 
@@ -235,23 +254,6 @@ public class rb extends rc implements FriendsChatManager {
 		} catch (Throwable var12) {
 			throw new RuntimeException(var12);
 		}
-	}
-
-	@ObfuscatedName("jc")
-	@ObfuscatedSignature(
-		descriptor = "()B"
-	)
-	public byte jc() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("getKickRank")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/FriendsChatRank;"
-	)
-	@Override
-	public FriendsChatRank getKickRank() {
-		return FriendsChatRank.valueOf(this.jc());
 	}
 
 	@ObfuscatedName("ao")
@@ -287,7 +289,7 @@ public class rb extends rc implements FriendsChatManager {
 			var10 = "";
 		}
 
-		this.av_fld = var10;
+		this.ae_fld = var10;
 	}
 
 	@ObfuscatedName("an")
@@ -300,31 +302,22 @@ public class rb extends rc implements FriendsChatManager {
 				return;
 			}
 
-			((rh)rc.sc(this, var2)).ak((byte)8);
+			((rh)this.bw(var2, -1685999850)).ak((byte)8);
 		}
 	}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lrl;"
-	)
-	@Override
-	rl[] ay(int var1) {
-		return new rh[var1];
-	}
-
-	@ObfuscatedName("qk")
+	@ObfuscatedName("fv")
 	@ObfuscatedSignature(
 		descriptor = "(Lrb;Lxi;)V"
 	)
-	public static void qk(rb var0, xi var1) {
+	public static void fv(rb var0, xi var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		aax var2 = new aax(xi.kc(var1, -1974486485), var0.ag_fld);
-		int var3 = xi.tx(var1, 674503582);
-		byte var4 = xi.rp(var1, 882847705);
+		aax var2 = new aax(xi.at(var1, -1974486485), var0.ag_fld);
+		int var3 = var1.cm();
+		byte var4 = var1.cw();
 		boolean var5 = false;
 		if (var4 == -128) {
 			var5 = true;
@@ -337,10 +330,10 @@ public class rb extends rc implements FriendsChatManager {
 
 			rh var6 = (rh)var0.bt(var2, (byte)-13);
 			if (null != var6 && var6.by(-677493741) == var3) {
-				var0.cc(var6, 1159633868);
+				var0.bu(var6, 1159633868);
 			}
 		} else {
-			xi.kc(var1, -530377479);
+			xi.at(var1, -530377479);
 			rh var7 = (rh)var0.bt(var2, (byte)-118);
 			if (null == var7) {
 				if (var0.bl(-1440239599) > var0.as_fld) {
@@ -352,123 +345,53 @@ public class rb extends rc implements FriendsChatManager {
 
 			var7.bf(var3, (var0.ay_fld += -1853487359) * 1806366977 - 1, 1848106603);
 			var7.aw_fld = var4;
-			nl(var0, var7, (byte)38);
+			var0.ai(var7, (byte)38);
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("kz")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "()I"
 	)
-	final void ab(String var1) {
-		long var5 = 0L;
-		int var7 = var1.length();
-
-		for (int var8 = 0; var8 < var7; var8++) {
-			var5 *= 37L;
-			char var9 = var1.charAt(var8);
-			if (var9 >= -106893947 && var9 <= 'Z') {
-				var5 += 1 + var9 - 347402759;
-			} else if (var9 >= 'a' && var9 <= -142645166) {
-				var5 += 1 + var9 - -2122464100;
-			} else if (var9 >= '0' && var9 <= -1923733127) {
-				var5 += var9 + 27 - 48;
-			}
-
-			if (var5 >= 177917621779460413L) {
-				break;
-			}
-		}
-
-		while (0L == var5 % 37L && var5 != 0L) {
-			var5 /= 37L;
-		}
-
-		String var10 = je.ak(var5);
-		if (null == var10) {
-			var10 = "";
-		}
-
-		this.av_fld = var10;
+	public int kz() {
+		return this.aw_fld;
 	}
 
-	@ObfuscatedName("it")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;Lfn;)V"
+		descriptor = "(I)[Lrl;"
 	)
-	public static void it(fn var0, fn var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	@Override
+	rl[] ay(int var1) {
+		return new rh[var1];
+	}
 
-		if (var1 != null) {
-			var0.ag(var1);
-
-			for (int var2 = 0; var2 < var1.bw_fld; var2++) {
-				var0.ba_fld[var0.bw_fld] = var1.ba_fld[var2] + var0.cz_fld;
-				var0.bq_fld[var0.bw_fld] = var1.bq_fld[var2] + var0.cz_fld;
-				var0.bg_fld[var0.bw_fld] = var1.bg_fld[var2] + var0.cz_fld;
-				var0.bb_fld[var0.bw_fld] = var1.bb_fld[var2];
-				var0.cd_fld[var0.bw_fld] = var1.cd_fld[var2];
-				var0.cc_fld[var0.bw_fld] = var1.cc_fld[var2];
-				if (var0.cx_fld != null) {
-					var0.cx_fld[var0.bw_fld] = var1.cx_fld != null ? var1.cx_fld[var2] : var1.cs_fld;
-				}
-
-				if (var0.cv_fld != null && var1.cv_fld != null) {
-					var0.cv_fld[var0.bw_fld] = var1.cv_fld[var2];
-				}
-
-				if (var0.cf_fld != null) {
-					var0.cf_fld[var0.bw_fld] = var1.cf_fld != null ? var1.cf_fld[var2] : -1;
-				}
-
-				if (var0.cq_fld != null) {
-					if (var1.cq_fld != null && var1.cq_fld[var2] != -1) {
-						var0.cq_fld[var0.bw_fld] = (byte)(var1.cq_fld[var2] + var0.cb_fld);
-					} else {
-						var0.cq_fld[var0.bw_fld] = -1;
-					}
-				}
-
-				if (var0.cy_fld != null && var1.cy_fld != null) {
-					var0.cy_fld[var0.bw_fld] = var1.cy_fld[var2];
-				}
-
-				var0.bw_fld++;
-			}
-
-			for (int var3 = 0; var3 < var1.cb_fld; var3++) {
-				var0.ce_fld[var0.cb_fld] = var1.ce_fld[var3] + var0.cz_fld;
-				var0.cn_fld[var0.cb_fld] = var1.cn_fld[var3] + var0.cz_fld;
-				var0.cr_fld[var0.cb_fld] = var1.cr_fld[var3] + var0.cz_fld;
-				var0.cb_fld++;
-			}
-
-			for (int var4 = 0; var4 < var1.cz_fld; var4++) {
-				var0.yk_fld[var0.cz_fld] = var1.yk_fld[var4];
-				var0.vr_fld[var0.cz_fld] = var1.vr_fld[var4];
-				var0.qo_fld[var0.cz_fld] = var1.qo_fld[var4];
-				var0.cz_fld++;
-			}
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Lrh;B)V"
+	)
+	final void ai(rh var1, byte var2) {
+		if (var1.ap(-1939318074).equals(this.az_fld.jn((byte)-21))) {
+			this.aw_fld = -1603137939 * var1.aw_fld;
 		}
 	}
 
-	@ObfuscatedName("getOwner")
+	@ObfuscatedName("getName")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("getName")
 	@Override
-	public String getOwner() {
+	public String getName() {
 		return this.av_fld;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "()Lrl;"
 	)
 	@Override
-	rl av() {
+	rl ae() {
 		return new rh();
 	}
 
@@ -490,62 +413,22 @@ public class rb extends rc implements FriendsChatManager {
 		return new rh[var1];
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void bz() {
+	public final void br() {
 		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
-			((rh)rc.sc(this, var1)).ak((byte)8);
+			((rh)this.bw(var1, -1849674587)).ak((byte)8);
 		}
 	}
 
 	public rb(zo var1, rf var2) {
 		super(500);
-		this.av_fld = null;
+		this.ae_fld = null;
 		this.ay_fld = -1853487359;
 		this.ag_fld = var1;
 		this.az_fld = var2;
-	}
-
-	@ObfuscatedName("gf")
-	@ObfuscatedSignature(
-		descriptor = "(Lrb;Ljava/lang/String;)V"
-	)
-	public static void gf(rb var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		long var5 = 0L;
-		int var7 = var1.length();
-
-		for (int var8 = 0; var8 < var7; var8++) {
-			var5 *= 37L;
-			char var9 = var1.charAt(var8);
-			if (var9 >= 310845080 && var9 <= 580708524) {
-				var5 += 1 + var9 - 65;
-			} else if (var9 >= 'a' && var9 <= 'z') {
-				var5 += 1 + var9 - -1573132506;
-			} else if (var9 >= 1146047113 && var9 <= '9') {
-				var5 += var9 + 27 - -1854328618;
-			}
-
-			if (var5 >= 177917621779460413L) {
-				break;
-			}
-		}
-
-		while (0L == var5 % 37L && var5 != 0L) {
-			var5 /= 37L;
-		}
-
-		String var10 = je.ak(var5);
-		if (null == var10) {
-			var10 = "";
-		}
-
-		var0.av_fld = var10;
 	}
 
 	@ObfuscatedName("ar")
@@ -599,7 +482,53 @@ public class rb extends rc implements FriendsChatManager {
 			var10 = "";
 		}
 
-		this.av_fld = var10;
+		this.ae_fld = var10;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	final void ad(String var1) {
+		long var5 = 0L;
+		int var7 = var1.length();
+
+		for (int var8 = 0; var8 < var7; var8++) {
+			var5 *= 37L;
+			char var9 = var1.charAt(var8);
+			if (var9 >= 310845080 && var9 <= 580708524) {
+				var5 += 1 + var9 - 65;
+			} else if (var9 >= 'a' && var9 <= 'z') {
+				var5 += 1 + var9 - -1573132506;
+			} else if (var9 >= 1146047113 && var9 <= '9') {
+				var5 += var9 + 27 - -1854328618;
+			}
+
+			if (var5 >= 177917621779460413L) {
+				break;
+			}
+		}
+
+		while (0L == var5 % 37L && var5 != 0L) {
+			var5 /= 37L;
+		}
+
+		String var10 = je.ak(var5);
+		if (null == var10) {
+			var10 = "";
+		}
+
+		this.ae_fld = var10;
+	}
+
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	public final void bd() {
+		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
+			((rh)this.bw(var1, -1623916484)).ak((byte)8);
+		}
 	}
 
 	@ObfuscatedName("ac")
@@ -607,9 +536,9 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "(Lxi;)V"
 	)
 	public final void ac(xi var1) {
-		aax var2 = new aax(xi.kc(var1, -1898843187), this.ag_fld);
-		int var3 = xi.tx(var1, 760056997);
-		byte var4 = xi.rp(var1, -555715234);
+		aax var2 = new aax(xi.at(var1, -1898843187), this.ag_fld);
+		int var3 = var1.cm();
+		byte var4 = var1.cw();
 		boolean var5 = false;
 		if (var4 == -1463261169) {
 			var5 = true;
@@ -622,10 +551,10 @@ public class rb extends rc implements FriendsChatManager {
 
 			rh var6 = (rh)this.bt(var2, (byte)-21);
 			if (null != var6 && var6.by(190627172) == var3) {
-				this.cc(var6, -1407499067);
+				this.bu(var6, -1407499067);
 			}
 		} else {
-			xi.kc(var1, -589379328);
+			xi.at(var1, -589379328);
 			rh var7 = (rh)this.bt(var2, (byte)-103);
 			if (null == var7) {
 				if (this.bl(-1440239599) > this.as_fld) {
@@ -637,7 +566,7 @@ public class rb extends rc implements FriendsChatManager {
 
 			var7.bf(var3, (this.ay_fld += -2104820503) * 1795425476 - 1, -1748050332);
 			var7.aw_fld = var4 * 90740052;
-			nl(this, var7, (byte)-57);
+			this.ai(var7, (byte)-57);
 		}
 	}
 
@@ -646,8 +575,8 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "(Lxi;)V"
 	)
 	public final void ap(xi var1) {
-		this.al(xi.kc(var1, 835717485), 1808173465);
-		long var2 = xi.ob(var1, 119389206);
+		this.al(xi.at(var1, 835717485), 1808173465);
+		long var2 = var1.cu();
 		long var5 = var2;
 		String var4;
 		if (var2 <= 0L || var2 >= 6582952005840035281L) {
@@ -673,18 +602,18 @@ public class rb extends rc implements FriendsChatManager {
 		}
 
 		this.az(var4, -1999755964);
-		this.ah_fld = xi.rp(var1, 1479425841);
-		int var13 = var1.dt();
+		this.ah_fld = var1.cw();
+		int var13 = xi.in(var1, -2112106528);
 		if (-1 != var13) {
-			rc.ns(this, (byte)0);
+			this.by((byte)0);
 
 			for (int var14 = 0; var14 < var13; var14++) {
-				rh var9 = (rh)this.bn(new aax(xi.kc(var1, -416913698), this.ag_fld), 869040231);
-				int var15 = xi.tx(var1, 1558076819);
+				rh var9 = (rh)this.bn(new aax(xi.at(var1, -416913698), this.ag_fld), 869040231);
+				int var15 = var1.cm();
 				var9.bf(var15, (this.ay_fld += -1853487359) * 364332461 - 1, 1649461350);
-				var9.aw_fld = xi.rp(var1, -116328715);
-				xi.kc(var1, -1262628619);
-				nl(this, var9, (byte)12);
+				var9.aw_fld = var1.cw();
+				xi.at(var1, -1262628619);
+				this.ai(var9, (byte)12);
 			}
 		}
 	}
@@ -694,9 +623,9 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "(Lxi;)V"
 	)
 	public final void at(xi var1) {
-		aax var2 = new aax(xi.kc(var1, -871016775), this.ag_fld);
-		int var3 = xi.tx(var1, 1740492696);
-		byte var4 = xi.rp(var1, -1279680058);
+		aax var2 = new aax(xi.at(var1, -871016775), this.ag_fld);
+		int var3 = var1.cm();
+		byte var4 = var1.cw();
 		boolean var5 = false;
 		if (var4 == -128) {
 			var5 = true;
@@ -709,10 +638,10 @@ public class rb extends rc implements FriendsChatManager {
 
 			rh var6 = (rh)this.bt(var2, (byte)-63);
 			if (null != var6 && var6.by(-890620073) == var3) {
-				this.cc(var6, 652862117);
+				this.bu(var6, 652862117);
 			}
 		} else {
-			xi.kc(var1, 1333344187);
+			xi.at(var1, 1333344187);
 			rh var7 = (rh)this.bt(var2, (byte)-1);
 			if (null == var7) {
 				if (this.bl(-1440239599) > this.as_fld) {
@@ -724,125 +653,116 @@ public class rb extends rc implements FriendsChatManager {
 
 			var7.bf(var3, (this.ay_fld += -1853487359) * 1806366977 - 1, 604712834);
 			var7.aw_fld = var4;
-			nl(this, var7, (byte)23);
+			this.ai(var7, (byte)23);
 		}
 	}
 
-	@ObfuscatedName("zh")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int zh() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("sy")
-	@ObfuscatedSignature(
-		descriptor = "(Lrb;)V"
-	)
-	public static void sy(rb var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		for (int var1 = 0; var1 < var0.bl(-1440239599); var1++) {
-			((rh)rc.sc(var0, var1)).ak((byte)8);
-		}
-	}
-
-	@ObfuscatedName("be")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void be() {
+	public final void bs() {
 		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
-			((rh)rc.sc(this, var1)).av(-579205412);
+			rh.lr((rh)this.bw(var1, -2127330505), -579205412);
 		}
 	}
 
-	@ObfuscatedName("pl")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "(Lrb;Lxi;)V"
+		descriptor = "(Lxi;)V"
 	)
-	public static void pl(rb var0, xi var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		aax var2 = new aax(xi.kc(var1, -219278422), var0.ag_fld);
-		int var3 = xi.tx(var1, 2018463435);
-		byte var4 = xi.rp(var1, 92057297);
+	public final void bm(xi var1) {
+		aax var2 = new aax(xi.at(var1, -219278422), this.ag_fld);
+		int var3 = var1.cm();
+		byte var4 = var1.cw();
 		boolean var5 = false;
 		if (var4 == -128) {
 			var5 = true;
 		}
 
 		if (var5) {
-			if (var0.bl(-1440239599) == 0) {
+			if (this.bl(-1440239599) == 0) {
 				return;
 			}
 
-			rh var6 = (rh)var0.bt(var2, (byte)-110);
+			rh var6 = (rh)this.bt(var2, (byte)-110);
 			if (null != var6 && var6.by(-817265344) == var3) {
-				var0.cc(var6, -1690035185);
+				this.bu(var6, -1690035185);
 			}
 		} else {
-			xi.kc(var1, -269950032);
-			rh var7 = (rh)var0.bt(var2, (byte)-32);
+			xi.at(var1, -269950032);
+			rh var7 = (rh)this.bt(var2, (byte)-32);
 			if (null == var7) {
-				if (var0.bl(-1440239599) > var0.as_fld) {
+				if (this.bl(-1440239599) > this.as_fld) {
 					return;
 				}
 
-				var7 = (rh)var0.bn(var2, 807528067);
+				var7 = (rh)this.bn(var2, 807528067);
 			}
 
-			var7.bf(var3, (var0.ay_fld += -1853487359) * 1806366977 - 1, 1112710534);
+			var7.bf(var3, (this.ay_fld += -1853487359) * 1806366977 - 1, 1112710534);
 			var7.aw_fld = var4;
-			nl(var0, var7, (byte)-35);
+			this.ai(var7, (byte)-35);
 		}
 	}
 
-	@ObfuscatedName("nl")
+	@ObfuscatedName("co")
 	@ObfuscatedSignature(
-		descriptor = "(Lrb;Lrh;B)V"
+		descriptor = "(Lrb;Ljava/lang/String;)V"
 	)
-	public static void nl(rb var0, rh var1, byte var2) {
+	public static void co(rb var0, String var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		if (var1.ap(-1939318074).equals(var0.az_fld.jn((byte)-21))) {
-			var0.aw_fld = -1603137939 * var1.aw_fld;
+		long var5 = 0L;
+		int var7 = var1.length();
+
+		for (int var8 = 0; var8 < var7; var8++) {
+			var5 *= 37L;
+			char var9 = var1.charAt(var8);
+			if (var9 >= -106893947 && var9 <= 'Z') {
+				var5 += 1 + var9 - 347402759;
+			} else if (var9 >= 'a' && var9 <= -142645166) {
+				var5 += 1 + var9 - -2122464100;
+			} else if (var9 >= '0' && var9 <= -1923733127) {
+				var5 += var9 + 27 - 48;
+			}
+
+			if (var5 >= 177917621779460413L) {
+				break;
+			}
 		}
+
+		while (0L == var5 % 37L && var5 != 0L) {
+			var5 /= 37L;
+		}
+
+		String var10 = je.ak(var5);
+		if (null == var10) {
+			var10 = "";
+		}
+
+		var0.ae_fld = var10;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "()Lrl;"
 	)
 	@Override
-	rl ae() {
+	rl av() {
 		return new rh();
 	}
 
-	@ObfuscatedName("bh")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void bh() {
+	public final void bz() {
 		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
-			((rh)rc.sc(this, var1)).ak((byte)8);
+			((rh)this.bw(var1, -1598480222)).ak((byte)8);
 		}
-	}
-
-	@ObfuscatedName("getName")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getName() {
-		return this.ae_fld;
 	}
 
 	@ObfuscatedName("ak")
@@ -854,14 +774,38 @@ public class rb extends rc implements FriendsChatManager {
 		return new rh();
 	}
 
-	@ObfuscatedName("br")
+	@ObfuscatedName("ug")
+	@ObfuscatedSignature(
+		descriptor = "(Lrb;Lrh;)V"
+	)
+	public static void ug(rb var0, rh var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1.ap(-1939318074).equals(var0.az_fld.jn((byte)-88))) {
+			var0.aw_fld = -1475714308 * var1.aw_fld;
+		}
+	}
+
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	public final void br() {
+	public final void be() {
 		for (int var1 = 0; var1 < this.bl(-1440239599); var1++) {
-			((rh)rc.sc(this, var1)).av(-706346168);
+			rh.lr((rh)this.bw(var1, -1552393533), -706346168);
 		}
+	}
+
+	@ObfuscatedName("getKickRank")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/FriendsChatRank;"
+	)
+	@Export("getKickRank")
+	@Override
+	public FriendsChatRank getKickRank() {
+		return FriendsChatRank.valueOf(this.ta());
 	}
 
 	@ObfuscatedName("au")
@@ -871,8 +815,8 @@ public class rb extends rc implements FriendsChatManager {
 	public final void au(xi var1, int var2) {
 		String var5;
 		label72: {
-			this.al(xi.kc(var1, 1968652022), 950427643);
-			long var3 = xi.ob(var1, 935773509);
+			this.al(xi.at(var1, 1968652022), 950427643);
+			long var3 = var1.cu();
 			long var6 = var3;
 			if (var3 > 0L) {
 				if (var3 < 6582952005840035281L) {
@@ -907,18 +851,18 @@ public class rb extends rc implements FriendsChatManager {
 		}
 
 		this.az(var5, -1943651412);
-		this.ah_fld = xi.rp(var1, 1237994879);
-		int var14 = var1.dt();
+		this.ah_fld = var1.cw();
+		int var14 = xi.in(var1, -2119832010);
 		if (-1 != var14) {
-			rc.ns(this, (byte)0);
+			this.by((byte)0);
 
 			for (int var15 = 0; var15 < var14; var15++) {
-				rh var10 = (rh)this.bn(new aax(xi.kc(var1, 1393630778), this.ag_fld), 1604280484);
-				int var16 = xi.tx(var1, 908437707);
+				rh var10 = (rh)this.bn(new aax(xi.at(var1, 1393630778), this.ag_fld), 1604280484);
+				int var16 = var1.cm();
 				var10.bf(var16, (this.ay_fld += -1853487359) * 1806366977 - 1, -851311615);
-				var10.aw_fld = xi.rp(var1, -1814449368);
-				xi.kc(var1, -1286407543);
-				nl(this, var10, (byte)-37);
+				var10.aw_fld = var1.cw();
+				xi.at(var1, -1286407543);
+				this.ai(var10, (byte)-37);
 			}
 		}
 	}
@@ -928,9 +872,9 @@ public class rb extends rc implements FriendsChatManager {
 		descriptor = "(Lxi;B)V"
 	)
 	public final void ax(xi var1, byte var2) {
-		aax var3 = new aax(xi.kc(var1, 169325846), this.ag_fld);
-		int var4 = xi.tx(var1, 1114264328);
-		byte var5 = xi.rp(var1, -744645455);
+		aax var3 = new aax(xi.at(var1, 169325846), this.ag_fld);
+		int var4 = var1.cm();
+		byte var5 = var1.cw();
 		boolean var6 = false;
 		if (var5 == -128) {
 			var6 = true;
@@ -943,10 +887,10 @@ public class rb extends rc implements FriendsChatManager {
 
 			rh var7 = (rh)this.bt(var3, (byte)-13);
 			if (null != var7 && var7.by(-606131735) == var4) {
-				this.cc(var7, -1845243005);
+				this.bu(var7, -1845243005);
 			}
 		} else {
-			xi.kc(var1, -273386591);
+			xi.at(var1, -273386591);
 			rh var8 = (rh)this.bt(var3, (byte)-110);
 			if (null == var8) {
 				if (this.bl(-1440239599) > this.as_fld) {
@@ -958,17 +902,7 @@ public class rb extends rc implements FriendsChatManager {
 
 			var8.bf(var4, (this.ay_fld += -1853487359) * 1806366977 - 1, 2059852882);
 			var8.aw_fld = var5;
-			nl(this, var8, (byte)34);
-		}
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(Lrh;)V"
-	)
-	final void bk(rh var1) {
-		if (var1.ap(-1939318074).equals(this.az_fld.jn((byte)-24))) {
-			this.aw_fld = -1603137939 * var1.aw_fld;
+			this.ai(var8, (byte)34);
 		}
 	}
 
@@ -982,6 +916,24 @@ public class rb extends rc implements FriendsChatManager {
 		}
 	}
 
+	@ObfuscatedName("ta")
+	@ObfuscatedSignature(
+		descriptor = "()B"
+	)
+	public byte ta() {
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("getOwner")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getOwner")
+	@Override
+	public String getOwner() {
+		return this.ae_fld;
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(IB)I"
@@ -991,7 +943,21 @@ public class rb extends rc implements FriendsChatManager {
 		if (null == var2) {
 			return -1;
 		} else {
-			return cz.az_fld.ak_fld == var2.fn_fld ? -1 : ((co)var2.fn_fld).ak_fld * 1492045231;
+			return cz.az_fld.ak_fld == var2.fn_vc ? -1 : ((co)var2.fn_vc).ak_fld * 1492045231;
+		}
+	}
+
+	@ObfuscatedName("rc")
+	@ObfuscatedSignature(
+		descriptor = "(Lrb;Lrh;)V"
+	)
+	public static void rc(rb var0, rh var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (var1.ap(-1939318074).equals(var0.az_fld.jn((byte)-24))) {
+			var0.aw_fld = -1603137939 * var1.aw_fld;
 		}
 	}
 
@@ -1004,142 +970,47 @@ public class rb extends rc implements FriendsChatManager {
 		return new rh[var1];
 	}
 
-	@ObfuscatedName("fm")
+	@ObfuscatedName("wv")
+	@ObfuscatedSignature(
+		descriptor = "(Lzg;I)V"
+	)
+	public static void wv(zg var0, int var1) {
+		if (var1 != var0.ad_fld) {
+			var0.ad_fld = var1 * 315126422;
+			var0.bj();
+		}
+	}
+
+	@ObfuscatedName("oi")
 	@ObfuscatedSignature(
 		descriptor = "(Laax;Laax;)V"
 	)
 	@Override
-	public void fm(aax var1, aax var2) {
-		FriendsChatMember var3 = (FriendsChatMember)this.nf(var1);
+	public void oi(aax var1, aax var2) {
+		FriendsChatMember var3 = (FriendsChatMember)this.fp(var1);
 		if (var3 != null) {
 			FriendsChatMemberJoined var4 = new FriendsChatMemberJoined(var3);
 			og.ci_fld.getCallbacks().postDeferred(var4);
 		}
 	}
 
-	@ObfuscatedName("em")
+	@ObfuscatedName("ka")
 	@ObfuscatedSignature(
 		descriptor = "(Lrl;)V"
 	)
 	@Override
-	public void em(rl var1) {
-		FriendsChatMember var2 = (FriendsChatMember)this.nf(var1.tq());
+	public void ka(rl var1) {
+		FriendsChatMember var2 = (FriendsChatMember)this.fp(var1.gc());
 		if (var2 != null) {
 			FriendsChatMemberLeft var3 = new FriendsChatMemberLeft(var2);
 			og.ci_fld.getCallbacks().postDeferred(var3);
 		}
 	}
 
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(Lrh;B)V"
-	)
-	final void ai(rh var1, byte var2) {
-		if (var1.ap(-1939318074).jm(this.az_fld.jn((byte)-21))) {
-			this.aw_fld = -1603137939 * var1.aw_fld;
-		}
-	}
-
-	@ObfuscatedName("we")
-	@ObfuscatedSignature(
-		descriptor = "(Lrb;Ljava/lang/String;)V"
-	)
-	public static void we(rb var0, String var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			long var5 = 0L;
-			int var7 = var1.length();
-
-			for (int var8 = 0; var8 < var7; var8++) {
-				var5 *= 37L;
-				char var9 = var1.charAt(var8);
-				if (var9 >= 'A' && var9 <= 1782121538) {
-					var5 += 1 + var9 - -1419832142;
-				} else if (var9 >= -371341482 && var9 <= 'z') {
-					var5 += var9 + 1 - 97;
-				} else if (var9 >= -772877854 && var9 <= 324941391) {
-					var5 += 27 + var9 - -647496039;
-				}
-
-				if (var5 >= 177917621779460413L) {
-					break;
-				}
-			}
-
-			while (var5 % 37L == 0L && 0L != var5) {
-				var5 /= 37L;
-			}
-
-			String var10 = je.ak(var5);
-			if (null == var10) {
-				var10 = "";
-			}
-
-			var0.ae_fld = var10;
-		}
-	}
-
-	@ObfuscatedName("getMyRank")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/FriendsChatRank;"
-	)
-	@Override
-	public FriendsChatRank getMyRank() {
-		return FriendsChatRank.valueOf(this.zh());
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Lxi;)V"
-	)
-	public final void aj(xi var1) {
-		aax var2 = new aax(xi.kc(var1, -1898843187), this.ag_fld);
-		int var3 = xi.tx(var1, 760056997);
-		byte var4 = xi.rp(var1, -555715234);
-		boolean var5 = false;
-		if (var4 == -1463261169) {
-			var5 = true;
-		}
-
-		if (var5) {
-			if (this.bl(-1440239599) == 0) {
-				return;
-			}
-
-			rh var6 = (rh)this.bv(var2, (byte)-21);
-			if (null != var6 && var6.by(190627172) == var3) {
-				this.bb(var6, -1407499067);
-			}
-		} else {
-			xi.kc(var1, -589379328);
-			rh var7 = (rh)this.bv(var2, (byte)-103);
-			if (null == var7) {
-				if (this.bl(-1440239599) > this.as_fld) {
-					return;
-				}
-
-				var7 = (rh)this.bn(var2, -1608165875);
-			}
-
-			var7.bf(var3, (this.ay_fld += -2104820503) * 1795425476 - 1, -1748050332);
-			var7.aw_fld = var4 * 90740052;
-			nl(this, var7, (byte)-57);
-		}
-	}
-
-	@ObfuscatedName("findByName")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)Lnet/runelite/api/FriendsChatMember;"
-	)
 	public FriendsChatMember findByName(String var1) {
 		return (FriendsChatMember)(FriendsChatMember)this.findByName(var1);
 	}
 
-	@ObfuscatedName("getMembers")
-	@ObfuscatedSignature(
-		descriptor = "()[Lnet/runelite/api/FriendsChatMember;"
-	)
 	public FriendsChatMember[] getMembers() {
 		return (FriendsChatMember[])this.getMembers();
 	}

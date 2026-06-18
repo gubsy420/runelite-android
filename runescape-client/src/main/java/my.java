@@ -2,7 +2,6 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.Hashtable;
-import javax.net.ssl.SSLPeerUnverifiedException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 import net.runelite.api.events.GrandExchangeSearched;
@@ -34,18 +33,6 @@ public class my {
 		descriptor = "I"
 	)
 	static int cz_fld;
-
-	@ObfuscatedName("us")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)I"
-	)
-	public static int us(ql var0) throws SSLPeerUnverifiedException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return 0;
-	}
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
@@ -157,7 +144,7 @@ public class my {
 
 	@ObfuscatedName("hb")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Z)V"
+		descriptor = "(Ljava/lang/String;ZI)V"
 	)
 	static void hb(String var0, boolean var1) throws EOFException {
 		GrandExchangeSearched var3 = new GrandExchangeSearched();
@@ -273,7 +260,7 @@ public class my {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lxv;II)I"
+		descriptor = "(Lxv;IIB)I"
 	)
 	static int ag(xv var0, int var1, int var2) {
 		if (var0 == null) {
@@ -286,7 +273,7 @@ public class my {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;)V"
+		descriptor = "(Lub;I)V"
 	)
 	public static void ak(ub var0) {
 		ed.av_fld = var0;
@@ -294,7 +281,7 @@ public class my {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I"
+		descriptor = "(II)I"
 	)
 	public static int ag(int var0) {
 		return var0 >>> 4 & yy.av_fld;

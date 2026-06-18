@@ -18,48 +18,34 @@ public class vt implements vd {
 	)
 	static String ak_fld;
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "()Lvp;"
+		descriptor = "(Lyv;I)V"
 	)
-	@Override
-	public vp az() {
-		return vp.ak_fld;
-	}
+	public static void bl(yv var0, int var1) {
+		int[] var2 = new int[var0.aw_fld * var0.ay_fld];
+		int var3 = 0;
 
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "([B)V"
-	)
-	void as(byte[] var1) throws UnsupportedEncodingException {
-		String var2 = new String(var1, "UTF-8");
-		this.aw(var2);
-	}
+		for (int var4 = 0; var4 < var0.ay_fld; var4++) {
+			for (int var5 = 0; var5 < var0.aw_fld; var5++) {
+				int var6 = var0.ah_fld[var3];
+				if (var6 == 0) {
+					if (var5 > 0 && var0.ah_fld[var3 - 1] != 0) {
+						var6 = var1;
+					} else if (var4 > 0 && var0.ah_fld[var3 - var0.aw_fld] != 0) {
+						var6 = var1;
+					} else if (var5 < var0.aw_fld - 1 && var0.ah_fld[var3 + 1] != 0) {
+						var6 = var1;
+					} else if (var4 < var0.ay_fld - 1 && var0.ah_fld[var3 + var0.aw_fld] != 0) {
+						var6 = var1;
+					}
+				}
 
-	public vt(byte[] var1) throws UnsupportedEncodingException {
-		nm(this, var1, -2600935);
-	}
-
-	@ObfuscatedName("nm")
-	@ObfuscatedSignature(
-		descriptor = "(Lvt;[BI)V"
-	)
-	public static void nm(vt var0, byte[] var1, int var2) throws UnsupportedEncodingException {
-		if (var0 == null) {
-			var0.getClass();
+				var2[var3++] = var6;
+			}
 		}
 
-		String var3 = new String(var1, "UTF-8");
-		var0.aw(var3);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lvp;"
-	)
-	@Override
-	public vp ak(int var1) {
-		return vp.ak_fld;
+		var0.ah_fld = var2;
 	}
 
 	@ObfuscatedName("av")
@@ -71,9 +57,40 @@ public class vt implements vd {
 		return vp.ak_fld;
 	}
 
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "([B)V"
+	)
+	void al(byte[] var1) throws UnsupportedEncodingException {
+		String var2 = new String(var1, "UTF-8");
+		this.aw(var2);
+	}
+
+	public vt(byte[] var1) throws UnsupportedEncodingException {
+		go(this, var1, -2600935);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lvp;"
+	)
+	@Override
+	public vp ak(int var1) {
+		return vp.ak_fld;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "()Lvp;"
+	)
+	@Override
+	public vp az() {
+		return vp.ak_fld;
+	}
+
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "()Lorg/json/JSONObject;"
+		descriptor = "(I)Lorg/json/JSONObject;"
 	)
 	public JSONObject ay() {
 		return this.ag_fld;
@@ -81,6 +98,32 @@ public class vt implements vd {
 
 	public vt(JSONObject var1) {
 		this.ag_fld = var1;
+	}
+
+	@ObfuscatedName("tb")
+	@ObfuscatedSignature(
+		descriptor = "(Lvt;Ljava/lang/String;)V"
+	)
+	public static void tb(vt var0, String var1) throws UnsupportedEncodingException {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			try {
+				if (var1.charAt(0) == '{') {
+					var0.ag_fld = new JSONObject(var1);
+				} else {
+					if (var1.charAt(0) != '[') {
+						throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
+					}
+
+					JSONArray var2 = new JSONArray(var1);
+					var0.ag_fld = new JSONObject();
+					var0.ag_fld.put("arrayValues", var2);
+				}
+			} catch (JSONException var3) {
+				throw new UnsupportedEncodingException(var3.getMessage());
+			}
+		}
 	}
 
 	@ObfuscatedName("ae")
@@ -92,6 +135,19 @@ public class vt implements vd {
 		return this.ag_fld == null ? new byte[0] : this.ag_fld.toString().getBytes("UTF-8");
 	}
 
+	@ObfuscatedName("go")
+	@ObfuscatedSignature(
+		descriptor = "(Lvt;[BI)V"
+	)
+	public static void go(vt var0, byte[] var1, int var2) throws UnsupportedEncodingException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		String var3 = new String(var1, "UTF-8");
+		var0.aw(var3);
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B"
@@ -101,35 +157,39 @@ public class vt implements vd {
 		return this.ag_fld == null ? new byte[0] : this.ag_fld.toString().getBytes("UTF-8");
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()Lorg/json/JSONObject;"
 	)
-	public JSONObject aa() {
+	public JSONObject an() {
 		return this.ag_fld;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ze")
 	@ObfuscatedSignature(
-		descriptor = "([B)V"
+		descriptor = "(Lvt;[B)V"
 	)
-	void ar(byte[] var1) throws UnsupportedEncodingException {
+	public static void ze(vt var0, byte[] var1) throws UnsupportedEncodingException {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
 		String var2 = new String(var1, "UTF-8");
-		this.aw(var2);
+		var0.aw(var2);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "([B)V"
 	)
-	void al(byte[] var1) throws UnsupportedEncodingException {
+	void af(byte[] var1) throws UnsupportedEncodingException {
 		String var2 = new String(var1, "UTF-8");
 		this.aw(var2);
 	}
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;B)V"
 	)
 	void aw(String var1) throws UnsupportedEncodingException {
 		try {
@@ -149,11 +209,11 @@ public class vt implements vd {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "([B)V"
 	)
-	void af(byte[] var1) throws UnsupportedEncodingException {
+	void as(byte[] var1) throws UnsupportedEncodingException {
 		String var2 = new String(var1, "UTF-8");
 		this.aw(var2);
 	}
@@ -180,37 +240,15 @@ public class vt implements vd {
 		}
 	}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	void ax(String var1) throws UnsupportedEncodingException {
-		try {
-			if (var1.charAt(0) == '{') {
-				this.ag_fld = new JSONObject(var1);
-			} else {
-				if (var1.charAt(0) != '[') {
-					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
-				}
-
-				JSONArray var2 = new JSONArray(var1);
-				this.ag_fld = new JSONObject();
-				this.ag_fld.put("arrayValues", var2);
-			}
-		} catch (JSONException var3) {
-			throw new UnsupportedEncodingException(var3.getMessage());
-		}
-	}
-
 	public vt(String var1) throws UnsupportedEncodingException {
 		this.aw(var1);
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()Lorg/json/JSONObject;"
 	)
-	public JSONObject an() {
+	public JSONObject aa() {
 		return this.ag_fld;
 	}
 

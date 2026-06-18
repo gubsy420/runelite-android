@@ -4,12 +4,12 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("jz")
 public class jz {
-	@ObfuscatedGetter(
-		intValue = -758044461
-	)
 	@ObfuscatedName("iw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -758044461
 	)
 	static int iw_fld;
 	@ObfuscatedName("ag")
@@ -23,21 +23,21 @@ public class jz {
 	)
 	static int bv_fld;
 
-	@ObfuscatedName("qs")
+	@ObfuscatedName("wu")
 	@ObfuscatedSignature(
-		descriptor = "(Luz;Luz;)V"
+		descriptor = "(Lgu;I)V"
 	)
-	public static void qs(uz var0, uz var1) {
+	public static void wu(gu var0, int var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
-		var0.an(var1);
+		var0.ak_fld = var1 & 2047;
 	}
 
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V"
+		descriptor = "(IB)V"
 	)
 	static void ac(int var0) {
 		if (bn.co_fld != var0) {

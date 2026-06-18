@@ -14,12 +14,12 @@ public class ll implements xm {
 		descriptor = "Lll;"
 	)
 	public static ll ak_fld = new ll(0);
-	@ObfuscatedGetter(
-		intValue = 531005279
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 531005279
 	)
 	int az_fld = 0;
 	@ObfuscatedName("an")
@@ -78,7 +78,7 @@ public class ll implements xm {
 
 	@ObfuscatedName("hy")
 	@ObfuscatedSignature(
-		descriptor = "()Luu;"
+		descriptor = "(B)Luu;"
 	)
 	static uu hy() {
 		return ef.pt_fld;

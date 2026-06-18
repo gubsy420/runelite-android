@@ -21,7 +21,7 @@ public class jj {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;Ljava/lang/String;)I"
+		descriptor = "(Lxi;Ljava/lang/String;I)I"
 	)
 	public static int ak(xi var0, String var1) {
 		int var3 = var0.au_fld;
@@ -93,8 +93,8 @@ public class jj {
 			}
 		}
 
-		var0.ce(var6.length);
-		var0.au_fld = var0.au_fld + kq.ky(kd.ak_fld, var6, 0, var6.length, var0.al_fld, var0.au_fld, (byte)-117) * 228932457;
+		var0.bw(var6.length);
+		var0.au_fld = var0.au_fld + kq.uh(kd.ak_fld, var6, 0, var6.length, var0.al_fld, var0.au_fld, (byte)-117) * 228932457;
 		return var0.au_fld - var3;
 	}
 
@@ -102,21 +102,9 @@ public class jj {
 		throw new Error();
 	}
 
-	@ObfuscatedName("pd")
-	@ObfuscatedSignature(
-		descriptor = "(Lql;)I"
-	)
-	public static int pd(ql var0) {
-		if (var0 == null) {
-			throw new NullPointerException();
-		} else {
-			return 0;
-		}
-	}
-
 	@ObfuscatedName("ds")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V"
+		descriptor = "(IIIIIB)V"
 	)
 	static void ds(int var0, int var1, int var2, int var3, int var4) {
 		sz.du(hk.mt_fld, var0, var1, var2, var3, var4, -2069517899);
@@ -124,7 +112,7 @@ public class jj {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Lyv;)V"
+		descriptor = "([Lyv;I)V"
 	)
 	static void ak(yv[] var0) {
 		ch.as_fld = var0;

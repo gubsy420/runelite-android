@@ -9,11 +9,11 @@ public class uj extends vw {
 	)
 	public Object ak_fld;
 
-	@ObfuscatedName("gb")
+	@ObfuscatedName("ht")
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/Object;"
 	)
-	public Object gb() {
+	public Object ht() {
 		return this.ak_fld;
 	}
 

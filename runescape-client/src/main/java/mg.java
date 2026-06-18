@@ -10,12 +10,12 @@ public class mg extends vw {
 		descriptor = "Lal;"
 	)
 	al av_fld;
-	@ObfuscatedGetter(
-		intValue = 1054541543
-	)
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 1054541543
 	)
 	int ai_fld;
 	@ObfuscatedName("az")
@@ -23,12 +23,12 @@ public class mg extends vw {
 		descriptor = "Lms;"
 	)
 	ms az_fld;
-	@ObfuscatedGetter(
-		intValue = 16156829
-	)
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 16156829
 	)
 	int au_fld;
 	@ObfuscatedName("ae")
@@ -36,36 +36,36 @@ public class mg extends vw {
 		descriptor = "Lmi;"
 	)
 	mi ae_fld;
-	@ObfuscatedGetter(
-		intValue = 2028726843
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
 	@ObfuscatedGetter(
-		intValue = -1564474297
+		intValue = 2028726843
 	)
+	int ah_fld;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aw_fld;
 	@ObfuscatedGetter(
-		intValue = -2052070105
+		intValue = -1564474297
 	)
+	int aw_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ay_fld;
 	@ObfuscatedGetter(
-		intValue = -1903305675
+		intValue = -2052070105
 	)
+	int ay_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1903305675
 	)
 	int al_fld;
 	@ObfuscatedName("bv")
@@ -73,12 +73,12 @@ public class mg extends vw {
 		descriptor = "I"
 	)
 	static int bv_fld;
-	@ObfuscatedGetter(
-		intValue = -985835055
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -985835055
 	)
 	int af_fld;
 	@ObfuscatedName("ak")
@@ -86,60 +86,60 @@ public class mg extends vw {
 		descriptor = "I"
 	)
 	static int ak_fld;
-	@ObfuscatedGetter(
-		intValue = 2076400981
-	)
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int an_fld;
 	@ObfuscatedGetter(
-		intValue = -1108093983
+		intValue = 2076400981
 	)
+	int an_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ax_fld;
 	@ObfuscatedGetter(
-		intValue = 2134604149
+		intValue = -1108093983
 	)
+	int ax_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int as_fld;
 	@ObfuscatedGetter(
-		intValue = -1533340913
+		intValue = 2134604149
 	)
+	int as_fld;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aa_fld;
 	@ObfuscatedGetter(
-		intValue = 2012409431
+		intValue = -1533340913
 	)
+	int aa_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = 191301659
+		intValue = 2012409431
 	)
+	int ag_fld;
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aq_fld;
 	@ObfuscatedGetter(
-		intValue = 30547673
+		intValue = 191301659
 	)
+	int aq_fld;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 30547673
 	)
 	int am_fld;
 	@ObfuscatedName("ad")
@@ -147,34 +147,34 @@ public class mg extends vw {
 		descriptor = "Lac;"
 	)
 	ac ad_fld;
-	@ObfuscatedGetter(
-		intValue = 869169375
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ar_fld;
 	@ObfuscatedGetter(
-		intValue = -1982568771
+		intValue = 869169375
 	)
+	int ar_fld;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ab_fld;
 	@ObfuscatedGetter(
-		intValue = 495375143
+		intValue = -1982568771
 	)
+	int ab_fld;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 495375143
 	)
 	int ao_fld;
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;)V"
+		descriptor = "(Ljava/awt/Component;I)V"
 	)
 	static void ak(Component var0) {
 		var0.addMouseListener(tj.al_fld);
@@ -184,7 +184,7 @@ public class mg extends vw {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()V"
+		descriptor = "(B)V"
 	)
 	void ak() {
 		this.az_fld = null;
@@ -202,6 +202,73 @@ public class mg extends vw {
 		this.av_fld = null;
 		this.ae_fld = null;
 		this.ad_fld = null;
+	}
+
+	@ObfuscatedName("tk")
+	@ObfuscatedSignature(
+		descriptor = "(Lyv;IIIII)V"
+	)
+	public static void tk(yv var0, int var1, int var2, int var3, int var4, int var5) {
+		if (var0 == null) {
+			var0.getClass();
+		} else if (var3 > 0 && var4 > 0) {
+			int var6 = var0.aw_fld;
+			int var7 = var0.ay_fld;
+			int var8 = 0;
+			int var9 = 0;
+			int var10 = var0.ad_fld;
+			int var11 = var0.ao_fld;
+			int var12 = (var10 << 16) / var3;
+			int var13 = (var11 << 16) / var4;
+			if (var0.as_fld > 0) {
+				int var14 = ((var0.as_fld << 16) + var12 - 1) / var12;
+				var1 += var14;
+				var8 += var14 * var12 - (var0.as_fld << 16);
+			}
+
+			if (var0.ar_fld > 0) {
+				int var17 = ((var0.ar_fld << 16) + var13 - 1) / var13;
+				var2 += var17;
+				var9 += var17 * var13 - (var0.ar_fld << 16);
+			}
+
+			if (var6 < var10) {
+				var3 = ((var6 << 16) - var8 + var12 - 1) / var12;
+			}
+
+			if (var7 < var11) {
+				var4 = ((var7 << 16) - var9 + var13 - 1) / var13;
+			}
+
+			int var18 = var1 + var2 * yv.au_fld;
+			int var15 = yv.au_fld - var3;
+			if (var2 + var4 > yv.ai_fld) {
+				var4 -= var2 + var4 - yv.ai_fld;
+			}
+
+			if (var2 < yv.aa_fld) {
+				int var16 = yv.aa_fld - var2;
+				var4 -= var16;
+				var18 += var16 * yv.au_fld;
+				var9 += var13 * var16;
+			}
+
+			if (var1 + var3 > yv.am_fld) {
+				int var19 = var1 + var3 - yv.am_fld;
+				var3 -= var19;
+				var15 += var19;
+			}
+
+			if (var1 < yv.aq_fld) {
+				int var20 = yv.aq_fld - var1;
+				var3 -= var20;
+				var18 += var20;
+				var8 += var12 * var20;
+				var15 += var20;
+			}
+
+			yv.ah(yv.al_fld, var0.ah_fld, 0, var8, var9, var18, var15, var3, var4, var12, var13, var6, var5);
+		}
 	}
 
 	@ObfuscatedName("az")
@@ -228,7 +295,7 @@ public class mg extends vw {
 
 	@ObfuscatedName("fy")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z"
+		descriptor = "(II)Z"
 	)
 	static final boolean fy(int var0) {
 		if (var0 >= 2000) {

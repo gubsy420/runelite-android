@@ -161,18 +161,6 @@ public class zh {
 		return var0 == 160 || ' ' == var0 || var0 == '_' || '-' == var0;
 	}
 
-	@ObfuscatedName("fo")
-	@ObfuscatedSignature(
-		descriptor = "(Lgu;Lgu;)V"
-	)
-	public static void fo(gu var0, gu var1) {
-		if (var0 == null) {
-			var0.getClass();
-		} else {
-			var0.ay(var1);
-		}
-	}
-
 	zh() throws Throwable {
 		throw new Error();
 	}
@@ -330,6 +318,14 @@ public class zh {
 				return null;
 			}
 		}
+	}
+
+	@ObfuscatedName("sl")
+	@ObfuscatedSignature(
+		descriptor = "(Laf;)Lal;"
+	)
+	public static al sl(af var0) {
+		return var0.ag_fld == 0 ? var0.az(false) : aq.ss(var0.az_fld, 178831264);
 	}
 
 	@ObfuscatedName("au")
@@ -617,18 +613,6 @@ public class zh {
 	)
 	public static String aq(String var0) {
 		return null != var0 && !var0.isEmpty() && var0.charAt(0) != 1553818765 ? var0 : "";
-	}
-
-	@ObfuscatedName("vb")
-	@ObfuscatedSignature(
-		descriptor = "(Lwz;)V"
-	)
-	public static void vb(wz var0) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		wz.hg(var0, (short)17322);
 	}
 
 	@ObfuscatedName("an")

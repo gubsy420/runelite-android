@@ -10,12 +10,12 @@ public class bi {
 		descriptor = "Z"
 	)
 	boolean as_fld;
-	@ObfuscatedGetter(
-		intValue = -1750158063
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1750158063
 	)
 	int az_fld;
 	@ObfuscatedName("dx")
@@ -23,28 +23,33 @@ public class bi {
 		descriptor = "Lyc;"
 	)
 	static yc dx_fld;
-	@ObfuscatedGetter(
-		intValue = -134942643
-	)
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int av_fld;
 	@ObfuscatedGetter(
-		intValue = -1762936453
+		intValue = -134942643
 	)
+	int av_fld;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
 	@ObfuscatedGetter(
-		intValue = -505838743
+		intValue = -1762936453
 	)
+	int ae_fld;
+	@ObfuscatedName("xr")
+	@ObfuscatedSignature(
+		descriptor = "Ljava/util/function/Consumer;"
+	)
+	public Consumer xr_fld;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -505838743
 	)
 	int ah_fld;
 	@ObfuscatedName("aw")
@@ -57,159 +62,166 @@ public class bi {
 		descriptor = "Ljava/lang/String;"
 	)
 	String ay_fld;
-	@ObfuscatedGetter(
-		intValue = -1787189149
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -575917973
+		intValue = -1787189149
 	)
+	int ag_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "Ljava/util/function/Consumer;"
+	@ObfuscatedGetter(
+		intValue = -575917973
 	)
-	public Consumer cn_fld;
+	int ak_fld;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
 	static int ax_fld;
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("gp")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void av(int var1) {
+	public void gp(int var1) {
 		this.av_fld = var1;
 	}
 
-	@ObfuscatedName("xq")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	public void xq(String var1) {
-		this.ay_fld = var1;
-	}
-
-	@ObfuscatedName("uo")
+	@ObfuscatedName("to")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void uo(int var1) {
-		this.ah_fld = var1;
-	}
-
-	@ObfuscatedName("vl")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int vl() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("td")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String td() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("zx")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void zx(int var1) {
-		this.az_fld = var1;
-	}
-
-	@ObfuscatedName("pc")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void pc(int var1) {
-		this.ak_fld = var1;
-	}
-
-	@ObfuscatedName("ud")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int ud() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("ii")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	public void ii(int var1) {
+	public void to(int var1) {
 		this.ae_fld = var1;
 	}
 
-	@ObfuscatedName("jh")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String jh() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("lc")
+	@ObfuscatedName("yh")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
-	public void lc(int var1) {
+	public void yh(int var1) {
+		this.ak_fld = var1;
+	}
+
+	@ObfuscatedName("ew")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void ew(int var1) {
 		this.ag_fld = var1;
 	}
 
-	@ObfuscatedName("gc")
+	@ObfuscatedName("dn")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void dn(int var1) {
+		this.az_fld = var1;
+	}
+
+	@ObfuscatedName("fv")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String fv() {
+		return this.ay_fld;
+	}
+
+	@ObfuscatedName("lq")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;)V"
 	)
-	public void gc(String var1) {
-		this.aw_fld = var1;
+	public void lq(String var1) {
+		this.ay_fld = var1;
 	}
 
-	@ObfuscatedName("su")
+	@ObfuscatedName("yf")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int su() {
-		return this.ag_fld;
-	}
-
-	@ObfuscatedName("dv")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	public int dv() {
+	public int yf() {
 		return this.ae_fld;
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("fu")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	public void fu(int var1) {
+		this.ah_fld = var1;
+	}
+
+	@ObfuscatedName("ym")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int bp() {
+	public int ym() {
+		return this.ag_fld;
+	}
+
+	@ObfuscatedName("oq")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int oq() {
 		return this.ah_fld;
 	}
 
-	@ObfuscatedName("xi")
+	@ObfuscatedName("sv")
 	@ObfuscatedSignature(
 		descriptor = "()I"
 	)
-	public int xi() {
+	public int sv() {
 		return this.av_fld;
+	}
+
+	@ObfuscatedName("xw")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;)V"
+	)
+	public static void xw(pi var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ai_fld = -153247624 * var0.az_fld;
+		}
+	}
+
+	@ObfuscatedName("ed")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int ed() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("xp")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	public String xp() {
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("rz")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	public int rz() {
+		return this.ak_fld;
+	}
+
+	@ObfuscatedName("qa")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;)V"
+	)
+	public void qa(String var1) {
+		this.aw_fld = var1;
 	}
 
 	bi() {

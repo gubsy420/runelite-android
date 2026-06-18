@@ -10,23 +10,11 @@ public abstract class vq extends vx {
 	)
 	public abstract int ah();
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
-	public abstract int ak(int var1);
-
-	@ObfuscatedName("zl")
-	@ObfuscatedSignature(
-		descriptor = "(Lpp;II)I"
-	)
-	public static int zl(pp var0, int var1, int var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return my.ag(var0.ep_fld, var1, var2);
-	}
+	public abstract int az(int var1);
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
@@ -46,21 +34,21 @@ public abstract class vq extends vx {
 	)
 	public abstract int av();
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)I"
-	)
-	public abstract int az(int var1);
-
-	vq(int var1, int var2) {
-		super(var1, var2);
-	}
-
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I"
 	)
 	public abstract int ag(int var1);
+
+	vq(int var1, int var2) {
+		super(var1, var2);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)I"
+	)
+	public abstract int ak(int var1);
 
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
@@ -88,7 +76,7 @@ public abstract class vq extends vx {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;II)Lyc;"
+		descriptor = "(Lub;III)Lyc;"
 	)
 	static yc ag(ub var0, int var1, int var2) throws EOFException {
 		if (!ms.ar(var0, var1, var2)) {

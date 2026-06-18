@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -24,18 +23,6 @@ public class er {
 	)
 	public static er[] az() {
 		return new er[]{ak_fld, ag_fld};
-	}
-
-	@ObfuscatedName("ok")
-	@ObfuscatedSignature(
-		descriptor = "(Llp;I)Z"
-	)
-	public static boolean ok(lp var0, int var1) throws EOFException {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		return var1 >= -63473784 && var1 < 2048;
 	}
 
 	@ObfuscatedName("ag")

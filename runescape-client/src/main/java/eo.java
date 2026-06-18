@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.concurrent.ScheduledExecutorService;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -26,12 +27,12 @@ public class eo extends rz {
 		descriptor = "I"
 	)
 	static int ar_fld;
-	@ObfuscatedGetter(
-		intValue = -43899203
-	)
 	@ObfuscatedName("od")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -43899203
 	)
 	static int od_fld;
 	@ObfuscatedName("aa")
@@ -55,26 +56,12 @@ public class eo extends rz {
 	)
 	static uv hx_fld;
 
-	@ObfuscatedName("eo")
+	@ObfuscatedName("jk")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;)Z"
+		descriptor = "(Lqf;)Ljava/io/OutputStream;"
 	)
-	public static boolean eo(ei var0) {
-		return var0.ar_fld != null && !var0.ar_fld.isEmpty();
-	}
-
-	@ObfuscatedName("ut")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;)V"
-	)
-	public static void ut(qf var0) throws Exception, IOException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-		} catch (Throwable var3) {
-			throw new RuntimeException(var3);
-		}
+	public static OutputStream jk(qf var0) throws IOException {
+		return var0.val$tlsClientProtocol.getOutputStream();
 	}
 
 	@ObfuscatedName("ae")
@@ -93,24 +80,20 @@ public class eo extends rz {
 		return this.ak((rr)var1, (rr)var2);
 	}
 
-	@ObfuscatedName("cz")
-	@ObfuscatedSignature(
-		descriptor = "(Leo;Lrr;Lrr;)I"
-	)
-	public static int cz(eo var0, rr var1, rr var2) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		if (client.ch_fld == var1.ae_fld && client.ch_fld == var2.ae_fld) {
-			return var0.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
-		} else {
-			return var0.as(var1, var2, 327463523);
-		}
-	}
-
 	public eo(boolean var1) {
 		this.ak_fld = var1;
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lrr;Lrr;)I"
+	)
+	int az(rr var1, rr var2) {
+		if (client.ch_fld == var1.ae_fld && client.ch_fld == var2.ae_fld) {
+			return this.ak_fld ? var1.ah_fld - var2.ah_fld : var2.ah_fld - var1.ah_fld;
+		} else {
+			return this.as(var1, var2, 327463523);
+		}
 	}
 
 	@ObfuscatedName("ah")
@@ -144,7 +127,7 @@ public class eo extends rz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;)I"
+		descriptor = "(Lrr;Lrr;I)I"
 	)
 	int ak(rr var1, rr var2) {
 		if (client.ch_fld == var1.ae_fld && client.ch_fld == var2.ae_fld) {
@@ -156,47 +139,47 @@ public class eo extends rz {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;II)V"
+		descriptor = "(Llu;IIB)V"
 	)
 	static void ak(lu var0, int var1, int var2) {
 		if (0 == var0.bt_fld) {
 			var0.bq_fld = -1983503213 * var0.bn_fld;
-			var0.vl(-1);
+			var0.ik(-1);
 		} else if (var0.bt_fld == 1) {
 			var0.bq_fld = var0.bn_fld + (var1 - var0.bb_fld) / 2;
-			var0.vl(-1);
+			var0.ik(-1);
 		} else if (var0.bt_fld == 2) {
 			var0.bq_fld = -491438769 * (var1 - var0.bb_fld - var0.bn_fld);
-			var0.vl(-1);
+			var0.ik(-1);
 		} else if (var0.bt_fld == 3) {
 			var0.bq_fld = -491438769 * (var0.bn_fld * var1 >> 14);
-			var0.vl(-1);
+			var0.ik(-1);
 		} else if (var0.bt_fld == 4) {
 			var0.bq_fld = -491438769 * ((var0.bn_fld * var1 >> 14) + (var1 - var0.bb_fld) / 2);
-			var0.vl(-1);
+			var0.ik(-1);
 		} else {
 			var0.bq_fld = var1 - var0.bb_fld - (var0.bn_fld * var1 >> 14);
-			var0.vl(-1);
+			var0.ik(-1);
 		}
 
 		if (var0.bv_fld == 0) {
 			var0.bg_fld = 531065689 * var0.bc_fld;
-			var0.zd(-1);
+			var0.qz(-1);
 		} else if (var0.bv_fld == 1) {
 			var0.bg_fld = var0.bc_fld + (var2 - var0.cd_fld) / 2;
-			var0.zd(-1);
+			var0.qz(-1);
 		} else if (2 == var0.bv_fld) {
 			var0.bg_fld = -298019711 * (var2 - var0.cd_fld - var0.bc_fld);
-			var0.zd(-1);
+			var0.qz(-1);
 		} else if (3 == var0.bv_fld) {
 			var0.bg_fld = var2 * var0.bc_fld >> 14;
-			var0.zd(-1);
+			var0.qz(-1);
 		} else if (var0.bv_fld == 4) {
 			var0.bg_fld = -298019711 * ((var2 - var0.cd_fld) / 2 + (var0.bc_fld * var2 >> 14));
-			var0.zd(-1);
+			var0.qz(-1);
 		} else {
 			var0.bg_fld = var2 - var0.cd_fld - (var2 * var0.bc_fld >> 14);
-			var0.zd(-1);
+			var0.qz(-1);
 		}
 	}
 }

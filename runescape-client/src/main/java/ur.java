@@ -9,12 +9,12 @@ public class ur extends vw {
 		descriptor = "[B"
 	)
 	byte[] ag_fld;
-	@ObfuscatedGetter(
-		intValue = -751563713
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -751563713
 	)
 	int ak_fld;
 	@ObfuscatedName("az")

@@ -1,6 +1,7 @@
 import java.util.Iterator;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.MessageNode;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -14,22 +15,27 @@ public class co extends vc implements MessageNode {
 		descriptor = "Ljava/lang/String;"
 	)
 	String aw_fld;
-	@ObfuscatedGetter(
-		intValue = 1262276963
-	)
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ag_fld;
 	@ObfuscatedGetter(
-		intValue = -1377519445
+		intValue = 1262276963
 	)
+	int ag_fld;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1377519445
+	)
 	int az_fld;
+	@ObfuscatedName("xp")
+	@ObfuscatedSignature(
+		descriptor = "Ljava/lang/String;"
+	)
+	public String xp_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Ljava/lang/String;"
@@ -40,6 +46,11 @@ public class co extends vc implements MessageNode {
 		descriptor = "Laax;"
 	)
 	aax ae_fld;
+	@ObfuscatedName("es")
+	@ObfuscatedSignature(
+		descriptor = "I"
+	)
+	public int es_fld = (int)(System.currentTimeMillis() / 1000L);
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "Lrw;"
@@ -50,95 +61,41 @@ public class co extends vc implements MessageNode {
 		descriptor = "Ljava/lang/String;"
 	)
 	String ah_fld;
-	@ObfuscatedName("mq")
-	@ObfuscatedSignature(
-		descriptor = "Ljava/lang/String;"
-	)
-	public String mq_fld;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Lrw;"
 	)
-	rw ay_fld;
-	@ObfuscatedGetter(
-		intValue = 1492045231
-	)
+	rw ay_fld = rw.ak_fld;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ak_fld;
-	@ObfuscatedName("wo")
-	@ObfuscatedSignature(
-		descriptor = "I"
+	@ObfuscatedGetter(
+		intValue = 1492045231
 	)
-	public int wo_fld = (int)(System.currentTimeMillis() / 1000L);
+	int ak_fld;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "[[[B"
 	)
 	public static byte[][][] ad_fld;
 
-	@ObfuscatedName("getName")
+	@ObfuscatedName("setSender")
 	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
+		descriptor = "(Ljava/lang/String;)V"
 	)
+	@Export("setSender")
 	@Override
-	public String getName() {
-		return this.av_fld;
+	public void setSender(String var1) {
+		this.ah_fld = var1;
 	}
 
-	@ObfuscatedName("getRuneLiteFormatMessage")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getRuneLiteFormatMessage() {
-		return this.mq_fld;
-	}
-
-	@ObfuscatedName("ad")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void ad() {
+	void at() {
 		this.ay_fld = la.fq_fld.ae_fld.bo(this.ae_fld, -1107590382) ? rw.ag_fld : rw.az_fld;
-	}
-
-	@ObfuscatedName("getValue")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getValue() {
-		if (this.aw_fld != null && this.aw_fld.startsWith("|")) {
-			ChatMessageType var1 = ChatMessageType.of(this.az_fld);
-			if (var1 == ChatMessageType.CLAN_CHAT || var1 == ChatMessageType.CLAN_MESSAGE) {
-				return this.aw_fld.substring(1);
-			}
-		}
-
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("uw")
-	@ObfuscatedSignature(
-		descriptor = "(Lfu;)Llu;"
-	)
-	public static lu uw(fu var0) {
-		return var0.ak_fld;
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	final void bs() {
-		if (null != this.av_fld) {
-			this.ae_fld = new aax(cr.hs(this.av_fld), fr.gv_fld);
-		} else {
-			this.ae_fld = null;
-		}
 	}
 
 	@ObfuscatedName("ag")
@@ -162,7 +119,6 @@ public class co extends vc implements MessageNode {
 	}
 
 	co(int var1, String var2, String var3, String var4) {
-		this.ay_fld = rw.ak_fld;
 		this.as_fld = rw.ak_fld;
 		this.ak(var1, var2, var3, var4, (byte)1);
 	}
@@ -175,13 +131,26 @@ public class co extends vc implements MessageNode {
 		this.as_fld = rw.ak_fld;
 	}
 
+	@ObfuscatedName("vd")
+	@ObfuscatedSignature(
+		descriptor = "(Lco;)V"
+	)
+	public static void vd(co var0) {
+		if (null != var0.av_fld) {
+			var0.ae_fld = new aax(cr.hs(var0.av_fld), fr.gv_fld);
+		} else {
+			var0.ae_fld = null;
+		}
+	}
+
 	@ObfuscatedName("setTimestamp")
 	@ObfuscatedSignature(
 		descriptor = "(I)V"
 	)
+	@Export("setTimestamp")
 	@Override
 	public void setTimestamp(int var1) {
-		this.wo_fld = var1;
+		this.es_fld = var1;
 	}
 
 	@ObfuscatedName("ah")
@@ -196,61 +165,65 @@ public class co extends vc implements MessageNode {
 		return rw.ag_fld == this.as_fld;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("vl")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+		descriptor = "(Lco;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
 	)
-	void as(int var1, String var2, String var3, String var4) {
-		this.ak_fld = ky.ak();
-		this.ag_fld = 341995813 * client.dv_fld;
-		this.az_fld = var1;
-		this.av_fld = var2;
-		this.ay(2081435723);
-		this.ah_fld = var3;
-		this.aw_fld = var4;
-		this.ag(-114594914);
-		this.ae(-1099576155);
+	public static void vl(co var0, int var1, String var2, String var3, String var4) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.ak_fld = ky.ak();
+			var0.ag_fld = 341995813 * client.dv_fld;
+			var0.az_fld = var1;
+			var0.av_fld = var2;
+			var0.ay(389742450);
+			var0.ah_fld = var3;
+			var0.aw_fld = var4;
+			var0.ag(-114594914);
+			var0.ae(-599858974);
+		}
 	}
 
-	@ObfuscatedName("so")
+	@ObfuscatedName("ry")
 	@ObfuscatedSignature(
 		descriptor = "(Lco;)V"
 	)
-	public static void so(co var0) {
-		var0.as_fld = la.fq_fld.ah_fld.bo(var0.ae_fld, -2124855269) ? rw.ag_fld : rw.az_fld;
+	public static void ry(co var0) {
+		if (var0 == null) {
+			var0.getClass();
+		} else {
+			var0.as_fld = rw.ak_fld;
+		}
 	}
 
-	@ObfuscatedName("setSender")
+	@ObfuscatedName("ga")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "(Lcx;Lss;Lsb;)V"
 	)
-	@Override
-	public void setSender(String var1) {
-		this.ah_fld = var1;
+	public static void ga(cx var0, ss var1, sb var2) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.av_fld = var1;
+		var0.ae_fld = var2;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+		descriptor = "()V"
 	)
-	void af(int var1, String var2, String var3, String var4) {
-		this.ak_fld = ky.ak();
-		this.ag_fld = 341995813 * client.dv_fld;
-		this.az_fld = var1;
-		this.av_fld = var2;
-		this.ay(389742450);
-		this.ah_fld = var3;
-		this.aw_fld = var4;
-		this.ag(-114594914);
-		this.ae(-599858974);
+	void ap() {
+		this.ay_fld = rw.ak_fld;
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(II)I"
+		descriptor = "(III)I"
 	)
 	static int az(int var0, int var1) {
-		bg var3 = (bg)bg.ak_fld.ak(var0);
+		bg var3 = (bg)xz.tw(bg.ak_fld, var0);
 		if (null == var3) {
 			return 0;
 		} else if (-1 == var1) {
@@ -268,68 +241,40 @@ public class co extends vc implements MessageNode {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("setRuneLiteFormatMessage")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z"
+		descriptor = "(Ljava/lang/String;)V"
 	)
-	final boolean az(byte var1) {
-		if (rw.ak_fld == this.ay_fld) {
-			ug(this, -776631127);
-		}
-
-		return rw.ag_fld == this.ay_fld;
-	}
-
-	@ObfuscatedName("hc")
-	@ObfuscatedSignature(
-		descriptor = "(Lco;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
-	)
-	public static void hc(co var0, int var1, String var2, String var3, String var4) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		var0.ak_fld = ky.ak();
-		var0.ag_fld = 341995813 * client.dv_fld;
-		var0.az_fld = var1;
-		var0.av_fld = var2;
-		var0.ay(1617399602);
-		var0.ah_fld = var3;
-		var0.aw_fld = var4;
-		var0.ag(-114594914);
-		var0.ae(-910642887);
-	}
-
-	@ObfuscatedName("ug")
-	@ObfuscatedSignature(
-		descriptor = "(Lco;I)V"
-	)
-	public static void ug(co var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		rw var10001;
-		if (la.fq_fld.ae_fld.bo(var0.ae_fld, 652588147)) {
-			if (var1 != -776631127) {
-				return;
-			}
-
-			var10001 = rw.ag_fld;
-		} else {
-			var10001 = rw.az_fld;
-		}
-
-		var0.ay_fld = var10001;
-	}
-
-	@ObfuscatedName("getTimestamp")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
+	@Export("setRuneLiteFormatMessage")
 	@Override
-	public int getTimestamp() {
-		return this.wo_fld;
+	public void setRuneLiteFormatMessage(String var1) {
+		this.xp_fld = var1;
+	}
+
+	@ObfuscatedName("getRuneLiteFormatMessage")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getRuneLiteFormatMessage")
+	@Override
+	public String getRuneLiteFormatMessage() {
+		return this.xp_fld;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+	)
+	void ar(int var1, String var2, String var3, String var4) {
+		this.ak_fld = ky.ak();
+		this.ag_fld = 341995813 * client.dv_fld;
+		this.az_fld = var1;
+		this.av_fld = var2;
+		this.ay(1617399602);
+		this.ah_fld = var3;
+		this.aw_fld = var4;
+		this.ag(-114594914);
+		this.ae(-910642887);
 	}
 
 	@ObfuscatedName("am")
@@ -353,7 +298,7 @@ public class co extends vc implements MessageNode {
 					eb.aj(var0, var1, var0, 1 + var1, var0.av_fld - var1);
 				}
 
-				sl.fa(var0, var1, var2, (byte)-35);
+				var0.ah(var1, var2);
 				var0.av_fld++;
 				return;
 			}
@@ -362,45 +307,39 @@ public class co extends vc implements MessageNode {
 		throw new RuntimeException();
 	}
 
-	@ObfuscatedName("getType")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/ChatMessageType;"
+		descriptor = "()Z"
 	)
-	@Override
-	public ChatMessageType getType() {
-		ChatMessageType var1 = ChatMessageType.of(this.az_fld);
-		if (var1 == ChatMessageType.CLAN_CHAT) {
-			if (this.aw_fld != null && this.aw_fld.startsWith("|")) {
-				return ChatMessageType.CLAN_GIM_CHAT;
-			}
-		} else if (var1 == ChatMessageType.CLAN_MESSAGE && this.aw_fld != null && this.aw_fld.startsWith("|")) {
-			return ChatMessageType.CLAN_GIM_MESSAGE;
+	final boolean aa() {
+		if (rw.ak_fld == this.ay_fld) {
+			this.av(-776631127);
 		}
 
-		return var1;
+		return rw.ag_fld == this.ay_fld;
 	}
 
-	@ObfuscatedName("oe")
+	@ObfuscatedName("de")
 	@ObfuscatedSignature(
-		descriptor = "(Lco;)Z"
+		descriptor = "(Lco;B)Z"
 	)
-	public static boolean oe(co var0) {
+	public static boolean de(co var0, byte var1) {
 		if (var0 == null) {
 			var0.getClass();
 		}
 
 		if (rw.ak_fld == var0.ay_fld) {
-			ug(var0, -776631127);
+			var0.av(-776631127);
 		}
 
 		return rw.ag_fld == var0.ay_fld;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void am() {
+	void ax() {
 		this.ay_fld = la.fq_fld.ae_fld.bo(this.ae_fld, 1531468307) ? rw.ag_fld : rw.az_fld;
 	}
 
@@ -418,15 +357,71 @@ public class co extends vc implements MessageNode {
 		this.aw_fld = var4;
 		this.ag(-114594914);
 		this.ae(-1090804715);
-		this.sp(var1, var2, var3, var4);
+		this.bo(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("getTimestamp")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getTimestamp")
+	@Override
+	public int getTimestamp() {
+		return this.es_fld;
+	}
+
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void ao() {
+	void ad() {
 		this.ay_fld = la.fq_fld.ae_fld.bo(this.ae_fld, -923920756) ? rw.ag_fld : rw.az_fld;
+	}
+
+	@ObfuscatedName("qt")
+	@ObfuscatedSignature(
+		descriptor = "(Lco;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+	)
+	public static void qt(co var0, int var1, String var2, String var3, String var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		var0.ak_fld = ky.ak();
+		var0.ag_fld = 341995813 * client.dv_fld;
+		var0.az_fld = var1;
+		var0.av_fld = var2;
+		var0.ay(203369751);
+		var0.ah_fld = var3;
+		var0.aw_fld = var4;
+		var0.ag(-114594914);
+		var0.ae(-760512024);
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lco;)Z"
+	)
+	public static boolean ac(co var0) {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			if (rw.ak_fld == var0.ay_fld) {
+				var0.av(-776631127);
+			}
+
+			return rw.ag_fld == var0.ay_fld;
+		}
+	}
+
+	@ObfuscatedName("getSender")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getSender")
+	@Override
+	public String getSender() {
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("aw")
@@ -448,28 +443,19 @@ public class co extends vc implements MessageNode {
 		this.as_fld = var10001;
 	}
 
-	@ObfuscatedName("getId")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getId() {
-		return this.ak_fld;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "()V"
-	)
-	void ap() {
-		this.as_fld = rw.ak_fld;
-	}
-
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
 	void an() {
+		this.as_fld = rw.ak_fld;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void bz() {
 		this.ay_fld = rw.ak_fld;
 	}
 
@@ -485,15 +471,6 @@ public class co extends vc implements MessageNode {
 		return rw.ag_fld == this.as_fld;
 	}
 
-	@ObfuscatedName("setRuneLiteFormatMessage")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	@Override
-	public void setRuneLiteFormatMessage(String var1) {
-		this.mq_fld = var1;
-	}
-
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -506,16 +483,27 @@ public class co extends vc implements MessageNode {
 		return rw.ag_fld == this.as_fld;
 	}
 
-	@ObfuscatedName("xp")
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
-		descriptor = "(Lco;)Z"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
 	)
-	public static boolean xp(co var0) {
-		if (rw.ak_fld == var0.ay_fld) {
-			ug(var0, -776631127);
+	public void bo(int var1, String var2, String var3, String var4) {
+		this.xp_fld = null;
+		this.es_fld = (int)(System.currentTimeMillis() / 1000L);
+		if (var2 != null) {
+			int var5 = var2.lastIndexOf(62);
+			if (var5 != -1) {
+				this.ae_fld = new aax(var2.substring(var5 + 1), fr.gv_fld);
+			}
 		}
+	}
 
-		return rw.ag_fld == var0.ay_fld;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lgn;)I"
+	)
+	public static int ac(gn var0) {
+		return var0.bx_fld;
 	}
 
 	@ObfuscatedName("bm")
@@ -530,20 +518,6 @@ public class co extends vc implements MessageNode {
 		return rw.ag_fld == this.as_fld;
 	}
 
-	@ObfuscatedName("setValue")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
-	)
-	@Override
-	public void setValue(String var1) {
-		ChatMessageType var2 = ChatMessageType.of(this.az_fld);
-		if ((var2 == ChatMessageType.CLAN_CHAT || var2 == ChatMessageType.CLAN_MESSAGE) && this.aw_fld != null && this.aw_fld.startsWith("|")) {
-			this.aw_fld = "|" + var1;
-		} else {
-			this.aw_fld = var1;
-		}
-	}
-
 	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
 		descriptor = "()Z"
@@ -554,6 +528,14 @@ public class co extends vc implements MessageNode {
 		}
 
 		return rw.ag_fld == this.as_fld;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "()V"
+	)
+	void ab() {
+		this.as_fld = la.fq_fld.ah_fld.bo(this.ae_fld, -2124855269) ? rw.ag_fld : rw.az_fld;
 	}
 
 	@ObfuscatedName("br")
@@ -580,39 +562,58 @@ public class co extends vc implements MessageNode {
 		}
 	}
 
-	@ObfuscatedName("sp")
+	@ObfuscatedName("setValue")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;)V"
 	)
-	public void sp(int var1, String var2, String var3, String var4) {
-		this.mq_fld = null;
-		this.wo_fld = (int)(System.currentTimeMillis() / 1000L);
-		if (var2 != null) {
-			int var5 = var2.lastIndexOf(62);
-			if (var5 != -1) {
-				this.ae_fld = new aax(var2.substring(var5 + 1), fr.gv_fld);
-			}
+	@Export("setValue")
+	@Override
+	public void setValue(String var1) {
+		ChatMessageType var2 = ChatMessageType.of(this.az_fld);
+		if ((var2 == ChatMessageType.CLAN_CHAT || var2 == ChatMessageType.CLAN_MESSAGE) && this.aw_fld != null && this.aw_fld.startsWith("|")) {
+			this.aw_fld = "|" + var1;
+		} else {
+			this.aw_fld = var1;
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("setName")
 	@ObfuscatedSignature(
-		descriptor = "(Lco;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;)V"
 	)
-	public static void aw(co var0, int var1, String var2, String var3, String var4) {
-		if (var0 == null) {
-			var0.getClass();
+	@Export("setName")
+	@Override
+	public void setName(String var1) {
+		if (var1 == null) {
+			throw new NullPointerException();
+		} else {
+			this.av_fld = var1;
+			int var2 = var1.lastIndexOf(62);
+			if (var2 != -1) {
+				var1 = var1.substring(var2 + 1);
+			}
+
+			this.ae_fld = new aax(var1, fr.gv_fld);
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)V"
+	)
+	void av(int var1) {
+		rw var10001;
+		if (la.fq_fld.ae_fld.bo(this.ae_fld, 652588147)) {
+			if (var1 != -776631127) {
+				return;
+			}
+
+			var10001 = rw.ag_fld;
+		} else {
+			var10001 = rw.az_fld;
 		}
 
-		var0.ak_fld = ky.ak();
-		var0.ag_fld = 341995813 * client.dv_fld;
-		var0.az_fld = var1;
-		var0.av_fld = var2;
-		var0.ay(203369751);
-		var0.ah_fld = var3;
-		var0.aw_fld = var4;
-		var0.ag(-114594914);
-		var0.ae(-760512024);
+		this.ay_fld = var10001;
 	}
 
 	@ObfuscatedName("bk")
@@ -635,13 +636,13 @@ public class co extends vc implements MessageNode {
 						return;
 					}
 
-					cv var4 = (cv)bw.dk_fld.au_fld.ak(client.db_fld.az_fld[var3]);
+					cv var4 = (cv)bw.dk_fld.au_fld.ae(client.db_fld.ar_fld[var3]);
 					if (var4 != null) {
 						if (var0 >= -836183525) {
 							return;
 						}
 
-						cv.oj(var4, 626304450);
+						var4.ar(626304450);
 					}
 				}
 			}
@@ -650,32 +651,11 @@ public class co extends vc implements MessageNode {
 		}
 	}
 
-	@ObfuscatedName("ia")
-	@ObfuscatedSignature(
-		descriptor = "(Lco;)Z"
-	)
-	public static boolean ia(co var0) {
-		if (rw.ak_fld == var0.ay_fld) {
-			ug(var0, -776631127);
-		}
-
-		return rw.ag_fld == var0.ay_fld;
-	}
-
-	@ObfuscatedName("getSender")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	@Override
-	public String getSender() {
-		return this.ah_fld;
-	}
-
-	@ObfuscatedName("ar")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
 	)
-	void ar(int var1, String var2, String var3, String var4) {
+	void al(int var1, String var2, String var3, String var4) {
 		this.ak_fld = ky.ak();
 		this.ag_fld = 341995813 * client.dv_fld;
 		this.az_fld = var1;
@@ -687,9 +667,38 @@ public class co extends vc implements MessageNode {
 		this.ae(-1610017497);
 	}
 
+	@ObfuscatedName("getName")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getName")
+	@Override
+	public String getName() {
+		return this.av_fld;
+	}
+
+	@ObfuscatedName("getType")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/ChatMessageType;"
+	)
+	@Export("getType")
+	@Override
+	public ChatMessageType getType() {
+		ChatMessageType var1 = ChatMessageType.of(this.az_fld);
+		if (var1 == ChatMessageType.CLAN_CHAT) {
+			if (this.aw_fld != null && this.aw_fld.startsWith("|")) {
+				return ChatMessageType.CLAN_GIM_CHAT;
+			}
+		} else if (var1 == ChatMessageType.CLAN_MESSAGE && this.aw_fld != null && this.aw_fld.startsWith("|")) {
+			return ChatMessageType.CLAN_GIM_MESSAGE;
+		}
+
+		return var1;
+	}
+
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lsl;I)Ljava/lang/Object;"
+		descriptor = "(Lsl;II)Ljava/lang/Object;"
 	)
 	public static Object ad(sl var0, int var1) {
 		om.ap(var0, null, true, (byte)0);
@@ -706,57 +715,58 @@ public class co extends vc implements MessageNode {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("getValue")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/lang/String;"
+	)
+	@Export("getValue")
+	@Override
+	public String getValue() {
+		if (this.aw_fld != null && this.aw_fld.startsWith("|")) {
+			ChatMessageType var1 = ChatMessageType.of(this.az_fld);
+			if (var1 == ChatMessageType.CLAN_CHAT || var1 == ChatMessageType.CLAN_MESSAGE) {
+				return this.aw_fld.substring(1);
+			}
+		}
+
+		return this.aw_fld;
+	}
+
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void at() {
+	void am() {
 		this.as_fld = rw.ak_fld;
 	}
 
-	@ObfuscatedName("setName")
+	@ObfuscatedName("getId")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;)V"
+		descriptor = "()I"
 	)
+	@Export("getId")
 	@Override
-	public void setName(String var1) {
-		if (var1 == null) {
-			throw new NullPointerException();
-		} else {
-			this.av_fld = var1;
-			int var2 = var1.lastIndexOf(62);
-			if (var2 != -1) {
-				var1 = var1.substring(var2 + 1);
-			}
-
-			this.ae_fld = new aax(var1, fr.gv_fld);
-		}
+	public int getId() {
+		return this.ak_fld;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z"
+	)
+	final boolean az(byte var1) {
+		if (rw.ak_fld == this.as_fld) {
+			this.aw(-776631127);
+		}
+
+		return rw.ag_fld == this.as_fld;
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "()V"
 	)
-	void ax() {
-		this.as_fld = rw.ag_fld;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(I)V"
-	)
-	void av(int var1) {
-		rw var10001;
-		if (la.fq_fld.ae_fld.bo(this.ae_fld, 652588147)) {
-			if (var1 != -776631127) {
-				return;
-			}
-
-			var10001 = rw.ak_fld;
-		} else {
-			var10001 = rw.ak_fld;
-		}
-
-		this.as_fld = var10001;
+	void ao() {
+		this.as_fld = la.fq_fld.ae_fld.bo(this.ae_fld, -923920756) ? rw.az_fld : rw.az_fld;
 	}
 }

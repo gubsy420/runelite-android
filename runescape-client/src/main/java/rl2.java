@@ -3,46 +3,44 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("rl2")
 class rl2 {
-	@ObfuscatedName("ex")
+	@ObfuscatedName("zm")
 	@ObfuscatedSignature(
 		descriptor = "Luy;"
 	)
-	public uy ex_fld;
-	@ObfuscatedName("bz")
+	public uy zm_fld = new uy();
+	@ObfuscatedName("qs")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	public uy qs_fld = new uy();
+	@ObfuscatedName("ho")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	public uy ho_fld = new uy();
+	@ObfuscatedName("mv")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean bz_fld;
-	@ObfuscatedName("ii")
+	public boolean mv_fld;
+	@ObfuscatedName("gb")
 	@ObfuscatedSignature(
 		descriptor = "Z"
 	)
-	public boolean ii_fld;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Luy;"
-	)
-	public uy ab_fld;
-	@ObfuscatedName("xb")
-	@ObfuscatedSignature(
-		descriptor = "Luy;"
-	)
-	public uy xb_fld = new uy();
+	public boolean gb_fld;
 
-	@ObfuscatedName("xj")
+	@ObfuscatedName("fp")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;Ljava/lang/String;)V"
+		descriptor = "(Lgu;Lgu;)V"
 	)
-	public static void xj(qt var0, String var1) {
+	public static void fp(gu var0, gu var1) {
 		if (var0 == null) {
 			var0.getClass();
-		} else {
-			var0.ae(qj.ag_fld, var1);
 		}
+
+		var0.ay(var1);
 	}
 
 	public rl2() {
-		this.ex_fld = new uy();
-		this.ab_fld = new uy();
 	}
 }

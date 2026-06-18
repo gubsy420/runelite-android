@@ -4,20 +4,20 @@ import net.runelite.api.annotations.ObfuscatedSignature;
 
 @ObfuscatedName("ln")
 public class ln {
-	@ObfuscatedGetter(
-		intValue = 1955114669
-	)
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	public int az_fld;
 	@ObfuscatedGetter(
-		intValue = 173762865
+		intValue = 1955114669
 	)
+	public int az_fld;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 173762865
 	)
 	public int ag_fld;
 	@ObfuscatedName("ab")
@@ -30,12 +30,12 @@ public class ln {
 		descriptor = "I"
 	)
 	public static int cl_fld;
-	@ObfuscatedGetter(
-		intValue = -1056040297
-	)
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1056040297
 	)
 	public int ak_fld;
 	@ObfuscatedName("be")
@@ -49,7 +49,7 @@ public class ln {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Llu;)Lyb;"
+		descriptor = "(Llu;I)Lyb;"
 	)
 	static yb ak(lu var0) {
 		yb var2 = new yb();
@@ -57,17 +57,9 @@ public class ln {
 		return var2;
 	}
 
-	@ObfuscatedName("op")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;)Z"
-	)
-	public static boolean op(uk var0) {
-		return null != var0.ak_fld;
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lxi;I)V"
+		descriptor = "(Lxi;IB)V"
 	)
 	public static void ah(xi var0, int var1) {
 		if (null != mh.ad_fld) {

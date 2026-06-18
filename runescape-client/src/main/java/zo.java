@@ -1,3 +1,4 @@
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
@@ -19,12 +20,12 @@ public class zo {
 		descriptor = "Lzo;"
 	)
 	static zo ag_fld = new zo(8, 1, "", "");
-	@ObfuscatedGetter(
-		intValue = -1806818013
-	)
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1806818013
 	)
 	int ar_fld;
 	@ObfuscatedName("ae")
@@ -63,14 +64,6 @@ public class zo {
 	)
 	String af_fld;
 
-	@ObfuscatedName("gi")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/lang/String;"
-	)
-	public String gi() {
-		return this.af_fld;
-	}
-
 	zo(int var1, int var2, String var3, String var4, boolean var5, zo[] var6) {
 		this.ar_fld = var1;
 		this.af_fld = var4;
@@ -85,6 +78,7 @@ public class zo {
 	@ObfuscatedSignature(
 		descriptor = "()Ljava/lang/String;"
 	)
+	@Export("toString")
 	@Override
 	public String toString() {
 		return this.af_fld;

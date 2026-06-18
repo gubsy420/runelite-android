@@ -14,14 +14,14 @@ public class ti implements xm {
 		descriptor = "Lti;"
 	)
 	static ti ag_fld = new ti(3, 2);
-	@ObfuscatedGetter(
-		intValue = -42281481
-	)
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ah_fld;
+	@ObfuscatedGetter(
+		intValue = -42281481
+	)
+	int ae_fld;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lti;"
@@ -32,14 +32,14 @@ public class ti implements xm {
 		descriptor = "Lti;"
 	)
 	static ti az_fld = new ti(1, 3);
-	@ObfuscatedGetter(
-		intValue = 713013293
-	)
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ae_fld;
+	@ObfuscatedGetter(
+		intValue = 713013293
+	)
+	int ah_fld;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
@@ -52,20 +52,12 @@ public class ti implements xm {
 	)
 	@Override
 	public int ag(int var1) {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("qu")
-	@ObfuscatedSignature(
-		descriptor = "(Lqc;)I"
-	)
-	public static int qu(qc var0) {
-		return var0.av_fld;
+		return this.ah_fld;
 	}
 
 	ti(int var1, int var2) {
-		this.ah_fld = var1;
-		this.ae_fld = var2;
+		this.ae_fld = var1;
+		this.ah_fld = var2;
 	}
 
 	@ObfuscatedName("av")
@@ -74,7 +66,35 @@ public class ti implements xm {
 	)
 	@Override
 	public int av() {
-		return this.ae_fld;
+		return this.ah_fld;
+	}
+
+	@ObfuscatedName("yp")
+	@ObfuscatedSignature(
+		descriptor = "(Lev;IIII)Z"
+	)
+	public static boolean yp(ev var0, int var1, int var2, int var3, int var4) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		if (!var0.cl(var1, var2, var3, var4)) {
+			return var0.ch(var1, var2, var3, var4);
+		} else {
+			var0.dc(var1, var2, var3, var4, false);
+			int var5 = var1 * 32 + ev.ay_fld;
+			int var6 = var2 * 64;
+			int var7 = (var3 - var0.ds_fld - var0.cx_fld - 1) * 128;
+			int var8 = (var4 - var0.ds_fld - var0.ca_fld - 1) * 128;
+
+			for (int var9 = -var0.es_fld; var9 <= var0.bu_fld; var9 += 128) {
+				if (var0.dm(var7, var0.dp_fld[var1] + var9, var8, var5, var6)) {
+					return ev.mu(var0, var1, var2, var3, var4, true);
+				}
+			}
+
+			return ev.mu(var0, var1, var2, var3, var4, false);
+		}
 	}
 
 	@ObfuscatedName("ae")
@@ -83,15 +103,7 @@ public class ti implements xm {
 	)
 	@Override
 	public int ae() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;)I"
-	)
-	public static int bk(pi var0) {
-		return var0.ai_fld;
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ah")
@@ -100,20 +112,12 @@ public class ti implements xm {
 	)
 	@Override
 	public int ah() {
-		return this.ae_fld;
-	}
-
-	@ObfuscatedName("wu")
-	@ObfuscatedSignature(
-		descriptor = "(Lqc;)I"
-	)
-	public static int wu(qc var0) {
-		return var0.ae_fld;
+		return this.ah_fld;
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "([I[III)V"
+		descriptor = "([I[IIII)V"
 	)
 	public static void ah(int[] var0, int[] var1, int var2, int var3) {
 		if (var2 < var3) {
@@ -149,7 +153,7 @@ public class ti implements xm {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lki;"
+		descriptor = "(B)[Lki;"
 	)
 	public static ki[] ak() {
 		return new ki[]{

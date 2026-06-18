@@ -1,4 +1,3 @@
-import java.awt.event.FocusEvent;
 import net.runelite.api.annotations.ObfuscatedName;
 import net.runelite.api.annotations.ObfuscatedSignature;
 
@@ -41,6 +40,14 @@ public abstract class mf {
 	)
 	public abstract void ak(byte var1);
 
+	@ObfuscatedName("me")
+	@ObfuscatedSignature(
+		descriptor = "(II)I"
+	)
+	public int me(int var1, int var2) {
+		return this.ag(var1, var2, 1099094056);
+	}
+
 	mf() {
 	}
 
@@ -68,26 +75,6 @@ public abstract class mf {
 	)
 	public abstract int aw(int var1, int var2);
 
-	@ObfuscatedName("ib")
-	@ObfuscatedSignature(
-		descriptor = "(Ltf;Ljava/awt/event/FocusEvent;)V"
-	)
-	public static void ib(tf var0, FocusEvent var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
-
-		tf.rl_fld = false;
-	}
-
-	@ObfuscatedName("pb")
-	@ObfuscatedSignature(
-		descriptor = "(Log;)Z"
-	)
-	public static boolean pb(og var0) {
-		return var0.dg_fld != null;
-	}
-
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)I"
@@ -108,37 +95,21 @@ public abstract class mf {
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;IIIILuy;III)I"
+		descriptor = "(Lfn;IIIILuy;IIIB)I"
 	)
 	static int ad(fn var0, int var1, int var2, int var3, int var4, uy var5, int var6, int var7, int var8) {
 		mj.an(var5, var6, var7, var8);
-		return bc.ao(var2 - gz.bj_fld, var3 - wk.bf_fld, var4 - bv.by_fld, bc.bl_fld, ch.bx_fld, ee.bo_fld, dc.bp_fld, bu.bt_fld, hg.bv_fld, fn.ff(var0, var1));
-	}
-
-	@ObfuscatedName("qp")
-	@ObfuscatedSignature(
-		descriptor = "(Lpn;)Lwn;"
-	)
-	public static wn qp(pn var0) {
-		return var0.as_fld;
-	}
-
-	@ObfuscatedName("nv")
-	@ObfuscatedSignature(
-		descriptor = "(II)I"
-	)
-	public int nv(int var1, int var2) {
-		return this.ag(var1, var2, 1099094056);
+		return bc.ao(var2 - gz.bj_fld, var3 - wk.bf_fld, var4 - bv.by_fld, bc.bl_fld, ch.bx_fld, ee.bo_fld, dc.bp_fld, bu.bt_fld, hg.bv_fld, var0.dq(var1));
 	}
 
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;II)Ltu;"
+		descriptor = "(Ldx;III)Ltu;"
 	)
 	public static tu bn(dx var0, int var1, int var2) {
 		if (var0 != null && bw.dk_fld != var0) {
 			rg var4 = (rg)bw.dk_fld.an_fld.ak(var0.ag_fld);
-			return var4 == null ? sh.ak(var1, 0.0F, var2) : rg.ql(var4, var1, var2);
+			return var4 == null ? sh.ak(var1, 0.0F, var2) : var4.ap(var1, var2, 1275202034);
 		} else {
 			return sh.ak(var1, 0.0F, var2);
 		}
@@ -146,7 +117,7 @@ public abstract class mf {
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[III)V"
+		descriptor = "([Ljava/lang/String;[IIIB)V"
 	)
 	public static void az(String[] var0, int[] var1, int var2, int var3) {
 		if (var2 < var3) {

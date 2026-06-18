@@ -1,4 +1,3 @@
-import java.io.EOFException;
 import java.util.ArrayList;
 import java.util.List;
 import net.runelite.api.GroundObject;
@@ -6,6 +5,7 @@ import net.runelite.api.Point;
 import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Tile;
+import net.runelite.api.annotations.Export;
 import net.runelite.api.annotations.Implements;
 import net.runelite.api.annotations.ObfuscatedGetter;
 import net.runelite.api.annotations.ObfuscatedName;
@@ -41,12 +41,12 @@ public class ei extends vw implements Tile {
 		descriptor = "Len;"
 	)
 	en ae_fld;
-	@ObfuscatedGetter(
-		intValue = -260411347
-	)
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -260411347
 	)
 	int ah_fld;
 	@ObfuscatedName("aw")
@@ -54,12 +54,12 @@ public class ei extends vw implements Tile {
 		descriptor = "[Lfj;"
 	)
 	fj[] aw_fld = new fj[5];
-	@ObfuscatedGetter(
-		intValue = 27239911
-	)
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 27239911
 	)
 	int ay_fld;
 	@ObfuscatedName("ak")
@@ -72,28 +72,28 @@ public class ei extends vw implements Tile {
 		descriptor = "Ljava/util/ArrayList;"
 	)
 	ArrayList ar_fld = null;
-	@ObfuscatedGetter(
-		intValue = 2017300399
-	)
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int af_fld;
 	@ObfuscatedGetter(
-		intValue = -816512793
+		intValue = 2017300399
 	)
+	int af_fld;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int al_fld;
 	@ObfuscatedGetter(
-		intValue = -1496728423
+		intValue = -816512793
 	)
+	int al_fld;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1496728423
 	)
 	int as_fld;
 	@ObfuscatedName("bd")
@@ -121,20 +121,20 @@ public class ei extends vw implements Tile {
 		descriptor = "Lfv;"
 	)
 	fv aa_fld;
-	@ObfuscatedGetter(
-		intValue = 1099550597
-	)
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int am_fld;
 	@ObfuscatedGetter(
-		intValue = -1777557551
+		intValue = 1099550597
 	)
+	int am_fld;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1777557551
 	)
 	int ad_fld;
 	@ObfuscatedName("ao")
@@ -142,12 +142,12 @@ public class ei extends vw implements Tile {
 		descriptor = "Z"
 	)
 	boolean ao_fld;
-	@ObfuscatedGetter(
-		intValue = -1823200731
-	)
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = -1823200731
 	)
 	int ax_fld;
 	@ObfuscatedName("aq")
@@ -155,134 +155,91 @@ public class ei extends vw implements Tile {
 		descriptor = "[I"
 	)
 	int[] aq_fld = new int[5];
-	@ObfuscatedGetter(
-		intValue = -498525771
-	)
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int at_fld;
 	@ObfuscatedGetter(
-		intValue = -450662127
+		intValue = -498525771
 	)
+	int at_fld;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int au_fld;
 	@ObfuscatedGetter(
-		intValue = -1115731223
+		intValue = -450662127
 	)
+	int au_fld;
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int aj_fld;
 	@ObfuscatedGetter(
-		intValue = -1149023619
+		intValue = -1115731223
 	)
+	int aj_fld;
 	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int bm_fld;
 	@ObfuscatedGetter(
-		intValue = 2018281467
+		intValue = -1149023619
 	)
+	int bm_fld;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
-	int ac_fld;
 	@ObfuscatedGetter(
-		intValue = -1281184533
+		intValue = 2018281467
 	)
+	int ac_fld;
 	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
 		descriptor = "I"
 	)
+	@ObfuscatedGetter(
+		intValue = -1281184533
+	)
 	static int ba_fld;
 
-	@ObfuscatedName("jq")
+	@ObfuscatedName("zn")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;I)Lef;"
+		descriptor = "(Lrg;I)V"
 	)
-	public static ef jq(ei var0, int var1) {
-		if (var0 == null) {
-			throw new NullPointerException();
+	public static void zn(rg var0, int var1) {
+		if (-329576718 * var0.as_fld == 0) {
+			var0.ad(var0.ay_fld[0].ak_fld, (byte)5);
 		} else {
-			return var0.ai_fld;
+			if (!var0.ax_fld) {
+				var0.au_fld.ak(var0.av_fld, var0.ay_fld[0], var1, 364480518);
+				var0.ax_fld = true;
+			}
+
+			if (var0.au_fld.ag(var0.av_fld, var1, var0.as_fld, -1279780231)) {
+				var0.as_fld--;
+				var0.ax_fld = false;
+			}
 		}
-	}
-
-	@ObfuscatedName("getSceneLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/Point;"
-	)
-	@Override
-	public Point getSceneLocation() {
-		throw new IllegalStateException();
-	}
-
-	@ObfuscatedName("rm")
-	@ObfuscatedSignature(
-		descriptor = "()Lei;"
-	)
-	public ei getBridge() {
-		return this.bd_fld;
-	}
-
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "()[Lfj;"
-	)
-	public fj[] getGameObjects() {
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("ls")
-	@ObfuscatedSignature(
-		descriptor = "()Lfv;"
-	)
-	public fv getDecorativeObject() {
-		return this.aa_fld;
-	}
-
-	@ObfuscatedName("getPlane")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getPlane() {
-		return this.af_fld;
-	}
-
-	@ObfuscatedName("getRenderLevel")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	@Override
-	public int getRenderLevel() {
-		return this.ax_fld;
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Z)V"
+		descriptor = "(ZB)V"
 	)
 	static void aq(boolean var0) {
 		byte var2 = 0;
 		if (!yx.hl()) {
 			var2 = 12;
-		} else if (og.ci_fld.ib((byte)121) || og.ci_fld.ie(1039039083) || client.ga(og.ci_fld, -1590267322)) {
+		} else if (client.de(og.ci_fld, (byte)121) || og.ci_fld.ie(1039039083) || og.ci_fld.iz(-1590267322)) {
 			var2 = 10;
 		}
 
 		jz.ac(var2);
 		if (var0) {
 			bn.ba_fld = "";
-			client.lq();
+			client.og();
 			bn.bq_fld = "";
 			pe.cc_fld = 0;
 			he.cq_fld = "";
@@ -296,33 +253,7 @@ public class ei extends vw implements Tile {
 		}
 	}
 
-	@ObfuscatedName("xx")
-	@ObfuscatedSignature(
-		descriptor = "()Lfa;"
-	)
-	public fa getSceneTilePaint() {
-		return this.az_fld;
-	}
-
-	@ObfuscatedName("getGroundItems")
-	@ObfuscatedSignature(
-		descriptor = "()Ljava/util/List;"
-	)
-	@Override
-	public List getGroundItems() {
-		throw new IllegalStateException();
-	}
-
-	@ObfuscatedName("setSceneTilePaint")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/SceneTilePaint;)V"
-	)
-	@Override
-	public void setSceneTilePaint(SceneTilePaint var1) {
-		this.az_fld = (fa)var1;
-	}
-
-	@ObfuscatedName("vd")
+	@ObfuscatedName("yc")
 	@ObfuscatedSignature(
 		descriptor = "()Lfl;"
 	)
@@ -330,25 +261,40 @@ public class ei extends vw implements Tile {
 		return this.av_fld;
 	}
 
-	@ObfuscatedName("getWorldLocation")
+	@ObfuscatedName("setSceneTilePaint")
 	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/coords/WorldPoint;"
+		descriptor = "(Lnet/runelite/api/SceneTilePaint;)V"
 	)
+	@Export("setSceneTilePaint")
 	@Override
-	public WorldPoint getWorldLocation() {
-		throw new IllegalStateException();
+	public void setSceneTilePaint(SceneTilePaint var1) {
+		this.az_fld = (fa)var1;
 	}
 
-	@ObfuscatedName("gt")
+	@ObfuscatedName("getRenderLevel")
 	@ObfuscatedSignature(
-		descriptor = "(Luv;I)Z"
+		descriptor = "()I"
 	)
-	public static boolean gt(uv var0, int var1) {
-		if (var0 == null) {
-			var0.getClass();
-		}
+	@Export("getRenderLevel")
+	@Override
+	public int getRenderLevel() {
+		return this.ax_fld;
+	}
 
-		return var0.cp(var1, (byte)52) != null;
+	@ObfuscatedName("xn")
+	@ObfuscatedSignature(
+		descriptor = "()Lfv;"
+	)
+	public fv getDecorativeObject() {
+		return this.aa_fld;
+	}
+
+	@ObfuscatedName("ni")
+	@ObfuscatedSignature(
+		descriptor = "()[Lfj;"
+	)
+	public fj[] getGameObjects() {
+		return this.aw_fld;
 	}
 
 	@ObfuscatedName("az")
@@ -359,53 +305,7 @@ public class ei extends vw implements Tile {
 		return this.ai_fld;
 	}
 
-	@ObfuscatedName("getLocalLocation")
-	@ObfuscatedSignature(
-		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
-	)
-	@Override
-	public LocalPoint getLocalLocation() {
-		throw new IllegalStateException();
-	}
-
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "(II)V"
-	)
-	static final void gl(int var0, int var1) {
-		if (null != client.fv_fld[var0]) {
-			if (var1 >= 0 && var1 < client.fv_fld[var0].av(-1091125853)) {
-				hx var3 = (hx)(hx)client.fv_fld[var0].ak_fld.get(var1);
-				if (var3.ak_fld == -1) {
-					jm var4 = gi.ak(jb.bo_fld, client.aq_fld.av_fld);
-					var4.ay_fld.bc(3 + iq.bu(var3.az_fld.ak(723574353)));
-					var4.ay_fld.bc(var0);
-					var4.ay_fld.bw(var1);
-					var4.ay_fld.cc(var3.az_fld.ak(347446784), 1529506173);
-					client.aq_fld.az(var4);
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("setGroundObject")
-	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/GroundObject;)V"
-	)
-	@Override
-	public void setGroundObject(GroundObject var1) {
-		this.ai_fld = (ef)var1;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "()Lef;"
-	)
-	public ef av() {
-		return this.ai_fld;
-	}
-
-	@ObfuscatedName("id")
+	@ObfuscatedName("mf")
 	@ObfuscatedSignature(
 		descriptor = "()Lfs;"
 	)
@@ -413,13 +313,80 @@ public class ei extends vw implements Tile {
 		return this.an_fld;
 	}
 
-	@ObfuscatedName("setSceneTileModel")
+	@ObfuscatedName("wt")
 	@ObfuscatedSignature(
-		descriptor = "(Lnet/runelite/api/SceneTileModel;)V"
+		descriptor = "(Lei;)Lef;"
 	)
+	public static ef wt(ei var0) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ai_fld;
+	}
+
+	@ObfuscatedName("getGroundItems")
+	@ObfuscatedSignature(
+		descriptor = "()Ljava/util/List;"
+	)
+	@Export("getGroundItems")
 	@Override
-	public void setSceneTileModel(SceneTileModel var1) {
-		this.av_fld = (fl)var1;
+	public List getGroundItems() {
+		throw new IllegalStateException();
+	}
+
+	@ObfuscatedName("getPlane")
+	@ObfuscatedSignature(
+		descriptor = "()I"
+	)
+	@Export("getPlane")
+	@Override
+	public int getPlane() {
+		return this.af_fld;
+	}
+
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "()Lfa;"
+	)
+	public fa getSceneTilePaint() {
+		return this.az_fld;
+	}
+
+	@ObfuscatedName("gl")
+	@ObfuscatedSignature(
+		descriptor = "(III)V"
+	)
+	static final void gl(int var0, int var1) {
+		if (null != client.fv_fld[var0]) {
+			if (var1 >= 0 && var1 < client.fv_fld[var0].av(-1091125853)) {
+				hx var3 = (hx)(hx)client.fv_fld[var0].ak_fld.get(var1);
+				if (var3.ak_fld == -1) {
+					jm var4 = gi.ak(jb.bo_fld, client.appletStub.av_fld);
+					var4.ay_fld.ea(3 + iq.bu(var3.az_fld.ak(723574353)));
+					var4.ay_fld.ea(var0);
+					xi.vy(var4.ay_fld, var1);
+					xi.ph(var4.ay_fld, var3.az_fld.ak(347446784), 1529506173);
+					client.appletStub.az(var4);
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "()Lef;"
+	)
+	public ef ae() {
+		return this.ai_fld;
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "()Z"
+	)
+	boolean ah() {
+		return this.ar_fld != null && !this.ar_fld.isEmpty();
 	}
 
 	@ObfuscatedName("aw")
@@ -430,6 +397,66 @@ public class ei extends vw implements Tile {
 		return this.ar_fld != null && !this.ar_fld.isEmpty();
 	}
 
+	@ObfuscatedName("xu")
+	@ObfuscatedSignature(
+		descriptor = "()Lei;"
+	)
+	public ei getBridge() {
+		return this.bd_fld;
+	}
+
+	@ObfuscatedName("setGroundObject")
+	@ObfuscatedSignature(
+		descriptor = "(Lnet/runelite/api/GroundObject;)V"
+	)
+	@Export("setGroundObject")
+	@Override
+	public void setGroundObject(GroundObject var1) {
+		this.ai_fld = (ef)var1;
+	}
+
+	@ObfuscatedName("dm")
+	@ObfuscatedSignature(
+		descriptor = "(Lei;I)Lef;"
+	)
+	public static ef dm(ei var0, int var1) {
+		if (var0 == null) {
+			var0.getClass();
+		}
+
+		return var0.ai_fld;
+	}
+
+	@ObfuscatedName("getLocalLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/coords/LocalPoint;"
+	)
+	@Export("getLocalLocation")
+	@Override
+	public LocalPoint getLocalLocation() {
+		throw new IllegalStateException();
+	}
+
+	@ObfuscatedName("getSceneLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/Point;"
+	)
+	@Export("getSceneLocation")
+	@Override
+	public Point getSceneLocation() {
+		throw new IllegalStateException();
+	}
+
+	@ObfuscatedName("getWorldLocation")
+	@ObfuscatedSignature(
+		descriptor = "()Lnet/runelite/api/coords/WorldPoint;"
+	)
+	@Export("getWorldLocation")
+	@Override
+	public WorldPoint getWorldLocation() {
+		throw new IllegalStateException();
+	}
+
 	ei(int var1, int var2, int var3) {
 		this.am_fld = 0;
 		this.ax_fld = (this.af_fld = 804464463 * var1) * -1889408957;
@@ -437,7 +464,15 @@ public class ei extends vw implements Tile {
 		this.au_fld = var3;
 	}
 
-	@ObfuscatedName("yk")
+	@ObfuscatedName("nu")
+	@ObfuscatedSignature(
+		descriptor = "()Lef;"
+	)
+	public ef getGroundObject() {
+		return this.ai_fld;
+	}
+
+	@ObfuscatedName("gg")
 	@ObfuscatedSignature(
 		descriptor = "()Len;"
 	)
@@ -453,28 +488,14 @@ public class ei extends vw implements Tile {
 		return this.ar_fld != null && !this.ar_fld.isEmpty();
 	}
 
-	@ObfuscatedName("vi")
+	@ObfuscatedName("setSceneTileModel")
 	@ObfuscatedSignature(
-		descriptor = "(Lpp;)[I"
+		descriptor = "(Lnet/runelite/api/SceneTileModel;)V"
 	)
-	public static int[] vi(pp var0) throws EOFException {
-		try {
-			if (var0 == null) {
-				var0.getClass();
-			}
-
-			return var0.ez_fld;
-		} catch (Throwable var2) {
-			throw new RuntimeException(var2);
-		}
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "()Lef;"
-	)
-	public ef getGroundObject() {
-		return this.ai_fld;
+	@Export("setSceneTileModel")
+	@Override
+	public void setSceneTileModel(SceneTileModel var1) {
+		this.av_fld = (fl)var1;
 	}
 
 	@ObfuscatedName("ak")
@@ -482,6 +503,14 @@ public class ei extends vw implements Tile {
 		descriptor = "(I)Lef;"
 	)
 	public ef ak(int var1) {
+		return this.ai_fld;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "()Lef;"
+	)
+	public ef av() {
 		return this.ai_fld;
 	}
 }

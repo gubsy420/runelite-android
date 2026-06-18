@@ -15,12 +15,12 @@ public class wt {
 		descriptor = "Lgf;"
 	)
 	gf ae_fld;
-	@ObfuscatedGetter(
-		intValue = 445046621
-	)
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "I"
+	)
+	@ObfuscatedGetter(
+		intValue = 445046621
 	)
 	int aw_fld = 0;
 	@ObfuscatedName("ak")
@@ -43,6 +43,40 @@ public class wt {
 		descriptor = "Lyc;"
 	)
 	static yc dk_fld;
+
+	@ObfuscatedName("ll")
+	@ObfuscatedSignature(
+		descriptor = "(Lwt;)I"
+	)
+	public static int ll(wt var0) throws EOFException {
+		if (var0.ae_fld == null) {
+			var0.aw_fld = 1402900404;
+			var0.ay_fld = true;
+		} else {
+			if (var0.aw_fld < 33) {
+				if (!var0.ah_fld.cc(hc.ag_fld.aw_fld, var0.ae_fld.ay(-143778459), 1911538439)) {
+					return var0.aw_fld;
+				}
+
+				var0.aw_fld = -267187307;
+			}
+
+			if (var0.aw_fld == 33) {
+				if (!var0.ah_fld.cc(hc.az_fld.aw_fld, var0.ae_fld.ay(-143778459), -305976435)) {
+					return var0.aw_fld;
+				}
+
+				var0.aw_fld = -534374614;
+			}
+
+			if (var0.aw_fld == 66) {
+				var0.aw_fld = 1402900404;
+				var0.ay_fld = true;
+			}
+		}
+
+		return var0.aw_fld;
+	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
@@ -78,32 +112,55 @@ public class wt {
 		return this.aw_fld;
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;)V"
-	)
-	void ak(gf var1) throws EOFException {
-		if (null != var1) {
-			if (null == this.ae_fld || var1.ay(-143778459) != this.ae_fld.ay(-143778459)) {
-				this.ae_fld = var1;
-				this.aw_fld = 0;
-				this.ay_fld = false;
-				if (aac.ak_fld < 238) {
-					this.az();
-				} else {
-					this.ag();
-				}
-			}
-		}
-	}
-
 	wt(ub var1) {
 		this.ah_fld = var1;
 	}
 
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "(Lwt;)I"
+	)
+	public static int in(wt var0) throws EOFException {
+		if (var0 == null) {
+			throw new NullPointerException();
+		} else {
+			if (var0.ae_fld == null) {
+				var0.aw_fld = 1402900404;
+				var0.ay_fld = true;
+			} else {
+				if (var0.aw_fld < 482160843) {
+					if (!var0.ah_fld.co(hc.ag_fld.ah_fld, var0.ae_fld.ar(-184889473), -1431486647)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = -267187307;
+				}
+
+				if (var0.aw_fld == 198734503) {
+					if (var0.ah_fld.ck(hc.az_fld.ah_fld, var0.ae_fld.ar(1121850575), (byte)32) && !var0.ah_fld.co(hc.az_fld.ah_fld, var0.ae_fld.ar(-1256420621), 260519985)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = -1251869770;
+				}
+
+				if (-787819639 == var0.aw_fld) {
+					if (!var0.ah_fld.co(var0.ae_fld.ar(-1632271859), hc.ae_fld.ah_fld, 729489608)) {
+						return var0.aw_fld;
+					}
+
+					var0.aw_fld = 1402900404;
+					var0.ay_fld = true;
+				}
+			}
+
+			return var0.aw_fld;
+		}
+	}
+
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	int az() throws EOFException {
 		if (this.ae_fld == null) {
@@ -111,7 +168,7 @@ public class wt {
 			this.ay_fld = true;
 		} else {
 			if (this.aw_fld < 33) {
-				if (!this.ah_fld.co(hc.ag_fld.ah_fld, gf.ms(this.ae_fld, -250048066), 283292078)) {
+				if (!this.ah_fld.co(hc.ag_fld.ah_fld, this.ae_fld.ar(-250048066), 283292078)) {
 					return this.aw_fld;
 				}
 
@@ -119,8 +176,7 @@ public class wt {
 			}
 
 			if (this.aw_fld == 33) {
-				if (ub.mo(this.ah_fld, hc.az_fld.ah_fld, gf.ms(this.ae_fld, -994964754), (byte)0)
-					&& !this.ah_fld.co(hc.az_fld.ah_fld, gf.ms(this.ae_fld, 766820911), 265472085)) {
+				if (this.ah_fld.ck(hc.az_fld.ah_fld, this.ae_fld.ar(-994964754), (byte)0) && !this.ah_fld.co(hc.az_fld.ah_fld, this.ae_fld.ar(766820911), 265472085)) {
 					return this.aw_fld;
 				}
 
@@ -128,44 +184,10 @@ public class wt {
 			}
 
 			if (66 == this.aw_fld) {
-				if (!this.ah_fld.co(gf.ms(this.ae_fld, 379208531), hc.ae_fld.ah_fld, -1349985341)) {
+				if (!this.ah_fld.co(this.ae_fld.ar(379208531), hc.ae_fld.ah_fld, -1349985341)) {
 					return this.aw_fld;
 				}
 
-				this.aw_fld = 1402900404;
-				this.ay_fld = true;
-			}
-		}
-
-		return this.aw_fld;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ar() throws EOFException {
-		if (this.ae_fld == null) {
-			this.aw_fld = 1402900404;
-			this.ay_fld = true;
-		} else {
-			if (this.aw_fld < 33) {
-				if (!this.ah_fld.cc(hc.ag_fld.aw_fld, this.ae_fld.ay(-143778459), 1911538439)) {
-					return this.aw_fld;
-				}
-
-				this.aw_fld = -267187307;
-			}
-
-			if (this.aw_fld == 33) {
-				if (!this.ah_fld.cc(hc.az_fld.aw_fld, this.ae_fld.ay(-143778459), -305976435)) {
-					return this.aw_fld;
-				}
-
-				this.aw_fld = -534374614;
-			}
-
-			if (this.aw_fld == 66) {
 				this.aw_fld = 1402900404;
 				this.ay_fld = true;
 			}
@@ -176,7 +198,7 @@ public class wt {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(B)I"
 	)
 	int ag() throws EOFException {
 		if (this.ae_fld == null) {
@@ -210,7 +232,7 @@ public class wt {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "()[Lym;"
+		descriptor = "(I)[Lym;"
 	)
 	public static ym[] ak() {
 		return new ym[]{ym.az_fld, ym.ak_fld, ym.ag_fld};
@@ -235,33 +257,6 @@ public class wt {
 		}
 	}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lgf;)V"
-	)
-	void ay(gf var1) throws EOFException {
-		if (null != var1) {
-			if (null == this.ae_fld || var1.ay(-143778459) != this.ae_fld.ay(-143778459)) {
-				this.ae_fld = var1;
-				this.aw_fld = 0;
-				this.ay_fld = false;
-				if (aac.ak_fld < 238) {
-					this.az();
-				} else {
-					this.ag();
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int ad() {
-		return this.aw_fld;
-	}
-
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(II)V"
@@ -279,11 +274,11 @@ public class wt {
 
 			for (int var6 = 1; var6 < 103; var6++) {
 				if (0 == (bw.dk_fld.al_fld[var0][var6][var12] & 24)) {
-					bw.dk_fld.az_fld.ca(var2, var5, 512, var0, var6, var12);
+					ev.mc(bw.dk_fld.az_fld, var2, var5, 512, var0, var6, var12);
 				}
 
 				if (var0 < 3 && 0 != (bw.dk_fld.al_fld[var0 + 1][var6][var12] & 8)) {
-					bw.dk_fld.az_fld.ca(var2, var5, 512, var0 + 1, var6, var12);
+					ev.mc(bw.dk_fld.az_fld, var2, var5, 512, var0 + 1, var6, var12);
 				}
 
 				var5 += 4;
@@ -381,7 +376,7 @@ public class wt {
 			this.ay_fld = true;
 		} else {
 			if (this.aw_fld < -1542717027) {
-				if (!this.ah_fld.co(hc.ag_fld.ah_fld, gf.ms(this.ae_fld, 1131155535), -974614371)) {
+				if (!this.ah_fld.co(hc.ag_fld.ah_fld, this.ae_fld.ar(1131155535), -974614371)) {
 					return this.aw_fld;
 				}
 
@@ -389,8 +384,7 @@ public class wt {
 			}
 
 			if (this.aw_fld == -371111361) {
-				if (ub.mo(this.ah_fld, hc.az_fld.ah_fld, gf.ms(this.ae_fld, -615287130), (byte)-60)
-					&& !this.ah_fld.co(hc.az_fld.ah_fld, gf.ms(this.ae_fld, -240953774), 581238482)) {
+				if (this.ah_fld.ck(hc.az_fld.ah_fld, this.ae_fld.ar(-615287130), (byte)-60) && !this.ah_fld.co(hc.az_fld.ah_fld, this.ae_fld.ar(-240953774), 581238482)) {
 					return this.aw_fld;
 				}
 
@@ -398,7 +392,7 @@ public class wt {
 			}
 
 			if (1156818499 == this.aw_fld) {
-				if (!this.ah_fld.co(gf.ms(this.ae_fld, -1803807085), hc.ae_fld.ah_fld, -1405922410)) {
+				if (!this.ah_fld.co(this.ae_fld.ar(-1803807085), hc.ae_fld.ah_fld, -1405922410)) {
 					return this.aw_fld;
 				}
 
@@ -445,53 +439,6 @@ public class wt {
 		return this.aw_fld;
 	}
 
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "()Z"
-	)
-	boolean ai() {
-		return this.ay_fld;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "()I"
-	)
-	int au() throws EOFException {
-		if (this.ae_fld == null) {
-			this.aw_fld = 1402900404;
-			this.ay_fld = true;
-		} else {
-			if (this.aw_fld < 482160843) {
-				if (!this.ah_fld.co(hc.ag_fld.ah_fld, gf.ms(this.ae_fld, -184889473), -1431486647)) {
-					return this.aw_fld;
-				}
-
-				this.aw_fld = -267187307;
-			}
-
-			if (this.aw_fld == 198734503) {
-				if (ub.mo(this.ah_fld, hc.az_fld.ah_fld, gf.ms(this.ae_fld, 1121850575), (byte)32)
-					&& !this.ah_fld.co(hc.az_fld.ah_fld, gf.ms(this.ae_fld, -1256420621), 260519985)) {
-					return this.aw_fld;
-				}
-
-				this.aw_fld = -1251869770;
-			}
-
-			if (-787819639 == this.aw_fld) {
-				if (!this.ah_fld.co(gf.ms(this.ae_fld, -1632271859), hc.ae_fld.ah_fld, 729489608)) {
-					return this.aw_fld;
-				}
-
-				this.aw_fld = 1402900404;
-				this.ay_fld = true;
-			}
-		}
-
-		return this.aw_fld;
-	}
-
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "()I"
@@ -502,7 +449,7 @@ public class wt {
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "()I"
+		descriptor = "(I)I"
 	)
 	int ae() {
 		return this.aw_fld;
@@ -518,40 +465,109 @@ public class wt {
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "()Z"
+		descriptor = "(B)Z"
 	)
 	boolean av() {
 		return this.ay_fld;
 	}
 
+	@ObfuscatedName("lt")
+	@ObfuscatedSignature(
+		descriptor = "(Lwt;Lgf;)V"
+	)
+	public static void lt(wt var0, gf var1) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		} else if (null != var1) {
+			if (null == var0.ae_fld || var1.ay(-143778459) != var0.ae_fld.ay(-143778459)) {
+				var0.ae_fld = var1;
+				var0.aw_fld = 0;
+				var0.ay_fld = false;
+				if (aac.ak_fld < 238) {
+					var0.az();
+				} else {
+					var0.ag();
+				}
+			}
+		}
+	}
+
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;Lub;)V"
+		descriptor = "(Lub;Lub;B)V"
 	)
 	public static void ag(ub var0, ub var1) {
 		pp.az_fld = var0;
 		pp.av_fld = var1;
 	}
 
+	@ObfuscatedName("xx")
+	@ObfuscatedSignature(
+		descriptor = "(Lwt;Lgf;I)V"
+	)
+	public static void xx(wt var0, gf var1, int var2) throws EOFException {
+		if (var0 == null) {
+			var0.getClass();
+		} else if (null != var1) {
+			if (null == var0.ae_fld || var1.ay(-143778459) != var0.ae_fld.ay(-143778459)) {
+				var0.ae_fld = var1;
+				var0.aw_fld = 0;
+				var0.ay_fld = false;
+				if (aac.ak_fld < 238) {
+					var0.az();
+				} else {
+					var0.ag();
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "(Laax;)Ljava/lang/String;"
+	)
+	public static String bf(aax var0) {
+		return var0.ag_fld;
+	}
+
 	@ObfuscatedName("ev")
 	@ObfuscatedSignature(
-		descriptor = "(Ldx;Lxj;)V"
+		descriptor = "(Ldx;Lxj;B)V"
 	)
 	static void ev(dx var0, xj var1) throws EOFException {
-		client.bf(var0, var1);
+		client.qk(var0, var1);
 		dx var3 = hk.mt_fld;
-		var3.ay_fld = xi.tx(var1, 2104644957);
-		var3.as_fld = xi.tx(var1, 1065115150);
+		var3.as_fld = var1.cm();
+		var3.ay_fld = var1.cm();
 		int var4 = var3.ah_fld / 8;
 		int var5 = var3.aw_fld / 8;
-		wq.mw(client.qi_fld, var1, var4, var5);
+		wq.py(client.qi_fld, var1, var4, var5);
 		ms.ly_fld = new byte[client.qi_fld.ae()][];
 		hb.lv_fld = new byte[client.qi_fld.ae()][];
-		di.cm(client.db_fld, var3, -1504758499);
+		client.db_fld.ar(var3, -1504758499);
 		jk.af(25, (byte)-44);
 		client.kk_fld = true;
 		hg.dx_fld = var3;
 		ha.dk(var3);
-		client.nf(var0, var1);
+		client.fp(var0, var1);
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lgf;I)V"
+	)
+	void ak(gf var1, int var2) throws EOFException {
+		if (null != var1) {
+			if (null == this.ae_fld || var1.ay(-143778459) != this.ae_fld.ao(-143778459)) {
+				this.ae_fld = var1;
+				this.aw_fld = 0;
+				this.ay_fld = false;
+				if (aac.ak_fld < 238) {
+					this.ae();
+				} else {
+					this.ag();
+				}
+			}
+		}
 	}
 }
