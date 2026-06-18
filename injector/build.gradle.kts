@@ -57,8 +57,8 @@ tasks.register<JavaExec>("injectBad") {
     mainClass.set("net.runelite.injector.Injector")
     workingDir = rootProject.projectDir
     dependsOn(":mixins:testClasses", ":runescape-client:classes")
-    val targetJar = "data/runelite-1.12.28-injected-26877631509.154.jar"
-    val outputJar = "data/runelite-1.12.28-injected-26877631509.154-bad.jar"
+    val targetJar = "data/runelite-1.12.29.1-injected-27693931657.168.jar"
+    val outputJar = "data/runelite-1.12.29.1-injected-27693931657.168-bad.jar"
     val mixinClasspath = project(":mixins").layout.buildDirectory.dir("classes/java/test").get().asFile.invariantSeparatorsPath
     val referenceClasspath = project(":runescape-client").layout.buildDirectory.dir("classes/java/main").get().asFile.invariantSeparatorsPath
     args(targetJar, outputJar, mixinClasspath, referenceClasspath)
@@ -74,7 +74,7 @@ tasks.register<JavaExec>("inject") {
     // The injector reads compiled bytecode from both modules — build them first.
     dependsOn(":mixins:classes", ":runescape-client:classes")
     val targetJar = (findProperty("targetJar") as? String)
-        ?: "data/runelite-1.12.28-injected-26877631509.154.jar"
+        ?: "data/runelite-1.12.29.1-injected-27693931657.168.jar"
     val outputJar = (findProperty("outputJar") as? String)
         ?: targetJar.replace(".jar", "-mixed.jar")
     val mixinClasspath = project(":mixins").layout.buildDirectory.dir("classes/java/main").get().asFile.invariantSeparatorsPath
