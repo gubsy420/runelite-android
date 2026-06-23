@@ -28,6 +28,11 @@ public final class GlesHost
 {
 	private static final String TAG = "GlesHost";
 
+	/** EGL 1.1 error code; android.opengl.EGL14 doesn't expose it as a constant. Returned
+	 *  by eglMakeCurrent/eglSwapBuffers when the context is lost (GPU reset, driver
+	 *  eviction). */
+	private static final int EGL_CONTEXT_LOST = 0x300E;
+
 	/** MSAA samples requested for the on-screen surface. Falls back to no MSAA if
 	 *  the GPU/driver doesn't expose a matching config. Mobile-friendly default is
 	 *  0; users can opt in via config. The number is read once at context creation
@@ -58,6 +63,10 @@ public final class GlesHost
 	private int surfaceWidth;
 	private int surfaceHeight;
 	private volatile boolean surfaceDirty = false;
+
+	/** Bumped each time a fresh EGL context is created (initial bring-up + every
+	 *  context-loss rebuild). See {@link #contextGeneration()}. */
+	private int contextGeneration = 0;
 
 	private GlesHost() {}
 
@@ -143,6 +152,27 @@ public final class GlesHost
 	 *  Cheap to call from a render loop — only reads volatile state. */
 	public boolean hasContext() { return context != EGL14.EGL_NO_CONTEXT && eglSurface != EGL14.EGL_NO_SURFACE; }
 
+	/** EGL context generation. Incremented every time a fresh context is created (initial
+	 *  bring-up and after a context-loss rebuild). {@link GpuGlesPlugin} compares this
+	 *  against the generation it last built GL objects under; a change means the context
+	 *  was recreated and every GL object (textures, buffers, VAOs, programs, FBOs) it
+	 *  holds is now invalid and must be rebuilt. */
+	public int contextGeneration() { synchronized (lock) { return contextGeneration; } }
+
+	/** Tear down the EGL context and its window surface. Caller must hold {@link #lock}.
+	 *  The next {@link #makeCurrent} recreates both (bumping {@link #contextGeneration}).
+	 *  Invoked when EGL reports the context was lost. */
+	private void destroyContextLocked()
+	{
+		destroyEglSurfaceLocked();
+		if (context != EGL14.EGL_NO_CONTEXT)
+		{
+			EGL14.eglMakeCurrent(display, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+			EGL14.eglDestroyContext(display, context);
+			context = EGL14.EGL_NO_CONTEXT;
+		}
+	}
+
 	/**
 	 * Bind the EGL context + window surface to the calling thread. Creates the
 	 * display/context on first call and the window surface lazily once the Android
@@ -168,7 +198,15 @@ public final class GlesHost
 			if (eglSurface == EGL14.EGL_NO_SURFACE && !initSurfaceLocked()) return false;
 			if (!EGL14.eglMakeCurrent(display, eglSurface, eglSurface, context))
 			{
-				Log.e(TAG, "eglMakeCurrent failed: 0x" + Integer.toHexString(EGL14.eglGetError()));
+				int err = EGL14.eglGetError();
+				Log.e(TAG, "eglMakeCurrent failed: 0x" + Integer.toHexString(err));
+				if (err == EGL_CONTEXT_LOST)
+				{
+					// GPU reset / driver eviction. Drop the context so the next makeCurrent
+					// rebuilds a fresh one (bumping contextGeneration), which signals the
+					// plugin to recreate every GL object it holds.
+					destroyContextLocked();
+				}
 				return false;
 			}
 			return true;
@@ -179,8 +217,23 @@ public final class GlesHost
 	 *  GLES draws on the current thread. */
 	public boolean swapBuffers()
 	{
-		if (eglSurface == EGL14.EGL_NO_SURFACE) return false;
-		return EGL14.eglSwapBuffers(display, eglSurface);
+		synchronized (lock)
+		{
+			if (eglSurface == EGL14.EGL_NO_SURFACE) return false;
+			if (!EGL14.eglSwapBuffers(display, eglSurface))
+			{
+				int err = EGL14.eglGetError();
+				Log.w(TAG, "eglSwapBuffers failed: 0x" + Integer.toHexString(err));
+				if (err == EGL_CONTEXT_LOST)
+				{
+					// Context died during present — tear it down so the next makeCurrent
+					// rebuilds it and the plugin re-creates its GL objects.
+					destroyContextLocked();
+				}
+				return false;
+			}
+			return true;
+		}
 	}
 
 	/** EGL swap interval. 0 = present as fast as possible (no vsync), 1 = vsync at
@@ -251,6 +304,8 @@ public final class GlesHost
 			Log.e(TAG, "eglCreateContext failed: 0x" + Integer.toHexString(EGL14.eglGetError()));
 			return false;
 		}
+		contextGeneration++;
+		Log.i(TAG, "EGL context created (generation " + contextGeneration + ")");
 		return true;
 	}
 

@@ -133,6 +133,7 @@ private fun GameViewport(modifier: Modifier = Modifier) {
 
     LaunchedEffect(Unit) {
         var nextDumpAt = 0L
+        var nextSwDiagAt = 0L
         var lastWindow: java.awt.Window? = null
         while (true) {
             withFrameNanos { /* tie sampling to display vsync */ }
@@ -179,8 +180,38 @@ private fun GameViewport(modifier: Modifier = Modifier) {
             // recreated below (hasAlpha differs between renderers), and the Compose
             // recomposition then re-evaluates whether to mount the SurfaceView.
             if (gles != glesActive) {
+                android.util.Log.i("SwDiag", "renderer toggle: gles=$gles src=${src?.width}x${src?.height} " +
+                    "srcNull=${src == null} canvasRect=$canvasRect boxSize=$boxSize " +
+                    "renderedByGles=${java.awt.Canvas.isRenderedByGles()}")
                 glesActive = gles
                 bitmap = null
+                // Toggling the renderer doesn't change the AWT component tree, so the
+                // per-frame layout yields identical Canvas bounds — canvasRect never
+                // changes, the GLES SurfaceView (positioned from canvasRect) never gets a
+                // fresh surfaceChanged, and GL stays blank until a manual panel resize
+                // forces a layout pass (likewise the SW canvas linkage doesn't refresh).
+                // Force that layout pass + a geometry refresh here so the toggle alone
+                // makes the active renderer paint.
+                window?.let {
+                    it.invalidate()
+                    it.validate()
+                }
+                canvasRect = java.awt.Canvas.latest()?.boundsInWindow
+            }
+            if (!gles && src != null && now > nextSwDiagAt) {
+                nextSwDiagAt = now + 1000
+                val arr = src.backingArray()
+                val idx = (src.height / 2) * src.width + src.width / 2
+                val px = if (idx in arr.indices) arr[idx] else 0
+                val cb = java.awt.Canvas.latest()?.backbuffer
+                val cbArr = cb?.backingArray()
+                val cbPx = if (cbArr != null && cb.width > 0) {
+                    val i = (cb.height / 2) * cb.width + cb.width / 2
+                    if (i in cbArr.indices) cbArr[i] else 0
+                } else 0
+                android.util.Log.i("SwDiag", "sw frame win=${src.width}x${src.height} winCenterPx=0x${Integer.toHexString(px)} " +
+                    "canvasBB=${cb?.width}x${cb?.height} canvasCenterPx=0x${Integer.toHexString(cbPx)} " +
+                    "renderedByGles=${java.awt.Canvas.isRenderedByGles()}")
             }
             if (src != null && src.width > 0 && src.height > 0) {
                 val w = src.width

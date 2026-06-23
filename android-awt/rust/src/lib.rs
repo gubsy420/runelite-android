@@ -73,6 +73,35 @@ where
     Some(f(slice))
 }
 
+/// Pin a read-only source and a writable destination int[] simultaneously for one
+/// closure. The source is released `NoCopyBack` (we never mutate it, so there is
+/// nothing to commit and — crucially — no whole-array copy on the way in/out like
+/// `read_int_array` does); the destination is committed `CopyBack`.
+///
+/// SAFETY: the caller must ensure `src` and `dst` are *distinct* Java arrays. Pinning
+/// the same backing store as both `&[i32]` and `&mut [i32]` aliases it, which is UB —
+/// `Java_..._blit` guards this with `is_same_object` and falls back to a copy.
+fn with_src_dst_pinned<F, R>(
+    env: &mut JNIEnv<'_>,
+    src: &JIntArray<'_>,
+    dst: &JIntArray<'_>,
+    f: F,
+) -> Option<R>
+where
+    F: FnOnce(&[i32], &mut [i32]) -> R,
+{
+    if env.get_array_length(src).ok()? <= 0 || env.get_array_length(dst).ok()? <= 0 {
+        return None;
+    }
+    // get_array_elements (non-critical) returns a guard owning its own env clone, so two
+    // can coexist; the &mut borrow of `env` ends when each call returns.
+    let src_elems = unsafe { env.get_array_elements(src, ReleaseMode::NoCopyBack).ok()? };
+    let dst_elems = unsafe { env.get_array_elements(dst, ReleaseMode::CopyBack).ok()? };
+    let src_slice = unsafe { std::slice::from_raw_parts(src_elems.as_ptr(), src_elems.len()) };
+    let dst_slice = unsafe { std::slice::from_raw_parts_mut(dst_elems.as_ptr(), dst_elems.len()) };
+    Some(f(src_slice, dst_slice))
+}
+
 #[no_mangle]
 pub extern "system" fn Java_net_runelite_awt_AwtNative_fillRect<'local>(
     mut env: JNIEnv<'local>,
@@ -172,8 +201,23 @@ pub extern "system" fn Java_net_runelite_awt_AwtNative_blit<'local>(
     composite_rule: jint,
     alpha: jfloat,
 ) {
-    let src_vec = read_int_array(&mut env, &src);
-    let Some(src_vec) = src_vec else { return };
+    // Fast path: pin source (read-only) and destination together, avoiding the
+    // full-source-array copy `read_int_array` does on every blit. A self-blit (src and
+    // dst the same Java array) would alias the two pins, so detect it and fall back to
+    // copying the source out first. On error we conservatively assume aliasing.
+    let distinct = !env.is_same_object(&src, &dst).unwrap_or(true);
+    if distinct {
+        let _ = with_src_dst_pinned(&mut env, &src, &dst, |src_buf, dst_buf| {
+            blit::blit(
+                src_buf, src_w, src_h, sx, sy, sw, sh,
+                dst_buf, dst_w, dst_h, dx, dy, dw, dh,
+                composite_rule, alpha,
+            );
+        });
+        return;
+    }
+
+    let Some(src_vec) = read_int_array(&mut env, &src) else { return };
     let _ = with_pinned_array(&mut env, &dst, ReleaseMode::CopyBack, |dst_buf| {
         blit::blit(
             &src_vec, src_w, src_h, sx, sy, sw, sh,

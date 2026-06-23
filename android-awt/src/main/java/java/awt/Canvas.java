@@ -23,7 +23,10 @@ public class Canvas extends Component {
     public static void setRenderedByGles(boolean v) { RENDERED_BY_GLES = v; }
     public static boolean isRenderedByGles() { return RENDERED_BY_GLES; }
 
-    private BufferedImage backbuffer;
+    // volatile: getGraphics() hands out a graphics that reads this live (see below), and
+    // ensureBackbuffer() may reallocate it from a different thread (Compose layout) than the
+    // one drawing (the client/game thread).
+    private volatile BufferedImage backbuffer;
 
     public Canvas() {
         LATEST.set(this);
@@ -79,7 +82,12 @@ public class Canvas extends Component {
     @Override
     public Graphics getGraphics() {
         ensureBackbuffer();
-        return backbuffer.createGraphics();
+        // Bind the graphics to the LIVE backbuffer, not a snapshot. The OSRS client caches
+        // this graphics (MainBufferProvider.ln_fld) and reuses it across frames; if it
+        // snapshotted the current backbuffer, a resize that reallocates the backbuffer would
+        // orphan it — the client would keep painting into the dead buffer while the visible
+        // one stays black. The supplier re-resolves the current backbuffer on each draw.
+        return new net.runelite.awt.impl.BufferedImageGraphics2D(() -> backbuffer);
     }
 
     public BufferedImage createBufferStrategy(int numBuffers) { return getBackbuffer(); }

@@ -163,6 +163,16 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private int textureArrayId = -1;
 	private int lastAnisotropicFilteringLevel = -1;
 
+	// GlesHost.contextGeneration() captured the last time bringUpGl() built our GL
+	// objects. If the live generation diverges, the EGL context was lost+recreated and
+	// every GL handle we hold is stale — draw() rebuilds. -1 = nothing built yet.
+	private int glContextGeneration = -1;
+
+	// Set on a STARTING transition (logout/relog): textures may have reloaded, so the
+	// texture array is freed + re-inited on the next draw(). Deferred to draw() because
+	// freeTextureArray issues glDelete and the GL context is only current there.
+	private volatile boolean freeTextureArrayPending = false;
+
 	/** True for the current frame iff preSceneDraw fired (i.e. the client thinks
 	 *  the 3D scene is being rendered). When false in draw(), we clear the EGL
 	 *  surface ourselves so login/title-screen frames don't show stale pixels
@@ -254,6 +264,18 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private int sceneFboW;
 	private int sceneFboH;
 
+	/** Multisample scene path. When {@link #sceneSamples} >= 2, {@link #sceneFbo} renders
+	 *  into a multisample color renderbuffer ({@link #sceneColorRbo}) + multisample depth
+	 *  ({@link #sceneDepthRbo}); a same-size GL_NEAREST blit then resolves it into the
+	 *  single-sample {@link #sceneColorTex} held by {@link #sceneResolveFbo}, from which the
+	 *  existing scaled GL_LINEAR blit upsamples to the default framebuffer. GLES forbids a
+	 *  multisample→single-sample blit that also scales, hence the separate resolve target.
+	 *  When sceneSamples < 2 the resolve objects stay 0 and sceneColorTex is attached
+	 *  directly to sceneFbo (the original single-sample path). */
+	private int sceneColorRbo;
+	private int sceneResolveFbo;
+	private int sceneSamples;
+
 	/** Cached direct ByteBuffer that prepareInterfaceTexture streams the BufferProvider
 	 *  pixels through each frame. Was being [re]allocated per-frame (~3.7MB at 1280×720)
 	 *  which produced 100s of MB/sec of LOS garbage at unlocked FPS — the Android log
@@ -282,10 +304,17 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 	private static Projection lastProjection;
 
+	// Master switch for the per-frame/per-entity render instrumentation below. Flip to
+	// true only when diagnosing scene-callback behaviour — these run in hot paths
+	// (HashMap lookups, currentTimeMillis, string building, logcat) on every dynamic/
+	// temp model and every sub-WorldView zone, so they must stay off in shipping builds.
+	private static final boolean DEBUG = false;
+
 	// TEMP DEBUG — once-per-second-per-sub-WV-per-callback throttle so we can see what fires.
 	private static final java.util.HashMap<String, Long> debugSubWvLastLog = new java.util.HashMap<>();
 	private static void debugSubWvCallback(String which, int wvId, int zx, int zz)
 	{
+		if (!DEBUG) return;
 		String key = which + ":" + wvId;
 		long now = System.currentTimeMillis();
 		Long prev = debugSubWvLastLog.get(key);
@@ -304,6 +333,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private static void debugTrackDraw(String which, int faces, Model m, Scene scene,
 		int x, int y, int z, int plane)
 	{
+		if (!DEBUG) return;
 		long now = System.currentTimeMillis();
 		if (debugWindowStart == 0) debugWindowStart = now;
 		if ("drawDynamic".equals(which)) debugDynamicCount++;
@@ -433,6 +463,15 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			// alpha-blends the overlay onto the GL scene below, so non-zero
 			// alpha matters.
 			client.resizeCanvas();
+
+			// If we engaged while already logged in (plugin toggled on mid-session), the
+			// engine won't re-issue loadScene/swapScene until the next map rebuild, so seed
+			// the current scene now. At LOGIN_SCREEN there's no world to load — the engine
+			// drives the upload normally once the player logs in.
+			if (client.getGameState() == GameState.LOGGED_IN)
+			{
+				startupWorldLoad();
+			}
 		}
 		catch (Throwable t)
 		{
@@ -506,6 +545,14 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 						root.zones[x][z].invalidate = true;
 			}
 		}
+		else if (s == GameState.STARTING)
+		{
+			// Logout/relog can reload the texture set. Flag the texture array for rebuild;
+			// draw() frees + re-inits it once the GL context is current (matches upstream
+			// GpuPlugin, which frees it on STARTING). Without this the lazy re-init guard
+			// never re-fires and stale textures persist after relog.
+			freeTextureArrayPending = true;
+		}
 	}
 
 	@Override
@@ -529,14 +576,78 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 			if (glInitted)
 			{
+				// GL teardown is best-effort: it must NEVER abort the lambda before the
+				// client.resizeCanvas() rebuild below, or te (MainBufferProvider) keeps its
+				// GPU-era alpha ColorModel and software rendering stays blank after GPU off.
+				try
+				{
+				// Free the largest GL allocation first and reset the id so draw()'s
+				// `textureArrayId == -1` re-init guard fires again after a re-enable.
+				if (textureArrayId != -1)
+				{
+					textureManager.freeTextureArray(textureArrayId);
+					textureArrayId = -1;
+				}
+				lastAnisotropicFilteringLevel = -1;
+
+				// Free per-WorldView static-scene zone VBOs/VAOs (root + sub-views).
+				// startUp() re-allocates these on the next enable, so null them out.
+				if (root != null)
+				{
+					root.free();
+					root = null;
+				}
+				if (subs != null)
+				{
+					for (int i = 0; i < subs.length; ++i)
+					{
+						if (subs[i] != null)
+						{
+							subs[i].free();
+							subs[i] = null;
+						}
+					}
+				}
+
 				shutdownSceneFbo();
 				shutdownInterfaceTexture();
 				shutdownProgram();
 				shutdownVao();
+
+				// Element buffer + the growable transient-geometry VAO pools.
+				// bringUpGl() re-creates them on the next enable.
+				Zone.freeBuffer();
+				if (vaoO != null)
+				{
+					vaoO.free();
+					vaoO = null;
+				}
+				if (vaoA != null)
+				{
+					vaoA.free();
+					vaoA = null;
+				}
+				if (vaoPO != null)
+				{
+					vaoPO.free();
+					vaoPO = null;
+				}
+
 				shutdownBuffers();
+				}
+				catch (Throwable t)
+				{
+					Log.e(TAG, "GL teardown failed during shutDown; continuing to buffer-provider rebuild", t);
+				}
 				glInitted = false;
 			}
 
+			// ALWAYS rebuild the buffer provider — even if GL teardown above threw.
+			// resizeCanvas() reconstructs te with the software (no-alpha) ColorModel and a
+			// fresh ln_fld graphics. Without this, te keeps the alpha ColorModel it was built
+			// with while GPU was active and the software rasterizer's alpha=0 pixels present
+			// as fully transparent => blank game viewport after toggling GPU off.
+			Log.i(TAG, "shutDown: rebuilding buffer provider for software path");
 			client.resizeCanvas();
 			return true;
 		});
@@ -577,7 +688,92 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		vaoPO = new VAOList();
 
 		glInitted = true;
-		Log.i(TAG, "GLES bring-up complete");
+		glContextGeneration = GlesHost.get().contextGeneration();
+		Log.i(TAG, "GLES bring-up complete (context generation " + glContextGeneration + ")");
+	}
+
+	/**
+	 * The EGL context was lost and a fresh one created — every GL object we held died
+	 * with it. Drop our bookkeeping WITHOUT issuing glDelete (those names are invalid in
+	 * the new context) so the subsequent bringUpGl() rebuilds the per-context objects and
+	 * the lazy scene-FBO / texture-array / zone-geometry paths re-fire. bringUpGl()
+	 * re-creates the uniform/UI buffers, VAOs, program, interface texture, element buffer
+	 * and the vaoO/A/PO pools; only the lazily-built state below needs resetting here.
+	 */
+	private void resetGlStateForContextLoss()
+	{
+		glInitted = false;
+
+		// Texture array + anisotropic level: force the lazy re-init in draw().
+		textureArrayId = -1;
+		lastAnisotropicFilteringLevel = -1;
+
+		// Scene FBO is lazily (re)created by ensureSceneFbo; zero the handles + cached
+		// size so it rebuilds rather than binding a dead framebuffer.
+		sceneFbo = sceneResolveFbo = sceneColorTex = sceneColorRbo = sceneDepthRbo = 0;
+		sceneFboW = sceneFboH = 0;
+		sceneSamples = 0;
+
+		// Static-scene geometry lives in per-zone VBOs/VAOs that are now invalid. Mark
+		// every zone dirty so it re-uploads into fresh buffers on the next rebuild.
+		invalidateAllZones();
+	}
+
+	/** Mark every zone of the toplevel scene and all sub-WorldViews as needing re-upload. */
+	private void invalidateAllZones()
+	{
+		invalidateScene(root);
+		if (subs != null)
+		{
+			for (SceneContext s : subs)
+			{
+				invalidateScene(s);
+			}
+		}
+	}
+
+	/** Mark every zone of a single scene context as needing re-upload (no-op if null). */
+	private static void invalidateScene(SceneContext ctx)
+	{
+		if (ctx == null) return;
+		for (int x = 0; x < ctx.sizeX; ++x)
+			for (int z = 0; z < ctx.sizeZ; ++z)
+				ctx.zones[x][z].invalidate = true;
+	}
+
+	/**
+	 * Seed the scene when we engage while already in-game (plugin toggled on mid-session).
+	 * The engine only issues loadScene/swapScene on a map rebuild, so without this the GL
+	 * scene stays empty (UI only) until the player walks far enough to force a reload.
+	 * Mirrors desktop {@code GpuPlugin.startupWorldLoad()} using the port's callbacks, with
+	 * the port-specific twist that freshly-created zones default to not-invalidated — so we
+	 * explicitly invalidate before swapScene so rebuild() actually uploads them. If the EGL
+	 * context isn't up yet, swapScene no-ops but the invalidate flags persist and the next
+	 * onPostClientTick flushes them.
+	 */
+	private void startupWorldLoad()
+	{
+		WorldView top = client.getTopLevelWorldView();
+		if (top == null) return;
+
+		Scene topScene = top.getScene();
+		if (topScene != null)
+		{
+			loadScene(top, topScene);
+			invalidateScene(context(topScene));
+			swapScene(topScene);
+		}
+
+		for (net.runelite.api.WorldEntity we : top.worldEntities())
+		{
+			WorldView sub = we.getWorldView();
+			if (sub == null) continue;
+			Scene subScene = sub.getScene();
+			if (subScene == null) continue;
+			loadScene(sub, subScene);
+			invalidateScene(context(subScene));
+			swapScene(subScene);
+		}
 	}
 
 	int getDrawDistance()
@@ -741,37 +937,83 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	private boolean ensureSceneFbo(int targetW, int targetH)
 	{
 		if (targetW <= 0 || targetH <= 0) return false;
-		if (sceneFbo != 0 && targetW == sceneFboW && targetH == sceneFboH) return true;
+
+		// Resolve the requested MSAA level against what the driver supports. Desktop GpuPlugin
+		// puts the scene in a multisample renderbuffer; the EGL surface's own MSAA can't help us
+		// here because the scene is composited via glBlitFramebuffer out of this offscreen FBO.
+		int wantSamples = config.msaaSamples().samples;
+		if (wantSamples >= 2)
+		{
+			int[] maxS = new int[1];
+			GLES30.glGetIntegerv(GLES30.GL_MAX_SAMPLES, maxS, 0);
+			wantSamples = Math.min(wantSamples, Math.max(1, maxS[0]));
+			if (wantSamples < 2) wantSamples = 0;
+		}
+		else
+		{
+			wantSamples = 0;
+		}
+
+		// Reuse iff both the size and the sample count still match.
+		if (sceneFbo != 0 && targetW == sceneFboW && targetH == sceneFboH && wantSamples == sceneSamples)
+		{
+			return true;
+		}
 
 		// Tear down anything stale before re-creating.
 		shutdownSceneFbo();
 
 		int[] arr = new int[1];
 
-		GLES30.glGenFramebuffers(1, arr, 0);
-		sceneFbo = arr[0];
-
+		// Single-sample resolve/present texture. In the non-MSAA path it is the scene FBO's
+		// own color attachment; in the MSAA path it is the resolve target sampled by the
+		// upscale blit. LINEAR so the blit-back to the default FB gives a smooth upscale
+		// rather than hard nearest-neighbour blockiness when scale < 1.
 		glGenTextures(1, arr, 0);
 		sceneColorTex = arr[0];
 		glBindTexture(GL_TEXTURE_2D, sceneColorTex);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, targetW, targetH, 0, GL_RGBA, GL_UNSIGNED_BYTE, null);
-		// LINEAR so the blit-back to the default FB gives a smooth upscale rather than
-		// hard nearest-neighbour blockiness when scale < 1.
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glBindTexture(GL_TEXTURE_2D, 0);
 
+		GLES30.glGenFramebuffers(1, arr, 0);
+		sceneFbo = arr[0];
+
 		GLES30.glGenRenderbuffers(1, arr, 0);
 		sceneDepthRbo = arr[0];
 		GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, sceneDepthRbo);
-		GLES30.glRenderbufferStorage(GLES30.GL_RENDERBUFFER, GLES30.GL_DEPTH_COMPONENT24, targetW, targetH);
+		if (wantSamples >= 2)
+		{
+			GLES30.glRenderbufferStorageMultisample(GLES30.GL_RENDERBUFFER, wantSamples,
+				GLES30.GL_DEPTH_COMPONENT24, targetW, targetH);
+		}
+		else
+		{
+			GLES30.glRenderbufferStorage(GLES30.GL_RENDERBUFFER, GLES30.GL_DEPTH_COMPONENT24, targetW, targetH);
+		}
 		GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, 0);
 
 		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, sceneFbo);
-		GLES30.glFramebufferTexture2D(GLES30.GL_FRAMEBUFFER, GLES30.GL_COLOR_ATTACHMENT0,
-			GL_TEXTURE_2D, sceneColorTex, 0);
+		if (wantSamples >= 2)
+		{
+			// Multisample color renderbuffer (resolved into sceneColorTex below).
+			GLES30.glGenRenderbuffers(1, arr, 0);
+			sceneColorRbo = arr[0];
+			GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, sceneColorRbo);
+			GLES30.glRenderbufferStorageMultisample(GLES30.GL_RENDERBUFFER, wantSamples,
+				GLES30.GL_RGBA8, targetW, targetH);
+			GLES30.glBindRenderbuffer(GLES30.GL_RENDERBUFFER, 0);
+			GLES30.glFramebufferRenderbuffer(GLES30.GL_FRAMEBUFFER, GLES30.GL_COLOR_ATTACHMENT0,
+				GLES30.GL_RENDERBUFFER, sceneColorRbo);
+		}
+		else
+		{
+			GLES30.glFramebufferTexture2D(GLES30.GL_FRAMEBUFFER, GLES30.GL_COLOR_ATTACHMENT0,
+				GL_TEXTURE_2D, sceneColorTex, 0);
+		}
 		GLES30.glFramebufferRenderbuffer(GLES30.GL_FRAMEBUFFER, GLES30.GL_DEPTH_ATTACHMENT,
 			GLES30.GL_RENDERBUFFER, sceneDepthRbo);
 
@@ -785,19 +1027,44 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			return false;
 		}
 
+		// MSAA path needs a second, single-sample FBO whose color attachment is sceneColorTex,
+		// so the same-size resolve blit (multisample sceneFbo -> sceneResolveFbo) lands in a
+		// texture the scaled upscale blit can read.
+		if (wantSamples >= 2)
+		{
+			GLES30.glGenFramebuffers(1, arr, 0);
+			sceneResolveFbo = arr[0];
+			GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, sceneResolveFbo);
+			GLES30.glFramebufferTexture2D(GLES30.GL_FRAMEBUFFER, GLES30.GL_COLOR_ATTACHMENT0,
+				GL_TEXTURE_2D, sceneColorTex, 0);
+			int rstatus = GLES30.glCheckFramebufferStatus(GLES30.GL_FRAMEBUFFER);
+			GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+			if (rstatus != GLES30.GL_FRAMEBUFFER_COMPLETE)
+			{
+				Log.e(TAG, "scene resolve FBO incomplete: 0x" + Integer.toHexString(rstatus));
+				shutdownSceneFbo();
+				return false;
+			}
+		}
+
 		sceneFboW = targetW;
 		sceneFboH = targetH;
-		Log.i(TAG, "scene FBO (re)created " + targetW + "x" + targetH);
+		sceneSamples = wantSamples;
+		Log.i(TAG, "scene FBO (re)created " + targetW + "x" + targetH
+			+ (wantSamples >= 2 ? " MSAA x" + wantSamples : " (no MSAA)"));
 		return true;
 	}
 
 	private void shutdownSceneFbo()
 	{
-		if (sceneFbo != 0)      GLES30.glDeleteFramebuffers(1, new int[]{ sceneFbo }, 0);
-		if (sceneColorTex != 0) glDeleteTextures(1, new int[]{ sceneColorTex }, 0);
-		if (sceneDepthRbo != 0) GLES30.glDeleteRenderbuffers(1, new int[]{ sceneDepthRbo }, 0);
-		sceneFbo = sceneColorTex = sceneDepthRbo = 0;
+		if (sceneFbo != 0)        GLES30.glDeleteFramebuffers(1, new int[]{ sceneFbo }, 0);
+		if (sceneResolveFbo != 0) GLES30.glDeleteFramebuffers(1, new int[]{ sceneResolveFbo }, 0);
+		if (sceneColorTex != 0)   glDeleteTextures(1, new int[]{ sceneColorTex }, 0);
+		if (sceneColorRbo != 0)   GLES30.glDeleteRenderbuffers(1, new int[]{ sceneColorRbo }, 0);
+		if (sceneDepthRbo != 0)   GLES30.glDeleteRenderbuffers(1, new int[]{ sceneDepthRbo }, 0);
+		sceneFbo = sceneResolveFbo = sceneColorTex = sceneColorRbo = sceneDepthRbo = 0;
 		sceneFboW = sceneFboH = 0;
+		sceneSamples = 0;
 	}
 
 	// -----------------------------------------------------------------------
@@ -820,9 +1087,38 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			catch (Throwable t) { Log.e(TAG, "deferred GL init failed", t); return; }
 			if (!glInitted) return;
 		}
-		else if (!GlesHost.get().makeCurrent())
+		else
 		{
-			return;
+			if (!GlesHost.get().makeCurrent())
+			{
+				return;
+			}
+			// Dormant in steady state (generation only moves on an actual context loss).
+			// If the EGL context was lost and rebuilt — app backgrounded, device rotated,
+			// GPU reset — every GL object we hold is invalid; rebuild before drawing.
+			if (GlesHost.get().contextGeneration() != glContextGeneration)
+			{
+				Log.w(TAG, "EGL context changed (generation " + glContextGeneration + " -> "
+					+ GlesHost.get().contextGeneration() + "); rebuilding GL state");
+				resetGlStateForContextLoss();
+				try { bringUpGl(); }
+				catch (Throwable t) { Log.e(TAG, "GL re-init after context loss failed", t); return; }
+				if (!glInitted) return;
+			}
+		}
+
+		// A STARTING transition (logout/relog) flagged the texture array for rebuild;
+		// the GL context is current now, so free it here and let the lazy init below
+		// re-fire with the freshly-loaded textures.
+		if (freeTextureArrayPending)
+		{
+			freeTextureArrayPending = false;
+			if (textureArrayId != -1)
+			{
+				textureManager.freeTextureArray(textureArrayId);
+				textureArrayId = -1;
+				lastAnisotropicFilteringLevel = -1;
+			}
 		}
 
 		// Lazy texture-array init — textures load asynchronously, so retry
@@ -857,7 +1153,22 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
 		if (scenePaintedThisFrame && sceneFbo != 0)
 		{
-			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, sceneFbo);
+			// MSAA: first resolve the multisample scene into the single-sample sceneColorTex
+			// via a same-size GL_NEAREST blit (a scaling multisample->single-sample blit is
+			// illegal in GLES), then upscale from the resolve FBO below. Non-MSAA: the scene
+			// already lives single-sample in sceneFbo, so upscale straight from it.
+			int presentFbo = sceneFbo;
+			if (sceneSamples >= 2 && sceneResolveFbo != 0)
+			{
+				GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, sceneFbo);
+				GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, sceneResolveFbo);
+				GLES30.glBlitFramebuffer(
+					0, 0, sceneFboW, sceneFboH,
+					0, 0, sceneFboW, sceneFboH,
+					GL_COLOR_BUFFER_BIT, GLES20.GL_NEAREST);
+				presentFbo = sceneResolveFbo;
+			}
+			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, presentFbo);
 			GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, 0);
 			GLES30.glBlitFramebuffer(
 				0, 0, sceneFboW, sceneFboH,
@@ -1118,6 +1429,12 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		float cameraX, float cameraY, float cameraZ, float cameraPitch, float cameraYaw,
 		int minLevel, int level, int maxLevel, java.util.Set<Integer> hideRoofIds)
 	{
+		// The GL objects these scene callbacks use — chiefly the vaoO/A/PO pools — only
+		// exist while glInitted. The engine can still fire them before bring-up finishes,
+		// or after shutDown()/a context-loss reset has nulled the pools, so every
+		// GL-touching scene callback must bail when GL isn't up (else NPE in drawTemp etc).
+		if (!glInitted) return;
+
 		SceneContext ctx = context(scene);
 		if (ctx != null)
 		{
@@ -1139,7 +1456,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		}
 		else
 		{
-			Log.i(TAG, "preSceneDraw SUB-WV wvId=" + scene.getWorldViewId() + " ctxNull=" + (ctx == null)
+			if (DEBUG) Log.i(TAG, "preSceneDraw SUB-WV wvId=" + scene.getWorldViewId() + " ctxNull=" + (ctx == null)
 				+ " entProj=" + (entityProjection != null ? entityProjection.getClass().getSimpleName() : "null"));
 			if (ctx != null)
 			{
@@ -1296,6 +1613,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	@Override
 	public void postSceneDraw(Scene scene)
 	{
+		if (!glInitted) return;
+
 		if (scene.getWorldViewId() == WorldView.TOPLEVEL)
 		{
 			GLES20.glDisable(GL_BLEND);
@@ -1311,6 +1630,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	@Override
 	public void drawZoneOpaque(Projection entityProjection, Scene scene, int zx, int zz)
 	{
+		if (!glInitted) return;
+
 		updateEntityProjection(entityProjection);
 
 		SceneContext ctx = context(scene);
@@ -1333,6 +1654,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	@Override
 	public void drawZoneAlpha(Projection entityProjection, Scene scene, int level, int zx, int zz)
 	{
+		if (!glInitted) return;
+
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 
@@ -1369,6 +1692,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	@Override
 	public void drawPass(Projection projection, Scene scene, int pass)
 	{
+		if (!glInitted) return;
+
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 
@@ -1456,6 +1781,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	public void drawDynamic(Projection worldProjection, Scene scene, TileObject tileObject,
 		Renderable r, Model m, int orient, int x, int y, int z)
 	{
+		if (!glInitted) return;
+
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 		if (m == null) return;
@@ -1466,7 +1793,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		if (!renderCallbackManager.drawObject(scene, tileObject))
 		{
-			if (faceCount >= 1500)
+			if (DEBUG && faceCount >= 1500)
 			{
 				Log.i(TAG, "CB-DROP drawDynamic faces=" + faceCount + " pos=(" + x + "," + y + "," + z + ")");
 			}
@@ -1531,6 +1858,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	public void drawTemp(Projection worldProjection, Scene scene, GameObject gameObject,
 		Model m, int orient, int x, int y, int z)
 	{
+		if (!glInitted) return;
+
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
 		if (m == null) return;
@@ -1541,7 +1870,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		if (!renderCallbackManager.drawObject(scene, gameObject))
 		{
-			if (faceCount >= 1500)
+			if (DEBUG && faceCount >= 1500)
 			{
 				Log.i(TAG, "CB-DROP drawTemp faces=" + faceCount + " pos=(" + x + "," + y + "," + z + ")");
 			}

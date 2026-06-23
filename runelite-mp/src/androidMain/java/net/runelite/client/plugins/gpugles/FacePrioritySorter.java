@@ -34,6 +34,13 @@ import net.runelite.api.Projection;
 
 class FacePrioritySorter
 {
+	// Master switch for the per-model drop/cull instrumentation below. These Log.i calls
+	// only fire for >=1500-face models (i.e. high-poly bosses) hitting a clip/diameter/
+	// face-cap edge, but in that case they can fire every frame per model and build
+	// strings in the sort hot path. Mirrors GpuGlesPlugin.DEBUG — keep false in shipping
+	// builds, flip to true only when diagnosing why a big model fails to render.
+	private static final boolean DEBUG = false;
+
 	static final int[] distances;
 	static final char[] zsortHead, zsortTail, zsortNext;
 
@@ -161,7 +168,7 @@ class FacePrioritySorter
 			p = proj.project(vertexX, vertexY, vertexZ);
 			if (p[2] < 50)
 			{
-				if (faceCount >= 1500)
+				if (DEBUG && faceCount >= 1500)
 				{
 					Log.i("FacePrioritySorter", "NEAR-CLIP drop: faces=" + faceCount
 						+ " verts=" + vertexCount + " atVert=" + v + " p[2]=" + p[2]
@@ -179,14 +186,17 @@ class FacePrioritySorter
 		final int radius = model.getRadius();
 		if (diameter >= MAX_DIAMETER)
 		{
-			Log.i("FacePrioritySorter", "DIAMETER drop: faces=" + faceCount
-				+ " verts=" + vertexCount + " diameter=" + diameter
-				+ " pos=(" + x + "," + y + "," + z + ")");
+			if (DEBUG)
+			{
+				Log.i("FacePrioritySorter", "DIAMETER drop: faces=" + faceCount
+					+ " verts=" + vertexCount + " diameter=" + diameter
+					+ " pos=(" + x + "," + y + "," + z + ")");
+			}
 			return 0;
 		}
 
 		// Also log if we hit the face-count cap (would render partial model).
-		if (model.getFaceCount() > MAX_FACE_COUNT)
+		if (DEBUG && model.getFaceCount() > MAX_FACE_COUNT)
 		{
 			Log.i("FacePrioritySorter", "FACE-CAP: model=" + model.getFaceCount()
 				+ " capped=" + faceCount + " verts=" + vertexCount
@@ -298,7 +308,7 @@ class FacePrioritySorter
 		// Detect "all faces failed backface culling" for big models — minFz stays at
 		// the diameter and maxFz stays at 0, so no face was z-bucketed. Helps tell
 		// "model arrived, all faces culled" from "model never arrived".
-		if (faceCount >= 1500 && maxFz == 0 && minFz == diameter)
+		if (DEBUG && faceCount >= 1500 && maxFz == 0 && minFz == diameter)
 		{
 			Log.i("FacePrioritySorter", "ALL-BACKFACE-CULLED: faces=" + faceCount
 				+ " verts=" + vertexCount + " diameter=" + diameter

@@ -28,10 +28,18 @@ import net.runelite.awt.AwtNative;
  * in Java since the JNI hop costs more than the work.
  */
 public class BufferedImageGraphics2D extends Graphics2D {
-    private final BufferedImage image;
-    private final int[] pixels;
-    private final int width;
-    private final int height;
+    private BufferedImage image;
+    private int[] pixels;
+    private int width;
+    private int height;
+    /** When non-null, this graphics targets a Canvas's LIVE backbuffer: {@link #syncTarget()}
+     *  re-resolves the backing at the start of each draw call. This keeps a cached graphics
+     *  (notably the OSRS client's MainBufferProvider {@code ln_fld}, captured once via
+     *  Canvas.getGraphics()) painting into the CURRENT backbuffer after the Canvas
+     *  reallocates it on a resize — otherwise the cached graphics is orphaned to the old
+     *  int[] and the visible backbuffer stays black. Null for ordinary image-backed graphics
+     *  (icons, glyph caches, sub-buffers), which are unaffected by this whole mechanism. */
+    private final java.util.function.Supplier<BufferedImage> backbufferSource;
 
     private Color foreground = Color.BLACK;
     private Color background = Color.WHITE;
@@ -44,11 +52,43 @@ public class BufferedImageGraphics2D extends Graphics2D {
     private final RenderingHints renderingHints = new RenderingHints(null);
 
     public BufferedImageGraphics2D(BufferedImage image) {
+        this(image, null);
+    }
+
+    /** Live-backbuffer variant: the graphics re-resolves its target from {@code source}
+     *  each draw call (see {@link #syncTarget()}). Used by Canvas.getGraphics(). */
+    public BufferedImageGraphics2D(java.util.function.Supplier<BufferedImage> source) {
+        this(source.get(), source);
+    }
+
+    private BufferedImageGraphics2D(BufferedImage image, java.util.function.Supplier<BufferedImage> backbufferSource) {
         this.image = image;
         this.pixels = image.backingArray();
         this.width = image.getWidth();
         this.height = image.getHeight();
         this.clip = new Rectangle(0, 0, width, height);
+        this.backbufferSource = backbufferSource;
+    }
+
+    /** Re-resolve the backing from the live Canvas backbuffer (no-op for plain image-backed
+     *  graphics). Single-threaded per instance — a handed-out graphics is only ever drawn on
+     *  by its owning thread — so reading the volatile backbuffer and updating our own fields
+     *  needs no extra locking. Called at the head of every native draw. */
+    private void syncTarget() {
+        if (backbufferSource == null) return;
+        BufferedImage bb = backbufferSource.get();
+        if (bb == null || bb == image) return;
+        image = bb;
+        pixels = bb.backingArray();
+        width = bb.getWidth();
+        height = bb.getHeight();
+        // Clamp the clip into the new bounds so a shrink can't let a native write run past
+        // the (now smaller) array; the client re-sets its own clip each frame anyway.
+        int nx = Math.min(clip.x, width);
+        int ny = Math.min(clip.y, height);
+        int nw = Math.min(clip.width, width - nx);
+        int nh = Math.min(clip.height, height - ny);
+        clip = new Rectangle(nx, ny, Math.max(0, nw), Math.max(0, nh));
     }
 
     private Rectangle clipped(int x, int y, int w, int h) {
@@ -65,7 +105,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public Graphics create() {
-        BufferedImageGraphics2D copy = new BufferedImageGraphics2D(image);
+        BufferedImageGraphics2D copy = new BufferedImageGraphics2D(image, backbufferSource);
         copy.foreground = foreground;
         copy.background = background;
         copy.font = font;
@@ -181,6 +221,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
     }
     @Override public Shape getClip() { return getClipBounds(); }
     @Override public void setClip(Shape shape) {
+        syncTarget();
         if (shape == null) clip = new Rectangle(0, 0, width, height);
         else {
             Rectangle b = shape.getBounds();
@@ -190,6 +231,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public void copyArea(int x, int y, int w, int h, int dx, int dy) {
+        syncTarget();
         Rectangle src = clipped(x + tx(), y + ty(), w, h);
         if (src.width == 0 || src.height == 0) return;
         AwtNative.copyArea(pixels, width, height,
@@ -198,6 +240,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public void drawLine(int x1, int y1, int x2, int y2) {
+        syncTarget();
         int sx1, sy1, sx2, sy2;
         if (transformIsTranslateOnly()) {
             int dx = tx(), dy = ty();
@@ -212,6 +255,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public void fillRect(int x, int y, int w, int h) {
+        syncTarget();
         Rectangle r = clipped(x + tx(), y + ty(), w, h);
         if (r.width == 0 || r.height == 0) return;
         AwtNative.fillRect(pixels, width, height, r.x, r.y, r.width, r.height,
@@ -220,6 +264,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public void clearRect(int x, int y, int w, int h) {
+        syncTarget();
         Rectangle r = clipped(x + tx(), y + ty(), w, h);
         if (r.width == 0 || r.height == 0) return;
         AwtNative.fillRect(pixels, width, height, r.x, r.y, r.width, r.height,
@@ -275,6 +320,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
      */
     private void rasterizeShape(int x, int y, int w, int h, boolean filled, AndroidShapeDrawer drawer) {
         if (w <= 0 || h <= 0) return;
+        syncTarget();
         float strokeW = filled ? 0f : ((stroke instanceof BasicStroke) ? ((BasicStroke) stroke).getLineWidth() : 1f);
         // +1 covers AA bleed; ceil(strokeW/2) covers the stroke's outward reach.
         int pad = (int) Math.ceil(strokeW / 2f) + 1;
@@ -337,6 +383,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
     @Override
     public void fillPolygon(int[] xs, int[] ys, int n) {
         if (n < 3) return;
+        syncTarget();
         int[] sx = xs, sy = ys;
         if (transformIsTranslateOnly()) {
             int dx = tx(), dy = ty();
@@ -360,6 +407,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
     @Override
     public void drawString(String str, int x, int y) {
         if (str == null || str.isEmpty()) return;
+        syncTarget();
         TextRender r = TextCache.get(str, font, foreground.getRGB(), textAaMode());
         int dx = x + tx() + r.boundsLeft - TextCache.PADDING;
         int dy = y + ty() + r.boundsTop - TextCache.PADDING;
@@ -590,6 +638,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
     private void blit(BufferedImage src, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh) {
         int[] srcPixels = src.backingArray();
         if (srcPixels == null) return;
+        syncTarget();
 
         // Honor the active clip. Without this, components in a JViewport that
         // ever blit an image (icon, sub-buffer, glyph cache hit) overflow the
