@@ -15,13 +15,7 @@ The full source tree is intentionally not published here. Issues and releases li
 Jagex made a deal with Adam(RuneLite) to not release a mobile version of RuneLite. By keeping it closed source, it makes it quite a bit harder for them to stop what i'm doing just out of obscurity.  
 **If I had actual assurances from both parties that they would allow the project to live, I would gladly open source it or merge it with RuneLite**  
 
-This project exists because that outcome shouldn't have been the only one. Publishing the source verbatim makes it trivially easy for the upstream gamepack or RuneLite's bytecode patching pipeline to add targeted checks against the exact tricks this client uses to run. Keeping the source private raises the cost of doing that without preventing anyone curious enough to ask from getting a copy.
-
-### Getting the source
-
-If you're interested in the source — to learn, contribute, fork, audit, or run your own builds — reach out on Discord: **@therealnull**. I'm happy to share it; I'd just rather you ask than have the upstream tooling scrape it.
-
----
+This project exists because that outcome shouldn't have been the only one. Publishing the source verbatim makes it trivially easy for the upstream gamepack or RuneLite's bytecode patching pipeline to add targeted checks against the exact tricks this client uses to run.  
 
 ## What it is
 
