@@ -2,6 +2,7 @@
 
 An unofficial Android port of [RuneLite](https://runelite.net) — the open-source Old School RuneScape client — packaged as a standalone APK (`net.runelite.mp`).
 
+https://www.discord.gg/Edkba6MRgq
 ---
 
 ## About this repository
