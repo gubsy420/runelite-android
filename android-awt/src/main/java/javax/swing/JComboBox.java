@@ -91,6 +91,14 @@ public class JComboBox<E> extends JComponent {
 
     public int getMaximumRowCount() { return maximumRowCount; }
     public void setMaximumRowCount(int count) { this.maximumRowCount = count; }
+
+    // Prototype value real Swing uses to size the combo's cells before data loads. We don't
+    // lay out from it, but plugins set it (resource-packs' HubPanel) and without the method
+    // their panel constructor dies with NoSuchMethodError — which silently prevents the
+    // plugin from registering its toolbar nav button.
+    private Object prototypeDisplayValue;
+    public Object getPrototypeDisplayValue() { return prototypeDisplayValue; }
+    public void setPrototypeDisplayValue(Object value) { this.prototypeDisplayValue = value; }
     public void showPopup() {}
     public void hidePopup() {}
     public void setPopupVisible(boolean v) {}

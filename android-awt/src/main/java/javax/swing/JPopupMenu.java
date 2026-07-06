@@ -51,4 +51,15 @@ public class JPopupMenu extends JComponent {
     private static boolean defaultLightWeightPopupEnabled = true;
     public static void setDefaultLightWeightPopupEnabled(boolean aFlag) { defaultLightWeightPopupEnabled = aFlag; }
     public static boolean getDefaultLightWeightPopupEnabled() { return defaultLightWeightPopupEnabled; }
+
+    // The menu's sub-elements are its MenuElement children (JMenuItem/JMenu); plain
+    // Components (e.g. Separator) are excluded, matching real Swing. quest-helper uses
+    // getSubElements().length to decide whether a right-click menu has any entries.
+    public MenuElement[] getSubElements() {
+        java.util.List<MenuElement> items = new java.util.ArrayList<>();
+        for (java.awt.Component c : getComponents()) {
+            if (c instanceof MenuElement) items.add((MenuElement) c);
+        }
+        return items.toArray(new MenuElement[0]);
+    }
 }

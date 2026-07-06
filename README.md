@@ -2,29 +2,10 @@
 
 An unofficial Android port of [RuneLite](https://runelite.net) — the open-source Old School RuneScape client — packaged as a standalone APK (`net.runelite.mp`).
 
----
-
-## About this repository
-
-**This repository ships an APK, not the source code.**
-
-The full source tree is intentionally not published here. Issues and releases live in this repo; downloads are attached to the [Releases](../../releases) page.
-
-### Why source-restricted
-
-Mobile OSRS was deliberately kept off-limits to third-party clients. Jagex coordinated with RuneLite — the same team that builds the desktop client most of the OSRS community uses — to ensure no community-built mobile client could exist alongside Jagex's own paid mobile offering. The original effort was shelved as part of that arrangement; OSRS Mobile became a Jagex-only product, monopolizing the space.
-
-This project exists because that outcome shouldn't have been the only one. Publishing the source verbatim makes it trivially easy for the upstream gamepack or RuneLite's bytecode patching pipeline to add targeted checks against the exact tricks this client uses to run. Keeping the source private raises the cost of doing that without preventing anyone curious enough to ask from getting a copy.
-
-### Getting the source
-
-If you're interested in the source — to learn, contribute, fork, audit, or run your own builds — reach out on Discord: **@therealnull**. I'm happy to share it; I'd just rather you ask than have the upstream tooling scrape it.
-
----
-
-## What it is
-
-`runelite-mp` runs the upstream RuneLite client — the same `runelite-client`, the same plugin system, the same `runelite-api` surface — on Android, against the live OSRS gamepack. Behavior is effectively 1:1 with desktop RuneLite where the platform allows.
+---  
+  
+## Info
+`android` runs the upstream RuneLite client — the same `runelite-client`, the same plugin system, the same `runelite-api` surface — on Android, against the live OSRS gamepack. Behavior is effectively 1:1 with desktop RuneLite where the platform allows.
 
 The base GPU plugin is intact via GLES. **117HD is not supported yet**
 

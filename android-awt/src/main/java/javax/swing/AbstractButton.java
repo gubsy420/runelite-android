@@ -22,7 +22,7 @@ public abstract class AbstractButton extends JComponent {
     protected ButtonModel model = new DefaultButtonModel();
     protected String text = "";
     protected Icon icon;
-    private Icon pressedIcon, selectedIcon, rolloverIcon, disabledIcon;
+    private Icon pressedIcon, selectedIcon, rolloverIcon, disabledIcon, rolloverSelectedIcon;
     private int horizontalAlignment = CENTER;
     private int horizontalTextPosition = TRAILING;
     private int verticalAlignment = CENTER;
@@ -48,6 +48,12 @@ public abstract class AbstractButton extends JComponent {
     public void setRolloverIcon(Icon icon) { this.rolloverIcon = icon; }
     public Icon getDisabledIcon() { return disabledIcon; }
     public void setDisabledIcon(Icon icon) { this.disabledIcon = icon; }
+    // Shown when a button is both rolled-over AND selected. RuneLite's
+    // SwingUtil.removeButtonDecorations() sets all icon variants including this one;
+    // without it external plugin panels (quest-helper) crash at startUp with
+    // NoSuchMethodError before any UI is built.
+    public Icon getRolloverSelectedIcon() { return rolloverSelectedIcon; }
+    public void setRolloverSelectedIcon(Icon icon) { this.rolloverSelectedIcon = icon; }
 
     public int getHorizontalAlignment() { return horizontalAlignment; }
     public void setHorizontalAlignment(int alignment) { this.horizontalAlignment = alignment; }
@@ -69,6 +75,16 @@ public abstract class AbstractButton extends JComponent {
 
     public ButtonModel getModel() { return model; }
     public void setModel(ButtonModel newModel) { this.model = newModel; }
+
+    // Typed UI-delegate accessors. javac resolves `button.setUI(new BasicButtonUI())`
+    // (and BasicToggleButtonUI) to AbstractButton.setUI(ButtonUI) — the most specific
+    // overload — so without this typed method present, every plugin/RuneLite call that
+    // strips a button's L&F decorations dies with NoSuchMethodError at panel build (this
+    // hit quest-helper plus internal SkillCalculator/Info/LootTracker panels). The
+    // delegate isn't used for rendering here (we custom-paint), we just store it. JLabel
+    // and JProgressBar already carry the equivalent typed overloads.
+    public void setUI(javax.swing.plaf.ButtonUI ui) { super.setUI(ui); }
+    public javax.swing.plaf.ButtonUI getUI() { return (javax.swing.plaf.ButtonUI) super.getUI(); }
 
     /** Padding between the icon and the text when both are shown. Default 4 mirrors Swing.
      *  External plugins (quest-helper / loot-tracker) call this on JButton, JToggleButton,

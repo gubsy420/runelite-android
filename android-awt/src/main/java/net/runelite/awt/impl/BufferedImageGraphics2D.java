@@ -672,10 +672,35 @@ public class BufferedImageGraphics2D extends Graphics2D {
         int nsh = (int) ((long) ndh * sh / dh);
         if (nsw <= 0 || nsh <= 0) return;
 
+        int ruleDiag = compositeRuleFor(src);
+
+        // TEMP DIAGNOSTIC: software-mode present into a Canvas backbuffer. Logs whether the
+        // source image (the engine's rasterized frame) actually has content and what
+        // composite rule we use — so we can tell "engine rendered nothing" from "blit dropped it".
+        if (backbufferSource != null && !java.awt.Canvas.isRenderedByGles())
+        {
+            long now = System.currentTimeMillis();
+            if (now - lastSwBlitLog > 1000)
+            {
+                lastSwBlitLog = now;
+                int sw2 = src.getWidth(), sh2 = src.getHeight();
+                int ci = (sh2 / 2) * sw2 + sw2 / 2;
+                int srcCenter = (ci >= 0 && ci < srcPixels.length) ? srcPixels[ci] : -1;
+                java.awt.image.ColorModel cm = src.getColorModel();
+                android.util.Log.i("SwDiag", "PRESENT src=" + sw2 + "x" + sh2
+                    + " srcCenter=0x" + Integer.toHexString(srcCenter)
+                    + " srcType=" + src.getType() + " hasAlpha=" + (cm != null && cm.hasAlpha())
+                    + " opaqueSrc=" + isOpaqueSource(src) + " rule=" + ruleDiag + "(SRC=" + AlphaComposite.SRC + ")"
+                    + " dst=" + width + "x" + height + " dstRect=[" + ndx + "," + ndy + " " + ndw + "x" + ndh + "]");
+            }
+        }
+
         AwtNative.blit(srcPixels, src.getWidth(), src.getHeight(), nsx, nsy, nsw, nsh,
             pixels, width, height, ndx, ndy, ndw, ndh,
-            compositeRuleFor(src), compositeAlpha());
+            ruleDiag, compositeAlpha());
     }
+
+    private static long lastSwBlitLog = 0;
 
     /**
      * Pick the composite for blitting from this source image. For opaque source images
@@ -686,7 +711,20 @@ public class BufferedImageGraphics2D extends Graphics2D {
      */
     private int compositeRuleFor(BufferedImage src) {
         int rule = compositeRule();
-        if (rule == AlphaComposite.SRC_OVER && isOpaqueSource(src)) {
+        if (rule == AlphaComposite.SRC_OVER
+            && (isOpaqueSource(src)
+                // Software-mode present INTO a Canvas live-backbuffer (backbufferSource != null,
+                // i.e. graphics from Canvas.getGraphics()). The OSRS rasterizer writes RGB with
+                // alpha=0; if the engine's MainBufferProvider image still carries a stale ALPHA
+                // ColorModel from a prior GPU-mode session (the size-unchanged buffer-reuse path
+                // doesn't rebuild it), isOpaqueSource is false and the SRC_OVER blit silently
+                // drops every alpha-0 pixel — a black game viewport. Force SRC so the frame
+                // overwrites the backbuffer, mirroring the outbound Canvas.paint/Window.hostPaint
+                // blits which already force SRC in software mode. In GPU mode isRenderedByGles is
+                // true so this never fires (and Hooks.draw early-returns before the present
+                // anyway); overlay graphics have backbufferSource == null so their alpha blending
+                // is unaffected.
+                || (backbufferSource != null && !java.awt.Canvas.isRenderedByGles()))) {
             return AlphaComposite.SRC;
         }
         return rule;

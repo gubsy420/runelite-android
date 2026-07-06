@@ -483,7 +483,12 @@ public class WorldHopperPlugin extends Plugin
 			worldData.put(w.getId(), w.getPlayerCount());
 		}
 
-		panel.updateListData(worldData);
+		// onWorldListLoad is an @Subscribe handler dispatched on the client thread, but
+		// updateListData mutates the Swing panel (and can call updateList() →
+		// listContainer.removeAll()). Marshal it onto the EDT like every other panel.*
+		// call in this plugin, so it can't race the ping/refresh invokeLater tasks
+		// (ConcurrentModificationException in Container.removeAll()).
+		SwingUtilities.invokeLater(() -> panel.updateListData(worldData));
 		this.lastFetch = Instant.now(); // This counts as a fetch as it updates populations
 	}
 

@@ -1,6 +1,6 @@
 package javax.swing;
 
-public class JMenuItem extends AbstractButton {
+public class JMenuItem extends AbstractButton implements MenuElement {
     private static final long serialVersionUID = 1L;
 
     public JMenuItem() {}
@@ -14,4 +14,9 @@ public class JMenuItem extends AbstractButton {
     public void setAccelerator(KeyStroke keyStroke) {}
     public boolean isArmed() { return getModel().isArmed(); }
     public void setArmed(boolean b) { getModel().setArmed(b); }
+
+    // MenuElement — a leaf item has no sub-elements; JMenu overrides getSubElements().
+    @Override public void menuSelectionChanged(boolean isIncluded) {}
+    @Override public MenuElement[] getSubElements() { return new MenuElement[0]; }
+    @Override public java.awt.Component getComponent() { return this; }
 }

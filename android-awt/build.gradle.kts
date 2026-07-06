@@ -36,6 +36,15 @@ android {
         // app's R8 step. The gamepack calls these by name; renaming them at link time
         // breaks Class.forName / reflection lookups inside the obfuscated client jar.
         consumerProguardFiles("consumer-rules.pro")
+
+        ndk {
+            abiFilters += listOf(
+                "arm64-v8a",
+                "armeabi-v7a",
+                "x86_64",
+                "x86"
+            )
+        }
     }
 
     compileOptions {
@@ -83,7 +92,12 @@ cargo {
     module = "./rust"
     libname = "runelite_awt_native"
     // Add "arm" and "x86" once `rustup target add armv7-linux-androideabi i686-linux-android` is run.
-    targets = listOf("arm64", "x86_64")
+    targets = listOf(
+        "arm64",  // arm64-v8a (64-bit ARM)
+        "arm",    // armeabi-v7a (32-bit ARM)
+        "x86_64", // x86_64 emulator
+        "x86"     // x86 emulator
+    )
     profile = "release"
     prebuiltToolchains = true
     pythonCommand = "python"

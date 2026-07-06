@@ -42,27 +42,22 @@ public class EventQueue {
         return name != null && name.startsWith("AWT-Invoke");
     }
 
-    public static void invokeLater(Runnable r) {
-        Thread t = new Thread(r, "AWT-InvokeLater");
-        t.setUncaughtExceptionHandler(EDT_UEH);
-        t.start();
-    }
-
-    public static void invokeAndWait(Runnable r) throws InterruptedException {
-        Thread t = new Thread(r, "AWT-InvokeAndWait");
-        t.setUncaughtExceptionHandler(EDT_UEH);
-        t.start();
-        t.join();
-    }
-
     /**
-     * Real Swing wraps EDT callbacks in a try/catch and logs uncaught exceptions —
-     * a misbehaving listener doesn't kill the process. Our invokeLater used to spawn
-     * a bare Thread with no UncaughtExceptionHandler, so Android's default handler
-     * (which terminates the process) ran instead. Plugin startup is full of code
-     * that throws here (NoSuchMethod on missing Swing API, NPE on half-constructed
-     * components, etc.) — without this every such throw crashed the whole app the
-     * moment a side panel was touched.
+     * The single Event Dispatch Thread. Every {@link #invokeLater}/{@link #invokeAndWait}
+     * task runs HERE, serialized in submission order — exactly like a real Swing EDT.
+     *
+     * <p>The previous implementation spawned a fresh {@code new Thread(r, "AWT-InvokeLater")}
+     * per call, so multiple invokeLater tasks ran CONCURRENTLY. Any Swing component that
+     * mutates its child list off one task while another reads/mutates it
+     * (WorldSwitcherPanel.updateList → Container.removeAll() is the canonical case) then
+     * threw ConcurrentModificationException. RuneLite is written to Swing's
+     * single-thread-confinement contract — all UI mutation marshalled onto the EDT via
+     * invokeLater — so honoring that contract with one serial thread is both correct and
+     * the real fix.</p>
+     *
+     * <p>Named "AWT-InvokeLater" so {@link #isDispatchThread()} (prefix match on
+     * "AWT-Invoke") still recognizes it. Single-thread executor replaces the worker if it
+     * ever dies, but {@link #runGuarded} catches throwables per-task so it shouldn't.</p>
      */
     private static final Thread.UncaughtExceptionHandler EDT_UEH =
         new Thread.UncaughtExceptionHandler() {
@@ -71,4 +66,49 @@ public class EventQueue {
                 android.util.Log.w("AWT-EDT", "Uncaught exception on " + t.getName(), e);
             }
         };
+
+    private static final java.util.concurrent.ExecutorService EDT =
+        java.util.concurrent.Executors.newSingleThreadExecutor(r -> {
+            Thread t = new Thread(r, "AWT-InvokeLater");
+            t.setUncaughtExceptionHandler(EDT_UEH);
+            return t;
+        });
+
+    public static void invokeLater(Runnable r) {
+        if (r == null) return;
+        EDT.execute(() -> runGuarded(r));
+    }
+
+    public static void invokeAndWait(Runnable r) throws InterruptedException {
+        if (r == null) return;
+        // Already on the EDT — run inline so we don't deadlock waiting on ourselves.
+        if (isDispatchThread()) {
+            runGuarded(r);
+            return;
+        }
+        java.util.concurrent.CountDownLatch done = new java.util.concurrent.CountDownLatch(1);
+        EDT.execute(() -> {
+            try {
+                runGuarded(r);
+            } finally {
+                done.countDown();
+            }
+        });
+        done.await();
+    }
+
+    /**
+     * Real Swing wraps EDT callbacks in a try/catch and logs uncaught exceptions — a
+     * misbehaving listener doesn't kill the process (or, here, the single EDT worker;
+     * letting it propagate would tear down the executor's only thread and freeze all
+     * future UI updates). Plugin startup is full of code that throws here (NoSuchMethod
+     * on missing Swing API, NPE on half-constructed components, etc.).
+     */
+    private static void runGuarded(Runnable r) {
+        try {
+            r.run();
+        } catch (Throwable e) {
+            android.util.Log.w("AWT-EDT", "Uncaught exception on " + Thread.currentThread().getName(), e);
+        }
+    }
 }

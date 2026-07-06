@@ -429,25 +429,17 @@ public class ExternalPluginManager
 	@Nullable
 	public static PluginHubManifest.JarData getJarData(Class<? extends Plugin> plugin)
 	{
-		ClassLoader cl = plugin.getClassLoader();
-		if (cl instanceof PluginHubClassLoader)
-		{
-			PluginHubClassLoader ecl = (PluginHubClassLoader) cl;
-			return ecl.getJarData();
-		}
-		return null;
+		// forClassLoader (not a bare instanceof) so this also resolves on Android, where the
+		// defining loader is the inner DexClassLoader rather than the PluginHubClassLoader.
+		PluginHubClassLoader ecl = PluginHubClassLoader.forClassLoader(plugin.getClassLoader());
+		return ecl == null ? null : ecl.getJarData();
 	}
 
 	@Nullable
 	public static PluginHubManifest.DisplayData getDisplayData(Class<? extends Plugin> plugin)
 	{
-		ClassLoader cl = plugin.getClassLoader();
-		if (cl instanceof PluginHubClassLoader)
-		{
-			PluginHubClassLoader ecl = (PluginHubClassLoader) cl;
-			return ecl.getStub();
-		}
-		return null;
+		PluginHubClassLoader ecl = PluginHubClassLoader.forClassLoader(plugin.getClassLoader());
+		return ecl == null ? null : ecl.getStub();
 	}
 
 	@Nullable

@@ -33,6 +33,9 @@ import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.client.util.ReflectUtil;
@@ -45,6 +48,30 @@ class PluginHubClassLoader extends URLClassLoader implements ReflectUtil.Private
 	 *  same file. URLClassLoader still owns resource lookup so the stub-read in the constructor
 	 *  and any later getResource calls keep working through the same code path. */
 	private static final boolean IS_ANDROID = "Dalvik".equals(System.getProperty("java.vm.name"));
+
+	/** On Android the plugin classes are *defined* by the inner DexClassLoader (findClass
+	 *  delegates to it), so {@code plugin.getClass().getClassLoader()} is that DexClassLoader,
+	 *  NOT this wrapper. That made {@code cl instanceof PluginHubClassLoader} fail everywhere
+	 *  external-plugin identity is recovered (ExternalPluginManager.getJarData/getStub),
+	 *  returning null for every external — which broke the "already loaded" dedup and caused
+	 *  refreshPlugins to instantiate duplicates, whose same-name conflict cascade then
+	 *  self-disabled the plugin on enable so nothing ever started. Map each inner loader back
+	 *  to its wrapper so {@link #forClassLoader} can recover it. Entries are only added on a
+	 *  real (infrequent) load, so the strong map is effectively bounded. */
+	private static final Map<ClassLoader, PluginHubClassLoader> DEX_OWNERS =
+		Collections.synchronizedMap(new IdentityHashMap<>());
+
+	/** Resolve the owning PluginHubClassLoader for a plugin class's loader: directly on
+	 *  desktop (URLClassLoader is the defining loader), or via the DEX_OWNERS map on Android
+	 *  (where the inner DexClassLoader is the defining loader). */
+	static PluginHubClassLoader forClassLoader(ClassLoader cl)
+	{
+		if (cl instanceof PluginHubClassLoader)
+		{
+			return (PluginHubClassLoader) cl;
+		}
+		return cl == null ? null : DEX_OWNERS.get(cl);
+	}
 
 	@Getter
 	private final PluginHubManifest.JarData jarData;
@@ -67,6 +94,12 @@ class PluginHubClassLoader extends URLClassLoader implements ReflectUtil.Private
 			this.stub = gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), PluginHubManifest.Stub.class);
 		}
 		this.dexClassLoader = IS_ANDROID ? createDexClassLoader(jarData.getJarFile()) : null;
+		if (this.dexClassLoader != null)
+		{
+			// Plugin classes are defined by dexClassLoader, so identity recovery off a plugin
+			// Class lands here, not on `this`. Register so forClassLoader() can map back.
+			DEX_OWNERS.put(this.dexClassLoader, this);
+		}
 		ReflectUtil.installLookupHelper(this);
 	}
 
