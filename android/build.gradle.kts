@@ -41,15 +41,15 @@ buildscript {
             mavenCentral()
         }
         dependencies {
-            classpath("com.android.tools.build:gradle:8.6.1")
+            classpath("com.android.tools.build:gradle:8.12.3")
             // Used by DesugarStringConcatTask below.
             classpath("org.ow2.asm:asm:9.8")
             classpath("org.ow2.asm:asm-commons:9.8")
             // Firebase. apply(plugin = "...") below resolves against this buildscript
             // classpath (legacy mechanism), so the gradle plugins have to live here in
             // addition to the root-level plugins { ... apply false } registration.
-            classpath("com.google.gms:google-services:4.4.4")
-            classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.2")
+            classpath("com.google.gms:google-services:4.5.0")
+            classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.7")
         }
     }
 }
@@ -95,16 +95,6 @@ configurations.configureEach {
     // under org.lwjgl.* that delegate to android.opengl.GLES32. Drop the real
     // artifact group-wide so the shim doesn't dex-collide with the upstream copy.
     exclude(group = "org.lwjgl")
-    // Force-pin Guava to the project's chosen version. Firebase Analytics pulls in an
-    // older Guava-android variant through play-services-measurement which lacks
-    // ImmutableMap.toImmutableMap(Function, Function) — and because Android's dex
-    // merger picks ONE copy, the older one shadows ours at runtime and breaks
-    // ExternalPluginManager.refreshPlugins (NoSuchMethodError on toImmutableMap).
-    // Constraint forces resolution to the modern coordinates regardless of who else
-    // requests Guava transitively.
-    resolutionStrategy {
-        force("com.google.guava:guava:23.2-jre")
-    }
 }
 
 val target = "runelite-1.12.31.1-injected-28183107789.176"
@@ -135,6 +125,12 @@ val desugarLambdas = if (androidSdkAvailable) {
         syntheticPrefix.set("runelite/desugar/Lambda")
     }
 } else null
+
+configurations.all {
+    resolutionStrategy.force(
+        "com.google.guava:guava:33.6.0-android"
+    )
+}
 
 kotlin {
     jvmToolchain(17)
@@ -212,6 +208,8 @@ kotlin {
                     // types D8's StringConcat desugarer rejects, so we pre-rewrite them to
                     // calls into IndyConcat at build time. See desugarStringConcat below.
                     implementation(files(desugarLambdas!!.flatMap { it.outputJar }))
+
+                    implementation("com.google.guava:guava:33.6.0-android")
                 }
             }
         }
@@ -256,7 +254,7 @@ if (androidSdkAvailable) {
             // versus how OSRS-RuneLite actually versions. Monotonic across any of
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
-            versionCode = (1 * 1_000_000) + (0 * 1_000) + 3
+            versionCode = (1 * 1_000_000) + (0 * 1_000) + 6
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
             // refuses to run when the on-device APK's signing SHA-256 doesn't match.

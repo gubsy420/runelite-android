@@ -15,7 +15,7 @@ public class ServicePlugin extends Plugin {
     boolean running = false;
     @Subscribe
     public void onGameStateChanged(GameStateChanged gameState) {
-        if (!running)
+/*        if (!running)
             if (gameState.getGameState() == GameState.LOGGED_IN) {
                 System.out.println("Starting Service");
                 GameSessionService.Companion.start();
@@ -25,6 +25,6 @@ public class ServicePlugin extends Plugin {
             if (gameState.getGameState() == GameState.LOGIN_SCREEN) {
                 System.out.println("Stopping Service");
                 GameSessionService.Companion.stop();
-            }
+            }*/
     }
 }

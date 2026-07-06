@@ -4,6 +4,7 @@
       <verify-metadata>false</verify-metadata>
       <verify-signatures>false</verify-signatures>
       <trusted-artifacts>
+         <trust group="org.jspecify"/>
          <trust group="net.runelite"/>
          <trust group="net.runelite.arn"/>
          <trust file=".*-javadoc[.]jar" regex="true"/>
