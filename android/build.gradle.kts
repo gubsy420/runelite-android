@@ -191,10 +191,6 @@ kotlin {
                     // the actual Swing rendering pipeline behind them won't.
                     implementation(libs.flatlaf.core)
                     implementation(libs.flatlaf.extras)
-                    // LSPosed's hidden-API bypass uses JNI-level surgery to lift the
-                    // SDK 28+ "Accessing hidden method ... denied" gate so we can reflect
-                    // on Unsafe.copyMemoryFromPrimitiveArray + friends.
-                    implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
                     // Plugin-hub plugins shade their `implementation` deps into the desktop
                     // jar, but the Android dex pipeline ships thin jars (plugin classes only),
                     // so those bundled libs are missing at runtime. The DexClassLoader's parent
@@ -254,7 +250,7 @@ if (androidSdkAvailable) {
             // versus how OSRS-RuneLite actually versions. Monotonic across any of
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
-            versionCode = (1 * 1_000_000) + (0 * 1_000) + 6
+            versionCode = (1 * 1_000_000) + (0 * 1_000) + 8
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
             // refuses to run when the on-device APK's signing SHA-256 doesn't match.

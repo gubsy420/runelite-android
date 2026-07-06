@@ -1,8 +1,5 @@
 package net.runelite.mp.util;
 
-import android.os.Build;
-import org.lsposed.hiddenapibypass.HiddenApiBypass;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
@@ -323,15 +320,6 @@ public final class UnsafeShim {
 
     // ---- Static init -------------------------------------------------------------------
     static {
-        // Lift Android's SDK-28+ hidden-API gate so reflection on Unsafe.* succeeds.
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                HiddenApiBypass.addHiddenApiExemptions("L");
-            }
-        } catch (Throwable t) {
-            android.util.Log.w("UnsafeShim", "HiddenApiBypass failed: " + t);
-        }
-
         try {
             Class<?> unsafeCls = Class.forName("sun.misc.Unsafe");
             Object u = obtain(unsafeCls);
