@@ -236,7 +236,7 @@ if (androidSdkAvailable) {
 if (androidSdkAvailable) {
     extensions.configure<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>("android") {
         namespace = "net.runelite.mp"
-        compileSdk = 34
+        compileSdk = 35
 
         defaultConfig {
             applicationId = "net.runelite.mp"
@@ -247,7 +247,8 @@ if (androidSdkAvailable) {
             // become synthetic classes. Until that lands, lambda-heavy callsites in the
             // injected client crash on first invocation.
             minSdk = 26
-            targetSdk = 34
+            //noinspection EditedTargetSdkVersion
+            targetSdk = 35
             // Derive versionCode from the dotted project version so each RuneLite cycle
             // (1.12.27 → 1.12.28 → 1.13.0 → …) lands a monotonically-increasing integer
             // without manual bumping. Encoding: major*1_000_000 + minor*1_000 + patch,
@@ -255,9 +256,7 @@ if (androidSdkAvailable) {
             // versus how OSRS-RuneLite actually versions. Monotonic across any of
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
-            versionCode = (v.getOrElse(0) { 0 } * 1_000_000) +
-                (v.getOrElse(1) { 0 } * 1_000) +
-                v.getOrElse(2) { 0 }
+            versionCode = (1 * 1_000_000) + (0 * 1_000) + 3
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
             // refuses to run when the on-device APK's signing SHA-256 doesn't match.
@@ -407,7 +406,7 @@ if (androidSdkAvailable) {
             // SignatureGuard inside the APK reads this and refuses to boot if the
             // installed APK's signing key doesn't match (e.g. someone disassembled,
             // patched, and re-signed it with a different cert).
-            buildConfigField("String", "EXPECTED_SIGNING_SHA256", "\"$expectedReleaseSigSha\"")
+            buildConfigField("String", "EXPECTED_SIGNING_SHA256", "\"1A207D8B2E29791E56E1750EDE6A32CA56AA10FB7AD36DA1E3DDF12B7BFB8E7E\"")
         }
         // Debug builds normally set debuggable=true which enables CheckJNI — wraps every
         // JNI call (AwtNative.blit/fillRect, Float.floatToRawIntBits, etc.) in validation
