@@ -97,7 +97,7 @@ configurations.configureEach {
     exclude(group = "org.lwjgl")
 }
 
-val target = "runelite-1.12.31.1-injected-28183107789.176"
+val target = "runelite-1.12.32-injected-28960153293.189"
 
 // --------------------------------------------------------------------------------------
 // desugarStringConcat: rewrites invokedynamic `makeConcatWithConstants` sites into calls
@@ -250,7 +250,7 @@ if (androidSdkAvailable) {
             // versus how OSRS-RuneLite actually versions. Monotonic across any of
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
-            versionCode = (1 * 1_000_000) + (0 * 1_000) + 8
+            versionCode = (1 * 1_000_000) + (0 * 1_000) + 9
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
             // refuses to run when the on-device APK's signing SHA-256 doesn't match.
