@@ -41,6 +41,7 @@ buildscript {
             mavenCentral()
         }
         dependencies {
+
             classpath("com.android.tools.build:gradle:8.12.3")
             // Used by DesugarStringConcatTask below.
             classpath("org.ow2.asm:asm:9.8")
@@ -126,6 +127,76 @@ val desugarLambdas = if (androidSdkAvailable) {
     }
 } else null
 
+val desugarApis = if (androidSdkAvailable) {
+    tasks.register("desugarApis") {
+        dependsOn(desugarLambdas)
+
+        val input = desugarLambdas!!.flatMap { it.outputJar }
+        val output = layout.buildDirectory.file("desugared/injected-client-final.jar")
+
+        inputs.file(input)
+        outputs.file(output)
+
+        doLast {
+            val inFile = input.get().asFile
+            val outFile = output.get().asFile
+
+            JarFile(inFile).use { srcJar ->
+                JarOutputStream(outFile.outputStream()).use { outJar ->
+                    val entries = srcJar.entries()
+                    while (entries.hasMoreElements()) {
+                        val entry = entries.nextElement()
+                        srcJar.getInputStream(entry).use { stream ->
+                            outJar.putNextEntry(JarEntry(entry.name))
+
+                            if (entry.name.endsWith(".class")) {
+                                val bytes = stream.readBytes()
+                                val reader = org.objectweb.asm.ClassReader(bytes)
+                                val writer = org.objectweb.asm.ClassWriter(org.objectweb.asm.ClassWriter.COMPUTE_MAXS)
+
+                                // Direct ASM transformer to find and swap the method signature
+                                val transformer = object : org.objectweb.asm.ClassVisitor(org.objectweb.asm.Opcodes.ASM9, writer) {
+                                    override fun visitMethod(access: Int, name: String?, descriptor: String?, signature: String?, exceptions: Array<out String>?): org.objectweb.asm.MethodVisitor {
+                                        val mv = super.visitMethod(access, name, descriptor, signature, exceptions)
+                                        return object : org.objectweb.asm.MethodVisitor(org.objectweb.asm.Opcodes.ASM9, mv) {
+                                            override fun visitMethodInsn(opcode: Int, owner: String?, nameStr: String?, desc: String?, isInterface: Boolean) {
+                                                // Target the Java 9 Matcher.replaceAll(Function) signature
+                                                if (opcode == org.objectweb.asm.Opcodes.INVOKEVIRTUAL &&
+                                                    owner == "java/util/regex/Matcher" &&
+                                                    nameStr == "replaceAll" &&
+                                                    desc == "(Ljava/util/function/Function;)Ljava/lang/String;") {
+
+                                                    // Reroute it to your Java 8 polyfill method
+                                                    super.visitMethodInsn(
+                                                        org.objectweb.asm.Opcodes.INVOKESTATIC,
+                                                        "net/runelite/mp/util/IndyConcat",
+                                                        "replaceAllJava8",
+                                                        "(Ljava/util/regex/Matcher;Ljava/util/function/Function;)Ljava/lang/String;",
+                                                        false
+                                                    )
+                                                } else {
+                                                    super.visitMethodInsn(opcode, owner, nameStr, desc, isInterface)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // SKIP_DEBUG eliminates the malformed tables causing D8/R8 to throw NullPointerExceptions
+                                reader.accept(transformer, org.objectweb.asm.ClassReader.SKIP_DEBUG)
+                                outJar.write(writer.toByteArray())
+                            } else {
+                                stream.copyTo(outJar)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} else null
+
+
 configurations.all {
     resolutionStrategy.force(
         "com.google.guava:guava:33.6.0-android"
@@ -203,7 +274,7 @@ kotlin {
                     // invokedynamic makeConcatWithConstants sites whose recipes use constant
                     // types D8's StringConcat desugarer rejects, so we pre-rewrite them to
                     // calls into IndyConcat at build time. See desugarStringConcat below.
-                    implementation(files(desugarLambdas!!.flatMap { it.outputJar }))
+                    implementation(files(desugarApis))
 
                     implementation("com.google.guava:guava:33.6.0-android")
                 }
@@ -249,8 +320,10 @@ if (androidSdkAvailable) {
             // so 1.12.27 → 1_012_027. Max minor/patch are 999 each — comfortable headroom
             // versus how OSRS-RuneLite actually versions. Monotonic across any of
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
-            val v = project.version.toString().split('.').map { it.toIntOrNull() ?: 0 }
-            versionCode = (1 * 1_000_000) + (0 * 1_000) + 10
+            val versionMajor = 1
+            val versionMinor = 0
+            val versionPatch = 11
+            versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
             // refuses to run when the on-device APK's signing SHA-256 doesn't match.

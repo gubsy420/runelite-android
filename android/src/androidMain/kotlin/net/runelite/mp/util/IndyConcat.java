@@ -1,5 +1,9 @@
 package net.runelite.mp.util;
 
+import java.util.function.Function;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+
 /**
  * Runtime helper that {@code DesugarStringConcatTask} rewrites
  * {@code invokedynamic makeConcatWithConstants} sites into. Plain Java 8 bytecode, no
@@ -41,5 +45,19 @@ public final class IndyConcat {
             out.append(literal);
             literal.setLength(0);
         }
+    }
+
+    /**
+     * Replaces Java 9+ Matcher.replaceAll(Function) with Java 8 compatible bytecode.
+     */
+    public static String replaceAllJava8(Matcher matcher, Function<MatchResult, String> function) {
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            MatchResult matchResult = matcher.toMatchResult();
+            String replacement = function.apply(matchResult);
+            matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
     }
 }
