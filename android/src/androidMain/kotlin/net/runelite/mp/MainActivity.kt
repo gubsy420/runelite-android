@@ -10,7 +10,6 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import net.runelite.mp.crash.AndroidCrashReporter
-import net.runelite.mp.security.SignatureGuard
 
 class MainActivity : ComponentActivity() {
     companion object {
@@ -21,9 +20,6 @@ class MainActivity : ComponentActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Anti-tamper. Runs before EVERY other init so a re-signed APK can't even reach
-        // Crashlytics (let alone the launcher) to leak any state. No-op on debug builds.
-        SignatureGuard.verify(applicationContext)
 
         // Install before any other init so a crash inside the System.setProperty calls
         // below (or anything else this activity touches) still reaches Crashlytics. The
