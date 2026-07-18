@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 /**
  * Lifetime owner of the EGL14 display/context + the GLES surface tied to the
@@ -375,7 +376,20 @@ public final class GlesHost
 		EGLConfig[] configs = new EGLConfig[1];
 		int[] numConfigs = new int[1];
 		if (!EGL14.eglChooseConfig(display, attrs, 0, configs, 0, configs.length, numConfigs, 0))
+		{
+			int error = EGL14.eglGetError();
+
+			String msg = "eglChooseConfig failed: 0x" + Integer.toHexString(error);
+
+			Log.e(TAG, msg);
+
+			FirebaseCrashlytics.getInstance().log(msg);
+			FirebaseCrashlytics.getInstance().recordException(
+					new RuntimeException(msg));
 			return null;
+		}
+
+		Log.d(TAG, "eglChooseConfig returned " + numConfigs[0] + " configs");
 		if (numConfigs[0] == 0) return null;
 		return configs[0];
 	}
