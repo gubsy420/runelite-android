@@ -178,11 +178,50 @@ class ConfigInvocationHandler implements InvocationHandler
 	static Object callDefaultMethod(Object proxy, Method method, Object[] args) throws Throwable
 	{
 		Class<?> declaringClass = method.getDeclaringClass();
-		return ReflectUtil.privateLookupIn(declaringClass)
-			.unreflectSpecial(method, declaringClass)
-			.bindTo(proxy)
-			.invokeWithArguments(args);
+		final Object[] safeArgs = (args == null) ? new Object[0] : args;
+
+		try
+		{
+			// 1. Try the default RuneLite desktop behavior (works perfectly on desktop)
+			return ReflectUtil.privateLookupIn(declaringClass)
+					.unreflectSpecial(method, declaringClass)
+					.bindTo(proxy)
+					.invokeWithArguments(safeArgs);
+		}
+		catch (IllegalAccessException | NoSuchMethodError e)
+		{
+			// 2. Android Fallback: Android's ART platform cannot correctly evaluate
+			// unreflectSpecial/unreflect on interface proxies via MethodHandles without corrupting
+			// return values. We use direct internal Java 8 invocation mechanics instead.
+			try
+			{
+				// Locate the package-private default method invocation constructor from Java 8/Android
+				java.lang.reflect.Constructor<java.lang.invoke.MethodHandles.Lookup> constructor =
+						java.lang.invoke.MethodHandles.Lookup.class.getDeclaredConstructor(Class.class, int.class);
+				if (!constructor.isAccessible())
+				{
+					constructor.setAccessible(true);
+				}
+
+				// Invoke via a fully trusted lookup context to preserve original type definitions
+				return constructor.newInstance(declaringClass, -1)
+						.unreflectSpecial(method, declaringClass)
+						.bindTo(proxy)
+						.invokeWithArguments(safeArgs);
+			}
+			catch (Throwable t)
+			{
+				// 3. Ultimate Android Fallback: If MethodHandles are completely broken on this
+				// device image, use direct reflection to force the default interface execution.
+				if (!method.isAccessible())
+				{
+					method.setAccessible(true);
+				}
+				return method.invoke(proxy, safeArgs);
+			}
+		}
 	}
+
 
 	void invalidate()
 	{

@@ -50,26 +50,42 @@ public class ReflectUtil
 {
 	private static Set<Class<?>> annotationClasses = Collections.newSetFromMap(new WeakHashMap<>());
 
-	public static MethodHandles.Lookup privateLookupIn(Class<?> clazz)
-	{
-		try
-		{
-			MethodHandles.Lookup caller;
-			if (clazz.getClassLoader() instanceof PrivateLookupableClassLoader)
-			{
-				caller = ((PrivateLookupableClassLoader) clazz.getClassLoader()).getLookup();
+	public static MethodHandles.Lookup privateLookupIn(Class<?> clazz, MethodHandles.Lookup lookup) {
+		try {
+			// 1. First try to use standard Java 9 reflection (safeguards future compatibility)
+			return (MethodHandles.Lookup) MethodHandles.class
+					.getMethod("privateLookupIn", Class.class, MethodHandles.Lookup.class)
+					.invoke(null, clazz, lookup);
+		} catch (Throwable t) {
+			// 2. Fallback: Emulate deep private lookup via Android/Java 8 package-private constructor hacking
+			try {
+				Constructor<MethodHandles.Lookup> constructor =
+						MethodHandles.Lookup.class.getDeclaredConstructor(Class.class, int.class);
+				if (!constructor.isAccessible()) {
+					constructor.setAccessible(true);
+				}
+				// 0x40 represents PRIVATE | PROTECTED | PACKAGE | PUBLIC internal permissions
+				return constructor.newInstance(clazz, 0x40);
+			} catch (Exception e) {
+				throw new RuntimeException("Failed to polyfill privateLookupIn on Android", e);
 			}
-			else
-			{
-				caller = MethodHandles.lookup();
-			}
-			return MethodHandles.privateLookupIn(clazz, caller);
-		}
-		catch (IllegalAccessException e)
-		{
-			throw new RuntimeException(e);
 		}
 	}
+
+	public static MethodHandles.Lookup privateLookupIn(Class<?> clazz)
+	{
+        MethodHandles.Lookup caller;
+        if (clazz.getClassLoader() instanceof PrivateLookupableClassLoader)
+        {
+            caller = ((PrivateLookupableClassLoader) clazz.getClassLoader()).getLookup();
+        }
+        else
+        {
+            caller = MethodHandles.lookup();
+        }
+
+        return privateLookupIn(clazz, caller);
+    }
 
 	public interface PrivateLookupableClassLoader
 	{

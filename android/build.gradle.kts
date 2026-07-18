@@ -174,6 +174,20 @@ val desugarApis = if (androidSdkAvailable) {
                                                         "(Ljava/util/regex/Matcher;Ljava/util/function/Function;)Ljava/lang/String;",
                                                         false
                                                     )
+                                                }
+                                                // 2. interceptor for MethodHandles.privateLookupIn
+                                                else if (opcode == org.objectweb.asm.Opcodes.INVOKESTATIC &&
+                                                    owner == "java/lang/invoke/MethodHandles" &&
+                                                    nameStr == "privateLookupIn" &&
+                                                    desc == "(Ljava/lang/Class;Ljava/lang/invoke/MethodHandles\$Lookup;)Ljava/lang/invoke/MethodHandles\$Lookup;") {
+
+                                                    super.visitMethodInsn(
+                                                        org.objectweb.asm.Opcodes.INVOKESTATIC,
+                                                        "net/runelite/mp/util/IndyConcat",
+                                                        "privateLookupInJava8", // Reroutes to your Java 8 reflection workaround
+                                                        "(Ljava/lang/Class;Ljava/lang/invoke/MethodHandles\$Lookup;)Ljava/lang/invoke/MethodHandles\$Lookup;",
+                                                        false
+                                                    )
                                                 } else {
                                                     super.visitMethodInsn(opcode, owner, nameStr, desc, isInterface)
                                                 }
@@ -322,7 +336,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 11
+            val versionPatch = 12
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
