@@ -315,7 +315,7 @@ if (androidSdkAvailable) {
 if (androidSdkAvailable) {
     extensions.configure<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>("android") {
         namespace = "net.runelite.mp"
-        compileSdk = 35
+        compileSdk = 36
 
         defaultConfig {
             applicationId = "net.runelite.mp"
@@ -327,7 +327,7 @@ if (androidSdkAvailable) {
             // injected client crash on first invocation.
             minSdk = 26
             //noinspection EditedTargetSdkVersion
-            targetSdk = 35
+            targetSdk = 36
             // Derive versionCode from the dotted project version so each RuneLite cycle
             // (1.12.27 → 1.12.28 → 1.13.0 → …) lands a monotonically-increasing integer
             // without manual bumping. Encoding: major*1_000_000 + minor*1_000 + patch,
@@ -336,7 +336,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 13
+            val versionPatch = 14
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
