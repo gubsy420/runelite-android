@@ -1,5 +1,3 @@
-// Ported verbatim from net.runelite.client.plugins.gpu.hsl_to_rgb.glsl — pure
-// arithmetic, no GLSL-version-specific syntax.
 vec3 hslToRgb(vec3 hsl) {
   float hue = hsl.x / 64.0f + 0.0078125f;
   float sat = hsl.y / 8.0f + 0.0625f;

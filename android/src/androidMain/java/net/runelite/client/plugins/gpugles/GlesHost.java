@@ -396,6 +396,10 @@ public final class GlesHost
 
 	private boolean initSurfaceLocked()
 	{
+		if (androidSurface == null || !androidSurface.isValid())
+		{
+			return false;
+		}
 		int[] attrs = { EGL14.EGL_NONE };
 		eglSurface = EGL14.eglCreateWindowSurface(display, config, androidSurface, attrs, 0);
 		if (eglSurface == EGL14.EGL_NO_SURFACE)
@@ -410,8 +414,12 @@ public final class GlesHost
 	{
 		if (eglSurface != EGL14.EGL_NO_SURFACE)
 		{
-			// eglDestroySurface lazily defers actual deletion until the surface
-			// is no longer current on any thread, so we don't need to release first.
+			EGL14.eglMakeCurrent(
+					display,
+					EGL14.EGL_NO_SURFACE,
+					EGL14.EGL_NO_SURFACE,
+					EGL14.EGL_NO_CONTEXT);
+
 			EGL14.eglDestroySurface(display, eglSurface);
 			eglSurface = EGL14.EGL_NO_SURFACE;
 		}

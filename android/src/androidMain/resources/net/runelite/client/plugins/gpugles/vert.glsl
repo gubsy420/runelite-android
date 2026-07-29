@@ -1,11 +1,3 @@
-// Ported from net.runelite.client.plugins.gpu.vert.glsl for GLSL ES 3.10.
-// Notes vs the desktop original:
-//  - `#version 330` → `#version 310 es` (precision qualifiers required below)
-//  - `noperspective centroid out float fHsl` → just `centroid out float fHsl` —
-//    ES has no `noperspective` qualifier; the visual cost is perspective-correct
-//    interpolation across steep depth gradients (texture lighting may shimmer
-//    slightly on very oblique tris). Centroid still helps the MSAA edge cases.
-//  - `int abhsl` etc. use 32-bit precision: explicit `highp int` where it matters.
 #version 310 es
 
 precision highp float;

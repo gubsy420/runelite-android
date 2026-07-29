@@ -1,6 +1,3 @@
-// Ported from net.runelite.client.plugins.gpu.colorblind.glsl. Math unchanged;
-// GLSL ES 3.10 supports inverse() and column-major mat3 constructors identically.
-
 #define PROTAN 1
 #define DEUTERAN 2
 #define TRITAN 3

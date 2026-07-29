@@ -1,6 +1,3 @@
-// Ported from net.runelite.client.plugins.gpu.frag.glsl for GLSL ES 3.10.
-// Removed `noperspective centroid in float fHsl` (no `noperspective` in ES);
-// kept the centroid qualifier. Added precision qualifiers required by ES.
 #version 310 es
 
 precision highp float;

@@ -336,7 +336,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 14
+            val versionPatch = 15
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and

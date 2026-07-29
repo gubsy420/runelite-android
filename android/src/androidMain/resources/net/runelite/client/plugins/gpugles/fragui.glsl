@@ -1,7 +1,3 @@
-// UI overlay fragment shader. Ported from
-// net.runelite.client.plugins.gpu.fragui.glsl for GLSL ES 3.10.
-// Same simplification as vertui: NEAREST/LINEAR only — xBR / bicubic / hybrid
-// are dropped for the mobile port; GLES texture filter does the upscale.
 #version 310 es
 
 precision highp float;
