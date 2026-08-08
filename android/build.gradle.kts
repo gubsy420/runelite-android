@@ -98,7 +98,7 @@ configurations.configureEach {
     exclude(group = "org.lwjgl")
 }
 
-val target = "runelite-1.12.33-injected-29512860102.197"
+val target = "runelite-1.12.35-injected-30995886148.217"
 
 // --------------------------------------------------------------------------------------
 // desugarStringConcat: rewrites invokedynamic `makeConcatWithConstants` sites into calls
@@ -336,7 +336,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 15
+            val versionPatch = 16
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
