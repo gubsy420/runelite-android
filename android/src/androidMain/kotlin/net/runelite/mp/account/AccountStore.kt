@@ -5,6 +5,7 @@ import android.util.Log
 import java.io.File
 import java.util.Locale
 import java.util.Properties
+import androidx.core.content.edit
 
 /**
  * Persistent store for the user's imported Jagex launcher credential files. Each
@@ -83,7 +84,7 @@ internal object AccountStore
     fun setActive(context: Context, id: String?)
     {
         val sp = context.getSharedPreferences(ACTIVE_PREF, Context.MODE_PRIVATE)
-        sp.edit().apply { if (id == null) remove(ACTIVE_KEY) else putString(ACTIVE_KEY, id) }.apply()
+        sp.edit { if (id == null) remove(ACTIVE_KEY) else putString(ACTIVE_KEY, id) }
     }
 
     fun read(context: Context, file: File): Account

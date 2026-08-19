@@ -4,7 +4,7 @@
 //! arrive as `int[]` in canonical ARGB packing (`0xAARRGGBB`) and are pinned for the
 //! duration of one call via the JNI critical-section API for zero-copy access.
 
-use jni::objects::{JClass, JIntArray, ReleaseMode};
+use jni::objects::{JClass, JIntArray, JString, ReleaseMode};
 use jni::sys::{jfloat, jint};
 use jni::JNIEnv;
 
@@ -26,6 +26,36 @@ fn init_android_log() {
 
 #[cfg(not(target_os = "android"))]
 fn init_android_log() {}
+
+#[no_mangle]
+pub extern "system" fn Java_net_runelite_awt_AwtCompat_setNativeEnv<'local>(
+    mut env: JNIEnv<'local>,
+    _class: JClass<'local>,
+    key: JString<'local>,
+    value: JString<'local>,
+) -> jint {
+    let key_str: String = match env.get_string(&key) {
+        Ok(s) => s.into(),
+        Err(_) => return -1,
+    };
+    let value_str: String = match env.get_string(&value) {
+        Ok(s) => s.into(),
+        Err(_) => return -1,
+    };
+
+    let c_key = match std::ffi::CString::new(key_str) {
+        Ok(c) => c,
+        Err(_) => return -1,
+    };
+    let c_val = match std::ffi::CString::new(value_str) {
+        Ok(c) => c,
+        Err(_) => return -1,
+    };
+
+    // Safety: setenv changes the global environment array which is not thread-safe.
+    // Call this as early as possible during application startup.
+    unsafe { libc::setenv(c_key.as_ptr(), c_val.as_ptr(), 1) }
+}
 
 #[no_mangle]
 pub extern "system" fn Java_net_runelite_awt_AwtCompat_nativeAbiVersion<'local>(

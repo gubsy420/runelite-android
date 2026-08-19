@@ -24,4 +24,10 @@ object AwtCompat {
             "runelite-awt-native ABI $abi, expected $EXPECTED_ABI_VERSION (rebuild required)"
         }
     }
+
+    /**
+     * Fixes environment variable synchronization bugs on older Android ROMs (like Android 8.0/8.1)
+     * by injecting the values directly into the native POSIX runtime layer via Rust.
+     */
+    @JvmStatic external fun setNativeEnv(key: String, value: String): Int
 }

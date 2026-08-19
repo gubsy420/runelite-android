@@ -11,6 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import android.util.Log
 import net.runelite.awt.AwtCompat
+import net.runelite.awt.AwtNative
 import net.runelite.mp.crash.AndroidCrashReporter
 
 private const val TAG = "RuneLiteLauncher"
@@ -240,12 +241,8 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
         for (key in props.stringPropertyNames()) {
             val value = props.getProperty(key) ?: continue
             if (value.isEmpty()) continue
-            try {
-                android.system.Os.setenv(key, value, true)
-                seeded++
-            } catch (e: Throwable) {
-                logLine("Os.setenv($key) failed: ${e.message}")
-            }
+            System.setProperty(key, value)
+            seeded++
         }
         // Source label is intentionally generic — `source.name` is the .properties file's
         // basename which equals the account display-name slug. Logging it would identify
