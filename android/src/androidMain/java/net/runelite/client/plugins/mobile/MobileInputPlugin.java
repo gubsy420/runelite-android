@@ -237,6 +237,14 @@ public class MobileInputPlugin extends Plugin
 				}
 			}
 		}
+		if (w.getDragParent() != null)
+		{
+			return true;
+		}
+		if (w.getScrollHeight() > 0 || w.getScrollWidth() > 0)
+		{
+			return true;
+		}
 		return w.getClickMask() != 0;
 	}
 }

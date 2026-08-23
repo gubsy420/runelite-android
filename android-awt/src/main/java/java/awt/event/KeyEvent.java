@@ -172,7 +172,35 @@ public class KeyEvent extends InputEvent {
 
     public int getKeyLocation() { return keyLocation; }
 
-    public boolean isActionKey() { return false; }
+    public boolean isActionKey() {
+        switch (keyCode) {
+            case VK_HOME:
+            case VK_END:
+            case VK_PAGE_UP:
+            case VK_PAGE_DOWN:
+            case VK_UP:
+            case VK_DOWN:
+            case VK_LEFT:
+            case VK_RIGHT:
+            case VK_F1:
+            case VK_F2:
+            case VK_F3:
+            case VK_F4:
+            case VK_F5:
+            case VK_F6:
+            case VK_F7:
+            case VK_F8:
+            case VK_F9:
+            case VK_F10:
+            case VK_F11:
+            case VK_F12:
+            case VK_PAUSE:
+            case VK_CAPS_LOCK:
+                return true;
+            default:
+                return false;
+        }
+    }
 
     public static String getKeyText(int keyCode) {
         return "VK_" + Integer.toHexString(keyCode).toUpperCase(java.util.Locale.ROOT);

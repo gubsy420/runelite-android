@@ -88,10 +88,11 @@ public final class MobileHitTest
 			{
 				boolean inViewport = canvasX >= v.x && canvasY >= v.y
 					&& canvasX < v.x + v.width && canvasY < v.y + v.height;
-				return !inViewport;
+				if (!inViewport)
+				{
+					return true;
+				}
 			}
-			// Viewport rect not yet published — fall through to the widget walk so we
-			// don't degrade to "everything is scene" before the first frame snapshot.
 		}
 		Rectangle[] snap = interfaceRects;
 		for (int i = 0; i < snap.length; i++)
