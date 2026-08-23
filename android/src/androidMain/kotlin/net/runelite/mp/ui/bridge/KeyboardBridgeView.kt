@@ -102,24 +102,55 @@ class KeyboardInputView @JvmOverloads constructor(
                 EditorInfo.IME_FLAG_NO_FULLSCREEN
 
         return object : BaseInputConnection(this, true) {
+            private var currentComposing = ""
+
+            override fun setComposingText(text: CharSequence?, newCursorPosition: Int): Boolean {
+                val newText = text?.toString() ?: ""
+                syncComposing(newText)
+                return true
+            }
+
             override fun commitText(text: CharSequence?, newCursorPosition: Int): Boolean {
-                if (!text.isNullOrEmpty()) {
-                    KeyDispatch.sendString(text.toString())
-                    if (text.contains('\n') || text.contains('\r')) {
-                        SoftKeyboardController.hide()
-                    }
+                val newText = text?.toString() ?: ""
+                if (currentComposing.isNotEmpty()) {
+                    syncComposing(newText)
+                    currentComposing = ""
+                } else if (newText.isNotEmpty()) {
+                    KeyDispatch.sendString(newText)
+                }
+                if (newText.contains('\n') || newText.contains('\r')) {
+                    SoftKeyboardController.hide()
                 }
                 return true
             }
 
+            override fun finishComposingText(): Boolean {
+                currentComposing = ""
+                return true
+            }
+
             override fun deleteSurroundingText(beforeLength: Int, afterLength: Int): Boolean {
+                currentComposing = ""
                 for (i in 0 until beforeLength) {
                     KeyDispatch.sendBackspace()
                 }
                 return true
             }
 
+            override fun getTextBeforeCursor(n: Int, flags: Int): CharSequence {
+                return if (currentComposing.length > n) {
+                    currentComposing.substring(currentComposing.length - n)
+                } else {
+                    currentComposing
+                }
+            }
+
+            override fun getTextAfterCursor(n: Int, flags: Int): CharSequence {
+                return ""
+            }
+
             override fun sendKeyEvent(event: android.view.KeyEvent): Boolean {
+                currentComposing = ""
                 val res = KeyDispatch.sendAndroidKeyEvent(event)
                 if (event.keyCode == android.view.KeyEvent.KEYCODE_ENTER && event.action == android.view.KeyEvent.ACTION_UP) {
                     SoftKeyboardController.hide()
@@ -128,6 +159,7 @@ class KeyboardInputView @JvmOverloads constructor(
             }
 
             override fun performEditorAction(actionCode: Int): Boolean {
+                currentComposing = ""
                 when (actionCode) {
                     EditorInfo.IME_ACTION_DONE,
                     EditorInfo.IME_ACTION_SEND,
@@ -141,6 +173,28 @@ class KeyboardInputView @JvmOverloads constructor(
                     }
                 }
                 return super.performEditorAction(actionCode)
+            }
+
+            private fun syncComposing(newText: String) {
+                if (newText == currentComposing) return
+
+                var commonPrefixLen = 0
+                val minLen = minOf(currentComposing.length, newText.length)
+                while (commonPrefixLen < minLen && currentComposing[commonPrefixLen] == newText[commonPrefixLen]) {
+                    commonPrefixLen++
+                }
+
+                val backspacesNeeded = currentComposing.length - commonPrefixLen
+                for (i in 0 until backspacesNeeded) {
+                    KeyDispatch.sendBackspace()
+                }
+
+                val newSuffix = newText.substring(commonPrefixLen)
+                if (newSuffix.isNotEmpty()) {
+                    KeyDispatch.sendString(newSuffix)
+                }
+
+                currentComposing = newText
             }
         }
     }

@@ -31,7 +31,7 @@ public abstract class KeyboardFocusManager {
     public abstract boolean postProcessKeyEvent(KeyEvent e);
     public abstract void processKeyEvent(Component focusedComponent, KeyEvent e);
 
-    private final java.util.List<KeyEventDispatcher> keyEventDispatchers = new java.util.concurrent.CopyOnWriteArrayList<>();
+    protected final java.util.List<KeyEventDispatcher> keyEventDispatchers = new java.util.concurrent.CopyOnWriteArrayList<>();
 
     public void addKeyEventDispatcher(KeyEventDispatcher dispatcher) {
         if (dispatcher != null && !keyEventDispatchers.contains(dispatcher)) {
