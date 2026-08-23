@@ -123,6 +123,10 @@ internal fun NavIconStrip(
         ModifierChip(label = "Alt", state = net.runelite.mp.ui.bridge.ModifierState.altActive.value) {
             net.runelite.mp.ui.bridge.ModifierState.toggleAlt()
         }
+        Spacer(Modifier.height(4.dp))
+        ModifierChip(label = "⌨️", state = net.runelite.mp.ui.bridge.SoftKeyboardController.isKeyboardVisible.value) {
+            net.runelite.mp.ui.bridge.SoftKeyboardController.toggle()
+        }
         Spacer(Modifier.height(8.dp))
         // RL-registered nav buttons. The list scrolls when it overflows the column height.
         LazyColumn(

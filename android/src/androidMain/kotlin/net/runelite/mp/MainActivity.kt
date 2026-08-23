@@ -66,4 +66,11 @@ class MainActivity : ComponentActivity() {
 
         setContent { AndroidApp() }
     }
+
+    override fun dispatchKeyEvent(event: android.view.KeyEvent): Boolean {
+        if (net.runelite.mp.ui.bridge.KeyDispatch.sendAndroidKeyEvent(event)) {
+            return true
+        }
+        return super.dispatchKeyEvent(event)
+    }
 }
