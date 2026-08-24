@@ -2,6 +2,7 @@ package net.runelite.mp
 
 import android.content.Context
 import android.util.Log
+import net.runelite.mp.crash.AndroidCrashReporter
 import java.lang.reflect.Modifier
 
 private const val TAG = "PluginBootstrap"
@@ -91,6 +92,11 @@ object PluginBootstrap {
             catch (t: Throwable) { Log.w(TAG, "installExternalHooks failed", t) }
         } catch (t: Throwable) {
             Log.e(TAG, "bootstrap failed", t)
+            try {
+                AndroidCrashReporter.nonFatal(t)
+            } catch (crashlyticsError: Throwable) {
+                Log.w(TAG, "Failed to report bootstrap exception to Crashlytics", crashlyticsError)
+            }
         }
     }
 
