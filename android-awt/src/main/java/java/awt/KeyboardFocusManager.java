@@ -31,12 +31,31 @@ public abstract class KeyboardFocusManager {
     public abstract boolean postProcessKeyEvent(KeyEvent e);
     public abstract void processKeyEvent(Component focusedComponent, KeyEvent e);
 
-    public void addKeyEventDispatcher(KeyEventDispatcher dispatcher) {}
-    public void removeKeyEventDispatcher(KeyEventDispatcher dispatcher) {}
+    protected final java.util.List<KeyEventDispatcher> keyEventDispatchers = new java.util.concurrent.CopyOnWriteArrayList<>();
+
+    public void addKeyEventDispatcher(KeyEventDispatcher dispatcher) {
+        if (dispatcher != null && !keyEventDispatchers.contains(dispatcher)) {
+            keyEventDispatchers.add(dispatcher);
+        }
+    }
+
+    public void removeKeyEventDispatcher(KeyEventDispatcher dispatcher) {
+        if (dispatcher != null) {
+            keyEventDispatchers.remove(dispatcher);
+        }
+    }
 
     private static final class DefaultKFM extends KeyboardFocusManager {
         @Override public boolean dispatchEvent(AWTEvent e) { return false; }
-        @Override public boolean dispatchKeyEvent(KeyEvent e) { return false; }
+        @Override
+        public boolean dispatchKeyEvent(KeyEvent e) {
+            for (KeyEventDispatcher dispatcher : keyEventDispatchers) {
+                if (dispatcher.dispatchKeyEvent(e)) {
+                    return true;
+                }
+            }
+            return false;
+        }
         @Override public boolean postProcessKeyEvent(KeyEvent e) { return false; }
         @Override public void processKeyEvent(Component c, KeyEvent e) {}
     }

@@ -88,7 +88,14 @@ public final class MobileHitTest
 			{
 				boolean inViewport = canvasX >= v.x && canvasY >= v.y
 					&& canvasX < v.x + v.width && canvasY < v.y + v.height;
-				return !inViewport;
+				if (!inViewport)
+				{
+					// Outside the viewport is always chrome (chat, tabs, minimap).
+					return true;
+				}
+				// Inside the viewport — but a modal window (bank, GE, trade) may be
+				// overlaying the viewport at this point. Fall through to the
+				// interfaceRects check below so those overlays register correctly.
 			}
 			// Viewport rect not yet published — fall through to the widget walk so we
 			// don't degrade to "everything is scene" before the first frame snapshot.

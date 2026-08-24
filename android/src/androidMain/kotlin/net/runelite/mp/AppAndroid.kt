@@ -101,6 +101,11 @@ fun AndroidApp() {
     // fills whatever space the sidebar isn't using.
     net.runelite.mp.ui.WindowImpl.Window {
         Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
+            // Input bridge view for IME / SoftKeyboard handling
+            AndroidView(
+                factory = { ctx -> net.runelite.mp.ui.bridge.KeyboardInputView(ctx) },
+                modifier = Modifier.size(1.dp)
+            )
             GameViewport(Modifier.fillMaxSize())
         }
     }
