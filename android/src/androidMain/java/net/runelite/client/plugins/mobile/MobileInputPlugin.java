@@ -115,9 +115,11 @@ public class MobileInputPlugin extends Plugin
 				return;
 			}
 			List<Rectangle> rects = new ArrayList<>(64);
+			int canvasW = client.getCanvasWidth();
+			int canvasH = client.getCanvasHeight();
 			for (Widget root : roots)
 			{
-				collect(root, rects);
+				collect(root, rects, canvasW, canvasH);
 			}
 			Rectangle[] arr;
 			if (sx == 1.0 && sy == 1.0)
@@ -160,13 +162,11 @@ public class MobileInputPlugin extends Plugin
 
 	/**
 	 * Depth-first walk. A widget contributes to the click-blocking set when it
-	 * (a) is visible and non-LAYER (LAYER widgets are RS's transparent containers and
-	 * never block clicks), AND (b) actually intercepts clicks — has a non-empty action
-	 * list, a clickMask, OR an explicit noClickThrough flag. Without (b) we'd flag
-	 * decorative chrome (background-fill rectangles drawn over the scene in resizable
-	 * mode) as "interface" and never route scene drags to BUTTON2.
+	 * intercepts clicks or drags (buttons, inventory slots, bank slider, scrollbars)
+	 * while excluding full-screen transparent viewport containers so 3D scene camera
+	 * rotation works smoothly.
 	 */
-	private static void collect(Widget w, List<Rectangle> out)
+	private static void collect(Widget w, List<Rectangle> out, int canvasW, int canvasH)
 	{
 		if (w == null || w.isSelfHidden())
 		{
@@ -175,19 +175,19 @@ public class MobileInputPlugin extends Plugin
 		Widget[] dyn = w.getDynamicChildren();
 		if (dyn != null)
 		{
-			for (Widget c : dyn) collect(c, out);
+			for (Widget c : dyn) collect(c, out, canvasW, canvasH);
 		}
 		Widget[] stat = w.getStaticChildren();
 		if (stat != null)
 		{
-			for (Widget c : stat) collect(c, out);
+			for (Widget c : stat) collect(c, out, canvasW, canvasH);
 		}
 		Widget[] nest = w.getNestedChildren();
 		if (nest != null)
 		{
-			for (Widget c : nest) collect(c, out);
+			for (Widget c : nest) collect(c, out, canvasW, canvasH);
 		}
-		if (isClickBlocking(w))
+		if (isClickBlocking(w, canvasW, canvasH))
 		{
 			Rectangle b = w.getBounds();
 			if (b != null && b.width > 0 && b.height > 0)
@@ -200,32 +200,67 @@ public class MobileInputPlugin extends Plugin
 	/**
 	 * What counts as "interface that swallows a drag":
 	 * <ul>
-	 *   <li>{@code WidgetType.LAYER} → NEVER. LAYER widgets are RS's transparent
-	 *       group containers (the resizable-mode HUD trim is one big LAYER); flagging
-	 *       these routes every scene drag to BUTTON1 and breaks camera rotation.</li>
-	 *   <li>{@code noClickThrough} set → yes. The chat-box backdrop, inventory parent
-	 *       container, etc. carry this and it's authoritative.</li>
-	 *   <li>Non-empty {@code getActions()} → yes. Individual inventory item slots,
-	 *       ground-item entries, scrollbars all sit here: the parent container's
-	 *       bounds are too coarse for per-slot drag distinctions, and each slot
-	 *       carries its own "Drop / Examine / Use" actions which uniquely identifies
-	 *       it as click-intercepting. Dropping this branch was the regression that
-	 *       sent inventory drags to camera — the LAYER guard above already excludes
-	 *       the chrome containers that historically made this rule too broad.</li>
-	 *   <li>{@code getClickMask() != 0} → yes. Some custom widgets use clickMask
-	 *       without populating actions.</li>
+	 *   <li>Full-screen / viewport-sized transparent containers → never block
+	 *       (preserves 3D scene touch-hold camera rotation in resizable mode).</li>
+	 *   <li>LAYER widgets only block if they have {@code noClickThrough} or scrollable
+	 *       content ({@code scrollHeight > height}).</li>
+	 *   <li>Non-LAYER widgets with any interactive property → block: {@code actions},
+	 *       {@code dragParent}, {@code hasListener}, {@code scrollHeight > height},
+	 *       {@code noClickThrough}, {@code clickMask}.</li>
 	 * </ul>
 	 */
-	private static boolean isClickBlocking(Widget w)
+	private static boolean isClickBlocking(Widget w, int canvasW, int canvasH)
 	{
-		if (w.getType() == WidgetType.LAYER)
+		if (w == null)
 		{
 			return false;
 		}
+
+		int width = w.getWidth();
+		int height = w.getHeight();
+		if (width <= 0 || height <= 0)
+		{
+			return false;
+		}
+
+		boolean isFullScreen = canvasW > 0 && canvasH > 0
+			&& width >= canvasW - 10 && height >= canvasH - 10;
+
+		// LAYER widgets are RS's transparent group containers (HUD trim, viewport
+		// background, etc.). Only block when they explicitly intercept clicks or
+		// are genuinely scrollable (e.g. the bank item container).
+		if (w.getType() == WidgetType.LAYER)
+		{
+			if (isFullScreen)
+			{
+				return false;
+			}
+			if (w.getNoClickThrough())
+			{
+				return true;
+			}
+			if (height > 0 && w.getScrollHeight() > height)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		// Full-screen non-layer containers → never block (preserves camera)
+		if (isFullScreen)
+		{
+			return false;
+		}
+
+		// --- Non-LAYER, non-full-screen widgets below ---
+		// These are the real interactive UI elements: buttons, inventory slots,
+		// scrollbar thumbs, bank items, etc.
+
 		if (w.getNoClickThrough())
 		{
 			return true;
 		}
+
 		String[] actions = w.getActions();
 		if (actions != null)
 		{
@@ -237,14 +272,28 @@ public class MobileInputPlugin extends Plugin
 				}
 			}
 		}
+
 		if (w.getDragParent() != null)
 		{
 			return true;
 		}
-		if (w.getScrollHeight() > 0 || w.getScrollWidth() > 0)
+
+		if (height > 0 && w.getScrollHeight() > height)
 		{
 			return true;
 		}
+
+		// hasListener() catches scrollbar thumbs, arrows, and similar small interactive
+		// components. Guard with a size check: only block when at least one dimension is
+		// smaller than half the canvas, so large viewport-covering widgets (which may
+		// have listeners for scene rendering callbacks) don't suppress camera rotation.
+		if (w.hasListener()
+			&& (canvasW <= 0 || canvasH <= 0
+				|| width < canvasW / 2 || height < canvasH / 2))
+		{
+			return true;
+		}
+
 		return w.getClickMask() != 0;
 	}
 }

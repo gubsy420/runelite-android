@@ -45,6 +45,8 @@ plugins {
     alias(libs.plugins.firebase.crashlytics) apply false
 }
 
+layout.buildDirectory.set(file("C:/Users/riche/AppData/Local/Temp/runelite-build"))
+
 tasks.register("cleanAll") {
     gradle.includedBuilds.forEach { build -> this@register.dependsOn(build.task(":clean")) }
     subprojects.forEach { proj -> this@register.dependsOn(proj.tasks["clean"]) }

@@ -56,7 +56,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    ndkVersion = "28.2.13676358"
+    ndkVersion = "30.0.15729638"
 
     lint {
         // Surface anything in the injected jar that references desktop-only classes we
