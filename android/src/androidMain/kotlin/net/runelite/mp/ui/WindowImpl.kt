@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowInsetsCompat
 import net.runelite.mp.MainActivity
 import net.runelite.mp.ui.bridge.PluginRow
+import net.runelite.mp.ui.bridge.blockNonPrimaryMouse
 
 /**
  * Three-zone chrome. The icon strip is pinned to the FAR right so the chosen panel's
@@ -105,29 +106,35 @@ object WindowImpl
                 // floating beside the boot splash during the long initial load.
                 if (bootComplete.value)
                 {
-                    // Compose-native content column. Renders for our synthetic "Plugins"
-                    // key AND for any nav button whose tooltip has a Compose replacement
-                    // in [PanelRegistry] (XP Tracker, Notes, GE, etc). RL-registered
-                    // buttons without a Compose override keep painting their panels
-                    // inside the AWT bitmap on the left — no Compose column eats game
-                    // space in that case.
-                    val key = selectedKey.value
-                    val renderCompose = key == NAV_KEY_PLUGINS ||
-                        (key != null && net.runelite.mp.ui.panels.PanelRegistry.hasPanel(key))
-                    if (renderCompose)
-                    {
-                        Box(Modifier.width(CONTENT_WIDTH).fillMaxHeight()) {
-                            ContentPanel()
+                    // One Row wrapping the whole chrome so `blockNonPrimaryMouse` can sit
+                    // on a single node and cover every clickable beneath it. Both children
+                    // have fixed widths, so the extra Row wraps to exactly the width they
+                    // occupied as direct siblings of the outer Row.
+                    Row(Modifier.fillMaxHeight().blockNonPrimaryMouse()) {
+                        // Compose-native content column. Renders for our synthetic "Plugins"
+                        // key AND for any nav button whose tooltip has a Compose replacement
+                        // in [PanelRegistry] (XP Tracker, Notes, GE, etc). RL-registered
+                        // buttons without a Compose override keep painting their panels
+                        // inside the AWT bitmap on the left — no Compose column eats game
+                        // space in that case.
+                        val key = selectedKey.value
+                        val renderCompose = key == NAV_KEY_PLUGINS ||
+                            (key != null && net.runelite.mp.ui.panels.PanelRegistry.hasPanel(key))
+                        if (renderCompose)
+                        {
+                            Box(Modifier.width(CONTENT_WIDTH).fillMaxHeight()) {
+                                ContentPanel()
+                            }
                         }
+                        NavIconStrip(
+                            width = ICON_WIDTH,
+                            selected = selectedKey.value,
+                            onSelect = { key ->
+                                selectedKey.value = key
+                                if (key != NAV_KEY_PLUGINS) configTarget.value = null
+                            },
+                        )
                     }
-                    NavIconStrip(
-                        width = ICON_WIDTH,
-                        selected = selectedKey.value,
-                        onSelect = { key ->
-                            selectedKey.value = key
-                            if (key != NAV_KEY_PLUGINS) configTarget.value = null
-                        },
-                    )
                 }
             }
         }

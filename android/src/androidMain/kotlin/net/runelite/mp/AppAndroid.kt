@@ -36,9 +36,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope
+import androidx.compose.ui.input.pointer.PointerButtons
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.PointerInputChange
+import androidx.compose.ui.input.pointer.PointerType
 import androidx.compose.ui.input.pointer.changedToUpIgnoreConsumed
+import androidx.compose.ui.input.pointer.isPrimaryPressed
+import androidx.compose.ui.input.pointer.isSecondaryPressed
+import androidx.compose.ui.input.pointer.isTertiaryPressed
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.layout.ContentScale
@@ -258,6 +265,13 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                         // the cursor jerking between two finger positions during zoom.
                         if (event.changes.count { it.pressed } > 1) continue
                         val change = event.changes.firstOrNull() ?: continue
+                        // A held mouse button is a drag, and AWT's contract for that is
+                        // MOUSE_DRAGGED — which runMouseGesture already emits with the
+                        // correct button. Firing MOUSE_MOVED here as well would double-
+                        // feed the client's cursor cache mid-drag. Touch keeps the old
+                        // behaviour described above: there's no hover on a touchscreen,
+                        // so MOVED-while-pressed is the only way to keep the reticle live.
+                        if (change.type == PointerType.Mouse && change.pressed) continue
                         when (event.type) {
                             PointerEventType.Move, PointerEventType.Enter,
                             PointerEventType.Press -> {
@@ -267,11 +281,54 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                     }
                 }
             }
+            // Physical scroll wheel. Android delivers ACTION_SCROLL as a generic motion
+            // event, which Compose surfaces as PointerEventType.Scroll with a scrollDelta
+            // on the change — the gesture machine below never sees it (there's no down),
+            // so without this block a wheel notch over the game reached nothing and the
+            // OSRS camera never zoomed. Sign convention: Compose negates Android's
+            // AXIS_VSCROLL, so scrollDelta.y already matches AWT's wheel rotation
+            // (negative = wheel up = zoom in), and it forwards 1:1.
+            .pointerInput(Unit) {
+                // Detented mice report ±1.0 per notch; trackpads and high-resolution
+                // wheels report fractions, so bank the remainder instead of dropping it.
+                var wheelAccum = 0f
+                awaitPointerEventScope {
+                    while (true) {
+                        val event = awaitPointerEvent(PointerEventPass.Main)
+                        if (event.type != PointerEventType.Scroll) continue
+                        val change = event.changes.firstOrNull() ?: continue
+                        event.changes.forEach { it.consume() }
+                        val dy = change.scrollDelta.y
+                        if (dy == 0f) continue
+                        // Park the client's tracked cursor under the wheel first — OSRS
+                        // zooms around the cursor, and JScrollPane resolves the wheel
+                        // target from the event position.
+                        dispatchMove(change.position, boxSize)
+                        wheelAccum += dy
+                        val notches = wheelAccum.toInt()
+                        if (notches != 0) {
+                            wheelAccum -= notches.toFloat()
+                            dispatchWheel(change.position, boxSize, notches)
+                        }
+                    }
+                }
+            }
             .pointerInput(Unit) {
                 val longPressMs = android.view.ViewConfiguration.getLongPressTimeout().toLong()
                 val touchSlop = viewConfiguration.touchSlop
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
+                    // Physical mouse: map buttons straight onto AWT rather than running
+                    // the touch heuristics. There's a real right button so long-press must
+                    // not synthesise BUTTON3, a real middle button so a left-drag must not
+                    // be rewritten to BUTTON2 camera-look, and a real wheel so the pinch
+                    // path is irrelevant. currentEvent is the event that produced `down`,
+                    // so its buttons field still carries the pressed button (by the time
+                    // the release arrives Android has already cleared buttonState).
+                    if (down.type == PointerType.Mouse) {
+                        runMouseGesture(down, currentEvent.buttons, boxSize)
+                        return@awaitEachGesture
+                    }
                     val downId = down.id
                     val downTime = System.currentTimeMillis()
                     var lastPos: Offset = down.position
@@ -618,7 +675,13 @@ private fun loadSplashLogo(): ImageBitmap? {
 // ---------------------------------------------------------------------------------------
 // Input bridge: Compose pointer events → shadow AWT MouseEvent dispatch.
 //
-// Three gestures supported:
+// Two input classes, split on PointerType at the top of the gesture:
+//
+//   Physical mouse (PointerType.Mouse) — buttons, wheel and hover map straight onto
+//   AWT: BUTTON1/2/3 for left/middle/right, MOUSE_WHEEL for the wheel, MOUSE_MOVED for
+//   unpressed motion. See runMouseGesture; none of the touch heuristics below apply.
+//
+// Touch — three gestures, since a finger has no buttons and no wheel:
 //   - Tap (down → up with < touchSlop movement, < longPressTimeout): left click (BUTTON1).
 //   - Long press (down → hold > longPressTimeout without moving): right click (BUTTON3).
 //   - Drag (down → exceeds touchSlop): BUTTON2 (middle, camera) inside the game Canvas,
@@ -709,18 +772,154 @@ private fun dispatchClick(offset: Offset, boxSize: IntSize, button: Int) {
     fireMouse(target, java.awt.event.MouseEvent.MOUSE_RELEASED, lx, ly, button, false)
     fireMouse(target, java.awt.event.MouseEvent.MOUSE_CLICKED, lx, ly, button, false)
 
-    // Compose-side widget helpers — these aren't reachable via AWT MouseListener so we
-    // call their high-level click APIs directly when the hit lands on them.
-    when (val direct = hit.comp) {
+    clickSwingWidget(hit.comp, winX, winY, button)
+}
+
+/** Compose-side widget helpers — these aren't reachable via AWT MouseListener so we
+ *  call their high-level click APIs directly when the hit lands on them. Shared by the
+ *  touch tap path and the physical-mouse click path. */
+private fun clickSwingWidget(comp: java.awt.Component, winX: Int, winY: Int, button: Int) {
+    when (comp) {
         is javax.swing.JTabbedPane -> {
-            val (dx, dy) = localCoords(direct, winX, winY)
-            val idx = direct.indexAtLocation(dx, dy)
+            val (dx, dy) = localCoords(comp, winX, winY)
+            val idx = comp.indexAtLocation(dx, dy)
             if (idx >= 0 && button == BUTTON1) {
-                direct.selectedIndex = if (direct.selectedIndex == idx) -1 else idx
+                comp.selectedIndex = if (comp.selectedIndex == idx) -1 else idx
             }
         }
-        is javax.swing.AbstractButton -> if (button == BUTTON1) direct.doClick()
+        is javax.swing.AbstractButton -> if (button == BUTTON1) comp.doClick()
         else -> { /* Mouse event dispatch covers everything else. */ }
+    }
+}
+
+/** Pixels of pointer travel between press and release beyond which the release reads as
+ *  the end of a drag rather than a click — AWT suppresses MOUSE_CLICKED once a drag has
+ *  started. Deliberately errs loose: an extra MOUSE_CLICKED after a tiny drag costs
+ *  nothing (the OSRS engine acts on the press/release pair, and Swing widgets only
+ *  respond to a click that landed on them), whereas a threshold tight enough to be
+ *  tripped by hand-jitter would silently swallow real clicks. */
+private const val MOUSE_CLICK_SLOP_PX = 8f
+
+/** AWT button ids currently held, in a stable order, read out of a Compose
+ *  [PointerButtons]. Back/forward thumb buttons have no AWT id and are ignored. */
+private fun awtButtonsOf(buttons: PointerButtons): List<Int> = buildList {
+    if (buttons.isPrimaryPressed) add(BUTTON1)
+    if (buttons.isTertiaryPressed) add(BUTTON2)
+    if (buttons.isSecondaryPressed) add(BUTTON3)
+}
+
+private fun buttonDownMask(button: Int): Int = when (button) {
+    BUTTON1 -> java.awt.event.InputEvent.BUTTON1_DOWN_MASK
+    BUTTON2 -> java.awt.event.InputEvent.BUTTON2_DOWN_MASK
+    BUTTON3 -> java.awt.event.InputEvent.BUTTON3_DOWN_MASK
+    else -> 0
+}
+
+/**
+ * Physical-mouse gesture: press → (motion | button change)* → release, mapped 1:1 onto
+ * AWT. This is the fix for left and right click both landing as BUTTON1 — the touch
+ * gesture machine never looked at the event's button state and hard-coded BUTTON1 for
+ * every tap, so the OSRS engine only ever saw a left click no matter which physical
+ * button went down.
+ *
+ * Button state has to be captured from the event that produced the down: Android clears
+ * `MotionEvent.getButtonState()` on ACTION_UP, so reading it at release always yields 0.
+ *
+ * Chords (a second button pressed while the first is held) are tracked, so eg. holding
+ * right to keep the OSRS menu open while left-clicking an entry behaves like desktop.
+ */
+private suspend fun AwaitPointerEventScope.runMouseGesture(
+    down: PointerInputChange,
+    downButtons: PointerButtons,
+    boxSize: IntSize,
+) {
+    val window = java.awt.Window.primaryFrame() ?: return
+    val (downX, downY) = composeToWindow(down.position, boxSize, window) ?: return
+    val hit = hitTest(window, downX, downY) ?: return
+    // AWT grabs: everything from press to release goes to the component the press landed
+    // on, even once the pointer leaves it. Resolve target + origin once, up front — the
+    // same contract MouseDragSession honours for touch drags.
+    val target = walkUpToListener(hit.comp) ?: hit.comp
+    val tHit = hitTestExact(window, target) ?: return
+
+    var lx = downX - tHit.absX
+    var ly = downY - tHit.absY
+    var travelled = 0f
+
+    // Ordered so the modifier mask and the release order stay deterministic.
+    val held = LinkedHashSet<Int>()
+    fun mask(): Int = held.fold(0) { acc, b -> acc or buttonDownMask(b) }
+
+    // A device reporting an empty buttonState on the down is telling us nothing useful;
+    // a left press is the only sensible reading of "the user clicked".
+    val initial = awtButtonsOf(downButtons).ifEmpty { listOf(BUTTON1) }
+
+    // MOVED first so the client's cached cursor sits at the press point before the press
+    // — see dispatchMove on clicks otherwise landing at the previous location.
+    fireMouse(target, java.awt.event.MouseEvent.MOUSE_MOVED, lx, ly, java.awt.event.MouseEvent.NOBUTTON, false)
+    for (b in initial) {
+        held += b
+        fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_PRESSED, lx, ly, b, mask())
+    }
+    down.consume()
+
+    while (held.isNotEmpty()) {
+        val event = awaitPointerEvent(PointerEventPass.Main)
+        val change = event.changes.firstOrNull { it.id == down.id } ?: break
+        change.consume()
+
+        val step = change.positionChange().getDistance()
+        if (step > 0f) {
+            composeToWindow(change.position, boxSize, window)?.let { (wx, wy) ->
+                lx = wx - tHit.absX
+                ly = wy - tHit.absY
+            }
+            travelled += step
+            fireMouseWithMask(
+                target, java.awt.event.MouseEvent.MOUSE_DRAGGED, lx, ly, held.first(), mask(),
+            )
+        }
+
+        // Release before press so a chord swap reads as "let go, then press".
+        val nowDown = awtButtonsOf(event.buttons)
+        for (b in held.toList()) {
+            if (b in nowDown) continue
+            held -= b
+            releaseMouseButton(target, hit.comp, lx, ly, downX, downY, b, mask(), travelled)
+        }
+        for (b in nowDown) {
+            if (held.add(b)) {
+                fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_PRESSED, lx, ly, b, mask())
+            }
+        }
+        if (!change.pressed) break
+    }
+
+    // Anything still held once the gesture unwound (pointer cancelled, or an ACTION_UP
+    // that arrived with buttonState still set) gets an explicit release. A button left
+    // stuck down in the OSRS engine turns every later move into a camera drag.
+    for (b in held.toList()) {
+        held -= b
+        releaseMouseButton(target, hit.comp, lx, ly, downX, downY, b, mask(), travelled)
+    }
+}
+
+/** RELEASED, plus CLICKED when the pointer never travelled far enough to count as a drag. */
+private fun releaseMouseButton(
+    target: java.awt.Component,
+    hitComp: java.awt.Component,
+    lx: Int,
+    ly: Int,
+    downX: Int,
+    downY: Int,
+    button: Int,
+    mask: Int,
+    travelled: Float,
+) {
+    fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_RELEASED, lx, ly, button, mask)
+    if (travelled <= MOUSE_CLICK_SLOP_PX) {
+        fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_CLICKED, lx, ly, button, mask)
+        clickSwingWidget(hitComp, downX, downY, button)
     }
 }
 
@@ -884,9 +1083,16 @@ private fun dispatchWheel(pos: Offset, boxSize: IntSize, notches: Int) {
     val window = java.awt.Window.primaryFrame() ?: return
     val (winX, winY) = composeToWindow(pos, boxSize, window) ?: return
     val hit = hitTest(window, winX, winY) ?: return
-    val target = ancestorChain(hit.comp).firstOrNull {
-        it is java.awt.Canvas || it is javax.swing.JScrollPane
-    } ?: hit.comp
+    // Aim at whoever actually subscribes to wheel events. The OSRS gamepack registers its
+    // MouseWheelListener on the applet component rather than on the inner Canvas (same
+    // reason walkUpToListener exists for clicks), so targeting the Canvas — as this used
+    // to — dropped every notch on the floor and the camera never zoomed. JScrollPane
+    // installs its own wheel listener, so the sidebar path resolves through the same walk.
+    val target = walkUpToWheelListener(hit.comp)
+        ?: ancestorChain(hit.comp).firstOrNull {
+            it is java.awt.Canvas || it is javax.swing.JScrollPane
+        }
+        ?: hit.comp
     val (lx, ly) = localCoords(target, winX, winY)
     val ev = java.awt.event.MouseWheelEvent(
         target,
@@ -997,6 +1203,19 @@ private fun ancestorChain(c: java.awt.Component): Sequence<java.awt.Component> =
     while (cur != null) { yield(cur); cur = cur.parent }
 }
 
+/** From a hit, find the closest ancestor (inclusive) that subscribes to wheel events.
+ *  Separate from [walkUpToListener] because that one stops at any mouse listener at all
+ *  — the game Canvas has click listeners but no wheel listener, so the generic walk would
+ *  hand a MOUSE_WHEEL to a component that silently drops it. */
+private fun walkUpToWheelListener(c: java.awt.Component): java.awt.Component? {
+    var cur: java.awt.Component? = c
+    while (cur != null) {
+        if (cur.mouseWheelListeners.isNotEmpty()) return cur
+        cur = cur.parent
+    }
+    return null
+}
+
 /** From a hit, find the closest ancestor (inclusive) that has any mouse listeners. */
 private fun walkUpToListener(c: java.awt.Component): java.awt.Component? {
     var cur: java.awt.Component? = c
@@ -1021,12 +1240,12 @@ private fun localCoords(target: java.awt.Component, wx: Int, wy: Int): Pair<Int,
 }
 
 private fun fireMouse(target: java.awt.Component, id: Int, x: Int, y: Int, button: Int, pressed: Boolean) {
-    val mods = if (pressed) when (button) {
-        BUTTON1 -> java.awt.event.InputEvent.BUTTON1_DOWN_MASK
-        BUTTON2 -> java.awt.event.InputEvent.BUTTON2_DOWN_MASK
-        BUTTON3 -> java.awt.event.InputEvent.BUTTON3_DOWN_MASK
-        else -> 0
-    } else 0
+    fireMouseWithMask(target, id, x, y, button, if (pressed) buttonDownMask(button) else 0)
+}
+
+/** As [fireMouse], but with an explicit button-down mask so a multi-button mouse chord can
+ *  report every button that is actually held rather than just the one this event is about. */
+private fun fireMouseWithMask(target: java.awt.Component, id: Int, x: Int, y: Int, button: Int, mods: Int) {
     // Intentionally NOT ORing in ModifierState.modifierMask() here. The OSRS engine
     // resolves shift/alt menu state from its internal pressed-keys array (mutated by
     // the synthetic KeyEvent fired in ModifierState.dispatchModifier) — NOT from the
