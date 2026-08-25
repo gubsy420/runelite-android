@@ -265,12 +265,13 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                         // the cursor jerking between two finger positions during zoom.
                         if (event.changes.count { it.pressed } > 1) continue
                         val change = event.changes.firstOrNull() ?: continue
-                        // A held mouse button is a drag, and AWT's contract for that is
-                        // MOUSE_DRAGGED — which runMouseGesture already emits with the
-                        // correct button. Firing MOUSE_MOVED here as well would double-
-                        // feed the client's cursor cache mid-drag. Touch keeps the old
-                        // behaviour described above: there's no hover on a touchscreen,
-                        // so MOVED-while-pressed is the only way to keep the reticle live.
+                        // While a mouse button is held, runMouseGesture owns position
+                        // reporting and emits its own MOVED (plus DRAGGED) against the
+                        // grabbed target. Letting this tracker fire too would double-feed
+                        // the cursor cache, and its re-hit-test resolves to nothing once a
+                        // drag leaves the viewport. Touch keeps the old behaviour: there's
+                        // no hover on a touchscreen, so MOVED-while-pressed from here is
+                        // the only thing keeping the reticle live during a finger drag.
                         if (change.type == PointerType.Mouse && change.pressed) continue
                         when (event.type) {
                             PointerEventType.Move, PointerEventType.Enter,
@@ -904,6 +905,25 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
                 ly = wy - tHit.absY
             }
             travelled += step
+            // MOVED *and* DRAGGED, in that order.
+            //
+            // The client tracks the cursor from MOUSE_MOVED, not MOUSE_DRAGGED: with
+            // DRAGGED alone the camera does not rotate at all. Confirmed on-device — a
+            // held middle-drag moved the camera only while the wheel was also being
+            // turned, because the wheel handler fires a dispatchMove of its own; stop
+            // turning the wheel and rotation stopped dead.
+            //
+            // Touch has always worked for exactly this reason: its pointer-tracking
+            // modifier emits MOVED on every position update, pressed or not, and the
+            // comment there flags the same thing about the client caching position from
+            // motion events. Emitting MOVED first matches that ordering, since Compose
+            // runs the Initial pass (where touch's tracker lives) before Main.
+            //
+            // MOVED is sent to the grabbed target rather than re-hit-testing the way
+            // dispatchMove does, so it keeps arriving once a camera sweep carries the
+            // pointer outside the viewport — a fresh hit test out there resolves to
+            // nothing and the rotation would stall again.
+            fireMouse(target, java.awt.event.MouseEvent.MOUSE_MOVED, lx, ly, java.awt.event.MouseEvent.NOBUTTON, false)
             fireMouseWithMask(
                 target, java.awt.event.MouseEvent.MOUSE_DRAGGED, lx, ly, held.first(), mask(),
             )
