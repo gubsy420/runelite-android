@@ -716,6 +716,29 @@ private fun composeToWindow(offset: Offset, boxSize: IntSize, window: java.awt.W
     return x to y
 }
 
+/** As [composeToWindow] but without the in-bounds rejection: returns a coordinate even
+ *  when the pointer sits outside the rendered window (in the letterbox margins, over the
+ *  Compose sidebar, or past the screen edge).
+ *
+ *  Only correct to use once a button is already held. Real AWT delivers MOUSE_DRAGGED in
+ *  the grabbed component's coordinate space for the whole gesture, including values that
+ *  fall outside it — negative, or past its width/height — and the OSRS engine reads
+ *  camera rotation from the delta between successive positions, so out-of-range values
+ *  are exactly what it wants. Feeding it the bounded variant instead froze `lx`/`ly` at
+ *  the last in-bounds point every time a camera sweep left the viewport, which stalled
+ *  the rotation mid-drag and then snapped it when the cursor came back. Presses still go
+ *  through the bounded version, so a click in the letterbox correctly grabs nothing. */
+private fun composeToWindowUnbounded(offset: Offset, boxSize: IntSize, window: java.awt.Window): Pair<Int, Int>? {
+    if (boxSize.width <= 0 || boxSize.height <= 0) return null
+    val ww = window.width.toFloat().coerceAtLeast(1f)
+    val wh = window.height.toFloat().coerceAtLeast(1f)
+    val scale = minOf(boxSize.width / ww, boxSize.height / wh)
+    if (scale <= 0f) return null
+    val padX = (boxSize.width - ww * scale) / 2f
+    val padY = (boxSize.height - wh * scale) / 2f
+    return ((offset.x - padX) / scale).toInt() to ((offset.y - padY) / scale).toInt()
+}
+
 /** Result of hit-testing: the deepest visible Component, plus the (absX, absY) origin
  *  of that component within the window so we can translate later to whichever ancestor
  *  ends up being the dispatch target. */
@@ -862,6 +885,12 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
         fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_PRESSED, lx, ly, b, mask())
     }
     down.consume()
+    if (net.runelite.mp.BuildConfig.DEBUG) {
+        android.util.Log.i("MouseInput",
+            "gesture start buttons=$initial (primary=${downButtons.isPrimaryPressed} " +
+                "secondary=${downButtons.isSecondaryPressed} tertiary=${downButtons.isTertiaryPressed}) " +
+                "target=${target.javaClass.name} at=($lx,$ly)")
+    }
 
     while (held.isNotEmpty()) {
         val event = awaitPointerEvent(PointerEventPass.Main)
@@ -870,7 +899,7 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
 
         val step = change.positionChange().getDistance()
         if (step > 0f) {
-            composeToWindow(change.position, boxSize, window)?.let { (wx, wy) ->
+            composeToWindowUnbounded(change.position, boxSize, window)?.let { (wx, wy) ->
                 lx = wx - tHit.absX
                 ly = wy - tHit.absY
             }
@@ -901,6 +930,9 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
     for (b in held.toList()) {
         held -= b
         releaseMouseButton(target, hit.comp, lx, ly, downX, downY, b, mask(), travelled)
+    }
+    if (net.runelite.mp.BuildConfig.DEBUG) {
+        android.util.Log.i("MouseInput", "gesture end travelled=$travelled at=($lx,$ly)")
     }
 }
 
