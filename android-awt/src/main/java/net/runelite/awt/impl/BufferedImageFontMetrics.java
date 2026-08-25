@@ -9,8 +9,23 @@ import java.awt.FontMetrics;
  * the default JDK FontMetrics base class everything would report 0 and children collapse.
  */
 public final class BufferedImageFontMetrics extends FontMetrics {
+    private static final java.util.concurrent.ConcurrentHashMap<Font, BufferedImageFontMetrics> CACHE =
+        new java.util.concurrent.ConcurrentHashMap<>();
+
+    public static BufferedImageFontMetrics forFont(Font font) {
+        if (font == null) return null;
+        BufferedImageFontMetrics cached = CACHE.get(font);
+        if (cached != null) return cached;
+        BufferedImageFontMetrics fm = new BufferedImageFontMetrics(font);
+        CACHE.put(font, fm);
+        return fm;
+    }
+
     private final android.graphics.Paint paint;
-    private final android.graphics.Paint.FontMetrics afm;
+    private final int ascent;
+    private final int descent;
+    private final int leading;
+    private final int height;
 
     /** Android's Paint.setTextSize takes pixels; Java Font.size is conventionally points
      *  but the OSRS/RuneLite code paths treat it as pixels too, so pass through. */
@@ -24,7 +39,11 @@ public final class BufferedImageFontMetrics extends FontMetrics {
         paint.setAntiAlias(true);
         paint.setTextSize(pxSize(font));
         paint.setTypeface(typefaceFor(font));
-        afm = paint.getFontMetrics();
+        android.graphics.Paint.FontMetrics afm = paint.getFontMetrics();
+        this.ascent = Math.max(0, (int) Math.ceil(-afm.ascent));
+        this.descent = Math.max(0, (int) Math.ceil(afm.descent));
+        this.leading = Math.max(0, (int) Math.ceil(afm.leading));
+        this.height = this.ascent + this.descent + this.leading;
     }
 
     /** Resolve an AWT Font down to an Android Typeface. If the family is registered
@@ -43,13 +62,13 @@ public final class BufferedImageFontMetrics extends FontMetrics {
     }
 
     @Override
-    public int getAscent()  { return Math.max(0, (int) Math.ceil(-afm.ascent)); }
+    public int getAscent()  { return ascent; }
     @Override
-    public int getDescent() { return Math.max(0, (int) Math.ceil(afm.descent)); }
+    public int getDescent() { return descent; }
     @Override
-    public int getLeading() { return Math.max(0, (int) Math.ceil(afm.leading)); }
+    public int getLeading() { return leading; }
     @Override
-    public int getHeight()  { return getAscent() + getDescent() + getLeading(); }
+    public int getHeight()  { return height; }
 
     @Override
     public int charWidth(int codePoint) {
@@ -75,3 +94,4 @@ public final class BufferedImageFontMetrics extends FontMetrics {
         return (int) Math.ceil(paint.measureText(str));
     }
 }
+

@@ -43,18 +43,25 @@ pub extern "system" fn Java_net_runelite_awt_AwtCompat_setNativeEnv<'local>(
         Err(_) => return -1,
     };
 
-    let c_key = match std::ffi::CString::new(key_str) {
-        Ok(c) => c,
-        Err(_) => return -1,
-    };
-    let c_val = match std::ffi::CString::new(value_str) {
-        Ok(c) => c,
-        Err(_) => return -1,
-    };
-
-    // Safety: setenv changes the global environment array which is not thread-safe.
-    // Call this as early as possible during application startup.
-    unsafe { libc::setenv(c_key.as_ptr(), c_val.as_ptr(), 1) }
+    #[cfg(unix)]
+    {
+        let c_key = match std::ffi::CString::new(key_str) {
+            Ok(c) => c,
+            Err(_) => return -1,
+        };
+        let c_val = match std::ffi::CString::new(value_str) {
+            Ok(c) => c,
+            Err(_) => return -1,
+        };
+        // Safety: setenv changes the global environment array which is not thread-safe.
+        // Call this as early as possible during application startup.
+        unsafe { libc::setenv(c_key.as_ptr(), c_val.as_ptr(), 1) }
+    }
+    #[cfg(not(unix))]
+    {
+        std::env::set_var(key_str, value_str);
+        0
+    }
 }
 
 #[no_mangle]
@@ -98,7 +105,7 @@ where
     if len <= 0 {
         return None;
     }
-    let mut elements = unsafe { env.get_array_elements(array, mode).ok()? };
+    let elements = unsafe { env.get_array_elements(array, mode).ok()? };
     let slice = unsafe { std::slice::from_raw_parts_mut(elements.as_ptr(), elements.len()) };
     Some(f(slice))
 }
@@ -123,8 +130,6 @@ where
     if env.get_array_length(src).ok()? <= 0 || env.get_array_length(dst).ok()? <= 0 {
         return None;
     }
-    // get_array_elements (non-critical) returns a guard owning its own env clone, so two
-    // can coexist; the &mut borrow of `env` ends when each call returns.
     let src_elems = unsafe { env.get_array_elements(src, ReleaseMode::NoCopyBack).ok()? };
     let dst_elems = unsafe { env.get_array_elements(dst, ReleaseMode::CopyBack).ok()? };
     let src_slice = unsafe { std::slice::from_raw_parts(src_elems.as_ptr(), src_elems.len()) };
@@ -148,6 +153,64 @@ pub extern "system" fn Java_net_runelite_awt_AwtNative_fillRect<'local>(
 ) {
     let _ = with_pinned_array(&mut env, &pixels, ReleaseMode::CopyBack, |buf| {
         fill::fill_rect(buf, img_w, img_h, x, y, w, h, argb, composite_rule);
+    });
+}
+
+#[no_mangle]
+pub extern "system" fn Java_net_runelite_awt_AwtNative_fillOval<'local>(
+    mut env: JNIEnv<'local>,
+    _class: JClass<'local>,
+    pixels: JIntArray<'local>,
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    argb: jint,
+    composite_rule: jint,
+) {
+    let _ = with_pinned_array(&mut env, &pixels, ReleaseMode::CopyBack, |buf| {
+        fill::fill_oval(buf, img_w, img_h, x, y, w, h, argb, composite_rule);
+    });
+}
+
+#[no_mangle]
+pub extern "system" fn Java_net_runelite_awt_AwtNative_drawOval<'local>(
+    mut env: JNIEnv<'local>,
+    _class: JClass<'local>,
+    pixels: JIntArray<'local>,
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    argb: jint,
+) {
+    let _ = with_pinned_array(&mut env, &pixels, ReleaseMode::CopyBack, |buf| {
+        fill::draw_oval(buf, img_w, img_h, x, y, w, h, argb);
+    });
+}
+
+#[no_mangle]
+pub extern "system" fn Java_net_runelite_awt_AwtNative_fillRoundRect<'local>(
+    mut env: JNIEnv<'local>,
+    _class: JClass<'local>,
+    pixels: JIntArray<'local>,
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    arc_w: jint,
+    arc_h: jint,
+    argb: jint,
+    composite_rule: jint,
+) {
+    let _ = with_pinned_array(&mut env, &pixels, ReleaseMode::CopyBack, |buf| {
+        fill::fill_round_rect(buf, img_w, img_h, x, y, w, h, arc_w, arc_h, argb, composite_rule);
     });
 }
 
@@ -179,14 +242,21 @@ pub extern "system" fn Java_net_runelite_awt_AwtNative_fillPolygon<'local>(
     xs: JIntArray<'local>,
     ys: JIntArray<'local>,
     n: jint,
+    tx: jint,
+    ty: jint,
     argb: jint,
     composite_rule: jint,
 ) {
-    let xs_vec = read_int_array(&mut env, &xs);
-    let ys_vec = read_int_array(&mut env, &ys);
-    if let (Some(xs_vec), Some(ys_vec)) = (xs_vec, ys_vec) {
+    if n < 3 {
+        return;
+    }
+    let xs_elems = unsafe { env.get_array_elements(&xs, ReleaseMode::NoCopyBack).ok() };
+    let ys_elems = unsafe { env.get_array_elements(&ys, ReleaseMode::NoCopyBack).ok() };
+    if let (Some(xs_e), Some(ys_e)) = (xs_elems, ys_elems) {
+        let xs_slice = unsafe { std::slice::from_raw_parts(xs_e.as_ptr(), xs_e.len()) };
+        let ys_slice = unsafe { std::slice::from_raw_parts(ys_e.as_ptr(), ys_e.len()) };
         let _ = with_pinned_array(&mut env, &pixels, ReleaseMode::CopyBack, |buf| {
-            poly::fill_polygon(buf, img_w, img_h, &xs_vec, &ys_vec, n, argb, composite_rule);
+            poly::fill_polygon(buf, img_w, img_h, xs_slice, ys_slice, n, tx, ty, argb, composite_rule);
         });
     }
 }
@@ -231,10 +301,6 @@ pub extern "system" fn Java_net_runelite_awt_AwtNative_blit<'local>(
     composite_rule: jint,
     alpha: jfloat,
 ) {
-    // Fast path: pin source (read-only) and destination together, avoiding the
-    // full-source-array copy `read_int_array` does on every blit. A self-blit (src and
-    // dst the same Java array) would alias the two pins, so detect it and fall back to
-    // copying the source out first. On error we conservatively assume aliasing.
     let distinct = !env.is_same_object(&src, &dst).unwrap_or(true);
     if distinct {
         let _ = with_src_dst_pinned(&mut env, &src, &dst, |src_buf, dst_buf| {
@@ -266,3 +332,40 @@ fn read_int_array(env: &mut JNIEnv<'_>, array: &JIntArray<'_>) -> Option<Vec<i32
     env.get_int_array_region(array, 0, &mut out).ok()?;
     Some(out)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fill_rect_and_oval() {
+        let mut buf = vec![0i32; 100 * 100];
+        fill::fill_rect(&mut buf, 100, 100, 10, 10, 20, 20, 0xFF112233u32 as i32, SRC);
+        assert_eq!(buf[10 * 100 + 10], 0xFF112233u32 as i32);
+        assert_eq!(buf[29 * 100 + 29], 0xFF112233u32 as i32);
+        assert_eq!(buf[30 * 100 + 30], 0);
+
+        fill::fill_oval(&mut buf, 100, 100, 40, 40, 20, 20, 0xFF445566u32 as i32, SRC);
+        // Center of circle at (50, 50)
+        assert_eq!(buf[50 * 100 + 50], 0xFF445566u32 as i32);
+    }
+
+    #[test]
+    fn test_fill_polygon_with_translation() {
+        let mut buf = vec![0i32; 100 * 100];
+        let xs = [0, 20, 20, 0];
+        let ys = [0, 0, 20, 20];
+        poly::fill_polygon(&mut buf, 100, 100, &xs, &ys, 4, 10, 10, 0xFFAABBCCu32 as i32, SRC);
+        assert_eq!(buf[15 * 100 + 15], 0xFFAABBCCu32 as i32);
+        assert_eq!(buf[5 * 100 + 5], 0);
+    }
+
+    #[test]
+    fn test_copy_area_no_alloc() {
+        let mut buf = vec![0i32; 100 * 100];
+        buf[10 * 100 + 10] = 0x12345678;
+        blit::copy_area(&mut buf, 100, 100, 10, 10, 5, 5, 20, 20);
+        assert_eq!(buf[20 * 100 + 20], 0x12345678);
+    }
+}
+

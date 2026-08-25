@@ -33,7 +33,9 @@ void main() {
   // blue come out swapped, giving the whole UI a blue tint. Swizzle here:
   // one ALU per fragment beats per-pixel byte shuffling on the CPU side.
   c = c.bgra;
-  c = alphaBlend(c, alphaOverlay);
+  if (alphaOverlay.a > 0.0f) {
+    c = alphaBlend(c, alphaOverlay);
+  }
 #if COLORBLIND_MODE > 0
   c.rgb = colorblind(c.rgb);
 #endif

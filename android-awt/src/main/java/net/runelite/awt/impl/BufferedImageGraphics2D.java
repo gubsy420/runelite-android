@@ -158,8 +158,8 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override public Font getFont() { return font; }
     @Override public void setFont(Font font) { if (font != null) this.font = font; }
-    @Override public FontMetrics getFontMetrics() { return getFontMetrics(font); }
-    @Override public FontMetrics getFontMetrics(Font f) { return new BufferedImageFontMetrics(f); }
+    @Override public FontMetrics getFontMetrics() { return BufferedImageFontMetrics.forFont(font); }
+    @Override public FontMetrics getFontMetrics(Font f) { return BufferedImageFontMetrics.forFont(f); }
 
     @Override public Rectangle getClipBounds() {
         // Return clip in user space (subtract current translation).
@@ -271,19 +271,40 @@ public class BufferedImageGraphics2D extends Graphics2D {
             background.getRGB(), AlphaComposite.SRC);
     }
 
+    private boolean strokeWidthIsOne() {
+        return !(stroke instanceof BasicStroke) || ((BasicStroke) stroke).getLineWidth() <= 1f;
+    }
+
     @Override public void drawRoundRect(int x, int y, int w, int h, int aw, int ah) {
         rasterizeShape(x, y, w, h, false, (c, p, sw, sh) -> c.drawRoundRect(
             new android.graphics.RectF(0, 0, sw, sh), aw / 2f, ah / 2f, p));
     }
     @Override public void fillRoundRect(int x, int y, int w, int h, int aw, int ah) {
+        if (transformIsTranslateOnly()) {
+            syncTarget();
+            AwtNative.fillRoundRect(pixels, width, height, x + tx(), y + ty(), w, h, aw, ah,
+                foreground.getRGB(), compositeRule());
+            return;
+        }
         rasterizeShape(x, y, w, h, true, (c, p, sw, sh) -> c.drawRoundRect(
             new android.graphics.RectF(0, 0, sw, sh), aw / 2f, ah / 2f, p));
     }
     @Override public void drawOval(int x, int y, int w, int h) {
+        if (transformIsTranslateOnly() && strokeWidthIsOne()) {
+            syncTarget();
+            AwtNative.drawOval(pixels, width, height, x + tx(), y + ty(), w, h, foreground.getRGB());
+            return;
+        }
         rasterizeShape(x, y, w, h, false, (c, p, sw, sh) -> c.drawOval(
             new android.graphics.RectF(0, 0, sw, sh), p));
     }
     @Override public void fillOval(int x, int y, int w, int h) {
+        if (transformIsTranslateOnly()) {
+            syncTarget();
+            AwtNative.fillOval(pixels, width, height, x + tx(), y + ty(), w, h,
+                foreground.getRGB(), compositeRule());
+            return;
+        }
         rasterizeShape(x, y, w, h, true, (c, p, sw, sh) -> c.drawOval(
             new android.graphics.RectF(0, 0, sw, sh), p));
     }
@@ -308,15 +329,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
      * Rasterize an Android-Canvas-drawn shape into an ARGB bitmap then blit onto the
      * backing buffer at {@code (x + tx(), y + ty())}, clipped against the active clip.
      * Used by drawArc/fillArc/drawOval/fillOval/drawRoundRect/fillRoundRect.
-     *
-     * The bitmap is padded by {@code pad} pixels on every side so that:
-     *  - strokes (which extend stroke-width / 2 outside the shape's logical bounds)
-     *    don't clip at the bitmap edges,
-     *  - AA edge pixels of fills have room to render at full coverage rather than
-     *    being cropped by the bitmap boundary (this was the "xp globes clipped on
-     *    all 4 sides by a pixel or 2" artifact).
-     * The shape lambda receives the canvas already translated to the padded origin
-     * so it can paint at {@code (0, 0)-(w, h)} naively.
      */
     private void rasterizeShape(int x, int y, int w, int h, boolean filled, AndroidShapeDrawer drawer) {
         if (w <= 0 || h <= 0) return;
@@ -382,27 +394,24 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     @Override
     public void fillPolygon(int[] xs, int[] ys, int n) {
-        if (n < 3) return;
+        if (n < 3 || xs == null || ys == null) return;
         syncTarget();
-        int[] sx = xs, sy = ys;
         if (transformIsTranslateOnly()) {
-            int dx = tx(), dy = ty();
-            if (dx != 0 || dy != 0) {
-                sx = new int[n]; sy = new int[n];
-                for (int i = 0; i < n; i++) { sx[i] = xs[i] + dx; sy[i] = ys[i] + dy; }
-            }
+            AwtNative.fillPolygon(pixels, width, height, xs, ys, n, tx(), ty(), foreground.getRGB(), compositeRule());
         } else {
             // Rotation/scale/shear present: must run each vertex through the full
             // matrix. Quest Helper's minimap-arrow head goes through this branch
             // (Polygon → fill → fillPolygon under a translate+rotate transform).
-            sx = new int[n]; sy = new int[n];
+            int[] sx = new int[n];
+            int[] sy = new int[n];
             for (int i = 0; i < n; i++) {
                 sx[i] = transformX(xs[i], ys[i]);
                 sy[i] = transformY(xs[i], ys[i]);
             }
+            AwtNative.fillPolygon(pixels, width, height, sx, sy, n, 0, 0, foreground.getRGB(), compositeRule());
         }
-        AwtNative.fillPolygon(pixels, width, height, sx, sy, n, foreground.getRGB(), compositeRule());
     }
+
 
     @Override
     public void drawString(String str, int x, int y) {
@@ -481,26 +490,35 @@ public class BufferedImageGraphics2D extends Graphics2D {
          * or corrupted text in the plugin list panel).
          */
         private static final class Key {
-            final String str;
-            final Font font;
-            final int argb;
-            final TextAa aa;
-            final int hash;
+            String str;
+            Font font;
+            int argb;
+            TextAa aa;
+            int hash;
+            Key() {}
             Key(String s, Font f, int a, TextAa aa) {
+                set(s, f, a, aa);
+            }
+            void set(String s, Font f, int a, TextAa aa) {
                 this.str = s; this.font = f; this.argb = a; this.aa = aa;
-                int h = s.hashCode();
-                h = 31 * h + f.hashCode();
+                int h = s != null ? s.hashCode() : 0;
+                h = 31 * h + (f != null ? f.hashCode() : 0);
                 h = 31 * h + a;
-                h = 31 * h + aa.ordinal();
+                h = 31 * h + (aa != null ? aa.ordinal() : 0);
                 this.hash = h;
             }
             @Override public int hashCode() { return hash; }
             @Override public boolean equals(Object o) {
                 if (!(o instanceof Key)) return false;
                 Key k = (Key) o;
-                return argb == k.argb && aa == k.aa && font.equals(k.font) && str.equals(k.str);
+                return argb == k.argb && aa == k.aa
+                    && (font == k.font || (font != null && font.equals(k.font)))
+                    && (str == k.str || (str != null && str.equals(k.str)));
             }
         }
+        private static final ThreadLocal<Key> LOOKUP_KEY = new ThreadLocal<Key>() {
+            @Override protected Key initialValue() { return new Key(); }
+        };
         private static final java.util.LinkedHashMap<Key, TextRender> cache =
             new java.util.LinkedHashMap<Key, TextRender>(256, 0.75f, true) {
                 @Override
@@ -509,11 +527,12 @@ public class BufferedImageGraphics2D extends Graphics2D {
                 }
             };
         static synchronized TextRender get(String str, Font font, int argb, TextAa aa) {
-            Key key = new Key(str, font, argb, aa);
-            TextRender r = cache.get(key);
+            Key lookup = LOOKUP_KEY.get();
+            lookup.set(str, font, argb, aa);
+            TextRender r = cache.get(lookup);
             if (r != null) return r;
             r = render(str, font, argb, aa);
-            cache.put(key, r);
+            cache.put(new Key(str, font, argb, aa), r);
             return r;
         }
         private static TextRender render(String str, Font font, int argb, TextAa aa) {
@@ -713,17 +732,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
         int rule = compositeRule();
         if (rule == AlphaComposite.SRC_OVER
             && (isOpaqueSource(src)
-                // Software-mode present INTO a Canvas live-backbuffer (backbufferSource != null,
-                // i.e. graphics from Canvas.getGraphics()). The OSRS rasterizer writes RGB with
-                // alpha=0; if the engine's MainBufferProvider image still carries a stale ALPHA
-                // ColorModel from a prior GPU-mode session (the size-unchanged buffer-reuse path
-                // doesn't rebuild it), isOpaqueSource is false and the SRC_OVER blit silently
-                // drops every alpha-0 pixel — a black game viewport. Force SRC so the frame
-                // overwrites the backbuffer, mirroring the outbound Canvas.paint/Window.hostPaint
-                // blits which already force SRC in software mode. In GPU mode isRenderedByGles is
-                // true so this never fires (and Hooks.draw early-returns before the present
-                // anyway); overlay graphics have backbufferSource == null so their alpha blending
-                // is unaffected.
                 || (backbufferSource != null && !java.awt.Canvas.isRenderedByGles()))) {
             return AlphaComposite.SRC;
         }
@@ -732,9 +740,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
 
     private static boolean isOpaqueSource(BufferedImage src) {
         if (isOpaqueType(src.getType())) return true;
-        // TYPE_CUSTOM images (constructed via the (ColorModel, Raster, …) constructor —
-        // common pattern in the OSRS client) report opacity through their ColorModel
-        // instead of their imageType field.
         java.awt.image.ColorModel cm = src.getColorModel();
         return cm != null && !cm.hasAlpha();
     }
@@ -770,10 +775,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
             drawRect(r.x, r.y, r.width, r.height);
             return;
         }
-        // Curved shapes need explicit handling because our shadow Ellipse2D/Arc2D
-        // return an empty PathIterator — walkShape would otherwise emit zero
-        // segments and the bbox fallback would draw the shape's enclosing
-        // rectangle (the "circles are squares" symptom).
         if (s instanceof java.awt.geom.Ellipse2D) {
             java.awt.geom.Ellipse2D e = (java.awt.geom.Ellipse2D) s;
             drawOval((int) e.getX(), (int) e.getY(), (int) e.getWidth(), (int) e.getHeight());
@@ -785,13 +786,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
                 (int) Math.round(a.getAngleStart()), (int) Math.round(a.getAngleExtent()));
             return;
         }
-        // Thick-stroke path. AwtNative.drawLine is 1px-only, and walkShape's
-        // drawClosedPolyline is also 1px-only — so a wide BasicStroke applied to a
-        // single-segment Line2D (e.g. QuestHelper's minimap arrow shaft) was falling
-        // through walkShape (needs ≥3 verts to emit) into the bbox drawRect fallback,
-        // producing a thin 1×n rectangle outline instead of a thick band. When the
-        // active stroke is wider than 1px, sweep the path as a stream of width-W quads
-        // and fillPolygon each — the right semantics for any stroked open path.
         float strokeWidth = 1f;
         int cap = BasicStroke.CAP_SQUARE;
         if (stroke instanceof BasicStroke) {
@@ -803,27 +797,26 @@ public class BufferedImageGraphics2D extends Graphics2D {
             return;
         }
         if (walkShape(s, false)) return;
-        // Couldn't flatten — last-resort bbox stroke so something at least appears.
         Rectangle b = s.getBounds();
         drawRect(b.x, b.y, b.width, b.height);
     }
 
-    /**
-     * Walk the shape's path and emit one filled width-W quad per straight segment so
-     * a thick stroke draws as a continuous band. Joins between consecutive segments
-     * use butt abutment (no miter) — acceptable for the use sites that hit this code
-     * path (minimap/world arrow shafts, debug line overlays) which are predominantly
-     * single-segment lines. Quad/cubic curve segments are flattened to {@code flatness=1}
-     * by the iterator, so we only need to handle MOVETO/LINETO/CLOSE.
-     *
-     * <p>Returns {@code true} once any segment was emitted; the caller falls through to
-     * the bbox approximation only if nothing was strokable (degenerate / iterator-less
-     * shape).</p>
-     */
+    private static final ThreadLocal<float[]> COORDS_SCRATCH = new ThreadLocal<float[]>() {
+        @Override protected float[] initialValue() { return new float[6]; }
+    };
+
+    private static final ThreadLocal<int[][]> THICK_SCRATCH = new ThreadLocal<int[][]>() {
+        @Override protected int[][] initialValue() { return new int[][] { new int[4], new int[4] }; }
+    };
+
+    private static final ThreadLocal<int[][]> WALK_SCRATCH = new ThreadLocal<int[][]>() {
+        @Override protected int[][] initialValue() { return new int[][] { new int[64], new int[64] }; }
+    };
+
     private boolean strokeAndFillPath(Shape s, float width, int cap) {
         java.awt.geom.PathIterator it = s.getPathIterator(null, 1.0);
         if (it == null) return false;
-        float[] coords = new float[6];
+        float[] coords = COORDS_SCRATCH.get();
         float firstX = 0f, firstY = 0f, curX = 0f, curY = 0f;
         boolean hasCur = false;
         boolean any = false;
@@ -845,7 +838,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
                     curX = firstX; curY = firstY;
                     break;
                 default:
-                    // SEG_QUADTO / SEG_CUBICTO shouldn't reach us when flatness=1.0.
                     break;
             }
             it.next();
@@ -859,29 +851,24 @@ public class BufferedImageGraphics2D extends Graphics2D {
         float len = (float) Math.sqrt(dx * dx + dy * dy);
         if (len < 1e-3f) return false;
         float hw = width * 0.5f;
-        // Perpendicular (rotated 90°), pre-scaled to half-width.
         float nx = -dy / len * hw;
         float ny = dx / len * hw;
-        // Endpoint extension for non-butt caps. CAP_ROUND is approximated as CAP_SQUARE
-        // here — a faithful round cap would need a half-circle per endpoint and isn't
-        // worth the cost on a mobile rasterizer for the cases this hits.
         float ex = 0f, ey = 0f;
         if (cap == BasicStroke.CAP_SQUARE || cap == BasicStroke.CAP_ROUND) {
             ex = dx / len * hw;
             ey = dy / len * hw;
         }
-        int[] xs = {
-            Math.round(x1 - ex + nx),
-            Math.round(x1 - ex - nx),
-            Math.round(x2 + ex - nx),
-            Math.round(x2 + ex + nx),
-        };
-        int[] ys = {
-            Math.round(y1 - ey + ny),
-            Math.round(y1 - ey - ny),
-            Math.round(y2 + ey - ny),
-            Math.round(y2 + ey + ny),
-        };
+        int[][] scratch = THICK_SCRATCH.get();
+        int[] xs = scratch[0];
+        int[] ys = scratch[1];
+        xs[0] = Math.round(x1 - ex + nx);
+        xs[1] = Math.round(x1 - ex - nx);
+        xs[2] = Math.round(x2 + ex - nx);
+        xs[3] = Math.round(x2 + ex + nx);
+        ys[0] = Math.round(y1 - ey + ny);
+        ys[1] = Math.round(y1 - ey - ny);
+        ys[2] = Math.round(y2 + ey - ny);
+        ys[3] = Math.round(y2 + ey + ny);
         fillPolygon(xs, ys, 4);
         return true;
     }
@@ -913,22 +900,15 @@ public class BufferedImageGraphics2D extends Graphics2D {
         fillRect(b.x, b.y, b.width, b.height);
     }
 
-    /**
-     * Walk a shape's PathIterator and rasterize each closed sub-path as a polygon. Earlier
-     * draw(Shape)/fill(Shape) just strokes/filled the bbox — which made overlay clickboxes
-     * (agility, NPC indicators) appear as solid-coloured rectangles instead of polygon
-     * outlines blending into the scene. Quad/cubic segments are flattened via the iterator's
-     * flatness path. Returns false if the shape has no usable iterator so the caller can
-     * fall back to its bbox approximation.
-     */
     private boolean walkShape(Shape s, boolean fill) {
         java.awt.geom.PathIterator it = s.getPathIterator(null, 1.0);
         if (it == null) return false;
-        int[] xs = new int[16];
-        int[] ys = new int[16];
+        int[][] scratch = WALK_SCRATCH.get();
+        int[] xs = scratch[0];
+        int[] ys = scratch[1];
         int n = 0;
         boolean closed = false;
-        float[] coords = new float[6];
+        float[] coords = COORDS_SCRATCH.get();
         boolean any = false;
         while (!it.isDone()) {
             int seg = it.currentSegment(coords);
@@ -951,8 +931,6 @@ public class BufferedImageGraphics2D extends Graphics2D {
                     closed = false;
                     break;
                 default:
-                    // SEG_QUADTO / SEG_CUBICTO shouldn't reach us when we requested flatness=1.0,
-                    // but if they do skip them rather than misinterpret control points as verts.
                     break;
             }
             it.next();
@@ -960,6 +938,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
         if (emitSubPath(xs, ys, n, fill, closed)) any = true;
         return any;
     }
+
 
     /**
      * Rasterize a single sub-path. Three shapes are possible per emission:

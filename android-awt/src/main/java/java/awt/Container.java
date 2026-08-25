@@ -141,12 +141,14 @@ public class Container extends Component {
     public void validate() {
         // Catch per-container so one bad container's layout NPE doesn't abort the cascade.
         try { doLayout(); } catch (Throwable ignored) {}
-        // Snapshot — plugins start on AWT-InvokeAndWait threads that may add nav buttons
-        // to a Container while the Compose render thread is mid-validate. Direct iteration
-        // throws ConcurrentModificationException.
-        Component[] snap = children.toArray(new Component[0]);
-        for (Component c : snap) {
-            try { c.validate(); } catch (Throwable ignored) {}
+        int count = children.size();
+        for (int i = 0; i < count; i++) {
+            if (i < children.size()) {
+                Component c = children.get(i);
+                if (c != null) {
+                    try { c.validate(); } catch (Throwable ignored) {}
+                }
+            }
         }
     }
 
@@ -157,10 +159,11 @@ public class Container extends Component {
     }
 
     protected void paintChildren(Graphics g) {
-        if (children.isEmpty()) return;
-        // Snapshot in case a paint impl mutates the list.
-        Component[] snap = children.toArray(new Component[0]);
-        for (Component c : snap) {
+        int count = children.size();
+        if (count == 0) return;
+        for (int i = 0; i < count; i++) {
+            if (i >= children.size()) break;
+            Component c = children.get(i);
             if (c == null || !c.isVisible() || c.getWidth() <= 0 || c.getHeight() <= 0) continue;
             Graphics cg = g.create(c.x, c.y, c.width, c.height);
             try {

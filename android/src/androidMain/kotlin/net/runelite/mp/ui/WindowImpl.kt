@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowInsetsCompat
+import net.runelite.mp.MainActivity
 import net.runelite.mp.ui.bridge.PluginRow
 
 /**
@@ -148,7 +150,10 @@ object WindowImpl
                 {
                     PluginConfigPanelFor(
                         row = target,
-                        onBack = { configTarget.value = null },
+                        onBack = {
+                            configTarget.value = null
+                            MainActivity.hideSystemUI()
+                                 },
                     )
                 }
             }

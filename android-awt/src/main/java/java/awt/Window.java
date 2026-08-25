@@ -111,8 +111,10 @@ public class Window extends Container {
     private static boolean containsCanvas(Component c) {
         if (c instanceof Canvas) return true;
         if (c instanceof Container) {
-            for (Component child : ((Container) c).getComponents()) {
-                if (containsCanvas(child)) return true;
+            Container cont = (Container) c;
+            int count = cont.getComponentCount();
+            for (int i = 0; i < count; i++) {
+                if (containsCanvas(cont.getComponent(i))) return true;
             }
         }
         return false;
@@ -133,8 +135,10 @@ public class Window extends Container {
           .append(" vis=").append(c.isVisible())
           .append("]\n");
         if (c instanceof Container) {
-            for (Component child : ((Container) c).getComponents()) {
-                dumpTree(sb, child, depth + 1);
+            Container cont = (Container) c;
+            int count = cont.getComponentCount();
+            for (int i = 0; i < count; i++) {
+                dumpTree(sb, cont.getComponent(i), depth + 1);
             }
         }
     }
@@ -275,26 +279,6 @@ public class Window extends Container {
 
             if (c instanceof javax.swing.JComponent) {
                 javax.swing.JComponent jc = (javax.swing.JComponent) c;
-                // If the subclass overrides paint() (e.g. PluginHubPanel.PluginIcon
-                // kicks off an async icon-load inside paint()), route through the
-                // override so its side effects run. Otherwise, take the manual
-                // decomposition path — that's needed for parent panels that
-                // contain non-JComponent Containers like the patched RS client
-                // Applet, whose custom paint() does NOT recurse into its inner
-                // Canvas. If we called jc.paint() unconditionally, the recursion
-                // would go through the Applet's paint() and skip the Canvas,
-                // breaking the GLES alpha-hole punch and leaving the game area
-                // covered by opaque bitmap pixels.
-                //
-                // Exception: if a Canvas lives anywhere in this JComponent's
-                // subtree, we MUST take the manual recursion path — even if the
-                // JComponent overrides paint() — so the Canvas branch above fires
-                // and (when GLES is active) clears the canvas rect to alpha=0.
-                // This is what makes fixed-mode GLES work: the patched client's
-                // fixed-mode chrome layout wraps the game Canvas in a Swing panel
-                // whose own paint() doesn't recurse to children; without this
-                // bypass the Compose chrome bitmap stays opaque over the canvas
-                // and the SurfaceView never shows the scene through.
                 if (overridesPaint(jc.getClass()) && !containsCanvas(jc)) {
                     try { jc.paint(g); } catch (Throwable ignored) {}
                     return;
@@ -308,7 +292,9 @@ public class Window extends Container {
                 try { jc.hostPaintComponent(g); } catch (Throwable ignored) {}
                 try { jc.hostPaintBorder(g); } catch (Throwable ignored) {}
                 if (jc instanceof Container) {
-                    for (Component child : jc.getComponents()) hostPaint(g, child);
+                    Container cont = (Container) jc;
+                    int count = cont.getComponentCount();
+                    for (int i = 0; i < count; i++) hostPaint(g, cont.getComponent(i));
                 }
                 return;
             }
@@ -321,7 +307,9 @@ public class Window extends Container {
                     g.fillRect(0, 0, c.getWidth(), c.getHeight());
                     if (saved != null) g.setColor(saved);
                 }
-                for (Component child : ((Container) c).getComponents()) hostPaint(g, child);
+                Container cont = (Container) c;
+                int count = cont.getComponentCount();
+                for (int i = 0; i < count; i++) hostPaint(g, cont.getComponent(i));
                 return;
             }
 

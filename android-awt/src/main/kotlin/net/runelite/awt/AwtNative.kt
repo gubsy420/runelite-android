@@ -20,6 +20,25 @@ object AwtNative {
         argb: Int, compositeRule: Int,
     )
 
+    @JvmStatic external fun fillOval(
+        pixels: IntArray, imgW: Int, imgH: Int,
+        x: Int, y: Int, w: Int, h: Int,
+        argb: Int, compositeRule: Int,
+    )
+
+    @JvmStatic external fun drawOval(
+        pixels: IntArray, imgW: Int, imgH: Int,
+        x: Int, y: Int, w: Int, h: Int,
+        argb: Int,
+    )
+
+    @JvmStatic external fun fillRoundRect(
+        pixels: IntArray, imgW: Int, imgH: Int,
+        x: Int, y: Int, w: Int, h: Int,
+        arcW: Int, arcH: Int,
+        argb: Int, compositeRule: Int,
+    )
+
     @JvmStatic external fun drawLine(
         pixels: IntArray, imgW: Int, imgH: Int,
         x0: Int, y0: Int, x1: Int, y1: Int,
@@ -29,6 +48,7 @@ object AwtNative {
     @JvmStatic external fun fillPolygon(
         pixels: IntArray, imgW: Int, imgH: Int,
         xs: IntArray, ys: IntArray, n: Int,
+        tx: Int, ty: Int,
         argb: Int, compositeRule: Int,
     )
 
@@ -44,3 +64,4 @@ object AwtNative {
         compositeRule: Int, alpha: Float,
     )
 }
+

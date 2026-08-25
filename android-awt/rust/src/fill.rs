@@ -1,4 +1,4 @@
-use crate::{CLEAR, SRC, SRC_OVER};
+use crate::{CLEAR, SRC};
 use jni::sys::jint;
 
 /// Fill an axis-aligned rectangle on an ARGB int[] buffer. The buffer's row stride is
@@ -37,8 +37,6 @@ pub fn fill_rect(
             }
         }
         _ => {
-            // Default to SRC_OVER for any unrecognised rule.
-            let _ = composite_rule == SRC_OVER;
             for row in y0..y1 {
                 let off = row as usize * stride;
                 for col in x0..x1 {
@@ -47,6 +45,208 @@ pub fn fill_rect(
                 }
             }
         }
+    }
+}
+
+#[inline]
+pub fn plot_span(
+    buf: &mut [i32],
+    stride: usize,
+    row: i32,
+    x0: i32,
+    x1: i32,
+    img_w: i32,
+    img_h: i32,
+    argb: jint,
+    composite_rule: jint,
+) {
+    if row < 0 || row >= img_h {
+        return;
+    }
+    let c0 = x0.max(0).min(img_w);
+    let c1 = x1.max(0).min(img_w);
+    if c0 >= c1 {
+        return;
+    }
+    let off = row as usize * stride;
+    match composite_rule {
+        SRC => {
+            for col in c0..c1 {
+                buf[off + col as usize] = argb;
+            }
+        }
+        CLEAR => {
+            for col in c0..c1 {
+                buf[off + col as usize] = 0;
+            }
+        }
+        _ => {
+            for col in c0..c1 {
+                let dst = buf[off + col as usize] as u32;
+                buf[off + col as usize] = src_over(argb as u32, dst) as i32;
+            }
+        }
+    }
+}
+
+#[inline]
+pub fn plot_pixel(buf: &mut [i32], stride: usize, x: i32, y: i32, img_w: i32, img_h: i32, argb: jint) {
+    if x >= 0 && x < img_w && y >= 0 && y < img_h {
+        let idx = y as usize * stride + x as usize;
+        buf[idx] = src_over(argb as u32, buf[idx] as u32) as i32;
+    }
+}
+
+pub fn fill_oval(
+    buf: &mut [i32],
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    argb: jint,
+    composite_rule: jint,
+) {
+    if w <= 0 || h <= 0 {
+        return;
+    }
+    let stride = img_w as usize;
+    let rx = (w as f64) * 0.5;
+    let ry = (h as f64) * 0.5;
+    let cx = (x as f64) + rx;
+    let cy = (y as f64) + ry;
+
+    let y0 = y.max(0).min(img_h);
+    let y1 = (y + h).max(0).min(img_h);
+
+    for row in y0..y1 {
+        let dy = ((row as f64) + 0.5) - cy;
+        let norm_y = dy / ry;
+        let rem_sq = 1.0 - norm_y * norm_y;
+        if rem_sq >= 0.0 {
+            let dx = rx * rem_sq.sqrt();
+            let x0 = (cx - dx).round() as i32;
+            let x1 = (cx + dx).round() as i32;
+            plot_span(buf, stride, row, x0, x1, img_w, img_h, argb, composite_rule);
+        }
+    }
+}
+
+pub fn draw_oval(
+    buf: &mut [i32],
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    argb: jint,
+) {
+    if w <= 0 || h <= 0 {
+        return;
+    }
+    let stride = img_w as usize;
+    let a = w / 2;
+    let b = h / 2;
+    let xc = x + a;
+    let yc = y + b;
+    let mut xi = 0;
+    let mut yi = b;
+    let a2 = (a as i64) * (a as i64);
+    let b2 = (b as i64) * (b as i64);
+    let mut d1 = b2 - a2 * (b as i64) + (a2 / 4);
+    let mut dx = 2 * b2 * (xi as i64);
+    let mut dy = 2 * a2 * (yi as i64);
+
+    while dx < dy {
+        plot_pixel(buf, stride, xc + xi, yc + yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc - xi, yc + yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc + xi, yc - yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc - xi, yc - yi, img_w, img_h, argb);
+
+        if d1 < 0 {
+            xi += 1;
+            dx += 2 * b2;
+            d1 += dx + b2;
+        } else {
+            xi += 1;
+            yi -= 1;
+            dx += 2 * b2;
+            dy -= 2 * a2;
+            d1 += dx - dy + b2;
+        }
+    }
+
+    let mut d2 = (b2 * ((xi as i64 * 2 + 1) * (xi as i64 * 2 + 1)) + 4 * a2 * ((yi as i64 - 1) * (yi as i64 - 1)) - 4 * a2 * b2) / 4;
+    while yi >= 0 {
+        plot_pixel(buf, stride, xc + xi, yc + yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc - xi, yc + yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc + xi, yc - yi, img_w, img_h, argb);
+        plot_pixel(buf, stride, xc - xi, yc - yi, img_w, img_h, argb);
+
+        if d2 > 0 {
+            yi -= 1;
+            dy -= 2 * a2;
+            d2 += a2 - dy;
+        } else {
+            xi += 1;
+            yi -= 1;
+            dx += 2 * b2;
+            dy -= 2 * a2;
+            d2 += dx - dy + a2;
+        }
+    }
+}
+
+pub fn fill_round_rect(
+    buf: &mut [i32],
+    img_w: jint,
+    img_h: jint,
+    x: jint,
+    y: jint,
+    w: jint,
+    h: jint,
+    arc_w: jint,
+    arc_h: jint,
+    argb: jint,
+    composite_rule: jint,
+) {
+    if w <= 0 || h <= 0 {
+        return;
+    }
+    let rx = ((arc_w as f64) * 0.5).min((w as f64) * 0.5);
+    let ry = ((arc_h as f64) * 0.5).min((h as f64) * 0.5);
+    if rx <= 0.0 || ry <= 0.0 {
+        fill_rect(buf, img_w, img_h, x, y, w, h, argb, composite_rule);
+        return;
+    }
+
+    let stride = img_w as usize;
+    let top_curve_y = (y as f64) + ry;
+    let bot_curve_y = ((y + h) as f64) - ry;
+    let left_cx = (x as f64) + rx;
+    let right_cx = ((x + w) as f64) - rx;
+
+    let y0 = y.max(0).min(img_h);
+    let y1 = (y + h).max(0).min(img_h);
+
+    for row in y0..y1 {
+        let cy_sample = (row as f64) + 0.5;
+        let (x0, x1) = if cy_sample < top_curve_y {
+            let dy = (cy_sample - top_curve_y) / ry;
+            let rem_sq = (1.0 - dy * dy).max(0.0);
+            let dx = rx * rem_sq.sqrt();
+            ((left_cx - dx).round() as i32, (right_cx + dx).round() as i32)
+        } else if cy_sample > bot_curve_y {
+            let dy = (cy_sample - bot_curve_y) / ry;
+            let rem_sq = (1.0 - dy * dy).max(0.0);
+            let dx = rx * rem_sq.sqrt();
+            ((left_cx - dx).round() as i32, (right_cx + dx).round() as i32)
+        } else {
+            (x, x + w)
+        };
+        plot_span(buf, stride, row, x0, x1, img_w, img_h, argb, composite_rule);
     }
 }
 
@@ -67,14 +267,6 @@ pub fn src_over(src: u32, dst: u32) -> u32 {
     let dg = (dst >> 8) & 0xFF;
     let db = dst & 0xFF;
 
-    // Standard AWT BufferedImage pixels are NON-premultiplied (each colour component is
-    // full 0..255 regardless of alpha). The Porter-Duff SrcOver formula for that is:
-    //   out.rgb = src.rgb * src.alpha + dst.rgb * (255 - src.alpha) * dst.alpha / 255
-    // Treating dst as opaque (our canvas is effectively opaque after GameViewport's
-    // alpha mask) collapses the second term's dst.alpha factor — but we still need to
-    // multiply src.rgb by src.alpha, otherwise a half-translucent overlay adds the
-    // full src colour to a scaled dst and overflows the byte range. That's what
-    // produced the rainbow noise on translucent overlays.
     let inv = 255 - sa;
     let out_a = sa + (da * inv + 127) / 255;
     let out_r = (sr * sa + dr * inv + 127) / 255;

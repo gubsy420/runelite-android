@@ -52,7 +52,9 @@ void main() {
       discard;
 
     textureColor = vec4(textureColor.rgb, 1.f);
-    textureColor = pow(textureColor, vec4(brightness, brightness, brightness, 1.f));
+    if (brightness != 1.0f) {
+      textureColor = pow(textureColor, vec4(brightness, brightness, brightness, 1.f));
+    }
 
     float light = fHsl / 127.f;
     vec3 mul = (1.f - textureLightMode) * vec3(light) + textureLightMode * fColor.rgb;

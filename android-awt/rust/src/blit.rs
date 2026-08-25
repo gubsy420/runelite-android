@@ -93,31 +93,34 @@ pub fn copy_area(
     let going_up = dst_y < y;
     let going_left = dst_x < x;
 
-    let rows: Box<dyn Iterator<Item = i32>> = if going_up {
-        Box::new(0..h)
+    let (r_start, r_end, r_step): (i32, i32, i32) = if going_up {
+        (0, h, 1)
     } else {
-        Box::new((0..h).rev())
+        (h - 1, -1, -1)
     };
 
-    for r in rows {
+    let mut r = r_start;
+    while r != r_end {
         let src_y = y + r;
         let dst_y_r = dst_y + r;
-        if src_y < 0 || src_y >= img_h || dst_y_r < 0 || dst_y_r >= img_h {
-            continue;
-        }
-        let cols: Box<dyn Iterator<Item = i32>> = if going_left {
-            Box::new(0..w)
-        } else {
-            Box::new((0..w).rev())
-        };
-        for c in cols {
-            let src_x = x + c;
-            let dst_x_c = dst_x + c;
-            if src_x < 0 || src_x >= img_w || dst_x_c < 0 || dst_x_c >= img_w {
-                continue;
+        if src_y >= 0 && src_y < img_h && dst_y_r >= 0 && dst_y_r < img_h {
+            let (c_start, c_end, c_step): (i32, i32, i32) = if going_left {
+                (0, w, 1)
+            } else {
+                (w - 1, -1, -1)
+            };
+            let mut c = c_start;
+            while c != c_end {
+                let src_x = x + c;
+                let dst_x_c = dst_x + c;
+                if src_x >= 0 && src_x < img_w && dst_x_c >= 0 && dst_x_c < img_w {
+                    buf[dst_y_r as usize * stride + dst_x_c as usize] =
+                        buf[src_y as usize * stride + src_x as usize];
+                }
+                c += c_step;
             }
-            buf[dst_y_r as usize * stride + dst_x_c as usize] =
-                buf[src_y as usize * stride + src_x as usize];
         }
+        r += r_step;
     }
 }
+
