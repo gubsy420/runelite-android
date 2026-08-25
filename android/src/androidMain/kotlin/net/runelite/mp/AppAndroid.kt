@@ -816,6 +816,16 @@ private fun clickSwingWidget(comp: java.awt.Component, winX: Int, winY: Int, but
     }
 }
 
+/** Gate for the input-bridge diagnostics.
+ *
+ *  Deliberately NOT BuildConfig.DEBUG: this project sets `isDebuggable = false` on the
+ *  debug build type (to keep CheckJNI off the AwtNative hot path), and AGP derives
+ *  BuildConfig.DEBUG from `debuggable` rather than from the build type's name — so
+ *  BuildConfig.DEBUG is false in a debug build here and every DEBUG-gated log in this
+ *  file, including the pre-existing TreeDump and SwDiag ones, is dead code. Keying off
+ *  BUILD_TYPE gives a flag that actually tracks "is this a dev build". */
+private val MOUSE_LOG = net.runelite.mp.BuildConfig.BUILD_TYPE == "debug"
+
 /** Pixels of pointer travel between press and release beyond which the release reads as
  *  the end of a drag rather than a click — AWT suppresses MOUSE_CLICKED once a drag has
  *  started. Deliberately errs loose: an extra MOUSE_CLICKED after a tiny drag costs
@@ -869,6 +879,7 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
     var lx = downX - tHit.absX
     var ly = downY - tHit.absY
     var travelled = 0f
+    var moves = 0
 
     // Ordered so the modifier mask and the release order stay deterministic.
     val held = LinkedHashSet<Int>()
@@ -886,7 +897,7 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
         fireMouseWithMask(target, java.awt.event.MouseEvent.MOUSE_PRESSED, lx, ly, b, mask())
     }
     down.consume()
-    if (net.runelite.mp.BuildConfig.DEBUG) {
+    if (MOUSE_LOG) {
         android.util.Log.i("MouseInput",
             "gesture start buttons=$initial (primary=${downButtons.isPrimaryPressed} " +
                 "secondary=${downButtons.isSecondaryPressed} tertiary=${downButtons.isTertiaryPressed}) " +
@@ -896,15 +907,23 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
     while (held.isNotEmpty()) {
         val event = awaitPointerEvent(PointerEventPass.Main)
         val change = event.changes.firstOrNull { it.id == down.id } ?: break
+        // Order matters: positionChange() returns Offset.Zero once the change is
+        // consumed, so reading it after consume() reported every drag as zero movement
+        // and the MOVED/DRAGGED pair below never fired at all. Clicks still worked
+        // (press/release don't look at step), which is what made this look like a
+        // camera-specific problem rather than "no mouse drag has ever worked". The touch
+        // gesture above gets this right — it reads positionChange() first and consumes at
+        // the bottom of its loop.
+        val step = change.positionChange().getDistance()
         change.consume()
 
-        val step = change.positionChange().getDistance()
         if (step > 0f) {
             composeToWindowUnbounded(change.position, boxSize, window)?.let { (wx, wy) ->
                 lx = wx - tHit.absX
                 ly = wy - tHit.absY
             }
             travelled += step
+            moves++
             // MOVED *and* DRAGGED, in that order.
             //
             // The client tracks the cursor from MOUSE_MOVED, not MOUSE_DRAGGED: with
@@ -951,8 +970,8 @@ private suspend fun AwaitPointerEventScope.runMouseGesture(
         held -= b
         releaseMouseButton(target, hit.comp, lx, ly, downX, downY, b, mask(), travelled)
     }
-    if (net.runelite.mp.BuildConfig.DEBUG) {
-        android.util.Log.i("MouseInput", "gesture end travelled=$travelled at=($lx,$ly)")
+    if (MOUSE_LOG) {
+        android.util.Log.i("MouseInput", "gesture end travelled=$travelled moves=$moves at=($lx,$ly)")
     }
 }
 
