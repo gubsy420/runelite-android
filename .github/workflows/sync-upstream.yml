@@ -108,15 +108,19 @@ jobs:
           echo "main=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           echo "hub=$(grep -oP '(?<=^runelite\.pluginhub\.version=).*' "$PROPS" || echo unknown)" >> "$GITHUB_OUTPUT"
 
+      # Unconditional: both are no-ops when there is nothing to send, and tags can need
+      # pushing even on a run where main itself did not move.
       - name: Push main and tags
-        if: steps.before.outputs.main != steps.after.outputs.main
         run: |
           git push origin main
           git push origin --tags
 
+      # Deliberately NOT gated on main having moved this run. If an earlier run synced
+      # main but conflicted here, upstream may then sit still for days; gating on "main
+      # changed" would leave the topic branch stranded behind until someone noticed.
+      # Asking "is the topic behind main" instead makes the job self-healing.
       - name: Merge main into topic branch
         id: merge_topic
-        if: steps.before.outputs.main != steps.after.outputs.main
         run: |
           TOPIC="${{ github.event.inputs.topic_branch }}"
           if [ -z "$TOPIC" ]; then TOPIC="$DEFAULT_TOPIC"; fi
@@ -124,6 +128,11 @@ jobs:
 
           if [ "$TOPIC" = "main" ] || ! git rev-parse --verify "origin/$TOPIC" >/dev/null 2>&1; then
             echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$(git rev-list --count "origin/$TOPIC..main")" = "0" ]; then
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            echo "\`$TOPIC\` already contains main" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           echo "skipped=false" >> "$GITHUB_OUTPUT"
