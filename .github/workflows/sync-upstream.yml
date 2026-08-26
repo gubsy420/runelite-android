@@ -1,0 +1,207 @@
+name: Sync with upstream
+
+# Keeps this fork current with zeruth/runelite-android.
+#
+# Why this exists: the Android plugin hub is a separate dexed mirror
+# (raw.githubusercontent.com/zeruth/plugin-hub-dex) whose manifests are keyed on
+# runelite.pluginhub.version. When upstream bumps that version the mirror is
+# republished for the NEW version only and the old manifest starts returning 404, so a
+# fork left behind reports "plugin hub offline" even though nothing is actually broken.
+# Staying merged with upstream is what keeps the hub reachable.
+#
+# NOTE ON PLACEMENT: `schedule` only fires for workflow files on the DEFAULT branch, so
+# this file has to live on main. That is also why main is synced with `git merge` rather
+# than `git merge --ff-only` — a fast-forward to upstream/main would delete this
+# workflow on its first successful run.
+
+on:
+  schedule:
+    # Daily at 05:17 UTC. Off the hour on purpose: GitHub queues a large share of
+    # scheduled jobs at :00 and sheds them under load.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+    inputs:
+      topic_branch:
+        description: 'Branch carrying local changes to merge upstream into (blank to skip)'
+        required: false
+        default: 'feature/mouse-support'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+env:
+  UPSTREAM: https://github.com/zeruth/runelite-android.git
+  DEFAULT_TOPIC: feature/mouse-support
+  PROPS: runelite-client/src/main/resources/net/runelite/client/runelite.properties
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # The default GITHUB_TOKEN can push branches in this repo. Pushes made with it
+          # deliberately do NOT trigger other workflows, which is what stops this job
+          # from retriggering CI in a loop.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Identify committer
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream "$UPSTREAM"
+          git fetch upstream --tags --prune
+
+      - name: Record state before sync
+        id: before
+        run: |
+          git checkout main
+          echo "main=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "hub=$(grep -oP '(?<=^runelite\.pluginhub\.version=).*' "$PROPS" || echo unknown)" >> "$GITHUB_OUTPUT"
+
+      - name: Merge upstream into main
+        id: merge_main
+        run: |
+          if git merge --no-edit upstream/main; then
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --abort || true
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Report main conflict
+        if: steps.merge_main.outputs.conflict == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue create \
+            --title "Upstream sync failed: conflict merging upstream/main into main" \
+            --body "$(printf '%s\n' \
+              'Automated sync could not merge `upstream/main` into `main` cleanly, so nothing was pushed.' \
+              '' \
+              'Resolve locally:' \
+              '```' \
+              'git fetch upstream' \
+              'git checkout main' \
+              'git merge upstream/main' \
+              '# fix conflicts, then' \
+              'git push origin main' \
+              '```' \
+              '' \
+              "Run: $RUN_URL")"
+          exit 1
+
+      - name: Record state after sync
+        id: after
+        run: |
+          echo "main=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "hub=$(grep -oP '(?<=^runelite\.pluginhub\.version=).*' "$PROPS" || echo unknown)" >> "$GITHUB_OUTPUT"
+
+      # Unconditional: both are no-ops when there is nothing to send, and tags can need
+      # pushing even on a run where main itself did not move.
+      - name: Push main and tags
+        run: |
+          git push origin main
+          git push origin --tags
+
+      # Deliberately NOT gated on main having moved this run. If an earlier run synced
+      # main but conflicted here, upstream may then sit still for days; gating on "main
+      # changed" would leave the topic branch stranded behind until someone noticed.
+      # Asking "is the topic behind main" instead makes the job self-healing.
+      - name: Merge main into topic branch
+        id: merge_topic
+        run: |
+          TOPIC="${{ github.event.inputs.topic_branch }}"
+          if [ -z "$TOPIC" ]; then TOPIC="$DEFAULT_TOPIC"; fi
+          echo "topic=$TOPIC" >> "$GITHUB_OUTPUT"
+
+          if [ "$TOPIC" = "main" ] || ! git rev-parse --verify "origin/$TOPIC" >/dev/null 2>&1; then
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$(git rev-list --count "origin/$TOPIC..main")" = "0" ]; then
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            echo "\`$TOPIC\` already contains main" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "skipped=false" >> "$GITHUB_OUTPUT"
+
+          git checkout -B "$TOPIC" "origin/$TOPIC"
+          if git merge --no-edit main; then
+            git push origin "$TOPIC"
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --abort || true
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Report topic conflict
+        if: steps.merge_topic.outputs.conflict == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOPIC: ${{ steps.merge_topic.outputs.topic }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue create \
+            --title "Upstream sync: conflict merging main into $TOPIC" \
+            --body "$(printf '%s\n' \
+              "\`main\` was synced with upstream and pushed, but merging it into \`$TOPIC\` conflicts, so that branch is still behind and will build against the old plugin hub version." \
+              '' \
+              'Resolve locally:' \
+              '```' \
+              'git fetch origin' \
+              "git checkout $TOPIC" \
+              'git merge main' \
+              '# fix conflicts, then' \
+              "git push origin $TOPIC" \
+              '```' \
+              '' \
+              "Run: $RUN_URL")"
+          exit 1
+
+      # The plugin hub version is the thing that actually breaks an installed APK: a bump
+      # means the dexed mirror has moved on, and any build made before this sync will
+      # report the hub as offline until it is rebuilt and reinstalled.
+      - name: Flag plugin hub version bump
+        if: steps.before.outputs.hub != steps.after.outputs.hub
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE: ${{ steps.before.outputs.hub }}
+          AFTER: ${{ steps.after.outputs.hub }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue create \
+            --title "Rebuild needed: plugin hub version $BEFORE -> $AFTER" \
+            --body "$(printf '%s\n' \
+              'Upstream bumped `runelite.pluginhub.version`.' \
+              '' \
+              'The Android plugin hub mirror is republished per version and the previous manifest starts 404ing, so **any APK built before this sync will show the plugin hub as offline until it is rebuilt and reinstalled**.' \
+              '' \
+              "- before: \`$BEFORE\`" \
+              "- after: \`$AFTER\`" \
+              "- manifest now expected at: \`https://raw.githubusercontent.com/zeruth/plugin-hub-dex/main/manifest/${AFTER}_lite.js\`" \
+              '' \
+              "Run: $RUN_URL")"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Upstream sync"
+            echo ""
+            echo "| | before | after |"
+            echo "|---|---|---|"
+            echo "| main | \`${{ steps.before.outputs.main }}\` | \`${{ steps.after.outputs.main }}\` |"
+            echo "| pluginhub version | \`${{ steps.before.outputs.hub }}\` | \`${{ steps.after.outputs.hub }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
