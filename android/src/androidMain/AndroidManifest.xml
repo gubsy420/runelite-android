@@ -31,7 +31,34 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- Jagex account sign-in. Its own Activity so sign-in owns a screen with a real
+             lifecycle, separate from the game host. Plain launch mode and not exported:
+             the whole flow stays inside this WebView, so nothing external ever needs to
+             route back into it. -->
+        <activity
+            android:name=".account.JagexLoginActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden|screenLayout|smallestScreenSize"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <!-- The OAuth redirect for Jagex's mobile client, which is what lets sign-in
+                 run in the real browser and come back as an Intent. The scheme is the one
+                 that client is registered with at Jagex, so it is not ours to choose; the
+                 official OSRS app claims the same one, and with both installed Android
+                 will ask which should receive the redirect. singleTask so it arrives at
+                 the instance already running the flow, via onNewIntent, rather than
+                 stacking a second copy. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.jagex.mobilesdk.android.osrs" />
+            </intent-filter>
         </activity><!--
+
+
         <service
                 android:name="net.runelite.client.plugins.service.GameSessionService"
                 android:exported="false"
