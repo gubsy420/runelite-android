@@ -9,6 +9,7 @@ import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -22,7 +23,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -539,11 +539,6 @@ private fun ComposeSplash() {
     var subActionText by remember { mutableStateOf("") }
     var progressText by remember { mutableStateOf<String?>(null) }
     var progress by remember { mutableStateOf(0f) }
-    // History of distinct (action, sub) pairs seen since launch. Individual stages can
-    // fire <16ms apart, so polling alone would just blink past them. We append every
-    // distinct combo as it appears and render the tail of the list, so users get a
-    // visible trace of "what step are we on" even when the current step has moved on.
-    val history = remember { mutableStateListOf<String>() }
 
     LaunchedEffect(Unit) {
         val started = System.currentTimeMillis()
@@ -562,11 +557,12 @@ private fun ComposeSplash() {
                 subActionText = net.runelite.client.ui.SplashScreen.currentSubActionText() ?: ""
                 progressText = net.runelite.client.ui.SplashScreen.currentProgressText()
                 progress = net.runelite.client.ui.SplashScreen.currentProgress().toFloat()
+                // Stages can fire less than a frame apart, so the on-screen text blinks
+                // past some of them. The full progression still goes to logcat, which is
+                // where you want it when a boot stalls.
                 val combo = if (subActionText.isNotEmpty()) "$actionText — $subActionText" else actionText
                 if (combo != lastSeen) {
                     lastSeen = combo
-                    history.add(combo)
-                    if (history.size > 8) history.removeAt(0)
                     android.util.Log.i("Splash",
                         "stage: $combo ${(progress * 100).toInt()}%" +
                             (progressText?.let { " [$it]" } ?: ""))
@@ -583,10 +579,17 @@ private fun ComposeSplash() {
 
     if (!visible) return
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier.fillMaxSize().background(DarkerGray),
         contentAlignment = Alignment.Center,
     ) {
+        // Scale to whatever we're given rather than assuming a tall portrait window. The
+        // game runs landscape, where height is the tight axis and a fixed 280.dp logo left
+        // no room for the text and bar beneath it — so take a fraction of each axis and
+        // use the smaller, which keeps the mark square and always on screen.
+        val logoSize = minOf(maxWidth * 0.42f, maxHeight * 0.40f).coerceAtMost(280.dp)
+        val gap = minOf(maxHeight * 0.04f, 28.dp)
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -596,22 +599,29 @@ private fun ComposeSplash() {
                 Image(
                     bitmap = logo,
                     contentDescription = "RuneLite",
-                    modifier = Modifier.size(280.dp),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(logoSize),
                 )
+                Spacer(Modifier.height(gap))
             }
-            Spacer(Modifier.height(28.dp))
             androidx.compose.material3.Text(
                 text = actionText,
                 color = Color.White,
-                fontSize = 24.sp,
+                fontSize = 20.sp,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             )
-            Spacer(Modifier.height(8.dp))
-            androidx.compose.material3.Text(
-                text = subActionText,
-                color = Color(0xFFE0E0E0),
-                fontSize = 16.sp,
-            )
-            Spacer(Modifier.height(14.dp))
+            // Only takes space when there is something to say — an empty line here left a
+            // visible gap between the action text and the bar.
+            if (subActionText.isNotEmpty()) {
+                Spacer(Modifier.height(6.dp))
+                androidx.compose.material3.Text(
+                    text = subActionText,
+                    color = Color(0xFFE0E0E0),
+                    fontSize = 14.sp,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
+            }
+            Spacer(Modifier.height(gap))
             // Rounded orange progress bar, ~half the screen wide. Background is the darker
             // brand-orange shade (matches the AWT splash); foreground fills proportionally.
             Box(
@@ -633,21 +643,6 @@ private fun ComposeSplash() {
                         color = Color.White,
                         fontSize = 12.sp,
                         modifier = Modifier.align(Alignment.Center),
-                    )
-                }
-            }
-            Spacer(Modifier.height(20.dp))
-            // Step history — every distinct stage since launch, so the user can see the
-            // full progression even when stages fire faster than a single render frame.
-            // Last entry rendered brightest (it's "current"); older entries fade.
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                val tail = history.toList()
-                tail.forEachIndexed { idx, line ->
-                    val isCurrent = idx == tail.lastIndex
-                    androidx.compose.material3.Text(
-                        text = line,
-                        color = if (isCurrent) Color.White else Color(0xFF808080),
-                        fontSize = 12.sp,
                     )
                 }
             }
