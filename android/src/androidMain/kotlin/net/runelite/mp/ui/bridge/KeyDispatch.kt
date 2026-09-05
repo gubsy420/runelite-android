@@ -128,14 +128,79 @@ object KeyDispatch {
     }
 
     /**
+     * Keys that belong to the platform, never to the game. The activity funnels *every*
+     * key through [sendAndroidKeyEvent]; without this list a press of volume-up would be
+     * reported as handled and never reach AudioManager, so the hardware rocker stopped
+     * changing the media stream while RuneLite was in the foreground.
+     *
+     * BACK is in here too: [net.runelite.mp.AppAndroid] installs a Compose `BackHandler`
+     * that closes the open sidebar/config panel and otherwise swallows the press, and
+     * that handler only runs if we let the event continue to `super.dispatchKeyEvent`.
+     */
+    private val SYSTEM_KEYS = intArrayOf(
+        AndroidKeyEvent.KEYCODE_VOLUME_UP,
+        AndroidKeyEvent.KEYCODE_VOLUME_DOWN,
+        AndroidKeyEvent.KEYCODE_VOLUME_MUTE,
+        AndroidKeyEvent.KEYCODE_MUTE,
+        AndroidKeyEvent.KEYCODE_POWER,
+        AndroidKeyEvent.KEYCODE_SLEEP,
+        AndroidKeyEvent.KEYCODE_WAKEUP,
+        AndroidKeyEvent.KEYCODE_SOFT_SLEEP,
+        AndroidKeyEvent.KEYCODE_BACK,
+        AndroidKeyEvent.KEYCODE_HOME,
+        AndroidKeyEvent.KEYCODE_APP_SWITCH,
+        AndroidKeyEvent.KEYCODE_MENU,
+        AndroidKeyEvent.KEYCODE_SEARCH,
+        AndroidKeyEvent.KEYCODE_ASSIST,
+        AndroidKeyEvent.KEYCODE_VOICE_ASSIST,
+        AndroidKeyEvent.KEYCODE_SETTINGS,
+        AndroidKeyEvent.KEYCODE_NOTIFICATION,
+        AndroidKeyEvent.KEYCODE_BRIGHTNESS_UP,
+        AndroidKeyEvent.KEYCODE_BRIGHTNESS_DOWN,
+        AndroidKeyEvent.KEYCODE_CAMERA,
+        AndroidKeyEvent.KEYCODE_FOCUS,
+        AndroidKeyEvent.KEYCODE_HEADSETHOOK,
+        AndroidKeyEvent.KEYCODE_MEDIA_PLAY,
+        AndroidKeyEvent.KEYCODE_MEDIA_PAUSE,
+        AndroidKeyEvent.KEYCODE_MEDIA_PLAY_PAUSE,
+        AndroidKeyEvent.KEYCODE_MEDIA_STOP,
+        AndroidKeyEvent.KEYCODE_MEDIA_NEXT,
+        AndroidKeyEvent.KEYCODE_MEDIA_PREVIOUS,
+        AndroidKeyEvent.KEYCODE_MEDIA_REWIND,
+        AndroidKeyEvent.KEYCODE_MEDIA_FAST_FORWARD,
+        AndroidKeyEvent.KEYCODE_MEDIA_AUDIO_TRACK,
+    )
+
+    private fun isSystemKey(keyCode: Int): Boolean {
+        for (k in SYSTEM_KEYS) {
+            if (k == keyCode) return true
+        }
+        return false
+    }
+
+    /**
      * Translates an Android KeyEvent (from hardware keyboard or IME sendKeyEvent)
      * and dispatches it into the AWT pipeline.
+     *
+     * Returns true only when the event was actually consumed by the game. Anything we
+     * have no AWT mapping for — and every key in [SYSTEM_KEYS] — is left alone so the
+     * platform's own handling (volume rocker, back gesture, media buttons) still runs.
      */
     fun sendAndroidKeyEvent(event: AndroidKeyEvent): Boolean {
+        if (isSystemKey(event.keyCode)) {
+            return false
+        }
         val vk = androidKeyCodeToAwt(event.keyCode)
         val mods = androidMetaToAwtModifiers(event.metaState) or ModifierState.modifierMask()
         val unicodeChar = event.getUnicodeChar(event.metaState)
         val keyChar = if (unicodeChar != 0) unicodeChar.toChar() else KeyEvent.CHAR_UNDEFINED
+
+        // Nothing the game can do with a key we can't name and that types no character
+        // (KEYCODE_TV_INPUT, gamepad buttons, vendor hotkeys, …). Decline it so whatever
+        // the platform or an OEM overlay wanted to do with it still happens.
+        if (vk == KeyEvent.VK_UNDEFINED && unicodeChar == 0 && event.action != AndroidKeyEvent.ACTION_MULTIPLE) {
+            return false
+        }
 
         val source = dummyComponent()
         val whenMs = event.eventTime
