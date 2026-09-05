@@ -74,11 +74,65 @@ class MainActivity : ComponentActivity() {
         setContent { AndroidApp() }
     }
 
+    /**
+     * Re-assert immersive mode whenever the window regains focus.
+     *
+     * From API 30 the framework keeps the bars hidden itself once
+     * [WindowInsetsControllerCompat] has a real `WindowInsetsController` to drive. Below
+     * that it falls back to the legacy `SYSTEM_UI_FLAG_*` bits, which the platform *clears*
+     * when the window loses focus and never puts back — so on Android 8 the status and
+     * navigation bars stay on screen after the soft keyboard (or a dialog, or the
+     * notification shade) goes away, and the game is left letterboxed under them.
+     * Re-applying on focus gain is the documented remedy, and it's a no-op on the versions
+     * that don't need it.
+     *
+     * Safe against the swipe-to-reveal gesture: focus doesn't change when the transient
+     * bars appear, so this never fights BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE.
+     */
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            hideSystemUI()
+        }
+    }
+
+    /**
+     * Every key press reaches the game before the view hierarchy — that's what makes a
+     * hardware keyboard work in-game — except while something else is genuinely being
+     * typed into.
+     *
+     * Without that exception the Compose UIs lose their editing keys. Ordinary characters
+     * survive because IMEs commit those as text rather than as key events, but backspace
+     * arrives as `KEYCODE_DEL`, [net.runelite.mp.ui.bridge.KeyDispatch] maps it to
+     * `VK_BACK_SPACE`, reports it handled, and the focused text field never sees it. Same
+     * for enter and the arrow keys, and for anything typed on a hardware keyboard.
+     */
     @SuppressLint("RestrictedApi")
     override fun dispatchKeyEvent(event: android.view.KeyEvent): Boolean {
+        if (editorWantsKeys()) {
+            return super.dispatchKeyEvent(event)
+        }
         if (net.runelite.mp.ui.bridge.KeyDispatch.sendAndroidKeyEvent(event)) {
             return true
         }
         return super.dispatchKeyEvent(event)
+    }
+
+    /**
+     * True when a text editor other than the game's own input bridge holds the IME — i.e.
+     * a Compose text field is being edited, so keys belong to it.
+     *
+     * [net.runelite.mp.ui.bridge.KeyboardInputView] is the game's IME target and is
+     * explicitly *not* counted: when it has focus the on-screen keyboard is typing into
+     * the game, and those keys have to keep going to the AWT pipeline. `isAcceptingText`
+     * covers everything else, and is false when no editor is connected at all — the normal
+     * in-game case, hardware keyboard included.
+     */
+    private fun editorWantsKeys(): Boolean {
+        if (currentFocus is net.runelite.mp.ui.bridge.KeyboardInputView) {
+            return false
+        }
+        val imm = getSystemService(android.view.inputmethod.InputMethodManager::class.java)
+        return imm?.isAcceptingText == true
     }
 }

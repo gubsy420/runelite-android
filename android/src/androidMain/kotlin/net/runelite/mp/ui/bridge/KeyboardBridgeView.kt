@@ -54,6 +54,13 @@ object SoftKeyboardController {
                 val activity = net.runelite.mp.MainActivity.instance
                 androidx.core.view.WindowCompat.getInsetsController(activity.window, activity.window.decorView)
                     .hide(androidx.core.view.WindowInsetsCompat.Type.ime())
+                // Put immersive mode back. MainActivity.onWindowFocusChanged covers the
+                // usual case, but it only fires if the IME actually took window focus —
+                // with adjustPan and some IMEs it doesn't, and then nothing would restore
+                // the system bars that showing the keyboard knocked out on API < 30.
+                // Posted rather than called inline so it lands after the IME has finished
+                // animating away and stopped touching the flags itself.
+                activity.window.decorView.post { net.runelite.mp.MainActivity.hideSystemUI() }
             } catch (t: Throwable) {
                 // ignore
             }
