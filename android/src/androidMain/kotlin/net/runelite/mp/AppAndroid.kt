@@ -63,9 +63,43 @@ private const val FRAME_WIDTH_FALLBACK = 1280
 private const val FIXED_WIDTH = 765
 private const val FIXED_HEIGHT = 503
 
-private fun frameWidthFor(boxSize: IntSize): Int {
-    if (boxSize.width <= 0 || boxSize.height <= 0) return FRAME_WIDTH_FALLBACK
-    return (FRAME_HEIGHT.toLong() * boxSize.width / boxSize.height).toInt().coerceAtLeast(1)
+/**
+ * Smallest frame the client will hold still at. ClientPanel pins its minimum size to
+ * Constants.GAME_FIXED_SIZE and ClientUI's Layout enforces it — every layout pass calls
+ * ContainableFrame.containedSetSize with a preferred size that's at least this wide, so
+ * a smaller setSize from us gets undone on the very next validate().
+ */
+private const val MIN_FRAME_WIDTH = FIXED_WIDTH
+private const val MIN_FRAME_HEIGHT = FIXED_HEIGHT
+
+/**
+ * AWT frame size for the current viewport: the viewport's aspect ratio at [FRAME_HEIGHT]
+ * logical pixels tall, scaled up if that lands under the client's minimum size.
+ *
+ * The upscale is what makes portrait work. A portrait viewport (the Fold's inner screen,
+ * or any phone held upright) derives a width well under 765, which ClientUI's Layout
+ * refuses: it resizes the frame back up, we shrink it again on the next frame, and the
+ * window size oscillates. The bitmap on screen then belongs to one size while
+ * [composeToWindow] maps taps against another, so every touch lands somewhere it
+ * shouldn't. Asking for a size the layout accepts keeps the frame still in both
+ * orientations.
+ */
+private fun frameSizeFor(boxSize: IntSize): IntSize {
+    if (boxSize.width <= 0 || boxSize.height <= 0) {
+        return IntSize(FRAME_WIDTH_FALLBACK, FRAME_HEIGHT)
+    }
+    val w = (FRAME_HEIGHT.toLong() * boxSize.width / boxSize.height).toInt().coerceAtLeast(1)
+    val h = FRAME_HEIGHT
+    val upscale = maxOf(
+        1f,
+        MIN_FRAME_WIDTH / w.toFloat(),
+        MIN_FRAME_HEIGHT / h.toFloat(),
+    )
+    if (upscale <= 1f) return IntSize(w, h)
+    return IntSize(
+        kotlin.math.ceil(w * upscale).toInt(),
+        kotlin.math.ceil(h * upscale).toInt(),
+    )
 }
 
 @Composable
@@ -80,8 +114,9 @@ fun AndroidApp() {
     var booted by remember { mutableStateOf(false) }
 
     if (!booted) {
-        net.runelite.mp.account.AccountPicker(onSelect = { acc ->
-            launcher.accountFile = acc.file
+        net.runelite.mp.account.AccountPicker(onSelect = { selection ->
+            launcher.credentials = selection.credentials
+            launcher.accountFile = selection.credentialsFile
             launcher.launch(scope)
             booted = true
         })
@@ -134,6 +169,12 @@ private fun GameViewport(modifier: Modifier = Modifier) {
     // channel mode matches the active renderer). Default off so a stale Compose snapshot
     // doesn't render the SurfaceView before the plugin has actually engaged.
     var glesActive by remember { mutableStateOf(false) }
+    // Size of the AWT frame that produced the bitmap currently on screen. Everything that
+    // maps between Compose pixels and window pixels — the letterbox math in
+    // [composeToWindow] and the GLES SurfaceView's placement — has to agree with the
+    // bitmap the user is actually looking at, not with whatever the frame happens to
+    // measure at the instant a finger lands.
+    var frameSize by remember { mutableStateOf(IntSize.Zero) }
 
     LaunchedEffect(Unit) {
         var nextDumpAt = 0L
@@ -155,8 +196,9 @@ private fun GameViewport(modifier: Modifier = Modifier) {
             val targetW: Int
             val targetH: Int
             if (gles) {
-                targetW = frameWidthFor(boxSize)
-                targetH = FRAME_HEIGHT
+                val target = frameSizeFor(boxSize)
+                targetW = target.width
+                targetH = target.height
             } else {
                 targetW = FIXED_WIDTH
                 targetH = FIXED_HEIGHT
@@ -233,6 +275,13 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                 }
                 bmp.setPixels(src.backingArray(), 0, w, 0, 0, w, h)
                 imageBitmap = bmp.asImageBitmap()
+                if (frameSize.width != w || frameSize.height != h) {
+                    frameSize = IntSize(w, h)
+                }
+                // Mirrored out of composition so the pointer helpers — plain top-level
+                // functions called from gesture coroutines — can read it too.
+                RenderedFrame.width = w
+                RenderedFrame.height = h
             }
             canvasRect = java.awt.Canvas.latest()?.boundsInWindow
         }
@@ -421,9 +470,15 @@ private fun GameViewport(modifier: Modifier = Modifier) {
         // and the SurfaceView's last EGL frame stays hidden.
         val rect = canvasRect
         val density = LocalDensity.current
-        if (glesActive && rect != null && boxSize.width > 0 && boxSize.height > 0) {
-            val ww = frameWidthFor(boxSize).toFloat()
-            val wh = FRAME_HEIGHT.toFloat()
+        if (glesActive && rect != null && boxSize.width > 0 && boxSize.height > 0 &&
+            frameSize.width > 0 && frameSize.height > 0
+        ) {
+            // Use the rendered frame's size, not the size we last *asked* the frame to
+            // be: `rect` is expressed in that frame's coordinate space, and the Image
+            // below is laid out from that same bitmap. Mixing the two puts the GL
+            // surface somewhere the software chrome around it doesn't expect.
+            val ww = frameSize.width.toFloat()
+            val wh = frameSize.height.toFloat()
             val scale = minOf(boxSize.width / ww, boxSize.height / wh)
             val padX = ((boxSize.width - ww * scale) / 2f).toInt()
             val padY = ((boxSize.height - wh * scale) / 2f).toInt()
@@ -634,22 +689,37 @@ private const val BUTTON1 = java.awt.event.MouseEvent.BUTTON1
 private const val BUTTON2 = java.awt.event.MouseEvent.BUTTON2
 private const val BUTTON3 = java.awt.event.MouseEvent.BUTTON3
 
+/** Dimensions of the AWT frame behind the bitmap currently on screen, published by
+ *  [GameViewport]'s render loop. Zero until the first frame has been copied out. */
+private object RenderedFrame {
+    @Volatile var width = 0
+    @Volatile var height = 0
+}
+
 /** Maps a Compose offset (Box-local pixels) into the AWT Window's coordinate space,
  *  undoing ContentScale.Fit's letterbox. Returns null when the tap lands outside the
- *  rendered bitmap (in the black letterbox margins). */
+ *  rendered bitmap (in the black letterbox margins).
+ *
+ *  The letterbox is undone against the size of the frame that produced the *displayed*
+ *  bitmap, since that's what ContentScale.Fit laid out against. The live window is only
+ *  consulted to rescale the result, which is a no-op in the steady state and keeps a tap
+ *  roughly right if a resize lands between the last blit and the touch. */
 private fun composeToWindow(offset: Offset, boxSize: IntSize, window: java.awt.Window): Pair<Int, Int>? {
     if (boxSize.width <= 0 || boxSize.height <= 0) return null
-    val ww = window.width.toFloat().coerceAtLeast(1f)
-    val wh = window.height.toFloat().coerceAtLeast(1f)
+    val winW = window.width
+    val winH = window.height
+    if (winW <= 0 || winH <= 0) return null
+    val ww = (if (RenderedFrame.width > 0) RenderedFrame.width else winW).toFloat()
+    val wh = (if (RenderedFrame.height > 0) RenderedFrame.height else winH).toFloat()
     val scale = minOf(boxSize.width / ww, boxSize.height / wh)
     if (scale <= 0f) return null
     val drawnW = ww * scale
     val drawnH = wh * scale
     val padX = (boxSize.width - drawnW) / 2f
     val padY = (boxSize.height - drawnH) / 2f
-    val x = ((offset.x - padX) / scale).toInt()
-    val y = ((offset.y - padY) / scale).toInt()
-    if (x < 0 || y < 0 || x >= window.width || y >= window.height) return null
+    val x = (((offset.x - padX) / scale) * (winW / ww)).toInt()
+    val y = (((offset.y - padY) / scale) * (winH / wh)).toInt()
+    if (x < 0 || y < 0 || x >= winW || y >= winH) return null
     return x to y
 }
 

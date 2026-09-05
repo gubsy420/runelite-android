@@ -105,8 +105,62 @@ cargo {
 
 // rust-android-gradle doesn't hook itself into AGP's variant pipeline automatically;
 // we need to add cargoBuild as a dependency of merge[Variant]JniLibFolders.
+val awtNativeDeclarations = layout.projectDirectory
+    .file("src/main/kotlin/net/runelite/awt/AwtNative.kt").asFile
+
+// Where cargoBuild drops the built .so per ABI. rust-android-gradle already adds this as
+// a jniLibs source folder — adding it again produces "Duplicate resources" — but AGP's
+// merge task does not pick it up for up-to-date checking, so `dependsOn` alone gets you
+// correct *ordering* and a permanently stale *result*: cargoBuild recompiles, the merge
+// reports UP-TO-DATE, and the APK keeps whatever .so it packaged the first time.
+//
+// That is not hypothetical. fillOval/drawOval/fillRoundRect were added to rust/src and
+// AwtNative.kt on 2026-08-24 and never reached a build; every APK for the next two weeks
+// shipped the library from 2026-08-19, and the first overlay to draw an ellipse died with
+// `UnsatisfiedLinkError: No implementation found for ... AwtNative.fillOval`. Declaring
+// the directory as an explicit input is what makes the merge notice.
+val rustJniLibs = layout.buildDirectory.dir("rustJniLibs/android")
+
 tasks.matching { it.name.matches(Regex("merge.*JniLibFolders")) }.configureEach {
     dependsOn(tasks.withType<CargoBuildTask>())
+    inputs.dir(rustJniLibs)
+        .withPropertyName("rustJniLibs")
+        .withPathSensitivity(org.gradle.api.tasks.PathSensitivity.RELATIVE)
+        .optional(true)
+
+    // Fail the build if the packaged library doesn't export every native method
+    // AwtNative.kt declares. A missing symbol is otherwise invisible until the exact
+    // draw call that needs it runs, which can be deep into a play session and reads as a
+    // crash in whichever overlay happened to trigger it.
+    val mergedOutput = outputs.files
+    val declarationSource = awtNativeDeclarations
+    doLast {
+        val declared = Regex("""external\s+fun\s+(\w+)""")
+            .findAll(declarationSource.readText())
+            .map { it.groupValues[1] }
+            .toSortedSet()
+        if (declared.isEmpty()) return@doLast
+
+        val libs = mergedOutput.asFileTree
+            .matching { include("**/librunelite_awt_native.so") }
+            .files
+        require(libs.isNotEmpty()) {
+            "No librunelite_awt_native.so in the merged JNI libs — cargoBuild produced nothing."
+        }
+        for (lib in libs) {
+            // ISO-8859-1 round-trips arbitrary bytes, and the symbol names are ASCII.
+            val text = String(lib.readBytes(), Charsets.ISO_8859_1)
+            val missing = declared.filterNot { text.contains("Java_net_runelite_awt_AwtNative_$it") }
+            require(missing.isEmpty()) {
+                "${lib.parentFile.name}/${lib.name} is missing JNI symbol(s) $missing declared in " +
+                    "AwtNative.kt. The packaged native library is out of date with rust/src — " +
+                    "check that cargoBuild ran and that its output is a jniLibs source dir."
+            }
+        }
+        logger.lifecycle(
+            "verified ${declared.size} AwtNative JNI symbol(s) across ${libs.size} ABI(s)"
+        )
+    }
 }
 
 // Bytecode-scan the injected RuneLite jar for every java.awt.* reference, then diff

@@ -1,6 +1,7 @@
 package net.runelite.mp.account
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,13 +20,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +37,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,30 +49,87 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * The pre-boot Compose screen that lets the user pick which credentials file to launch
- * with. Sits in front of [net.runelite.mp.RuneLiteLauncher] — when the user taps an
- * account card we call [onSelect] and the host begins the normal RL boot flow with that
- * account's properties seeded into the env.
+ * What the picker hands back to the host so it can seed the launcher env. Exactly one of
+ * [credentials] / [credentialsFile] is set: signed-in Jagex accounts produce the `JX_*`
+ * map in memory, imported files are read at boot by
+ * [net.runelite.mp.RuneLiteLauncher.seedLauncherCredentials].
+ */
+internal class AccountSelection(
+    val credentials: Map<String, String>? = null,
+    val credentialsFile: java.io.File? = null,
+)
+
+/**
+ * The pre-boot Compose screen that picks what to launch with. Sits in front of
+ * [net.runelite.mp.RuneLiteLauncher]; tapping a character calls [onSelect] and the host
+ * begins the normal RL boot flow with that account's `JX_*` values seeded into the env.
  *
- * Layout: branded header, a card per saved account (display name + account type pill +
- * total level + last refresh), and two action rows at the bottom — Import (opens the
- * SAF document picker) and a status line for the currently-active account refresh.
+ * Two sources feed it:
+ *  - **Jagex accounts** signed in through [JagexLoginScreen]. One card per Jagex account,
+ *    expanding to the characters on it — the same account → character shape the desktop
+ *    Jagex launcher uses, and the reason multiple accounts can coexist here at all.
+ *  - **Imported credentials**, the older path: a `credentials.properties` copied off a
+ *    desktop launcher via the SAF picker. Kept as the escape hatch for anyone who'd
+ *    rather not sign in on the phone, and so existing setups keep working.
  */
 @Composable
-internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
+internal fun AccountPicker(onSelect: (AccountSelection) -> Unit)
+{
+    val context = LocalContext.current
+    // Sign-in runs in its own Activity rather than inline here — see [JagexLoginActivity]
+    // for why (an intent filter for the `jagex:` return scheme, which only an Activity can
+    // own).
+    //
+    // Reloading is driven by our own RESUMED, not by an activity result. JagexLoginActivity
+    // is launchMode=singleTask so the browser's `jagex:` return reaches the instance that
+    // is already running the flow, and Android answers startActivityForResult for a
+    // new-task activity with an immediate RESULT_CANCELED — the callback would fire before
+    // sign-in even began and never again. Coming back to the foreground is the signal that
+    // actually means "something may have changed".
+    var reloadKey by remember { mutableStateOf(0) }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) reloadKey++
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    PickerContent(
+        reloadKey = reloadKey,
+        onAddAccount = {
+            context.startActivity(Intent(context, JagexLoginActivity::class.java))
+        },
+        onSelect = onSelect,
+    )
+}
+
+@Composable
+private fun PickerContent(
+    reloadKey: Int,
+    onAddAccount: () -> Unit,
+    onSelect: (AccountSelection) -> Unit,
+)
 {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    var accounts by remember { mutableStateOf<List<AccountStore.Account>>(emptyList()) }
+    var jagexAccounts by remember { mutableStateOf<List<JagexAccount>>(emptyList()) }
+    var imported by remember { mutableStateOf<List<AccountStore.Account>>(emptyList()) }
+    var expanded by remember { mutableStateOf<String?>(null) }
     var status by remember { mutableStateOf<String?>(null) }
     var busyId by remember { mutableStateOf<String?>(null) }
 
     fun refreshList()
     {
-        accounts = AccountStore.list(context)
+        jagexAccounts = JagexAccountStore.list(context)
+        imported = AccountStore.list(context)
+        // With a single Jagex account there's nothing to choose between, so open it.
+        if (expanded == null && jagexAccounts.size == 1) expanded = jagexAccounts.first().sub
     }
 
-    LaunchedEffect(Unit) { refreshList() }
+    // Keyed on reloadKey so returning from the sign-in Activity re-reads the store.
+    LaunchedEffect(reloadKey) { refreshList() }
 
     // SAF document picker. Returns a content:// URI; we read the bytes ourselves so we
     // can validate the file *before* it lands in our app-private dir.
@@ -106,6 +166,56 @@ internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
         }
     }
 
+    /** Renew the session before handing the account off — a stale JX_SESSION_ID is the
+     *  usual reason a launch that worked yesterday lands back on the login screen. */
+    fun launchCharacter(account: JagexAccount, character: JagexCharacter)
+    {
+        busyId = account.sub
+        status = "Preparing ${character.displayName}…"
+        scope.launch {
+            val prepared = withContext(Dispatchers.IO) {
+                runCatching { JagexAccountStore.prepare(context, account) }
+            }
+            busyId = null
+            val ready = prepared.getOrElse { t ->
+                status = t.message ?: "Couldn't refresh this account. Sign in again."
+                refreshList()
+                return@launch
+            }
+            // prepare() re-lists characters; keep the tapped one if it survived.
+            val target = ready.characters.firstOrNull { it.accountId == character.accountId } ?: character
+            JagexAccountStore.setLastCharacterId(context, target.accountId)
+            status = null
+            onSelect(AccountSelection(credentials = JagexAccountStore.credentials(ready, target)))
+        }
+    }
+
+    fun refreshAccount(account: JagexAccount)
+    {
+        busyId = account.sub
+        status = "Refreshing ${account.displayName}…"
+        scope.launch {
+            val result = withContext(Dispatchers.IO) {
+                runCatching { JagexAccountStore.prepare(context, account) }
+            }
+            busyId = null
+            status = result.exceptionOrNull()?.let { it.message ?: "Refresh failed." }
+            refreshList()
+        }
+    }
+
+    fun signOut(account: JagexAccount)
+    {
+        scope.launch {
+            withContext(Dispatchers.IO) {
+                JagexAuth.revokeToken(account.accessToken)
+                JagexAccountStore.delete(context, account)
+            }
+            if (expanded == account.sub) expanded = null
+            refreshList()
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -127,41 +237,49 @@ internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                "Pick the account to launch with",
+                "Pick the character to launch with",
                 color = TextSecondary,
                 fontSize = 13.sp,
             )
             Spacer(Modifier.height(24.dp))
 
-            if (accounts.isEmpty())
+            if (jagexAccounts.isEmpty() && imported.isEmpty())
             {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(8.dp))
-                        .padding(20.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        "No accounts yet. Import a credentials.properties file from your phone's storage to get started.",
-                        color = TextSecondary,
-                        fontSize = 12.sp,
-                    )
-                }
+                EmptyState()
+                Spacer(Modifier.height(16.dp))
             }
-            else
+
+            val lastCharacter = JagexAccountStore.lastCharacterId(context)
+            for (account in jagexAccounts)
             {
-                // List of saved accounts. Use a non-scrolling Column inside the outer
-                // verticalScroll — there will rarely be more than a handful of accounts
-                // and nested LazyColumn inside a scroll parent is a known compose tarpit.
-                for (acc in accounts)
+                JagexAccountCard(
+                    account = account,
+                    expanded = expanded == account.sub,
+                    busy = busyId == account.sub,
+                    lastCharacterId = lastCharacter,
+                    onToggle = { expanded = if (expanded == account.sub) null else account.sub },
+                    onLaunch = { launchCharacter(account, it) },
+                    onRefresh = { refreshAccount(account) },
+                    onSignOut = { signOut(account) },
+                )
+                Spacer(Modifier.height(10.dp))
+            }
+
+            PrimaryButton("+ Add Jagex account", onClick = onAddAccount)
+
+            if (imported.isNotEmpty())
+            {
+                Spacer(Modifier.height(28.dp))
+                SectionLabel("Imported credentials")
+                Spacer(Modifier.height(8.dp))
+                for (acc in imported)
                 {
-                    AccountCard(
+                    ImportedAccountCard(
                         account = acc,
                         busy = acc.id == busyId,
                         onLaunch = {
                             AccountStore.setActive(context, acc.id)
-                            onSelect(acc)
+                            onSelect(AccountSelection(credentialsFile = acc.file))
                         },
                         onRefresh = {
                             busyId = acc.id
@@ -182,8 +300,10 @@ internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
                 }
             }
 
-            Spacer(Modifier.height(16.dp))
-            ImportButton { importLauncher.launch(arrayOf("text/plain", "*/*")) }
+            Spacer(Modifier.height(12.dp))
+            OutlineButton("Import credentials.properties") {
+                importLauncher.launch(arrayOf("text/plain", "*/*"))
+            }
             if (status != null)
             {
                 Spacer(Modifier.height(12.dp))
@@ -191,7 +311,8 @@ internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
             }
             Spacer(Modifier.height(12.dp))
             Text(
-                "Files are stored in this app's private storage and never leave the device.",
+                "Accounts and tokens are stored in this app's private storage and are only " +
+                    "ever sent back to Jagex.",
                 color = TextDisabled,
                 fontSize = 10.sp,
             )
@@ -200,7 +321,168 @@ internal fun AccountPicker(onSelect: (AccountStore.Account) -> Unit)
 }
 
 @Composable
-private fun AccountCard(
+private fun EmptyState()
+{
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(8.dp))
+            .padding(20.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            "No accounts yet. Sign in with your Jagex account to pull in its characters, " +
+                "or import a credentials.properties from a desktop launcher.",
+            color = TextSecondary,
+            fontSize = 12.sp,
+        )
+    }
+}
+
+@Composable
+private fun SectionLabel(text: String)
+{
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(text.uppercase(), color = TextDisabled, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.size(8.dp))
+        Box(Modifier.weight(1f).height(1.dp).background(SurfaceBorder))
+    }
+}
+
+@Composable
+private fun JagexAccountCard(
+    account: JagexAccount,
+    expanded: Boolean,
+    busy: Boolean,
+    lastCharacterId: String?,
+    onToggle: () -> Unit,
+    onLaunch: (JagexCharacter) -> Unit,
+    onRefresh: () -> Unit,
+    onSignOut: () -> Unit,
+)
+{
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(8.dp))
+            .background(CardBg)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(8.dp)),
+    ) {
+        Column(modifier = Modifier.padding(14.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth().clickable(onClick = onToggle),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        account.displayName,
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    Text(
+                        when (account.characters.size)
+                        {
+                            0 -> "No characters found"
+                            1 -> "1 character"
+                            else -> "${account.characters.size} characters"
+                        },
+                        color = TextSecondary,
+                        fontSize = 12.sp,
+                    )
+                }
+                Text(
+                    if (busy) "…" else if (expanded) "▾" else "▸",
+                    color = TextSecondary,
+                    fontSize = 16.sp,
+                )
+            }
+
+            if (expanded)
+            {
+                Spacer(Modifier.height(10.dp))
+                if (account.characters.isEmpty())
+                {
+                    Text(
+                        "No characters on this account yet. Refresh once you've created one.",
+                        color = TextSecondary,
+                        fontSize = 11.sp,
+                    )
+                }
+                for (character in account.characters)
+                {
+                    CharacterRow(
+                        character = character,
+                        highlight = character.accountId == lastCharacterId,
+                        enabled = !busy,
+                        onLaunch = { onLaunch(character) },
+                    )
+                    Spacer(Modifier.height(6.dp))
+                }
+                Spacer(Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        if (account.lastRefreshedEpochMs <= 0) "Never refreshed"
+                        else "Refreshed ${relativeTime(account.lastRefreshedEpochMs)}",
+                        color = TextDisabled,
+                        fontSize = 10.sp,
+                        modifier = Modifier.weight(1f),
+                    )
+                    MiniBtn("Refresh", onRefresh)
+                    Spacer(Modifier.size(6.dp))
+                    MiniBtn("Sign out", onSignOut)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CharacterRow(
+    character: JagexCharacter,
+    highlight: Boolean,
+    enabled: Boolean,
+    onLaunch: () -> Unit,
+)
+{
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(6.dp))
+            .background(if (highlight) MediumGray else Color(0xFF171717))
+            .clickable(enabled = enabled, onClick = onLaunch)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            character.displayName,
+            color = Color.White,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f),
+        )
+        if (highlight)
+        {
+            Text("last used", color = TextDisabled, fontSize = 10.sp)
+            Spacer(Modifier.size(8.dp))
+        }
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(5.dp))
+                .background(BrandOrange)
+                .padding(horizontal = 12.dp, vertical = 5.dp),
+        ) {
+            Text("Launch", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+        }
+    }
+}
+
+@Composable
+private fun ImportedAccountCard(
     account: AccountStore.Account,
     busy: Boolean,
     onLaunch: () -> Unit,
@@ -315,20 +597,36 @@ private fun MiniBtn(label: String, onClick: () -> Unit)
 }
 
 @Composable
-private fun ImportButton(onClick: () -> Unit)
+private fun PrimaryButton(label: String, onClick: () -> Unit)
 {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .border(1.dp, BrandOrange, RoundedCornerShape(8.dp))
+            .background(BrandOrange)
             .clickable(onClick = onClick)
             .padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text("+ Import credentials.properties", color = BrandOrange, fontSize = 13.sp,
-            fontWeight = FontWeight.SemiBold)
+        Text(label, color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+    }
+}
+
+@Composable
+private fun OutlineButton(label: String, onClick: () -> Unit)
+{
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(8.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(8.dp))
+            .clickable(onClick = onClick)
+            .padding(vertical = 10.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(label, color = TextSecondary, fontSize = 12.sp)
     }
 }
 
@@ -363,13 +661,3 @@ private fun relativeTime(epochMs: Long): String
         }
     }
 }
-
-// Palette — kept private to this file so AccountPicker can ship before WindowImpl mounts
-// and we don't take a dependency on the chrome's RlPalette via the same import path.
-private val BgDarker = Color(0xFF111111)
-private val CardBg = Color(0xFF1E1E1E)
-private val SurfaceBorder = Color(0xFF3A3A3A)
-private val MediumGray = Color(0xFF3C3C3C)
-private val BrandOrange = Color(0xFFDC8A00)
-private val TextSecondary = Color(0xFFB0B0B0)
-private val TextDisabled = Color(0xFF707070)

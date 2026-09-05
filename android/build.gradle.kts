@@ -98,7 +98,44 @@ configurations.configureEach {
     exclude(group = "org.lwjgl")
 }
 
-val target = "runelite-1.12.37-injected-32956056058.238-prop"
+val target = "runelite-1.12.38-injected-33653951311.245"
+
+// --------------------------------------------------------------------------------------
+// rewriteLauncherEnv: makes the injected client read its JX_* launcher credentials from
+// system properties instead of the applet-parameter lookup it ships with.
+//
+// The stock client reads each of JX_ACCESS_TOKEN / JX_REFRESH_TOKEN / JX_SESSION_ID /
+// JX_CHARACTER_ID / JX_DISPLAY_NAME in `client.init` as
+//
+//     ldc "JX_SESSION_ID"; invokestatic client.<obf>(Ljava/lang/String;)Ljava/lang/String;
+//
+// where `<obf>` resolves to the applet's getParameter — which returns null on Android,
+// because there's no browser plugin handing us a <param> tag. RuneLiteLauncher instead
+// seeds the values with System.setProperty before RuneLite.main runs, so each of those
+// call sites is rewritten to java/lang/System.getProperty. Same descriptor, same stack
+// effect, so nothing downstream has to be recomputed.
+//
+// This replaces what used to be a hand-patched `-prop` copy of the jar checked into
+// data/; drop a new revision's jar in, point `target` at it, and the patch reapplies
+// itself. The obfuscated helper is renamed every revision (it was `gt` in 1.12.37 and
+// `lv` in 1.12.38), which is why the match is on the shape of the call rather than a name.
+// --------------------------------------------------------------------------------------
+val rewriteLauncherEnv = if (androidSdkAvailable) {
+    tasks.register<RewriteLauncherEnvTask>("rewriteLauncherEnv") {
+        inputJar.set(rootProject.file("data/$target.jar"))
+        outputJar.set(layout.buildDirectory.file("desugared/injected-client-prop.jar"))
+        classEntry.set("client.class")
+        launcherKeys.set(
+            listOf(
+                "JX_ACCESS_TOKEN",
+                "JX_REFRESH_TOKEN",
+                "JX_SESSION_ID",
+                "JX_CHARACTER_ID",
+                "JX_DISPLAY_NAME",
+            )
+        )
+    }
+} else null
 
 // --------------------------------------------------------------------------------------
 // desugarStringConcat: rewrites invokedynamic `makeConcatWithConstants` sites into calls
@@ -113,7 +150,7 @@ val target = "runelite-1.12.37-injected-32956056058.238-prop"
 // --------------------------------------------------------------------------------------
 val desugarStringConcat = if (androidSdkAvailable) {
     tasks.register<DesugarStringConcatTask>("desugarStringConcat") {
-        inputJar.set(rootProject.file("data/$target.jar"))
+        inputJar.set(rewriteLauncherEnv!!.flatMap { it.outputJar })
         outputJar.set(layout.buildDirectory.file("desugared/injected-client.jar"))
         helperOwner.set("net/runelite/mp/util/IndyConcat")
     }
@@ -336,7 +373,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 23
+            val versionPatch = 24
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
@@ -537,6 +574,217 @@ if (androidSdkAvailable) {
             "**/*.dylib.sha1",
             "google/protobuf/**",
         )
+    }
+}
+
+// Implementation class for rewriteLauncherEnv — registered above.
+
+abstract class RewriteLauncherEnvTask : org.gradle.api.DefaultTask() {
+    @get:org.gradle.api.tasks.InputFile
+    abstract val inputJar: org.gradle.api.file.RegularFileProperty
+
+    @get:org.gradle.api.tasks.OutputFile
+    abstract val outputJar: org.gradle.api.file.RegularFileProperty
+
+    /** Jar entry to patch. Every other entry is copied through unchanged. */
+    @get:org.gradle.api.tasks.Input
+    abstract val classEntry: org.gradle.api.provider.Property<String>
+
+    /** Launcher credential names whose lookups get redirected to System.getProperty. */
+    @get:org.gradle.api.tasks.Input
+    abstract val launcherKeys: org.gradle.api.provider.ListProperty<String>
+
+    private companion object {
+        const val GETTER_DESC = "(Ljava/lang/String;)Ljava/lang/String;"
+        const val SYSTEM = "java/lang/System"
+    }
+
+    @org.gradle.api.tasks.TaskAction
+    fun run() {
+        val inFile = inputJar.get().asFile
+        val outFile = outputJar.get().asFile
+        val entryName = classEntry.get()
+        val keys = launcherKeys.get().toSet()
+        outFile.parentFile.mkdirs()
+
+        var patched = false
+        val rewrittenKeys = sortedSetOf<String>()
+        val touchedMethods = linkedSetOf<String>()
+
+        JarFile(inFile).use { input ->
+            JarOutputStream(outFile.outputStream().buffered()).use { output ->
+                val entries = input.entries()
+                while (entries.hasMoreElements()) {
+                    val entry = entries.nextElement()
+                    if (entry.isDirectory) continue
+                    val bytes = input.getInputStream(entry).use { it.readBytes() }
+                    output.putNextEntry(JarEntry(entry.name))
+                    if (entry.name == entryName) {
+                        patched = true
+                        output.write(rewrite(bytes, keys, rewrittenKeys, touchedMethods))
+                    } else {
+                        output.write(bytes)
+                    }
+                    output.closeEntry()
+                }
+            }
+        }
+
+        // Both checks below are hard failures rather than warnings: an unpatched jar boots
+        // fine and only falls over at the login screen, which is a miserable thing to
+        // debug. If a revision changes the shape of these call sites, the build is what
+        // should tell you.
+        require(patched) { "rewriteLauncherEnv: no '$entryName' entry in ${inFile.name}" }
+        val missing = keys - rewrittenKeys
+        require(missing.isEmpty()) {
+            "rewriteLauncherEnv: nothing rewritten for ${missing.sorted()} in $entryName. " +
+                "The client's credential reads changed shape this revision — disassemble " +
+                "client.init and re-check the ldc + invokestatic pattern."
+        }
+        logger.lifecycle(
+            "rewriteLauncherEnv: redirected launcher credential lookups to " +
+                "System.getProperty in $entryName — keys ${rewrittenKeys.toList()}, " +
+                "methods ${touchedMethods.toList()}"
+        )
+    }
+
+    /**
+     * Rewrites `ldc "<KEY>"` + `invokestatic <obf>(String)String` into
+     * `ldc "<KEY>"` + `invokestatic java/lang/System.getProperty(String)String`.
+     *
+     * The two instructions have to be adjacent, so any instruction or label in between
+     * clears the pending match — otherwise a stale key could latch onto an unrelated
+     * `(String)String` static further down the method. Copying the reader's constant pool
+     * (`ClassWriter(cr, 0)`) leaves the rest of the class alone and skips frame and
+     * max-stack recomputation, which ASM couldn't do here anyway: the injected jar
+     * references obfuscated types that aren't loadable from the buildscript classloader.
+     * The substitution is stack-neutral, so there's nothing to recompute.
+     */
+    private fun rewrite(
+        bytes: ByteArray,
+        keys: Set<String>,
+        rewrittenKeys: MutableSet<String>,
+        touchedMethods: MutableSet<String>,
+    ): ByteArray {
+        val cr = ClassReader(bytes)
+        val cw = ClassWriter(cr, 0)
+        cr.accept(object : ClassVisitor(Opcodes.ASM9, cw) {
+            override fun visitMethod(
+                access: Int,
+                name: String,
+                descriptor: String,
+                signature: String?,
+                exceptions: Array<out String>?,
+            ): MethodVisitor {
+                val delegate = super.visitMethod(access, name, descriptor, signature, exceptions)
+                return object : MethodVisitor(Opcodes.ASM9, delegate) {
+                    private var pendingKey: String? = null
+
+                    override fun visitLdcInsn(value: Any?) {
+                        super.visitLdcInsn(value)
+                        pendingKey = (value as? String)?.takeIf { it in keys }
+                    }
+
+                    override fun visitMethodInsn(
+                        opcode: Int,
+                        owner: String,
+                        mName: String,
+                        mDescriptor: String,
+                        isInterface: Boolean,
+                    ) {
+                        val key = pendingKey
+                        pendingKey = null
+                        if (key != null &&
+                            opcode == Opcodes.INVOKESTATIC &&
+                            mDescriptor == GETTER_DESC &&
+                            owner != SYSTEM
+                        ) {
+                            rewrittenKeys.add(key)
+                            touchedMethods.add(name)
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, SYSTEM, "getProperty", GETTER_DESC, false)
+                            return
+                        }
+                        super.visitMethodInsn(opcode, owner, mName, mDescriptor, isInterface)
+                    }
+
+                    // Anything else between the ldc and the call breaks the pattern.
+                    override fun visitInsn(opcode: Int) {
+                        pendingKey = null
+                        super.visitInsn(opcode)
+                    }
+
+                    override fun visitIntInsn(opcode: Int, operand: Int) {
+                        pendingKey = null
+                        super.visitIntInsn(opcode, operand)
+                    }
+
+                    override fun visitVarInsn(opcode: Int, varIndex: Int) {
+                        pendingKey = null
+                        super.visitVarInsn(opcode, varIndex)
+                    }
+
+                    override fun visitTypeInsn(opcode: Int, type: String) {
+                        pendingKey = null
+                        super.visitTypeInsn(opcode, type)
+                    }
+
+                    override fun visitFieldInsn(opcode: Int, owner: String, fName: String, fDescriptor: String) {
+                        pendingKey = null
+                        super.visitFieldInsn(opcode, owner, fName, fDescriptor)
+                    }
+
+                    override fun visitInvokeDynamicInsn(
+                        iName: String,
+                        iDescriptor: String,
+                        handle: Handle,
+                        vararg args: Any?,
+                    ) {
+                        pendingKey = null
+                        super.visitInvokeDynamicInsn(iName, iDescriptor, handle, *args)
+                    }
+
+                    override fun visitJumpInsn(opcode: Int, label: org.objectweb.asm.Label) {
+                        pendingKey = null
+                        super.visitJumpInsn(opcode, label)
+                    }
+
+                    override fun visitLabel(label: org.objectweb.asm.Label) {
+                        pendingKey = null
+                        super.visitLabel(label)
+                    }
+
+                    override fun visitIincInsn(varIndex: Int, increment: Int) {
+                        pendingKey = null
+                        super.visitIincInsn(varIndex, increment)
+                    }
+
+                    override fun visitTableSwitchInsn(
+                        min: Int,
+                        max: Int,
+                        dflt: org.objectweb.asm.Label,
+                        vararg labels: org.objectweb.asm.Label,
+                    ) {
+                        pendingKey = null
+                        super.visitTableSwitchInsn(min, max, dflt, *labels)
+                    }
+
+                    override fun visitLookupSwitchInsn(
+                        dflt: org.objectweb.asm.Label,
+                        switchKeys: IntArray?,
+                        labels: Array<out org.objectweb.asm.Label>?,
+                    ) {
+                        pendingKey = null
+                        super.visitLookupSwitchInsn(dflt, switchKeys, labels)
+                    }
+
+                    override fun visitMultiANewArrayInsn(arrayDescriptor: String, numDimensions: Int) {
+                        pendingKey = null
+                        super.visitMultiANewArrayInsn(arrayDescriptor, numDimensions)
+                    }
+                }
+            }
+        }, 0)
+        return cw.toByteArray()
     }
 }
 

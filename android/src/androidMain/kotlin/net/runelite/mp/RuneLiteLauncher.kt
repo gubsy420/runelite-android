@@ -47,6 +47,13 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
 
     private var job: Job? = null
 
+    /** `JX_*` values for a Jagex account signed in through
+     *  [net.runelite.mp.account.JagexLoginScreen]. Set by the Compose
+     *  [net.runelite.mp.account.AccountPicker] before calling launch(); takes precedence
+     *  over [accountFile] when both are set. Held in memory only — the tokens are already
+     *  persisted by [net.runelite.mp.account.JagexAccountStore]. */
+    var credentials: Map<String, String>? = null
+
     /** Account whose credentials.properties the launcher should seed into the env on
      *  the next [launch]. The Compose [net.runelite.mp.account.AccountPicker] sets this
      *  before calling launch(); null falls back to the legacy `assets/credentials.properties`
@@ -217,8 +224,20 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
     // is loaded.
     private fun seedLauncherCredentials() {
         val ctx = context ?: return
-        // Prefer the explicit AccountPicker selection. Falling back to the asset preserves
-        // the historical single-account boot path for builds that still ship one.
+        // Order of preference: a Jagex account signed in on-device, then an imported
+        // credentials.properties, then the legacy asset (which preserves the historical
+        // single-account boot path for builds that still ship one).
+        val direct = credentials
+        if (direct != null && direct.isNotEmpty()) {
+            var seeded = 0
+            for ((key, value) in direct) {
+                if (value.isEmpty()) continue
+                System.setProperty(key, value)
+                seeded++
+            }
+            logLine("seeded $seeded launcher env var(s) from signed-in Jagex account")
+            return
+        }
         val source = accountFile
         val props = try {
             if (source != null && source.exists()) {
