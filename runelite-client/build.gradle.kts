@@ -168,6 +168,26 @@ tasks.processResources {
         filter { it.replace("\${git.commit.id.abbrev}", commit.toString().trim()) }
         filter { it.replace("\${git.dirty}", dirty.toString().isNotBlank().toString()) }
     }
+
+    // Substitution here is plain string replacement, so a token with no matching filter
+    // is copied through verbatim and nothing downstream complains — the client just ends
+    // up with a literal "${project.version}" sitting inside a URL. Fail the build instead,
+    // which is also what keeps `runelite.pluginhub.version` and `runelite.api.base` honest
+    // now that they're derived from the project version rather than typed out by hand.
+    doLast {
+        val generated = File(destinationDir, "net/runelite/client/runelite.properties")
+        if (generated.isFile) {
+            val unresolved = Regex("\\$\\{[^}]+\\}")
+                .findAll(generated.readText())
+                .map { it.value }
+                .distinct()
+                .toList()
+            require(unresolved.isEmpty()) {
+                "runelite.properties shipped unsubstituted token(s) $unresolved — " +
+                    "add a filter for them in processResources."
+            }
+        }
+    }
 }
 
 tasks.compileJava {
