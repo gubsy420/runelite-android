@@ -169,14 +169,23 @@ internal object JagexAccountStore
     }
 
     /**
-     * The `JX_*` set the patched client reads at login, matching key-for-key what a
-     * desktop Jagex launcher writes into `credentials.properties`. The client only needs
-     * the session/character/display-name triple; the tokens are included so an imported
-     * file and a signed-in account are indistinguishable downstream.
+     * The `JX_*` set the patched client reads at login.
+     *
+     * Only three, and the two that are missing are missing on purpose. A desktop
+     * `credentials.properties` also carries `JX_ACCESS_TOKEN` and `JX_REFRESH_TOKEN`, but
+     * those are issued to the *desktop launcher's* OAuth client — and the client redeems
+     * them at `shield/oauth/token` authenticating as `com_jagex_auth_desktop_osrs`, both
+     * literals being present in the gamepack. Ours come from Jagex's **mobile** client
+     * (see [JagexAuth]), so that redemption is rejected and login fails even though the
+     * character name renders correctly on the Play button — the client had already read
+     * `JX_CHARACTER_ID` and `JX_DISPLAY_NAME` by then.
+     *
+     * Without them the client goes straight to `game-session/v1/tokens`, which authenticates
+     * on the session rather than on whichever client minted it. This is also exactly what
+     * the rs3-engine launcher passes to the game: session, character, display name, and
+     * nothing else.
      */
     fun credentials(account: JagexAccount, character: JagexCharacter): Map<String, String> = mapOf(
-        "JX_ACCESS_TOKEN" to account.accessToken,
-        "JX_REFRESH_TOKEN" to account.refreshToken,
         "JX_SESSION_ID" to account.sessionId.orEmpty(),
         "JX_CHARACTER_ID" to character.accountId,
         "JX_DISPLAY_NAME" to character.displayName,
