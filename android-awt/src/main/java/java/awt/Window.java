@@ -170,12 +170,39 @@ public class Window extends Container {
     }
 
     /**
+     * How often to force a full relayout regardless of the validity flags, in ms.
+     *
+     * Layout is now driven by invalidation (see {@link Component#invalidate()}), so a
+     * steady-state frame does no layout work at all. That is only as correct as the set of
+     * mutators that remember to invalidate, and this shim is a stand-in for a toolkit whose
+     * real implementation has decades of those hooks — plus it hosts third-party plugin
+     * components we don't control. A periodic sweep turns "missed a hook, layout is wrong
+     * forever" into "layout is at most a quarter second late", which is a far better failure
+     * mode for something that can't be exhaustively tested here.
+     *
+     * It costs four full passes a second instead of sixty. Raise it (or drop the sweep) once
+     * the invalidation coverage has been confirmed on-device.
+     */
+    static final long FORCED_VALIDATE_INTERVAL_MS = 250;
+    private long nextForcedValidate;
+
+    /**
      * Render the entire window tree into the backbuffer and return it.
      * Called by the Compose host once per display frame (vsync-driven).
      */
     public BufferedImage renderToBackbuffer() {
         ensureBackbuffer();
-        try { validate(); } catch (Throwable ignored) {}
+        try {
+            // Skip the sweep when the tree is already dirty — it's about to be relaid anyway.
+            if (isValid()) {
+                long now = System.currentTimeMillis();
+                if (now >= nextForcedValidate) {
+                    nextForcedValidate = now + FORCED_VALIDATE_INTERVAL_MS;
+                    markTreeInvalid(this);
+                }
+            }
+            validate();
+        } catch (Throwable ignored) {}
         java.awt.Graphics2D g = backbuffer.createGraphics();
         try {
             g.setColor(windowBackground);
@@ -329,6 +356,36 @@ public class Window extends Container {
             } else {
                 g.setTransform(savedTx);
                 g.setClip(savedClip);
+            }
+        }
+    }
+
+    /**
+     * Force a relayout of this window's entire subtree on the next {@link #validate()}.
+     *
+     * Plain {@code invalidate()} deliberately follows the AWT contract: it marks this
+     * component and its ancestors, and {@code validate()} then skips any child subtree that
+     * is still valid. That is the right default and it is what makes the per-frame validate
+     * nearly free — but it means {@code invalidate(); validate();} on a window is *not* the
+     * "re-lay everything" hammer it used to be back when validity wasn't tracked. Callers
+     * that really do want the hammer (the renderer toggle in the Compose host, where the
+     * component tree is unchanged but every consumer of the resulting geometry needs a fresh
+     * layout pass) should use this instead.
+     */
+    public void invalidateTree() {
+        markTreeInvalid(this);
+    }
+
+    /** Clear the validity flag over a whole subtree, without invalidate()'s upward walk —
+     *  we're starting from the root, so there is nothing above to mark. */
+    private static void markTreeInvalid(Component c) {
+        c.setValid(false);
+        if (c instanceof Container) {
+            Container cont = (Container) c;
+            int count = cont.getComponentCount();
+            for (int i = 0; i < count; i++) {
+                Component child = cont.getComponent(i);
+                if (child != null) markTreeInvalid(child);
             }
         }
     }

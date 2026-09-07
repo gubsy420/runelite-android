@@ -13,6 +13,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.List;
 
 /**
@@ -44,13 +45,18 @@ public abstract class Component implements ImageObserver, Serializable {
     public Cursor getCursor() { return cursor; }
     public void setCursor(Cursor cursor) { this.cursor = cursor; }
 
-    private final List<ComponentListener> componentListeners = new ArrayList<>();
-    private final List<FocusListener> focusListeners = new ArrayList<>();
-    private final List<HierarchyListener> hierarchyListeners = new ArrayList<>();
-    private final List<KeyListener> keyListeners = new ArrayList<>();
-    private final List<MouseListener> mouseListeners = new ArrayList<>();
-    private final List<MouseMotionListener> mouseMotionListeners = new ArrayList<>();
-    private final List<MouseWheelListener> mouseWheelListeners = new ArrayList<>();
+    // CopyOnWriteArrayList, so dispatch can iterate directly instead of taking a
+    // defensive `new ArrayList<>(listeners)` snapshot on every event. Pointer moves
+    // arrive at touch-sample rate and each one used to allocate a list plus its backing
+    // array per listener type, per component in the dispatch chain. Registration is the
+    // rare operation here and is the only thing that pays a copy now.
+    private final List<ComponentListener> componentListeners = new CopyOnWriteArrayList<>();
+    private final List<FocusListener> focusListeners = new CopyOnWriteArrayList<>();
+    private final List<HierarchyListener> hierarchyListeners = new CopyOnWriteArrayList<>();
+    private final List<KeyListener> keyListeners = new CopyOnWriteArrayList<>();
+    private final List<MouseListener> mouseListeners = new CopyOnWriteArrayList<>();
+    private final List<MouseMotionListener> mouseMotionListeners = new CopyOnWriteArrayList<>();
+    private final List<MouseWheelListener> mouseWheelListeners = new CopyOnWriteArrayList<>();
 
     protected Component() {
     }
@@ -72,11 +78,11 @@ public abstract class Component implements ImageObserver, Serializable {
     private Dimension maximumSize;
 
     public Dimension getPreferredSize() { return preferredSize != null ? new Dimension(preferredSize) : getSize(); }
-    public void setPreferredSize(Dimension d) { this.preferredSize = d == null ? null : new Dimension(d); }
+    public void setPreferredSize(Dimension d) { this.preferredSize = d == null ? null : new Dimension(d); invalidate(); }
     public Dimension getMinimumSize()   { return minimumSize != null ? new Dimension(minimumSize) : getSize(); }
-    public void setMinimumSize(Dimension d) { this.minimumSize = d == null ? null : new Dimension(d); }
+    public void setMinimumSize(Dimension d) { this.minimumSize = d == null ? null : new Dimension(d); invalidate(); }
     public Dimension getMaximumSize()   { return maximumSize != null ? new Dimension(maximumSize) : new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE); }
-    public void setMaximumSize(Dimension d) { this.maximumSize = d == null ? null : new Dimension(d); }
+    public void setMaximumSize(Dimension d) { this.maximumSize = d == null ? null : new Dimension(d); invalidate(); }
     public boolean isPreferredSizeSet() { return preferredSize != null; }
     public boolean isMinimumSizeSet() { return minimumSize != null; }
     public boolean isMaximumSizeSet() { return maximumSize != null; }
@@ -91,13 +97,19 @@ public abstract class Component implements ImageObserver, Serializable {
     public void setSize(int w, int h) {
         boolean resized = width != w || height != h;
         width = w; height = h;
-        if (resized) fireComponentResized();
+        if (resized) { invalidate(); fireComponentResized(); }
     }
     public void setSize(Dimension d)            { setSize(d.width, d.height); }
     public void setBounds(int x, int y, int w, int h) {
         boolean moved = this.x != x || this.y != y;
         boolean resized = this.width != w || this.height != h;
         this.x = x; this.y = y; this.width = w; this.height = h;
+        // Only a resize invalidates. Position is not an input to any layout manager in this
+        // shim (they all read child preferred/min/max sizes, visibility, and the container's
+        // own bounds + insets — never a child's origin), whereas size is: an unset preferred
+        // size falls back to getSize(). The JDK invalidates on move too; doing that here
+        // would just make every layout pass re-dirty the tree it had just laid out.
+        if (resized) invalidate();
         if (moved) fireComponentMoved();
         if (resized) fireComponentResized();
     }
@@ -116,7 +128,7 @@ public abstract class Component implements ImageObserver, Serializable {
         if (componentListeners.isEmpty()) return;
         java.awt.event.ComponentEvent e = new java.awt.event.ComponentEvent(
             this, java.awt.event.ComponentEvent.COMPONENT_RESIZED);
-        for (java.awt.event.ComponentListener l : new java.util.ArrayList<>(componentListeners)) {
+        for (java.awt.event.ComponentListener l : componentListeners) {
             try { l.componentResized(e); } catch (Throwable ignored) {}
         }
     }
@@ -128,7 +140,7 @@ public abstract class Component implements ImageObserver, Serializable {
         if (componentListeners.isEmpty()) return;
         java.awt.event.ComponentEvent e = new java.awt.event.ComponentEvent(
             this, java.awt.event.ComponentEvent.COMPONENT_MOVED);
-        for (java.awt.event.ComponentListener l : new java.util.ArrayList<>(componentListeners)) {
+        for (java.awt.event.ComponentListener l : componentListeners) {
             try { l.componentMoved(e); } catch (Throwable ignored) {}
         }
     }
@@ -139,10 +151,15 @@ public abstract class Component implements ImageObserver, Serializable {
     public void setBackground(Color c) { background = c; }
 
     public Font getFont()         { return font; }
-    public void setFont(Font f)   { if (f != null) font = f; }
+    public void setFont(Font f)   { if (f != null && !f.equals(font)) { font = f; invalidate(); } }
 
     public boolean isVisible()    { return visible; }
-    public void setVisible(boolean v) { visible = v; }
+    public void setVisible(boolean v) {
+        if (visible == v) return;
+        visible = v;
+        // Layout managers skip invisible children, so this changes the parent's layout.
+        invalidate();
+    }
     public boolean isEnabled()    { return enabled; }
     public void setEnabled(boolean e) { enabled = e; }
     public boolean isShowing()    { return visible && parent == null ? false : (parent != null ? parent.isShowing() : visible); }
@@ -160,17 +177,16 @@ public abstract class Component implements ImageObserver, Serializable {
     }
 
     /** Process-wide FontMetrics cache keyed by Font. Creating a FontMetrics constructs an
-     * android.graphics.Paint+Typeface; measureText then crosses JNI into Minikin. With one
-     * cache miss per JLabel.getPreferredSize per frame this was a ~40% hotspot. */
-    private static final java.util.Map<Font, FontMetrics> FONT_METRICS_CACHE =
-        new java.util.concurrent.ConcurrentHashMap<>();
+     * android.graphics.Paint+Typeface and measures the ASCII width table; measureText then
+     * crosses JNI into Minikin. With one cache miss per JLabel.getPreferredSize per frame
+     * this was a ~40% hotspot.
+     *
+     * Deliberately the *same* cache BufferedImageGraphics2D.getFontMetrics uses. This class
+     * used to keep its own parallel map, so every font in play was measured twice and held
+     * two Paint + Typeface + width-table sets alive for the life of the process. */
     public FontMetrics getFontMetrics(Font f) {
         if (f == null) f = font;
-        FontMetrics cached = FONT_METRICS_CACHE.get(f);
-        if (cached != null) return cached;
-        FontMetrics fm = new net.runelite.awt.impl.BufferedImageFontMetrics(f);
-        FONT_METRICS_CACHE.putIfAbsent(f, fm);
-        return fm;
+        return net.runelite.awt.impl.BufferedImageFontMetrics.forFont(f);
     }
 
     public void repaint() { repaint(0, 0, 0, width, height); }
@@ -191,9 +207,62 @@ public abstract class Component implements ImageObserver, Serializable {
     }
     public void update(Graphics g) { paint(g); }
     public void paintAll(Graphics g) { paint(g); }
-    public void validate() {}
-    public void invalidate() {}
-    public void revalidate() {}
+    /**
+     * Layout validity.
+     *
+     * {@link Window#renderToBackbuffer} used to call {@code validate()} every Compose frame,
+     * which ran {@code doLayout()} over the whole component tree — every LayoutManager, every
+     * frame, allocating an Insets plus a Dimension per child as it went. It did that because
+     * {@code invalidate()} was a no-op stub and nothing tracked validity, so a brute-force
+     * pass was the only way to be sure a mutation got picked up.
+     *
+     * Now the tree tracks validity the way the JDK does: a mutation marks the component and
+     * every ancestor invalid, and {@code validate()} short-circuits on an already-valid
+     * subtree. A steady-state frame does no layout work at all.
+     *
+     * Starts false so the very first pass always lays out.
+     */
+    private boolean valid;
+
+    public boolean isValid() { return valid; }
+
+    /** Package-private: {@link Container#validate()} marks the subtree valid at the end of
+     *  a successful pass. */
+    void setValid(boolean v) { valid = v; }
+
+    /**
+     * Mark this component — and, transitively, its ancestors — as needing layout.
+     *
+     * The early return relies on the invariant this method itself maintains: if a component
+     * is invalid then so is every ancestor, so there is nothing left to propagate.
+     */
+    public void invalidate() {
+        if (!valid) return;
+        valid = false;
+        invalidateParent();
+    }
+
+    /** Walk up marking ancestors invalid, stopping at the first already-invalid one — by the
+     *  invariant above, everything above it is invalid too. */
+    final void invalidateParent() {
+        Container p = parent;
+        while (p != null && p.isValid()) {
+            p.setValid(false);
+            p = p.getParent();
+        }
+    }
+
+    /**
+     * Swing's "please lay me out again". Real Swing hands this to the RepaintManager to run
+     * on the EDT; here the host's per-frame {@link Container#validate()} is the pump, so all
+     * this has to do is mark the tree dirty. RuneLite panels call it constantly after
+     * mutating their contents — before validity tracking existed it was a no-op that happened
+     * to work because every frame relaid everything.
+     */
+    public void revalidate() { invalidate(); }
+
+    public void validate() { valid = true; }
+
     public void doLayout() {}
 
     public Image createImage(int w, int h) {
@@ -282,30 +351,30 @@ public abstract class Component implements ImageObserver, Serializable {
         if (e == null) return;
         switch (e.getID()) {
             case MouseEvent.MOUSE_PRESSED:
-                for (MouseListener l : new ArrayList<>(mouseListeners)) l.mousePressed(e);
+                for (MouseListener l : mouseListeners) l.mousePressed(e);
                 break;
             case MouseEvent.MOUSE_RELEASED:
-                for (MouseListener l : new ArrayList<>(mouseListeners)) l.mouseReleased(e);
+                for (MouseListener l : mouseListeners) l.mouseReleased(e);
                 break;
             case MouseEvent.MOUSE_CLICKED:
-                for (MouseListener l : new ArrayList<>(mouseListeners)) l.mouseClicked(e);
+                for (MouseListener l : mouseListeners) l.mouseClicked(e);
                 break;
             case MouseEvent.MOUSE_ENTERED:
-                for (MouseListener l : new ArrayList<>(mouseListeners)) l.mouseEntered(e);
+                for (MouseListener l : mouseListeners) l.mouseEntered(e);
                 break;
             case MouseEvent.MOUSE_EXITED:
-                for (MouseListener l : new ArrayList<>(mouseListeners)) l.mouseExited(e);
+                for (MouseListener l : mouseListeners) l.mouseExited(e);
                 break;
             case MouseEvent.MOUSE_MOVED:
-                for (MouseMotionListener l : new ArrayList<>(mouseMotionListeners)) l.mouseMoved(e);
+                for (MouseMotionListener l : mouseMotionListeners) l.mouseMoved(e);
                 break;
             case MouseEvent.MOUSE_DRAGGED:
-                for (MouseMotionListener l : new ArrayList<>(mouseMotionListeners)) l.mouseDragged(e);
+                for (MouseMotionListener l : mouseMotionListeners) l.mouseDragged(e);
                 break;
             case MouseEvent.MOUSE_WHEEL:
                 if (e instanceof MouseWheelEvent) {
                     MouseWheelEvent we = (MouseWheelEvent) e;
-                    for (MouseWheelListener l : new ArrayList<>(mouseWheelListeners)) l.mouseWheelMoved(we);
+                    for (MouseWheelListener l : mouseWheelListeners) l.mouseWheelMoved(we);
                 }
                 break;
         }
@@ -316,13 +385,13 @@ public abstract class Component implements ImageObserver, Serializable {
         if (e == null) return;
         switch (e.getID()) {
             case KeyEvent.KEY_PRESSED:
-                for (KeyListener l : new ArrayList<>(keyListeners)) l.keyPressed(e);
+                for (KeyListener l : keyListeners) l.keyPressed(e);
                 break;
             case KeyEvent.KEY_RELEASED:
-                for (KeyListener l : new ArrayList<>(keyListeners)) l.keyReleased(e);
+                for (KeyListener l : keyListeners) l.keyReleased(e);
                 break;
             case KeyEvent.KEY_TYPED:
-                for (KeyListener l : new ArrayList<>(keyListeners)) l.keyTyped(e);
+                for (KeyListener l : keyListeners) l.keyTyped(e);
                 break;
         }
     }

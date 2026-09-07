@@ -37,9 +37,9 @@ public abstract class AbstractButton extends JComponent {
     public AbstractButton() {}
 
     public String getText() { return text; }
-    public void setText(String text) { this.text = text == null ? "" : text; }
+    public void setText(String text) { this.text = text == null ? "" : text; invalidate(); }
     public Icon getIcon() { return icon; }
-    public void setIcon(Icon icon) { this.icon = icon; }
+    public void setIcon(Icon icon) { this.icon = icon; invalidate(); }
     public Icon getPressedIcon() { return pressedIcon; }
     public void setPressedIcon(Icon icon) { this.pressedIcon = icon; }
     public Icon getSelectedIcon() { return selectedIcon; }
@@ -91,14 +91,14 @@ public abstract class AbstractButton extends JComponent {
      *  etc. — without it Dalvik throws NoSuchMethodError at plugin startup. */
     private int iconTextGap = 4;
     public int getIconTextGap() { return iconTextGap; }
-    public void setIconTextGap(int gap) { this.iconTextGap = gap; }
+    public void setIconTextGap(int gap) { this.iconTextGap = gap; invalidate(); }
 
     /** Insets between the border and the button's content. Stored but not honored by
      *  paint (we draw text/icon centered) — plugins set it as a layout hint, that's all
      *  we need to satisfy. Without the stub Dalvik throws NoSuchMethodError. */
     private java.awt.Insets margin;
     public java.awt.Insets getMargin() { return margin; }
-    public void setMargin(java.awt.Insets m) { this.margin = m; }
+    public void setMargin(java.awt.Insets m) { this.margin = m; invalidate(); }
 
     /**
      * Compute a sensible preferred size from text + icon + padding. JComponent's default

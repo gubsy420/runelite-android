@@ -29,7 +29,9 @@ public class JComponent extends Container {
     public JComponent() {}
 
     public Border getBorder() { return border; }
-    public void setBorder(Border border) { this.border = border; }
+    // Border drives getInsets(), which every layout manager reads — a border change is a
+    // layout change.
+    public void setBorder(Border border) { this.border = border; invalidate(); }
 
     public String getToolTipText() { return toolTipText; }
     public void setToolTipText(String text) { this.toolTipText = text; }

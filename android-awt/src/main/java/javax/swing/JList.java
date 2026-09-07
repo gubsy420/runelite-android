@@ -33,7 +33,7 @@ public class JList<E> extends JComponent {
     }
 
     public ListModel<E> getModel() { return model; }
-    public void setModel(ListModel<E> model) { this.model = model; }
+    public void setModel(ListModel<E> model) { this.model = model; invalidate(); }
     public void setListData(E[] listData) {
         DefaultListModel<E> m = new DefaultListModel<>();
         for (E e : listData) m.addElement(e);

@@ -21,11 +21,11 @@ public class JLabel extends JComponent implements SwingConstants {
     }
 
     public String getText() { return text; }
-    public void setText(String text) { this.text = text == null ? "" : text; cachedPref = null; }
+    public void setText(String text) { this.text = text == null ? "" : text; cachedPref = null; invalidate(); }
     public Icon getIcon() { return icon; }
-    public void setIcon(Icon icon) { this.icon = icon; cachedPref = null; }
+    public void setIcon(Icon icon) { this.icon = icon; cachedPref = null; invalidate(); }
     @Override
-    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; }
+    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; invalidate(); }
     public Icon getDisabledIcon() { return icon; }
     public void setDisabledIcon(Icon icon) {}
     public int getHorizontalAlignment() { return horizontalAlignment; }
@@ -37,7 +37,7 @@ public class JLabel extends JComponent implements SwingConstants {
     public int getVerticalTextPosition() { return verticalTextPosition; }
     public void setVerticalTextPosition(int p) { this.verticalTextPosition = p; }
     public int getIconTextGap() { return iconTextGap; }
-    public void setIconTextGap(int g) { this.iconTextGap = g; }
+    public void setIconTextGap(int g) { this.iconTextGap = g; cachedPref = null; invalidate(); }
     public void setLabelFor(java.awt.Component c) {}
     public java.awt.Component getLabelFor() { return null; }
     public void setDisplayedMnemonic(int key) {}
