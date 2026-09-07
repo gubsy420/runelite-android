@@ -8,6 +8,9 @@ import static android.opengl.GLES20.GL_TRIANGLES;
 import static android.opengl.GLES20.glBindBuffer;
 import static android.opengl.GLES20.glDrawArrays;
 import static android.opengl.GLES20.glEnableVertexAttribArray;
+import static android.opengl.GLES20.glColorMask;
+import static android.opengl.GLES20.glDepthMask;
+import static android.opengl.GLES20.glUniform3i;
 import static android.opengl.GLES20.glUniform4i;
 import static android.opengl.GLES20.glVertexAttribPointer;
 import static android.opengl.GLES30.GL_DYNAMIC_DRAW;
@@ -19,6 +22,7 @@ import static net.runelite.client.plugins.gpugles.GpuGlesPlugin.uniEntityTint;
 
 import java.util.Arrays;
 
+import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 
 /**
@@ -76,6 +80,14 @@ class VAO
 		vao = 0;
 	}
 
+	static class Range
+	{
+		int endpos;
+		float[] projection;
+		byte h, s, l, a;
+		byte renderMethod;
+	}
+
 	// Per-range we store a *reference* to the owning scene's captured projection MATRIX
 	// (SceneContext.projection — a stable float[16] filled once per frame at
 	// preSceneDraw), NOT the Projection object. The opaque/alpha VAOs are drawn lazily
@@ -85,61 +97,100 @@ class VAO
 	// Gemstone Crab, hosted on an instance sub-WorldView — drew off-screen. Each
 	// SceneContext owns its own projection array, so the reference stays correct. Mirrors
 	// desktop GpuPlugin's VAO.Range.projection.
-	int[] lengths = new int[4];
-	float[][] projs = new float[4][];
-	Scene[] scenes = new Scene[4];
-	int off = 0;
+	Range[] ranges = new Range[4];
+	int off;
 
-	void addRange(float[] projection, Scene scene)
+	{
+		for (int i = 0; i < ranges.length; ++i)
+		{
+			ranges[i] = new Range();
+		}
+	}
+
+	void addRange(float[] projection, Scene scene, int renderMode)
 	{
 		assert vbo.mapped;
 
-		int pos = vbo.vb.position();
 		if (off > 0)
 		{
-			if (lengths[off - 1] == pos)
+			Range r = ranges[off - 1];
+			int pos = vbo.vb.position();
+			if (r.endpos == pos)
 			{
 				return;
 			}
-			// Consecutive ranges under the same scene's projection collapse into one.
-			if (projs[off - 1] == projection)
+
+			// Consecutive ranges under the same projection AND render mode collapse.
+			if (projection == r.projection && renderMode == r.renderMethod)
 			{
-				lengths[off - 1] = pos;
+				assert pos > r.endpos;
+				r.endpos = pos;
 				return;
 			}
 		}
 
-		if (lengths.length == off)
+		if (ranges.length == off)
 		{
-			int l = lengths.length << 1;
-			lengths = Arrays.copyOf(lengths, l);
-			projs = Arrays.copyOf(projs, l);
-			scenes = Arrays.copyOf(scenes, l);
+			int l = ranges.length << 1;
+			ranges = Arrays.copyOf(ranges, l);
+			for (int i = ranges.length >> 1; i < ranges.length; ++i)
+			{
+				ranges[i] = new Range();
+			}
 		}
 
-		lengths[off] = pos;
-		projs[off] = projection;
-		scenes[off] = scene;
-		off++;
+		Range r = ranges[off++];
+		r.endpos = vbo.vb.position();
+		r.projection = projection;
+		r.h = scene.getOverrideHue();
+		r.s = scene.getOverrideSaturation();
+		r.l = scene.getOverrideLuminance();
+		r.a = scene.getOverrideAmount();
+		r.renderMethod = (byte) renderMode;
 	}
 
 	void draw()
 	{
 		assert !vbo.mapped;
 
+		glUniform3i(GpuGlesPlugin.uniBase, 0, 0, 0);
+
 		int start = 0;
 		for (int i = 0; i < off; ++i)
 		{
-			int end = lengths[i];
-			Scene scene = scenes[i];
+			Range range = ranges[i];
+			int end = range.endpos;
 
 			int count = end - start;
 
-			GpuGlesPlugin.setEntityProjection(projs[i]);
-			glUniform4i(uniEntityTint, scene.getOverrideHue(), scene.getOverrideSaturation(),
-				scene.getOverrideLuminance(), scene.getOverrideAmount());
+			GpuGlesPlugin.setEntityProjection(range.projection);
+			glUniform4i(uniEntityTint, range.h, range.s, range.l, range.a);
+
 			glBindVertexArray(vao);
-			glDrawArrays(GL_TRIANGLES, start / (VERT_SIZE / 4), count / (VERT_SIZE / 4));
+
+			if (range.renderMethod == Renderable.RENDERMODE_SORTED_NO_DEPTH)
+			{
+				// Colour without writing depth, then depth without writing colour: the model
+				// composites internally in its own sorted order but still occludes what comes
+				// after it. Two passes over the same range — cheap, these are small models.
+				glDepthMask(false);
+				glDrawArrays(GL_TRIANGLES, start / (VERT_SIZE / 4), count / (VERT_SIZE / 4));
+				glDepthMask(true);
+
+				glColorMask(false, false, false, false);
+				glDrawArrays(GL_TRIANGLES, start / (VERT_SIZE / 4), count / (VERT_SIZE / 4));
+				glColorMask(true, true, true, true);
+			}
+			else if (range.renderMethod == Renderable.RENDERMODE_UNSORTED_NO_DEPTH)
+			{
+				glDepthMask(false);
+				glDrawArrays(GL_TRIANGLES, start / (VERT_SIZE / 4), count / (VERT_SIZE / 4));
+				glDepthMask(true);
+			}
+			else
+			{
+				glDrawArrays(GL_TRIANGLES, start / (VERT_SIZE / 4), count / (VERT_SIZE / 4));
+			}
 
 			start = end;
 		}
@@ -147,8 +198,10 @@ class VAO
 
 	void reset()
 	{
-		Arrays.fill(projs, 0, off, null);
-		Arrays.fill(scenes, 0, off, null);
+		for (int i = 0; i < off; ++i)
+		{
+			ranges[i].projection = null;
+		}
 		off = 0;
 	}
 }

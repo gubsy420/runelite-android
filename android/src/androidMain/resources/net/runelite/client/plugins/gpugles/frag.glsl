@@ -60,11 +60,20 @@ void main() {
     vec3 mul = (1.f - textureLightMode) * vec3(light) + textureLightMode * fColor.rgb;
     c = textureColor * vec4(mul, fColor.a);
   } else {
-    // Explicit float() per-arg — Mali drivers reject the implicit int→float promotion
-    // in vec3(int, int, int) and refuse to compile the shader. See vert.glsl for full
-    // context.
-    vec3 hsl = vec3(float(int(fHsl) >> 10 & 63), float(int(fHsl) >> 7 & 7), float(int(fHsl) & 127));
-    vec3 rgb = mix(fColor.rgb, hslToRgb(hsl), smoothBanding);
+    // smoothBanding is 0 whenever the "Smooth banding" setting is ON, which is the
+    // default — and at 0 the mix below collapses to fColor.rgb exactly. hslToRgb is
+    // three pow() calls plus a pile of branches, so running it per-fragment only to
+    // multiply the result by zero is the most expensive thing this shader does on a
+    // mobile GPU. Branch on the uniform instead: every fragment in the draw takes the
+    // same side, so it is fully coherent on Adreno/Mali/PowerVR alike.
+    vec3 rgb = fColor.rgb;
+    if (smoothBanding != 0.0f) {
+      // Explicit float() per-arg — Mali drivers reject the implicit int→float promotion
+      // in vec3(int, int, int) and refuse to compile the shader. See vert.glsl for full
+      // context.
+      vec3 hsl = vec3(float(int(fHsl) >> 10 & 63), float(int(fHsl) >> 7 & 7), float(int(fHsl) & 127));
+      rgb = mix(rgb, hslToRgb(hsl), smoothBanding);
+    }
     c = vec4(rgb, fColor.a);
   }
 

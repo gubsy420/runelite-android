@@ -19,10 +19,8 @@ import static android.opengl.GLES30.glBindVertexArray;
 import static android.opengl.GLES30.glDeleteVertexArrays;
 import static android.opengl.GLES30.glGenVertexArrays;
 import static android.opengl.GLES30.glVertexAttribIPointer;
-import static net.runelite.client.plugins.gpugles.FacePrioritySorter.MAX_DIAMETER;
-import static net.runelite.client.plugins.gpugles.FacePrioritySorter.zsortHead;
-import static net.runelite.client.plugins.gpugles.FacePrioritySorter.zsortNext;
-import static net.runelite.client.plugins.gpugles.FacePrioritySorter.zsortTail;
+import static net.runelite.client.plugins.gpugles.ModelUploader.MAX_DIAMETER;
+import static net.runelite.client.plugins.gpugles.ModelUploader.MAX_VERTEX_COUNT;
 import static net.runelite.client.plugins.gpugles.GpuGlesPlugin.uniBase;
 
 import android.opengl.GLES20;
@@ -142,7 +140,11 @@ class Zone
 		glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GLES20.GL_SHORT, false, VERT_SIZE, 0);
+		// Four components, not three: the vertex record already has a padding short after
+		// xyz, and a 4x16 attribute is a native vertex format everywhere while 3x16 is not
+		// (drivers emulate it with a wider fetch + mask). The shader still declares vec3, so
+		// the extra component is dropped. Mirrors upstream gpu's Zone.setupVao.
+		glVertexAttribPointer(0, 4, GLES20.GL_SHORT, false, VERT_SIZE, 0);
 
 		glEnableVertexAttribArray(1);
 		glVertexAttribIPointer(1, 1, GLES20.GL_INT, VERT_SIZE, 8);
@@ -398,9 +400,16 @@ class Zone
 		alphaModels.add(m);
 	}
 
-	void addTempAlphaModel(int vao, int startpos, int endpos, int level, int x, int y, int z)
+	// synchronized: dynamic-object uploads can run on N worker render threads, and two of
+	// them can land in the same zone. Guards both the alphaModels list and the shared
+	// AlphaModel free-list. Mirrors upstream gpu's Zone.
+	synchronized void addTempAlphaModel(int vao, int startpos, int endpos, int level, int x, int y, int z)
 	{
-		AlphaModel m = modelCache.poll();
+		AlphaModel m;
+		synchronized (modelCache)
+		{
+			m = modelCache.poll();
+		}
 		if (m == null) m = new AlphaModel();
 		m.id = -1;
 		m.startpos = startpos;
@@ -430,7 +439,7 @@ class Zone
 		}
 	}
 
-	private static final IntBuffer alphaElements = allocDirect(FacePrioritySorter.MAX_VERTEX_COUNT * 3);
+	private static final IntBuffer alphaElements = allocDirect(MAX_VERTEX_COUNT * 3);
 
 	private static final int STATIC = 1;
 	private static final int TEMP = 2;
@@ -485,7 +494,7 @@ class Zone
 		alphaModels.sort(alphaModelComparator);
 	}
 
-	void renderAlpha(int zx, int zz, int cyaw, int cpitch, int minLevel, int currentLevel, int maxLevel, int level, Set<Integer> hiddenRoofIds, boolean useStaticUnsorted)
+	void renderAlpha(ModelUploader mu, int zx, int zz, int cyaw, int cpitch, int minLevel, int currentLevel, int maxLevel, int level, Set<Integer> hiddenRoofIds, boolean useStaticUnsorted)
 	{
 		drawOff.clear();
 		drawEnd.clear();
@@ -550,8 +559,8 @@ class Zone
 			final int[] packedFaces = m.packedFaces;
 			if (diameter >= MAX_DIAMETER) continue;
 
-			Arrays.fill(zsortHead, 0, diameter, (char) -1);
-			Arrays.fill(zsortTail, 0, diameter, (char) -1);
+			Arrays.fill(mu.zsortHead, 0, diameter, (char) -1);
+			Arrays.fill(mu.zsortTail, 0, diameter, (char) -1);
 
 			for (char i = 0; i < packedFaces.length; ++i)
 			{
@@ -567,17 +576,17 @@ class Zone
 
 				assert fz >= 0 && fz < diameter : fz;
 
-				if (zsortTail[fz] == (char) -1)
+				if (mu.zsortTail[fz] == (char) -1)
 				{
-					zsortHead[fz] = zsortTail[fz] = i;
-					zsortNext[i] = (char) -1;
+					mu.zsortHead[fz] = mu.zsortTail[fz] = i;
+					mu.zsortNext[i] = (char) -1;
 				}
 				else
 				{
-					char lastFace = zsortTail[fz];
-					zsortNext[lastFace] = i;
-					zsortNext[i] = (char) -1;
-					zsortTail[fz] = i;
+					char lastFace = mu.zsortTail[fz];
+					mu.zsortNext[lastFace] = i;
+					mu.zsortNext[i] = (char) -1;
+					mu.zsortTail[fz] = i;
 				}
 			}
 
@@ -594,7 +603,7 @@ class Zone
 			final int start = m.startpos / (VERT_SIZE >> 2);
 			for (int i = diameter - 1; i >= 0; --i)
 			{
-				for (char face = zsortHead[i]; face != (char) -1; face = zsortNext[face])
+				for (char face = mu.zsortHead[i]; face != (char) -1; face = mu.zsortNext[face])
 				{
 					int faceIdx = face * 3;
 					faceIdx += start;

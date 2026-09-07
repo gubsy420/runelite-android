@@ -65,6 +65,16 @@ public interface GpuGlesPluginConfig extends Config
 		position = 14)
 	default int resolutionScale() { return 75; }
 
+	@Range(max = 4)
+	@ConfigItem(
+		keyName = "numThreads",
+		name = "Render threads",
+		description = "Worker threads the engine may use to build model geometry each frame. " +
+			"Helps most in crowded areas on multi-core devices; each thread costs a few MB. " +
+			"0 = everything on the client thread (the old behaviour).",
+		position = 16)
+	default int numThreads() { return 2; }
+
 	enum MsaaSamples
 	{
 		OFF(0), TWO(2), FOUR(4);
