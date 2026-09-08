@@ -34,7 +34,7 @@ public class JTable extends JComponent implements Scrollable {
     public JTable(java.util.Vector<? extends java.util.Vector> rowData, java.util.Vector<?> columnNames) { this(); }
 
     public TableModel getModel() { return dataModel; }
-    public void setModel(TableModel m) { this.dataModel = m; }
+    public void setModel(TableModel m) { this.dataModel = m; invalidate(); }
     public int getRowHeight() { return rowHeight; }
     public void setRowHeight(int h) { this.rowHeight = h; }
     public int getRowHeight(int row) { return rowHeight; }

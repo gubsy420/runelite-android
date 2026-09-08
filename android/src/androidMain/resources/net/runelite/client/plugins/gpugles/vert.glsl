@@ -98,18 +98,26 @@ void main() {
     fHsl = float(((int(hsl[0]) & 63) << 10) | ((int(hsl[1]) & 7) << 7) | (int(hsl[2]) & 127));
   }
 
-  float fogWest = max(FOG_SCENE_EDGE_MIN, cameraX - float(drawDistance));
-  float fogEast = min(FOG_SCENE_EDGE_MAX, cameraX + float(drawDistance));
-  float fogSouth = max(FOG_SCENE_EDGE_MIN, cameraZ - float(drawDistance));
-  float fogNorth = min(FOG_SCENE_EDGE_MAX, cameraZ + float(drawDistance));
+  // Fog depth defaults to 0 on mobile, i.e. useFog == 0, and the whole block below then
+  // only ever produces a value that gets multiplied away. Skipping it saves ~20 ALU ops
+  // per vertex on the most common configuration; useFog is a uniform, so the branch is
+  // coherent across the whole draw.
+  if (useFog != 0) {
+    float fogWest = max(FOG_SCENE_EDGE_MIN, cameraX - float(drawDistance));
+    float fogEast = min(FOG_SCENE_EDGE_MAX, cameraX + float(drawDistance));
+    float fogSouth = max(FOG_SCENE_EDGE_MIN, cameraZ - float(drawDistance));
+    float fogNorth = min(FOG_SCENE_EDGE_MAX, cameraZ + float(drawDistance));
 
-  float xDist = min(worldPos.x - fogWest, fogEast - worldPos.x);
-  float zDist = min(worldPos.z - fogSouth, fogNorth - worldPos.z);
-  float nearestEdgeDistance = min(xDist, zDist);
-  float secondNearestEdgeDistance = max(xDist, zDist);
-  float fogDistance =
-      nearestEdgeDistance - FOG_CORNER_ROUNDING * TILE_SIZE *
-                                max(0.f, (nearestEdgeDistance + FOG_CORNER_ROUNDING_SQUARED) / (secondNearestEdgeDistance + FOG_CORNER_ROUNDING_SQUARED));
+    float xDist = min(worldPos.x - fogWest, fogEast - worldPos.x);
+    float zDist = min(worldPos.z - fogSouth, fogNorth - worldPos.z);
+    float nearestEdgeDistance = min(xDist, zDist);
+    float secondNearestEdgeDistance = max(xDist, zDist);
+    float fogDistance =
+        nearestEdgeDistance - FOG_CORNER_ROUNDING * TILE_SIZE *
+                                  max(0.f, (nearestEdgeDistance + FOG_CORNER_ROUNDING_SQUARED) / (secondNearestEdgeDistance + FOG_CORNER_ROUNDING_SQUARED));
 
-  fFogAmount = fogFactorLinear(fogDistance, 0.f, float(fogDepth) * TILE_SIZE) * float(useFog);
+    fFogAmount = fogFactorLinear(fogDistance, 0.f, float(fogDepth) * TILE_SIZE);
+  } else {
+    fFogAmount = 0.f;
+  }
 }

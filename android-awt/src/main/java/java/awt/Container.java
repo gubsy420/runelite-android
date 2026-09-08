@@ -29,6 +29,7 @@ public class Container extends Component {
         if (index < 0 || index >= children.size()) children.add(comp);
         else children.add(index, comp);
         comp.setParent(this);
+        invalidate();
         return comp;
     }
 
@@ -51,6 +52,7 @@ public class Container extends Component {
         } else if (layout != null && constraints instanceof String) {
             layout.addLayoutComponent((String) constraints, comp);
         }
+        invalidate();
     }
 
     public void remove(int index) {
@@ -59,21 +61,25 @@ public class Container extends Component {
             if (layout != null) layout.removeLayoutComponent(c);
             c.setParent(null);
         }
+        invalidate();
     }
 
     public void remove(Component comp) {
         if (children.remove(comp)) {
             if (layout != null) layout.removeLayoutComponent(comp);
             comp.setParent(null);
+            invalidate();
         }
     }
 
     public void removeAll() {
+        if (children.isEmpty()) return;
         for (Component c : children) {
             if (layout != null) layout.removeLayoutComponent(c);
             c.setParent(null);
         }
         children.clear();
+        invalidate();
     }
 
     public int getComponentZOrder(Component comp) { return children.indexOf(comp); }
@@ -83,10 +89,11 @@ public class Container extends Component {
         children.remove(cur);
         int target = Math.min(Math.max(0, index), children.size());
         children.add(target, comp);
+        invalidate();
     }
 
     public LayoutManager getLayout() { return layout; }
-    public void setLayout(LayoutManager mgr) { this.layout = mgr; }
+    public void setLayout(LayoutManager mgr) { this.layout = mgr; invalidate(); }
 
     @Override
     public Dimension getPreferredSize() {
@@ -137,8 +144,32 @@ public class Container extends Component {
     // itself calls content.setSize. Layout cascades happen via Container.validate() once per
     // Compose frame in Window.renderToBackbuffer.
 
+    /**
+     * Lay this container out and recurse, unless the subtree is already valid.
+     *
+     * The short-circuit is the whole point: with validity tracked (see
+     * {@link Component#invalidate()}) a steady-state frame reaches the root, finds it valid
+     * and returns without touching a single LayoutManager. Before, the host called this every
+     * Compose frame and it relaid the entire tree unconditionally.
+     *
+     * Ordering matters. doLayout() sizes children, and a size change invalidates the child
+     * *and* re-marks this container and its ancestors — so `setValid(true)` has to come after
+     * both the layout and the child recursion, which is also what the JDK does. That makes a
+     * pass self-consistent: the transient invalidation raised by our own layout work is
+     * absorbed before we declare the subtree clean. It settles because layout managers are
+     * functions of their inputs and {@link Component#setBounds} only invalidates when a
+     * dimension actually changed, so a second pass over unchanged inputs is a no-op.
+     *
+     * That last part is a real requirement, not a nicety. A layout manager whose output
+     * depends on how many times it has run will not be re-run once a pass completes, and its
+     * geometry will drift from what the old relay-everything loop produced — measured, not
+     * assumed. The JDK behaves the same way for the same reason, and
+     * {@link Window#FORCED_VALIDATE_INTERVAL_MS} bounds the drift by re-dirtying the tree a
+     * few times a second regardless.
+     */
     @Override
     public void validate() {
+        if (isValid()) return;
         // Catch per-container so one bad container's layout NPE doesn't abort the cascade.
         try { doLayout(); } catch (Throwable ignored) {}
         int count = children.size();
@@ -150,6 +181,7 @@ public class Container extends Component {
                 }
             }
         }
+        setValid(true);
     }
 
     @Override

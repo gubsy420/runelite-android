@@ -138,8 +138,30 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	public static final int SCENE_OFFSET = (Constants.EXTENDED_SCENE_SIZE - Constants.SCENE_SIZE) / 2;
 	static final int NUM_ZONES = Constants.EXTENDED_SCENE_SIZE >> 3;
 	static final int MAX_WORLDVIEWS = 4096;
+	/** Upper bound on worker render threads, independent of what the config asks for.
+	  * Beyond a handful the dynamic-object upload stops being the bottleneck and each
+	  * extra thread is pure memory + scheduling cost on a phone. */
+	static final int MAX_RENDER_THREADS = 4;
 
 	private static final int UNIFORM_BUFFER_SIZE = 5 * Float.BYTES;
+
+	// Attachment lists for glInvalidateFramebuffer. Preallocated because they are handed
+	// to a GL call on every frame.
+	private static final int[] INVALIDATE_DEPTH = { GLES30.GL_DEPTH_ATTACHMENT };
+	private static final int[] INVALIDATE_COLOR = { GLES30.GL_COLOR_ATTACHMENT0 };
+
+	/** Shared identity entity-projection. Only ever uploaded, never retained by a VAO
+	  * range, so one instance is enough and it keeps a float[16] out of the frame loop. */
+	private static final float[] IDENTITY = Mat4.identity();
+
+	// Values for the UI program's `hasScene` uniform — see fragui.glsl.
+	private static final int SCENE_NONE = 0;        // title/login: UI over black
+	private static final int SCENE_TEXTURE = 1;     // composite sceneColorTex under the UI
+	private static final int SCENE_DEFAULT_FB = 2;  // scene already in the default FB; blend
+
+	/** Texture unit the UI program samples the scene from. Unit 1 is the scene program's
+	  * texture array, so keep clear of it. */
+	private static final int SCENE_TEX_UNIT = 2;
 
 	private static final GlesShader PROGRAM = new GlesShader()
 		.add(GL_VERTEX_SHADER, "vert.glsl")
@@ -179,11 +201,23 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	 *  from whatever the last logged-in frame left behind. */
 	private boolean scenePaintedThisFrame;
 
-	// Per-frame transient geometry pools — opaque, alpha, post-opaque.
-	private VAOList vaoO, vaoA, vaoPO;
+	/**
+	 * One of these per render thread. The engine can farm dynamic-object uploads out to
+	 * N worker threads (see {@link #setupGpuFlags()}); each gets its own transient
+	 * geometry pools and its own {@link ModelUploader} scratch so nothing is shared.
+	 * rts[0] is the client/GL thread — it is the only one that may issue GL calls, and
+	 * it is what drawTemp, the skybox and the zone alpha sorter use. Worker thread i
+	 * lands in rts[i + 1].
+	 */
+	static class RenderThread
+	{
+		VAOList vaoO, vaoA;
+		ModelUploader modelUploader;
+	}
+
+	private RenderThread[] rts = new RenderThread[0];
 
 	private SceneUploader clientUploader, mapUploader;
-	private FacePrioritySorter facePrioritySorter;
 
 	private int cameraYaw, cameraPitch;
 
@@ -301,6 +335,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 	// UI-shader uniform locations
 	private int uniTex, uniTexSourceDimensions, uniTexTargetDimensions;
 	private int uniUiAlphaOverlay, uniUiColorblindIntensity;
+	private int uniUiSceneTex, uniUiHasScene;
 
 	private static Projection lastProjection;
 
@@ -385,7 +420,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		{
 			float[] p = projection instanceof FloatProjection
 				? ((FloatProjection) projection).getProjection()
-				: Mat4.identity();
+				: IDENTITY;
 			glUniformMatrix4fv(uniEntityProj, 1, false, p, 0);
 			lastProjection = projection;
 		}
@@ -426,9 +461,9 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		// is steady-state.
 		root = new SceneContext(NUM_ZONES, NUM_ZONES);
 		subs = new SceneContext[MAX_WORLDVIEWS];
+		allocRenderThreads();
 		clientUploader = new SceneUploader(renderCallbackManager);
 		mapUploader = new SceneUploader(renderCallbackManager);
-		facePrioritySorter = new FacePrioritySorter(clientUploader);
 
 		// If the plugin is enabled mid-game (already past STARTING), engage immediately
 		// — onGameStateChanged only fires on transitions, so there's nothing to wait
@@ -441,6 +476,49 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			}
 			return true;
 		});
+	}
+
+	/**
+	 * (Re)build the per-render-thread state. rts[0] is the client/GL thread; the rest
+	 * shadow the worker threads the engine spawns for {@link DrawCallbacks#RENDER_THREADS}.
+	 * The VAO pools are owned by the GL context and so are created in bringUpGl().
+	 */
+	private void allocRenderThreads()
+	{
+		int n = renderThreadCount() + 1;
+		rts = new RenderThread[n];
+		for (int i = 0; i < n; ++i)
+		{
+			RenderThread rt = rts[i] = new RenderThread();
+			rt.modelUploader = new ModelUploader();
+		}
+	}
+
+	/**
+	 * Worker render threads to ask the engine for. Clamped to cores-1 so we never take
+	 * the core the client thread is on, and to MAX_RENDER_THREADS because each thread
+	 * costs a ModelUploader's scratch arrays (~2.6 MB) plus its own VAO pools — on a
+	 * phone that adds up a lot faster than it does on a desktop.
+	 */
+	private int renderThreadCount()
+	{
+		int cpus = Runtime.getRuntime().availableProcessors();
+		return Math.max(0, Math.min(cpus - 1, Math.min(config.numThreads(), MAX_RENDER_THREADS)));
+	}
+
+	/**
+	 * Advertise the render-thread count from {@code rts.length}, never straight from the
+	 * config: the engine indexes us by thread id, so telling it about a thread we have no
+	 * {@link RenderThread} for is an out-of-bounds waiting to happen.
+	 */
+	private void setupGpuFlags()
+	{
+		int threads = Math.max(0, rts.length - 1);
+		Log.i(TAG, "Using " + threads + " render threads");
+		client.setGpuFlags(DrawCallbacks.GPU
+			| (config.removeVertexSnapping() ? DrawCallbacks.NO_VERTEX_SNAPPING : 0)
+			| DrawCallbacks.ZBUF
+			| DrawCallbacks.RENDER_THREADS(threads));
 	}
 
 	/**
@@ -471,9 +549,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			bringUpGl();
 
 			client.setDrawCallbacks(this);
-			client.setGpuFlags(DrawCallbacks.GPU
-				| (config.removeVertexSnapping() ? DrawCallbacks.NO_VERTEX_SNAPPING : 0)
-				| DrawCallbacks.ZBUF);
+			setupGpuFlags();
 			client.setExpandedMapLoading(config.expandedMapLoadingZones());
 			applyFpsConfig();
 
@@ -534,6 +610,44 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		else if ("resolutionScale".equals(ev.getKey()))
 		{
 			GlesHost.get().setResolutionScale(config.resolutionScale() / 100f);
+		}
+		else if ("removeVertexSnapping".equals(ev.getKey()))
+		{
+			clientThread.invokeLater(this::setupGpuFlags);
+		}
+		else if ("numThreads".equals(ev.getKey()))
+		{
+			clientThread.invokeLater(() ->
+			{
+				// Rebuilding the render threads throws away their VAO pools, which means glDelete
+				// calls — only legal with our EGL context current, and only safe between frames.
+				boolean gl = glInitted && GlesHost.get().makeCurrent();
+				if (gl)
+				{
+					for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
+					{
+						if (rts[i].vaoO != null) rts[i].vaoO.free();
+						if (rts[i].vaoA != null) rts[i].vaoA.free();
+					}
+				}
+
+				// If GL wasn't available we couldn't free the old pools, so keep the old rts and
+				// let the next bringUpGl()/toggle pick the new count up — resizing rts without
+				// live pools would hand the engine thread ids we can't service.
+				if (!gl)
+				{
+					return;
+				}
+
+				allocRenderThreads();
+				for (int i = 0; i < rts.length; ++i)
+				{
+					rts[i].vaoO = new VAOList(i > 0);
+					rts[i].vaoA = new VAOList(i > 0);
+				}
+
+				setupGpuFlags();
+			});
 		}
 		// MSAA changes require an EGL context rebuild — we surface that requirement in
 		// the config item description rather than try to re-init mid-frame.
@@ -630,20 +744,18 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 				// Element buffer + the growable transient-geometry VAO pools.
 				// bringUpGl() re-creates them on the next enable.
 				Zone.freeBuffer();
-				if (vaoO != null)
+				for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
 				{
-					vaoO.free();
-					vaoO = null;
-				}
-				if (vaoA != null)
-				{
-					vaoA.free();
-					vaoA = null;
-				}
-				if (vaoPO != null)
-				{
-					vaoPO.free();
-					vaoPO = null;
+					if (rts[i].vaoO != null)
+					{
+						rts[i].vaoO.free();
+						rts[i].vaoO = null;
+					}
+					if (rts[i].vaoA != null)
+					{
+						rts[i].vaoA.free();
+						rts[i].vaoA = null;
+					}
 				}
 
 				shutdownBuffers();
@@ -707,9 +819,11 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		Zone.initBuffer();
 
 		uniformBuffer = new GpuFloatBuffer(UNIFORM_BUFFER_SIZE);
-		vaoO = new VAOList();
-		vaoA = new VAOList();
-		vaoPO = new VAOList();
+		for (int i = 0; i < rts.length; ++i)
+		{
+			rts[i].vaoO = new VAOList(i > 0);
+			rts[i].vaoA = new VAOList(i > 0);
+		}
 
 		glInitted = true;
 		glContextGeneration = GlesHost.get().contextGeneration();
@@ -921,6 +1035,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		uniTexSourceDimensions = glGetUniformLocation(glUiProgram, "sourceDimensions");
 		uniUiAlphaOverlay = glGetUniformLocation(glUiProgram, "alphaOverlay");
 		uniUiColorblindIntensity = glGetUniformLocation(glUiProgram, "colorblindIntensity");
+		uniUiSceneTex = glGetUniformLocation(glUiProgram, "sceneTex");
+		uniUiHasScene = glGetUniformLocation(glUiProgram, "hasScene");
 	}
 
 	private void shutdownProgram()
@@ -1166,49 +1282,62 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		prepareInterfaceTexture(canvasWidth, canvasHeight);
 
-		int surfW = GlesHost.get().getWidth();
-		int surfH = GlesHost.get().getHeight();
+		// Present. The scene lives in sceneFbo at surface * resolutionScale; the UI lives in
+		// interfaceTexture at canvas size. Both are handed to the UI program, which upscales
+		// the scene and composites the UI over it in a single fullscreen pass.
+		//
+		// This used to be a glBlitFramebuffer upscale into the default framebuffer followed by
+		// a blended UI quad. On a tile-based GPU that is two full-screen passes: the blit writes
+		// the whole framebuffer out to memory, and the blended quad then has to load all of it
+		// back in to have a destination to blend against. Doing the composite in the shader
+		// removes one full-screen write and one full-screen read per frame, and lets the UI
+		// pass run with blending off so its tile buffer never needs loading at all.
 
-		// Composite back to the EGL default framebuffer before drawUi. If the scene
-		// was painted this frame it lives in sceneFbo at scaled size — glBlitFramebuffer
-		// upsamples it (GL_LINEAR) to the native-size default FB so the UI compositing
-		// below paints onto a full-resolution backdrop. If no scene was painted (title /
-		// loading screens) just clear the default FB to black; the UI texture covers it.
-		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+		// Tile-based GPUs write every attachment back to main memory when a render pass ends,
+		// and the scene's depth buffer is dead the moment the scene is done — only colour is
+		// read from here on. Discarding it while the scene FBO is still the bound draw target
+		// skips that writeback: ~8 MB per frame at 1080p, four times that with 4x MSAA. Adreno,
+		// Mali and PowerVR all honour this; a driver that ignores it just does what it did before.
 		if (scenePaintedThisFrame && sceneFbo != 0)
 		{
-			// MSAA: first resolve the multisample scene into the single-sample sceneColorTex
-			// via a same-size GL_NEAREST blit (a scaling multisample->single-sample blit is
-			// illegal in GLES), then upscale from the resolve FBO below. Non-MSAA: the scene
-			// already lives single-sample in sceneFbo, so upscale straight from it.
-			int presentFbo = sceneFbo;
-			if (sceneSamples >= 2 && sceneResolveFbo != 0)
-			{
-				GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, sceneFbo);
-				GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, sceneResolveFbo);
-				GLES30.glBlitFramebuffer(
-					0, 0, sceneFboW, sceneFboH,
-					0, 0, sceneFboW, sceneFboH,
-					GL_COLOR_BUFFER_BIT, GLES20.GL_NEAREST);
-				presentFbo = sceneResolveFbo;
-			}
-			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, presentFbo);
-			GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, 0);
-			GLES30.glBlitFramebuffer(
-				0, 0, sceneFboW, sceneFboH,
-				0, 0, surfW, surfH,
-				GL_COLOR_BUFFER_BIT, GL_LINEAR);
-			GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, 0);
+			GLES30.glInvalidateFramebuffer(GLES30.GL_FRAMEBUFFER, 1, INVALIDATE_DEPTH, 0);
 		}
-		else
+
+		// SCENE_* mirror the fragui `hasScene` uniform.
+		int sceneMode = SCENE_NONE;
+		if (scenePaintedThisFrame)
 		{
-			GLES20.glViewport(0, 0, surfW, surfH);
-			glClearColor(0f, 0f, 0f, 1f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			if (sceneFbo != 0 && sceneColorTex != 0)
+			{
+				sceneMode = SCENE_TEXTURE;
+				// MSAA still needs its own resolve: a multisample renderbuffer can't be sampled,
+				// so blit it same-size into sceneColorTex first. Non-MSAA renders straight into
+				// sceneColorTex, so there is nothing to do.
+				if (sceneSamples >= 2 && sceneResolveFbo != 0)
+				{
+					GLES30.glBindFramebuffer(GLES30.GL_READ_FRAMEBUFFER, sceneFbo);
+					GLES30.glBindFramebuffer(GLES30.GL_DRAW_FRAMEBUFFER, sceneResolveFbo);
+					GLES30.glBlitFramebuffer(
+						0, 0, sceneFboW, sceneFboH,
+						0, 0, sceneFboW, sceneFboH,
+						GL_COLOR_BUFFER_BIT, GLES20.GL_NEAREST);
+					// The multisample colour has been resolved; nothing reads it again.
+					GLES30.glInvalidateFramebuffer(GLES30.GL_READ_FRAMEBUFFER, 1, INVALIDATE_COLOR, 0);
+				}
+			}
+			else
+			{
+				// ensureSceneFbo failed earlier, so preSceneDrawToplevel fell back to rendering
+				// the scene directly into the default framebuffer. It is already where it needs
+				// to be — blend the UI over it instead of compositing a texture.
+				sceneMode = SCENE_DEFAULT_FB;
+			}
 		}
 		scenePaintedThisFrame = false;
 
-		drawUi(overlayColor, canvasWidth, canvasHeight);
+		GLES30.glBindFramebuffer(GLES30.GL_FRAMEBUFFER, 0);
+
+		drawUi(overlayColor, canvasWidth, canvasHeight, sceneMode);
 
 		GlesHost.get().swapBuffers();
 	}
@@ -1473,6 +1602,15 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		if (scene.getWorldViewId() == WorldView.TOPLEVEL)
 		{
+			// Map every pool up front. Worker render threads can't map (that's a GL call), so
+			// their buffers have to already be writable by the time drawDynamic reaches them —
+			// and this is also where an rt pool that ran out of room last frame grows.
+			for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
+			{
+				rts[i].vaoO.map();
+				rts[i].vaoA.map();
+			}
+
 			this.cameraYaw = client.getCameraYaw();
 			this.cameraPitch = client.getCameraPitch();
 			preSceneDrawToplevel(scene, cameraX, cameraY, cameraZ, cameraPitch, cameraYaw);
@@ -1494,7 +1632,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 				}
 				else
 				{
-					System.arraycopy(Mat4.identity(), 0, ctx.projection, 0, 16);
+					System.arraycopy(IDENTITY, 0, ctx.projection, 0, 16);
 				}
 				glUniformMatrix4fv(uniEntityProj, 1, false, ctx.projection, 0);
 				lastProjection = entityProjection;
@@ -1568,12 +1706,10 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		int vh = Math.max(1, topFbo - vy);
 		GLES20.glViewport(vx, vy, vw, vh);
 
-		// Sky / clear. Standard depth convention now (matches Mat4.projection's
-		// rewritten output range): 1.0 = far, GL_LESS = closer fragments win.
+		// Sky colour is read here but the clear itself happens in drawSkybox() at the end
+		// of this method — a model skybox has to be drawn with the scene program bound and
+		// all its uniforms already set.
 		int sky = client.getSkyboxColor();
-		GLES20.glClearColor(((sky >> 16) & 0xFF) / 255f, ((sky >> 8) & 0xFF) / 255f, (sky & 0xFF) / 255f, 1f);
-		glClearDepthf(1f);
-		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
 		// Anisotropic filter — only apply when the texture array exists.
 		final int anisotropic = config.anisotropicFilteringLevel();
@@ -1612,8 +1748,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		Mat4.mul(proj, Mat4.translate(-cameraX, -cameraY, -cameraZ));
 		glUniformMatrix4fv(uniWorldProj, 1, false, proj, 0);
 
-		float[] ident = Mat4.identity();
-		glUniformMatrix4fv(uniEntityProj, 1, false, ident, 0);
+		glUniformMatrix4fv(uniEntityProj, 1, false, IDENTITY, 0);
 		lastProjection = null;
 
 		glUniform4i(uniEntityTint, 0, 0, 0, 0);
@@ -1632,6 +1767,56 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		// "layered cake" artifact on tree leaves.
 		glDepthFunc(GL_LESS);
 		glEnable(GLES20.GL_DEPTH_TEST);
+
+		drawSkybox(scene, sky, cameraX, cameraY, cameraZ);
+	}
+
+	/**
+	 * Clear the scene framebuffer, and — when the scene supplies a skybox model — draw it
+	 * as the backdrop. Ported from upstream gpu's drawSkybox; the only differences are
+	 * the GLES array-form uniform calls and the standard (non reverse-Z) depth clear.
+	 */
+	private void drawSkybox(Scene scene, int sky, float cameraX, float cameraY, float cameraZ)
+	{
+		Model skybox = scene.getSkybox();
+		if (skybox == null)
+		{
+			GLES20.glClearColor(((sky >> 16) & 0xFF) / 255f, ((sky >> 8) & 0xFF) / 255f, (sky & 0xFF) / 255f, 1f);
+			glClearDepthf(1f);
+			GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+			return;
+		}
+
+		GLES20.glClearColor(0f, 0f, 0f, 1f);
+		glClearDepthf(1f);
+		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+
+		RenderThread rt = rts[0];
+		int size = skybox.getFaceCount() * 3 * VAO.VERT_SIZE;
+		VAO o = rt.vaoO.get(size);
+		if (o == null)
+		{
+			return;
+		}
+
+		try
+		{
+			rt.modelUploader.uploadTempModel(skybox, 0, 0, 0, 0, o.vbo.vb);
+		}
+		catch (Throwable t)
+		{
+			Log.w(TAG, "skybox upload failed: " + t, t);
+			return;
+		}
+
+		// Translate-only projection: the skybox is modelled around the origin and follows
+		// the camera. UNSORTED_NO_DEPTH so it never writes depth and everything draws over it.
+		float[] skyboxProjection = Mat4.translate(cameraX, cameraY, cameraZ);
+		o.addRange(skyboxProjection, scene, Renderable.RENDERMODE_UNSORTED_NO_DEPTH);
+
+		rt.vaoO.draw();
+
+		setEntityProjection(IDENTITY);
 	}
 
 	@Override
@@ -1641,7 +1826,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		if (scene.getWorldViewId() == WorldView.TOPLEVEL)
 		{
-			GLES20.glDisable(GL_BLEND);
+			glDisable(GL_BLEND);
 			GLES20.glDisable(GL_CULL_FACE);
 			GLES20.glDisable(GLES20.GL_DEPTH_TEST);
 		}
@@ -1688,8 +1873,6 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			debugSubWvCallback("drawZoneAlpha", scene.getWorldViewId(), zx, zz);
 		}
 
-		vaoA.unmap();
-
 		Zone z = ctx.zones[zx][zz];
 		if (!z.initialized) return;
 
@@ -1708,7 +1891,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			z.multizoneLocs(scene, zx - offset, zz - offset, ctx.cameraX, ctx.cameraZ, ctx.zones);
 		}
 
-		z.renderAlpha(zx - offset, zz - offset, cameraYaw, cameraPitch,
+		z.renderAlpha(rts[0].modelUploader, zx - offset, zz - offset, cameraYaw, cameraPitch,
 			ctx.minLevel, ctx.level, ctx.maxLevel, level, ctx.hideRoofIds,
 			!close || (scene.getOverrideAmount() > 0));
 	}
@@ -1730,50 +1913,60 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 
 		if (pass == DrawCallbacks.PASS_OPAQUE)
 		{
-			vaoO.addRange(ctx.projection, scene);
-			vaoPO.addRange(ctx.projection, scene);
+			// Seal whatever the last model left unranged in each pool under this scene's
+			// projection. A no-op when the pool's trailing range already covers everything,
+			// which is the normal case since drawDynamic/drawTemp range as they go.
+			for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
+			{
+				rts[i].vaoO.addRange(ctx.projection, scene, 0);
+			}
 
 			if (scene.getWorldViewId() == WorldView.TOPLEVEL)
 			{
-				glUniform3i(uniBase, 0, 0, 0);
-
 				if (DEBUG && (debugOpaqueDrawThrottle++ % 60) == 0)
 				{
-					int total = 0, mapped = 0, biggestRange = 0;
-					for (VAO v : vaoO.vaos)
+					int total = 0, mapped = 0, biggestRange = 0, vaoCount = 0;
+					for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
 					{
-						if (v.vbo.mapped) { total += v.vbo.vb.position(); mapped++; }
-						for (int r = 0; r < v.off; ++r) biggestRange = Math.max(biggestRange, v.lengths[r] - (r > 0 ? v.lengths[r - 1] : 0));
+						for (VAO v : rts[i].vaoO.vaos)
+						{
+							vaoCount++;
+							if (v.vbo.mapped) { total += v.vbo.vb.position(); mapped++; }
+							for (int r = 0; r < v.off; ++r)
+							{
+								biggestRange = Math.max(biggestRange,
+									v.ranges[r].endpos - (r > 0 ? v.ranges[r - 1].endpos : 0));
+							}
+						}
 					}
-					Log.i(TAG, "OPAQUE-DRAW totalInts=" + total + " mappedVaos=" + mapped + " vaoCount=" + vaoO.vaos.size() + " biggestRange=" + biggestRange);
+					Log.i(TAG, "OPAQUE-DRAW totalInts=" + total + " mappedVaos=" + mapped
+						+ " vaoCount=" + vaoCount + " biggestRange=" + biggestRange);
 				}
 
-				int sz = vaoO.unmap();
-				for (int i = 0; i < sz; ++i)
+				for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
 				{
-					VAO vao = vaoO.vaos.get(i);
-					vao.draw();
-					vao.reset();
-				}
-
-				sz = vaoPO.unmap();
-				for (int i = 0; i < sz; ++i)
-				{
-					VAO vao = vaoPO.vaos.get(i);
-					vao.draw();
-					vao.reset();
+					rts[i].vaoO.draw();
 				}
 			}
 		}
 		else if (pass == DrawCallbacks.PRE_PASS_ALPHA)
 		{
 			// PRE_PASS_ALPHA fires once per scene right before the alpha zone loop.
-			// Its job is to re-arm uniEntityProj so static alpha geometry (drawn by
-			// Zone.renderAlpha via the static elementBuffer) gets the right entity
-			// transform. Used to fall through to the PASS_ALPHA branch below, which
-			// at TOPLEVEL prematurely unmapped+drew vaoA before drawZoneAlpha ran —
-			// so any dynamic alpha registered after this point landed in an empty
-			// VAO and never reached the screen.
+			//
+			// The alpha pools are unmapped, never addRange'd and never drawn as a pool: their
+			// contents are replayed by Zone.renderAlpha, which indexes them directly by the
+			// (start, end) positions recorded in addTempAlphaModel, in back-to-front order.
+			//
+			// Unmapping here rather than in drawZoneAlpha (upstream 098b40c4c6): drawZoneAlpha
+			// is not guaranteed to run at all — if no zone is visible the pools stayed mapped
+			// and the next frame's map() threw. This callback always fires.
+			for (int i = 0; i < rts.length; ++i) // NOPMD: ForLoopCanBeForeach
+			{
+				rts[i].vaoA.unmap();
+			}
+
+			// Re-arm uniEntityProj so static alpha geometry (drawn by Zone.renderAlpha via
+			// the static elementBuffer) gets the right entity transform.
 			glUniformMatrix4fv(uniEntityProj, 1, false, ctx.projection, 0);
 			lastProjection = projection;
 			glUniform4i(uniEntityTint, scene.getOverrideHue(), scene.getOverrideSaturation(),
@@ -1781,42 +1974,30 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		}
 		else // PASS_ALPHA
 		{
-			vaoA.addRange(ctx.projection, scene);
-
-			if (scene.getWorldViewId() == WorldView.TOPLEVEL)
+			// CRITICAL: clean up temp alpha models stashed across zones by multizoneLocs
+			// during the alpha pass. Without this, every frame allocates new AlphaModel
+			// instances that never get reclaimed → heap exhaustion in seconds (OOM in
+			// multizoneLocs).
+			for (int x = 0; x < ctx.sizeX; ++x)
 			{
-				glUniform3i(uniBase, 0, 0, 0);
-
-				int sz = vaoA.unmap();
-				for (int i = 0; i < sz; ++i)
+				for (int z = 0; z < ctx.sizeZ; ++z)
 				{
-					VAO vao = vaoA.vaos.get(i);
-					GLES20.glDepthMask(false);
-					vao.draw();
-					GLES20.glDepthMask(true);
-					vao.reset();
-				}
-
-				// CRITICAL: clean up temp alpha models stashed across zones by
-				// multizoneLocs during the alpha pass. Without this, every frame
-				// allocates new AlphaModel instances that never get reclaimed
-				// → heap exhaustion in seconds (OOM in multizoneLocs).
-				for (int x = 0; x < ctx.sizeX; ++x)
-				{
-					for (int z = 0; z < ctx.sizeZ; ++z)
-					{
-						ctx.zones[x][z].removeTemp();
-					}
+					ctx.zones[x][z].removeTemp();
 				}
 			}
 		}
 	}
 
 	@Override
-	public void drawDynamic(Projection worldProjection, Scene scene, TileObject tileObject,
+	public void drawDynamic(int renderThreadId, Projection worldProjection, Scene scene, TileObject tileObject,
 		Renderable r, Model m, int orient, int x, int y, int z)
 	{
 		if (!glInitted) return;
+
+		// -1 is the client thread, worker i is rts[i + 1]. Nothing below this point issues a
+		// GL call: worker threads only fill an already-mapped VBO, seal a range on their own
+		// VAO, and register into the (synchronized) zone alpha list.
+		final RenderThread rt = rts[Math.max(0, Math.min(renderThreadId + 1, rts.length - 1))];
 
 		SceneContext ctx = context(scene);
 		if (ctx == null) return;
@@ -1843,8 +2024,9 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			// render even when the camera is close to or inside the bounding
 			// cylinder. Routing everything through uploadSortedModel like before
 			// silently dropped these.
-			VAO o = vaoO.get(size);
-			try { clientUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb); }
+			VAO o = rt.vaoO.get(size);
+			if (o == null) return; // worker pool out of room; it grows at the next preSceneDraw
+			try { rt.modelUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb); }
 			catch (Throwable t) { Log.w(TAG, "uploadTempModel opaque(drawDynamic) faces=" + faceCount
 				+ " vxNull=" + (m.getVerticesX() == null) + " idxNull=" + (m.getFaceIndices1() == null)
 				+ " wv=" + scene.getWorldViewId() + " failed: " + t, t); }
@@ -1854,17 +2036,18 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			// own matrix instead of being drawn under the shared Projection object after
 			// it's been mutated to the enclosing toplevel transform — which sent its
 			// entity-local vertices off-screen.
-			o.addRange(ctx.projection, scene);
+			o.addRange(ctx.projection, scene, 0);
 			return;
 		}
 
-		VAO o = vaoO.get(size);
-		VAO a = vaoA.get(size);
+		VAO o = rt.vaoO.get(size);
+		VAO a = rt.vaoA.get(size);
+		if (o == null || a == null) return;
 		int aStart = a.vbo.vb.position();
 		try
 		{
 			m.calculateBoundsCylinder();
-			facePrioritySorter.uploadSortedModel(worldProjection, m, orient, x, y, z,
+			rt.modelUploader.uploadSortedModel(worldProjection, m, orient, x, y, z,
 				o.vbo.vb, a.vbo.vb, false);
 		}
 		catch (Throwable t)
@@ -1875,7 +2058,7 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			Log.w(TAG, "uploadSortedModel failed: " + t, t);
 		}
 
-		o.addRange(ctx.projection, scene);
+		o.addRange(ctx.projection, scene, 0);
 
 		int aEnd = a.vbo.vb.position();
 		if (aEnd > aStart)
@@ -1919,25 +2102,33 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		final int renderMode = renderable.getRenderMode();
 		final int size = faceCount * 3 * VAO.VERT_SIZE;
 
-		if (renderMode != Renderable.RENDERMODE_SORTED_NO_DEPTH && m.getFaceTransparencies() == null)
+		// drawTemp is always the client thread.
+		final RenderThread rt = rts[0];
+
+		// getTransparency() is the model-wide transparency; a model can be see-through with
+		// no per-face transparencies at all, and that has to take the sorted path too.
+		if (renderMode != Renderable.RENDERMODE_SORTED_NO_DEPTH
+			&& m.getFaceTransparencies() == null && m.getTransparency() == 0)
 		{
-			VAO o = vaoO.get(size);
-			try { clientUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb); }
+			VAO o = rt.vaoO.get(size);
+			if (o == null) return;
+			try { rt.modelUploader.uploadTempModel(m, orient, x, y, z, o.vbo.vb); }
 			catch (Throwable t) { Log.w(TAG, "uploadTempModel opaque(drawTemp) faces=" + faceCount
 				+ " vxNull=" + (m.getVerticesX() == null) + " idxNull=" + (m.getFaceIndices1() == null)
 				+ " wv=" + scene.getWorldViewId() + " failed: " + t, t); }
-			o.addRange(ctx.projection, scene);
+			o.addRange(ctx.projection, scene, 0);
 			return;
 		}
 
-		VAO o = vaoO.get(size);
-		VAO a = vaoA.get(size);
+		VAO o = rt.vaoO.get(size);
+		VAO a = rt.vaoA.get(size);
+		if (o == null || a == null) return;
 		int aStart = a.vbo.vb.position();
 		int oStart = o.vbo.vb.position();
 		try
 		{
 			m.calculateBoundsCylinder();
-			facePrioritySorter.uploadSortedModel(worldProjection, m, orient, x, y, z,
+			rt.modelUploader.uploadSortedModel(worldProjection, m, orient, x, y, z,
 				o.vbo.vb, a.vbo.vb, renderMode == Renderable.RENDERMODE_SORTED_NO_DEPTH);
 		}
 		catch (Throwable t)
@@ -1945,7 +2136,8 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 			Log.w(TAG, "uploadSortedModel failed: " + t, t);
 		}
 
-		o.addRange(ctx.projection, scene);
+		o.addRange(ctx.projection, scene,
+			renderMode == Renderable.RENDERMODE_SORTED_NO_DEPTH ? renderMode : 0);
 
 		int aEnd = a.vbo.vb.position();
 		if (aEnd > aStart)
@@ -2016,21 +2208,41 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	private void drawUi(int overlayColor, int canvasWidth, int canvasHeight)
+	/**
+	 * Fullscreen composite: upscale the offscreen scene and lay the UI over it, in one pass.
+	 *
+	 * @param sceneMode one of SCENE_NONE / SCENE_TEXTURE / SCENE_DEFAULT_FB
+	 */
+	private void drawUi(int overlayColor, int canvasWidth, int canvasHeight, int sceneMode)
 	{
 		int viewW = GlesHost.get().getWidth();
 		int viewH = GlesHost.get().getHeight();
 		if (viewW <= 0 || viewH <= 0) { viewW = canvasWidth; viewH = canvasHeight; }
 		glViewport(0, 0, viewW, viewH);
 
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+		// Blending is only needed for the fallback where the scene is already sitting in the
+		// default framebuffer. In the normal path the shader does the compositing and this
+		// quad covers every pixel, so the tiler never has to load the framebuffer in.
+		if (sceneMode == SCENE_DEFAULT_FB)
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+		}
+		else
+		{
+			glDisable(GL_BLEND);
+		}
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, interfaceTexture);
+		glActiveTexture(GL_TEXTURE0 + SCENE_TEX_UNIT);
+		glBindTexture(GL_TEXTURE_2D, sceneMode == SCENE_TEXTURE ? sceneColorTex : 0);
+		glActiveTexture(GL_TEXTURE0);
 
 		glUseProgram(glUiProgram);
 		glUniform1i(uniTex, 0);
+		glUniform1i(uniUiSceneTex, SCENE_TEX_UNIT);
+		glUniform1i(uniUiHasScene, sceneMode);
 		glUniform2i(uniTexSourceDimensions, canvasWidth, canvasHeight);
 		glUniform2i(uniTexTargetDimensions, viewW, viewH);
 		glUniform4f(uniUiAlphaOverlay,
@@ -2043,6 +2255,10 @@ public class GpuGlesPlugin extends Plugin implements DrawCallbacks
 		glBindVertexArray(vaoUiHandle);
 		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 		glBindVertexArray(0);
+
+		glActiveTexture(GL_TEXTURE0 + SCENE_TEX_UNIT);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glUseProgram(0);
 

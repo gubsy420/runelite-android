@@ -246,7 +246,11 @@ private fun GameViewport(modifier: Modifier = Modifier) {
                 // Force that layout pass + a geometry refresh here so the toggle alone
                 // makes the active renderer paint.
                 window?.let {
-                    it.invalidate()
+                    // invalidateTree(), not invalidate(): java.awt.Component now tracks layout
+                    // validity, so a plain invalidate() marks only the window itself and
+                    // validate() would short-circuit every child subtree that is still valid —
+                    // which is all of them here, since the toggle doesn't change the tree.
+                    it.invalidateTree()
                     it.validate()
                 }
                 canvasRect = java.awt.Canvas.latest()?.boundsInWindow

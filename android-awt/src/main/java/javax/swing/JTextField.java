@@ -21,7 +21,7 @@ public class JTextField extends JTextComponent {
     public JTextField(Document doc, String text, int columns) { setDocument(doc); setText(text); this.columns = columns; }
 
     public int getColumns() { return columns; }
-    public void setColumns(int columns) { this.columns = columns; }
+    public void setColumns(int columns) { this.columns = columns; cachedPref = null; invalidate(); }
 
     public int getHorizontalAlignment() { return horizontalAlignment; }
     public void setHorizontalAlignment(int alignment) { this.horizontalAlignment = alignment; }
@@ -52,9 +52,9 @@ public class JTextField extends JTextComponent {
     }
 
     @Override
-    public void setText(String t) { super.setText(t); cachedPref = null; }
+    public void setText(String t) { super.setText(t); cachedPref = null; invalidate(); }
     @Override
-    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; }
+    public void setFont(java.awt.Font f) { super.setFont(f); cachedPref = null; invalidate(); }
 
     @Override
     protected void paintComponent(java.awt.Graphics g) {
