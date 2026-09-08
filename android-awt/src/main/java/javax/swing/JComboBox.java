@@ -31,7 +31,7 @@ public class JComboBox<E> extends JComponent {
     }
 
     public ComboBoxModel<E> getModel() { return dataModel; }
-    public void setModel(ComboBoxModel<E> aModel) { this.dataModel = aModel; }
+    public void setModel(ComboBoxModel<E> aModel) { this.dataModel = aModel; invalidate(); }
     public ListCellRenderer<? super E> getRenderer() { return renderer; }
     public void setRenderer(ListCellRenderer<? super E> r) { this.renderer = r; }
 

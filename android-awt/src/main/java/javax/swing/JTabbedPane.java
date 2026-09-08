@@ -215,7 +215,7 @@ public class JTabbedPane extends JComponent implements SwingConstants {
         repaint();
     }
     public Component getSelectedComponent() { return selectedIndex < 0 || selectedIndex >= tabs.size() ? null : tabs.get(selectedIndex); }
-    public void setSelectedComponent(Component c) { selectedIndex = tabs.indexOf(c); }
+    public void setSelectedComponent(Component c) { selectedIndex = tabs.indexOf(c); invalidate(); }
     public void addTab(String title, Component component) { addTab(title, null, component, null); }
     public void addTab(String title, Icon icon, Component component) { addTab(title, icon, component, null); }
     public void addTab(String title, Icon icon, Component component, String tip) {
@@ -234,19 +234,20 @@ public class JTabbedPane extends JComponent implements SwingConstants {
         }
         if (getWidth() > 0 && getHeight() > 0) { doLayout(); repaint(); }
     }
-    public Component add(Component component) { tabs.add(component); titles.add(""); icons.add(null); return component; }
-    public Component add(String title, Component component) { tabs.add(component); titles.add(title); icons.add(null); return component; }
+    public Component add(Component component) { tabs.add(component); titles.add(""); icons.add(null); invalidate(); return component; }
+    public Component add(String title, Component component) { tabs.add(component); titles.add(title); icons.add(null); invalidate(); return component; }
     public void remove(Component component) { int i = tabs.indexOf(component); if (i >= 0) removeTabAt(i); }
     public void remove(int index) { removeTabAt(index); }
     public void removeTabAt(int index) {
         tabs.remove(index); titles.remove(index); icons.remove(index);
         if (selectedIndex >= tabs.size()) selectedIndex = tabs.size() - 1;
+        invalidate();
     }
-    public void removeAll() { tabs.clear(); titles.clear(); icons.clear(); selectedIndex = -1; }
+    public void removeAll() { tabs.clear(); titles.clear(); icons.clear(); selectedIndex = -1; invalidate(); }
     public int getTabCount() { return tabs.size(); }
     public int getTabRunCount() { return 1; }
     public String getTitleAt(int index) { return titles.get(index); }
-    public void setTitleAt(int index, String title) { titles.set(index, title); }
+    public void setTitleAt(int index, String title) { titles.set(index, title); invalidate(); }
     public Icon getIconAt(int index) { return null; }
     public void setIconAt(int index, Icon icon) {}
     public Icon getDisabledIconAt(int index) { return null; }

@@ -17,8 +17,12 @@ public final class BufferedImageFontMetrics extends FontMetrics {
         BufferedImageFontMetrics cached = CACHE.get(font);
         if (cached != null) return cached;
         BufferedImageFontMetrics fm = new BufferedImageFontMetrics(font);
-        CACHE.put(font, fm);
-        return fm;
+        // putIfAbsent, not put: this is now the single process-wide metrics cache
+        // (java.awt.Component.getFontMetrics delegates here), so two threads racing on the
+        // same font should end up sharing one instance rather than each keeping its own
+        // Paint + Typeface + width table alive.
+        BufferedImageFontMetrics prev = CACHE.putIfAbsent(font, fm);
+        return prev != null ? prev : fm;
     }
 
     private final android.graphics.Paint paint;
@@ -26,6 +30,17 @@ public final class BufferedImageFontMetrics extends FontMetrics {
     private final int descent;
     private final int leading;
     private final int height;
+    /**
+     * Widths of U+0000..U+007F, measured once. charWidth() used to allocate a
+     * {@code char[1]} and a {@code float[1]} and cross into Minikin on every call, and
+     * Swing text layout calls it per character — so a single label measure was dozens of
+     * allocations. Everything the UI actually renders is in this range.
+     */
+    private final int[] asciiWidths = new int[128];
+    /** Scratch for the non-ASCII path. Guarded by {@code this} because the Paint is
+     *  shared across callers anyway. */
+    private final char[] charScratch = new char[1];
+    private final float[] widthScratch = new float[1];
 
     /** Android's Paint.setTextSize takes pixels; Java Font.size is conventionally points
      *  but the OSRS/RuneLite code paths treat it as pixels too, so pass through. */
@@ -44,6 +59,12 @@ public final class BufferedImageFontMetrics extends FontMetrics {
         this.descent = Math.max(0, (int) Math.ceil(afm.descent));
         this.leading = Math.max(0, (int) Math.ceil(afm.leading));
         this.height = this.ascent + this.descent + this.leading;
+
+        char[] ascii = new char[128];
+        for (int i = 0; i < 128; i++) ascii[i] = (char) i;
+        float[] w = new float[128];
+        paint.getTextWidths(ascii, 0, 128, w);
+        for (int i = 0; i < 128; i++) asciiWidths[i] = (int) Math.ceil(w[i]);
     }
 
     /** Resolve an AWT Font down to an Android Typeface. If the family is registered
@@ -77,9 +98,12 @@ public final class BufferedImageFontMetrics extends FontMetrics {
 
     @Override
     public int charWidth(char ch) {
-        float[] w = new float[1];
-        paint.getTextWidths(new char[] { ch }, 0, 1, w);
-        return (int) Math.ceil(w[0]);
+        if (ch < 128) return asciiWidths[ch];
+        synchronized (this) {
+            charScratch[0] = ch;
+            paint.getTextWidths(charScratch, 0, 1, widthScratch);
+            return (int) Math.ceil(widthScratch[0]);
+        }
     }
 
     @Override

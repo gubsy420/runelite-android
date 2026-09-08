@@ -92,6 +92,20 @@ pub const XOR: jint = 12;
 
 /// Pin an int[] for the duration of a closure. The array is released back to the JVM
 /// when the wrapper drops; we always commit so the caller sees mutations.
+///
+/// `GetPrimitiveArrayCritical`, not `GetIntArrayElements`. ART implements the latter as
+/// an unconditional `new[]` + memcpy in, and a memcpy back + `delete[]` on release, for
+/// every array small enough to live in a movable space (under the 12 KB large-object
+/// threshold). That is every glyph bitmap the text cache blits, every icon, and every
+/// shape-rasterizer scratch buffer — hundreds of native allocations and round-trip copies
+/// per painted frame, for draws that touch a handful of pixels. The critical variant hands
+/// back the real backing store instead. Buffers big enough to be large objects were already
+/// non-movable and so already copy-free; they are unaffected either way.
+///
+/// The tradeoff is that a moving GC cannot run while the pointer is held, so nothing
+/// between acquire and release may call back into the JVM or block. The closures here are
+/// pure pixel arithmetic, and any JNI work the callers need (array lengths, `is_same_object`,
+/// pinning the small polygon coordinate arrays) is done before the critical is taken.
 fn with_pinned_array<F, R>(
     env: &mut JNIEnv<'_>,
     array: &JIntArray<'_>,
@@ -105,15 +119,21 @@ where
     if len <= 0 {
         return None;
     }
-    let elements = unsafe { env.get_array_elements(array, mode).ok()? };
+    let elements = unsafe { env.get_array_elements_critical(array, mode).ok()? };
     let slice = unsafe { std::slice::from_raw_parts_mut(elements.as_ptr(), elements.len()) };
     Some(f(slice))
 }
 
 /// Pin a read-only source and a writable destination int[] simultaneously for one
 /// closure. The source is released `NoCopyBack` (we never mutate it, so there is
-/// nothing to commit and — crucially — no whole-array copy on the way in/out like
-/// `read_int_array` does); the destination is committed `CopyBack`.
+/// nothing to commit); the destination is committed `CopyBack`.
+///
+/// Both use `GetPrimitiveArrayCritical` — nesting two critical sections is explicitly
+/// allowed by the JNI spec as long as they are released in reverse order, which the drop
+/// order of the two locals below gives us. The second `JNIEnv` is an `unsafe_clone` purely
+/// to get past the borrow checker: `get_array_elements_critical` takes `&mut self` for the
+/// lifetime of the guard, so one handle cannot hold two. Neither handle creates a local
+/// reference, which is the thing `unsafe_clone` is actually unsound for.
 ///
 /// SAFETY: the caller must ensure `src` and `dst` are *distinct* Java arrays. Pinning
 /// the same backing store as both `&[i32]` and `&mut [i32]` aliases it, which is UB —
@@ -130,11 +150,20 @@ where
     if env.get_array_length(src).ok()? <= 0 || env.get_array_length(dst).ok()? <= 0 {
         return None;
     }
-    let src_elems = unsafe { env.get_array_elements(src, ReleaseMode::NoCopyBack).ok()? };
-    let dst_elems = unsafe { env.get_array_elements(dst, ReleaseMode::CopyBack).ok()? };
+    let mut env2 = unsafe { env.unsafe_clone() };
+    let dst_elems = unsafe { env.get_array_elements_critical(dst, ReleaseMode::CopyBack).ok()? };
+    let src_elems = unsafe {
+        env2.get_array_elements_critical(src, ReleaseMode::NoCopyBack)
+            .ok()?
+    };
     let src_slice = unsafe { std::slice::from_raw_parts(src_elems.as_ptr(), src_elems.len()) };
     let dst_slice = unsafe { std::slice::from_raw_parts_mut(dst_elems.as_ptr(), dst_elems.len()) };
-    Some(f(src_slice, dst_slice))
+    let r = f(src_slice, dst_slice);
+    // Explicit, so the reverse-order release the JNI spec asks for is not left to an
+    // accident of declaration order.
+    drop(src_elems);
+    drop(dst_elems);
+    Some(r)
 }
 
 #[no_mangle]
@@ -250,6 +279,10 @@ pub extern "system" fn Java_net_runelite_awt_AwtNative_fillPolygon<'local>(
     if n < 3 {
         return;
     }
+    // Regular (non-critical) pinning for the coordinate arrays, and acquired *before*
+    // with_pinned_array takes its critical section: these are JNI calls, which are not
+    // allowed while a critical is held. They are a handful of ints, so the copy ART may
+    // make here is irrelevant.
     let xs_elems = unsafe { env.get_array_elements(&xs, ReleaseMode::NoCopyBack).ok() };
     let ys_elems = unsafe { env.get_array_elements(&ys, ReleaseMode::NoCopyBack).ok() };
     if let (Some(xs_e), Some(ys_e)) = (xs_elems, ys_elems) {

@@ -28,6 +28,10 @@ public class BufferedImage extends Image {
     public static final int TYPE_BYTE_BINARY   = 12;
     public static final int TYPE_BYTE_INDEXED  = 13;
 
+    /** Raster origin. createWritableRaster only reads x/y off this, it never keeps the
+     *  reference, so one shared instance does for every image. */
+    private static final java.awt.Point ORIGIN = new java.awt.Point(0, 0);
+
     private final int imageType;
     private final ColorModel colorModel;
     private final WritableRaster raster;
@@ -44,7 +48,7 @@ public class BufferedImage extends Image {
         DataBufferInt db = new DataBufferInt(pixels, width * height);
         int[] masks = masksFor(imageType);
         SampleModel sm = new SinglePixelPackedSampleModel(DataBuffer.TYPE_INT, width, height, masks);
-        this.raster = Raster.createWritableRaster(sm, db, new java.awt.Point(0, 0));
+        this.raster = Raster.createWritableRaster(sm, db, ORIGIN);
         this.properties = null;
     }
 
@@ -192,27 +196,42 @@ public class BufferedImage extends Image {
         return UndefinedProperty;
     }
 
+    // ColorModel is immutable and depends only on the image type, so one instance per
+    // type is enough. Building a fresh one per image cost a DirectColorModel, its
+    // component-size int[], a ColorSpace lookup and the mask int[] on top of the pixel
+    // buffer — around 130 bytes of metadata on top of, say, a 1 KB item icon. RuneLite's
+    // sprite and icon caches hold thousands of those.
+    //
+    // masksFor() stays a fresh array only in the sense that SinglePixelPackedSampleModel
+    // clones what it is handed, so sharing these is safe.
+    private static final int[] MASKS_RGB  = { 0x00FF0000, 0x0000FF00, 0x000000FF };
+    private static final int[] MASKS_ARGB = { 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000 };
+    private static final int[] MASKS_BGR  = { 0x000000FF, 0x0000FF00, 0x00FF0000 };
+
+    private static final ColorModel CM_RGB =
+        new DirectColorModel(24, 0x00FF0000, 0x0000FF00, 0x000000FF);
+    private static final ColorModel CM_ARGB =
+        new DirectColorModel(32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
+    private static final ColorModel CM_BGR =
+        new DirectColorModel(24, 0x000000FF, 0x0000FF00, 0x00FF0000);
+
     private static ColorModel colorModelFor(int type) {
         switch (type) {
-            case TYPE_INT_RGB:
-                return new DirectColorModel(24, 0x00FF0000, 0x0000FF00, 0x000000FF);
+            case TYPE_INT_RGB:  return CM_RGB;
+            case TYPE_INT_BGR:  return CM_BGR;
             case TYPE_INT_ARGB:
             case TYPE_INT_ARGB_PRE:
-                return new DirectColorModel(32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
-            case TYPE_INT_BGR:
-                return new DirectColorModel(24, 0x000000FF, 0x0000FF00, 0x00FF0000);
-            default:
-                return new DirectColorModel(32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
+            default:            return CM_ARGB;
         }
     }
 
     private static int[] masksFor(int type) {
         switch (type) {
-            case TYPE_INT_RGB:  return new int[]{0x00FF0000, 0x0000FF00, 0x000000FF};
+            case TYPE_INT_RGB:  return MASKS_RGB;
+            case TYPE_INT_BGR:  return MASKS_BGR;
             case TYPE_INT_ARGB:
-            case TYPE_INT_ARGB_PRE: return new int[]{0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000};
-            case TYPE_INT_BGR:  return new int[]{0x000000FF, 0x0000FF00, 0x00FF0000};
-            default:            return new int[]{0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000};
+            case TYPE_INT_ARGB_PRE:
+            default:            return MASKS_ARGB;
         }
     }
 }

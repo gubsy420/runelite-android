@@ -41,13 +41,20 @@ public class BufferedImageGraphics2D extends Graphics2D {
      *  (icons, glyph caches, sub-buffers), which are unaffected by this whole mechanism. */
     private final java.util.function.Supplier<BufferedImage> backbufferSource;
 
+    /** Font and Stroke are immutable, and every graphics starts on the same pair — sharing
+     *  them keeps two allocations out of each Graphics2D construction. Graphics2D objects
+     *  are created per Window frame and again by {@link #create()} for Swing paint calls,
+     *  so this is on the paint path rather than a one-off. */
+    private static final Font DEFAULT_FONT = new Font(Font.DIALOG, Font.PLAIN, 12);
+    private static final Stroke DEFAULT_STROKE = new BasicStroke();
+
     private Color foreground = Color.BLACK;
     private Color background = Color.WHITE;
-    private Font font = new Font(Font.DIALOG, Font.PLAIN, 12);
+    private Font font = DEFAULT_FONT;
     private Rectangle clip;
     private final AffineTransform transform = new AffineTransform();
     private Composite composite = AlphaComposite.SrcOver;
-    private Stroke stroke = new BasicStroke();
+    private Stroke stroke = DEFAULT_STROKE;
     private Paint paint = Color.BLACK;
     private final RenderingHints renderingHints = new RenderingHints(null);
 
@@ -330,6 +337,28 @@ public class BufferedImageGraphics2D extends Graphics2D {
      * backing buffer at {@code (x + tx(), y + ty())}, clipped against the active clip.
      * Used by drawArc/fillArc/drawOval/fillOval/drawRoundRect/fillRoundRect.
      */
+    /**
+     * Reusable rasterization target for {@link #rasterizeShape}. Every arc / oval /
+     * round-rect that can't take a native fast path used to allocate a Bitmap, a Canvas,
+     * a Paint and an {@code int[bw*bh]} per call — and RuneLite overlays draw arcs every
+     * frame (cooldown pies, progress rings), so that is a steady stream of garbage in the
+     * middle of the paint loop. One scratch per drawing thread, grown on demand, instead.
+     */
+    private static final class ShapeScratch {
+        android.graphics.Bitmap bmp;
+        android.graphics.Canvas canvas;
+        int[] pixels;
+        int w, h;
+        final android.graphics.Paint paint = new android.graphics.Paint();
+    }
+
+    /** Above this the scratch is not retained — a one-off huge shape shouldn't leave a
+     *  multi-megabyte bitmap parked on the thread forever. */
+    private static final int MAX_SCRATCH_PIXELS = 1024 * 1024;
+
+    private static final ThreadLocal<ShapeScratch> SHAPE_SCRATCH =
+        ThreadLocal.withInitial(ShapeScratch::new);
+
     private void rasterizeShape(int x, int y, int w, int h, boolean filled, AndroidShapeDrawer drawer) {
         if (w <= 0 || h <= 0) return;
         syncTarget();
@@ -342,25 +371,64 @@ public class BufferedImageGraphics2D extends Graphics2D {
         int adx = x + tx();
         int ady = y + ty();
 
-        android.graphics.Bitmap bmp = android.graphics.Bitmap.createBitmap(
-            bw, bh, android.graphics.Bitmap.Config.ARGB_8888);
-        android.graphics.Canvas canvas = new android.graphics.Canvas(bmp);
-        canvas.translate(pad, pad);
-        android.graphics.Paint p = new android.graphics.Paint();
-        p.setAntiAlias(true);
-        p.setColor(foreground.getRGB());
-        p.setStyle(filled ? android.graphics.Paint.Style.FILL : android.graphics.Paint.Style.STROKE);
-        if (!filled) {
-            p.setStrokeWidth(Math.max(1f, strokeW));
+        ShapeScratch sc = SHAPE_SCRATCH.get();
+        boolean pooled = (long) bw * bh <= MAX_SCRATCH_PIXELS;
+
+        android.graphics.Bitmap bmp;
+        android.graphics.Canvas canvas;
+        int[] sp;
+        if (pooled) {
+            if (sc.bmp == null || sc.w < bw || sc.h < bh) {
+                int nw = Math.max(bw, sc.w);
+                int nh = Math.max(bh, sc.h);
+                // Growing both dimensions independently can compound (a wide shape then a
+                // tall one), so fall back to exactly what's asked for if the union blows
+                // the budget.
+                if ((long) nw * nh > MAX_SCRATCH_PIXELS) { nw = bw; nh = bh; }
+                if (sc.bmp != null) sc.bmp.recycle();
+                sc.bmp = android.graphics.Bitmap.createBitmap(
+                    nw, nh, android.graphics.Bitmap.Config.ARGB_8888);
+                sc.canvas = new android.graphics.Canvas(sc.bmp);
+                sc.w = nw;
+                sc.h = nh;
+            }
+            if (sc.pixels == null || sc.pixels.length < bw * bh) {
+                sc.pixels = new int[bw * bh];
+            }
+            bmp = sc.bmp;
+            canvas = sc.canvas;
+            sp = sc.pixels;
+        } else {
+            bmp = android.graphics.Bitmap.createBitmap(
+                bw, bh, android.graphics.Bitmap.Config.ARGB_8888);
+            canvas = new android.graphics.Canvas(bmp);
+            sp = new int[bw * bh];
         }
+
+        canvas.save();
         try {
+            // A reused bitmap still holds the previous shape; clear just the region we're
+            // about to use rather than the whole (possibly much larger) scratch.
+            canvas.clipRect(0, 0, bw, bh);
+            canvas.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR);
+            canvas.translate(pad, pad);
+            android.graphics.Paint p = sc.paint;
+            p.reset();
+            p.setAntiAlias(true);
+            p.setColor(foreground.getRGB());
+            p.setStyle(filled ? android.graphics.Paint.Style.FILL : android.graphics.Paint.Style.STROKE);
+            if (!filled) {
+                p.setStrokeWidth(Math.max(1f, strokeW));
+            }
             drawer.draw(canvas, p, w, h);
         } catch (Throwable ignored) {
             return;
+        } finally {
+            canvas.restore();
         }
-        int[] sp = new int[bw * bh];
+        // Reads a bw x bh sub-rect at stride bw, so a larger pooled bitmap is fine.
         bmp.getPixels(sp, 0, bw, 0, 0, bw, bh);
-        bmp.recycle();
+        if (!pooled) bmp.recycle();
 
         int dstX = adx - pad;
         int dstY = ady - pad;
@@ -483,6 +551,21 @@ public class BufferedImageGraphics2D extends Graphics2D {
         static final int PADDING = 2;
         private static final int MAX = 1024;
         /**
+         * Byte budget for the cached glyph pixels, expressed in ints. The entry count
+         * alone doesn't bound anything useful: entries are int[w*h] and a single wrapped
+         * tooltip line at 16px is easily 600x20 = 48 KB, so 1024 of those is ~49 MB held
+         * for the life of the process on a phone. Cap the pixels instead and evict LRU
+         * until back under budget.
+         */
+        private static final int MAX_PIXELS = 2 * 1024 * 1024; // 8 MB
+        /**
+         * A render bigger than this never enters the cache at all. One oversized string
+         * would otherwise evict most of the small labels that the cache actually exists
+         * for, and it is the entry least likely to be asked for twice.
+         */
+        private static final int MAX_ENTRY_PIXELS = 96 * 1024; // 384 KB
+        private static int cachedPixels;
+        /**
          * Composite key for (string, font, color). Earlier we packed the three hashCodes
          * into a single long with XOR, but the bit ranges overlapped — different (str,
          * font, argb) tuples collided to the same key and the cache returned a stale
@@ -507,6 +590,7 @@ public class BufferedImageGraphics2D extends Graphics2D {
                 h = 31 * h + (aa != null ? aa.ordinal() : 0);
                 this.hash = h;
             }
+            void clear() { this.str = null; this.font = null; }
             @Override public int hashCode() { return hash; }
             @Override public boolean equals(Object o) {
                 if (!(o instanceof Key)) return false;
@@ -519,20 +603,32 @@ public class BufferedImageGraphics2D extends Graphics2D {
         private static final ThreadLocal<Key> LOOKUP_KEY = new ThreadLocal<Key>() {
             @Override protected Key initialValue() { return new Key(); }
         };
+        // access-order, so the iterator hands back least-recently-used first when we trim.
         private static final java.util.LinkedHashMap<Key, TextRender> cache =
-            new java.util.LinkedHashMap<Key, TextRender>(256, 0.75f, true) {
-                @Override
-                protected boolean removeEldestEntry(java.util.Map.Entry<Key, TextRender> e) {
-                    return size() > MAX;
-                }
-            };
+            new java.util.LinkedHashMap<Key, TextRender>(256, 0.75f, true);
+
         static synchronized TextRender get(String str, Font font, int argb, TextAa aa) {
             Key lookup = LOOKUP_KEY.get();
             lookup.set(str, font, argb, aa);
             TextRender r = cache.get(lookup);
+            // Don't let the thread-local probe key pin the last string + font drawn on
+            // this thread until the next drawString.
+            lookup.clear();
             if (r != null) return r;
+
             r = render(str, font, argb, aa);
+            if (r.pixels.length > MAX_ENTRY_PIXELS) return r;
+
             cache.put(new Key(str, font, argb, aa), r);
+            cachedPixels += r.pixels.length;
+            if (cache.size() > MAX || cachedPixels > MAX_PIXELS) {
+                java.util.Iterator<java.util.Map.Entry<Key, TextRender>> it =
+                    cache.entrySet().iterator();
+                while (it.hasNext() && (cache.size() > MAX || cachedPixels > MAX_PIXELS)) {
+                    cachedPixels -= it.next().getValue().pixels.length;
+                    it.remove();
+                }
+            }
             return r;
         }
         private static TextRender render(String str, Font font, int argb, TextAa aa) {
@@ -917,11 +1013,17 @@ public class BufferedImageGraphics2D extends Graphics2D {
                     if (emitSubPath(xs, ys, n, fill, closed)) any = true;
                     n = 0;
                     closed = false;
-                    if (n >= xs.length) { xs = grow(xs); ys = grow(ys); }
                     xs[n] = (int) coords[0]; ys[n] = (int) coords[1]; n++;
                     break;
                 case java.awt.geom.PathIterator.SEG_LINETO:
-                    if (n >= xs.length) { xs = grow(xs); ys = grow(ys); }
+                    if (n >= xs.length) {
+                        // Publish the grown arrays back into the scratch. Without this the
+                        // growth was thrown away at the end of the call, so every path with
+                        // more than 64 vertices re-grew from scratch — two array allocations
+                        // per doubling, per draw.
+                        xs = grow(xs); ys = grow(ys);
+                        scratch[0] = xs; scratch[1] = ys;
+                    }
                     xs[n] = (int) coords[0]; ys[n] = (int) coords[1]; n++;
                     break;
                 case java.awt.geom.PathIterator.SEG_CLOSE:

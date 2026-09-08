@@ -56,5 +56,10 @@ vec3 hslToRgb(vec3 hsl) {
     b = var21;
   }
 
+  // Three transcendentals, and they are the identity when brightness is 1. Uniform
+  // branch, so it costs nothing on the configurations where it does not apply.
+  if (brightness == 1.0f) {
+    return vec3(r, g, b);
+  }
   return vec3(pow(r, brightness), pow(g, brightness), pow(b, brightness));
 }

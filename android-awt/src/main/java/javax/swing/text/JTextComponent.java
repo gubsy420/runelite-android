@@ -23,6 +23,8 @@ public abstract class JTextComponent extends JComponent {
         return text;
     }
     public void setText(String t) {
+        // Text is an input to every text component's preferred size.
+        invalidate();
         this.text = t == null ? "" : t;
         if (doc != null) {
             try {
