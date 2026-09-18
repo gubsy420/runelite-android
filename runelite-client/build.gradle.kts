@@ -150,22 +150,20 @@ tasks.withType<net.runelite.gradle.index.IndexTask> {
 tasks.processResources {
     inputs.property("projectVersion", project.version)
 
-    val commit = ByteArrayOutputStream()
-    exec {
+    // Gradle 9 removed Project.exec from build scripts; the ValueSource-backed provider is the
+    // replacement (and is configuration-cache safe).
+    val commit = providers.exec {
         commandLine("git", "rev-parse", "--short=7", "HEAD")
-        standardOutput = commit
-    }
+    }.standardOutput.asText.map { it.trim() }
 
-    val dirty = ByteArrayOutputStream()
-    exec {
+    val dirty = providers.exec {
         commandLine("git", "status", "--short")
-        standardOutput = dirty
-    }
+    }.standardOutput.asText.map { it.isNotBlank().toString() }
 
     filesMatching("net/runelite/client/runelite.properties") {
         filter { it.replace("\${project.version}", project.version.toString()) }
-        filter { it.replace("\${git.commit.id.abbrev}", commit.toString().trim()) }
-        filter { it.replace("\${git.dirty}", dirty.toString().isNotBlank().toString()) }
+        filter { it.replace("\${git.commit.id.abbrev}", commit.get()) }
+        filter { it.replace("\${git.dirty}", dirty.get()) }
     }
 
     // Substitution here is plain string replacement, so a token with no matching filter

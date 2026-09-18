@@ -9,6 +9,11 @@ import androidx.core.content.ContextCompat
 import net.runelite.mp.MainActivity.Companion.instance
 import net.runelite.mp.R
 
+// Lint (ForegroundServiceType) wants android:foregroundServiceType on this service's manifest
+// element, but the service is not declared in the manifest at all -- its <service> entry and the
+// FOREGROUND_SERVICE permissions are commented out there. Suppressed rather than declared so the
+// manifest stays as it is.
+@android.annotation.SuppressLint("ForegroundServiceType")
 class GameSessionService : Service() {
 
     companion object {

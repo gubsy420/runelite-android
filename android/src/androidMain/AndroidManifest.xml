@@ -20,6 +20,14 @@
         android:usesCleartextTraffic="true"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         <profileable android:shell="true" android:enabled="true" />
+        <!-- Trampoline for AppRestart: lives in its own process so it can kill the app's
+             process and start MainActivity fresh (an account switch needs a cold start). -->
+        <activity
+            android:name=".AppRestart$RestartActivity"
+            android:process=":restart"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.NoDisplay" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

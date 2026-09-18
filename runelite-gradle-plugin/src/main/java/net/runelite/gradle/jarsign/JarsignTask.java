@@ -34,6 +34,9 @@ import org.gradle.api.tasks.PathSensitive;
 import org.gradle.api.tasks.PathSensitivity;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.jvm.tasks.Jar;
+import org.gradle.process.ExecOperations;
+
+import javax.inject.Inject;
 
 @CacheableTask
 public abstract class JarsignTask extends DefaultTask
@@ -76,10 +79,14 @@ public abstract class JarsignTask extends DefaultTask
 	@Input
 	public abstract Property<String> getAlias();
 
+	// Gradle 9 removed Project.exec; the injected service is the replacement.
+	@Inject
+	public abstract ExecOperations getExecOperations();
+
 	@TaskAction
 	public void signArtifact()
 	{
-		getProject().exec(exec ->
+		getExecOperations().exec(exec ->
 			exec.commandLine(
 				"jarsigner",
 				"-keystore", getKeystore().getAsFile().get().getAbsolutePath(),

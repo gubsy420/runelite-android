@@ -35,18 +35,18 @@ antlr = "4.13.1"
 asm = "9.6"
 vineflower = "1.11.1"
 
-kotlin = "2.1.0"
-composeMultiplatform = "1.7.3"
-agp = "8.6.1"
-androidxActivityCompose = "1.9.3"
-rustAndroidGradle = "0.9.6"
+kotlin = "2.4.20"
+composeMultiplatform = "1.12.0"
+agp = "9.4.0"
+androidxActivityCompose = "1.13.0"
+rustAndroidGradle = "0.10.0"
 
 # Firebase. BoM pins individual product versions so we don't have to. The gms plugin
 # wires google-services.json → res/values/ resources at build time; the crashlytics
 # gradle plugin uploads mapping.txt for R8-obfuscated stack traces.
-googleServices = "4.4.4"
-firebaseCrashlyticsGradle = "3.0.2"
-firebaseBom = "34.14.0"
+googleServices = "4.5.0"
+firebaseCrashlyticsGradle = "3.0.8"
+firebaseBom = "34.19.0"
 
 
 [libraries]
