@@ -36,7 +36,7 @@ internal object PendingLaunch
         // is the one bit that says which of the two was picked more recently.
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
             .putString(KEY_LAST_TYPE, if (selection.credentialsFile != null) TYPE_IMPORT else TYPE_JAGEX)
-            .apply()
+            .commit() // synchronous: the process exits right after this
 
         val props = Properties()
         selection.credentialsFile?.let { props.setProperty(KEY_FILE, it.absolutePath) }
