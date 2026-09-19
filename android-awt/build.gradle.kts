@@ -15,7 +15,8 @@ buildscript {
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    // Kotlin is compiled by AGP itself from 9.0 on (built-in Kotlin); the kotlin-android plugin
+    // no longer applies.
     alias(libs.plugins.rust.android)
 }
 
@@ -25,13 +26,13 @@ plugins {
 // are deliberately strict — do not bump them.
 android {
     namespace = "net.runelite.awt"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         // Lowered from 30 to match consumers; D8 still desugars our own bytecode for
         // anything below the dex API level.
         minSdk = 26
-        lint.targetSdk = 35
+        lint.targetSdk = 37
         // Propagate keep rules for java.awt.* / javax.swing.* / sun.* to any consuming
         // app's R8 step. The gamepack calls these by name; renaming them at link time
         // breaks Class.forName / reflection lookups inside the obfuscated client jar.
@@ -52,9 +53,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 
     ndkVersion = "28.2.13676358"
 
@@ -69,6 +67,14 @@ android {
 
 // Pin the injected RuneLite jar onto the compile classpath (not packaged). This is what
 // lets lint walk every reference it makes and flag any class we still need to shadow.
+// Built-in Kotlin defaults jvmTarget to compileOptions.targetCompatibility, but the shadow
+// contract above is the whole module, so pin it explicitly all the same.
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+    }
+}
+
 val injectedJars = rootProject.fileTree("data") {
     include("runelite-*-injected-*-clean.jar")
 }
@@ -99,7 +105,6 @@ cargo {
         "x86"     // x86 emulator
     )
     profile = "release"
-    prebuiltToolchains = true
     pythonCommand = "python"
 }
 

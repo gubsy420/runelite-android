@@ -60,6 +60,10 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
      *  path so older builds keep working. */
     var accountFile: java.io.File? = null
 
+    /** Runs on the launcher's IO thread just before the env is seeded, so a caller can resolve
+     *  [credentials] / [accountFile] with work that must not block the UI (a session renewal). */
+    var beforeSeed: (() -> Unit)? = null
+
     fun launch(scope: CoroutineScope, vararg args: String) {
         if (job?.isActive == true) return
         state = State.Starting
@@ -98,6 +102,13 @@ class RuneLiteLauncher(private val context: android.content.Context? = null) {
                 System.setProperty("runelite.pluginhub.cert", "externalplugins-android.crt")
                 logLine("pluginhub.cert → externalplugins-android.crt")
 
+                try {
+                    beforeSeed?.invoke()
+                } catch (t: Throwable) {
+                    logLine("account resolution failed: ${t.message}; starting without an account")
+                    credentials = null
+                    accountFile = null
+                }
                 seedLauncherCredentials()
                 runNetSelfTest()
 

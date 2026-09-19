@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import net.runelite.mp.ui.AccountManagerOverlay
 
 // Fixed logical height; the width is derived from the device aspect ratio so the AWT
 // window fills the viewport without horizontal letterbox. On a 16:9 device this lands
@@ -107,20 +108,25 @@ fun AndroidApp() {
     val context = LocalContext.current.applicationContext
     val launcher = remember { RuneLiteLauncher(context) }
     val scope = rememberCoroutineScope()
-    // Booted == the user has picked (or just imported) an account and we've kicked the
-    // launcher off. Until then the AccountPicker owns the screen. Saved across config
-    // changes via remember/state so a screen rotation doesn't drop us back to the picker
-    // mid-boot.
-    var booted by remember { mutableStateOf(false) }
-
-    if (!booted) {
-        net.runelite.mp.account.AccountPicker(onSelect = { selection ->
-            launcher.credentials = selection.credentials
-            launcher.accountFile = selection.credentialsFile
-            launcher.launch(scope)
-            booted = true
-        })
-        return
+    // The client boots straight away, to its own login screen. It used to sit behind the
+    // AccountPicker until an account was chosen; that pre-game screen is what Play review
+    // rejected as unusable UI. The picker is now the account manager overlay on the login
+    // screen (AccountManagerOverlay). Choosing an account there writes a one-shot
+    // PendingLaunch and restarts the process; this is where the new process picks it up and
+    // seeds the launcher env from it. With nothing pending the env stays unseeded and the
+    // login screen is the plain one.
+    //
+    // remember() keeps a config change (rotation) from launching twice.
+    remember {
+        // Resolved on the launcher's IO thread: the last-used Jagex account gets its session
+        // renewed first, which is network work.
+        launcher.beforeSeed = {
+            val selection = net.runelite.mp.account.PendingLaunch.resolveForBoot(context)
+            launcher.credentials = selection?.credentials
+            launcher.accountFile = selection?.credentialsFile
+        }
+        launcher.launch(scope)
+        true
     }
 
     // Once booted, swallow hardware/gesture back so an accidental press at the edge of
@@ -142,6 +148,8 @@ fun AndroidApp() {
                 modifier = Modifier.size(1.dp)
             )
             GameViewport(Modifier.fillMaxSize())
+            // Login-screen-only account manager, bottom-left, over the game.
+            AccountManagerOverlay()
         }
     }
 }

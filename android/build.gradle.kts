@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
@@ -41,22 +40,21 @@ buildscript {
             mavenCentral()
         }
         dependencies {
-
-            classpath("com.android.tools.build:gradle:8.12.3")
-            // Used by DesugarStringConcatTask below.
-            classpath("org.ow2.asm:asm:9.8")
+            // Used by the desugar tasks below. AGP and the Firebase plugins come from the root
+            // project's plugins { } block (version catalog), not from here: this classpath used
+            // to pin a second AGP version alongside the catalog's.
+            classpath("org.ow2.asm:asm:9.10.1")
             classpath("org.ow2.asm:asm-commons:9.8")
-            // Firebase. apply(plugin = "...") below resolves against this buildscript
-            // classpath (legacy mechanism), so the gradle plugins have to live here in
-            // addition to the root-level plugins { ... apply false } registration.
-            classpath("com.google.gms:google-services:4.5.0")
-            classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.7")
         }
     }
 }
 
+// A plain Android application module. Until AGP 9 this was a Kotlin Multiplatform module with
+// an Android target and a one-file desktop preview; AGP 9 no longer allows kotlin.multiplatform
+// and com.android.application in the same subproject, and the multiplatform half was only ever
+// that preview, which now lives in :android-desktop. Compose comes from the Compose
+// Multiplatform plugin's Android support; Kotlin is compiled by AGP (built-in Kotlin).
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.compose.multiplatform)
 }
@@ -98,7 +96,7 @@ configurations.configureEach {
     exclude(group = "org.lwjgl")
 }
 
-val target = "runelite-1.12.38-injected-33653951311.245"
+val target = "runelite-1.12.39-injected-35108282871.259"
 
 // --------------------------------------------------------------------------------------
 // rewriteLauncherEnv: makes the injected client read its JX_* launcher credentials from
@@ -166,7 +164,7 @@ val desugarLambdas = if (androidSdkAvailable) {
 
 val desugarApis = if (androidSdkAvailable) {
     tasks.register("desugarApis") {
-        dependsOn(desugarLambdas)
+        dependsOn(desugarLambdas!!)
 
         val input = desugarLambdas!!.flatMap { it.outputJar }
         val output = layout.buildDirectory.file("desugared/injected-client-final.jar")
@@ -250,87 +248,66 @@ val desugarApis = if (androidSdkAvailable) {
 
 configurations.all {
     resolutionStrategy.force(
-        "com.google.guava:guava:33.6.0-android"
+        "com.google.guava:guava:33.6.0-android",
+        // Guava's own placeholder for the ListenableFuture split artifact. AGP 9 no longer adds
+        // dependency constraints (android.dependency.useConstraints defaults to false), so the
+        // real listenablefuture:1.0 some transitive dependency asks for surfaced as a duplicate
+        // class against guava-android; pinning the empty version is Guava's documented answer.
+        "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"
     )
 }
 
-kotlin {
-    jvmToolchain(17)
+// Built-in Kotlin takes its jvmTarget from android.compileOptions.targetCompatibility (17 below),
+// so there is no kotlin { } block to configure here.
 
-    jvm("desktop") {
-        compilations.all {
-            kotlinOptions.jvmTarget = "17"
-        }
-    }
+if (androidSdkAvailable) {
+    // The android plugin is applied above by name (only when an SDK is present), so the typed
+    // implementation() accessor does not exist at script-compile time; use the configuration name.
+    dependencies {
+        "implementation"(compose.runtime)
+        "implementation"(compose.foundation)
+        "implementation"(compose.material3)
+        "implementation"(compose.ui)
+        "implementation"(compose.components.resources)
+        "implementation"(libs.androidx.activity.compose)
+        // Firebase. BoM coordinates the individual product versions so they
+        // can't drift apart. Crashlytics auto-installs an uncaught handler on
+        // first FirebaseApp init; we still front it with AndroidCrashReporter
+        // to add Compose-state breadcrumbs that Crashlytics can't see.
+        //
+        // KotlinDependencyHandler.platform() doesn't accept the catalog's
+        // Provider<MinimalExternalModuleDependency> directly, so route
+        // through the project's standard DependencyHandler which does.
+        "implementation"(platform(libs.firebase.bom))
+        "implementation"(libs.firebase.crashlytics)
+        "implementation"(libs.firebase.analytics)
+        // android-awt provides the shadow java.awt / javax.swing / javax.sound surface
+        // the runelite jars compile against; it must be on the classpath before
+        // anything that touches AWT can resolve at dex time.
+        "implementation"(project(":android-awt"))
+        "implementation"(project(":jshell"))
+        "implementation"(project(":client"))
+        "implementation"("net.runelite:runelite-api:${project.version}")
+        "implementation"(libs.rs.cache)
+        // FlatLaf jars are pure Java; classes load fine on Android, even though
+        // the actual Swing rendering pipeline behind them won't.
+        "implementation"(libs.flatlaf.core)
+        "implementation"(libs.flatlaf.extras)
+        // Plugin-hub plugins shade their `implementation` deps into the desktop
+        // jar, but the Android dex pipeline ships thin jars (plugin classes only),
+        // so those bundled libs are missing at runtime. The DexClassLoader's parent
+        // is the host APK, so providing the shared ones here resolves them for every
+        // plugin. tomlj (TOML parser, pulls antlr4-runtime transitively) is what the
+        // resource-packs plugin needs — without it it dies at injector creation with
+        // NoClassDefFoundError: org/tomlj/TomlTable.
+        "implementation"("org.tomlj:tomlj:1.1.1")
+        // Patched RS client (RuneLite's injected-client artifact). The raw jar has
+        // invokedynamic makeConcatWithConstants sites whose recipes use constant
+        // types D8's StringConcat desugarer rejects, so we pre-rewrite them to
+        // calls into IndyConcat at build time. See desugarStringConcat below.
+        "implementation"(files(desugarApis))
 
-    if (androidSdkAvailable) {
-        androidTarget {
-            compilations.all {
-                kotlinOptions.jvmTarget = "17"
-            }
-        }
-    }
-
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.ui)
-                implementation(compose.components.resources)
-            }
-        }
-        val desktopMain by getting {
-            dependencies {
-                implementation(compose.desktop.currentOs)
-            }
-        }
-        if (androidSdkAvailable) {
-            val androidMain by getting {
-                dependencies {
-                    implementation(libs.androidx.activity.compose)
-                    // Firebase. BoM coordinates the individual product versions so they
-                    // can't drift apart. Crashlytics auto-installs an uncaught handler on
-                    // first FirebaseApp init; we still front it with AndroidCrashReporter
-                    // to add Compose-state breadcrumbs that Crashlytics can't see.
-                    //
-                    // KotlinDependencyHandler.platform() doesn't accept the catalog's
-                    // Provider<MinimalExternalModuleDependency> directly, so route
-                    // through the project's standard DependencyHandler which does.
-                    implementation(project.dependencies.platform(libs.firebase.bom))
-                    implementation(libs.firebase.crashlytics)
-                    implementation(libs.firebase.analytics)
-                    // android-awt provides the shadow java.awt / javax.swing / javax.sound surface
-                    // the runelite jars compile against; it must be on the classpath before
-                    // anything that touches AWT can resolve at dex time.
-                    implementation(project(":android-awt"))
-                    implementation(project(":jshell"))
-                    implementation(project(":client"))
-                    implementation("net.runelite:runelite-api:${project.version}")
-                    implementation(libs.rs.cache)
-                    // FlatLaf jars are pure Java; classes load fine on Android, even though
-                    // the actual Swing rendering pipeline behind them won't.
-                    implementation(libs.flatlaf.core)
-                    implementation(libs.flatlaf.extras)
-                    // Plugin-hub plugins shade their `implementation` deps into the desktop
-                    // jar, but the Android dex pipeline ships thin jars (plugin classes only),
-                    // so those bundled libs are missing at runtime. The DexClassLoader's parent
-                    // is the host APK, so providing the shared ones here resolves them for every
-                    // plugin. tomlj (TOML parser, pulls antlr4-runtime transitively) is what the
-                    // resource-packs plugin needs — without it it dies at injector creation with
-                    // NoClassDefFoundError: org/tomlj/TomlTable.
-                    implementation("org.tomlj:tomlj:1.1.1")
-                    // Patched RS client (RuneLite's injected-client artifact). The raw jar has
-                    // invokedynamic makeConcatWithConstants sites whose recipes use constant
-                    // types D8's StringConcat desugarer rejects, so we pre-rewrite them to
-                    // calls into IndyConcat at build time. See desugarStringConcat below.
-                    implementation(files(desugarApis))
-
-                    implementation("com.google.guava:guava:33.6.0-android")
-                }
-            }
-        }
+        "implementation"("com.google.guava:guava:33.6.0-android")
     }
 }
 
@@ -350,9 +327,10 @@ if (androidSdkAvailable) {
 }
 
 if (androidSdkAvailable) {
-    extensions.configure<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>("android") {
+    // AGP 9's public DSL type; BaseAppModuleExtension was the pre-newDsl internal one.
+    extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") {
         namespace = "net.runelite.mp"
-        compileSdk = 36
+        compileSdk = 37
 
         defaultConfig {
             applicationId = "net.runelite.mp"
@@ -364,7 +342,7 @@ if (androidSdkAvailable) {
             // injected client crash on first invocation.
             minSdk = 26
             //noinspection EditedTargetSdkVersion
-            targetSdk = 36
+            targetSdk = 37
             // Derive versionCode from the dotted project version so each RuneLite cycle
             // (1.12.27 → 1.12.28 → 1.13.0 → …) lands a monotonically-increasing integer
             // without manual bumping. Encoding: major*1_000_000 + minor*1_000 + patch,
@@ -373,7 +351,7 @@ if (androidSdkAvailable) {
             // {patch ↑, minor ↑ with patch reset, major ↑ with minor+patch reset}.
             val versionMajor = 1
             val versionMinor = 0
-            val versionPatch = 26
+            val versionPatch = 27
             versionCode = (versionMajor * 1_000_000) + (versionMinor * 1_000) + versionPatch
             versionName = project.version.toString()
             // Anti-tamper hook. SignatureGuard reads this field at MainActivity init and
@@ -408,12 +386,15 @@ if (androidSdkAvailable) {
             isCoreLibraryDesugaringEnabled = true
         }
 
+        // The source tree keeps its KMP-era src/androidMain layout; only the build no longer
+        // treats the module as multiplatform, so every directory is mapped onto "main" here.
         sourceSets.named("main") {
             manifest.srcFile("src/androidMain/AndroidManifest.xml")
-            // KMP keeps android sources under src/androidMain/. Mirror the .java files
-            // sitting next to the .kt files onto AGP's "main" javac source set.
             java.srcDirs("src/androidMain/kotlin", "src/androidMain/java")
+            kotlin.srcDirs("src/androidMain/kotlin")
+            res.srcDirs("src/androidMain/res")
             assets.srcDirs("src/androidMain/assets")
+            resources.srcDirs("src/androidMain/resources")
         }
 
         // Release signing.
@@ -498,7 +479,8 @@ if (androidSdkAvailable) {
             // R8 + resource shrinking. Crashlytics gradle plugin auto-uploads
             // mapping.txt to Firebase so stack traces deobfuscate in the console.
             //
-            // Using the conservative `proguard-android.txt` (NOT the -optimize variant)
+            // The optimizer is kept OFF (-dontoptimize in proguard-rules.pro; the conservative
+            // proguard-android.txt default that used to carry it no longer exists in AGP 9)
             // because the optimize-enabled defaults include class merging and method
             // hoisting that collapse anonymous TypeLiteral / TypeToken subclasses into
             // their enclosing class. Guice and Gson both rely on those anonymous
@@ -510,7 +492,10 @@ if (androidSdkAvailable) {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                // AGP 9 no longer ships proguard-android.txt. The -optimize file is the same
+                // default set without -dontoptimize; proguard-rules.pro adds -dontoptimize back, so
+                // the optimizer stays off for the reason above.
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             signingConfig = if (haveReleaseSigning) {
@@ -811,6 +796,39 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
         // com/jagex/oldscape/pub/ types (OtlTokenRequester, etc.) exist ONLY in the
         // injected jar, so don't drop the whole package.
         val skipExact = setOf("com/jagex/oldscape/pub/OAuthApi.class")
+        // Direct `ldc` of a dynamic constant (CONSTANT_Dynamic, JVM 11). 1.12.39 is the first
+        // revision to emit these outside a makeConcatWithConstants recipe -- String[], boolean[]
+        // and Properties[] lookup tables built by ConstantBootstraps.invoke(client.xx()) -- and
+        // D8 refuses const-dynamic at every API level. Each distinct constant becomes a holder
+        // class whose <clinit> runs the bootstrap once; the ldc becomes a GETSTATIC on it. That
+        // keeps the JVM's evaluate-once semantics, which an inline call would not.
+        val condys = CondyRegistry("runelite/desugar/Condy")
+
+        // The holder classes sit in their own package, but a dynamic constant's bootstrap target
+        // is typically a private static in the obfuscated class -- the JVM resolves a condy with
+        // the declaring class's own lookup, so it never needed access. The holder's <clinit> does:
+        // first pass finds every target so the second can widen it (and its class) to public.
+        // Same treatment the lambda pass gives its implementation methods.
+        JarFile(inFile).use { input ->
+            val entries = input.entries()
+            while (entries.hasMoreElements()) {
+                val entry = entries.nextElement()
+                if (entry.isDirectory || !entry.name.endsWith(".class") || skipExact.contains(entry.name)) continue
+                val bytes = input.getInputStream(entry).use { it.readBytes() }
+                ClassReader(bytes).accept(object : ClassVisitor(Opcodes.ASM9) {
+                    override fun visitMethod(access: Int, name: String?, descriptor: String?, signature: String?, exceptions: Array<out String>?): MethodVisitor {
+                        return object : MethodVisitor(Opcodes.ASM9) {
+                            override fun visitLdcInsn(value: Any) {
+                                if (value is org.objectweb.asm.ConstantDynamic) {
+                                    condys.noteTarget(value)
+                                }
+                            }
+                        }
+                    }
+                }, ClassReader.SKIP_FRAMES or ClassReader.SKIP_DEBUG)
+            }
+        }
+
         JarFile(inFile).use { input ->
             JarOutputStream(outFile.outputStream().buffered()).use { output ->
                 val entries = input.entries()
@@ -825,7 +843,7 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
                     output.putNextEntry(JarEntry(entry.name))
                     if (entry.name.endsWith(".class")) {
                         classesProcessed++
-                        val (rewritten, n) = rewriteClass(bytes, helperOwner.get())
+                        val (rewritten, n) = rewriteClass(bytes, helperOwner.get(), condys)
                         sitesRewritten += n
                         output.write(rewritten)
                     } else {
@@ -833,12 +851,17 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
                     }
                     output.closeEntry()
                 }
+                for ((name, classBytes) in condys.holders()) {
+                    output.putNextEntry(JarEntry("$name.class"))
+                    output.write(classBytes)
+                    output.closeEntry()
+                }
             }
         }
-        logger.lifecycle("desugarStringConcat: processed $classesProcessed classes, rewrote $sitesRewritten makeConcatWithConstants sites, skipped $classesSkipped (runelite-api duplicates)")
+        logger.lifecycle("desugarStringConcat: processed $classesProcessed classes, rewrote $sitesRewritten makeConcatWithConstants sites, skipped $classesSkipped (runelite-api duplicates), hoisted ${condys.count()} dynamic constants into holder classes, widened ${condys.targetCount()} bootstrap targets")
     }
 
-    private fun rewriteClass(bytes: ByteArray, helperOwner: String): Pair<ByteArray, Int> {
+    private fun rewriteClass(bytes: ByteArray, helperOwner: String, condys: CondyRegistry): Pair<ByteArray, Int> {
         val cr = ClassReader(bytes)
         // The injected jar references internal obfuscated types like `da` that aren't on
         // ASM's reflection classloader, so the default getCommonSuperClass blows up.
@@ -850,23 +873,169 @@ abstract class DesugarStringConcatTask : org.gradle.api.DefaultTask() {
         }
         val counter = intArrayOf(0)
         cr.accept(object : ClassVisitor(Opcodes.ASM9, cw) {
+            var className = ""
+
+            override fun visit(version: Int, access: Int, name: String, signature: String?, superName: String?, interfaces: Array<out String>?) {
+                className = name
+                val widened = if (condys.isTargetOwner(name)) (access and (Opcodes.ACC_PRIVATE or Opcodes.ACC_PROTECTED).inv()) or Opcodes.ACC_PUBLIC else access
+                super.visit(version, widened, name, signature, superName, interfaces)
+            }
+
             override fun visitMethod(access: Int, name: String?, descriptor: String?, signature: String?, exceptions: Array<out String>?): MethodVisitor {
-                val mv = super.visitMethod(access, name, descriptor, signature, exceptions)
-                return ConcatRewriter(access, name, descriptor, mv, helperOwner, counter)
+                val widened = if (name != null && descriptor != null && condys.isTarget(className, name, descriptor))
+                    (access and (Opcodes.ACC_PRIVATE or Opcodes.ACC_PROTECTED).inv()) or Opcodes.ACC_PUBLIC
+                else access
+                val mv = super.visitMethod(widened, name, descriptor, signature, exceptions)
+                return ConcatRewriter(widened, name, descriptor, mv, helperOwner, counter, condys)
             }
         }, ClassReader.EXPAND_FRAMES)
         return cw.toByteArray() to counter[0]
     }
 }
 
+// One holder class per distinct dynamic constant:
+//
+//     public final class runelite/desugar/Condy$N { public static final <desc> VALUE; static { ... } }
+//
+// <clinit> pushes the bootstrap's trailing arguments and invokes the handle, exactly what
+// ConstantBootstraps.invoke does, then casts to the constant's own type. Only the
+// ConstantBootstraps.invoke + H_INVOKESTATIC shape is supported; any other bootstrap fails the
+// build with the constant named, since an unhandled one would fail D8 anyway.
+private class CondyRegistry(private val prefix: String) {
+    private val names = LinkedHashMap<org.objectweb.asm.ConstantDynamic, String>()
+
+    // owner/name/desc of every bootstrap target seen in the scan pass; these get widened to public.
+    private val targets = HashSet<Triple<String, String, String>>()
+    private val targetOwners = HashSet<String>()
+
+    fun noteTarget(c: org.objectweb.asm.ConstantDynamic) {
+        val bsm = c.bootstrapMethod
+        if (bsm.owner == "java/lang/invoke/ConstantBootstraps" && bsm.name == "invoke" && c.bootstrapMethodArgumentCount >= 1) {
+            val h = c.getBootstrapMethodArgument(0) as? Handle ?: return
+            targets.add(Triple(h.owner, h.name, h.desc))
+            targetOwners.add(h.owner)
+        }
+    }
+
+    fun isTarget(owner: String, name: String, desc: String): Boolean = targets.contains(Triple(owner, name, desc))
+    fun isTargetOwner(owner: String): Boolean = targetOwners.contains(owner)
+    fun targetCount(): Int = targets.size
+
+    fun holderFor(c: org.objectweb.asm.ConstantDynamic): String =
+        names.getOrPut(c) { "$prefix\$${names.size}" }
+
+    fun count(): Int = names.size
+
+    fun holders(): List<Pair<String, ByteArray>> = names.map { (c, name) -> name to generate(name, c) }
+
+    private fun generate(name: String, c: org.objectweb.asm.ConstantDynamic): ByteArray {
+        val bsm = c.bootstrapMethod
+        val isInvoke = bsm.owner == "java/lang/invoke/ConstantBootstraps"
+            && bsm.name == "invoke"
+            && c.bootstrapMethodArgumentCount >= 1
+        val implHandle = if (isInvoke) c.getBootstrapMethodArgument(0) as? Handle else null
+        if (implHandle == null || implHandle.tag != Opcodes.H_INVOKESTATIC) {
+            throw org.gradle.api.GradleException(
+                "desugarStringConcat: unsupported dynamic constant bootstrap ${bsm.owner}.${bsm.name} for ${c.name}:${c.descriptor}"
+            )
+        }
+
+        val cw = ClassWriter(ClassWriter.COMPUTE_FRAMES or ClassWriter.COMPUTE_MAXS)
+        cw.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC or Opcodes.ACC_FINAL or Opcodes.ACC_SYNTHETIC, name, null, "java/lang/Object", null)
+        cw.visitField(Opcodes.ACC_PUBLIC or Opcodes.ACC_STATIC or Opcodes.ACC_FINAL, "VALUE", c.descriptor, null, null).visitEnd()
+
+        // The 5-arg constructor is protected; an anonymous subclass is how ConcatRewriter reaches it too.
+        val clinit = object : GeneratorAdapter(Opcodes.ASM9, cw.visitMethod(Opcodes.ACC_STATIC, "<clinit>", "()V", null, null), Opcodes.ACC_STATIC, "<clinit>", "()V") {}
+        clinit.visitCode()
+
+        val implArgTypes = Type.getArgumentTypes(implHandle.desc)
+        for (i in implArgTypes.indices) {
+            val argValue = if (i + 1 < c.bootstrapMethodArgumentCount) c.getBootstrapMethodArgument(i + 1) else null
+            when (argValue) {
+                is Int, is Long, is Float, is Double, is String, is Type, is Handle -> clinit.visitLdcInsn(argValue)
+                null -> clinit.visitInsn(Opcodes.ACONST_NULL)
+                else -> throw org.gradle.api.GradleException(
+                    "desugarStringConcat: unsupported bootstrap argument ${argValue.javaClass.name} for ${c.name}:${c.descriptor}"
+                )
+            }
+        }
+        clinit.visitMethodInsn(Opcodes.INVOKESTATIC, implHandle.owner, implHandle.name, implHandle.desc, implHandle.isInterface)
+
+        // Coerce the impl's return to the constant's declared type, the way the JVM does after
+        // ConstantBootstraps.invoke returns Object.
+        val retType = Type.getReturnType(implHandle.desc)
+        val valueType = Type.getType(c.descriptor)
+        val retIsRef = retType.sort == Type.OBJECT || retType.sort == Type.ARRAY
+        val valueIsRef = valueType.sort == Type.OBJECT || valueType.sort == Type.ARRAY
+        when {
+            retIsRef && valueIsRef -> if (retType != valueType) clinit.checkCast(valueType)
+            retIsRef && !valueIsRef -> clinit.unbox(valueType)
+            !retIsRef && valueIsRef -> clinit.box(retType)
+            else -> if (retType != valueType) clinit.cast(retType, valueType)
+        }
+
+        clinit.visitFieldInsn(Opcodes.PUTSTATIC, name, "VALUE", c.descriptor)
+        clinit.visitInsn(Opcodes.RETURN)
+        clinit.visitMaxs(0, 0)
+        clinit.visitEnd()
+        cw.visitEnd()
+        return cw.toByteArray()
+    }
+}
+
 private class ConcatRewriter(
     access: Int,
     name: String?,
-    descriptor: String?,
+    private val descriptor: String?,
     delegate: MethodVisitor,
     private val helperOwner: String,
     private val counter: IntArray,
+    private val condys: CondyRegistry,
 ) : GeneratorAdapter(Opcodes.ASM9, delegate, access, name, descriptor) {
+
+    override fun visitLdcInsn(value: Any) {
+        if (value is org.objectweb.asm.ConstantDynamic) {
+            val holder = condys.holderFor(value)
+            mv.visitFieldInsn(Opcodes.GETSTATIC, holder, "VALUE", value.descriptor)
+            return
+        }
+        super.visitLdcInsn(value)
+    }
+
+    // ART's verifier is stricter than the JVM's about narrow integer types. The 1.12.39
+    // obfuscator emits opaque branches such as `ldc 2022116277; istore_1; ...; iload_1; ireturn`
+    // inside a `byte` method: the JVM is happy to ireturn any int from a byte method, ART rejects
+    // the class outright ("register v1 has type IntegerConstant but expected Byte"), and D8 does
+    // not narrow constants for it. Putting the declared width back with i2b/i2s/i2c before every
+    // narrow return, narrow field store and narrow array store is exactly what javac's own output
+    // already looks like, so it changes nothing for real code and makes the junk verify.
+    private val narrowReturn: Int = when (Type.getReturnType(descriptor ?: "()V").sort) {
+        Type.BYTE -> Opcodes.I2B
+        Type.SHORT -> Opcodes.I2S
+        Type.CHAR -> Opcodes.I2C
+        else -> 0
+    }
+
+    override fun visitInsn(opcode: Int) {
+        when (opcode) {
+            Opcodes.IRETURN -> if (narrowReturn != 0) super.visitInsn(narrowReturn)
+            Opcodes.BASTORE -> super.visitInsn(Opcodes.I2B)
+            Opcodes.SASTORE -> super.visitInsn(Opcodes.I2S)
+            Opcodes.CASTORE -> super.visitInsn(Opcodes.I2C)
+        }
+        super.visitInsn(opcode)
+    }
+
+    override fun visitFieldInsn(opcode: Int, owner: String, name: String, desc: String) {
+        if (opcode == Opcodes.PUTFIELD || opcode == Opcodes.PUTSTATIC) {
+            when (desc) {
+                "B" -> super.visitInsn(Opcodes.I2B)
+                "S" -> super.visitInsn(Opcodes.I2S)
+                "C" -> super.visitInsn(Opcodes.I2C)
+            }
+        }
+        super.visitFieldInsn(opcode, owner, name, desc)
+    }
 
     override fun visitInvokeDynamicInsn(name: String, descriptor: String, bsm: Handle, vararg bsmArgs: Any) {
         if (!(bsm.owner == "java/lang/invoke/StringConcatFactory" && bsm.name == "makeConcatWithConstants")) {
@@ -1467,16 +1636,5 @@ private class LambdaRewriter(
             "getFloat" + "(J)F",  "putFloat"  + "(JF)V",
             "getDouble" + "(J)D", "putDouble" + "(JD)V",
         )
-    }
-}
-
-compose.desktop {
-    application {
-        mainClass = "net.runelite.mp.MainKt"
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "runelite-mp"
-            packageVersion = "1.0.0"
-        }
     }
 }
