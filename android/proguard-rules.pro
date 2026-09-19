@@ -294,3 +294,13 @@
 # never needs to load them at runtime. R8 reports them as "Missing class" since
 # nothing on the classpath provides them; suppress the warning.
 -dontwarn net.runelite.mixins.annotations.**
+
+# ----------------------------------------------------------------------------
+# No optimizer. AGP 9 dropped the conservative proguard-android.txt default, so
+# the build uses proguard-android-optimize.txt and switches the optimizer back
+# off here. Optimization merges the anonymous TypeLiteral / TypeToken subclasses
+# that Guice and Gson read generic supertypes from at runtime; with them merged,
+# getGenericSuperclass() returns a plain Class and injector creation fails.
+# Name obfuscation and dead-code removal are unaffected.
+# ----------------------------------------------------------------------------
+-dontoptimize

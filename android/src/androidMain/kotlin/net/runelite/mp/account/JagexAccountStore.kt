@@ -99,7 +99,9 @@ internal object JagexAccountStore
 
     fun setLastCharacterId(context: Context, id: String?)
     {
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit {
+        // Synchronous: the picker restarts the process right after this, and apply() would
+        // still be on its background thread when exit(0) hits.
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit(commit = true) {
             if (id == null) remove(KEY_LAST_CHARACTER) else putString(KEY_LAST_CHARACTER, id)
         }
     }

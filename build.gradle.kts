@@ -23,19 +23,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Subprojects (android-awt + runelite-mp) both pull in Kotlin plugins. Loading
-// kotlin-android and kotlin-multiplatform from each subproject's `plugins { ... }`
-// block puts the plugin in distinct classloaders, which Gradle 8.8 / Kotlin 2.1
-// refuses with "Kotlin Gradle plugin was loaded multiple times". Declaring them
-// here with `apply false` registers a single shared classloader; the subprojects
-// keep their existing `alias(libs.plugins.kotlin.…)` lines and just opt-in to it.
+// Every Gradle plugin the subprojects use is declared here with `apply false` so it lives
+// on one shared classloader; loading the same plugin from two subprojects' `plugins { }`
+// blocks puts it in distinct classloaders, which the Kotlin plugin refuses ("Kotlin Gradle
+// plugin was loaded multiple times"). The subprojects keep their `alias(...)` lines and
+// just opt in.
 plugins {
     // AGP must be on the root classloader before kotlin-android tries to instantiate
     // KotlinAndroidTarget — otherwise it can't see com/android/build/gradle/api/BaseVariant.
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
+    // AGP 9 compiles Kotlin itself (built-in Kotlin); org.jetbrains.kotlin.android is no longer
+    // applied anywhere. kotlin.jvm is for the desktop preview module only.
+    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.compose.multiplatform) apply false
     alias(libs.plugins.rust.android) apply false
